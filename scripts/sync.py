@@ -189,6 +189,11 @@ def decouper_roles(role):
     return [r.strip().lower() for r in sans_crochets.split(",") if r.strip()]
 
 
+# Compteur des rôles rencontrés pendant la synchro, pour le rapport final :
+# {(rôle, classement): nombre de fois}
+ROLES_RENCONTRES = {}
+
+
 def classer_credits(credits, compositeurs, interpretes):
     """Répartit une liste de crédits Discogs entre compositeurs et interprètes."""
     for credit in credits or []:
@@ -196,8 +201,28 @@ def classer_credits(credits, compositeurs, interpretes):
         for role in decouper_roles(credit.get("role")):
             if role in ROLES_COMPOSITEUR:
                 ajouter_sans_doublon(compositeurs, nom)
+                classement = "compositeur"
             elif not any(mot in role for mot in MOTS_NON_INTERPRETE):
                 ajouter_sans_doublon(interpretes, nom)
+                classement = "interprète"
+            else:
+                classement = "écarté"
+            cle = (role, classement)
+            ROLES_RENCONTRES[cle] = ROLES_RENCONTRES.get(cle, 0) + 1
+
+
+def afficher_rapport_roles():
+    """Affiche les rôles rencontrés, regroupés par classement, du plus fréquent au moins fréquent."""
+    if not ROLES_RENCONTRES:
+        print("Rapport des rôles : aucune fiche lue pendant cette synchro.")
+        return
+    print("Rapport des rôles (fiches lues pendant cette synchro) :")
+    for classement in ("compositeur", "interprète", "écarté"):
+        roles = [(nb, role) for (role, cl), nb in ROLES_RENCONTRES.items() if cl == classement]
+        roles.sort(reverse=True)
+        print("  %s (%d rôles différents) :" % (classement.upper(), len(roles)))
+        for nb, role in roles:
+            print("    %5d  %s" % (nb, role))
 
 
 def extraire_details(fiche):
@@ -338,6 +363,8 @@ def main():
     temporaire.replace(FICHIER_SORTIE)
 
     print("Terminé : %d disques enregistrés." % len(disques))
+    print()
+    afficher_rapport_roles()
 
 
 if __name__ == "__main__":
