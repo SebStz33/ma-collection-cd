@@ -56,13 +56,16 @@ JOURS_AVANT_RAFRAICHISSEMENT = 30
 ROLES_PAR_CATEGORIE = {
     "compositeurs": {"composed by", "written-by", "written by", "music by", "composer", "songwriter"},
     "paroliers": {"lyrics by", "libretto by", "words by", "text by"},
-    "arrangeurs": {"arranged by", "orchestrated by"},
+    "arrangeurs": {
+        "arranged by", "orchestrated by", "adapted by", "realization", "score editor",
+    },
     "transcriptions": {"transcription by", "transcribed by"},
     "cadences": {"cadenza"},
     "producteurs": {
         "producer", "executive-producer", "executive producer", "co-producer", "art direction",
         "compilation producer", "reissue producer", "concept by", "production manager",
-        "musical assistance", "creative director", "project manager",
+        "musical assistance", "creative director", "project manager", "supervised by", "a&r",
+        "compiled by", "coordinator",
     },
     "ingenieurs_son": {
         "engineer", "recorded by", "mixed by", "recording supervisor", "sound designer",
@@ -72,13 +75,15 @@ ROLES_PAR_CATEGORIE = {
     "artwork": {
         "artwork by", "artwork", "graphic design", "typography", "design", "cover",
         "painting", "illustration", "layout", "graphics", "lithography", "sleeve", "calligraphy",
+        "design concept",
     },
-    "textes_livret": {"liner notes", "booklet editor", "sleeve notes"},
+    "textes_livret": {"liner notes", "booklet editor", "sleeve notes", "translated by"},
+    "remix": {"remix", "remixed by"},
 }
 
 # Toutes les catégories gardées dans les données, dans l'ordre du rapport.
 CATEGORIES = ["compositeurs", "paroliers", "arrangeurs", "transcriptions", "cadences",
-              "interpretes", "producteurs", "ingenieurs_son", "photographes", "artwork",
+              "interpretes", "remix", "producteurs", "ingenieurs_son", "photographes", "artwork",
               "textes_livret"]
 
 # Mots qui signalent un rôle à écarter : technique ou éditorial, et absent
@@ -92,7 +97,7 @@ MOTS_NON_INTERPRETE = [
     "text by", "lyrics by", "libretto", "words by", "arranged by", "orchestrated by",
     "transcribed by", "transcription", "copyist", "publisher", "copyright", "licensed",
     "distributed", "manufactured", "marketed", "technician", "tuned", "tuning", "tuner",
-    "assistant", "assistance", "programmed", "compiled", "collected by", "concept",
+    "assistant", "assistance", "compiled", "collected by", "concept",
     "sleeve", "typography", "mastering", "remix", "adapted by", "realization", "cadenza",
     "research", "consultant", "contractor", "graphic", "creative director",
     "film director", "lithograph", "lighting", "make-up", "public relations", "cgi",
