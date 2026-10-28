@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Fichiers système du Mac
+.DS_Store
+
+# Fichier temporaire du script de synchro
+data/*.tmp
