@@ -5,7 +5,7 @@ Ce script :
   1. lit la liste de mes champs personnalisés Discogs ;
   2. lit toute ma collection (par paquets de 100 disques) ;
   3. récupère la fiche complète des disques qu'il ne connaît pas encore
-     (compositeurs, interprètes, images) ;
+     (compositeurs, interprètes, paroliers, arrangeurs, producteurs... et images) ;
   4. écrit le résultat dans data/collection.json, dans notre propre format.
 
 Utilisation (depuis le dossier du projet) :
@@ -49,11 +49,29 @@ FICHIER_SORTIE = RACINE / "data" / "collection.json"
 # (les adresses des images changent parfois).
 JOURS_AVANT_RAFRAICHISSEMENT = 30
 
-# Rôles Discogs considérés comme « compositeur ».
-ROLES_COMPOSITEUR = {"composed by", "written-by", "written by", "music by", "composer", "songwriter"}
+# Rôles Discogs regroupés en catégories (rôles écrits en minuscules).
+# Les interprètes n'ont pas de liste : est interprète tout rôle qui n'est ni
+# dans une de ces catégories, ni écarté (voir plus bas). Il y en a des centaines
+# (instruments, voix, chef, ensemble...).
+ROLES_PAR_CATEGORIE = {
+    "compositeurs": {"composed by", "written-by", "written by", "music by", "composer", "songwriter"},
+    "paroliers": {"lyrics by", "libretto by", "words by", "text by"},
+    "arrangeurs": {"arranged by", "orchestrated by"},
+    "producteurs": {
+        "producer", "executive-producer", "executive producer", "co-producer", "art direction",
+        "compilation producer", "reissue producer", "concept by",
+    },
+    "ingenieurs_son": {"engineer", "recorded by", "mixed by", "recording supervisor", "sound designer"},
+    "photographes": {"photography by", "photography"},
+    "artwork": {"artwork by", "graphic design", "typography"},
+}
 
-# Mots qui signalent un rôle technique ou éditorial : ces personnes ne sont
-# ni compositeurs ni interprètes (producteur, ingénieur du son, graphiste...).
+# Toutes les catégories gardées dans les données, dans l'ordre du rapport.
+CATEGORIES = ["compositeurs", "paroliers", "arrangeurs", "interpretes",
+              "producteurs", "ingenieurs_son", "photographes", "artwork"]
+
+# Mots qui signalent un rôle à écarter : technique ou éditorial, et absent
+# des catégories ci-dessus (graphiste, éditeur, management...).
 # Liste ajustée d'après le rapport des rôles de la collection (28/10/2026).
 MOTS_NON_INTERPRETE = [
     "producer", "produced", "engineer", "recorded", "recording", "mixed", "mastered",
@@ -201,34 +219,42 @@ def decouper_roles(role):
 
 
 # Compteur des rôles rencontrés pendant la synchro, pour le rapport final :
-# {(rôle, classement): nombre de fois}
+# {(rôle, catégorie): nombre de fois}
 ROLES_RENCONTRES = {}
 
 
-def classer_credits(credits, compositeurs, interpretes):
-    """Répartit une liste de crédits Discogs entre compositeurs et interprètes."""
+def categorie_du_role(role):
+    """Renvoie la catégorie d'un rôle, ou « ecartes » s'il ne nous intéresse pas."""
+    for categorie, roles in ROLES_PAR_CATEGORIE.items():
+        if role in roles:
+            return categorie
+    if role in ROLES_NON_INTERPRETE_EXACTS or any(mot in role for mot in MOTS_NON_INTERPRETE):
+        return "ecartes"
+    return "interpretes"
+
+
+def classer_credits(credits, personnes):
+    """
+    Range les personnes d'une liste de crédits Discogs dans leurs catégories.
+    `personnes` est un dictionnaire {catégorie: liste de noms}, complété au fur et à mesure.
+    """
     for credit in credits or []:
         nom = nettoyer_nom(credit.get("name"))
         for role in decouper_roles(credit.get("role")):
-            if role in ROLES_COMPOSITEUR:
-                ajouter_sans_doublon(compositeurs, nom)
-                classement = "compositeur"
-            elif role not in ROLES_NON_INTERPRETE_EXACTS and not any(mot in role for mot in MOTS_NON_INTERPRETE):
-                ajouter_sans_doublon(interpretes, nom)
-                classement = "interprète"
-            else:
-                classement = "écarté"
-            cle = (role, classement)
+            categorie = categorie_du_role(role)
+            if categorie != "ecartes":
+                ajouter_sans_doublon(personnes[categorie], nom)
+            cle = (role, categorie)
             ROLES_RENCONTRES[cle] = ROLES_RENCONTRES.get(cle, 0) + 1
 
 
 def afficher_rapport_roles():
-    """Affiche les rôles rencontrés, regroupés par classement, du plus fréquent au moins fréquent."""
+    """Affiche les rôles rencontrés, regroupés par catégorie, du plus fréquent au moins fréquent."""
     if not ROLES_RENCONTRES:
         print("Rapport des rôles : aucune fiche lue pendant cette synchro.")
         return
     print("Rapport des rôles (fiches lues pendant cette synchro) :")
-    for classement in ("compositeur", "interprète", "écarté"):
+    for classement in CATEGORIES + ["ecartes"]:
         roles = [(nb, role) for (role, cl), nb in ROLES_RENCONTRES.items() if cl == classement]
         roles.sort(reverse=True)
         print("  %s (%d rôles différents) :" % (classement.upper(), len(roles)))
@@ -238,17 +264,17 @@ def afficher_rapport_roles():
 
 def extraire_details(fiche):
     """Extrait de la fiche complète ce qui nous intéresse."""
-    compositeurs, interpretes = [], []
+    personnes = {categorie: [] for categorie in CATEGORIES}
 
     # Crédits au niveau du disque entier...
-    classer_credits(fiche.get("extraartists"), compositeurs, interpretes)
+    classer_credits(fiche.get("extraartists"), personnes)
 
     # ... et au niveau de chaque morceau (fréquent pour les récitals et compilations).
     for morceau in fiche.get("tracklist", []):
-        classer_credits(morceau.get("extraartists"), compositeurs, interpretes)
+        classer_credits(morceau.get("extraartists"), personnes)
         # Pour une œuvre en plusieurs mouvements, les crédits peuvent être sur l'œuvre.
         for sous_morceau in morceau.get("sub_tracks", []) or []:
-            classer_credits(sous_morceau.get("extraartists"), compositeurs, interpretes)
+            classer_credits(sous_morceau.get("extraartists"), personnes)
 
     images = [
         {"type": img.get("type"), "url": img.get("uri"), "miniature": img.get("uri150")}
@@ -256,12 +282,10 @@ def extraire_details(fiche):
         if img.get("uri")
     ]
 
-    return {
-        "compositeurs": compositeurs,
-        "interpretes": interpretes,
-        "images": images,
-        "details_maj": date.today().isoformat(),
-    }
+    details = dict(personnes)
+    details["images"] = images
+    details["details_maj"] = date.today().isoformat()
+    return details
 
 
 def construire_disque(element, champs_perso, details):
@@ -293,7 +317,10 @@ def construire_disque(element, champs_perso, details):
         "champs": champs,
         "url_discogs": "https://www.discogs.com/release/%s" % element.get("id"),
     }
-    disque.update(details or {"compositeurs": [], "interpretes": [], "images": [], "details_maj": None})
+    if details is None:
+        details = {categorie: [] for categorie in CATEGORIES}
+        details.update({"images": [], "details_maj": None})
+    disque.update(details)
     return disque
 
 
@@ -314,9 +341,10 @@ def lire_details_connus():
         return {}
     connus = {}
     for disque in precedent.get("disques", []):
-        if disque.get("details_maj"):
+        # Une fiche lue avant l'ajout d'une catégorie est considérée comme à relire.
+        if disque.get("details_maj") and all(cat in disque for cat in CATEGORIES):
             connus[disque["release_id"]] = {
-                cle: disque.get(cle) for cle in ("compositeurs", "interpretes", "images", "details_maj")
+                cle: disque.get(cle) for cle in CATEGORIES + ["images", "details_maj"]
             }
     return connus
 
