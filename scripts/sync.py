@@ -44,6 +44,7 @@ NOM_APPLICATION = "MaCollectionCD/0.1 +https://github.com/SebStz33/ma-collection
 # Dossier du projet = dossier parent de scripts/
 RACINE = Path(__file__).resolve().parent.parent
 FICHIER_SORTIE = RACINE / "data" / "collection.json"
+FICHIER_RAPPORT_ROLES = RACINE / "data" / "rapport_roles.txt"
 
 # Une fiche complète est relue au bout de ce nombre de jours
 # (les adresses des images changent parfois).
@@ -264,18 +265,33 @@ def classer_credits(credits, personnes):
             ROLES_RENCONTRES[cle] = ROLES_RENCONTRES.get(cle, 0) + 1
 
 
-def afficher_rapport_roles():
-    """Affiche les rôles rencontrés, regroupés par catégorie, du plus fréquent au moins fréquent."""
-    if not ROLES_RENCONTRES:
-        print("Rapport des rôles : aucune fiche lue pendant cette synchro.")
-        return
-    print("Rapport des rôles (fiches lues pendant cette synchro) :")
+def rapport_roles():
+    """Renvoie le texte du rapport : rôles regroupés par catégorie, du plus fréquent au moins fréquent."""
+    lignes = []
     for classement in CATEGORIES + ["ecartes"]:
         roles = [(nb, role) for (role, cl), nb in ROLES_RENCONTRES.items() if cl == classement]
         roles.sort(reverse=True)
-        print("  %s (%d rôles différents) :" % (classement.upper(), len(roles)))
+        lignes.append("  %s (%d rôles différents) :" % (classement.upper(), len(roles)))
         for nb, role in roles:
-            print("    %5d  %s" % (nb, role))
+            lignes.append("    %5d  %s" % (nb, role))
+    return "\n".join(lignes)
+
+
+def afficher_rapport_roles(collection_complete):
+    """
+    Affiche le rapport des rôles. Si toutes les fiches ont été lues pendant
+    cette synchro, il est complet : on l'enregistre aussi dans data/rapport_roles.txt.
+    """
+    if not ROLES_RENCONTRES:
+        print("Rapport des rôles : aucune fiche lue pendant cette synchro.")
+        return
+    texte = rapport_roles()
+    print("Rapport des rôles (fiches lues pendant cette synchro) :")
+    print(texte)
+    if collection_complete:
+        entete = "Rapport des rôles de toute la collection, établi le %s\n\n" % date.today().isoformat()
+        FICHIER_RAPPORT_ROLES.write_text(entete + texte + "\n", encoding="utf-8")
+        print("\nRapport enregistré dans data/rapport_roles.txt")
 
 
 def extraire_details(fiche):
@@ -424,7 +440,8 @@ def main():
 
     print("Terminé : %d disques enregistrés." % len(disques))
     print()
-    afficher_rapport_roles()
+    toutes_les_fiches = {e["id"] for e in elements}
+    afficher_rapport_roles(collection_complete=set(a_lire) == toutes_les_fiches)
 
 
 if __name__ == "__main__":
