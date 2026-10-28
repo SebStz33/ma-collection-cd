@@ -34,9 +34,10 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 
 UTILISATEUR = "SebSteinmetz"
-API = "https://api.discogs.com"
-# Discogs exige que chaque appel dise quelle application le fait.
-USER_AGENT = "MaCollectionCD/0.1 +https://github.com/SebStz33/ma-collection-cd"
+ADRESSE_API = "https://api.discogs.com"
+# Nom de notre application, envoyé à Discogs dans l'en-tête « User-Agent »
+# de chaque appel (Discogs exige de savoir quelle application l'appelle).
+NOM_APPLICATION = "MaCollectionCD/0.1 +https://github.com/SebStz33/ma-collection-cd"
 
 # Dossier du projet = dossier parent de scripts/
 RACINE = Path(__file__).resolve().parent.parent
@@ -99,12 +100,12 @@ def appeler_api(chemin, token, parametres=None):
     Respecte la limite de 60 appels par minute : si Discogs répond
     « trop de requêtes » (code 429), on attend une minute puis on réessaie.
     """
-    url = API + chemin
+    url = ADRESSE_API + chemin
     if parametres:
         url += "?" + urllib.parse.urlencode(parametres)
 
     requete = urllib.request.Request(url, headers={
-        "User-Agent": USER_AGENT,
+        "User-Agent": NOM_APPLICATION,
         "Authorization": "Discogs token=" + token,
     })
 
