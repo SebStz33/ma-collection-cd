@@ -137,7 +137,7 @@ def appeler_api(chemin, token, parametres=None):
 def lire_champs_perso(token):
     """Renvoie la correspondance numéro -> nom de mes champs personnalisés."""
     reponse = appeler_api("/users/%s/collection/fields" % UTILISATEUR, token)
-    return {champ["id"]: champ["name"] for champ in reponse.get("fields", [])}
+    return {champ["id"]: champ["name"].strip() for champ in reponse.get("fields", [])}
 
 
 def lire_collection(token):
@@ -267,6 +267,7 @@ def construire_disque(element, champs_perso, details):
     disque = {
         "instance_id": element.get("instance_id"),
         "release_id": element.get("id"),
+        "master_id": info.get("master_id") or None,  # regroupe les éditions d'un même album
         "titre": info.get("title", ""),
         "artistes": [nettoyer_nom(a.get("name")) for a in info.get("artists", [])],
         "annee": info.get("year") or None,  # Discogs met 0 quand l'année est inconnue
