@@ -10,6 +10,8 @@ Ce script :
 
 Utilisation (depuis le dossier du projet) :
     python3 scripts/sync.py
+    python3 scripts/sync.py --relire-tout   (relit toutes les fiches complètes,
+                                             utile après un changement des règles de classement)
 
 Le token Discogs est lu dans la variable d'environnement DISCOGS_TOKEN,
 ou à défaut dans un fichier .env à la racine du projet (jamais publié).
@@ -48,20 +50,29 @@ FICHIER_SORTIE = RACINE / "data" / "collection.json"
 JOURS_AVANT_RAFRAICHISSEMENT = 30
 
 # Rôles Discogs considérés comme « compositeur ».
-ROLES_COMPOSITEUR = {"composed by", "written-by", "written by", "music by", "composer"}
+ROLES_COMPOSITEUR = {"composed by", "written-by", "written by", "music by", "composer", "songwriter"}
 
 # Mots qui signalent un rôle technique ou éditorial : ces personnes ne sont
 # ni compositeurs ni interprètes (producteur, ingénieur du son, graphiste...).
+# Liste ajustée d'après le rapport des rôles de la collection (28/10/2026).
 MOTS_NON_INTERPRETE = [
     "producer", "produced", "engineer", "recorded", "recording", "mixed", "mastered",
     "remastered", "lacquer", "liner notes", "notes", "design", "photograph", "artwork",
     "art direction", "layout", "painting", "illustration", "cover", "booklet", "edited",
-    "editor", "executive", "supervis", "coordinat", "management", "a&r", "translated",
+    "editor", "executive", "supervis", "coordinat", "manag", "a&r", "translated",
     "text by", "lyrics by", "libretto", "words by", "arranged by", "orchestrated by",
-    "transcribed by", "copyist", "publisher", "copyright", "licensed", "distributed",
-    "manufactured", "marketed", "technician", "tuned", "tuning", "assistant",
-    "programmed", "compiled", "concept", "sleeve", "typography", "mastering",
+    "transcribed by", "transcription", "copyist", "publisher", "copyright", "licensed",
+    "distributed", "manufactured", "marketed", "technician", "tuned", "tuning", "tuner",
+    "assistant", "assistance", "programmed", "compiled", "collected by", "concept",
+    "sleeve", "typography", "mastering", "remix", "adapted by", "realization", "cadenza",
+    "research", "consultant", "contractor", "graphic", "creative director",
+    "film director", "lithograph", "lighting", "make-up", "public relations", "cgi",
+    "calligraph", "instrument builder", "repetiteur", "sequenced",
 ]
+
+# Rôles écartés seulement s'ils sont exactement écrits ainsi
+# (« other » ou « score » seuls ne disent pas ce que la personne a fait).
+ROLES_NON_INTERPRETE_EXACTS = {"other", "score"}
 
 
 # ---------------------------------------------------------------------------
@@ -202,7 +213,7 @@ def classer_credits(credits, compositeurs, interpretes):
             if role in ROLES_COMPOSITEUR:
                 ajouter_sans_doublon(compositeurs, nom)
                 classement = "compositeur"
-            elif not any(mot in role for mot in MOTS_NON_INTERPRETE):
+            elif role not in ROLES_NON_INTERPRETE_EXACTS and not any(mot in role for mot in MOTS_NON_INTERPRETE):
                 ajouter_sans_doublon(interpretes, nom)
                 classement = "interprète"
             else:
@@ -333,7 +344,11 @@ def main():
 
     print("3/4 Fiches complètes...")
     details_connus = lire_details_connus()
-    a_lire = sorted({e["id"] for e in elements if doit_rafraichir(details_connus.get(e["id"]))})
+    relire_tout = "--relire-tout" in sys.argv
+    a_lire = sorted({
+        e["id"] for e in elements
+        if relire_tout or doit_rafraichir(details_connus.get(e["id"]))
+    })
     print("  %d fiches à lire (les autres sont déjà connues)" % len(a_lire))
     for numero, release_id in enumerate(a_lire, start=1):
         try:
