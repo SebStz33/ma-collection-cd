@@ -57,21 +57,29 @@ ROLES_PAR_CATEGORIE = {
     "compositeurs": {"composed by", "written-by", "written by", "music by", "composer", "songwriter"},
     "paroliers": {"lyrics by", "libretto by", "words by", "text by"},
     "arrangeurs": {"arranged by", "orchestrated by"},
+    "transcriptions": {"transcription by", "transcribed by"},
+    "cadences": {"cadenza"},
     "producteurs": {
         "producer", "executive-producer", "executive producer", "co-producer", "art direction",
-        "compilation producer", "reissue producer", "concept by",
+        "compilation producer", "reissue producer", "concept by", "production manager",
+        "musical assistance", "creative director", "project manager",
     },
-    "ingenieurs_son": {"engineer", "recorded by", "mixed by", "recording supervisor", "sound designer"},
+    "ingenieurs_son": {
+        "engineer", "recorded by", "mixed by", "recording supervisor", "sound designer",
+        "edited by", "mastered by", "remastered by",
+    },
     "photographes": {"photography by", "photography"},
     "artwork": {
         "artwork by", "artwork", "graphic design", "typography", "design", "cover",
-        "painting", "illustration", "layout",
+        "painting", "illustration", "layout", "graphics", "lithography", "sleeve", "calligraphy",
     },
+    "textes_livret": {"liner notes", "booklet editor", "sleeve notes"},
 }
 
 # Toutes les catégories gardées dans les données, dans l'ordre du rapport.
-CATEGORIES = ["compositeurs", "paroliers", "arrangeurs", "interpretes",
-              "producteurs", "ingenieurs_son", "photographes", "artwork"]
+CATEGORIES = ["compositeurs", "paroliers", "arrangeurs", "transcriptions", "cadences",
+              "interpretes", "producteurs", "ingenieurs_son", "photographes", "artwork",
+              "textes_livret"]
 
 # Mots qui signalent un rôle à écarter : technique ou éditorial, et absent
 # des catégories ci-dessus (graphiste, éditeur, management...).
