@@ -63,7 +63,10 @@ ROLES_PAR_CATEGORIE = {
     },
     "ingenieurs_son": {"engineer", "recorded by", "mixed by", "recording supervisor", "sound designer"},
     "photographes": {"photography by", "photography"},
-    "artwork": {"artwork by", "graphic design", "typography"},
+    "artwork": {
+        "artwork by", "artwork", "graphic design", "typography", "design", "cover",
+        "painting", "illustration", "layout",
+    },
 }
 
 # Toutes les catégories gardées dans les données, dans l'ordre du rapport.
