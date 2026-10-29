@@ -165,15 +165,16 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   margin: 7px 0 0; font-size: 13px; font-weight: 600;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.carte-artiste {
+.carte-artiste, .carte-categorie {
   margin: 2px 0 0; font-size: 12px; color: var(--texte-2);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.carte-categorie { font-size: 11px; color: var(--accent); opacity: .75; }
 
 /* ---------- Fiche détaillée ---------- */
 
 .fiche {
-  width: min(920px, calc(100vw - 32px));
+  width: min(1100px, calc(100vw - 32px));
   max-height: calc(100vh - 48px);
   padding: 0;
   border: 1px solid var(--bordure);
@@ -187,8 +188,8 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   width: 34px; height: 34px; border-radius: 50%;
   border: 1px solid var(--bordure); background: var(--surface-2); cursor: pointer;
 }
-.fiche-corps { display: grid; grid-template-columns: 340px 1fr; gap: 24px; padding: 24px; }
-.fiche-images img.grande { width: 100%; border-radius: 8px; display: block; background: var(--fond); }
+.fiche-corps { display: grid; grid-template-columns: 480px 1fr; gap: 28px; padding: 24px; }
+.fiche-images img.grande { width: 100%; border-radius: 8px; display: block; background: var(--fond); cursor: zoom-in; }
 .vignettes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .vignettes button { padding: 0; border: 2px solid transparent; border-radius: 4px; background: none; cursor: pointer; }
 .vignettes button.actif { border-color: var(--accent); }
@@ -211,7 +212,54 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .exemplaires { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .exemplaires li { background: var(--fond); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 10px 12px; font-size: 14px; }
 .exemplaires .discret { color: var(--texte-2); font-size: 13px; }
+/* Tracklist : position | titre (et crédits en petit) | durée */
+.plages { list-style: none; margin: 0; padding: 0; font-size: 14px; }
+.plage {
+  display: grid; grid-template-columns: 3.4em 1fr auto; gap: 0 10px;
+  padding: 5px 0; border-bottom: 1px solid var(--bordure);
+}
+.plage > .plages { grid-column: 1 / -1; padding-left: 1.6em; margin-top: 4px; }
+.plage > .plages .plage:last-child { border-bottom: 0; }
+.plage-oeuvre > div .plage-titre { font-weight: 600; }
+.plage-position, .plage-duree { color: var(--texte-discret); font-variant-numeric: tabular-nums; }
+.plage-artistes { color: var(--texte-2); font-size: 13px; }
+.plage-credits { color: var(--texte-discret); font-size: 12px; }
+.plage-intertitre { font-weight: 600; color: var(--accent); padding: 12px 0 4px; border-bottom: 1px solid var(--bordure); }
+.plages > .plage-intertitre:first-child { padding-top: 0; }
+
 .lien-discogs { display: inline-block; margin-top: 18px; color: var(--accent); }
+
+/* ---------- Visionneuse plein écran ---------- */
+
+.visionneuse {
+  position: fixed; inset: 0; margin: 0; padding: 0; border: 0;
+  width: 100%; height: 100%; max-width: 100%; max-height: 100%;
+  background: #000; color: var(--texte);
+  overflow: hidden;
+}
+.visionneuse[open] { display: flex; align-items: center; justify-content: center; }
+.visionneuse::backdrop { background: #000; }
+.visionneuse img {
+  /* L'image remplit l'écran (Discogs fournit environ 600 px : on agrandit), sans être déformée. */
+  width: 100%; height: calc(100% - 60px); object-fit: contain;
+  cursor: zoom-in; user-select: none; -webkit-user-select: none;
+  touch-action: pinch-zoom;          /* un doigt : nos gestes ; deux doigts : zoom du navigateur */
+  transition: transform .15s ease-out;
+}
+.visionneuse img.zoomee { cursor: zoom-out; transition: none; }
+.visionneuse-bouton {
+  position: absolute; z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--bordure); background: rgba(22, 22, 24, .75);
+  font-size: 22px; line-height: 1; cursor: pointer;
+}
+.visionneuse-fermer { top: calc(12px + env(safe-area-inset-top)); right: 12px; font-size: 16px; }
+.visionneuse-precedente { left: 12px; top: 50%; transform: translateY(-50%); }
+.visionneuse-suivante { right: 12px; top: 50%; transform: translateY(-50%); }
+.visionneuse-compteur {
+  position: absolute; bottom: calc(12px + env(safe-area-inset-bottom)); left: 0; right: 0;
+  margin: 0; text-align: center; font-size: 13px; color: var(--texte-2);
+}
 
 /* ---------- Statistiques ---------- */
 
@@ -262,7 +310,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 
 @media (max-width: 1000px) {
   .grille { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
-  .fiche-corps { grid-template-columns: 260px 1fr; }
+  .fiche-corps { grid-template-columns: 320px 1fr; }
 }
 
 /* ---------- Téléphone (moins de 700 px) ---------- */
@@ -289,12 +337,13 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   .contenu { padding: 12px; }
   .grille { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 10px; }
   .carte-titre { font-size: 12px; }
-  .carte-artiste { font-size: 11px; }
+  .carte-artiste, .carte-categorie { font-size: 11px; }
 
   /* La fiche occupe tout l'écran */
   .fiche { inset: 0; margin: 0; width: 100%; max-width: 100%; height: 100%; max-height: 100%; border-radius: 0; border: 0; }
   .fermer-fiche { margin-top: calc(10px + env(safe-area-inset-top)); }
   .fiche-corps { grid-template-columns: 1fr; padding: 16px; padding-top: calc(16px + env(safe-area-inset-top)); }
-  .fiche-images { max-width: 420px; }
+  .fiche-images { max-width: 480px; }
+  .visionneuse-precedente, .visionneuse-suivante { display: none; }   /* on glisse du doigt */
   .statistiques { grid-template-columns: 1fr; }
 }

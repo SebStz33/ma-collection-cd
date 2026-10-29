@@ -62,6 +62,7 @@
         <button type="button" class="bouton-texte" id="fermer-filtres">Fermer</button>
       </div>
 
+      <label class="filtre"><span>Catégorie</span><select id="filtre-categorie"></select></label>
       <label class="filtre"><span>Genre</span><select id="filtre-genre"></select></label>
       <label class="filtre"><span>Style</span><select id="filtre-style"></select></label>
       <label class="filtre"><span>Format</span><select id="filtre-format"></select></label>
@@ -97,6 +98,15 @@
   <dialog id="fiche" class="fiche" aria-labelledby="fiche-titre">
     <button type="button" class="fermer-fiche" id="fermer-fiche" aria-label="Fermer">✕</button>
     <div id="fiche-contenu"></div>
+  </dialog>
+
+  <!-- Visionneuse : une image en plein écran, avec zoom -->
+  <dialog id="visionneuse" class="visionneuse" aria-label="Images du disque">
+    <img id="visionneuse-image" alt="">
+    <button type="button" class="visionneuse-bouton visionneuse-fermer" id="visionneuse-fermer" aria-label="Fermer">✕</button>
+    <button type="button" class="visionneuse-bouton visionneuse-precedente" id="visionneuse-precedente" aria-label="Image précédente">‹</button>
+    <button type="button" class="visionneuse-bouton visionneuse-suivante" id="visionneuse-suivante" aria-label="Image suivante">›</button>
+    <p class="visionneuse-compteur" id="visionneuse-compteur"></p>
   </dialog>
 
   <script src="app.js"></script>

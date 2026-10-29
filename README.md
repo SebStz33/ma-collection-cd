@@ -22,7 +22,12 @@ python3 scripts/sync.py
 
 La première fois, le script lit la fiche complète de chaque disque
 (environ 1 seconde par disque). Les fois suivantes, seuls les nouveaux disques
-sont lus, ainsi que les fiches de plus de 30 jours.
+sont lus, ainsi que les fiches de plus de 30 jours. Quand le script apprend
+à garder une nouvelle information (par exemple les plages), il relit toutes
+les fiches une fois.
+
+La « Catégorie » d'un disque est le nom du dossier Discogs où il est rangé
+(les disques non classés apparaissent en « Sans catégorie »).
 
 ## Voir la page sur le Mac
 

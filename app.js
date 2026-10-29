@@ -13,6 +13,8 @@
 
 const FICHIER_COLLECTION = "data/collection.json";
 const CHAMP_LOCALISATION = "Localisation";   // nom du champ personnalisé Discogs
+const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
+const ZOOM = 2.5;                             // grossissement de la visionneuse
 
 // Les catégories de personnes produites par le script, dans l'ordre d'affichage.
 const CATEGORIES_PERSONNES = [
@@ -45,6 +47,7 @@ const etat = {
   recherche: "",
   role: "partout",
   tri: "artiste",
+  categorie: "",
   genre: "",
   style: "",
   format: "",
@@ -132,6 +135,7 @@ function regrouperParEdition(disques) {
     const exemplaire = {
       instance_id: disque.instance_id,
       champs: disque.champs || {},
+      categorie_perso: disque.categorie_perso || null,
       date_ajout: disque.date_ajout,
       note: disque.note,
     };
@@ -148,6 +152,8 @@ function regrouperParEdition(disques) {
     edition.localisations = [...new Set(
       edition.exemplaires.map((e) => (e.champs[CHAMP_LOCALISATION] || "").trim()).filter(Boolean)
     )];
+    // Catégories (dossiers Discogs) des exemplaires : en général une seule.
+    edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.index = construireIndexRecherche(edition);
     return edition;
   });
@@ -159,6 +165,8 @@ function construireIndexRecherche(edition) {
     titre: normaliser(edition.titre),
     artistes_principaux: normaliser((edition.artistes_principaux || []).join(" | ")),
     labels: normaliser((edition.labels || []).map((l) => l.nom + " " + (l.catno || "")).join(" | ")),
+    plages: normaliser(textesDesPlages(edition.plages || []).join(" | ")),
+    categorie: normaliser(edition.categories.join(" | ")),
   };
   for (const { cle } of CATEGORIES_PERSONNES) {
     index[cle] = normaliser((edition[cle] || []).join(" | "));
@@ -166,6 +174,11 @@ function construireIndexRecherche(edition) {
   const notes = edition.exemplaires.map((e) => Object.values(e.champs).join(" ")).join(" ");
   index.partout = Object.values(index).join(" | ") + " | " + normaliser(notes);
   return index;
+}
+
+/** Titres et artistes de toutes les plages, mouvements compris. */
+function textesDesPlages(plages) {
+  return plages.flatMap((plage) => [plage.titre, ...(plage.artistes || []), ...textesDesPlages(plage.sous_plages || [])]);
 }
 
 async function chargerCollection() {
@@ -204,6 +217,7 @@ function compter(liste, extraireValeurs) {
 }
 
 const EXTRACTEURS = {
+  categorie: (e) => e.categories,
   genre: (e) => e.genres || [],
   style: (e) => e.styles || [],
   format: (e) => (e.formats || []).map((f) => f.nom),
@@ -220,6 +234,7 @@ function remplirListe(select, compte, libelleTous) {
 }
 
 function remplirFiltres() {
+  remplirListe($("filtre-categorie"), compter(editions, EXTRACTEURS.categorie), "Toutes");
   remplirListe($("filtre-genre"), compter(editions, EXTRACTEURS.genre), "Tous");
   remplirListe($("filtre-style"), compter(editions, EXTRACTEURS.style), "Tous");
   remplirListe($("filtre-format"), compter(editions, EXTRACTEURS.format), "Tous");
@@ -238,6 +253,7 @@ function remplirFiltres() {
       .filter(({ cle }) => editions.some((e) => (e[cle] || []).length))
       .map(({ cle, libelle }) => [cle, libelle]),
     ["labels", "Label"],
+    ...(editions.some((e) => (e.plages || []).length) ? [["plages", "Titres des plages"]] : []),
   ];
   $("role-recherche").replaceChildren(...roles.map(([v, t]) => creer("option", { value: v, texte: t })));
 }
@@ -247,6 +263,7 @@ function lireControles() {
   etat.recherche = $("recherche").value.trim();
   etat.role = $("role-recherche").value;
   etat.tri = $("tri").value;
+  etat.categorie = $("filtre-categorie").value;
   etat.genre = $("filtre-genre").value;
   etat.style = $("filtre-style").value;
   etat.format = $("filtre-format").value;
@@ -262,6 +279,7 @@ function ecrireControles() {
   $("recherche").value = etat.recherche;
   $("role-recherche").value = etat.role;
   $("tri").value = etat.tri;
+  $("filtre-categorie").value = etat.categorie;
   $("filtre-genre").value = etat.genre;
   $("filtre-style").value = etat.style;
   $("filtre-format").value = etat.format;
@@ -273,7 +291,7 @@ function ecrireControles() {
 }
 
 function nombreDeFiltresActifs() {
-  return [etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
+  return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
           etat.localisation, etat.double].filter(Boolean).length;
 }
 
@@ -285,6 +303,7 @@ function correspond(edition) {
     const mots = normaliser(etat.recherche).split(/\s+/);
     if (!mots.every((mot) => texte.includes(mot))) return false;
   }
+  if (etat.categorie && !edition.categories.includes(etat.categorie)) return false;
   if (etat.genre && !(edition.genres || []).includes(etat.genre)) return false;
   if (etat.style && !(edition.styles || []).includes(etat.style)) return false;
   if (etat.format && !(edition.formats || []).some((f) => f.nom === etat.format)) return false;
@@ -345,10 +364,16 @@ function afficher() {
   else afficherStatistiques(resultats);
 }
 
+/** Catégories à afficher : on ne montre pas « Sans catégorie » sur les vignettes et la fiche. */
+function categoriesChoisies(edition) {
+  return edition.categories.filter((c) => c !== SANS_CATEGORIE);
+}
+
 function afficherGrille(liste) {
   const cartes = liste.map((edition) => {
     const image = edition.pochette || edition.miniature;
     const nb = edition.exemplaires.length;
+    const categories = categoriesChoisies(edition);
     return creer("button", { classe: "carte", type: "button", surclic: () => ouvrirFiche(edition) },
       creer("div", { classe: "pochette" },
         image
@@ -357,7 +382,8 @@ function afficherGrille(liste) {
         nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null
       ),
       creer("p", { classe: "carte-titre", texte: edition.titre }),
-      creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") })
+      creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") }),
+      categories.length ? creer("p", { classe: "carte-categorie", texte: categories.join(" · ") }) : null
     );
   });
   $("vue-collection").replaceChildren(...cartes);
@@ -382,12 +408,18 @@ function ouvrirFiche(edition) {
     ? edition.images
     : [{ url: edition.pochette, miniature: edition.miniature }].filter((i) => i.url);
 
-  const grande = images.length ? creer("img", { classe: "grande", src: images[0].url, alt: "Pochette" }) : null;
+  // Un clic sur la grande image l'ouvre en plein écran, sur l'image affichée.
+  let numeroAffiche = 0;
+  const grande = images.length ? creer("img", {
+    classe: "grande", src: images[0].url, alt: "Pochette", title: "Agrandir",
+    surclic: () => ouvrirVisionneuse(images, numeroAffiche),
+  }) : null;
   const vignettes = images.length > 1 ? creer("div", { classe: "vignettes" },
     images.map((image, numero) => creer("button", {
       type: "button", classe: numero === 0 ? "actif" : null, "aria-label": "Image " + (numero + 1),
       surclic: (evenement) => {
         grande.src = image.url;
+        numeroAffiche = numero;
         evenement.currentTarget.parentNode.querySelectorAll("button").forEach((b) => b.classList.remove("actif"));
         evenement.currentTarget.classList.add("actif");
       },
@@ -395,6 +427,7 @@ function ouvrirFiche(edition) {
   ) : null;
 
   const informations = [
+    ["Catégorie", categoriesChoisies(edition).join(" · ")],
     ["Année", edition.annee || "inconnue"],
     ["Label", (edition.labels || []).map((l) => l.nom + (l.catno ? " – " + l.catno : "")).join(" ; ")],
     ["Format", decrireFormats(edition.formats)],
@@ -440,12 +473,122 @@ function ouvrirFiche(edition) {
         sectionsPersonnes,
         creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
         creer("ul", { classe: "exemplaires" }, exemplaires),
+        (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages)] : null,
         creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" })
       )
     )
   );
   $("fiche").showModal();
   $("fiche").scrollTop = 0;
+}
+
+/** Tracklist : intertitres, plages, et mouvements d'une œuvre en retrait. */
+function listePlages(plages) {
+  return creer("ol", { classe: "plages" }, plages.map(lignePlage));
+}
+
+function lignePlage(plage) {
+  if (plage.type === "intertitre") return creer("li", { classe: "plage-intertitre", texte: plage.titre });
+  const artistes = plage.artistes || [];
+  const credits = plage.credits || [];
+  return creer("li", { classe: plage.type === "oeuvre" ? "plage plage-oeuvre" : "plage" },
+    creer("span", { classe: "plage-position", texte: plage.position }),
+    creer("div", {},
+      creer("div", { classe: "plage-titre", texte: plage.titre }),
+      artistes.length ? creer("div", { classe: "plage-artistes", texte: artistes.join(", ") }) : null,
+      // Crédits au format Discogs : « Piano – Glenn Gould · Conductor – Herbert von Karajan »
+      credits.length ? creer("div", { classe: "plage-credits", texte: credits.map((c) => c.role + " – " + c.nom).join(" · ") }) : null
+    ),
+    creer("span", { classe: "plage-duree", texte: plage.duree }),
+    (plage.sous_plages || []).length ? listePlages(plage.sous_plages) : null
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Visionneuse : une image en plein écran. Un clic (ou un toucher) zoome à cet
+// endroit ; on se promène ensuite dans l'image en bougeant la souris ou le doigt.
+// Sur iPhone et iPad, le pincement à deux doigts marche aussi.
+// ---------------------------------------------------------------------------
+
+const visionneuse = { images: [], numero: 0, zoom: false, geste: null, doigts: 0 };
+
+function ouvrirVisionneuse(images, numero) {
+  visionneuse.images = images;
+  montrerImage(numero);
+  $("visionneuse").showModal();
+}
+
+function montrerImage(numero) {
+  const total = visionneuse.images.length;
+  visionneuse.numero = (numero + total) % total;   // après la dernière, on revient à la première
+  zoomer(false);
+  $("visionneuse-image").src = visionneuse.images[visionneuse.numero].url;
+  $("visionneuse-compteur").textContent = total > 1 ? (visionneuse.numero + 1) + " / " + total : "";
+  $("visionneuse-precedente").hidden = total < 2;
+  $("visionneuse-suivante").hidden = total < 2;
+}
+
+function zoomer(actif, x, y) {
+  visionneuse.zoom = actif;
+  const image = $("visionneuse-image");
+  image.style.transform = actif ? "scale(" + ZOOM + ")" : "";
+  image.classList.toggle("zoomee", actif);
+  if (actif) placerZoom(x, y);
+}
+
+/** Le point (x, y) de l'écran sert de centre au grossissement. */
+function placerZoom(x, y) {
+  const image = $("visionneuse-image");
+  // offsetLeft/offsetWidth : position de l'image avant grossissement.
+  const px = Math.min(Math.max((x - image.offsetLeft) / image.offsetWidth, 0), 1);
+  const py = Math.min(Math.max((y - image.offsetTop) / image.offsetHeight, 0), 1);
+  image.style.transformOrigin = (px * 100).toFixed(1) + "% " + (py * 100).toFixed(1) + "%";
+}
+
+function brancherVisionneuse() {
+  const boite = $("visionneuse");
+  const image = $("visionneuse-image");
+
+  $("visionneuse-fermer").addEventListener("click", () => boite.close());
+  $("visionneuse-precedente").addEventListener("click", () => montrerImage(visionneuse.numero - 1));
+  $("visionneuse-suivante").addEventListener("click", () => montrerImage(visionneuse.numero + 1));
+  boite.addEventListener("click", (evenement) => { if (evenement.target === boite) boite.close(); });
+  boite.addEventListener("close", () => zoomer(false));
+  boite.addEventListener("keydown", (evenement) => {
+    if (evenement.key === "ArrowLeft") montrerImage(visionneuse.numero - 1);
+    if (evenement.key === "ArrowRight") montrerImage(visionneuse.numero + 1);
+  });
+
+  // Gestes sur l'image : clic ou toucher = zoom ; glisser = image suivante (sans zoom)
+  // ou promenade dans l'image (avec zoom). À deux doigts, on laisse faire le navigateur.
+  image.addEventListener("pointerdown", (evenement) => {
+    // L'image reçoit la fin du geste, même si le doigt ou la souris sort de l'image.
+    try { image.setPointerCapture(evenement.pointerId); } catch (erreur) { /* pointeur déjà relâché */ }
+    visionneuse.doigts++;
+    visionneuse.geste = visionneuse.doigts === 1
+      ? { x: evenement.clientX, y: evenement.clientY, bouge: false }
+      : null;
+  });
+  image.addEventListener("pointermove", (evenement) => {
+    const geste = visionneuse.geste;
+    if (geste && Math.hypot(evenement.clientX - geste.x, evenement.clientY - geste.y) > 10) geste.bouge = true;
+    // Souris : le zoom suit le pointeur. Doigt : seulement pendant qu'il touche l'écran.
+    if (visionneuse.zoom && (evenement.pointerType === "mouse" || geste)) placerZoom(evenement.clientX, evenement.clientY);
+  });
+  const finDuGeste = (evenement) => {
+    visionneuse.doigts = Math.max(visionneuse.doigts - 1, 0);
+    const geste = visionneuse.geste;
+    visionneuse.geste = null;
+    if (!geste || evenement.type === "pointercancel") return;
+    const dx = evenement.clientX - geste.x;
+    const dy = evenement.clientY - geste.y;
+    if (!geste.bouge) zoomer(!visionneuse.zoom, evenement.clientX, evenement.clientY);
+    else if (!visionneuse.zoom && Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      montrerImage(visionneuse.numero + (dx < 0 ? 1 : -1));
+    }
+  };
+  image.addEventListener("pointerup", finDuGeste);
+  image.addEventListener("pointercancel", finDuGeste);
 }
 
 // ---------------------------------------------------------------------------
@@ -547,6 +690,7 @@ function afficherStatistiques(liste) {
       creer("p", { classe: "note-stat", texte: synchro + " Les statistiques portent sur les disques affichés (filtres et recherche compris)." })
     ),
     carteAnnees(liste),
+    carteBarres("Catégories", "Nombre d'éditions par dossier Discogs.", compter(liste, EXTRACTEURS.categorie), 20, appliquer("categorie")),
     carteBarres("Genres", "Nombre d'éditions par genre Discogs.", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
     carteBarres("Localisation", "Nombre d'éditions par lieu de rangement.", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
     carteBarres("Compositeurs les plus présents", "Les 10 premiers, en nombre d'éditions.", compositeurs, 10, (nom) => chercherNomSansFiche(nom, "compositeurs")),
@@ -575,14 +719,14 @@ function brancherEvenements() {
     minuterie = setTimeout(() => { lireControles(); afficher(); }, 150);
   });
 
-  for (const id of ["role-recherche", "tri", "filtre-genre", "filtre-style", "filtre-format",
+  for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
                     "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-localisation", "filtre-double"]) {
     $(id).addEventListener("change", () => { lireControles(); afficher(); });
   }
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });
 
   $("effacer-filtres").addEventListener("click", () => {
-    Object.assign(etat, { genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
+    Object.assign(etat, { categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
                           localisation: "", double: false, recherche: "", role: "partout" });
     ecrireControles();
     afficher();
@@ -610,6 +754,7 @@ function brancherEvenements() {
 // ---------------------------------------------------------------------------
 
 brancherEvenements();
+brancherVisionneuse();
 chargerCollection();
 
 // Application installable (PWA) : le service worker n'est actif qu'en https,
