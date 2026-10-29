@@ -2,10 +2,10 @@
 Synchronisation de ma collection Discogs.
 
 Ce script :
-  1. lit la liste de mes champs personnalisés Discogs ;
+  1. lit la liste de mes champs personnalisés et de mes dossiers Discogs ;
   2. lit toute ma collection (par paquets de 100 disques) ;
   3. récupère la fiche complète des disques qu'il ne connaît pas encore
-     (compositeurs, interprètes, paroliers, arrangeurs, producteurs... et images) ;
+     (compositeurs, interprètes, paroliers, arrangeurs, producteurs..., plages et images) ;
   4. écrit le résultat dans data/collection.json, dans notre propre format.
 
 Utilisation (depuis le dossier du projet) :
@@ -109,6 +109,21 @@ MOTS_NON_INTERPRETE = [
 # (« other » ou « score » seuls ne disent pas ce que la personne a fait).
 ROLES_NON_INTERPRETE_EXACTS = {"other", "score"}
 
+# Ce que la fiche complète apporte, en plus des catégories de personnes.
+# Une fiche connue à laquelle il manque une de ces clés est relue.
+CLES_DETAILS = CATEGORIES + ["plages", "images", "details_maj"]
+
+# Dossiers Discogs qui ne sont pas une catégorie choisie par moi :
+# 0 = « All » (toute la collection), 1 = « Uncategorized » (non classé).
+DOSSIERS_SANS_CATEGORIE = {0, 1}
+
+# Types de plage Discogs -> nos types.
+TYPES_PLAGE = {
+    "track": "plage",         # une plage ordinaire
+    "heading": "intertitre",  # un titre de section (« CD 1 », « Symphonie n° 5 »...)
+    "index": "oeuvre",        # une œuvre dont les mouvements sont dans sous_plages
+}
+
 
 # ---------------------------------------------------------------------------
 # Lecture du token
@@ -184,6 +199,12 @@ def lire_champs_perso(token):
     """Renvoie la correspondance numéro -> nom de mes champs personnalisés."""
     reponse = appeler_api("/users/%s/collection/fields" % UTILISATEUR, token)
     return {champ["id"]: champ["name"].strip() for champ in reponse.get("fields", [])}
+
+
+def lire_dossiers(token):
+    """Renvoie la correspondance numéro -> nom de mes dossiers Discogs (mes catégories)."""
+    reponse = appeler_api("/users/%s/collection/folders" % UTILISATEUR, token)
+    return {dossier["id"]: dossier["name"].strip() for dossier in reponse.get("folders", [])}
 
 
 def lire_collection(token):
@@ -265,6 +286,36 @@ def classer_credits(credits, personnes):
             ROLES_RENCONTRES[cle] = ROLES_RENCONTRES.get(cle, 0) + 1
 
 
+def credits_de_plage(credits):
+    """
+    Crédits d'une plage, pour l'affichage dans la tracklist :
+    [{"nom": "Glenn Gould", "role": "Piano"}], sans les rôles écartés.
+    """
+    resultat = []
+    for credit in credits or []:
+        roles = decouper_roles(credit.get("role"))
+        if any(categorie_du_role(role) != "ecartes" for role in roles):
+            resultat.append({"nom": nettoyer_nom(credit.get("name")), "role": (credit.get("role") or "").strip()})
+    return resultat
+
+
+def construire_plage(morceau):
+    """Transforme une plage de la tracklist Discogs vers notre format."""
+    plage = {
+        "position": morceau.get("position") or "",
+        "titre": morceau.get("title") or "",
+        "duree": morceau.get("duration") or "",
+        "type": TYPES_PLAGE.get(morceau.get("type_"), "plage"),
+        # Artistes propres à la plage (fréquents dans les compilations).
+        "artistes": [nettoyer_nom(a.get("name")) for a in morceau.get("artists", []) or []],
+        "credits": credits_de_plage(morceau.get("extraartists")),
+    }
+    sous_plages = morceau.get("sub_tracks") or []
+    if sous_plages:
+        plage["sous_plages"] = [construire_plage(sous_plage) for sous_plage in sous_plages]
+    return plage
+
+
 def rapport_roles():
     """Renvoie le texte du rapport : rôles regroupés par catégorie, du plus fréquent au moins fréquent."""
     lignes = []
@@ -315,12 +366,13 @@ def extraire_details(fiche):
     ]
 
     details = dict(personnes)
+    details["plages"] = [construire_plage(morceau) for morceau in fiche.get("tracklist", [])]
     details["images"] = images
     details["details_maj"] = date.today().isoformat()
     return details
 
 
-def construire_disque(element, champs_perso, details):
+def construire_disque(element, champs_perso, dossiers, details):
     """Construit la fiche d'un disque dans notre format, à partir de la liste Discogs."""
     info = element.get("basic_information", {})
 
@@ -336,10 +388,20 @@ def construire_disque(element, champs_perso, details):
         "release_id": element.get("id"),
         "master_id": info.get("master_id") or None,  # regroupe les éditions d'un même album
         "titre": info.get("title", ""),
-        "artistes": [nettoyer_nom(a.get("name")) for a in info.get("artists", [])],
+        "artistes_principaux": [nettoyer_nom(a.get("name")) for a in info.get("artists", [])],
         "annee": info.get("year") or None,  # Discogs met 0 quand l'année est inconnue
-        "labels": [{"nom": l.get("name"), "catno": l.get("catno")} for l in info.get("labels", [])],
-        "formats": [f.get("name") for f in info.get("formats", [])],
+        "labels": [
+            {"nom": nettoyer_nom(l.get("name")), "catno": l.get("catno")} for l in info.get("labels", [])
+        ],
+        # Ex. : {"nom": "CD", "quantite": 5, "descriptions": ["Album", "Remastered"]}
+        "formats": [
+            {
+                "nom": f.get("name"),
+                "quantite": int(f["qty"]) if str(f.get("qty", "")).isdigit() else 1,
+                "descriptions": f.get("descriptions", []) or [],
+            }
+            for f in info.get("formats", [])
+        ],
         "genres": info.get("genres", []),
         "styles": info.get("styles", []),
         "pochette": info.get("cover_image"),
@@ -347,11 +409,16 @@ def construire_disque(element, champs_perso, details):
         "note": element.get("rating") or None,
         "date_ajout": element.get("date_added"),
         "champs": champs,
+        # Catégorie = nom du dossier Discogs où j'ai rangé cet exemplaire (None si non classé).
+        "categorie_perso": (
+            None if element.get("folder_id") in DOSSIERS_SANS_CATEGORIE
+            else dossiers.get(element.get("folder_id"))
+        ),
         "url_discogs": "https://www.discogs.com/release/%s" % element.get("id"),
     }
     if details is None:
         details = {categorie: [] for categorie in CATEGORIES}
-        details.update({"images": [], "details_maj": None})
+        details.update({"plages": [], "images": [], "details_maj": None})
     disque.update(details)
     return disque
 
@@ -373,11 +440,9 @@ def lire_details_connus():
         return {}
     connus = {}
     for disque in precedent.get("disques", []):
-        # Une fiche lue avant l'ajout d'une catégorie est considérée comme à relire.
-        if disque.get("details_maj") and all(cat in disque for cat in CATEGORIES):
-            connus[disque["release_id"]] = {
-                cle: disque.get(cle) for cle in CATEGORIES + ["images", "details_maj"]
-            }
+        # Une fiche lue avant l'ajout d'une catégorie (ou des plages) est considérée comme à relire.
+        if disque.get("details_maj") and all(cle in disque for cle in CLES_DETAILS):
+            connus[disque["release_id"]] = {cle: disque.get(cle) for cle in CLES_DETAILS}
     return connus
 
 
@@ -395,9 +460,12 @@ def doit_rafraichir(details):
 def main():
     token = lire_token()
 
-    print("1/4 Lecture des champs personnalisés...")
+    print("1/4 Lecture des champs personnalisés et des dossiers...")
     champs_perso = lire_champs_perso(token)
     print("  %d champs : %s" % (len(champs_perso), ", ".join(champs_perso.values()) or "aucun"))
+    dossiers = lire_dossiers(token)
+    categories = [nom for numero, nom in dossiers.items() if numero not in DOSSIERS_SANS_CATEGORIE]
+    print("  %d dossiers : %s" % (len(categories), ", ".join(categories) or "aucun"))
 
     print("2/4 Lecture de la collection...")
     elements = lire_collection(token)
@@ -420,8 +488,8 @@ def main():
             print("  %d/%d" % (numero, len(a_lire)))
 
     print("4/4 Écriture de data/collection.json...")
-    disques = [construire_disque(e, champs_perso, details_connus.get(e["id"])) for e in elements]
-    disques.sort(key=lambda d: ((d["artistes"] or [""])[0].lower(), d["titre"].lower()))
+    disques = [construire_disque(e, champs_perso, dossiers, details_connus.get(e["id"])) for e in elements]
+    disques.sort(key=lambda d: ((d["artistes_principaux"] or [""])[0].lower(), d["titre"].lower()))
 
     resultat = {
         "utilisateur": UTILISATEUR,

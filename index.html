@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ma collection de CD</title>
+  <meta name="description" content="Ma collection de CD, synchronisée depuis Discogs.">
+
+  <!-- Apparence et installation sur l'écran d'accueil (PWA) -->
+  <meta name="theme-color" content="#0b0b0c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mes CD">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icones/icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icones/icone-180.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- En-tête : titre, recherche, tri, changement de vue -->
+  <header class="entete">
+    <div class="entete-ligne">
+      <h1 class="titre-site">Ma collection</h1>
+      <p class="compteur" id="compteur"></p>
+      <nav class="onglets" aria-label="Vue">
+        <button type="button" class="onglet actif" data-vue="collection">Collection</button>
+        <button type="button" class="onglet" data-vue="statistiques">Statistiques</button>
+      </nav>
+    </div>
+
+    <div class="entete-ligne outils">
+      <div class="recherche">
+        <input type="search" id="recherche" placeholder="Rechercher un titre, un nom, un label…"
+               autocomplete="off" aria-label="Rechercher">
+        <select id="role-recherche" aria-label="Chercher dans">
+          <option value="partout">Partout</option>
+        </select>
+      </div>
+      <label class="tri">
+        <span>Trier par</span>
+        <select id="tri">
+          <option value="artiste">Artiste principal</option>
+          <option value="compositeur">Compositeur</option>
+          <option value="titre">Titre</option>
+          <option value="annee">Année</option>
+          <option value="ajout">Date d'ajout</option>
+        </select>
+      </label>
+      <button type="button" class="bouton bouton-filtres" id="ouvrir-filtres" aria-controls="filtres">
+        Filtres <span class="pastille" id="nb-filtres" hidden></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="corps">
+    <!-- Colonne des filtres (panneau coulissant sur téléphone) -->
+    <aside class="filtres" id="filtres" aria-label="Filtres">
+      <div class="filtres-entete">
+        <h2>Filtres</h2>
+        <button type="button" class="bouton-texte" id="fermer-filtres">Fermer</button>
+      </div>
+
+      <label class="filtre"><span>Catégorie</span><select id="filtre-categorie"></select></label>
+      <label class="filtre"><span>Genre</span><select id="filtre-genre"></select></label>
+      <label class="filtre"><span>Style</span><select id="filtre-style"></select></label>
+      <label class="filtre"><span>Format</span><select id="filtre-format"></select></label>
+      <label class="filtre">
+        <span>Label</span>
+        <input type="search" id="filtre-label" list="liste-labels" placeholder="Tous" autocomplete="off">
+        <datalist id="liste-labels"></datalist>
+      </label>
+      <div class="filtre">
+        <span>Année</span>
+        <div class="annees">
+          <input type="number" id="filtre-annee-min" inputmode="numeric" placeholder="de" aria-label="Année minimum">
+          <input type="number" id="filtre-annee-max" inputmode="numeric" placeholder="à" aria-label="Année maximum">
+        </div>
+      </div>
+      <label class="filtre"><span>Localisation</span><select id="filtre-localisation"></select></label>
+      <label class="filtre case">
+        <input type="checkbox" id="filtre-double">
+        <span>En double seulement</span>
+      </label>
+
+      <button type="button" class="bouton" id="effacer-filtres">Tout effacer</button>
+    </aside>
+
+    <main class="contenu">
+      <p class="message" id="message" hidden></p>
+      <section id="vue-collection" class="grille" aria-label="Disques"></section>
+      <section id="vue-statistiques" class="statistiques" hidden aria-label="Statistiques"></section>
+    </main>
+  </div>
+
+  <!-- Fiche détaillée d'un disque -->
+  <dialog id="fiche" class="fiche" aria-labelledby="fiche-titre">
+    <button type="button" class="fermer-fiche" id="fermer-fiche" aria-label="Fermer">✕</button>
+    <div id="fiche-contenu"></div>
+  </dialog>
+
+  <!-- Visionneuse : une image en plein écran, avec zoom -->
+  <dialog id="visionneuse" class="visionneuse" aria-label="Images du disque">
+    <img id="visionneuse-image" alt="">
+    <button type="button" class="visionneuse-bouton visionneuse-fermer" id="visionneuse-fermer" aria-label="Fermer">✕</button>
+    <button type="button" class="visionneuse-bouton visionneuse-precedente" id="visionneuse-precedente" aria-label="Image précédente">‹</button>
+    <button type="button" class="visionneuse-bouton visionneuse-suivante" id="visionneuse-suivante" aria-label="Image suivante">›</button>
+    <p class="visionneuse-compteur" id="visionneuse-compteur"></p>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
