@@ -44,3 +44,19 @@ Terminal arrête le serveur.
 
 Après une modification de `index.html`, `style.css` ou `app.js`, augmenter
 `VERSION` dans `service-worker.js` pour que l'application installée se mette à jour.
+
+## En ligne : synchro automatique et site
+
+- Le site est publié par GitHub Pages : https://sebstz33.github.io/ma-collection-cd/
+  (public : toute personne qui a l'adresse peut le voir).
+- Chaque nuit, `.github/workflows/synchro.yml` lance la synchro chez GitHub avec le
+  token rangé dans le secret `DISCOGS_TOKEN`, puis enregistre `data/collection.json`
+  dans le dépôt si la collection a changé. Le site se met alors à jour tout seul.
+- Pour lancer une synchro tout de suite : onglet **Actions** > **Synchro Discogs** >
+  **Run workflow**.
+- Un champ perso à ne pas publier : ajouter son nom dans `CHAMPS_NON_PUBLIES`
+  (scripts/sync.py). Seule la synchro de GitHub le retire.
+
+Comme c'est désormais le robot qui enregistre `data/collection.json`, une synchro
+lancée sur le Mac modifie ce fichier : avant le `git pull` suivant, annuler ces
+modifications avec `git checkout data/`.

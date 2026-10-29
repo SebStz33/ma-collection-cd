@@ -1,0 +1,44 @@
+# Synchronisation automatique de ma collection Discogs, chaque nuit.
+# GitHub lance scripts/sync.py sur une de ses machines, puis enregistre
+# data/collection.json dans le dépôt : GitHub Pages republie alors le site.
+
+name: Synchro Discogs
+
+on:
+  schedule:
+    - cron: "30 2 * * *"   # tous les jours à 2 h 30 UTC (3 h 30 ou 4 h 30 à Paris)
+  workflow_dispatch:        # bouton « Run workflow » pour la lancer à la main
+
+# Le robot a le droit d'écrire dans le dépôt (pour enregistrer la collection).
+permissions:
+  contents: write
+
+# Jamais deux synchros en même temps.
+concurrency:
+  group: synchro
+
+jobs:
+  synchro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Lancer la synchro
+        env:
+          DISCOGS_TOKEN: ${{ secrets.DISCOGS_TOKEN }}   # le secret, jamais écrit en clair
+        run: python3 scripts/sync.py
+
+      - name: Enregistrer le résultat s'il a changé
+        run: |
+          git add data/
+          # Pas de nouvel enregistrement si seule la date de synchro a changé.
+          if git diff --cached --quiet -I '"genere_le"'; then
+            echo "Rien de nouveau dans la collection."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Synchro Discogs du $(date -u +%Y-%m-%d)"
+          git push

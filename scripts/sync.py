@@ -46,6 +46,11 @@ RACINE = Path(__file__).resolve().parent.parent
 FICHIER_SORTIE = RACINE / "data" / "collection.json"
 FICHIER_RAPPORT_ROLES = RACINE / "data" / "rapport_roles.txt"
 
+# Champs personnalisés à ne pas publier sur le site (qui est public).
+# Ils sont retirés seulement par la synchro automatique de GitHub ;
+# une synchro lancée sur le Mac les garde. Exemple : {"Notes confidentielles"}
+CHAMPS_NON_PUBLIES = set()
+
 # Une fiche complète est relue au bout de ce nombre de jours
 # (les adresses des images changent parfois).
 JOURS_AVANT_RAFRAICHISSEMENT = 30
@@ -377,9 +382,13 @@ def construire_disque(element, champs_perso, dossiers, details):
     info = element.get("basic_information", {})
 
     # Valeurs de mes champs personnalisés, avec leur nom en clair.
+    # GITHUB_ACTIONS vaut "true" quand le script tourne chez GitHub (synchro automatique).
+    sur_github = os.environ.get("GITHUB_ACTIONS") == "true"
     champs = {}
     for note in element.get("notes", []) or []:
         nom_champ = champs_perso.get(note.get("field_id"), "Champ %s" % note.get("field_id"))
+        if sur_github and nom_champ in CHAMPS_NON_PUBLIES:
+            continue
         if note.get("value"):
             champs[nom_champ] = note["value"]
 
