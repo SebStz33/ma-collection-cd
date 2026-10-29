@@ -1,0 +1,321 @@
+Rapport des rôles de toute la collection, établi le 2026-10-29
+
+  COMPOSITEURS (5 rôles différents) :
+     1411  composed by
+      770  written-by
+       97  music by
+        3  written by
+        3  songwriter
+  PAROLIERS (4 rôles différents) :
+       95  lyrics by
+       44  words by
+       40  libretto by
+        8  text by
+  ARRANGEURS (5 rôles différents) :
+      153  arranged by
+       19  adapted by
+       17  realization
+       13  orchestrated by
+        3  score editor
+  TRANSCRIPTIONS (1 rôles différents) :
+       10  transcription by
+  CADENCES (1 rôles différents) :
+       11  cadenza
+  INTERPRETES (222 rôles différents) :
+      407  violin
+      355  performer
+      292  orchestra
+      275  piano
+      266  conductor
+      226  vocals
+      174  drums
+      169  guitar
+      142  cello
+      125  bass
+      119  viola
+      111  soprano vocals
+      107  percussion
+      101  trumpet
+       96  organ
+       88  tenor vocals
+       82  keyboards
+       80  backing vocals
+       78  choir
+       71  bass vocals
+       67  harpsichord
+       62  double bass
+       61  trombone
+       60  oboe
+       58  voice
+       57  flute
+       47  baritone vocals
+       44  saxophone
+       43  featuring
+       43  directed by
+       43  alto vocals
+       42  clarinet
+       42  acoustic guitar
+       41  ensemble
+       38  violoncello
+       38  programmed by
+       38  bassoon
+       36  accordion
+       35  lead vocals
+       33  tenor saxophone
+       31  soloist
+       29  violone
+       29  musician
+       27  theorbo
+       26  chorus master
+       25  electric piano
+       25  alto viol
+       24  electric guitar
+       22  countertenor vocals
+       22  congas
+       21  alto saxophone
+       20  handclaps
+       19  horn
+       16  strings
+       16  electronics
+       16  baritone saxophone
+       15  synthesizer
+       15  mezzo-soprano vocals
+       13  vibraphone
+       13  rhythm guitar
+       13  bass clarinet
+       12  viola da gamba
+       12  oboe d'amore
+       12  lute
+       12  contrabass
+       11  timbales
+       11  recorder
+       11  harp
+       11  guest
+       11  cornett
+       11  band
+       10  lead guitar
+       10  harmonica
+       10  french horn
+       10  chorus
+       10  bongos
+       10  acoustic bass
+        9  leader
+        9  flugelhorn
+        8  tamburitza
+        8  solo vocal
+        8  electric bass
+        7  tabla
+        7  soprano saxophone
+        7  sackbut
+        7  dulcian
+        7  bass guitar
+        6  woodwind
+        6  traverso
+        6  shawm
+        6  fortepiano
+        6  electric organ
+        6  concertmaster
+        5  virginal
+        5  viol
+        5  tuba
+        5  regal
+        5  rackett
+        5  marimba
+        5  mandolin
+        5  lyre
+        5  dj mix
+        5  cymbal
+        5  crumhorn
+        5  cor anglais
+        5  bass trombone
+        4  tambourine
+        4  tam-tam
+        4  synth
+        4  sampler
+        4  piccolo flute
+        4  music director
+        4  lap steel guitar
+        4  english horn
+        4  classical guitar
+        4  banjo
+        4  archlute
+        3  vocoder
+        3  tamborim
+        3  surdo
+        3  snare
+        3  shaker
+        3  rototoms
+        3  positive organ
+        3  oud
+        3  oboe da caccia
+        3  glockenspiel
+        3  euphonium
+        3  cornet
+        3  contralto vocals
+        3  clavinet
+        3  chitarrone
+        3  basset horn
+        3  bass viol
+        3  bagpipes
+        2  whistling
+        2  vielle
+        2  udu
+        2  toy
+        2  timpani
+        2  steel guitar
+        2  samples
+        2  read by
+        2  presenter
+        2  narrator
+        2  mellotron
+        2  loops
+        2  horns
+        2  harmonium
+        2  effects
+        2  dulcimer
+        2  drum programming
+        2  dobro
+        2  dialog
+        2  darbouka
+        2  cimbalom
+        2  chalumeau
+        2  celesta
+        2  cavaquinho
+        2  balalaika
+        2  alto clarinet
+        2  agogô
+        1  whistle
+        1  viola braguesa
+        1  ukulele
+        1  tárogató
+        1  tres
+        1  toy piano
+        1  theremin
+        1  tenor violin
+        1  tenor viol
+        1  tenor trombone
+        1  tambura
+        1  talkbox
+        1  sounds
+        1  software instrument
+        1  sitar
+        1  singing bowls
+        1  shekere
+        1  scratches
+        1  santoor
+        1  repinique
+        1  pedalboard
+        1  pedal steel guitar
+        1  panpipes
+        1  ney
+        1  melodica
+        1  mellophone
+        1  mandola
+        1  lirone
+        1  kora
+        1  kanun
+        1  hurdy gurdy
+        1  hihat
+        1  guiro
+        1  glass harmonica
+        1  ganzá
+        1  frame drum
+        1  fife
+        1  electric violin
+        1  electric sitar
+        1  drum
+        1  drone
+        1  dholak
+        1  cuica
+        1  crotales
+        1  cowbell
+        1  contrabassoon
+        1  chimes
+        1  charango
+        1  castanets
+        1  cajón
+        1  brass
+        1  bombarde
+        1  body percussion
+        1  basso continuo
+        1  bass-baritone vocals
+        1  bass violin
+        1  bass flute
+        1  bass drum
+        1  alto trombone
+        1  accompanied by
+  REMIX (1 rôles différents) :
+       52  remix
+  PRODUCTEURS (16 rôles différents) :
+      516  producer
+       91  executive-producer
+       75  art direction
+       23  coordinator
+       13  compiled by
+       13  co-producer
+       10  a&r
+        9  supervised by
+        8  production manager
+        7  musical assistance
+        6  executive producer
+        5  compilation producer
+        4  reissue producer
+        3  creative director
+        3  concept by
+        2  project manager
+  INGENIEURS_SON (8 rôles différents) :
+      449  engineer
+      170  recorded by
+      129  mixed by
+       88  edited by
+       83  mastered by
+       46  recording supervisor
+       22  remastered by
+        3  sound designer
+  PHOTOGRAPHES (2 rôles différents) :
+      239  photography by
+       11  photography
+  ARTWORK (14 rôles différents) :
+      107  design
+       55  cover
+       40  artwork
+       22  painting
+       21  illustration
+       17  layout
+        6  graphic design
+        4  typography
+        4  design concept
+        4  artwork by
+        3  graphics
+        2  lithography
+        1  sleeve
+        1  calligraphy
+  TEXTES_LIVRET (4 rôles différents) :
+      398  liner notes
+       12  translated by
+       10  booklet editor
+        1  sleeve notes
+  ECARTES (23 rôles différents) :
+       28  management
+       22  technician
+       14  other
+       11  product manager
+        4  editor
+        3  research
+        3  music consultant
+        3  contractor
+        2  stage manager
+        2  sequenced by
+        2  lighting
+        1  tuner
+        1  score
+        1  repetiteur
+        1  public relations
+        1  make-up
+        1  instrument builder
+        1  film director
+        1  copyist
+        1  consultant
+        1  collected by
+        1  cgi artist
+        1  adapted by (text)
