@@ -336,10 +336,20 @@ def construire_disque(element, champs_perso, details):
         "release_id": element.get("id"),
         "master_id": info.get("master_id") or None,  # regroupe les éditions d'un même album
         "titre": info.get("title", ""),
-        "artistes": [nettoyer_nom(a.get("name")) for a in info.get("artists", [])],
+        "artistes_principaux": [nettoyer_nom(a.get("name")) for a in info.get("artists", [])],
         "annee": info.get("year") or None,  # Discogs met 0 quand l'année est inconnue
-        "labels": [{"nom": l.get("name"), "catno": l.get("catno")} for l in info.get("labels", [])],
-        "formats": [f.get("name") for f in info.get("formats", [])],
+        "labels": [
+            {"nom": nettoyer_nom(l.get("name")), "catno": l.get("catno")} for l in info.get("labels", [])
+        ],
+        # Ex. : {"nom": "CD", "quantite": 5, "descriptions": ["Album", "Remastered"]}
+        "formats": [
+            {
+                "nom": f.get("name"),
+                "quantite": int(f["qty"]) if str(f.get("qty", "")).isdigit() else 1,
+                "descriptions": f.get("descriptions", []) or [],
+            }
+            for f in info.get("formats", [])
+        ],
         "genres": info.get("genres", []),
         "styles": info.get("styles", []),
         "pochette": info.get("cover_image"),
@@ -421,7 +431,7 @@ def main():
 
     print("4/4 Écriture de data/collection.json...")
     disques = [construire_disque(e, champs_perso, details_connus.get(e["id"])) for e in elements]
-    disques.sort(key=lambda d: ((d["artistes"] or [""])[0].lower(), d["titre"].lower()))
+    disques.sort(key=lambda d: ((d["artistes_principaux"] or [""])[0].lower(), d["titre"].lower()))
 
     resultat = {
         "utilisateur": UTILISATEUR,
