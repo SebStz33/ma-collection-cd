@@ -32,6 +32,15 @@ const CATEGORIES_PERSONNES = [
   { cle: "textes_livret", libelle: "Textes du livret" },
 ];
 
+// Regroupement des formats Discogs pour le filtre et les statistiques (choix du 29/10/2026) :
+// pas de DVD seul ni de vinyle dans la collection. Le JSON garde les formats exacts de Discogs.
+const REGROUPEMENT_FORMATS = {
+  "DVD": "CD + DVD",
+  "All Media": "CD + DVD",
+  "Vinyl": "CD",      // un CD que Discogs ne connaissait qu'en vinyle
+};
+const formatRegroupe = (nom) => REGROUPEMENT_FORMATS[nom] || nom;
+
 // Formats Discogs qui sont des emballages et non des disques (pour le comptage).
 const FORMATS_EMBALLAGE = ["Box Set", "All Media"];
 
@@ -111,6 +120,18 @@ function decrireFormats(formats) {
     const details = f.descriptions && f.descriptions.length ? " (" + f.descriptions.join(", ") + ")" : "";
     return quantite + f.nom + details;
   }).join(" + ");
+}
+
+/**
+ * Format affiché dans la fiche : tel quel, sauf si un format a été regroupé.
+ * Alors : « CD + DVD (Discogs : 2 × CD + DVD (Album)) ».
+ */
+function decrireFormatsFiche(formats) {
+  const detail = decrireFormats(formats);
+  if (!(formats || []).some((f) => f.nom in REGROUPEMENT_FORMATS)) return detail;
+  const regroupes = new Set(formats.map((f) => formatRegroupe(f.nom)));
+  if (regroupes.has("CD + DVD")) regroupes.delete("CD");   // « CD + DVD » dit déjà qu'il y a un CD
+  return [...regroupes].join(" · ") + " (Discogs : " + detail + ")";
 }
 
 /** Nombre de disques physiques d'une édition (un coffret de 5 CD compte pour 5). */
@@ -220,7 +241,7 @@ const EXTRACTEURS = {
   categorie: (e) => e.categories,
   genre: (e) => e.genres || [],
   style: (e) => e.styles || [],
-  format: (e) => (e.formats || []).map((f) => f.nom),
+  format: (e) => (e.formats || []).map((f) => formatRegroupe(f.nom)),
   label: (e) => (e.labels || []).map((l) => l.nom),
   localisation: (e) => e.localisations,
 };
@@ -306,7 +327,7 @@ function correspond(edition) {
   if (etat.categorie && !edition.categories.includes(etat.categorie)) return false;
   if (etat.genre && !(edition.genres || []).includes(etat.genre)) return false;
   if (etat.style && !(edition.styles || []).includes(etat.style)) return false;
-  if (etat.format && !(edition.formats || []).some((f) => f.nom === etat.format)) return false;
+  if (etat.format && !(edition.formats || []).some((f) => formatRegroupe(f.nom) === etat.format)) return false;
   if (etat.label && !(edition.labels || []).some((l) => normaliser(l.nom).includes(normaliser(etat.label)))) return false;
   if ((etat.anneeMin || etat.anneeMax) && !edition.annee) return false;
   if (etat.anneeMin && edition.annee < etat.anneeMin) return false;
@@ -430,7 +451,7 @@ function ouvrirFiche(edition) {
     ["Catégorie", categoriesChoisies(edition).join(" · ")],
     ["Année", edition.annee || "inconnue"],
     ["Label", (edition.labels || []).map((l) => l.nom + (l.catno ? " – " + l.catno : "")).join(" ; ")],
-    ["Format", decrireFormats(edition.formats)],
+    ["Format", decrireFormatsFiche(edition.formats)],
     ["Genres", (edition.genres || []).join(", ")],
     ["Styles", (edition.styles || []).join(", ")],
   ].filter(([, valeur]) => valeur);
