@@ -72,7 +72,9 @@ def appeler(chemin, parametres):
 
 def chercher_par_url(url_discogs, cle):
     """Renvoie les identifiants MusicBrainz reliés à une adresse Discogs."""
-    reponse = appeler("url", {"resource": url_discogs, "inc": f"{cle}-rels"})
+    # Dans le paramètre « inc », MusicBrainz écrit release-group avec un tiret,
+    # mais la réponse JSON utilise release_group avec un tiret bas.
+    reponse = appeler("url", {"resource": url_discogs, "inc": cle.replace("_", "-") + "-rels"})
     if not reponse:
         return []
     return [r[cle]["id"] for r in reponse.get("relations", []) if cle in r]
@@ -80,8 +82,11 @@ def chercher_par_url(url_discogs, cle):
 
 def chercher_par_texte(disque):
     """Recherche titre + artiste ; renvoie (identifiant, titre, score) ou None."""
-    artiste = ", ".join(disque.get("artistes_principaux") or [])
-    requete = f'release:"{disque["titre"]}"'
+    def sans_guillemets(texte):
+        return texte.replace("\\", " ").replace('"', " ")
+
+    artiste = sans_guillemets(", ".join(disque.get("artistes_principaux") or []))
+    requete = f'release:"{sans_guillemets(disque["titre"])}"'
     if artiste:
         requete += f' AND artist:"{artiste}"'
     reponse = appeler("release", {"query": requete, "limit": 1})
@@ -146,18 +151,23 @@ def main():
         print(f"[{numero}/{len(uniques)}] {titre[:60]}", flush=True)
         r = {"disque": disque, "methode": "absent", "detail": None, "candidat": None}
 
-        ids = chercher_par_url(f"https://www.discogs.com/release/{disque['release_id']}", "release")
-        if ids:
-            r["methode"] = "edition"
-            r["detail"] = analyser_edition(ids[0])
-        elif disque.get("master_id"):
-            if chercher_par_url(f"https://www.discogs.com/master/{disque['master_id']}", "release_group"):
-                r["methode"] = "master"
-        if r["methode"] == "absent":
-            candidat = chercher_par_texte(disque)
-            if candidat:
-                r["methode"] = "texte"
-                r["candidat"] = candidat
+        try:
+            ids = chercher_par_url(f"https://www.discogs.com/release/{disque['release_id']}", "release")
+            if ids:
+                r["methode"] = "edition"
+                r["detail"] = analyser_edition(ids[0])
+            elif disque.get("master_id"):
+                if chercher_par_url(f"https://www.discogs.com/master/{disque['master_id']}", "release_group"):
+                    r["methode"] = "master"
+            if r["methode"] == "absent":
+                candidat = chercher_par_texte(disque)
+                if candidat:
+                    r["methode"] = "texte"
+                    r["candidat"] = candidat
+        except (urllib.error.URLError, ValueError) as erreur:
+            # Un disque en erreur ne doit pas arrêter tout le test.
+            print(f"    erreur : {erreur}", flush=True)
+            r["methode"] = "erreur"
         resultats.append(r)
 
     ecrire_rapport(resultats)
@@ -171,7 +181,7 @@ def pourcent(n, total):
 def ecrire_rapport(resultats):
     total = len(resultats)
     par_methode = {m: [r for r in resultats if r["methode"] == m]
-                   for m in ("edition", "master", "texte", "absent")}
+                   for m in ("edition", "master", "texte", "absent", "erreur")}
     details = [r["detail"] for r in par_methode["edition"] if r["detail"]]
     plages = sum(d["plages"] for d in details)
 
@@ -184,6 +194,7 @@ def ecrire_rapport(resultats):
         f"  2. Album seulement (lien master)   : {pourcent(len(par_methode['master']), total)}",
         f"  3. Candidat titre + artiste        : {pourcent(len(par_methode['texte']), total)}",
         f"     Introuvable                     : {pourcent(len(par_methode['absent']), total)}",
+        f"     Erreur pendant le test          : {pourcent(len(par_methode['erreur']), total)}",
         "",
         "Apport pour les éditions exactes",
         f"  Plages                             : {plages}",
@@ -204,7 +215,8 @@ def ecrire_rapport(resultats):
         lignes.append(f"  {cat:<30} {trouve:>3} / {nb:<3}")
 
     noms = {"edition": "Édition exacte", "master": "Album seulement",
-            "texte": "Candidat titre + artiste (à vérifier)", "absent": "Introuvable"}
+            "texte": "Candidat titre + artiste (à vérifier)", "absent": "Introuvable",
+            "erreur": "Erreur pendant le test"}
     for methode, nom in noms.items():
         lignes += ["", f"{nom} ({len(par_methode[methode])})"]
         for r in par_methode[methode]:
