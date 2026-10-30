@@ -5,7 +5,8 @@ Ce script :
   1. lit la liste de mes champs personnalisés et de mes dossiers Discogs ;
   2. lit toute ma collection (par paquets de 100 disques) ;
   3. récupère la fiche complète des disques qu'il ne connaît pas encore
-     (compositeurs, interprètes, paroliers, arrangeurs, producteurs..., plages et images) ;
+     (compositeurs, interprètes, paroliers, arrangeurs, producteurs..., plages, images
+     et note de la communauté) ;
   4. écrit le résultat dans data/collection.json, dans notre propre format.
 
 Utilisation (depuis le dossier du projet) :
@@ -116,7 +117,7 @@ ROLES_NON_INTERPRETE_EXACTS = {"other", "score"}
 
 # Ce que la fiche complète apporte, en plus des catégories de personnes.
 # Une fiche connue à laquelle il manque une de ces clés est relue.
-CLES_DETAILS = CATEGORIES + ["plages", "images", "details_maj"]
+CLES_DETAILS = CATEGORIES + ["plages", "images", "note_communaute", "details_maj"]
 
 # Dossiers Discogs qui ne sont pas une catégorie choisie par moi :
 # 0 = « All » (toute la collection), 1 = « Uncategorized » (non classé).
@@ -373,8 +374,20 @@ def extraire_details(fiche):
     details = dict(personnes)
     details["plages"] = [construire_plage(morceau) for morceau in fiche.get("tracklist", [])]
     details["images"] = images
+    details["note_communaute"] = note_communaute(fiche)
     details["details_maj"] = date.today().isoformat()
     return details
+
+
+def note_communaute(fiche):
+    """
+    Note moyenne donnée par les membres de Discogs : {"moyenne": 4.3, "votes": 128},
+    ou None si personne n'a encore noté ce disque.
+    """
+    note = (fiche.get("community") or {}).get("rating") or {}
+    if not note.get("count"):
+        return None
+    return {"moyenne": round(float(note.get("average") or 0), 2), "votes": note["count"]}
 
 
 def construire_disque(element, champs_perso, dossiers, details):
@@ -427,7 +440,7 @@ def construire_disque(element, champs_perso, dossiers, details):
     }
     if details is None:
         details = {categorie: [] for categorie in CATEGORIES}
-        details.update({"plages": [], "images": [], "details_maj": None})
+        details.update({"plages": [], "images": [], "note_communaute": None, "details_maj": None})
     disque.update(details)
     return disque
 
