@@ -44,6 +44,8 @@ Terminal arrête le serveur.
 
 Après une modification de `index.html`, `style.css` ou `app.js`, augmenter
 `VERSION` dans `service-worker.js` pour que l'application installée se mette à jour.
+Elle se recharge alors d'elle-même au retour dans l'app (après la fermeture de la
+fiche si une fiche est ouverte).
 
 ## En ligne : synchro automatique et site
 

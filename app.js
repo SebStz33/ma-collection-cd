@@ -18,6 +18,7 @@ const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const ZOOM = 2.5;                             // grossissement de la visionneuse
+const LIGNES_MIN_EDITION = 4;                 // hauteur minimale des zones de texte du formulaire
 const API_DISCOGS = "https://api.discogs.com";
 const CLE_JETON = "jeton-discogs";            // noms des réglages rangés dans le navigateur
 const CLE_MODIFICATIONS = "modifications-en-attente";
@@ -951,6 +952,15 @@ function creerListe(choix, valeurActuelle) {
   return liste;
 }
 
+/**
+ * La zone de texte grandit avec son contenu : sur iPhone, on ne peut pas
+ * l'agrandir à la main comme sur le Mac.
+ */
+function ajusterHauteur(zoneTexte) {
+  zoneTexte.style.height = "auto";   // on la laisse d'abord revenir à sa hauteur minimale
+  zoneTexte.style.height = (zoneTexte.scrollHeight + 2) + "px";
+}
+
 /** Remplace la fiche par le formulaire de modification, rempli avec les valeurs lues sur Discogs. */
 async function ouvrirEdition(edition) {
   const message = creer("p", { classe: "message-edition", texte: "Lecture des valeurs actuelles sur Discogs…" });
@@ -987,7 +997,8 @@ async function ouvrirEdition(edition) {
       const avant = valeurs[champ.id] || "";
       const controle = champ.type === "dropdown"
         ? creerListe([["", "—"], ...(champ.options || []).map((o) => [o, o])], avant)
-        : creer("textarea", { rows: champ.lines || 3 });
+        : creer("textarea", { rows: Math.max(champ.lines || 0, LIGNES_MIN_EDITION) });
+      if (champ.type !== "dropdown") controle.addEventListener("input", () => ajusterHauteur(controle));
       if (champ.type !== "dropdown") controle.value = avant;
       saisies.push({ instance, champ: { id: champ.id, nom: champ.name.trim() }, controle, avant });
       return creer("label", { classe: "champ-edition" }, creer("span", { texte: champ.name.trim() }), controle);
@@ -1010,6 +1021,7 @@ async function ouvrirEdition(edition) {
     creer("button", { type: "button", classe: "bouton", texte: "Annuler", surclic: () => ouvrirFiche(edition) }),
     enregistrer
   ));
+  zone.querySelectorAll("textarea").forEach(ajusterHauteur);   // un texte déjà long est affiché en entier
 
   zone.addEventListener("submit", async (evenement) => {
     evenement.preventDefault();
@@ -1160,5 +1172,24 @@ chargerCollection();
 // Application installable (PWA) : le service worker n'est actif qu'en https,
 // donc une fois le site en ligne sur GitHub Pages (étape 3), pas en test local.
 if ("serviceWorker" in navigator && location.protocol === "https:") {
-  navigator.serviceWorker.register("service-worker.js");
+  navigator.serviceWorker.register("service-worker.js").then((inscription) => {
+    // Sur iPhone, l'app de l'écran d'accueil est souvent reprise là où on l'avait
+    // laissée, sans être relancée : à chaque retour, on demande s'il y a du nouveau.
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") inscription.update();
+    });
+  });
+
+  // Quand une nouvelle version prend le relais, on recharge la page pour l'afficher.
+  // Pas au tout premier lancement (rien à remplacer), et pas en pleine fiche :
+  // on attend qu'elle soit fermée, pour ne pas perdre une modification en cours.
+  let dejaControlee = Boolean(navigator.serviceWorker.controller);
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (!dejaControlee) {
+      dejaControlee = true;
+      return;
+    }
+    if ($("fiche").open) $("fiche").addEventListener("close", () => location.reload(), { once: true });
+    else location.reload();
+  });
 }
