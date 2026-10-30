@@ -5,7 +5,7 @@
    ========================================================================== */
 
 // Changer ce numéro force le navigateur à recharger les fichiers de la page.
-const VERSION = "v4";
+const VERSION = "v6";
 const RESERVE_PAGE = "page-" + VERSION;
 const RESERVE_POCHETTES = "pochettes";
 
@@ -57,7 +57,8 @@ self.addEventListener("fetch", (evenement) => {
   }
 
   // 2. Les pochettes (servies par Discogs) : on garde celles déjà vues.
-  if (url.hostname.endsWith("discogs.com")) {
+  //    Jamais les réponses de l'API : la modification doit lire les valeurs du moment.
+  if (url.hostname.endsWith("discogs.com") && url.hostname !== "api.discogs.com") {
     evenement.respondWith(
       caches.open(RESERVE_POCHETTES).then((reserve) =>
         reserve.match(requete).then((enReserve) => enReserve || fetch(requete).then((reponse) => {

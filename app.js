@@ -2,7 +2,8 @@
    Ma collection de CD — le comportement de la page
    Lit data/collection.json (écrit par scripts/sync.py), puis affiche la grille,
    applique la recherche, les filtres et le tri, ouvre les fiches et calcule les
-   statistiques. Tout se passe dans le navigateur, sans rappeler Discogs.
+   statistiques. Tout se passe dans le navigateur, sans rappeler Discogs, sauf
+   pour modifier un disque sur un appareil où le jeton Discogs est enregistré.
    ========================================================================== */
 
 "use strict";
@@ -17,6 +18,9 @@ const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const ZOOM = 2.5;                             // grossissement de la visionneuse
+const API_DISCOGS = "https://api.discogs.com";
+const CLE_JETON = "jeton-discogs";            // noms des réglages rangés dans le navigateur
+const CLE_MODIFICATIONS = "modifications-en-attente";
 
 // Les catégories de personnes produites par le script, dans l'ordre d'affichage.
 const CATEGORIES_PERSONNES = [
@@ -52,6 +56,7 @@ const FORMATS_EMBALLAGE = ["Box Set", "All Media"];
 
 let editions = [];        // un élément par édition (release_id), exemplaires regroupés
 let infosCollection = {}; // en-tête du fichier : utilisateur, date de génération…
+let modifications = {};   // modifications faites ici, en attente de la synchro (par instance_id)
 
 const etat = {
   vue: "collection",
@@ -241,12 +246,14 @@ function nombreDeDisques(edition) {
 function regrouperParEdition(disques) {
   const parEdition = new Map();
   for (const disque of disques) {
+    const modif = modifications[disque.instance_id];
     const exemplaire = {
       instance_id: disque.instance_id,
-      champs: disque.champs || {},
+      champs: appliquerModification(disque.champs || {}, modif),
       categorie_perso: disque.categorie_perso || null,
       date_ajout: disque.date_ajout,
-      note: disque.note,
+      note: modif && "note" in modif ? modif.note || null : disque.note,
+      modifie_le: modif ? modif.quand : null,
     };
     if (parEdition.has(disque.release_id)) {
       parEdition.get(disque.release_id).exemplaires.push(exemplaire);
@@ -297,6 +304,7 @@ async function chargerCollection() {
     if (!reponse.ok) throw new Error("code " + reponse.status);
     const donnees = await reponse.json();
     infosCollection = donnees;
+    modifications = modificationsEnAttente(donnees.genere_le);
     editions = regrouperParEdition(donnees.disques || []);
   } catch (erreur) {
     afficherMessage(
@@ -578,7 +586,9 @@ function ouvrirFiche(edition) {
       creer("strong", { texte: exemplaire.champs[CHAMP_LOCALISATION] || "Localisation non renseignée" }),
       edition.exemplaires.length > 1 ? creer("span", { classe: "discret", texte: "  (exemplaire " + (numero + 1) + ")" }) : null,
       autresChamps.map(([nom, valeur]) => creer("div", {}, creer("span", { classe: "discret", texte: nom + " : " }), texteAvecLiens(valeur))),
-      exemplaire.date_ajout ? creer("div", { classe: "discret", texte: "Ajouté le " + formaterDate(exemplaire.date_ajout) }) : null
+      exemplaire.date_ajout ? creer("div", { classe: "discret", texte: "Ajouté le " + formaterDate(exemplaire.date_ajout) }) : null,
+      exemplaire.modifie_le ? creer("div", { classe: "discret", texte: "Modifié ici le " + formaterDate(exemplaire.modifie_le)
+        + " : visible sur les autres appareils après la synchro de la nuit" }) : null
     );
   });
 
@@ -594,6 +604,9 @@ function ouvrirFiche(edition) {
           ])
         ),
         notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
+        // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
+        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier",
+          surclic: () => ouvrirEdition(edition) })) : null,
         creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
         edition.notesPerso.length ? [
           creer("h3", { texte: "Notes personnelles" }),
@@ -841,6 +854,258 @@ function chercherNomSansFiche(nom, role) {
 }
 
 // ---------------------------------------------------------------------------
+// Modification sur Discogs
+// La page écrit directement chez Discogs avec le jeton Discogs, rangé dans le
+// navigateur de chaque appareil : jamais dans le dépôt ni sur le site publié.
+// Sans jeton (un ami à qui je montre la page), tout reste en lecture seule.
+// ---------------------------------------------------------------------------
+
+/** Lit un réglage du navigateur. Le stockage peut être bloqué (navigation privée) : on ne plante pas. */
+function lireStockage(cle, parDefaut) {
+  try {
+    const valeur = localStorage.getItem(cle);
+    return valeur === null ? parDefaut : JSON.parse(valeur);
+  } catch (erreur) {
+    return parDefaut;
+  }
+}
+
+/** Range un réglage dans le navigateur (null l'efface). Renvoie faux si c'est impossible. */
+function ecrireStockage(cle, valeur) {
+  try {
+    if (valeur === null) localStorage.removeItem(cle);
+    else localStorage.setItem(cle, JSON.stringify(valeur));
+    return true;
+  } catch (erreur) {
+    return false;
+  }
+}
+
+const jeton = () => lireStockage(CLE_JETON, null);
+const cheminCollection = () => "/users/" + encodeURIComponent(infosCollection.utilisateur) + "/collection";
+
+/** Appelle l'API Discogs avec le jeton. Renvoie la réponse lue, ou lève une erreur en clair. */
+async function appelerDiscogs(chemin, options = {}, jetonAEssayer = jeton()) {
+  const entetes = { Authorization: "Discogs token=" + jetonAEssayer };
+  if (options.body) entetes["Content-Type"] = "application/json";
+  let reponse;
+  try {
+    reponse = await fetch(API_DISCOGS + chemin, { ...options, headers: entetes, cache: "no-store" });
+  } catch (erreur) {
+    throw new Error("Discogs ne répond pas (pas de connexion ?).");
+  }
+  if (reponse.status === 401 || reponse.status === 403) throw new Error("Discogs refuse le jeton (code " + reponse.status + ").");
+  if (reponse.status === 429) throw new Error("Trop de demandes envoyées à Discogs : réessaie dans une minute.");
+  if (!reponse.ok) throw new Error("Discogs a répondu par une erreur (code " + reponse.status + ").");
+  return reponse.status === 204 ? null : reponse.json();
+}
+
+/**
+ * Valeur d'un champ telle qu'on l'a tapée : Discogs renvoie les adresses
+ * entourées de balises <a>, qu'il ne faut pas réécrire à l'enregistrement.
+ */
+function texteBrut(texte) {
+  const corps = lireHtmlDiscogs(texte);
+  corps.querySelectorAll("br").forEach((br) => br.replaceWith("\n"));
+  return corps.textContent;
+}
+
+/**
+ * Modifications faites sur cet appareil. Celles d'avant la dernière synchro
+ * sont déjà dans data/collection.json : on les oublie.
+ */
+function modificationsEnAttente(dateSynchro) {
+  const toutes = lireStockage(CLE_MODIFICATIONS, {});
+  const restantes = {};
+  for (const [instance, modif] of Object.entries(toutes)) {
+    if (!dateSynchro || new Date(modif.quand) > new Date(dateSynchro)) restantes[instance] = modif;
+  }
+  ecrireStockage(CLE_MODIFICATIONS, restantes);
+  return restantes;
+}
+
+/** Champs d'un exemplaire, modifications en attente comprises (un champ vidé disparaît). */
+function appliquerModification(champs, modif) {
+  if (!modif) return champs;
+  const resultat = { ...champs, ...modif.champs };
+  for (const [nom, valeur] of Object.entries(resultat)) {
+    if (!String(valeur).trim()) delete resultat[nom];
+  }
+  return resultat;
+}
+
+/** Recalcule la page après une modification, en gardant les filtres choisis. */
+function reconstruire() {
+  editions = regrouperParEdition(infosCollection.disques || []);
+  remplirFiltres();
+  ecrireControles();
+  afficher();
+}
+
+/** Liste de choix (Localisation, ma note). La valeur actuelle est gardée même si elle n'est plus proposée. */
+function creerListe(choix, valeurActuelle) {
+  const valeurs = [...choix];
+  if (!valeurs.some(([valeur]) => valeur === valeurActuelle)) valeurs.push([valeurActuelle, valeurActuelle]);
+  const liste = creer("select", {}, valeurs.map(([valeur, texte]) => creer("option", { value: valeur, texte })));
+  liste.value = valeurActuelle;
+  return liste;
+}
+
+/** Remplace la fiche par le formulaire de modification, rempli avec les valeurs lues sur Discogs. */
+async function ouvrirEdition(edition) {
+  const message = creer("p", { classe: "message-edition", texte: "Lecture des valeurs actuelles sur Discogs…" });
+  const zone = creer("form", { classe: "edition" },
+    creer("h2", { id: "fiche-titre", texte: edition.titre }),
+    creer("p", { classe: "sous-titre", texte: (edition.artistes_principaux || []).join(", ") }),
+    message
+  );
+  $("fiche-contenu").replaceChildren(zone);
+  $("fiche").scrollTop = 0;
+
+  // On relit Discogs plutôt que le JSON : les valeurs sont celles du moment,
+  // y compris celles changées sur Discogs depuis la dernière synchro.
+  let definitions, exemplaires;
+  try {
+    [definitions, exemplaires] = await Promise.all([
+      appelerDiscogs(cheminCollection() + "/fields"),
+      appelerDiscogs(cheminCollection() + "/releases/" + edition.release_id),
+    ]);
+  } catch (erreur) {
+    message.textContent = erreur.message;
+    zone.append(creer("button", { type: "button", classe: "bouton", texte: "Retour", surclic: () => ouvrirFiche(edition) }));
+    return;
+  }
+
+  const champs = (definitions.fields || []).slice().sort((a, b) => a.position - b.position);
+  const choixNotes = [["0", "Pas de note"], ...[1, 2, 3, 4, 5].map((n) => [String(n), etoiles(n)])];
+  const saisies = [];   // { instance, champ, controle, avant } : un par champ de chaque exemplaire
+  const blocs = (exemplaires.releases || []).map((instance, numero, liste) => {
+    const valeurs = {};
+    for (const note of instance.notes || []) valeurs[note.field_id] = texteBrut(note.value);
+
+    const lignes = champs.map((champ) => {
+      const avant = valeurs[champ.id] || "";
+      const controle = champ.type === "dropdown"
+        ? creerListe([["", "—"], ...(champ.options || []).map((o) => [o, o])], avant)
+        : creer("textarea", { rows: champ.lines || 3 });
+      if (champ.type !== "dropdown") controle.value = avant;
+      saisies.push({ instance, champ: { id: champ.id, nom: champ.name.trim() }, controle, avant });
+      return creer("label", { classe: "champ-edition" }, creer("span", { texte: champ.name.trim() }), controle);
+    });
+
+    const avantNote = String(instance.rating || 0);
+    const note = creerListe(choixNotes, avantNote);
+    saisies.push({ instance, champ: null, controle: note, avant: avantNote });
+
+    return creer("fieldset", {},
+      liste.length > 1 ? creer("legend", { texte: "Exemplaire " + (numero + 1) }) : null,
+      creer("label", { classe: "champ-edition" }, creer("span", { texte: "Ma note" }), note),
+      lignes
+    );
+  });
+
+  const enregistrer = creer("button", { type: "submit", classe: "bouton bouton-principal", texte: "Enregistrer sur Discogs" });
+  message.textContent = "Liens externes : une adresse par ligne, avec un nom facultatif devant (« Diapason | https://… »).";
+  zone.append(...blocs, message, creer("div", { classe: "boutons" },
+    creer("button", { type: "button", classe: "bouton", texte: "Annuler", surclic: () => ouvrirFiche(edition) }),
+    enregistrer
+  ));
+
+  zone.addEventListener("submit", async (evenement) => {
+    evenement.preventDefault();
+    enregistrer.disabled = true;
+    message.textContent = "Enregistrement sur Discogs…";
+    const toutes = lireStockage(CLE_MODIFICATIONS, {});
+    let erreurEnvoi = null;
+    let nbEnvoyes = 0;
+
+    // Seuls les champs changés sont envoyés, un par un (c'est ainsi que Discogs les reçoit).
+    for (const saisie of saisies) {
+      const valeur = saisie.controle.value;
+      if (valeur === saisie.avant) continue;
+      const { instance } = saisie;
+      const cheminExemplaire = cheminCollection() + "/folders/" + instance.folder_id + "/releases/"
+        + edition.release_id + "/instances/" + instance.instance_id;
+      try {
+        if (saisie.champ) {
+          await appelerDiscogs(cheminExemplaire + "/fields/" + saisie.champ.id,
+            { method: "POST", body: JSON.stringify({ value: valeur }) });
+        } else {
+          await appelerDiscogs(cheminExemplaire, { method: "POST", body: JSON.stringify({ rating: Number(valeur) }) });
+        }
+      } catch (erreur) {
+        erreurEnvoi = erreur;
+        break;
+      }
+      // On garde la modification sur cet appareil jusqu'à la prochaine synchro.
+      const modif = toutes[instance.instance_id] || { champs: {} };
+      modif.quand = new Date().toISOString();
+      if (saisie.champ) modif.champs[saisie.champ.nom] = valeur;
+      else modif.note = Number(valeur);
+      toutes[instance.instance_id] = modif;
+      saisie.avant = valeur;
+      nbEnvoyes++;
+    }
+
+    ecrireStockage(CLE_MODIFICATIONS, toutes);
+    modifications = toutes;
+    if (nbEnvoyes) reconstruire();
+    if (erreurEnvoi) {
+      message.textContent = erreurEnvoi.message + (nbEnvoyes ? " Les " + nbEnvoyes + " premiers changements sont enregistrés." : "");
+      enregistrer.disabled = false;
+      return;
+    }
+    ouvrirFiche(editions.find((e) => e.release_id === edition.release_id) || edition);
+  });
+}
+
+/** Réglage du jeton sur cet appareil : on le vérifie auprès de Discogs avant de le garder. */
+function brancherReglageJeton() {
+  const boite = $("reglage-jeton");
+  const saisie = $("jeton-saisie");
+  const etatJeton = $("jeton-etat");
+  const decrire = () => {
+    etatJeton.textContent = jeton()
+      ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier » apparaît dans les fiches."
+      : "Aucun jeton sur cet appareil : la page est en lecture seule.";
+  };
+
+  $("ouvrir-jeton").addEventListener("click", () => {
+    $("filtres").classList.remove("ouvert");   // sur téléphone, on referme le panneau des filtres
+    saisie.value = "";
+    decrire();
+    boite.showModal();
+  });
+  $("jeton-fermer").addEventListener("click", () => boite.close());
+  $("jeton-effacer").addEventListener("click", () => {
+    ecrireStockage(CLE_JETON, null);
+    decrire();
+  });
+  $("formulaire-jeton").addEventListener("submit", async (evenement) => {
+    evenement.preventDefault();
+    const essai = saisie.value.trim();
+    if (!essai) return;
+    etatJeton.textContent = "Vérification auprès de Discogs…";
+    try {
+      const identite = await appelerDiscogs("/oauth/identity", {}, essai);
+      if (identite.username !== infosCollection.utilisateur) {
+        etatJeton.textContent = "Ce jeton est celui de « " + identite.username + " », pas de " + infosCollection.utilisateur + ".";
+        return;
+      }
+    } catch (erreur) {
+      etatJeton.textContent = erreur.message;
+      return;
+    }
+    if (!ecrireStockage(CLE_JETON, essai)) {
+      etatJeton.textContent = "Ce navigateur refuse de garder le jeton (navigation privée ?).";
+      return;
+    }
+    saisie.value = "";
+    decrire();
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Branchement des événements
 // ---------------------------------------------------------------------------
 
@@ -889,6 +1154,7 @@ function brancherEvenements() {
 
 brancherEvenements();
 brancherVisionneuse();
+brancherReglageJeton();
 chargerCollection();
 
 // Application installable (PWA) : le service worker n'est actif qu'en https,

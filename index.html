@@ -89,6 +89,7 @@
       </label>
 
       <button type="button" class="bouton" id="effacer-filtres">Tout effacer</button>
+      <button type="button" class="bouton-texte bouton-jeton" id="ouvrir-jeton">⚙︎ Jeton Discogs</button>
     </aside>
 
     <main class="contenu">
@@ -102,6 +103,22 @@
   <dialog id="fiche" class="fiche" aria-labelledby="fiche-titre">
     <button type="button" class="fermer-fiche" id="fermer-fiche" aria-label="Fermer">✕</button>
     <div id="fiche-contenu"></div>
+  </dialog>
+
+  <!-- Jeton Discogs de cet appareil : il permet de modifier les disques depuis la page -->
+  <dialog id="reglage-jeton" class="petite-boite" aria-labelledby="jeton-titre">
+    <form id="formulaire-jeton">
+      <h2 id="jeton-titre">Modifier depuis cet appareil</h2>
+      <p>Colle ton jeton Discogs (Discogs &gt; Paramètres &gt; Développeurs). Il reste dans ce
+        navigateur, sur cet appareil seulement : il n'est envoyé qu'à Discogs.</p>
+      <input type="password" id="jeton-saisie" autocomplete="off" placeholder="Jeton Discogs" aria-label="Jeton Discogs">
+      <p class="discret" id="jeton-etat" aria-live="polite"></p>
+      <div class="boutons">
+        <button type="button" class="bouton" id="jeton-effacer">Retirer de cet appareil</button>
+        <button type="button" class="bouton" id="jeton-fermer">Fermer</button>
+        <button type="submit" class="bouton bouton-principal">Enregistrer</button>
+      </div>
+    </form>
   </dialog>
 
   <!-- Visionneuse : une image en plein écran, avec zoom -->
