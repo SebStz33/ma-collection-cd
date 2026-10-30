@@ -69,7 +69,7 @@ modifications avec `git checkout data/`.
 ## Modifier un disque depuis la page
 
 - Sur chaque appareil (Mac, iPhone, iPad), une seule fois : bouton **⚙︎ Jeton Discogs**
-  en bas de la page, coller le jeton Discogs (Discogs > Paramètres > Développeurs).
+  en bas des filtres, coller le jeton Discogs (Discogs > Paramètres > Développeurs).
   La page vérifie auprès de Discogs qu'il s'agit bien du compte de la collection.
 - Le jeton reste dans le navigateur de l'appareil : il n'est ni dans le dépôt ni sur le
   site. Sans jeton (un ami à qui on montre la page), la page reste en lecture seule.

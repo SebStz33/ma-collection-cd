@@ -261,7 +261,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .edition textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .message-edition { color: var(--texte-2); font-size: 13px; }
 
-.pied { padding: 24px 0 calc(16px + env(safe-area-inset-bottom)); text-align: center; font-size: 13px; }
+.bouton-jeton { display: block; margin-top: 18px; font-size: 13px; }
 .petite-boite {
   width: min(480px, calc(100vw - 32px)); padding: 20px;
   border: 1px solid var(--bordure); border-radius: 12px; background: var(--surface); color: var(--texte);

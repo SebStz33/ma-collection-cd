@@ -1071,6 +1071,7 @@ function brancherReglageJeton() {
   };
 
   $("ouvrir-jeton").addEventListener("click", () => {
+    $("filtres").classList.remove("ouvert");   // sur téléphone, on referme le panneau des filtres
     saisie.value = "";
     decrire();
     boite.showModal();
