@@ -537,7 +537,7 @@ function afficherBandeauOeuvre(nombre) {
       texte: retourOeuvre.edition ? "← Revenir à la fiche" : "← Revenir aux statistiques", surclic: revenir }) : null,
     creer("span", { texte: "Œuvre : " }),
     creer("strong", { texte: nomOeuvre(etat.oeuvre) }),
-    creer("span", { classe: "discret", texte: " · " + pluriel(nombre, "édition") })
+    creer("span", { classe: "discret", texte: " · " + pluriel(nombre, "édition") + " dans ma cédéthèque" })
   );
 }
 
@@ -613,17 +613,26 @@ function ouvrirFiche(edition) {
     classe: "grande", src: images[0].url, alt: "Pochette", title: "Agrandir",
     surclic: () => ouvrirVisionneuse(images, numeroAffiche),
   }) : null;
-  const vignettes = images.length > 1 ? creer("div", { classe: "vignettes" },
-    images.map((image, numero) => creer("button", {
-      type: "button", classe: numero === 0 ? "actif" : null, "aria-label": "Image " + (numero + 1),
-      surclic: (evenement) => {
-        grande.src = image.url;
-        numeroAffiche = numero;
-        evenement.currentTarget.parentNode.querySelectorAll("button").forEach((b) => b.classList.remove("actif"));
-        evenement.currentTarget.classList.add("actif");
-      },
-    }, creer("img", { src: image.miniature || image.url, alt: "", loading: "lazy" })))
-  ) : null;
+  const vignette = (image, numero) => creer("button", {
+    type: "button", classe: numero === 0 ? "actif" : null, "aria-label": "Image " + (numero + 1),
+    surclic: (evenement) => {
+      grande.src = image.url;
+      numeroAffiche = numero;
+      evenement.currentTarget.closest(".fiche-images").querySelectorAll(".vignettes button").forEach((b) => b.classList.remove("actif"));
+      evenement.currentTarget.classList.add("actif");
+    },
+  }, creer("img", { src: image.miniature || image.url, alt: "", loading: "lazy" }));
+
+  // Les images par source, chacune avec sa légende : MusicBrainz d'abord, puis Discogs.
+  // Une seule image en tout : pas de miniatures, juste la légende sous la grande image.
+  const sources = [
+    ["MusicBrainz", images.map((image, numero) => [image, numero]).filter(([image]) => image.type === "musicbrainz")],
+    ["Discogs", images.map((image, numero) => [image, numero]).filter(([image]) => image.type !== "musicbrainz")],
+  ].filter(([, liste]) => liste.length);
+  const groupesImages = sources.map(([source, liste]) => [
+    creer("p", { classe: "legende-photos", texte: (liste.length > 1 ? "Photos " : "Photo ") + source }),
+    images.length > 1 ? creer("div", { classe: "vignettes" }, liste.map(([image, numero]) => vignette(image, numero))) : null,
+  ]);
 
   const informations = [
     ["Catégorie", categoriesChoisies(edition).join(" · ")],
@@ -673,7 +682,7 @@ function ouvrirFiche(edition) {
 
   $("fiche-contenu").replaceChildren(
     creer("div", { classe: "fiche-corps" },
-      creer("div", { classe: "fiche-images" }, grande, vignettes),
+      creer("div", { classe: "fiche-images" }, grande, groupesImages),
       creer("div", {},
         creer("h2", { id: "fiche-titre", texte: edition.titre }),
         creer("p", { classe: "sous-titre" },
@@ -761,9 +770,9 @@ function ligneOeuvre(plage, suivi) {
   return creer("div", { classe: "plage-reference" },
     "Œuvre : ",
     creer("button", { type: "button", classe: "bouton-texte", texte: nomOeuvre(oeuvre),
-      title: versions > 1 ? "Mes " + versions + " éditions avec cette œuvre" : "Seule édition avec cette œuvre",
+      title: versions > 1 ? "Mes " + versions + " éditions avec cette œuvre" : "Seule édition de ma cédéthèque avec cette œuvre",
       surclic: () => choisirOeuvre(oeuvre, suivi.edition) }),
-    versions > 1 ? creer("span", { classe: "discret", texte: " · " + versions + " éditions" }) : null
+    versions > 1 ? creer("span", { classe: "discret", texte: " · " + versions + " éditions dans ma cédéthèque" }) : null
   );
 }
 
