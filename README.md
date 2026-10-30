@@ -65,3 +65,18 @@ Après une modification de `index.html`, `style.css` ou `app.js`, augmenter
 Comme c'est désormais le robot qui enregistre `data/collection.json`, une synchro
 lancée sur le Mac modifie ce fichier : avant le `git pull` suivant, annuler ces
 modifications avec `git checkout data/`.
+
+## Modifier un disque depuis la page
+
+- Sur chaque appareil (Mac, iPhone, iPad), une seule fois : bouton **⚙︎ Jeton Discogs**
+  en bas de la page, coller le jeton Discogs (Discogs > Paramètres > Développeurs).
+  La page vérifie auprès de Discogs qu'il s'agit bien du compte de la collection.
+- Le jeton reste dans le navigateur de l'appareil : il n'est ni dans le dépôt ni sur le
+  site. Sans jeton (un ami à qui on montre la page), la page reste en lecture seule.
+- Dans une fiche, **✎ Modifier** relit les valeurs du moment sur Discogs, puis envoie
+  seulement les champs changés : champs perso (Localisation en liste, avec les choix
+  définis sur Discogs) et ma note. Les adresses sont remises en texte simple dans le
+  formulaire, pour ne pas réécrire les balises HTML ajoutées par Discogs.
+- Les modifications s'affichent tout de suite sur l'appareil qui les a faites. Les autres
+  appareils les voient après la synchro de la nuit (ou une synchro lancée à la main) ;
+  l'appareil oublie alors sa copie locale.

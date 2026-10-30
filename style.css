@@ -34,7 +34,7 @@ html, body {
   -webkit-text-size-adjust: 100%;
 }
 
-button, input, select { font: inherit; color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- En-tête ---------- */
 
@@ -242,6 +242,35 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .liens-externes a { color: var(--accent); }
 .lien-discogs { display: inline-block; margin-top: 18px; color: var(--accent); }
 
+/* ---------- Modification sur Discogs ---------- */
+
+.bouton-principal { background: var(--accent); border-color: var(--accent); color: var(--accent-texte); font-weight: 600; }
+.bouton-principal:hover { border-color: var(--texte); }
+.bouton-principal:disabled { opacity: .5; cursor: wait; }
+.boutons { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+
+.edition { padding: 24px; max-width: 720px; }
+.edition fieldset { border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 12px 14px; margin: 0 0 12px; }
+.edition legend { color: var(--accent); padding: 0 6px; }
+.champ-edition { display: grid; gap: 4px; margin-bottom: 12px; font-size: 14px; }
+.champ-edition > span { color: var(--texte-discret); }
+.edition textarea, .petite-boite input {
+  width: 100%; background: var(--fond); border: 1px solid var(--bordure);
+  border-radius: var(--rayon); padding: 8px; resize: vertical;
+}
+.edition textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.message-edition { color: var(--texte-2); font-size: 13px; }
+
+.pied { padding: 24px 0 calc(16px + env(safe-area-inset-bottom)); text-align: center; font-size: 13px; }
+.petite-boite {
+  width: min(480px, calc(100vw - 32px)); padding: 20px;
+  border: 1px solid var(--bordure); border-radius: 12px; background: var(--surface); color: var(--texte);
+}
+.petite-boite::backdrop { background: rgba(0, 0, 0, 0.7); }
+.petite-boite h2 { margin: 0 0 8px; font-size: 18px; }
+.petite-boite p { font-size: 14px; color: var(--texte-2); }
+.petite-boite .discret { min-height: 1.4em; }
+
 /* ---------- Visionneuse plein écran ---------- */
 
 .visionneuse {
@@ -329,6 +358,8 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 /* ---------- Téléphone (moins de 700 px) ---------- */
 
 @media (max-width: 700px) {
+  .edition { padding: 16px; padding-top: calc(16px + env(safe-area-inset-top)); }
+  .edition textarea, .edition select, .petite-boite input { font-size: 16px; }  /* évite le zoom automatique de l'iPhone */
   .entete { padding-left: 12px; padding-right: 12px; }
   .compteur { flex-basis: 100%; order: 3; }
   .onglets { margin-left: auto; }
