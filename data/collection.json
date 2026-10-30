@@ -1,8 +1,10 @@
 {
   "utilisateur": "SebSteinmetz",
-  "genere_le": "2026-10-29T20:28:59+00:00",
+  "genere_le": "2026-10-30T03:16:09+00:00",
   "nb_disques": 358,
   "champs_perso": [
+    "Notes personnelles",
+    "Liens externes",
     "Localisation",
     "Notes"
   ],
@@ -53738,10 +53740,10 @@
       ],
       "pochette": "https://i.discogs.com/14jK4XANFvxbrxz7J57l8zMA0XlAuxWiRtsfmditGPM/rs:fit/g:sm/q:90/h:579/w:598/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYyOTg5/MzgtMTQyMjQ3MDAx/Ni05MjU0LmpwZWc.jpeg",
       "miniature": "https://i.discogs.com/Oe-iKiLm5JB_luK1l0z8XkiAD8uLjRWPukY-Q6SWLh8/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYyOTg5/MzgtMTQyMjQ3MDAx/Ni05MjU0LmpwZWc.jpeg",
-      "note": null,
+      "note": 4,
       "date_ajout": "2026-10-25T16:14:09-07:00",
       "champs": {
-        "Notes": "Aligre 2026-10\n\nDiapason d'Or in Diapason no 419, octobre 1995",
+        "Notes": "Aligre 2026-10<br><br>Diapason d&#x27;Or in Diapason no 419, octobre 1995",
         "Localisation": "Paris"
       },
       "categorie_perso": "Classique Voix",
@@ -91258,13 +91260,13 @@
       "styles": [],
       "pochette": "https://i.discogs.com/Lm3GdN1vux5SxLbu9uS75cznKo1sRoKrddY3MVpA3_0/rs:fit/g:sm/q:90/h:600/w:599/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExODIx/MjM1LTE1MjI5NTYz/OTYtODE1NS5qcGVn.jpeg",
       "miniature": "https://i.discogs.com/VkEhix5f8Thnb5ZEV_3cYMNEO0iyY3I3oi_vWZnjieY/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExODIx/MjM1LTE1MjI5NTYz/OTYtODE1NS5qcGVn.jpeg",
-      "note": null,
+      "note": 3,
       "date_ajout": "2026-09-21T05:07:44-07:00",
       "champs": {
-        "Notes": "Aligre septembre 2026",
+        "Notes": "Aligre septembre 2026 - bof, trop\nfolklorique ",
         "Localisation": "Paris"
       },
-      "categorie_perso": null,
+      "categorie_perso": "World Folk Jazz",
       "url_discogs": "https://www.discogs.com/release/11821235",
       "compositeurs": [],
       "paroliers": [],
@@ -113988,10 +113990,12 @@
       ],
       "pochette": "https://i.discogs.com/GGBWHwlMTVseQomK-fUBHqygOv-PWYhjvuiFrf7RiC8/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzM2/MDktMTU0MzA2OTk3/OC00OTA0LmpwZWc.jpeg",
       "miniature": "https://i.discogs.com/gtjSuxouDsiRwttEDEOWgpGhdZbQbUBEjKULjpKw8lE/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzM2/MDktMTU0MzA2OTk3/OC00OTA0LmpwZWc.jpeg",
-      "note": null,
+      "note": 5,
       "date_ajout": "2026-07-05T09:19:00-07:00",
       "champs": {
-        "Localisation": "Paris"
+        "Localisation": "Paris",
+        "Liens externes": "<a href=\"https://pitchfork.com/reviews/albums/santana-caravanserai/\" rel=\"nofollow\" target=\"_blank\">https://pitchfork.com/reviews/albums/santana-caravanserai/</a>",
+        "Notes personnelles": "Album exceptionnel. Face 1 atmosphérique - Face 2 plus rythmique. \nMe fait penser à Mahler symphonies. La n.1 pour le début. La 3 pour les voix. Échange avec ChatGPT à ce sujet 28/10/2026. À creuser. "
       },
       "categorie_perso": "Pop Folk Rock",
       "url_discogs": "https://www.discogs.com/release/2073609",
