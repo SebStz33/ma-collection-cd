@@ -74,6 +74,7 @@ const etat = {
   localisation: "",
   double: false,
   avecNotes: false,
+  oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
 };
 
 // Raccourci pour trouver un élément de la page par son identifiant.
@@ -270,6 +271,7 @@ function regrouperParEdition(disques) {
     edition.notesPerso = valeursDuChamp(edition, CHAMP_NOTES_PERSO);
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
+    edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
     edition.index = construireIndexRecherche(edition);
     return edition;
   });
@@ -282,6 +284,7 @@ function construireIndexRecherche(edition) {
     artistes_principaux: normaliser((edition.artistes_principaux || []).join(" | ")),
     labels: normaliser((edition.labels || []).map((l) => l.nom + " " + (l.catno || "")).join(" | ")),
     plages: normaliser(textesDesPlages(edition.plages || []).join(" | ")),
+    oeuvres: normaliser([...edition.oeuvres.values()].map((o) => o.titre).join(" | ")),
     categorie: normaliser(edition.categories.join(" | ")),
   };
   for (const { cle } of CATEGORIES_PERSONNES) {
@@ -295,6 +298,37 @@ function construireIndexRecherche(edition) {
 /** Titres et artistes de toutes les plages, mouvements compris. */
 function textesDesPlages(plages) {
   return plages.flatMap((plage) => [plage.titre, ...(plage.artistes || []), ...textesDesPlages(plage.sous_plages || [])]);
+}
+
+/**
+ * Œuvres MusicBrainz d'une édition : Map id -> { id, titre, compositeur }.
+ * On garde l'œuvre de chaque plage (le mouvement) et son œuvre parente (le concerto) :
+ * selon les disques, MusicBrainz relie la plage à l'une ou à l'autre.
+ */
+function oeuvresDeLEdition(plages) {
+  const oeuvres = new Map();
+  for (const plage of plages) {
+    if (plage.oeuvre) {
+      for (const o of [plage.oeuvre, plage.oeuvre.parente].filter(Boolean)) {
+        if (!oeuvres.has(o.id)) oeuvres.set(o.id, { id: o.id, titre: o.titre, compositeur: plage.oeuvre.compositeur });
+      }
+    }
+    for (const [id, o] of oeuvresDeLEdition(plage.sous_plages || [])) {
+      if (!oeuvres.has(id)) oeuvres.set(id, o);
+    }
+  }
+  return oeuvres;
+}
+
+/** L'œuvre à afficher pour une plage : l'œuvre parente s'il y en a une (le concerto plutôt que le mouvement). */
+function oeuvreDeReference(oeuvre) {
+  const reference = oeuvre.parente || oeuvre;
+  return { id: reference.id, titre: reference.titre, compositeur: oeuvre.compositeur };
+}
+
+/** « Le quattro stagioni (Antonio Vivaldi) » */
+function nomOeuvre(oeuvre) {
+  return oeuvre.titre + (oeuvre.compositeur ? " (" + oeuvre.compositeur + ")" : "");
 }
 
 async function chargerCollection() {
@@ -371,6 +405,7 @@ function remplirFiltres() {
       .map(({ cle, libelle }) => [cle, libelle]),
     ["labels", "Label"],
     ...(editions.some((e) => (e.plages || []).length) ? [["plages", "Titres des plages"]] : []),
+    ...(editions.some((e) => e.oeuvres.size) ? [["oeuvres", "Œuvres"]] : []),
   ];
   $("role-recherche").replaceChildren(...roles.map(([v, t]) => creer("option", { value: v, texte: t })));
 }
@@ -411,7 +446,7 @@ function ecrireControles() {
 
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
-          etat.localisation, etat.double, etat.avecNotes].filter(Boolean).length;
+          etat.localisation, etat.double, etat.avecNotes, etat.oeuvre].filter(Boolean).length;
 }
 
 /** Vrai si l'édition passe la recherche et tous les filtres. */
@@ -433,6 +468,7 @@ function correspond(edition) {
   if (etat.localisation && !edition.localisations.includes(etat.localisation)) return false;
   if (etat.double && edition.exemplaires.length < 2) return false;
   if (etat.avecNotes && !edition.notesPerso.length) return false;
+  if (etat.oeuvre && !edition.oeuvres.has(etat.oeuvre.id)) return false;
   return true;
 }
 
@@ -475,6 +511,7 @@ function afficher() {
   $("nb-filtres").hidden = nbFiltres === 0;
 
   afficherMessage(resultats.length ? "" : "Aucun disque ne correspond à ces critères.");
+  afficherBandeauOeuvre(resultats.length);
 
   $("vue-collection").hidden = etat.vue !== "collection";
   $("vue-statistiques").hidden = etat.vue !== "statistiques";
@@ -482,6 +519,28 @@ function afficher() {
 
   if (etat.vue === "collection") afficherGrille(resultats);
   else afficherStatistiques(resultats);
+}
+
+/** Bandeau « Œuvre : … » au-dessus de la grille, quand on a choisi une œuvre. */
+function afficherBandeauOeuvre(nombre) {
+  $("bandeau-oeuvre").hidden = !etat.oeuvre;
+  if (!etat.oeuvre) return;
+  $("bandeau-oeuvre").replaceChildren(
+    creer("span", { texte: "Œuvre : " }),
+    creer("strong", { texte: nomOeuvre(etat.oeuvre) }),
+    creer("span", { classe: "discret", texte: " · " + pluriel(nombre, "édition") + " " }),
+    creer("button", { type: "button", classe: "bouton-texte", texte: "✕ Retirer",
+      surclic: () => { etat.oeuvre = null; afficher(); } })
+  );
+}
+
+/** Clic sur une œuvre : on affiche les disques qui la contiennent. */
+function choisirOeuvre(oeuvre) {
+  Object.assign(etat, { oeuvre, recherche: "", role: "partout", vue: "collection" });
+  ecrireControles();
+  if ($("fiche").open) $("fiche").close();
+  afficher();
+  window.scrollTo({ top: 0 });
 }
 
 /** Catégories à afficher : on ne montre pas « Sans catégorie » sur les vignettes et la fiche. */
@@ -620,8 +679,12 @@ function ouvrirFiche(edition) {
         sectionsPersonnes,
         creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
         creer("ul", { classe: "exemplaires" }, exemplaires),
-        (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages)] : null,
-        creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" })
+        (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null })] : null,
+        creer("p", { classe: "liens-bases" },
+          creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
+          edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
+            texte: "Voir sur MusicBrainz ↗" }) : null
+        )
       )
     )
   );
@@ -629,12 +692,36 @@ function ouvrirFiche(edition) {
   $("fiche").scrollTop = 0;
 }
 
-/** Tracklist : intertitres, plages, et mouvements d'une œuvre en retrait. */
-function listePlages(plages) {
-  return creer("ol", { classe: "plages" }, plages.map(lignePlage));
+/**
+ * Tracklist : intertitres, plages, et mouvements d'une œuvre en retrait.
+ * `suivi.precedente` : identifiant de la dernière œuvre MusicBrainz affichée, pour ne
+ * l'écrire qu'une fois sur une suite de mouvements de la même œuvre.
+ */
+function listePlages(plages, suivi) {
+  return creer("ol", { classe: "plages" }, plages.map((plage) => lignePlage(plage, suivi)));
 }
 
-function lignePlage(plage) {
+/** Ligne « Œuvre : … » sous une plage, ou rien si c'est la même œuvre qu'à la plage précédente. */
+function ligneOeuvre(plage, suivi) {
+  if (plage.type === "intertitre" || (plage.sous_plages || []).length) return null;
+  if (!plage.oeuvre) {
+    suivi.precedente = null;
+    return null;
+  }
+  const oeuvre = oeuvreDeReference(plage.oeuvre);
+  if (oeuvre.id === suivi.precedente) return null;
+  suivi.precedente = oeuvre.id;
+  const versions = editions.filter((e) => e.oeuvres.has(oeuvre.id)).length;
+  return creer("div", { classe: "plage-reference" },
+    "Œuvre : ",
+    creer("button", { type: "button", classe: "bouton-texte", texte: nomOeuvre(oeuvre),
+      title: versions > 1 ? "Mes " + versions + " éditions avec cette œuvre" : "Seule édition avec cette œuvre",
+      surclic: () => choisirOeuvre(oeuvre) }),
+    versions > 1 ? creer("span", { classe: "discret", texte: " · " + versions + " éditions" }) : null
+  );
+}
+
+function lignePlage(plage, suivi) {
   if (plage.type === "intertitre") return creer("li", { classe: "plage-intertitre", texte: plage.titre });
   const artistes = plage.artistes || [];
   const credits = plage.credits || [];
@@ -644,10 +731,11 @@ function lignePlage(plage) {
       creer("div", { classe: "plage-titre", texte: plage.titre }),
       artistes.length ? creer("div", { classe: "plage-artistes", texte: artistes.join(", ") }) : null,
       // Crédits au format Discogs : « Piano – Glenn Gould · Conductor – Herbert von Karajan »
-      credits.length ? creer("div", { classe: "plage-credits", texte: credits.map((c) => c.role + " – " + c.nom).join(" · ") }) : null
+      credits.length ? creer("div", { classe: "plage-credits", texte: credits.map((c) => c.role + " – " + c.nom).join(" · ") }) : null,
+      ligneOeuvre(plage, suivi)
     ),
     creer("span", { classe: "plage-duree", texte: plage.duree }),
-    (plage.sous_plages || []).length ? listePlages(plage.sous_plages) : null
+    (plage.sous_plages || []).length ? listePlages(plage.sous_plages, suivi) : null
   );
 }
 
@@ -813,6 +901,15 @@ function afficherStatistiques(liste) {
   const compositeurs = compter(liste, (e) => e.compositeurs || []);
   const interpretes = compter(liste, (e) => e.interpretes || []);
 
+  // Œuvres présentes sur au moins deux éditions. Les barres sont nommées « titre (compositeur) ».
+  const oeuvresParNom = new Map();
+  const comptesOeuvres = compter(liste, (e) => [...e.oeuvres.values()].map((o) => {
+    const nom = nomOeuvre(o);
+    if (!oeuvresParNom.has(nom)) oeuvresParNom.set(nom, o);
+    return nom;
+  }));
+  const oeuvresEnPlusieursVersions = new Map([...comptesOeuvres].filter(([, nombre]) => nombre > 1));
+
   const chiffre = (valeur, libelle) => creer("div", { classe: "chiffre" },
     creer("div", { classe: "valeur", texte: valeur.toLocaleString("fr-FR") }),
     creer("div", { classe: "libelle", texte: libelle }));
@@ -842,6 +939,9 @@ function afficherStatistiques(liste) {
     carteBarres("Localisation", "Nombre d'éditions par lieu de rangement.", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
     carteBarres("Compositeurs les plus présents", "Les 10 premiers, en nombre d'éditions.", compositeurs, 10, (nom) => chercherNomSansFiche(nom, "compositeurs")),
     carteBarres("Interprètes les plus présents", "Les 10 premiers, en nombre d'éditions.", interpretes, 10, (nom) => chercherNomSansFiche(nom, "interpretes")),
+    ...(oeuvresEnPlusieursVersions.size ? [carteBarres("Œuvres en plusieurs versions",
+      "Les 15 premières, en nombre d'éditions (d'après MusicBrainz, pour une partie des disques seulement).",
+      oeuvresEnPlusieursVersions, 15, (nom) => choisirOeuvre(oeuvresParNom.get(nom)))] : []),
     carteBarres("Labels", "Les 10 premiers, en nombre d'éditions.", compter(liste, EXTRACTEURS.label), 10, appliquer("label")),
     carteBarres("Formats", "Nombre d'éditions par format.", compter(liste, EXTRACTEURS.format), 10, appliquer("format"))
   );
@@ -1138,7 +1238,7 @@ function brancherEvenements() {
 
   $("effacer-filtres").addEventListener("click", () => {
     Object.assign(etat, { categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
-                          localisation: "", double: false, avecNotes: false, recherche: "", role: "partout" });
+                          localisation: "", double: false, avecNotes: false, oeuvre: null, recherche: "", role: "partout" });
     ecrireControles();
     afficher();
   });

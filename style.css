@@ -233,6 +233,18 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .plage-credits { color: var(--texte-discret); font-size: 12px; }
 .plage-intertitre { font-weight: 600; color: var(--accent); padding: 12px 0 4px; border-bottom: 1px solid var(--bordure); }
 .plages > .plage-intertitre:first-child { padding-top: 0; }
+/* Œuvre MusicBrainz sous une plage : cliquable pour voir mes autres versions */
+.plage-reference { color: var(--texte-2); font-size: 12px; }
+.plage-reference .bouton-texte { padding: 0; font-size: inherit; text-align: left; }
+.plage-reference .discret { color: var(--texte-discret); }
+
+/* Œuvre choisie, au-dessus de la grille */
+.bandeau-oeuvre {
+  margin: 0 0 14px; padding: 8px 12px; font-size: 14px;
+  background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon);
+}
+.bandeau-oeuvre .discret { color: var(--texte-2); }
+.liens-bases { display: flex; flex-wrap: wrap; gap: 0 18px; margin: 0; }
 
 /* Notes personnelles : on garde les retours à la ligne tapés sur Discogs */
 .notes-perso { white-space: pre-line; font-size: 14px; line-height: 1.5; }
