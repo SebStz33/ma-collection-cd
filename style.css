@@ -262,6 +262,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .message-edition { color: var(--texte-2); font-size: 13px; }
 
 .bouton-jeton { display: block; margin-top: 18px; font-size: 13px; }
+.rappel-discogs { margin: 6px 0 0; font-size: 12px; line-height: 1.4; color: var(--texte-discret); }
 .petite-boite {
   width: min(480px, calc(100vw - 32px)); padding: 20px;
   border: 1px solid var(--bordure); border-radius: 12px; background: var(--surface); color: var(--texte);
