@@ -651,7 +651,7 @@ function ouvrirFiche(edition) {
   const communaute = edition.note_communaute;
   const notes = [
     maNote ? "Ma note " + etoiles(maNote) : null,
-    communaute ? "Communauté " + communaute.moyenne.toLocaleString("fr-FR", { maximumFractionDigits: 1 }) + "/5 ("
+    communaute ? "Communauté Discogs " + communaute.moyenne.toLocaleString("fr-FR", { maximumFractionDigits: 1 }) + "/5 ("
       + pluriel(communaute.votes, "vote") + ")" : null,
   ].filter(Boolean);
 
@@ -720,14 +720,41 @@ function listePlages(plages, suivi) {
   return creer("ol", { classe: "plages" }, plages.map((plage) => lignePlage(plage, suivi)));
 }
 
+/** Les plages réelles du disque sous une plage : elle-même, ou ses mouvements. */
+function plagesReelles(plage) {
+  if (plage.type === "intertitre") return [];
+  const sousPlages = plage.sous_plages || [];
+  return sousPlages.length ? sousPlages.flatMap(plagesReelles) : [plage];
+}
+
+/**
+ * L'œuvre MusicBrainz d'une plage. Pour un groupe de mouvements (« Symphony No. 7 »),
+ * l'œuvre commune à tous ses mouvements, ou null s'ils ne mènent pas tous à la même.
+ */
+function oeuvreDeLaPlage(plage) {
+  const reelles = plagesReelles(plage);
+  if (!reelles.length || !reelles.every((p) => p.oeuvre)) return null;
+  const oeuvres = reelles.map((p) => oeuvreDeReference(p.oeuvre));
+  return oeuvres.every((o) => o.id === oeuvres[0].id) ? oeuvres[0] : null;
+}
+
+// Rôles Discogs d'un compositeur (les mêmes que dans scripts/sync.py).
+const ROLES_COMPOSITEUR = ["composed by", "written-by", "written by", "music by", "composer", "songwriter"];
+
+/** Vrai si le crédit Discogs ne dit que « compositeur » (« Composed By », « Written-By »…). */
+function estCreditDeCompositeur(credit) {
+  const roles = credit.role.replace(/\[[^\]]*\]/g, "").split(",").map((r) => r.trim().toLowerCase()).filter(Boolean);
+  return roles.length > 0 && roles.every((r) => ROLES_COMPOSITEUR.includes(r));
+}
+
 /** Ligne « Œuvre : … » sous une plage, ou rien si c'est la même œuvre qu'à la plage précédente. */
 function ligneOeuvre(plage, suivi) {
-  if (plage.type === "intertitre" || (plage.sous_plages || []).length) return null;
-  if (!plage.oeuvre) {
+  if (plage.type === "intertitre") return null;
+  const oeuvre = oeuvreDeLaPlage(plage);
+  if (!oeuvre) {
     suivi.precedente = null;
     return null;
   }
-  const oeuvre = oeuvreDeReference(plage.oeuvre);
   if (oeuvre.id === suivi.precedente) return null;
   suivi.precedente = oeuvre.id;
   const versions = editions.filter((e) => e.oeuvres.has(oeuvre.id)).length;
@@ -743,7 +770,9 @@ function ligneOeuvre(plage, suivi) {
 function lignePlage(plage, suivi) {
   if (plage.type === "intertitre") return creer("li", { classe: "plage-intertitre", texte: plage.titre });
   const artistes = plage.artistes || [];
-  const credits = plage.credits || [];
+  // Le compositeur est déjà dans la ligne de l'œuvre MusicBrainz : on ne le répète pas dans les crédits.
+  const oeuvre = oeuvreDeLaPlage(plage);
+  const credits = (plage.credits || []).filter((c) => !(oeuvre && oeuvre.compositeur && estCreditDeCompositeur(c)));
   return creer("li", { classe: plage.type === "oeuvre" ? "plage plage-oeuvre" : "plage" },
     creer("span", { classe: "plage-position", texte: plage.position }),
     creer("div", {},
@@ -776,7 +805,9 @@ function montrerImage(numero) {
   const total = visionneuse.images.length;
   visionneuse.numero = (numero + total) % total;   // après la dernière, on revient à la première
   zoomer(false);
-  $("visionneuse-image").src = visionneuse.images[visionneuse.numero].url;
+  // Images MusicBrainz : la pleine taille, pour un zoom net.
+  const image = visionneuse.images[visionneuse.numero];
+  $("visionneuse-image").src = image.original || image.url;
   $("visionneuse-compteur").textContent = total > 1 ? (visionneuse.numero + 1) + " / " + total : "";
   $("visionneuse-precedente").hidden = total < 2;
   $("visionneuse-suivante").hidden = total < 2;

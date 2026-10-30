@@ -7,6 +7,10 @@ Pour chaque disque, on cherche l'édition correspondante sur MusicBrainz :
      en prenant une édition de cet album qui a le même nombre de plages.
 Pas de recherche par titre et artiste : trop incertaine.
 
+Pour une édition exacte, on lit aussi la liste de ses images dans la Cover Art
+Archive (pochettes et livrets scannés, souvent en haute définition). Pas pour une
+édition trouvée par l'album : la pochette pourrait être celle d'une autre édition.
+
 Si on trouve, on lit pour chaque plage l'œuvre jouée (« Concerto RV 269, I. Allegro »),
 son compositeur et son œuvre parente (« Concerto RV 269 »). Les plages Discogs et
 MusicBrainz sont associées dans l'ordre : seulement si elles sont aussi nombreuses
@@ -25,6 +29,7 @@ import urllib.request
 from datetime import date
 
 ADRESSE_API = "https://musicbrainz.org/ws/2"
+ADRESSE_IMAGES = "https://coverartarchive.org"
 NOM_APPLICATION = "MaCollectionCD/0.1 ( https://github.com/SebStz33/ma-collection-cd )"
 PAUSE_ENTRE_REQUETES = 1.1  # secondes : un peu plus que la limite d'une par seconde
 
@@ -39,11 +44,13 @@ DISQUES_PAR_SYNCHRO = 200
 _derniere_requete = 0.0
 
 
-def appeler(chemin, parametres):
-    """Appelle l'API MusicBrainz et renvoie la réponse JSON (None si introuvable)."""
+def appeler(chemin, parametres, base=ADRESSE_API):
+    """Appelle l'API MusicBrainz (ou la Cover Art Archive) et renvoie la réponse JSON (None si introuvable)."""
     global _derniere_requete
-    parametres = dict(parametres, fmt="json")
-    adresse = "%s/%s?%s" % (ADRESSE_API, chemin, urllib.parse.urlencode(parametres))
+    parametres = dict(parametres, fmt="json") if base == ADRESSE_API else parametres
+    adresse = "%s/%s" % (base, chemin)
+    if parametres:
+        adresse += "?" + urllib.parse.urlencode(parametres)
     requete = urllib.request.Request(adresse, headers={"User-Agent": NOM_APPLICATION})
     for tentative in range(1, 4):
         attente = PAUSE_ENTRE_REQUETES - (time.time() - _derniere_requete)
@@ -135,6 +142,36 @@ def lire_oeuvres(identifiant):
     return [oeuvre_de_plage(plage) for support in edition.get("media", []) for plage in support.get("tracks", [])]
 
 
+def en_https(adresse):
+    """La Cover Art Archive donne des adresses en http : la page publiée (en https) les refuserait."""
+    return "https://" + adresse[len("http://"):] if adresse and adresse.startswith("http://") else adresse
+
+
+def lire_images(identifiant):
+    """
+    Images d'une édition dans la Cover Art Archive, la pochette d'abord :
+    [{"type", "url" (1 200 px), "original" (pleine taille), "miniature" (250 px)}].
+    """
+    reponse = appeler("release/%s" % identifiant, {}, base=ADRESSE_IMAGES)
+    images = []
+    for image in (reponse or {}).get("images", []):
+        vignettes = image.get("thumbnails") or {}
+        original = en_https(image.get("image"))
+        if not original:
+            continue
+        images.append({
+            "type": "musicbrainz",
+            "url": en_https(vignettes.get("1200") or vignettes.get("large")) or original,
+            "original": original,
+            "miniature": en_https(vignettes.get("250") or vignettes.get("small")) or original,
+            "pochette": bool(image.get("front")),
+        })
+    images.sort(key=lambda i: not i["pochette"])  # la pochette en premier
+    for image in images:
+        del image["pochette"]
+    return images
+
+
 # ---------------------------------------------------------------------------
 # Plages Discogs à associer
 # ---------------------------------------------------------------------------
@@ -192,6 +229,8 @@ def a_chercher(entree, nb_plages):
     """Vrai si ce disque doit être (re)cherché sur MusicBrainz."""
     if not entree or entree.get("nb_plages") != nb_plages:
         return True  # jamais cherché, ou tracklist Discogs modifiée depuis
+    if entree.get("methode") == "edition" and "images" not in entree:
+        return True  # cherché avant l'ajout des images
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
@@ -201,7 +240,7 @@ def mettre_a_jour(fichier, disques, tout=False):
     Cherche sur MusicBrainz les disques qui ne sont pas encore dans le cache
     (ou dont la recherche est ancienne), au plus DISQUES_PAR_SYNCHRO, sauf si
     tout est vrai. `disques` : liste de (release_id, master_id, plages Discogs).
-    Renvoie le cache : {release_id (texte): {"maj", "nb_plages", "methode", "release", "oeuvres"}}.
+    Renvoie le cache : {release_id (texte): {"maj", "nb_plages", "methode", "release", "oeuvres", "images"}}.
     """
     cache = lire_cache(fichier)
     a_faire = [d for d in disques if a_chercher(cache.get(str(d[0])), len(plages_a_associer(d[2])))]
@@ -216,6 +255,7 @@ def mettre_a_jour(fichier, disques, tout=False):
         try:
             identifiant, methode = trouver_edition(release_id, master_id, nb_plages)
             oeuvres = lire_oeuvres(identifiant) if identifiant else None
+            images = lire_images(identifiant) if methode == "edition" else []
         except (urllib.error.URLError, ValueError, OSError) as erreur:
             # Un disque en erreur ne doit pas bloquer la synchro : il sera repris la prochaine fois.
             print("  Disque %s ignoré pour MusicBrainz (%s)" % (release_id, erreur))
@@ -228,6 +268,7 @@ def mettre_a_jour(fichier, disques, tout=False):
             "methode": methode,
             "release": identifiant,
             "oeuvres": oeuvres if oeuvres and any(oeuvres) else None,
+            "images": images,
         }
         if numero % 25 == 0 or numero == len(a_faire):
             print("  %d/%d" % (numero, len(a_faire)))

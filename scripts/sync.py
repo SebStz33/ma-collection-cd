@@ -328,6 +328,48 @@ def construire_plage(morceau):
     return plage
 
 
+def plages_et_mouvements(plages):
+    """Toutes les plages, mouvements compris, dans l'ordre du disque (sans les intertitres)."""
+    for plage in plages:
+        if plage["type"] != "intertitre":
+            yield plage
+        yield from plages_et_mouvements(plage.get("sous_plages", []))
+
+
+def plages_designees(texte, plages):
+    """
+    Plages désignées par un crédit du disque, d'après sa précision « tracks » de Discogs :
+    « 1 to 5, 7 » -> les plages 1, 2, 3, 4, 5 et 7. Renvoie [] si une position est inconnue.
+    """
+    toutes = [p for p in plages_et_mouvements(plages) if p["position"]]
+    positions = [p["position"].strip().lower() for p in toutes]
+    resultat = []
+    for morceau in (texte or "").split(","):
+        bornes = [b.strip().lower() for b in morceau.split(" to ")]
+        if len(bornes) > 2 or any(b not in positions for b in bornes):
+            return []  # format inattendu : mieux vaut ne rien reporter que se tromper
+        debut, fin = positions.index(bornes[0]), positions.index(bornes[-1])
+        resultat.extend(toutes[debut:fin + 1])
+    return resultat
+
+
+def reporter_compositeurs(fiche, plages):
+    """
+    Un compositeur crédité au niveau du disque pour certaines plages
+    (« Composed By – Bach, tracks 1 to 5 ») est ajouté aux crédits de ces plages.
+    """
+    for credit in fiche.get("extraartists") or []:
+        if not credit.get("tracks"):
+            continue
+        roles = decouper_roles(credit.get("role"))
+        if not roles or any(categorie_du_role(role) != "compositeurs" for role in roles):
+            continue
+        nouveau = {"nom": nettoyer_nom(credit.get("name")), "role": (credit.get("role") or "").strip()}
+        for plage in plages_designees(credit["tracks"], plages):
+            if not any(c["nom"] == nouveau["nom"] for c in plage["credits"]):
+                plage["credits"].append(nouveau)
+
+
 def rapport_roles():
     """Renvoie le texte du rapport : rôles regroupés par catégorie, du plus fréquent au moins fréquent."""
     lignes = []
@@ -379,6 +421,7 @@ def extraire_details(fiche):
 
     details = dict(personnes)
     details["plages"] = [construire_plage(morceau) for morceau in fiche.get("tracklist", [])]
+    reporter_compositeurs(fiche, details["plages"])
     details["images"] = images
     details["note_communaute"] = note_communaute(fiche)
     details["details_maj"] = date.today().isoformat()
@@ -452,6 +495,8 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     # Œuvres MusicBrainz : ajoutées aux plages, et lien vers l'édition MusicBrainz.
     entree_mb = entree_mb or {}
     disque["plages"] = musicbrainz.ajouter_oeuvres(disque["plages"], entree_mb.get("oeuvres"))
+    # Images MusicBrainz (haute définition) d'abord, puis celles de Discogs.
+    disque["images"] = (entree_mb.get("images") or []) + [i for i in disque["images"] if i.get("type") != "musicbrainz"]
     disque["musicbrainz"] = (
         "https://musicbrainz.org/release/%s" % entree_mb["release"] if entree_mb.get("release") else None
     )
