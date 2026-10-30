@@ -244,6 +244,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon);
 }
 .bandeau-oeuvre .discret { color: var(--texte-2); }
+.bouton-revenir { margin-right: 10px; }
 .liens-bases { display: flex; flex-wrap: wrap; gap: 0 18px; margin: 0; }
 
 /* Notes personnelles : on garde les retours à la ligne tapés sur Discogs */

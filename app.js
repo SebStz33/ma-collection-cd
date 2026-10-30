@@ -521,21 +521,40 @@ function afficher() {
   else afficherStatistiques(resultats);
 }
 
+// D'où l'on vient quand on choisit une œuvre (une fiche ou les statistiques),
+// pour que le bouton « Revenir » y ramène : { etat, defilement, edition }.
+let retourOeuvre = null;
+
 /** Bandeau « Œuvre : … » au-dessus de la grille, quand on a choisi une œuvre. */
 function afficherBandeauOeuvre(nombre) {
   $("bandeau-oeuvre").hidden = !etat.oeuvre;
-  if (!etat.oeuvre) return;
+  if (!etat.oeuvre) {
+    retourOeuvre = null;
+    return;
+  }
   $("bandeau-oeuvre").replaceChildren(
+    retourOeuvre ? creer("button", { type: "button", classe: "bouton bouton-revenir",
+      texte: retourOeuvre.edition ? "← Revenir à la fiche" : "← Revenir aux statistiques", surclic: revenir }) : null,
     creer("span", { texte: "Œuvre : " }),
     creer("strong", { texte: nomOeuvre(etat.oeuvre) }),
-    creer("span", { classe: "discret", texte: " · " + pluriel(nombre, "édition") + " " }),
-    creer("button", { type: "button", classe: "bouton-texte", texte: "✕ Retirer",
-      surclic: () => { etat.oeuvre = null; afficher(); } })
+    creer("span", { classe: "discret", texte: " · " + pluriel(nombre, "édition") })
   );
 }
 
-/** Clic sur une œuvre : on affiche les disques qui la contiennent. */
-function choisirOeuvre(oeuvre) {
+/** Bouton « Revenir » : on retrouve la page d'avant (filtres, défilement, et la fiche ouverte). */
+function revenir() {
+  const retour = retourOeuvre;
+  retourOeuvre = null;
+  Object.assign(etat, retour.etat);
+  ecrireControles();
+  afficher();
+  window.scrollTo({ top: retour.defilement });
+  if (retour.edition) ouvrirFiche(retour.edition);
+}
+
+/** Clic sur une œuvre : on affiche les disques qui la contiennent. `edition` : la fiche d'où l'on vient. */
+function choisirOeuvre(oeuvre, edition = null) {
+  retourOeuvre = { etat: { ...etat }, defilement: window.scrollY, edition };
   Object.assign(etat, { oeuvre, recherche: "", role: "partout", vue: "collection" });
   ecrireControles();
   if ($("fiche").open) $("fiche").close();
@@ -679,7 +698,7 @@ function ouvrirFiche(edition) {
         sectionsPersonnes,
         creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
         creer("ul", { classe: "exemplaires" }, exemplaires),
-        (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null })] : null,
+        (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null, edition })] : null,
         creer("p", { classe: "liens-bases" },
           creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
           edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
@@ -695,7 +714,7 @@ function ouvrirFiche(edition) {
 /**
  * Tracklist : intertitres, plages, et mouvements d'une œuvre en retrait.
  * `suivi.precedente` : identifiant de la dernière œuvre MusicBrainz affichée, pour ne
- * l'écrire qu'une fois sur une suite de mouvements de la même œuvre.
+ * l'écrire qu'une fois sur une suite de mouvements de la même œuvre ; `suivi.edition` : la fiche.
  */
 function listePlages(plages, suivi) {
   return creer("ol", { classe: "plages" }, plages.map((plage) => lignePlage(plage, suivi)));
@@ -716,7 +735,7 @@ function ligneOeuvre(plage, suivi) {
     "Œuvre : ",
     creer("button", { type: "button", classe: "bouton-texte", texte: nomOeuvre(oeuvre),
       title: versions > 1 ? "Mes " + versions + " éditions avec cette œuvre" : "Seule édition avec cette œuvre",
-      surclic: () => choisirOeuvre(oeuvre) }),
+      surclic: () => choisirOeuvre(oeuvre, suivi.edition) }),
     versions > 1 ? creer("span", { classe: "discret", texte: " · " + versions + " éditions" }) : null
   );
 }
