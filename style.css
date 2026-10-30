@@ -161,6 +161,12 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   background: var(--accent); color: var(--accent-texte);
   font-size: 12px; font-weight: 700; padding: 1px 7px; border-radius: 10px;
 }
+/* Repère des disques qui ont des notes personnelles */
+.repere-notes {
+  position: absolute; bottom: 6px; left: 6px;
+  background: rgba(0, 0, 0, 0.7); color: var(--accent);
+  font-size: 13px; line-height: 1; padding: 4px 6px; border-radius: 10px;
+}
 .carte-titre {
   margin: 7px 0 0; font-size: 13px; font-weight: 600;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
@@ -197,6 +203,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 
 .fiche h2 { margin: 0 0 4px; font-size: 22px; line-height: 1.25; }
 .fiche .sous-titre { margin: 0 0 16px; color: var(--texte-2); }
+.fiche .notes-album { margin: -8px 0 16px; color: var(--accent); font-size: 14px; }
 .fiche dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0 0 16px; font-size: 14px; }
 .fiche dt { color: var(--texte-discret); }
 .fiche dd { margin: 0; }
@@ -227,6 +234,12 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .plage-intertitre { font-weight: 600; color: var(--accent); padding: 12px 0 4px; border-bottom: 1px solid var(--bordure); }
 .plages > .plage-intertitre:first-child { padding-top: 0; }
 
+/* Notes personnelles : on garde les retours à la ligne tapés sur Discogs */
+.notes-perso { white-space: pre-line; font-size: 14px; line-height: 1.5; }
+.notes-perso + .notes-perso { margin-top: 8px; }
+.notes-perso a, .exemplaires a { color: var(--accent); word-break: break-all; }
+.liens-externes { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 14px; }
+.liens-externes a { color: var(--accent); }
 .lien-discogs { display: inline-block; margin-top: 18px; color: var(--accent); }
 
 /* ---------- Visionneuse plein écran ---------- */

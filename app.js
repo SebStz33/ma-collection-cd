@@ -12,7 +12,9 @@
 // ---------------------------------------------------------------------------
 
 const FICHIER_COLLECTION = "data/collection.json";
-const CHAMP_LOCALISATION = "Localisation";   // nom du champ personnalisé Discogs
+const CHAMP_LOCALISATION = "Localisation";   // noms des champs personnalisés Discogs
+const CHAMP_NOTES_PERSO = "Notes personnelles";
+const CHAMP_LIENS = "Liens externes";
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const ZOOM = 2.5;                             // grossissement de la visionneuse
 
@@ -65,6 +67,7 @@ const etat = {
   anneeMax: null,
   localisation: "",
   double: false,
+  avecNotes: false,
 };
 
 // Raccourci pour trouver un élément de la page par son identifiant.
@@ -111,6 +114,91 @@ function formaterDate(iso) {
 
 function pluriel(nombre, singulier, plurielTexte) {
   return nombre + " " + (nombre > 1 ? plurielTexte || singulier + "s" : singulier);
+}
+
+/**
+ * Discogs transforme les adresses des champs personnalisés en liens HTML :
+ * « <a href="https://…" rel="nofollow" target="_blank">https://…</a> ».
+ * On lit ce texte avec DOMParser, qui le découpe sans jamais l'exécuter,
+ * puis on reconstruit nous-mêmes du texte et des liens : aucune balise venue
+ * de Discogs n'entre telle quelle dans la page.
+ */
+function lireHtmlDiscogs(texte) {
+  return new DOMParser().parseFromString(String(texte || ""), "text/html").body;
+}
+
+/** Le texte d'un champ sans les balises : pour la recherche. */
+function texteSansBalises(texte) {
+  return lireHtmlDiscogs(texte).textContent;
+}
+
+/** Vrai pour une adresse web (http ou https) : on n'accepte pas d'autres liens. */
+function estAdresseWeb(adresse) {
+  return /^https?:\/\//i.test(adresse || "");
+}
+
+function creerLien(adresse, texte) {
+  return creer("a", { href: adresse, target: "_blank", rel: "noopener", texte: texte || adresse });
+}
+
+/**
+ * Transforme un champ en texte et liens cliquables : les liens de Discogs,
+ * et aussi les adresses restées en clair (« voir https://… »).
+ */
+function texteAvecLiens(texte) {
+  const morceaux = [];
+  for (const noeud of lireHtmlDiscogs(texte).childNodes) {
+    const adresse = noeud.nodeName === "A" ? noeud.getAttribute("href") : null;
+    if (estAdresseWeb(adresse)) {
+      morceaux.push(creerLien(adresse, noeud.textContent));
+      continue;
+    }
+    // Texte ordinaire : on découpe autour des adresses écrites en clair.
+    for (const partie of noeud.textContent.split(/(https?:\/\/\S+)/)) {
+      if (partie) morceaux.push(estAdresseWeb(partie) ? creerLien(partie) : partie);
+    }
+  }
+  return morceaux;
+}
+
+/**
+ * Lit le champ « Liens externes » : une adresse par ligne, avec un nom facultatif
+ * devant (« Diapason | https://… »). Sans nom, on affiche le nom du site.
+ */
+function lireLiensExternes(texte) {
+  return String(texte || "").split(/\r?\n/).map((ligne) => {
+    const corps = lireHtmlDiscogs(ligne);
+    const lien = corps.querySelector("a[href]");
+    let adresse = lien ? lien.getAttribute("href") : null;
+    let reste = corps.textContent;
+    if (lien) reste = reste.replace(lien.textContent, "");
+    if (!estAdresseWeb(adresse)) {
+      adresse = (reste.match(/https?:\/\/\S+/) || [null])[0];
+      if (adresse) reste = reste.replace(adresse, "");
+    }
+    if (!adresse) return null;
+    const nom = reste.replace(/[|:–-]\s*$/, "").trim();
+    return { adresse, nom: nom || nomDuSite(adresse) };
+  }).filter(Boolean);
+}
+
+/** « https://www.pitchfork.com/reviews/… » -> « pitchfork.com ». */
+function nomDuSite(adresse) {
+  try {
+    return new URL(adresse).hostname.replace(/^www\./, "");
+  } catch (erreur) {
+    return adresse;
+  }
+}
+
+/** Valeurs d'un champ pour tous les exemplaires d'une édition, sans répétition. */
+function valeursDuChamp(edition, nomChamp) {
+  return [...new Set(edition.exemplaires.map((e) => (e.champs[nomChamp] || "").trim()).filter(Boolean))];
+}
+
+/** « ★★★★☆ » pour une note sur 5. */
+function etoiles(note) {
+  return "★".repeat(note) + "☆".repeat(5 - note);
 }
 
 /** Décrit les formats : « Box Set + 5 × CD (Album, Remastered) ». */
@@ -170,9 +258,8 @@ function regrouperParEdition(disques) {
   return [...parEdition.values()].map((edition) => {
     // Date d'ajout de l'édition = celle du premier exemplaire ajouté.
     edition.date_ajout = edition.exemplaires.map((e) => e.date_ajout).filter(Boolean).sort()[0] || null;
-    edition.localisations = [...new Set(
-      edition.exemplaires.map((e) => (e.champs[CHAMP_LOCALISATION] || "").trim()).filter(Boolean)
-    )];
+    edition.localisations = valeursDuChamp(edition, CHAMP_LOCALISATION);
+    edition.notesPerso = valeursDuChamp(edition, CHAMP_NOTES_PERSO);
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.index = construireIndexRecherche(edition);
@@ -192,7 +279,7 @@ function construireIndexRecherche(edition) {
   for (const { cle } of CATEGORIES_PERSONNES) {
     index[cle] = normaliser((edition[cle] || []).join(" | "));
   }
-  const notes = edition.exemplaires.map((e) => Object.values(e.champs).join(" ")).join(" ");
+  const notes = edition.exemplaires.map((e) => Object.values(e.champs).map(texteSansBalises).join(" ")).join(" ");
   index.partout = Object.values(index).join(" | ") + " | " + normaliser(notes);
   return index;
 }
@@ -293,6 +380,7 @@ function lireControles() {
   etat.anneeMax = parseInt($("filtre-annee-max").value, 10) || null;
   etat.localisation = $("filtre-localisation").value;
   etat.double = $("filtre-double").checked;
+  etat.avecNotes = $("filtre-notes").checked;
 }
 
 /** Recopie l'état dans les champs (quand le code change un filtre, par un clic sur un nom par ex.). */
@@ -309,11 +397,12 @@ function ecrireControles() {
   $("filtre-annee-max").value = etat.anneeMax || "";
   $("filtre-localisation").value = etat.localisation;
   $("filtre-double").checked = etat.double;
+  $("filtre-notes").checked = etat.avecNotes;
 }
 
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
-          etat.localisation, etat.double].filter(Boolean).length;
+          etat.localisation, etat.double, etat.avecNotes].filter(Boolean).length;
 }
 
 /** Vrai si l'édition passe la recherche et tous les filtres. */
@@ -334,6 +423,7 @@ function correspond(edition) {
   if (etat.anneeMax && edition.annee > etat.anneeMax) return false;
   if (etat.localisation && !edition.localisations.includes(etat.localisation)) return false;
   if (etat.double && edition.exemplaires.length < 2) return false;
+  if (etat.avecNotes && !edition.notesPerso.length) return false;
   return true;
 }
 
@@ -400,7 +490,8 @@ function afficherGrille(liste) {
         image
           ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
           : creer("span", { classe: "sans-image", texte: "♪" }),
-        nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null
+        nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null,
+        edition.notesPerso.length ? creer("span", { classe: "repere-notes", texte: "✎", title: "Notes personnelles" }) : null
       ),
       creer("p", { classe: "carte-titre", texte: edition.titre }),
       creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") }),
@@ -468,13 +559,25 @@ function ouvrirFiche(edition) {
       ),
     ]);
 
+  // Ma note (la première donnée, si j'ai plusieurs exemplaires) et celle des membres de Discogs.
+  const maNote = edition.exemplaires.map((e) => e.note).find(Boolean);
+  const communaute = edition.note_communaute;
+  const notes = [
+    maNote ? "Ma note " + etoiles(maNote) : null,
+    communaute ? "Communauté " + communaute.moyenne.toLocaleString("fr-FR", { maximumFractionDigits: 1 }) + "/5 ("
+      + pluriel(communaute.votes, "vote") + ")" : null,
+  ].filter(Boolean);
+
+  const liens = valeursDuChamp(edition, CHAMP_LIENS).flatMap(lireLiensExternes);
+
+  // Les champs qui ont leur propre place dans la fiche ne sont pas répétés dans « Mon exemplaire ».
+  const champsAPart = [CHAMP_LOCALISATION, CHAMP_NOTES_PERSO, CHAMP_LIENS];
   const exemplaires = edition.exemplaires.map((exemplaire, numero) => {
-    const autresChamps = Object.entries(exemplaire.champs).filter(([nom]) => nom !== CHAMP_LOCALISATION);
+    const autresChamps = Object.entries(exemplaire.champs).filter(([nom]) => !champsAPart.includes(nom));
     return creer("li", {},
       creer("strong", { texte: exemplaire.champs[CHAMP_LOCALISATION] || "Localisation non renseignée" }),
       edition.exemplaires.length > 1 ? creer("span", { classe: "discret", texte: "  (exemplaire " + (numero + 1) + ")" }) : null,
-      autresChamps.map(([nom, valeur]) => creer("div", {}, creer("span", { classe: "discret", texte: nom + " : " }), valeur)),
-      exemplaire.note ? creer("div", { classe: "discret", texte: "Ma note : " + "★".repeat(exemplaire.note) + "☆".repeat(5 - exemplaire.note) }) : null,
+      autresChamps.map(([nom, valeur]) => creer("div", {}, creer("span", { classe: "discret", texte: nom + " : " }), texteAvecLiens(valeur))),
       exemplaire.date_ajout ? creer("div", { classe: "discret", texte: "Ajouté le " + formaterDate(exemplaire.date_ajout) }) : null
     );
   });
@@ -490,7 +593,16 @@ function ouvrirFiche(edition) {
             creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
           ])
         ),
+        notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
         creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
+        edition.notesPerso.length ? [
+          creer("h3", { texte: "Notes personnelles" }),
+          edition.notesPerso.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
+        ] : null,
+        liens.length ? [
+          creer("h3", { texte: "Liens externes" }),
+          creer("ul", { classe: "liens-externes" }, liens.map((l) => creer("li", {}, creerLien(l.adresse, l.nom + " ↗")))),
+        ] : null,
         sectionsPersonnes,
         creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
         creer("ul", { classe: "exemplaires" }, exemplaires),
@@ -741,14 +853,15 @@ function brancherEvenements() {
   });
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
-                    "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-localisation", "filtre-double"]) {
+                    "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-localisation", "filtre-double",
+                    "filtre-notes"]) {
     $(id).addEventListener("change", () => { lireControles(); afficher(); });
   }
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });
 
   $("effacer-filtres").addEventListener("click", () => {
     Object.assign(etat, { categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
-                          localisation: "", double: false, recherche: "", role: "partout" });
+                          localisation: "", double: false, avecNotes: false, recherche: "", role: "partout" });
     ecrireControles();
     afficher();
   });

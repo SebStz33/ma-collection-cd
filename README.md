@@ -56,6 +56,11 @@ Après une modification de `index.html`, `style.css` ou `app.js`, augmenter
   **Run workflow**.
 - Un champ perso à ne pas publier : ajouter son nom dans `CHAMPS_NON_PUBLIES`
   (scripts/sync.py). Seule la synchro de GitHub le retire.
+- Deux champs perso ont leur propre bloc dans la fiche (noms définis en tête d'`app.js`) :
+  **Notes personnelles** (texte libre, retours à la ligne gardés, adresses cliquables) et
+  **Liens externes** (une adresse par ligne, avec un nom facultatif devant :
+  `Diapason | https://…`). Discogs transforme les adresses en liens HTML : la page
+  les relit sans jamais insérer ce HTML tel quel.
 
 Comme c'est désormais le robot qui enregistre `data/collection.json`, une synchro
 lancée sur le Mac modifie ce fichier : avant le `git pull` suivant, annuler ces
