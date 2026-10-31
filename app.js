@@ -889,23 +889,40 @@ function brancherVisionneuse() {
 // Statistiques (calculées sur les disques affichés : filtres et recherche compris)
 // ---------------------------------------------------------------------------
 
-/** Carte de barres horizontales. Un clic sur une barre applique le filtre correspondant. */
-function carteBarres(titre, note, compte, limite, auClic) {
-  const lignes = [...compte.entries()].sort((a, b) => b[1] - a[1] || comparerTextes(a[0], b[0])).slice(0, limite);
-  const maximum = lignes.length ? lignes[0][1] : 1;
+/**
+ * Carte de barres horizontales. Un clic sur une barre applique le filtre correspondant.
+ * `voirPlus(n)` (facultatif) : texte d'un bouton qui déroule toutes les valeurs présentes
+ * sur au moins 2 éditions, quand il y en a plus que `limite`.
+ */
+function carteBarres(titre, note, compte, limite, auClic, voirPlus = null) {
+  const toutes = [...compte.entries()].sort((a, b) => b[1] - a[1] || comparerTextes(a[0], b[0]));
+  const maximum = toutes.length ? toutes[0][1] : 1;
+  const barre = ([libelle, nombre]) =>
+    creer("button", { type: "button", classe: "barre", title: libelle + " : " + nombre, surclic: () => auClic(libelle) },
+      creer("span", { classe: "barre-libelle", texte: libelle }),
+      creer("span", { classe: "barre-piste" },
+        creer("span", { classe: "barre-remplie", style: "width:" + (100 * nombre / maximum).toFixed(1) + "%" }),
+        creer("span", { classe: "barre-valeur", texte: nombre })
+      )
+    );
+
+  const barres = creer("div", { classe: "barres" }, toutes.slice(0, limite).map(barre));
+  const auMoinsDeux = toutes.filter(([, nombre]) => nombre >= 2);
+  let bouton = null;
+  if (voirPlus && auMoinsDeux.length > limite) {
+    let deroule = false;
+    bouton = creer("button", { type: "button", classe: "bouton-texte voir-plus", texte: voirPlus(auMoinsDeux.length),
+      surclic: () => {
+        deroule = !deroule;
+        barres.replaceChildren(...(deroule ? auMoinsDeux : toutes.slice(0, limite)).map(barre));
+        bouton.textContent = deroule ? "Replier" : voirPlus(auMoinsDeux.length);
+      } });
+  }
+
   return creer("section", { classe: "carte-stat" },
     creer("h2", { texte: titre }),
-    creer("p", { classe: "note-stat", texte: note }),
-    lignes.length
-      ? creer("div", { classe: "barres" }, lignes.map(([libelle, nombre]) =>
-          creer("button", { type: "button", classe: "barre", title: libelle + " : " + nombre, surclic: () => auClic(libelle) },
-            creer("span", { classe: "barre-libelle", texte: libelle }),
-            creer("span", { classe: "barre-piste" },
-              creer("span", { classe: "barre-remplie", style: "width:" + (100 * nombre / maximum).toFixed(1) + "%" }),
-              creer("span", { classe: "barre-valeur", texte: nombre })
-            )
-          )))
-      : creer("p", { classe: "note-stat", texte: "Aucune donnée." })
+    note ? creer("p", { classe: "note-stat", texte: note }) : null,
+    toutes.length ? [barres, bouton] : creer("p", { classe: "note-stat", texte: "Aucune donnée." })
   );
 }
 
@@ -993,16 +1010,19 @@ function afficherStatistiques(liste) {
       creer("p", { classe: "note-stat", texte: synchro + " Les statistiques portent sur les disques affichés (filtres et recherche compris)." })
     ),
     carteAnnees(liste),
-    carteBarres("Catégories", "Nombre d'éditions par dossier Discogs.", compter(liste, EXTRACTEURS.categorie), 20, appliquer("categorie")),
-    carteBarres("Genres", "Nombre d'éditions par genre Discogs.", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
-    carteBarres("Localisation", "Nombre d'éditions par lieu de rangement.", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
-    carteBarres("Compositeurs les plus présents", "Les 10 premiers, en nombre d'éditions.", compositeurs, 10, (nom) => chercherNomSansFiche(nom, "compositeurs")),
-    carteBarres("Interprètes les plus présents", "Les 10 premiers, en nombre d'éditions.", interpretes, 10, (nom) => chercherNomSansFiche(nom, "interpretes")),
-    ...(oeuvresEnPlusieursVersions.size ? [carteBarres("Œuvres en plusieurs versions",
-      "Les 15 premières, en nombre d'éditions (d'après MusicBrainz, pour une partie des disques seulement).",
-      oeuvresEnPlusieursVersions, 15, (nom) => choisirOeuvre(oeuvresParNom.get(nom)))] : []),
-    carteBarres("Labels", "Les 10 premiers, en nombre d'éditions.", compter(liste, EXTRACTEURS.label), 10, appliquer("label")),
-    carteBarres("Formats", "Nombre d'éditions par format.", compter(liste, EXTRACTEURS.format), 10, appliquer("format"))
+    carteBarres("Catégories", "Dossier Discogs (Custom Field)", compter(liste, EXTRACTEURS.categorie), 20, appliquer("categorie")),
+    carteBarres("Genres", "Genres Discogs", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
+    carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
+    carteBarres("Formats", "", compter(liste, EXTRACTEURS.format), 10, appliquer("format")),
+    carteBarres("Compositeurs les plus présents", "Les 15 premiers", compositeurs, 15, (nom) => chercherNomSansFiche(nom, "compositeurs"),
+      (n) => "Voir les " + n + " compositeurs présents sur au moins 2 éditions"),
+    carteBarres("Interprètes les plus présents", "Les 15 premiers", interpretes, 15, (nom) => chercherNomSansFiche(nom, "interpretes"),
+      (n) => "Voir les " + n + " interprètes présents sur au moins 2 éditions"),
+    ...(oeuvresEnPlusieursVersions.size ? [carteBarres("Œuvres en plusieurs versions", "Les 15 premières, d'après MusicBrainz",
+      oeuvresEnPlusieursVersions, 15, (nom) => choisirOeuvre(oeuvresParNom.get(nom)),
+      (n) => "Voir les " + n + " œuvres présentes sur au moins 2 éditions")] : []),
+    carteBarres("Labels", "Les 15 premiers", compter(liste, EXTRACTEURS.label), 15, appliquer("label"),
+      (n) => "Voir les " + n + " labels ayant au moins 2 éditions")
   );
 }
 
