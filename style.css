@@ -408,3 +408,16 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   .visionneuse-precedente, .visionneuse-suivante { display: none; }   /* on glisse du doigt */
   .statistiques { grid-template-columns: 1fr; }
 }
+
+/* Index : un bloc à la fois, les noms à la suite, regroupés par lettre */
+.index-entete {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 4px 0 10px;
+  border-bottom: 1px solid var(--bordure);
+}
+.index-lettres { display: flex; flex-wrap: wrap; gap: 2px; }
+.index-lettres .bouton-texte { padding: 2px 5px; font-size: 13px; }
+.index-lettre h3 { margin: 18px 0 6px; font-size: 15px; color: var(--accent); scroll-margin-top: 140px; }
+.index-noms { margin: 0; line-height: 1.9; font-size: 14px; }
+.index-nom { background: none; border: 0; padding: 0; color: var(--texte); cursor: pointer; text-align: left; font: inherit; }
+.index-nom:hover { color: var(--accent); }
+.index-nom .discret, .index-separateur { color: var(--texte-discret); }

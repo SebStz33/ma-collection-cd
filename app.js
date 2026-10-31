@@ -75,6 +75,13 @@ const etat = {
   double: false,
   avecNotes: false,
   oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
+  blocIndex: "compositeurs", // bloc affiché dans l'onglet Index
+};
+
+// Recherche et filtres remis à zéro (bouton « Tout effacer », clic dans l'index).
+const FILTRES_VIDES = {
+  categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
+  localisation: "", double: false, avecNotes: false, oeuvre: null, recherche: "", role: "partout",
 };
 
 // Raccourci pour trouver un élément de la page par son identifiant.
@@ -511,55 +518,68 @@ function afficher() {
   $("nb-filtres").hidden = nbFiltres === 0;
 
   afficherMessage(resultats.length ? "" : "Aucun disque ne correspond à ces critères.");
-  afficherBandeauOeuvre(resultats.length);
+  afficherBandeau(resultats.length);
 
   $("vue-collection").hidden = etat.vue !== "collection";
   $("vue-statistiques").hidden = etat.vue !== "statistiques";
+  $("vue-index").hidden = etat.vue !== "index";
   document.querySelectorAll(".onglet").forEach((b) => b.classList.toggle("actif", b.dataset.vue === etat.vue));
 
   if (etat.vue === "collection") afficherGrille(resultats);
-  else afficherStatistiques(resultats);
+  else if (etat.vue === "statistiques") afficherStatistiques(resultats);
+  else afficherIndex();
 }
 
-// D'où l'on vient quand on choisit une œuvre (une fiche ou les statistiques),
-// pour que le bouton « Revenir » y ramène : { etat, defilement, edition }.
-let retourOeuvre = null;
+// D'où l'on vient quand on clique sur une œuvre ou un nom (une fiche, les statistiques
+// ou l'index), pour que le bouton « Revenir » y ramène :
+// { etat, defilement, edition, libelle, apres }. `apres` : l'état juste après le clic ;
+// dès que l'utilisateur change autre chose, le retour n'a plus de sens et disparaît.
+let retour = null;
 
-/** Bandeau « Œuvre : … » au-dessus de la grille, quand on a choisi une œuvre. */
-function afficherBandeauOeuvre(nombre) {
-  $("bandeau-oeuvre").hidden = !etat.oeuvre;
-  if (!etat.oeuvre) {
-    retourOeuvre = null;
-    return;
-  }
+/** Bandeau au-dessus de la grille : l'œuvre choisie et/ou le bouton « Revenir ». */
+function afficherBandeau(nombre) {
+  if (retour && JSON.stringify(etat) !== retour.apres) retour = null;
+  const visible = etat.vue === "collection" && Boolean(etat.oeuvre || retour);
+  $("bandeau-oeuvre").hidden = !visible;
+  if (!visible) return;
+  const origine = retour && (retour.edition ? "à la fiche" : retour.etat.vue === "index" ? "à l'index" : "aux statistiques");
   $("bandeau-oeuvre").replaceChildren(
-    retourOeuvre ? creer("button", { type: "button", classe: "bouton bouton-revenir",
-      texte: retourOeuvre.edition ? "← Revenir à la fiche" : "← Revenir aux statistiques", surclic: revenir }) : null,
-    creer("span", { texte: "Œuvre : " }),
-    creer("strong", { texte: nomOeuvre(etat.oeuvre) }),
+    retour ? creer("button", { type: "button", classe: "bouton bouton-revenir", texte: "← Revenir " + origine, surclic: revenir }) : null,
+    ...(etat.oeuvre
+      ? [creer("span", { texte: "Œuvre : " }), creer("strong", { texte: nomOeuvre(etat.oeuvre) })]
+      : [creer("strong", { texte: retour.libelle })]),
     creer("span", { classe: "discret", texte: " · " + pluriel(nombre, "édition") + " dans ma cédéthèque" })
   );
 }
 
 /** Bouton « Revenir » : on retrouve la page d'avant (filtres, défilement, et la fiche ouverte). */
 function revenir() {
-  const retour = retourOeuvre;
-  retourOeuvre = null;
-  Object.assign(etat, retour.etat);
+  const precedent = retour;
+  retour = null;
+  Object.assign(etat, precedent.etat);
   ecrireControles();
   afficher();
-  window.scrollTo({ top: retour.defilement });
-  if (retour.edition) ouvrirFiche(retour.edition);
+  window.scrollTo({ top: precedent.defilement });
+  if (precedent.edition) ouvrirFiche(precedent.edition);
 }
 
-/** Clic sur une œuvre : on affiche les disques qui la contiennent. `edition` : la fiche d'où l'on vient. */
-function choisirOeuvre(oeuvre, edition = null) {
-  retourOeuvre = { etat: { ...etat }, defilement: window.scrollY, edition };
-  Object.assign(etat, { oeuvre, recherche: "", role: "partout", vue: "collection" });
+/**
+ * Affiche les disques correspondant à `changements` (une œuvre, une recherche…) en gardant
+ * de quoi revenir. `edition` : la fiche d'où l'on vient ; `libelle` : texte du bandeau.
+ */
+function allerVers(changements, edition = null, libelle = "") {
+  retour = { etat: { ...etat }, defilement: window.scrollY, edition, libelle };
+  Object.assign(etat, changements, { vue: "collection" });
+  retour.apres = JSON.stringify(etat);
   ecrireControles();
   if ($("fiche").open) $("fiche").close();
   afficher();
   window.scrollTo({ top: 0 });
+}
+
+/** Clic sur une œuvre : on affiche les disques qui la contiennent. `edition` : la fiche d'où l'on vient. */
+function choisirOeuvre(oeuvre, edition = null) {
+  allerVers({ oeuvre, recherche: "", role: "partout" }, edition);
 }
 
 /** Catégories à afficher : on ne montre pas « Sans catégorie » sur les vignettes et la fiche. */
@@ -883,6 +903,126 @@ function brancherVisionneuse() {
   };
   image.addEventListener("pointerup", finDuGeste);
   image.addEventListener("pointercancel", finDuGeste);
+}
+
+// ---------------------------------------------------------------------------
+// Index : toute la collection par ordre alphabétique, un bloc à la fois
+// (compositeurs, interprètes, œuvres, labels…). Indépendant des filtres.
+// ---------------------------------------------------------------------------
+
+// Mots qui signalent un ensemble et non une personne : classé à son premier mot.
+const MOTS_ENSEMBLE = /\band\b|\bcoro\b|orchest|orkest|ensemble|quartet|quatuor|quartett|trio\b|quintet|choir|chœur|choeur|chorus|\bchor\b|\bkor\b|koren|band\b|philharm|symphon|sinfon|consort|players|soloists|camerata|academy|akademie|singers|kammer|musici|group|brothers|sisters|opera|ballet|baroque|collegium|capella|cappella|voices|\bduo\b/i;
+// Articles ignorés au début d'un titre ou d'un nom d'ensemble.
+const ARTICLES = ["the", "le", "la", "les", "l", "i", "il", "lo", "gli", "die", "der", "das", "el", "los", "las", "a", "an"];
+// Suffixes ignorés à la fin d'un nom de personne : « Johann Strauss Jr. » est rangé à Strauss.
+const SUFFIXES = /^(jr|sr|ii|iii|iv)\.?$/;
+
+/**
+ * Clé de tri d'un nom : « Antonín Dvořák » -> « dvorak antonin » (nom de famille d'abord),
+ * « The English Concert » -> « english concert » (premier mot, sans l'article).
+ */
+function cleDeTri(nom, personne) {
+  // L'apostrophe est collée pour une personne (« Ed O'Brien » -> obrien), séparée sinon (« L'Arpeggiata » -> l arpeggiata).
+  const texte = normaliser(nom).replace(/['’]/g, personne ? "" : " ");
+  const mots = texte.replace(/[,."«»“”()\[\]]/g, " ").split(/\s+/).filter(Boolean);
+  // Une personne : plusieurs mots, aucun mot d'ensemble, et pas d'article au début (« Les Demoiselles… »).
+  if (personne && mots.length > 1 && !MOTS_ENSEMBLE.test(nom) && !ARTICLES.includes(mots[0])) {
+    while (mots.length > 2 && SUFFIXES.test(mots[mots.length - 1])) mots.pop();
+    return [mots[mots.length - 1], ...mots.slice(0, -1)].join(" ");
+  }
+  while (mots.length > 1 && ARTICLES.includes(mots[0])) mots.shift();
+  return mots.join(" ");
+}
+
+/** Les blocs de l'index présents dans la collection : [clé, libellé]. */
+function blocsIndex() {
+  return [
+    ["titre", "Titres"],
+    ["artistes_principaux", "Artistes principaux"],
+    ...CATEGORIES_PERSONNES.filter(({ cle }) => editions.some((e) => (e[cle] || []).length)).map(({ cle, libelle }) => [cle, libelle]),
+    ...(editions.some((e) => e.oeuvres.size) ? [["oeuvres", "Œuvres"]] : []),
+    ["labels", "Labels"],
+  ];
+}
+
+/** Entrées d'un bloc : [{ libelle, nombre, cle, clic }]. */
+function entreesIndex(bloc) {
+  if (bloc === "titre") {
+    return editions.map((edition) => ({
+      libelle: edition.titre, nombre: null, cle: cleDeTri(edition.titre, false),
+      detail: (edition.artistes_principaux || []).join(", "), clic: () => ouvrirFiche(edition),
+    }));
+  }
+  if (bloc === "oeuvres") {
+    const parId = new Map();
+    for (const edition of editions) {
+      for (const oeuvre of edition.oeuvres.values()) {
+        if (!parId.has(oeuvre.id)) parId.set(oeuvre.id, { oeuvre, nombre: 0 });
+        parId.get(oeuvre.id).nombre += 1;
+      }
+    }
+    return [...parId.values()].map(({ oeuvre, nombre }) => ({
+      libelle: nomOeuvre(oeuvre), nombre, cle: cleDeTri(oeuvre.titre, false),
+      clic: () => allerVers({ ...FILTRES_VIDES, oeuvre }),
+    }));
+  }
+  if (bloc === "labels") {
+    return [...compter(editions, EXTRACTEURS.label)].map(([nom, nombre]) => ({
+      libelle: nom, nombre, cle: cleDeTri(nom, false),
+      clic: () => allerVers({ ...FILTRES_VIDES, recherche: nom, role: "labels" }, null, "Label : " + nom),
+    }));
+  }
+  const libelleBloc = (blocsIndex().find(([cle]) => cle === bloc) || [, ""])[1];
+  return [...compter(editions, (e) => e[bloc] || [])].map(([nom, nombre]) => ({
+    libelle: nom, nombre, cle: cleDeTri(nom, true),
+    clic: () => allerVers({ ...FILTRES_VIDES, recherche: nom, role: bloc }, null, libelleBloc + " : " + nom),
+  }));
+}
+
+/** Première lettre de la clé de tri, ou « # » pour un chiffre ou un signe. */
+function lettreIndex(cle) {
+  const lettre = (cle || "").charAt(0).toUpperCase();
+  return /[A-Z]/.test(lettre) ? lettre : "#";
+}
+
+function afficherIndex() {
+  const blocs = blocsIndex();
+  if (!blocs.some(([cle]) => cle === etat.blocIndex)) etat.blocIndex = "compositeurs";
+  const entrees = entreesIndex(etat.blocIndex).sort((a, b) => comparerTextes(a.cle, b.cle) || comparerTextes(a.libelle, b.libelle));
+
+  // Regroupement par lettre, dans l'ordre : « # » d'abord, puis A à Z.
+  const parLettre = new Map();
+  for (const entree of entrees) {
+    const lettre = lettreIndex(entree.cle);
+    if (!parLettre.has(lettre)) parLettre.set(lettre, []);
+    parLettre.get(lettre).push(entree);
+  }
+  const lettres = [...parLettre.keys()].sort((a, b) => (a === "#" ? -1 : b === "#" ? 1 : a.localeCompare(b)));
+
+  const choix = creer("select", { id: "bloc-index", "aria-label": "Bloc de l'index" },
+    blocs.map(([cle, libelle]) => creer("option", { value: cle, selected: cle === etat.blocIndex,
+      texte: libelle + " (" + entreesIndex(cle).length.toLocaleString("fr-FR") + ")" })));
+  choix.addEventListener("change", () => { etat.blocIndex = choix.value; afficher(); window.scrollTo({ top: 0 }); });
+
+  $("vue-index").replaceChildren(
+    creer("div", { classe: "index-entete" },
+      choix,
+      creer("nav", { classe: "index-lettres", "aria-label": "Lettres" }, lettres.map((lettre) =>
+        creer("button", { type: "button", classe: "bouton-texte", texte: lettre,
+          surclic: () => $("lettre-" + lettre).scrollIntoView({ behavior: "smooth", block: "start" }) })))
+    ),
+    ...lettres.map((lettre) => creer("section", { classe: "index-lettre" },
+      creer("h3", { id: "lettre-" + lettre, texte: lettre }),
+      creer("p", { classe: "index-noms" }, parLettre.get(lettre).map((entree, numero) => [
+        numero ? creer("span", { classe: "index-separateur", texte: " · " }) : null,
+        creer("button", { type: "button", classe: "index-nom", surclic: entree.clic,
+          title: entree.detail || null },
+          entree.libelle,
+          entree.nombre ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
+          entree.detail ? creer("span", { classe: "discret", texte: " – " + entree.detail }) : null),
+      ]))
+    ))
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -1316,8 +1456,7 @@ function brancherEvenements() {
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });
 
   $("effacer-filtres").addEventListener("click", () => {
-    Object.assign(etat, { categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
-                          localisation: "", double: false, avecNotes: false, oeuvre: null, recherche: "", role: "partout" });
+    Object.assign(etat, FILTRES_VIDES);
     ecrireControles();
     afficher();
   });
