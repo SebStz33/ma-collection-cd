@@ -646,10 +646,37 @@ function afficherGrille(liste) {
   }
   const categories = [...parCategorie.keys()].sort((a, b) =>
     (a === SANS_CATEGORIE) - (b === SANS_CATEGORIE) || comparerTextes(a, b));
-  $("vue-collection").replaceChildren(...categories.map((categorie) => creer("section", { classe: "groupe-categorie" },
-    creer("h2", { classe: "titre-categorie" }, categorie, creer("span", { classe: "discret", texte: " (" + parCategorie.get(categorie).length + ")" })),
-    creer("div", { classe: "grille" }, cartesDesEditions(parCategorie.get(categorie)))
-  )));
+  const nom = (categorie) => categorie + " (" + parCategorie.get(categorie).length + ")";
+  const groupes = categories.map((categorie) => creer("section", { classe: "groupe-categorie" }));
+  const allerAuGroupe = (numero) => groupes[numero].scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // Liste des catégories en haut (seulement s'il y en a plusieurs) : un clic descend jusqu'à elle.
+  const sommaire = categories.length > 1 ? creer("nav", { classe: "sommaire-categories", "aria-label": "Catégories" },
+    categories.map((categorie, numero) => [
+      numero ? creer("span", { classe: "index-separateur", texte: " · " }) : null,
+      creer("button", { type: "button", classe: "bouton-texte", texte: nom(categorie), surclic: () => allerAuGroupe(numero) }),
+    ])) : null;
+
+  groupes.forEach((groupe, numero) => groupe.append(
+    // Titre qui reste en haut de l'écran pendant qu'on fait défiler les vignettes de la catégorie.
+    creer("h2", { classe: "titre-categorie" },
+      categories[numero],
+      creer("span", { classe: "discret", texte: " (" + parCategorie.get(categories[numero]).length + ")" }),
+      categories.length > 1 ? creer("span", { classe: "navigation-categories" },
+        creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Haut", surclic: () => window.scrollTo({ top: 0, behavior: "smooth" }) }),
+        numero < groupes.length - 1
+          ? creer("button", { type: "button", classe: "bouton-texte", texte: "↓ Suivante", surclic: () => allerAuGroupe(numero + 1) })
+          : null
+      ) : null
+    ),
+    creer("div", { classe: "grille" }, cartesDesEditions(parCategorie.get(categories[numero])))
+  ));
+  $("vue-collection").replaceChildren(sommaire || "", ...groupes);
+}
+
+/** Hauteur de l'en-tête collant, pour placer les titres de catégorie juste en dessous. */
+function noterHauteurEntete() {
+  document.documentElement.style.setProperty("--hauteur-entete", document.querySelector(".entete").offsetHeight + "px");
 }
 
 function cartesDesEditions(liste) {
@@ -1734,6 +1761,8 @@ function brancherEvenements() {
 
 brancherEvenements();
 brancherVisionneuse();
+// L'en-tête change de hauteur selon la largeur de l'écran (une ou deux lignes).
+new ResizeObserver(noterHauteurEntete).observe(document.querySelector(".entete"));
 brancherReglageJeton();
 chargerCollection();
 

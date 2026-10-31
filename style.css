@@ -135,9 +135,19 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 /* ---------- Grille de pochettes ---------- */
 
 /* Une grille par catégorie, avec son titre */
-.titre-categorie { font-size: 15px; font-weight: 600; margin: 0 0 12px; }
+.sommaire-categories { font-size: 13px; line-height: 1.9; margin: 0 0 20px; }
+.sommaire-categories .bouton-texte { padding: 0; font-size: 13px; }
+.titre-categorie {
+  position: sticky; top: var(--hauteur-entete, 112px); z-index: 5;
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 6px;
+  font-size: 15px; font-weight: 600; margin: 0 0 12px; padding: 8px 0;
+  background: var(--fond);
+}
 .titre-categorie .discret { color: var(--texte-2); font-weight: 400; }
-.groupe-categorie + .groupe-categorie { margin-top: 28px; }
+.navigation-categories { display: flex; gap: 14px; margin-left: auto; font-weight: 400; }
+.navigation-categories .bouton-texte { padding: 0; font-size: 13px; }
+.groupe-categorie { scroll-margin-top: var(--hauteur-entete, 112px); }
+.groupe-categorie + .groupe-categorie { margin-top: 20px; }
 
 .grille {
   display: grid;
