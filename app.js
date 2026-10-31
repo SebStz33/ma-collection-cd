@@ -80,7 +80,7 @@ const etat = {
   correspondanceMB: "",     // "", "exacte", "album" ou "aucune"
   avecOeuvres: false,
   oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
-  blocIndex: "compositeurs", // bloc affiché dans l'onglet Index
+  blocIndex: "compositeurs_classiques", // bloc affiché dans l'onglet Index
 };
 
 // Filtres remis à zéro (boutons « Effacer les filtres » et « Effacer ») : la recherche reste.
@@ -1006,14 +1006,38 @@ function cleDeTri(nom, personne) {
 
 /** Les blocs de l'index présents dans la collection : [clé, libellé]. */
 function blocsIndex() {
+  // Compositeurs et œuvres en deux blocs : classiques, puis autres (rangés juste après).
+  const enDeux = (cle, libelle, classiques, autres) => [
+    [cle + "_classiques", classiques, libelle + " 1"],
+    [cle + "_autres", autres, libelle + " 2"],
+  ];
   const blocs = [
     ["titre", "Titres"],
     ["artistes_principaux", "Artistes principaux"],
-    ...CATEGORIES_PERSONNES.filter(({ cle }) => editions.some((e) => (e[cle] || []).length)).map(({ cle, libelle }) => [cle, libelle]),
-    ...(editions.some((e) => e.oeuvres.size) ? [["oeuvres", "Œuvres"]] : []),
+    ...CATEGORIES_PERSONNES.filter(({ cle }) => editions.some((e) => (e[cle] || []).length)).flatMap(({ cle, libelle }) =>
+      cle === "compositeurs" ? enDeux(cle, libelle, "Compositeurs classiques", "Autres compositeurs") : [[cle, libelle]]),
+    ...(editions.some((e) => e.oeuvres.size) ? enDeux("oeuvres", "Œuvres", "Œuvres classiques", "Autres œuvres") : []),
     ["labels", "Labels"],
   ];
-  return blocs.sort((a, b) => comparerTextes(a[1], b[1]));
+  return blocs
+    .filter(([cle]) => !/_(classiques|autres)$/.test(cle) || entreesIndex(cle).length)  // moitié vide : pas de bloc
+    .sort((a, b) => comparerTextes(a[2] || a[1], b[2] || b[1]))
+    .map(([cle, libelle]) => [cle, libelle]);
+}
+
+/** Vrai si l'édition est classée « Classical » sur Discogs. */
+function estClassique(edition) {
+  return (edition.genres || []).includes("Classical");
+}
+
+/**
+ * Pour un bloc coupé en deux (« compositeurs_classiques »…) : vrai si l'entrée va dans ce bloc.
+ * Chaque nom va dans un seul bloc, celui de la majorité de ses éditions (classique en cas d'égalité).
+ */
+function dansLaMoitie(bloc, editionsDuNom) {
+  const classiques = editionsDuNom.filter(estClassique).length;
+  const classique = classiques * 2 >= editionsDuNom.length;
+  return bloc.endsWith("_classiques") ? classique : !classique;
 }
 
 /** Entrées d'un bloc : [{ libelle, nombre, cle, clic }]. */
@@ -1024,17 +1048,30 @@ function entreesIndex(bloc) {
       detail: (edition.artistes_principaux || []).join(", "), clic: () => ouvrirFiche(edition),
     }));
   }
-  if (bloc === "oeuvres") {
+  if (bloc.startsWith("oeuvres_")) {
     const parId = new Map();
     for (const edition of editions) {
       for (const oeuvre of edition.oeuvres.values()) {
-        if (!parId.has(oeuvre.id)) parId.set(oeuvre.id, { oeuvre, nombre: 0 });
-        parId.get(oeuvre.id).nombre += 1;
+        if (!parId.has(oeuvre.id)) parId.set(oeuvre.id, { oeuvre, liste: [] });
+        parId.get(oeuvre.id).liste.push(edition);
       }
     }
-    return [...parId.values()].map(({ oeuvre, nombre }) => ({
-      libelle: nomOeuvre(oeuvre), nombre, cle: cleDeTri(oeuvre.titre, false),
+    return [...parId.values()].filter(({ liste }) => dansLaMoitie(bloc, liste)).map(({ oeuvre, liste }) => ({
+      libelle: nomOeuvre(oeuvre), nombre: liste.length, cle: cleDeTri(oeuvre.titre, false),
       clic: () => allerVers({ ...FILTRES_VIDES, oeuvre }),
+    }));
+  }
+  if (bloc.startsWith("compositeurs_")) {
+    const parNom = new Map();
+    for (const edition of editions) {
+      for (const nom of new Set(edition.compositeurs || [])) {
+        if (!parNom.has(nom)) parNom.set(nom, []);
+        parNom.get(nom).push(edition);
+      }
+    }
+    return [...parNom].filter(([, liste]) => dansLaMoitie(bloc, liste)).map(([nom, liste]) => ({
+      libelle: nom, nombre: liste.length, cle: cleDeTri(nom, true),
+      clic: () => allerVers({ ...FILTRES_VIDES, recherche: nom, role: "compositeurs" }, null, "Compositeurs : " + nom),
     }));
   }
   if (bloc === "labels") {
@@ -1058,7 +1095,7 @@ function lettreIndex(cle) {
 
 function afficherIndex() {
   const blocs = blocsIndex();
-  if (!blocs.some(([cle]) => cle === etat.blocIndex)) etat.blocIndex = "compositeurs";
+  if (!blocs.some(([cle]) => cle === etat.blocIndex)) etat.blocIndex = blocs[0][0];
   const entrees = entreesIndex(etat.blocIndex).sort((a, b) => comparerTextes(a.cle, b.cle) || comparerTextes(a.libelle, b.libelle));
 
   // Regroupement par lettre, dans l'ordre : « # » d'abord, puis A à Z.
