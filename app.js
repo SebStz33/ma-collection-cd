@@ -1065,7 +1065,8 @@ function carteBarres(titre, note, compte, limite, auClic, voirPlus = null) {
 
   return creer("section", { classe: "carte-stat" },
     creer("h2", { texte: titre }),
-    note ? creer("p", { classe: "note-stat", texte: note }) : null,
+    // Sous-titre vide gardé (espace insécable) : les barres de toutes les cartes commencent à la même hauteur.
+    creer("p", { classe: "note-stat", texte: note || "\u00a0" }),
     toutes.length ? [barres, bouton] : creer("p", { classe: "note-stat", texte: "Aucune donnée." })
   );
 }
