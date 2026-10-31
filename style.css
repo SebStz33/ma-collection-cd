@@ -347,6 +347,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .carte-stat.large { grid-column: 1 / -1; }
 .carte-stat h2 { font-size: 15px; margin: 0 0 2px; }
 .carte-stat .note-stat { font-size: 12px; color: var(--texte-discret); margin: 0 0 12px; }
+.carte-stat .note-synchro { margin-top: 20px; }
 
 .chiffres { display: flex; flex-wrap: wrap; gap: 28px; }
 .chiffre .valeur { font-size: 34px; font-weight: 600; line-height: 1.1; }

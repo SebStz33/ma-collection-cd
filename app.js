@@ -669,6 +669,9 @@ function afficherGrille(liste) {
         creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Haut", surclic: () => window.scrollTo({ top: 0, behavior: "smooth" }) }),
         numero < groupes.length - 1
           ? creer("button", { type: "button", classe: "bouton-texte", texte: "↓ Suivante", surclic: () => allerAuGroupe(numero + 1) })
+          : null,
+        numero > 0
+          ? creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Précédente", surclic: () => allerAuGroupe(numero - 1) })
           : null
       ) : null
     ),
@@ -1410,6 +1413,9 @@ function afficherStatistiques(liste) {
   const [compositeursClassiques, autresCompositeurs] = partager(compositeurs, (nom) => cotes.compositeurs.get(nom));
   const [oeuvresClassiques, autresOeuvres] = partager(oeuvresEnPlusieursVersions,
     (nom) => cotes.oeuvres.get(oeuvresParNom.get(nom).id));
+  // Nombre d'œuvres différentes (toutes, pas seulement celles en plusieurs versions), de chaque côté.
+  const idsOeuvres = new Set(liste.flatMap((e) => [...e.oeuvres.keys()]));
+  const nbOeuvresClassiques = [...idsOeuvres].filter((id) => cotes.oeuvres.get(id)).length;
   const carteCompositeurs = (titre, compte) => compte.size ? carteBarres(titre, "Les 15 premiers", compte, 15,
     (nom) => chercherNomSansFiche(nom, "compositeurs"),
     (n) => "Voir les " + n + " compositeurs présents sur au moins 2 éditions") : "";
@@ -1435,10 +1441,13 @@ function afficherStatistiques(liste) {
         chiffre(liste.length, "éditions"),
         chiffre(nbExemplaires, "exemplaires"),
         chiffre(nbDisques, "disques physiques"),
-        chiffre(compositeurs.size, "compositeurs"),
+        chiffre(compositeursClassiques.size, "compositeurs classiques"),
+        chiffre(nbOeuvresClassiques, "œuvres classiques"),
+        chiffre(autresCompositeurs.size, "autres compositeurs"),
+        chiffre(idsOeuvres.size - nbOeuvresClassiques, "autres œuvres"),
         chiffre(interpretes.size, "interprètes")
       ),
-      creer("p", { classe: "note-stat", texte: synchro + " Les statistiques portent sur les disques affichés (filtres et recherche compris)." })
+      creer("p", { classe: "note-stat note-synchro", texte: synchro + " Les statistiques portent sur les disques affichés (filtres et recherche compris)." })
     ),
     carteAnnees(liste),
     carteBarres("Catégories", "Dossier Discogs (Custom Field)", compter(liste, EXTRACTEURS.categorie), 20, appliquer("categorie")),
