@@ -403,8 +403,8 @@ function remplirFiltres() {
   $("liste-labels").replaceChildren(...labels.map((l) => creer("option", { value: l })));
 
   // Sélecteur « Chercher dans » : seulement les catégories présentes dans la collection.
+  // « Partout » en premier, puis les autres par ordre alphabétique.
   const roles = [
-    ["partout", "Partout"],
     ["titre", "Titre"],
     ["artistes_principaux", "Artiste principal"],
     ...CATEGORIES_PERSONNES
@@ -413,7 +413,8 @@ function remplirFiltres() {
     ["labels", "Label"],
     ...(editions.some((e) => (e.plages || []).length) ? [["plages", "Titres des plages"]] : []),
     ...(editions.some((e) => e.oeuvres.size) ? [["oeuvres", "Œuvres"]] : []),
-  ];
+  ].sort((a, b) => comparerTextes(a[1], b[1]));
+  roles.unshift(["partout", "Partout"]);
   $("role-recherche").replaceChildren(...roles.map(([v, t]) => creer("option", { value: v, texte: t })));
 }
 
@@ -523,6 +524,8 @@ function afficher() {
   $("vue-collection").hidden = etat.vue !== "collection";
   $("vue-statistiques").hidden = etat.vue !== "statistiques";
   $("vue-index").hidden = etat.vue !== "index";
+  // La feuille de style masque ce qui n'agit pas sur la vue : tout l'outillage dans l'index, le tri dans les statistiques.
+  document.body.dataset.vue = etat.vue;
   document.querySelectorAll(".onglet").forEach((b) => b.classList.toggle("actif", b.dataset.vue === etat.vue));
 
   if (etat.vue === "collection") afficherGrille(resultats);
@@ -936,13 +939,14 @@ function cleDeTri(nom, personne) {
 
 /** Les blocs de l'index présents dans la collection : [clé, libellé]. */
 function blocsIndex() {
-  return [
+  const blocs = [
     ["titre", "Titres"],
     ["artistes_principaux", "Artistes principaux"],
     ...CATEGORIES_PERSONNES.filter(({ cle }) => editions.some((e) => (e[cle] || []).length)).map(({ cle, libelle }) => [cle, libelle]),
     ...(editions.some((e) => e.oeuvres.size) ? [["oeuvres", "Œuvres"]] : []),
     ["labels", "Labels"],
   ];
+  return blocs.sort((a, b) => comparerTextes(a[1], b[1]));
 }
 
 /** Entrées d'un bloc : [{ libelle, nombre, cle, clic }]. */
@@ -1018,7 +1022,7 @@ function afficherIndex() {
         creer("button", { type: "button", classe: "index-nom", surclic: entree.clic,
           title: entree.detail || null },
           entree.libelle,
-          entree.nombre ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
+          entree.nombre > 1 ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
           entree.detail ? creer("span", { classe: "discret", texte: " – " + entree.detail }) : null),
       ]))
     ))

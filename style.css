@@ -421,3 +421,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .index-nom { background: none; border: 0; padding: 0; color: var(--texte); cursor: pointer; text-align: left; font: inherit; }
 .index-nom:hover { color: var(--accent); }
 .index-nom .discret, .index-separateur { color: var(--texte-discret); }
+
+/* Ce qui n'agit pas sur la vue est masqué : tout l'outillage dans l'index, le tri dans les statistiques. */
+body[data-vue="index"] .outils, body[data-vue="index"] .filtres { display: none; }
+body[data-vue="statistiques"] .tri { display: none; }
