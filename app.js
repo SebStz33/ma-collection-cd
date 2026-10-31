@@ -631,8 +631,29 @@ function categoriesChoisies(edition) {
   return edition.categories.filter((c) => c !== SANS_CATEGORIE);
 }
 
+/**
+ * Vignettes regroupées par catégorie (dossier Discogs), par ordre alphabétique, « Sans catégorie »
+ * à la fin. Dans chaque groupe, les disques gardent l'ordre du tri choisi. Une édition dont les
+ * exemplaires sont rangés dans deux dossiers apparaît dans les deux.
+ */
 function afficherGrille(liste) {
-  const cartes = liste.map((edition) => {
+  const parCategorie = new Map();
+  for (const edition of liste) {
+    for (const categorie of edition.categories) {
+      if (!parCategorie.has(categorie)) parCategorie.set(categorie, []);
+      parCategorie.get(categorie).push(edition);
+    }
+  }
+  const categories = [...parCategorie.keys()].sort((a, b) =>
+    (a === SANS_CATEGORIE) - (b === SANS_CATEGORIE) || comparerTextes(a, b));
+  $("vue-collection").replaceChildren(...categories.map((categorie) => creer("section", { classe: "groupe-categorie" },
+    creer("h2", { classe: "titre-categorie" }, categorie, creer("span", { classe: "discret", texte: " (" + parCategorie.get(categorie).length + ")" })),
+    creer("div", { classe: "grille" }, cartesDesEditions(parCategorie.get(categorie)))
+  )));
+}
+
+function cartesDesEditions(liste) {
+  return liste.map((edition) => {
     const image = edition.pochette || edition.miniature;
     const nb = edition.exemplaires.length;
     const categories = categoriesChoisies(edition);
@@ -649,7 +670,6 @@ function afficherGrille(liste) {
       categories.length ? creer("p", { classe: "carte-categorie", texte: categories.join(" · ") }) : null
     );
   });
-  $("vue-collection").replaceChildren(...cartes);
 }
 
 // ---------------------------------------------------------------------------
@@ -824,6 +844,7 @@ function ouvrirFiche(edition) {
     numeroResultat = 0;
     resultats.textContent = !champRecherche.value.trim() ? ""
       : nombre ? nombre + (nombre > 1 ? " résultats" : " résultat") : "Aucun résultat";
+    resultats.classList.toggle("avec-resultats", nombre > 0);
     allerAuResultat(texteFiche, 0);
   };
   champRecherche.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(chercher, 150); });

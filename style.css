@@ -134,6 +134,11 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 
 /* ---------- Grille de pochettes ---------- */
 
+/* Une grille par catégorie, avec son titre */
+.titre-categorie { font-size: 15px; font-weight: 600; margin: 0 0 12px; }
+.titre-categorie .discret { color: var(--texte-2); font-weight: 400; }
+.groupe-categorie + .groupe-categorie { margin-top: 28px; }
+
 .grille {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -434,5 +439,7 @@ body[data-vue="statistiques"] .tri { display: none; }
 /* Recherche dans la fiche */
 .ligne-recherche-fiche { display: flex; align-items: center; gap: 10px; margin: -6px 0 16px; }
 .recherche-fiche { flex: 0 1 260px; min-width: 0; color: var(--texte); }
+.resultats-fiche { font-size: 17px; }
+.resultats-fiche.avec-resultats { background: rgba(226, 170, 82, 0.35); color: var(--texte); border-radius: 2px; padding: 0 4px; }
 mark.trouve { background: rgba(226, 170, 82, 0.35); color: inherit; border-radius: 2px; }
 mark.trouve.actuel { background: var(--accent); color: var(--accent-texte); }
