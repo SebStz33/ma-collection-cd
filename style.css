@@ -117,8 +117,10 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   padding: 16px;
   border-right: 1px solid var(--bordure);
 }
-.filtres-entete { display: flex; justify-content: space-between; align-items: center; }
-.filtres-entete h2 { font-size: 15px; margin: 0 0 8px; }
+.filtres-entete { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.filtres-entete h2 { font-size: 15px; margin: 0; }
+.filtres-titre { display: flex; align-items: baseline; gap: 12px; }
+#effacer-filtres-haut { font-size: 13px; }
 #fermer-filtres { display: none; }
 
 .filtre { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; font-size: 13px; color: var(--texte-2); }

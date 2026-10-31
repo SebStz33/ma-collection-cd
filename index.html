@@ -59,7 +59,10 @@
     <!-- Colonne des filtres (panneau coulissant sur téléphone) -->
     <aside class="filtres" id="filtres" aria-label="Filtres">
       <div class="filtres-entete">
-        <h2>Filtres</h2>
+        <div class="filtres-titre">
+          <h2>Filtres</h2>
+          <button type="button" class="bouton-texte" id="effacer-filtres-haut">Effacer</button>
+        </div>
         <button type="button" class="bouton-texte" id="fermer-filtres">Fermer</button>
       </div>
 
@@ -80,19 +83,32 @@
         </div>
       </div>
       <label class="filtre"><span>Localisation</span><select id="filtre-localisation"></select></label>
+      <label class="filtre">
+        <span>Correspondance avec MusicBrainz</span>
+        <select id="filtre-musicbrainz">
+          <option value="">Toutes</option>
+          <option value="exacte" data-libelle="Édition exacte">Édition exacte</option>
+          <option value="album" data-libelle="Par l’album">Par l’album</option>
+          <option value="aucune" data-libelle="Sans correspondance">Sans correspondance</option>
+        </select>
+      </label>
       <label class="filtre case">
         <input type="checkbox" id="filtre-double">
-        <span>En double seulement</span>
+        <span>En double ou plus</span>
       </label>
       <label class="filtre case">
         <input type="checkbox" id="filtre-notes">
         <span>Avec notes personnelles</span>
       </label>
+      <label class="filtre case">
+        <input type="checkbox" id="filtre-oeuvres">
+        <span>Avec œuvres identifiées</span>
+      </label>
 
-      <button type="button" class="bouton" id="effacer-filtres">Tout effacer</button>
+      <button type="button" class="bouton" id="effacer-filtres">Effacer les filtres</button>
       <button type="button" class="bouton-texte bouton-jeton" id="ouvrir-jeton">⚙︎ Jeton Discogs</button>
-      <p class="rappel-discogs">Ne pas changer sur Discogs : champs Localisation, Notes personnelles et Liens externes,
-        nom d’utilisateur. Nouveau jeton : mettre à jour le secret GitHub et sur chaque appareil avec droits de modification.</p>
+      <p class="rappel-discogs">Ne pas changer sur Discogs : noms des champs Localisation, Notes personnelles,
+        Liens externes (Custom Fields) et le nom d’utilisateur SebSteinmetz. Nouveau jeton : mettre à jour le secret GitHub et sur chaque appareil avec droits de modification.</p>
     </aside>
 
     <main class="contenu">

@@ -5,8 +5,8 @@ Ce script :
   1. lit la liste de mes champs personnalisés et de mes dossiers Discogs ;
   2. lit toute ma collection (par paquets de 100 disques) ;
   3. récupère la fiche complète des disques qu'il ne connaît pas encore
-     (compositeurs, interprètes, paroliers, arrangeurs, producteurs..., plages, images
-     et note de la communauté) ;
+     (compositeurs, interprètes, paroliers, arrangeurs, producteurs..., plages, images,
+     codes-barres et note de la communauté) ;
   4. cherche sur MusicBrainz l'œuvre jouée sur chaque plage (voir musicbrainz.py) ;
   5. écrit le résultat dans data/collection.json, dans notre propre format.
 
@@ -123,7 +123,7 @@ ROLES_NON_INTERPRETE_EXACTS = {"other", "score"}
 
 # Ce que la fiche complète apporte, en plus des catégories de personnes.
 # Une fiche connue à laquelle il manque une de ces clés est relue.
-CLES_DETAILS = CATEGORIES + ["plages", "images", "note_communaute", "details_maj"]
+CLES_DETAILS = CATEGORIES + ["plages", "images", "codes_barres", "note_communaute", "details_maj"]
 
 # Dossiers Discogs qui ne sont pas une catégorie choisie par moi :
 # 0 = « All » (toute la collection), 1 = « Uncategorized » (non classé).
@@ -423,9 +423,22 @@ def extraire_details(fiche):
     details["plages"] = [construire_plage(morceau) for morceau in fiche.get("tracklist", [])]
     reporter_compositeurs(fiche, details["plages"])
     details["images"] = images
+    details["codes_barres"] = codes_barres(fiche)
     details["note_communaute"] = note_communaute(fiche)
     details["details_maj"] = date.today().isoformat()
     return details
+
+
+def codes_barres(fiche):
+    """
+    Codes-barres de l'édition, en chiffres seuls et sans doublon : ["5099749152720"].
+    Discogs en donne souvent plusieurs versions (texte imprimé, code scanné) : « 5 099749 152720 ».
+    """
+    codes = []
+    for identifiant in fiche.get("identifiers", []) or []:
+        if identifiant.get("type") == "Barcode":
+            ajouter_sans_doublon(codes, re.sub(r"\D", "", identifiant.get("value") or ""))
+    return codes
 
 
 def note_communaute(fiche):
@@ -487,19 +500,24 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
         ),
         "url_discogs": "https://www.discogs.com/release/%s" % element.get("id"),
     }
-    if details is None:
-        details = {categorie: [] for categorie in CATEGORIES}
-        details.update({"plages": [], "images": [], "note_communaute": None, "details_maj": None})
-    disque.update(details)
+    vides = {categorie: [] for categorie in CATEGORIES}
+    vides.update({"plages": [], "images": [], "codes_barres": [], "note_communaute": None, "details_maj": None})
+    disque.update(vides)
+    disque.update(details or {})
 
     # Œuvres MusicBrainz : ajoutées aux plages, et lien vers l'édition MusicBrainz.
+    # L'œuvre parente (« 24 Caprices » pour « Caprice n° 5 ») n'est gardée que pour le classique :
+    # pour une chanson, MusicBrainz y met plutôt le film ou la comédie musicale d'origine.
     entree_mb = entree_mb or {}
-    disque["plages"] = musicbrainz.ajouter_oeuvres(disque["plages"], entree_mb.get("oeuvres"))
+    disque["plages"] = musicbrainz.ajouter_oeuvres(disque["plages"], entree_mb.get("oeuvres"),
+                                                   avec_parente="Classical" in disque["genres"])
     # Images MusicBrainz (haute définition) d'abord, puis celles de Discogs.
     disque["images"] = (entree_mb.get("images") or []) + [i for i in disque["images"] if i.get("type") != "musicbrainz"]
     disque["musicbrainz"] = (
         "https://musicbrainz.org/release/%s" % entree_mb["release"] if entree_mb.get("release") else None
     )
+    # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
+    disque["musicbrainz_methode"] = entree_mb.get("methode")
     return disque
 
 
@@ -520,14 +538,17 @@ def lire_details_connus():
         return {}
     connus = {}
     for disque in precedent.get("disques", []):
-        # Une fiche lue avant l'ajout d'une catégorie (ou des plages) est considérée comme à relire.
-        if disque.get("details_maj") and all(cle in disque for cle in CLES_DETAILS):
-            connus[disque["release_id"]] = {cle: disque.get(cle) for cle in CLES_DETAILS}
+        if disque.get("details_maj"):
+            connus[disque["release_id"]] = {cle: disque[cle] for cle in CLES_DETAILS if cle in disque}
     return connus
 
 
 def doit_rafraichir(details):
     if not details:
+        return True
+    # Une fiche lue avant l'ajout d'une catégorie (ou des codes-barres) est relue. Si la relecture
+    # échoue, on garde l'ancienne version en attendant.
+    if not all(cle in details for cle in CLES_DETAILS):
         return True
     age = (date.today() - date.fromisoformat(details["details_maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
@@ -572,7 +593,8 @@ def main():
     for e in elements:
         details = details_connus.get(e["id"])
         if details:
-            a_chercher[e["id"]] = (e["id"], e.get("basic_information", {}).get("master_id"), details["plages"])
+            a_chercher[e["id"]] = (e["id"], e.get("basic_information", {}).get("master_id"),
+                                   details["plages"], details.get("codes_barres") or [])
     oeuvres = musicbrainz.mettre_a_jour(FICHIER_MUSICBRAINZ, list(a_chercher.values()),
                                         tout="--musicbrainz-tout" in sys.argv)
 

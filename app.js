@@ -17,6 +17,7 @@ const CHAMP_LOCALISATION = "Localisation";   // noms des champs personnalisés D
 const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
+const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
 const ZOOM = 2.5;                             // grossissement de la visionneuse
 const LIGNES_MIN_EDITION = 4;                 // hauteur minimale des zones de texte du formulaire
 const API_DISCOGS = "https://api.discogs.com";
@@ -74,15 +75,19 @@ const etat = {
   localisation: "",
   double: false,
   avecNotes: false,
+  correspondanceMB: "",     // "", "exacte", "album" ou "aucune"
+  avecOeuvres: false,
   oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
   blocIndex: "compositeurs", // bloc affiché dans l'onglet Index
 };
 
-// Recherche et filtres remis à zéro (bouton « Tout effacer », clic dans l'index).
-const FILTRES_VIDES = {
+// Filtres remis à zéro (boutons « Effacer les filtres » et « Effacer ») : la recherche reste.
+const FILTRES_SEULS_VIDES = {
   categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
-  localisation: "", double: false, avecNotes: false, oeuvre: null, recherche: "", role: "partout",
+  localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, oeuvre: null,
 };
+// Recherche et filtres remis à zéro (clic dans l'index).
+const FILTRES_VIDES = { ...FILTRES_SEULS_VIDES, recherche: "", role: "partout" };
 
 // Raccourci pour trouver un élément de la page par son identifiant.
 const $ = (id) => document.getElementById(id);
@@ -309,16 +314,15 @@ function textesDesPlages(plages) {
 
 /**
  * Œuvres MusicBrainz d'une édition : Map id -> { id, titre, compositeur }.
- * On garde l'œuvre de chaque plage (le mouvement) et son œuvre parente (le concerto) :
- * selon les disques, MusicBrainz relie la plage à l'une ou à l'autre.
+ * Comme dans la fiche, on garde l'œuvre parente quand il y en a une : le concerto,
+ * et non chacun de ses mouvements.
  */
 function oeuvresDeLEdition(plages) {
   const oeuvres = new Map();
   for (const plage of plages) {
     if (plage.oeuvre) {
-      for (const o of [plage.oeuvre, plage.oeuvre.parente].filter(Boolean)) {
-        if (!oeuvres.has(o.id)) oeuvres.set(o.id, { id: o.id, titre: o.titre, compositeur: plage.oeuvre.compositeur });
-      }
+      const o = oeuvreDeReference(plage.oeuvre);
+      if (!oeuvres.has(o.id)) oeuvres.set(o.id, o);
     }
     for (const [id, o] of oeuvresDeLEdition(plage.sous_plages || [])) {
       if (!oeuvres.has(id)) oeuvres.set(id, o);
@@ -398,6 +402,18 @@ function remplirFiltres() {
   remplirListe($("filtre-format"), compter(editions, EXTRACTEURS.format), "Tous");
   remplirListe($("filtre-localisation"), compter(editions, EXTRACTEURS.localisation), "Toutes");
 
+  // Nombre d'éditions de toute la collection, à côté des choix fixes et des cases à cocher.
+  const nombre = (test) => " (" + editions.filter(test).length + ")";
+  for (const option of $("filtre-musicbrainz").options) {
+    if (option.value) {
+      option.textContent = option.dataset.libelle + nombre((e) => correspondanceMB(e) === option.value);
+    }
+  }
+  const libelleCase = (id, texte, test) => { $(id).nextElementSibling.textContent = texte + nombre(test); };
+  libelleCase("filtre-double", "En double ou plus", (e) => e.exemplaires.length >= 2);
+  libelleCase("filtre-notes", "Avec notes personnelles", (e) => e.notesPerso.length > 0);
+  libelleCase("filtre-oeuvres", "Avec œuvres identifiées", (e) => e.oeuvres.size > 0);
+
   // Les labels sont nombreux : liste de suggestions pour la saisie.
   const labels = [...compter(editions, EXTRACTEURS.label).keys()].sort(comparerTextes);
   $("liste-labels").replaceChildren(...labels.map((l) => creer("option", { value: l })));
@@ -433,6 +449,8 @@ function lireControles() {
   etat.localisation = $("filtre-localisation").value;
   etat.double = $("filtre-double").checked;
   etat.avecNotes = $("filtre-notes").checked;
+  etat.correspondanceMB = $("filtre-musicbrainz").value;
+  etat.avecOeuvres = $("filtre-oeuvres").checked;
 }
 
 /** Recopie l'état dans les champs (quand le code change un filtre, par un clic sur un nom par ex.). */
@@ -450,11 +468,24 @@ function ecrireControles() {
   $("filtre-localisation").value = etat.localisation;
   $("filtre-double").checked = etat.double;
   $("filtre-notes").checked = etat.avecNotes;
+  $("filtre-musicbrainz").value = etat.correspondanceMB;
+  $("filtre-oeuvres").checked = etat.avecOeuvres;
 }
 
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
-          etat.localisation, etat.double, etat.avecNotes, etat.oeuvre].filter(Boolean).length;
+          etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres,
+          etat.oeuvre].filter(Boolean).length;
+}
+
+/**
+ * Correspondance MusicBrainz de l'édition, regroupée comme dans le filtre : "exacte"
+ * (lien Discogs ou code-barre), "album", "aucune", ou "" si elle n'a pas encore été cherchée.
+ */
+function correspondanceMB(edition) {
+  const methode = edition.musicbrainz_methode;
+  if (methode === "edition" || methode === "code_barre") return "exacte";
+  return methode || "";
 }
 
 /** Vrai si l'édition passe la recherche et tous les filtres. */
@@ -476,6 +507,8 @@ function correspond(edition) {
   if (etat.localisation && !edition.localisations.includes(etat.localisation)) return false;
   if (etat.double && edition.exemplaires.length < 2) return false;
   if (etat.avecNotes && !edition.notesPerso.length) return false;
+  if (etat.correspondanceMB && correspondanceMB(edition) !== etat.correspondanceMB) return false;
+  if (etat.avecOeuvres && !edition.oeuvres.size) return false;
   if (etat.oeuvre && !edition.oeuvres.has(etat.oeuvre.id)) return false;
   return true;
 }
@@ -624,6 +657,27 @@ function chercherNom(nom, role) {
   window.scrollTo({ top: 0 });
 }
 
+/**
+ * Vignettes d'une source de photos : les VIGNETTES_VISIBLES premières, puis un lien
+ * « Voir les N photos restantes » pour déplier les autres (les coffrets en ont parfois des centaines).
+ * Les vignettes repliées sont seulement cachées : la visionneuse les parcourt toujours.
+ */
+function vignettesRepliables(boutons) {
+  const bloc = creer("div", { classe: "vignettes" }, boutons);
+  if (boutons.length <= VIGNETTES_VISIBLES) return bloc;
+  const cacher = (oui) => boutons.slice(VIGNETTES_VISIBLES).forEach((b) => { b.hidden = oui; });
+  cacher(true);
+  let deroule = false;
+  const texte = () => deroule ? "Replier" : "Voir les " + (boutons.length - VIGNETTES_VISIBLES) + " photos restantes";
+  const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus", texte: texte(),
+    surclic: () => {
+      deroule = !deroule;
+      cacher(!deroule);
+      lien.textContent = texte();
+    } });
+  return [bloc, lien];
+}
+
 function ouvrirFiche(edition) {
   // Images : celles de la fiche complète, sinon la pochette seule.
   const images = (edition.images && edition.images.length)
@@ -654,7 +708,7 @@ function ouvrirFiche(edition) {
   ].filter(([, liste]) => liste.length);
   const groupesImages = sources.map(([source, liste]) => [
     creer("p", { classe: "legende-photos", texte: "photos " + source }),
-    images.length > 1 ? creer("div", { classe: "vignettes" }, liste.map(([image, numero]) => vignette(image, numero))) : null,
+    images.length > 1 ? vignettesRepliables(liste.map(([image, numero]) => vignette(image, numero))) : null,
   ]);
 
   const informations = [
@@ -664,6 +718,7 @@ function ouvrirFiche(edition) {
     ["Format", decrireFormatsFiche(edition.formats)],
     ["Genres", (edition.genres || []).join(", ")],
     ["Styles", (edition.styles || []).join(", ")],
+    [(edition.codes_barres || []).length > 1 ? "Codes-barres" : "Code-barre", (edition.codes_barres || []).join(", ")],
   ].filter(([, valeur]) => valeur);
 
   const sectionsPersonnes = CATEGORIES_PERSONNES
@@ -716,7 +771,7 @@ function ouvrirFiche(edition) {
         ),
         notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
         // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
-        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier",
+        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes Custom Fields Discogs",
           surclic: () => ouvrirEdition(edition) })) : null,
         creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
         edition.notesPerso.length ? [
@@ -1402,7 +1457,7 @@ function brancherReglageJeton() {
   const etatJeton = $("jeton-etat");
   const decrire = () => {
     etatJeton.textContent = jeton()
-      ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier » apparaît dans les fiches."
+      ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier mes Custom Fields Discogs » apparaît dans les fiches."
       : "Aucun jeton sur cet appareil : la page est en lecture seule.";
   };
 
@@ -1455,16 +1510,18 @@ function brancherEvenements() {
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
                     "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-localisation", "filtre-double",
-                    "filtre-notes"]) {
+                    "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres"]) {
     $(id).addEventListener("change", () => { lireControles(); afficher(); });
   }
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });
 
-  $("effacer-filtres").addEventListener("click", () => {
-    Object.assign(etat, FILTRES_VIDES);
-    ecrireControles();
-    afficher();
-  });
+  for (const id of ["effacer-filtres", "effacer-filtres-haut"]) {
+    $(id).addEventListener("click", () => {
+      Object.assign(etat, FILTRES_SEULS_VIDES);
+      ecrireControles();
+      afficher();
+    });
+  }
 
   document.querySelectorAll(".onglet").forEach((bouton) => bouton.addEventListener("click", () => {
     etat.vue = bouton.dataset.vue;
