@@ -16,10 +16,12 @@ const FICHIER_COLLECTION = "data/collection.json";
 const CHAMP_LOCALISATION = "Localisation";   // noms des champs personnalisés Discogs
 const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
+const CHAMP_DESCRIPTION = "Description";
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
 const ZOOM = 2.5;                             // grossissement de la visionneuse
 const LIGNES_MIN_EDITION = 4;                 // hauteur minimale des zones de texte du formulaire
+const LONGUEUR_MAX_CHAMP = 255;               // Discogs refuse un champ texte plus long (constaté le 31/10/2026)
 const API_DISCOGS = "https://api.discogs.com";
 const CLE_JETON = "jeton-discogs";            // noms des réglages rangés dans le navigateur
 const CLE_MODIFICATIONS = "modifications-en-attente";
@@ -210,6 +212,11 @@ function nomDuSite(adresse) {
   }
 }
 
+/** Vrai si l'édition a une Description ou des Notes personnelles (repère ✎ et filtre). */
+function aDesTextes(edition) {
+  return edition.descriptions.length > 0 || edition.notesPerso.length > 0;
+}
+
 /** Valeurs d'un champ pour tous les exemplaires d'une édition, sans répétition. */
 function valeursDuChamp(edition, nomChamp) {
   return [...new Set(edition.exemplaires.map((e) => (e.champs[nomChamp] || "").trim()).filter(Boolean))];
@@ -281,6 +288,7 @@ function regrouperParEdition(disques) {
     edition.date_ajout = edition.exemplaires.map((e) => e.date_ajout).filter(Boolean).sort()[0] || null;
     edition.localisations = valeursDuChamp(edition, CHAMP_LOCALISATION);
     edition.notesPerso = valeursDuChamp(edition, CHAMP_NOTES_PERSO);
+    edition.descriptions = valeursDuChamp(edition, CHAMP_DESCRIPTION);
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
@@ -411,7 +419,7 @@ function remplirFiltres() {
   }
   const libelleCase = (id, texte, test) => { $(id).nextElementSibling.textContent = texte + nombre(test); };
   libelleCase("filtre-double", "En double ou plus", (e) => e.exemplaires.length >= 2);
-  libelleCase("filtre-notes", "Avec notes personnelles", (e) => e.notesPerso.length > 0);
+  libelleCase("filtre-notes", "Avec description ou notes", aDesTextes);
   libelleCase("filtre-oeuvres", "Avec œuvres identifiées", (e) => e.oeuvres.size > 0);
 
   // Les labels sont nombreux : liste de suggestions pour la saisie.
@@ -506,7 +514,7 @@ function correspond(edition) {
   if (etat.anneeMax && edition.annee > etat.anneeMax) return false;
   if (etat.localisation && !edition.localisations.includes(etat.localisation)) return false;
   if (etat.double && edition.exemplaires.length < 2) return false;
-  if (etat.avecNotes && !edition.notesPerso.length) return false;
+  if (etat.avecNotes && !aDesTextes(edition)) return false;
   if (etat.correspondanceMB && correspondanceMB(edition) !== etat.correspondanceMB) return false;
   if (etat.avecOeuvres && !edition.oeuvres.size) return false;
   if (etat.oeuvre && !edition.oeuvres.has(etat.oeuvre.id)) return false;
@@ -634,7 +642,7 @@ function afficherGrille(liste) {
           ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
           : creer("span", { classe: "sans-image", texte: "♪" }),
         nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null,
-        edition.notesPerso.length ? creer("span", { classe: "repere-notes", texte: "✎", title: "Notes personnelles" }) : null
+        aDesTextes(edition) ? creer("span", { classe: "repere-notes", texte: "✎", title: "Description ou notes personnelles" }) : null
       ),
       creer("p", { classe: "carte-titre", texte: edition.titre }),
       creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") }),
@@ -745,7 +753,7 @@ function ouvrirFiche(edition) {
   const liens = valeursDuChamp(edition, CHAMP_LIENS).flatMap(lireLiensExternes);
 
   // Les champs qui ont leur propre place dans la fiche ne sont pas répétés dans « Mon exemplaire ».
-  const champsAPart = [CHAMP_LOCALISATION, CHAMP_NOTES_PERSO, CHAMP_LIENS];
+  const champsAPart = [CHAMP_LOCALISATION, CHAMP_DESCRIPTION, CHAMP_NOTES_PERSO, CHAMP_LIENS];
   const exemplaires = edition.exemplaires.map((exemplaire, numero) => {
     const autresChamps = Object.entries(exemplaire.champs).filter(([nom]) => !champsAPart.includes(nom));
     return creer("li", {},
@@ -774,6 +782,10 @@ function ouvrirFiche(edition) {
         jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes Custom Fields Discogs",
           surclic: () => ouvrirEdition(edition) })) : null,
         creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
+        edition.descriptions.length ? [
+          creer("h3", { texte: "Description" }),
+          edition.descriptions.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
+        ] : null,
         edition.notesPerso.length ? [
           creer("h3", { texte: "Notes personnelles" }),
           edition.notesPerso.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
@@ -1340,6 +1352,11 @@ function creerListe(choix, valeurActuelle) {
   return liste;
 }
 
+/** Nombre de caractères tel que Discogs le compte (un emoji compte pour un). */
+function longueurTexte(texte) {
+  return [...texte].length;
+}
+
 /**
  * La zone de texte grandit avec son contenu : sur iPhone, on ne peut pas
  * l'agrandir à la main comme sur le Mac.
@@ -1386,10 +1403,20 @@ async function ouvrirEdition(edition) {
       const controle = champ.type === "dropdown"
         ? creerListe([["", "—"], ...(champ.options || []).map((o) => [o, o])], avant)
         : creer("textarea", { rows: Math.max(champ.lines || 0, LIGNES_MIN_EDITION) });
-      if (champ.type !== "dropdown") controle.addEventListener("input", () => ajusterHauteur(controle));
-      if (champ.type !== "dropdown") controle.value = avant;
+      // Compteur sous les zones de texte : « 212 / 255 », en rouge au-delà de la limite de Discogs.
+      const compteur = champ.type === "dropdown" ? null : creer("span", { classe: "compteur-caracteres" });
+      if (compteur) {
+        controle.value = avant;
+        const compter = () => {
+          const longueur = longueurTexte(controle.value);
+          compteur.textContent = longueur + " / " + LONGUEUR_MAX_CHAMP;
+          compteur.classList.toggle("trop-long", longueur > LONGUEUR_MAX_CHAMP);
+        };
+        controle.addEventListener("input", () => { ajusterHauteur(controle); compter(); });
+        compter();
+      }
       saisies.push({ instance, champ: { id: champ.id, nom: champ.name.trim() }, controle, avant });
-      return creer("label", { classe: "champ-edition" }, creer("span", { texte: champ.name.trim() }), controle);
+      return creer("label", { classe: "champ-edition" }, creer("span", { texte: champ.name.trim() }), controle, compteur);
     });
 
     const avantNote = String(instance.rating || 0);
@@ -1413,6 +1440,13 @@ async function ouvrirEdition(edition) {
 
   zone.addEventListener("submit", async (evenement) => {
     evenement.preventDefault();
+    // Un texte trop long serait refusé par Discogs : on prévient avant d'envoyer quoi que ce soit.
+    const tropLongs = saisies.filter((s) => s.champ && longueurTexte(s.controle.value) > LONGUEUR_MAX_CHAMP);
+    if (tropLongs.length) {
+      message.textContent = "Trop long pour Discogs (" + LONGUEUR_MAX_CHAMP + " caractères au plus) : "
+        + [...new Set(tropLongs.map((s) => s.champ.nom))].join(", ") + ". Rien n'a été envoyé.";
+      return;
+    }
     enregistrer.disabled = true;
     message.textContent = "Enregistrement sur Discogs…";
     const toutes = lireStockage(CLE_MODIFICATIONS, {});

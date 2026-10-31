@@ -271,6 +271,8 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .edition legend { color: var(--accent); padding: 0 6px; }
 .champ-edition { display: grid; gap: 4px; margin-bottom: 12px; font-size: 14px; }
 .champ-edition > span { color: var(--texte-discret); }
+.champ-edition > .compteur-caracteres { justify-self: end; font-size: 12px; font-variant-numeric: tabular-nums; }
+.champ-edition > .compteur-caracteres.trop-long { color: #e5484d; font-weight: 600; }
 .edition textarea, .petite-boite input {
   width: 100%; background: var(--fond); border: 1px solid var(--bordure);
   border-radius: var(--rayon); padding: 8px; resize: vertical;

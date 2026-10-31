@@ -58,8 +58,9 @@ fiche si une fiche est ouverte).
   **Run workflow**.
 - Un champ perso à ne pas publier : ajouter son nom dans `CHAMPS_NON_PUBLIES`
   (scripts/sync.py). Seule la synchro de GitHub le retire.
-- Deux champs perso ont leur propre bloc dans la fiche (noms définis en tête d'`app.js`) :
-  **Notes personnelles** (texte libre, retours à la ligne gardés, adresses cliquables) et
+- Trois champs perso ont leur propre bloc dans la fiche (noms définis en tête d'`app.js`) :
+  **Description** et **Notes personnelles** (texte libre, retours à la ligne gardés,
+  adresses cliquables ; repère ✎ et filtre « Avec description ou notes ») et
   **Liens externes** (une adresse par ligne, avec un nom facultatif devant :
   `Diapason | https://…`). Discogs transforme les adresses en liens HTML : la page
   les relit sans jamais insérer ce HTML tel quel.
@@ -82,3 +83,5 @@ modifications avec `git checkout data/`.
 - Les modifications s'affichent tout de suite sur l'appareil qui les a faites. Les autres
   appareils les voient après la synchro de la nuit (ou une synchro lancée à la main) ;
   l'appareil oublie alors sa copie locale.
+- Discogs limite chaque champ texte à 255 caractères : le formulaire affiche un compteur
+  et n'envoie rien tant qu'un texte dépasse.
