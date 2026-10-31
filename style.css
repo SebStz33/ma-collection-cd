@@ -335,14 +335,15 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .barres { display: grid; gap: 4px; }
 .voir-plus { margin-top: 10px; padding: 0; font-size: 13px; text-align: left; }
 .barre {
-  display: grid; grid-template-columns: minmax(90px, 38%) 1fr; align-items: center; gap: 10px;
+  display: grid; grid-template-columns: 1fr 35%; align-items: center; gap: 10px;
   background: none; border: 0; padding: 3px 4px; border-radius: 4px; text-align: left; cursor: pointer;
 }
 .barre:hover { background: var(--surface-2); }
 .barre-libelle { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.barre-piste { display: flex; align-items: center; gap: 6px; min-width: 0; }
-.barre-remplie { height: 14px; background: var(--accent); border-radius: 0 4px 4px 0; min-width: 2px; }
-.barre-valeur { font-size: 12px; color: var(--texte-2); font-variant-numeric: tabular-nums; }
+/* La barre part de la droite (juste avant le nombre) : le nom garde toute la place à gauche. */
+.barre-piste { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-width: 0; }
+.barre-remplie { height: 14px; background: var(--accent); border-radius: 4px 0 0 4px; min-width: 2px; }
+.barre-valeur { font-size: 12px; color: var(--texte-2); font-variant-numeric: tabular-nums; min-width: 2.2em; text-align: right; }
 
 /* Histogramme des années : une colonne par année, qui pousse depuis la ligne de base */
 .histogramme { position: relative; }
@@ -408,3 +409,20 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   .visionneuse-precedente, .visionneuse-suivante { display: none; }   /* on glisse du doigt */
   .statistiques { grid-template-columns: 1fr; }
 }
+
+/* Index : un bloc à la fois, les noms à la suite, regroupés par lettre */
+.index-entete {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 4px 0 10px;
+  border-bottom: 1px solid var(--bordure);
+}
+.index-lettres { display: flex; flex-wrap: wrap; gap: 2px; }
+.index-lettres .bouton-texte { padding: 2px 5px; font-size: 13px; }
+.index-lettre h3 { margin: 18px 0 6px; font-size: 15px; color: var(--accent); scroll-margin-top: 140px; }
+.index-noms { margin: 0; line-height: 1.9; font-size: 14px; }
+.index-nom { background: none; border: 0; padding: 0; color: var(--texte); cursor: pointer; text-align: left; font: inherit; }
+.index-nom:hover { color: var(--accent); }
+.index-nom .discret, .index-separateur { color: var(--texte-discret); }
+
+/* Ce qui n'agit pas sur la vue est masqué : tout l'outillage dans l'index, le tri dans les statistiques. */
+body[data-vue="index"] .outils, body[data-vue="index"] .filtres { display: none; }
+body[data-vue="statistiques"] .tri { display: none; }
