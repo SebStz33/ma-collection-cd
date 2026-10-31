@@ -630,7 +630,7 @@ function ouvrirFiche(edition) {
     ["Discogs", images.map((image, numero) => [image, numero]).filter(([image]) => image.type !== "musicbrainz")],
   ].filter(([, liste]) => liste.length);
   const groupesImages = sources.map(([source, liste]) => [
-    creer("p", { classe: "legende-photos", texte: (liste.length > 1 ? "Photos " : "Photo ") + source }),
+    creer("p", { classe: "legende-photos", texte: "photos " + source }),
     images.length > 1 ? creer("div", { classe: "vignettes" }, liste.map(([image, numero]) => vignette(image, numero))) : null,
   ]);
 
