@@ -14,6 +14,7 @@
   --texte-discret: #74747c;
   --accent: #e2aa52;          /* ambre : barres des statistiques, badges */
   --accent-texte: #1a1408;    /* texte posé sur l'ambre */
+  --bleu: #8ab4f0;            /* notes de l'album, pour les distinguer des noms cliquables */
   --rayon: 8px;
   --largeur-filtres: 240px;
   color-scheme: dark;
@@ -196,14 +197,15 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 }
 .fiche-corps { display: grid; grid-template-columns: 480px 1fr; gap: 28px; padding: 24px; }
 .fiche-images img.grande { width: 100%; border-radius: 8px; display: block; background: var(--fond); cursor: zoom-in; }
-.vignettes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.vignettes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.legende-photos { margin: 10px 0 0; font-size: 12px; color: var(--texte-discret); }
 .vignettes button { padding: 0; border: 2px solid transparent; border-radius: 4px; background: none; cursor: pointer; }
 .vignettes button.actif { border-color: var(--accent); }
 .vignettes img { width: 52px; height: 52px; object-fit: cover; display: block; border-radius: 2px; }
 
 .fiche h2 { margin: 0 0 4px; font-size: 22px; line-height: 1.25; }
 .fiche .sous-titre { margin: 0 0 16px; color: var(--texte-2); }
-.fiche .notes-album { margin: -8px 0 16px; color: var(--accent); font-size: 14px; }
+.fiche .notes-album { margin: -8px 0 16px; color: var(--bleu); font-size: 14px; }
 .fiche dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0 0 16px; font-size: 14px; }
 .fiche dt { color: var(--texte-discret); }
 .fiche dd { margin: 0; }
@@ -233,6 +235,19 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .plage-credits { color: var(--texte-discret); font-size: 12px; }
 .plage-intertitre { font-weight: 600; color: var(--accent); padding: 12px 0 4px; border-bottom: 1px solid var(--bordure); }
 .plages > .plage-intertitre:first-child { padding-top: 0; }
+/* Œuvre MusicBrainz sous une plage : cliquable pour voir mes autres versions */
+.plage-reference { color: var(--texte-2); font-size: 12px; }
+.plage-reference .bouton-texte { padding: 0; font-size: inherit; text-align: left; }
+.plage-reference .discret { color: var(--texte-discret); }
+
+/* Œuvre choisie, au-dessus de la grille */
+.bandeau-oeuvre {
+  margin: 0 0 14px; padding: 8px 12px; font-size: 14px;
+  background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon);
+}
+.bandeau-oeuvre .discret { color: var(--texte-2); }
+.bouton-revenir { margin-right: 10px; }
+.liens-bases { display: flex; flex-wrap: wrap; gap: 0 18px; margin: 0; }
 
 /* Notes personnelles : on garde les retours à la ligne tapés sur Discogs */
 .notes-perso { white-space: pre-line; font-size: 14px; line-height: 1.5; }
@@ -318,6 +333,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 
 /* Barres horizontales : libellé, barre, valeur au bout */
 .barres { display: grid; gap: 4px; }
+.voir-plus { margin-top: 10px; padding: 0; font-size: 13px; text-align: left; }
 .barre {
   display: grid; grid-template-columns: minmax(90px, 38%) 1fr; align-items: center; gap: 10px;
   background: none; border: 0; padding: 3px 4px; border-radius: 4px; text-align: left; cursor: pointer;

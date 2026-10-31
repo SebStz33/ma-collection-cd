@@ -1,6 +1,6 @@
 # Synchronisation automatique de ma collection Discogs, chaque nuit.
 # GitHub lance scripts/sync.py sur une de ses machines, puis enregistre
-# data/collection.json dans le dépôt : GitHub Pages republie alors le site.
+# data/collection.json (et data/musicbrainz.json) dans le dépôt : GitHub Pages republie alors le site.
 
 name: Synchro Discogs
 
@@ -20,7 +20,7 @@ concurrency:
 jobs:
   synchro:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60    # la première recherche MusicBrainz prend une vingtaine de minutes
     steps:
       - name: Récupérer le dépôt
         uses: actions/checkout@v5

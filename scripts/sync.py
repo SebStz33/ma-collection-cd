@@ -7,12 +7,15 @@ Ce script :
   3. récupère la fiche complète des disques qu'il ne connaît pas encore
      (compositeurs, interprètes, paroliers, arrangeurs, producteurs..., plages, images
      et note de la communauté) ;
-  4. écrit le résultat dans data/collection.json, dans notre propre format.
+  4. cherche sur MusicBrainz l'œuvre jouée sur chaque plage (voir musicbrainz.py) ;
+  5. écrit le résultat dans data/collection.json, dans notre propre format.
 
 Utilisation (depuis le dossier du projet) :
     python3 scripts/sync.py
     python3 scripts/sync.py --relire-tout   (relit toutes les fiches complètes,
                                              utile après un changement des règles de classement)
+    python3 scripts/sync.py --musicbrainz-tout   (cherche sur MusicBrainz tous les disques
+                                                  à faire, sans limite par synchro)
 
 Le token Discogs est lu dans la variable d'environnement DISCOGS_TOKEN,
 ou à défaut dans un fichier .env à la racine du projet (jamais publié).
@@ -32,6 +35,8 @@ import urllib.request
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+import musicbrainz
+
 # ---------------------------------------------------------------------------
 # Réglages
 # ---------------------------------------------------------------------------
@@ -46,6 +51,7 @@ NOM_APPLICATION = "MaCollectionCD/0.1 +https://github.com/SebStz33/ma-collection
 RACINE = Path(__file__).resolve().parent.parent
 FICHIER_SORTIE = RACINE / "data" / "collection.json"
 FICHIER_RAPPORT_ROLES = RACINE / "data" / "rapport_roles.txt"
+FICHIER_MUSICBRAINZ = RACINE / "data" / "musicbrainz.json"
 
 # Champs personnalisés à ne pas publier sur le site (qui est public).
 # Ils sont retirés seulement par la synchro automatique de GitHub ;
@@ -322,6 +328,48 @@ def construire_plage(morceau):
     return plage
 
 
+def plages_et_mouvements(plages):
+    """Toutes les plages, mouvements compris, dans l'ordre du disque (sans les intertitres)."""
+    for plage in plages:
+        if plage["type"] != "intertitre":
+            yield plage
+        yield from plages_et_mouvements(plage.get("sous_plages", []))
+
+
+def plages_designees(texte, plages):
+    """
+    Plages désignées par un crédit du disque, d'après sa précision « tracks » de Discogs :
+    « 1 to 5, 7 » -> les plages 1, 2, 3, 4, 5 et 7. Renvoie [] si une position est inconnue.
+    """
+    toutes = [p for p in plages_et_mouvements(plages) if p["position"]]
+    positions = [p["position"].strip().lower() for p in toutes]
+    resultat = []
+    for morceau in (texte or "").split(","):
+        bornes = [b.strip().lower() for b in morceau.split(" to ")]
+        if len(bornes) > 2 or any(b not in positions for b in bornes):
+            return []  # format inattendu : mieux vaut ne rien reporter que se tromper
+        debut, fin = positions.index(bornes[0]), positions.index(bornes[-1])
+        resultat.extend(toutes[debut:fin + 1])
+    return resultat
+
+
+def reporter_compositeurs(fiche, plages):
+    """
+    Un compositeur crédité au niveau du disque pour certaines plages
+    (« Composed By – Bach, tracks 1 to 5 ») est ajouté aux crédits de ces plages.
+    """
+    for credit in fiche.get("extraartists") or []:
+        if not credit.get("tracks"):
+            continue
+        roles = decouper_roles(credit.get("role"))
+        if not roles or any(categorie_du_role(role) != "compositeurs" for role in roles):
+            continue
+        nouveau = {"nom": nettoyer_nom(credit.get("name")), "role": (credit.get("role") or "").strip()}
+        for plage in plages_designees(credit["tracks"], plages):
+            if not any(c["nom"] == nouveau["nom"] for c in plage["credits"]):
+                plage["credits"].append(nouveau)
+
+
 def rapport_roles():
     """Renvoie le texte du rapport : rôles regroupés par catégorie, du plus fréquent au moins fréquent."""
     lignes = []
@@ -373,6 +421,7 @@ def extraire_details(fiche):
 
     details = dict(personnes)
     details["plages"] = [construire_plage(morceau) for morceau in fiche.get("tracklist", [])]
+    reporter_compositeurs(fiche, details["plages"])
     details["images"] = images
     details["note_communaute"] = note_communaute(fiche)
     details["details_maj"] = date.today().isoformat()
@@ -390,7 +439,7 @@ def note_communaute(fiche):
     return {"moyenne": round(float(note.get("average") or 0), 2), "votes": note["count"]}
 
 
-def construire_disque(element, champs_perso, dossiers, details):
+def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     """Construit la fiche d'un disque dans notre format, à partir de la liste Discogs."""
     info = element.get("basic_information", {})
 
@@ -442,6 +491,15 @@ def construire_disque(element, champs_perso, dossiers, details):
         details = {categorie: [] for categorie in CATEGORIES}
         details.update({"plages": [], "images": [], "note_communaute": None, "details_maj": None})
     disque.update(details)
+
+    # Œuvres MusicBrainz : ajoutées aux plages, et lien vers l'édition MusicBrainz.
+    entree_mb = entree_mb or {}
+    disque["plages"] = musicbrainz.ajouter_oeuvres(disque["plages"], entree_mb.get("oeuvres"))
+    # Images MusicBrainz (haute définition) d'abord, puis celles de Discogs.
+    disque["images"] = (entree_mb.get("images") or []) + [i for i in disque["images"] if i.get("type") != "musicbrainz"]
+    disque["musicbrainz"] = (
+        "https://musicbrainz.org/release/%s" % entree_mb["release"] if entree_mb.get("release") else None
+    )
     return disque
 
 
@@ -482,17 +540,17 @@ def doit_rafraichir(details):
 def main():
     token = lire_token()
 
-    print("1/4 Lecture des champs personnalisés et des dossiers...")
+    print("1/5 Lecture des champs personnalisés et des dossiers...")
     champs_perso = lire_champs_perso(token)
     print("  %d champs : %s" % (len(champs_perso), ", ".join(champs_perso.values()) or "aucun"))
     dossiers = lire_dossiers(token)
     categories = [nom for numero, nom in dossiers.items() if numero not in DOSSIERS_SANS_CATEGORIE]
     print("  %d dossiers : %s" % (len(categories), ", ".join(categories) or "aucun"))
 
-    print("2/4 Lecture de la collection...")
+    print("2/5 Lecture de la collection...")
     elements = lire_collection(token)
 
-    print("3/4 Fiches complètes...")
+    print("3/5 Fiches complètes...")
     details_connus = lire_details_connus()
     relire_tout = "--relire-tout" in sys.argv
     a_lire = sorted({
@@ -509,8 +567,20 @@ def main():
         if numero % 25 == 0 or numero == len(a_lire):
             print("  %d/%d" % (numero, len(a_lire)))
 
-    print("4/4 Écriture de data/collection.json...")
-    disques = [construire_disque(e, champs_perso, dossiers, details_connus.get(e["id"])) for e in elements]
+    print("4/5 Œuvres MusicBrainz...")
+    a_chercher = {}
+    for e in elements:
+        details = details_connus.get(e["id"])
+        if details:
+            a_chercher[e["id"]] = (e["id"], e.get("basic_information", {}).get("master_id"), details["plages"])
+    oeuvres = musicbrainz.mettre_a_jour(FICHIER_MUSICBRAINZ, list(a_chercher.values()),
+                                        tout="--musicbrainz-tout" in sys.argv)
+
+    print("5/5 Écriture de data/collection.json...")
+    disques = [
+        construire_disque(e, champs_perso, dossiers, details_connus.get(e["id"]), oeuvres.get(str(e["id"])))
+        for e in elements
+    ]
     disques.sort(key=lambda d: ((d["artistes_principaux"] or [""])[0].lower(), d["titre"].lower()))
 
     resultat = {
