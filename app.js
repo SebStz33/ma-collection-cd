@@ -17,6 +17,7 @@ const CHAMP_LOCALISATION = "Localisation";   // noms des champs personnalisés D
 const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
+const VIGNETTES_VISIBLES = 12;                // vignettes par source de photos, avant « Voir les N photos »
 const ZOOM = 2.5;                             // grossissement de la visionneuse
 const LIGNES_MIN_EDITION = 4;                 // hauteur minimale des zones de texte du formulaire
 const API_DISCOGS = "https://api.discogs.com";
@@ -78,11 +79,13 @@ const etat = {
   blocIndex: "compositeurs", // bloc affiché dans l'onglet Index
 };
 
-// Recherche et filtres remis à zéro (bouton « Tout effacer », clic dans l'index).
-const FILTRES_VIDES = {
+// Filtres remis à zéro (boutons « Effacer les filtres » et « Effacer ») : la recherche reste.
+const FILTRES_SEULS_VIDES = {
   categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
-  localisation: "", double: false, avecNotes: false, oeuvre: null, recherche: "", role: "partout",
+  localisation: "", double: false, avecNotes: false, oeuvre: null,
 };
+// Recherche et filtres remis à zéro (clic dans l'index).
+const FILTRES_VIDES = { ...FILTRES_SEULS_VIDES, recherche: "", role: "partout" };
 
 // Raccourci pour trouver un élément de la page par son identifiant.
 const $ = (id) => document.getElementById(id);
@@ -309,16 +312,15 @@ function textesDesPlages(plages) {
 
 /**
  * Œuvres MusicBrainz d'une édition : Map id -> { id, titre, compositeur }.
- * On garde l'œuvre de chaque plage (le mouvement) et son œuvre parente (le concerto) :
- * selon les disques, MusicBrainz relie la plage à l'une ou à l'autre.
+ * Comme dans la fiche, on garde l'œuvre parente quand il y en a une : le concerto,
+ * et non chacun de ses mouvements.
  */
 function oeuvresDeLEdition(plages) {
   const oeuvres = new Map();
   for (const plage of plages) {
     if (plage.oeuvre) {
-      for (const o of [plage.oeuvre, plage.oeuvre.parente].filter(Boolean)) {
-        if (!oeuvres.has(o.id)) oeuvres.set(o.id, { id: o.id, titre: o.titre, compositeur: plage.oeuvre.compositeur });
-      }
+      const o = oeuvreDeReference(plage.oeuvre);
+      if (!oeuvres.has(o.id)) oeuvres.set(o.id, o);
     }
     for (const [id, o] of oeuvresDeLEdition(plage.sous_plages || [])) {
       if (!oeuvres.has(id)) oeuvres.set(id, o);
@@ -624,6 +626,27 @@ function chercherNom(nom, role) {
   window.scrollTo({ top: 0 });
 }
 
+/**
+ * Vignettes d'une source de photos : les VIGNETTES_VISIBLES premières, puis un lien
+ * « Voir les N photos » pour déplier les autres (les coffrets en ont parfois des centaines).
+ * Les vignettes repliées sont seulement cachées : la visionneuse les parcourt toujours.
+ */
+function vignettesRepliables(boutons) {
+  const bloc = creer("div", { classe: "vignettes" }, boutons);
+  if (boutons.length <= VIGNETTES_VISIBLES) return bloc;
+  const cacher = (oui) => boutons.slice(VIGNETTES_VISIBLES).forEach((b) => { b.hidden = oui; });
+  cacher(true);
+  let deroule = false;
+  const texte = () => deroule ? "Replier" : "Voir les " + boutons.length + " photos";
+  const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus", texte: texte(),
+    surclic: () => {
+      deroule = !deroule;
+      cacher(!deroule);
+      lien.textContent = texte();
+    } });
+  return [bloc, lien];
+}
+
 function ouvrirFiche(edition) {
   // Images : celles de la fiche complète, sinon la pochette seule.
   const images = (edition.images && edition.images.length)
@@ -654,7 +677,7 @@ function ouvrirFiche(edition) {
   ].filter(([, liste]) => liste.length);
   const groupesImages = sources.map(([source, liste]) => [
     creer("p", { classe: "legende-photos", texte: "photos " + source }),
-    images.length > 1 ? creer("div", { classe: "vignettes" }, liste.map(([image, numero]) => vignette(image, numero))) : null,
+    images.length > 1 ? vignettesRepliables(liste.map(([image, numero]) => vignette(image, numero))) : null,
   ]);
 
   const informations = [
@@ -664,6 +687,7 @@ function ouvrirFiche(edition) {
     ["Format", decrireFormatsFiche(edition.formats)],
     ["Genres", (edition.genres || []).join(", ")],
     ["Styles", (edition.styles || []).join(", ")],
+    [(edition.codes_barres || []).length > 1 ? "Codes-barres" : "Code-barre", (edition.codes_barres || []).join(", ")],
   ].filter(([, valeur]) => valeur);
 
   const sectionsPersonnes = CATEGORIES_PERSONNES
@@ -716,7 +740,7 @@ function ouvrirFiche(edition) {
         ),
         notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
         // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
-        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier",
+        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes custom fields Discogs",
           surclic: () => ouvrirEdition(edition) })) : null,
         creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
         edition.notesPerso.length ? [
@@ -1402,7 +1426,7 @@ function brancherReglageJeton() {
   const etatJeton = $("jeton-etat");
   const decrire = () => {
     etatJeton.textContent = jeton()
-      ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier » apparaît dans les fiches."
+      ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier mes custom fields Discogs » apparaît dans les fiches."
       : "Aucun jeton sur cet appareil : la page est en lecture seule.";
   };
 
@@ -1460,11 +1484,13 @@ function brancherEvenements() {
   }
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });
 
-  $("effacer-filtres").addEventListener("click", () => {
-    Object.assign(etat, FILTRES_VIDES);
-    ecrireControles();
-    afficher();
-  });
+  for (const id of ["effacer-filtres", "effacer-filtres-haut"]) {
+    $(id).addEventListener("click", () => {
+      Object.assign(etat, FILTRES_SEULS_VIDES);
+      ecrireControles();
+      afficher();
+    });
+  }
 
   document.querySelectorAll(".onglet").forEach((bouton) => bouton.addEventListener("click", () => {
     etat.vue = bouton.dataset.vue;

@@ -59,7 +59,10 @@
     <!-- Colonne des filtres (panneau coulissant sur téléphone) -->
     <aside class="filtres" id="filtres" aria-label="Filtres">
       <div class="filtres-entete">
-        <h2>Filtres</h2>
+        <div class="filtres-titre">
+          <h2>Filtres</h2>
+          <button type="button" class="bouton-texte" id="effacer-filtres-haut">Effacer</button>
+        </div>
         <button type="button" class="bouton-texte" id="fermer-filtres">Fermer</button>
       </div>
 
@@ -89,7 +92,7 @@
         <span>Avec notes personnelles</span>
       </label>
 
-      <button type="button" class="bouton" id="effacer-filtres">Tout effacer</button>
+      <button type="button" class="bouton" id="effacer-filtres">Effacer les filtres</button>
       <button type="button" class="bouton-texte bouton-jeton" id="ouvrir-jeton">⚙︎ Jeton Discogs</button>
       <p class="rappel-discogs">Ne pas changer sur Discogs : champs Localisation, Notes personnelles et Liens externes,
         nom d’utilisateur. Nouveau jeton : mettre à jour le secret GitHub et sur chaque appareil avec droits de modification.</p>
