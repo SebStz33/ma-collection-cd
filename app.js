@@ -17,7 +17,7 @@ const CHAMP_LOCALISATION = "Localisation";   // noms des champs personnalisés D
 const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
-const VIGNETTES_VISIBLES = 12;                // vignettes par source de photos, avant « Voir les N photos »
+const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
 const ZOOM = 2.5;                             // grossissement de la visionneuse
 const LIGNES_MIN_EDITION = 4;                 // hauteur minimale des zones de texte du formulaire
 const API_DISCOGS = "https://api.discogs.com";
@@ -75,6 +75,8 @@ const etat = {
   localisation: "",
   double: false,
   avecNotes: false,
+  correspondanceMB: "",     // "", "exacte", "album" ou "aucune"
+  avecOeuvres: false,
   oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
   blocIndex: "compositeurs", // bloc affiché dans l'onglet Index
 };
@@ -82,7 +84,7 @@ const etat = {
 // Filtres remis à zéro (boutons « Effacer les filtres » et « Effacer ») : la recherche reste.
 const FILTRES_SEULS_VIDES = {
   categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
-  localisation: "", double: false, avecNotes: false, oeuvre: null,
+  localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, oeuvre: null,
 };
 // Recherche et filtres remis à zéro (clic dans l'index).
 const FILTRES_VIDES = { ...FILTRES_SEULS_VIDES, recherche: "", role: "partout" };
@@ -435,6 +437,8 @@ function lireControles() {
   etat.localisation = $("filtre-localisation").value;
   etat.double = $("filtre-double").checked;
   etat.avecNotes = $("filtre-notes").checked;
+  etat.correspondanceMB = $("filtre-musicbrainz").value;
+  etat.avecOeuvres = $("filtre-oeuvres").checked;
 }
 
 /** Recopie l'état dans les champs (quand le code change un filtre, par un clic sur un nom par ex.). */
@@ -452,11 +456,24 @@ function ecrireControles() {
   $("filtre-localisation").value = etat.localisation;
   $("filtre-double").checked = etat.double;
   $("filtre-notes").checked = etat.avecNotes;
+  $("filtre-musicbrainz").value = etat.correspondanceMB;
+  $("filtre-oeuvres").checked = etat.avecOeuvres;
 }
 
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
-          etat.localisation, etat.double, etat.avecNotes, etat.oeuvre].filter(Boolean).length;
+          etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres,
+          etat.oeuvre].filter(Boolean).length;
+}
+
+/**
+ * Correspondance MusicBrainz de l'édition, regroupée comme dans le filtre : "exacte"
+ * (lien Discogs ou code-barre), "album", "aucune", ou "" si elle n'a pas encore été cherchée.
+ */
+function correspondanceMB(edition) {
+  const methode = edition.musicbrainz_methode;
+  if (methode === "edition" || methode === "code_barre") return "exacte";
+  return methode || "";
 }
 
 /** Vrai si l'édition passe la recherche et tous les filtres. */
@@ -478,6 +495,8 @@ function correspond(edition) {
   if (etat.localisation && !edition.localisations.includes(etat.localisation)) return false;
   if (etat.double && edition.exemplaires.length < 2) return false;
   if (etat.avecNotes && !edition.notesPerso.length) return false;
+  if (etat.correspondanceMB && correspondanceMB(edition) !== etat.correspondanceMB) return false;
+  if (etat.avecOeuvres && !edition.oeuvres.size) return false;
   if (etat.oeuvre && !edition.oeuvres.has(etat.oeuvre.id)) return false;
   return true;
 }
@@ -628,7 +647,7 @@ function chercherNom(nom, role) {
 
 /**
  * Vignettes d'une source de photos : les VIGNETTES_VISIBLES premières, puis un lien
- * « Voir les N photos » pour déplier les autres (les coffrets en ont parfois des centaines).
+ * « Voir les N photos restantes » pour déplier les autres (les coffrets en ont parfois des centaines).
  * Les vignettes repliées sont seulement cachées : la visionneuse les parcourt toujours.
  */
 function vignettesRepliables(boutons) {
@@ -637,7 +656,7 @@ function vignettesRepliables(boutons) {
   const cacher = (oui) => boutons.slice(VIGNETTES_VISIBLES).forEach((b) => { b.hidden = oui; });
   cacher(true);
   let deroule = false;
-  const texte = () => deroule ? "Replier" : "Voir les " + boutons.length + " photos";
+  const texte = () => deroule ? "Replier" : "Voir les " + (boutons.length - VIGNETTES_VISIBLES) + " photos restantes";
   const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus", texte: texte(),
     surclic: () => {
       deroule = !deroule;
@@ -740,7 +759,7 @@ function ouvrirFiche(edition) {
         ),
         notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
         // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
-        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes custom fields Discogs",
+        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes Custom Fields Discogs",
           surclic: () => ouvrirEdition(edition) })) : null,
         creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
         edition.notesPerso.length ? [
@@ -1426,7 +1445,7 @@ function brancherReglageJeton() {
   const etatJeton = $("jeton-etat");
   const decrire = () => {
     etatJeton.textContent = jeton()
-      ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier mes custom fields Discogs » apparaît dans les fiches."
+      ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier mes Custom Fields Discogs » apparaît dans les fiches."
       : "Aucun jeton sur cet appareil : la page est en lecture seule.";
   };
 
@@ -1479,7 +1498,7 @@ function brancherEvenements() {
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
                     "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-localisation", "filtre-double",
-                    "filtre-notes"]) {
+                    "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres"]) {
     $(id).addEventListener("change", () => { lireControles(); afficher(); });
   }
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });

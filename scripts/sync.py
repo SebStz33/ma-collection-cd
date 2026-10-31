@@ -516,6 +516,8 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     disque["musicbrainz"] = (
         "https://musicbrainz.org/release/%s" % entree_mb["release"] if entree_mb.get("release") else None
     )
+    # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
+    disque["musicbrainz_methode"] = entree_mb.get("methode")
     return disque
 
 

@@ -83,6 +83,15 @@
         </div>
       </div>
       <label class="filtre"><span>Localisation</span><select id="filtre-localisation"></select></label>
+      <label class="filtre">
+        <span>Correspondance avec MusicBrainz</span>
+        <select id="filtre-musicbrainz">
+          <option value="">Toutes</option>
+          <option value="exacte">Édition exacte</option>
+          <option value="album">Par l’album</option>
+          <option value="aucune">Sans correspondance</option>
+        </select>
+      </label>
       <label class="filtre case">
         <input type="checkbox" id="filtre-double">
         <span>En double seulement</span>
@@ -91,11 +100,15 @@
         <input type="checkbox" id="filtre-notes">
         <span>Avec notes personnelles</span>
       </label>
+      <label class="filtre case">
+        <input type="checkbox" id="filtre-oeuvres">
+        <span>Avec œuvres identifiées</span>
+      </label>
 
       <button type="button" class="bouton" id="effacer-filtres">Effacer les filtres</button>
       <button type="button" class="bouton-texte bouton-jeton" id="ouvrir-jeton">⚙︎ Jeton Discogs</button>
-      <p class="rappel-discogs">Ne pas changer sur Discogs : champs Localisation, Notes personnelles et Liens externes,
-        nom d’utilisateur. Nouveau jeton : mettre à jour le secret GitHub et sur chaque appareil avec droits de modification.</p>
+      <p class="rappel-discogs">Ne pas changer sur Discogs : noms des champs Localisation, Notes personnelles,
+        Liens externes (Custom Fields) et le nom d’utilisateur SebSteinmetz. Nouveau jeton : mettre à jour le secret GitHub et sur chaque appareil avec droits de modification.</p>
     </aside>
 
     <main class="contenu">
