@@ -138,6 +138,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .sommaire-categories { font-size: 15px; line-height: 1.9; margin: 0 0 20px; }
 .sommaire-categories .bouton-texte { padding: 0; font-size: 15px; }
 .sommaire-element { white-space: nowrap; }
+.sommaire-categories .discret { color: var(--texte-2); }
 .titre-categorie {
   position: sticky; top: var(--hauteur-entete, 112px); z-index: 5;
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 6px;
@@ -443,6 +444,9 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .index-nom { background: none; border: 0; padding: 0; color: var(--texte); cursor: pointer; text-align: left; font: inherit; }
 .index-nom:hover { color: var(--accent); }
 .index-nom .discret, .index-separateur { color: var(--texte-discret); }
+/* Un nom et son point restent ensemble ; un long nom (titre et artistes) peut tout de même passer à la ligne. */
+.index-element { white-space: nowrap; }
+.index-element .index-nom { white-space: normal; }
 
 /* Ce qui n'agit pas sur la vue est masqué : tout l'outillage dans l'index, le tri dans les statistiques. */
 body[data-vue="index"] .outils, body[data-vue="index"] .filtres { display: none; }

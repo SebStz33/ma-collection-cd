@@ -646,7 +646,6 @@ function afficherGrille(liste) {
   }
   const categories = [...parCategorie.keys()].sort((a, b) =>
     (a === SANS_CATEGORIE) - (b === SANS_CATEGORIE) || comparerTextes(a, b));
-  const nom = (categorie) => categorie + " (" + parCategorie.get(categorie).length + ")";
   const groupes = categories.map((categorie) => creer("section", { classe: "groupe-categorie" }));
   const allerAuGroupe = (numero) => groupes[numero].scrollIntoView({ behavior: "smooth", block: "start" });
 
@@ -655,7 +654,8 @@ function afficherGrille(liste) {
     // Le point de séparation suit le nom, pour qu'une ligne ne commence jamais par « · ».
     categories.map((categorie, numero) => [
       creer("span", { classe: "sommaire-element" },
-        creer("button", { type: "button", classe: "bouton-texte", texte: nom(categorie), surclic: () => allerAuGroupe(numero) }),
+        creer("button", { type: "button", classe: "bouton-texte", surclic: () => allerAuGroupe(numero) },
+          categorie, creer("span", { classe: "discret", texte: " (" + parCategorie.get(categorie).length + ")" })),
         numero < categories.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
       " ",
     ])) : null;
@@ -1173,9 +1173,32 @@ function estClassique(edition) {
  * Chaque nom va dans un seul bloc, celui de la majorité de ses éditions (classique en cas d'égalité).
  */
 function dansLaMoitie(bloc, editionsDuNom) {
-  const classiques = editionsDuNom.filter(estClassique).length;
-  const classique = classiques * 2 >= editionsDuNom.length;
+  const classique = majoritairementClassique(editionsDuNom);
   return bloc.endsWith("_classiques") ? classique : !classique;
+}
+
+/** Vrai si au moins la moitié de ces éditions sont classées « Classical ». */
+function majoritairementClassique(editionsDuNom) {
+  return editionsDuNom.filter(estClassique).length * 2 >= editionsDuNom.length;
+}
+
+/**
+ * Côté de chaque compositeur et de chaque œuvre (id), d'après toute la collection,
+ * pour que le classement ne change pas avec les filtres : Map -> vrai si classique.
+ */
+function cotesClassiques() {
+  const parCompositeur = new Map();
+  const parOeuvre = new Map();
+  const ajouter = (carte, cle, edition) => {
+    if (!carte.has(cle)) carte.set(cle, []);
+    carte.get(cle).push(edition);
+  };
+  for (const edition of editions) {
+    for (const nom of new Set(edition.compositeurs || [])) ajouter(parCompositeur, nom, edition);
+    for (const id of edition.oeuvres.keys()) ajouter(parOeuvre, id, edition);
+  }
+  const cotes = (carte) => new Map([...carte].map(([cle, liste]) => [cle, majoritairementClassique(liste)]));
+  return { compositeurs: cotes(parCompositeur), oeuvres: cotes(parOeuvre) };
 }
 
 /** Entrées d'un bloc : [{ libelle, nombre, cle, clic }]. */
@@ -1263,13 +1286,16 @@ function afficherIndex() {
     enteteIndex,
     ...lettres.map((lettre) => creer("section", { classe: "index-lettre" },
       creer("h3", { id: "lettre-" + lettre, texte: lettre }),
-      creer("p", { classe: "index-noms" }, parLettre.get(lettre).map((entree, numero) => [
-        numero ? creer("span", { classe: "index-separateur", texte: " · " }) : null,
-        creer("button", { type: "button", classe: "index-nom", surclic: entree.clic,
-          title: entree.detail || null },
-          entree.libelle,
-          entree.nombre > 1 ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
-          entree.detail ? creer("span", { classe: "discret", texte: " – " + entree.detail }) : null),
+      // Le point de séparation suit le nom, pour qu'une ligne ne commence jamais par « · ».
+      creer("p", { classe: "index-noms" }, parLettre.get(lettre).map((entree, numero, liste) => [
+        creer("span", { classe: "index-element" },
+          creer("button", { type: "button", classe: "index-nom", surclic: entree.clic,
+            title: entree.detail || null },
+            entree.libelle,
+            entree.nombre > 1 ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
+            entree.detail ? creer("span", { classe: "discret", texte: " – " + entree.detail }) : null),
+          numero < liste.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
+        " ",
       ]))
     ))
   );
@@ -1377,6 +1403,20 @@ function afficherStatistiques(liste) {
   }));
   const oeuvresEnPlusieursVersions = new Map([...comptesOeuvres].filter(([, nombre]) => nombre > 1));
 
+  // Compositeurs et œuvres, chacun en deux cartes : classiques et autres (même classement que l'index).
+  const cotes = cotesClassiques();
+  const partager = (compte, estClassiqueNom) => [true, false].map((classique) =>
+    new Map([...compte].filter(([nom]) => estClassiqueNom(nom) === classique)));
+  const [compositeursClassiques, autresCompositeurs] = partager(compositeurs, (nom) => cotes.compositeurs.get(nom));
+  const [oeuvresClassiques, autresOeuvres] = partager(oeuvresEnPlusieursVersions,
+    (nom) => cotes.oeuvres.get(oeuvresParNom.get(nom).id));
+  const carteCompositeurs = (titre, compte) => compte.size ? carteBarres(titre, "Les 15 premiers", compte, 15,
+    (nom) => chercherNomSansFiche(nom, "compositeurs"),
+    (n) => "Voir les " + n + " compositeurs présents sur au moins 2 éditions") : "";
+  const carteOeuvres = (titre, compte) => compte.size ? carteBarres(titre, "Les 15 premières, d'après MusicBrainz", compte, 15,
+    (nom) => choisirOeuvre(oeuvresParNom.get(nom)),
+    (n) => "Voir les " + n + " œuvres présentes sur au moins 2 éditions") : "";
+
   const chiffre = (valeur, libelle) => creer("div", { classe: "chiffre" },
     creer("div", { classe: "valeur", texte: valeur.toLocaleString("fr-FR") }),
     creer("div", { classe: "libelle", texte: libelle }));
@@ -1405,13 +1445,12 @@ function afficherStatistiques(liste) {
     carteBarres("Genres", "Genres Discogs", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
     carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
     carteBarres("Formats", "", compter(liste, EXTRACTEURS.format), 10, appliquer("format")),
-    carteBarres("Compositeurs les plus présents", "Les 15 premiers", compositeurs, 15, (nom) => chercherNomSansFiche(nom, "compositeurs"),
-      (n) => "Voir les " + n + " compositeurs présents sur au moins 2 éditions"),
+    carteCompositeurs("Compositeurs classiques les plus présents", compositeursClassiques),
+    carteCompositeurs("Autres compositeurs les plus présents", autresCompositeurs),
     carteBarres("Interprètes les plus présents", "Les 15 premiers", interpretes, 15, (nom) => chercherNomSansFiche(nom, "interpretes"),
       (n) => "Voir les " + n + " interprètes présents sur au moins 2 éditions"),
-    ...(oeuvresEnPlusieursVersions.size ? [carteBarres("Œuvres en plusieurs versions", "Les 15 premières, d'après MusicBrainz",
-      oeuvresEnPlusieursVersions, 15, (nom) => choisirOeuvre(oeuvresParNom.get(nom)),
-      (n) => "Voir les " + n + " œuvres présentes sur au moins 2 éditions")] : []),
+    carteOeuvres("Œuvres classiques en plusieurs versions", oeuvresClassiques),
+    carteOeuvres("Autres œuvres en plusieurs versions", autresOeuvres),
     carteBarres("Labels", "Les 15 premiers", compter(liste, EXTRACTEURS.label), 15, appliquer("label"),
       (n) => "Voir les " + n + " labels ayant au moins 2 éditions")
   );
