@@ -430,3 +430,9 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 /* Ce qui n'agit pas sur la vue est masqué : tout l'outillage dans l'index, le tri dans les statistiques. */
 body[data-vue="index"] .outils, body[data-vue="index"] .filtres { display: none; }
 body[data-vue="statistiques"] .tri { display: none; }
+
+/* Recherche dans la fiche */
+.ligne-recherche-fiche { display: flex; align-items: center; gap: 10px; margin: -6px 0 16px; }
+.recherche-fiche { flex: 0 1 260px; min-width: 0; color: var(--texte); }
+mark.trouve { background: rgba(226, 170, 82, 0.35); color: inherit; border-radius: 2px; }
+mark.trouve.actuel { background: var(--accent); color: var(--accent-texte); }

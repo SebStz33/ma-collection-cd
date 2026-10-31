@@ -766,48 +766,135 @@ function ouvrirFiche(edition) {
     );
   });
 
+  // Recherche dans la fiche : pré-remplie avec la recherche de la collection.
+  const champRecherche = creer("input", { type: "search", classe: "recherche-fiche", placeholder: "Chercher dans la fiche",
+    "aria-label": "Chercher dans la fiche", value: etat.recherche, autocomplete: "off" });
+  const resultats = creer("span", { classe: "discret resultats-fiche" });
+
+  const texteFiche = creer("div", {},
+    creer("h2", { id: "fiche-titre", texte: edition.titre }),
+    creer("p", { classe: "sous-titre" },
+      (edition.artistes_principaux || []).map((nom, i) => [
+        i ? ", " : "",
+        creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
+      ])
+    ),
+    creer("p", { classe: "ligne-recherche-fiche" }, champRecherche, resultats),
+    notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
+    // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
+    jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes Custom Fields Discogs",
+      surclic: () => ouvrirEdition(edition) })) : null,
+    creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
+    edition.descriptions.length ? [
+      creer("h3", { texte: "Description" }),
+      edition.descriptions.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
+    ] : null,
+    edition.notesPerso.length ? [
+      creer("h3", { texte: "Notes personnelles" }),
+      edition.notesPerso.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
+    ] : null,
+    liens.length ? [
+      creer("h3", { texte: "Liens externes" }),
+      creer("ul", { classe: "liens-externes" }, liens.map((l) => creer("li", {}, creerLien(l.adresse, l.nom + " ↗")))),
+    ] : null,
+    sectionsPersonnes,
+    creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
+    creer("ul", { classe: "exemplaires" }, exemplaires),
+    (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null, edition })] : null,
+    creer("p", { classe: "liens-bases" },
+      creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
+      edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
+        texte: "Voir sur MusicBrainz ↗" }) : null
+    )
+  );
+
   $("fiche-contenu").replaceChildren(
     creer("div", { classe: "fiche-corps" },
       creer("div", { classe: "fiche-images" }, grande, groupesImages),
-      creer("div", {},
-        creer("h2", { id: "fiche-titre", texte: edition.titre }),
-        creer("p", { classe: "sous-titre" },
-          (edition.artistes_principaux || []).map((nom, i) => [
-            i ? ", " : "",
-            creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
-          ])
-        ),
-        notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
-        // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
-        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes Custom Fields Discogs",
-          surclic: () => ouvrirEdition(edition) })) : null,
-        creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
-        edition.descriptions.length ? [
-          creer("h3", { texte: "Description" }),
-          edition.descriptions.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
-        ] : null,
-        edition.notesPerso.length ? [
-          creer("h3", { texte: "Notes personnelles" }),
-          edition.notesPerso.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
-        ] : null,
-        liens.length ? [
-          creer("h3", { texte: "Liens externes" }),
-          creer("ul", { classe: "liens-externes" }, liens.map((l) => creer("li", {}, creerLien(l.adresse, l.nom + " ↗")))),
-        ] : null,
-        sectionsPersonnes,
-        creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
-        creer("ul", { classe: "exemplaires" }, exemplaires),
-        (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null, edition })] : null,
-        creer("p", { classe: "liens-bases" },
-          creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
-          edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
-            texte: "Voir sur MusicBrainz ↗" }) : null
-        )
-      )
+      texteFiche
     )
   );
   $("fiche").showModal();
   $("fiche").scrollTop = 0;
+
+  let minuterie = null;
+  let numeroResultat = 0;
+  const chercher = () => {
+    const nombre = surligner(texteFiche, champRecherche.value);
+    numeroResultat = 0;
+    resultats.textContent = !champRecherche.value.trim() ? ""
+      : nombre ? nombre + (nombre > 1 ? " résultats" : " résultat") : "Aucun résultat";
+    allerAuResultat(texteFiche, 0);
+  };
+  champRecherche.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(chercher, 150); });
+  // Entrée : résultat suivant (et retour au premier après le dernier).
+  champRecherche.addEventListener("keydown", (evenement) => {
+    if (evenement.key !== "Enter") return;
+    evenement.preventDefault();
+    numeroResultat += 1;
+    numeroResultat = allerAuResultat(texteFiche, numeroResultat);
+  });
+  if (champRecherche.value) chercher();
+}
+
+/**
+ * Surligne dans `bloc` tous les passages qui correspondent à un des mots de `recherche`,
+ * sans tenir compte des majuscules ni des accents. Renvoie le nombre de passages.
+ */
+function surligner(bloc, recherche) {
+  // On enlève d'abord le surlignage précédent.
+  for (const marque of bloc.querySelectorAll("mark.trouve")) marque.replaceWith(marque.textContent);
+  bloc.normalize();
+  const mots = normaliser(recherche).split(/\s+/).filter(Boolean);
+  if (!mots.length) return 0;
+
+  const noeuds = [];
+  const parcours = document.createTreeWalker(bloc, NodeFilter.SHOW_TEXT);
+  while (parcours.nextNode()) noeuds.push(parcours.currentNode);
+
+  let nombre = 0;
+  for (const noeud of noeuds) {
+    // Texte simplifié lettre par lettre, en gardant la position de chaque lettre dans le texte d'origine.
+    const original = noeud.textContent;
+    let simple = "";
+    const position = [];
+    for (let i = 0; i < original.length; i++) {
+      const lettre = normaliser(original[i]);
+      simple += lettre;
+      for (let j = 0; j < lettre.length; j++) position.push(i);
+    }
+    // Passages trouvés, dans l'ordre et sans chevauchement : [début, fin] dans le texte d'origine.
+    const passages = [];
+    for (const mot of mots) {
+      for (let debut = simple.indexOf(mot); debut >= 0; debut = simple.indexOf(mot, debut + mot.length)) {
+        passages.push([position[debut], position[debut + mot.length - 1] + 1]);
+      }
+    }
+    passages.sort((a, b) => a[0] - b[0]);
+    const retenus = passages.filter((p, i) => i === 0 || p[0] >= passages[i - 1][1]);
+    if (!retenus.length) continue;
+    const morceaux = [];
+    let curseur = 0;
+    for (const [debut, fin] of retenus) {
+      morceaux.push(original.slice(curseur, debut), creer("mark", { classe: "trouve", texte: original.slice(debut, fin) }));
+      curseur = fin;
+    }
+    morceaux.push(original.slice(curseur));
+    noeud.replaceWith(...morceaux.filter((m) => m !== ""));
+    nombre += retenus.length;
+  }
+  return nombre;
+}
+
+/** Fait défiler la fiche jusqu'au résultat `numero` (le premier après le dernier). Renvoie le numéro affiché. */
+function allerAuResultat(bloc, numero) {
+  const marques = [...bloc.querySelectorAll("mark.trouve")];
+  marques.forEach((m) => m.classList.remove("actuel"));
+  if (!marques.length) return 0;
+  const n = numero % marques.length;
+  marques[n].classList.add("actuel");
+  marques[n].scrollIntoView({ block: "center", behavior: "smooth" });
+  return n;
 }
 
 /**
