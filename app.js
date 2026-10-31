@@ -402,6 +402,18 @@ function remplirFiltres() {
   remplirListe($("filtre-format"), compter(editions, EXTRACTEURS.format), "Tous");
   remplirListe($("filtre-localisation"), compter(editions, EXTRACTEURS.localisation), "Toutes");
 
+  // Nombre d'éditions de toute la collection, à côté des choix fixes et des cases à cocher.
+  const nombre = (test) => " (" + editions.filter(test).length + ")";
+  for (const option of $("filtre-musicbrainz").options) {
+    if (option.value) {
+      option.textContent = option.dataset.libelle + nombre((e) => correspondanceMB(e) === option.value);
+    }
+  }
+  const libelleCase = (id, texte, test) => { $(id).nextElementSibling.textContent = texte + nombre(test); };
+  libelleCase("filtre-double", "En double ou plus", (e) => e.exemplaires.length >= 2);
+  libelleCase("filtre-notes", "Avec notes personnelles", (e) => e.notesPerso.length > 0);
+  libelleCase("filtre-oeuvres", "Avec œuvres identifiées", (e) => e.oeuvres.size > 0);
+
   // Les labels sont nombreux : liste de suggestions pour la saisie.
   const labels = [...compter(editions, EXTRACTEURS.label).keys()].sort(comparerTextes);
   $("liste-labels").replaceChildren(...labels.map((l) => creer("option", { value: l })));
