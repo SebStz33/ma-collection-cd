@@ -652,9 +652,12 @@ function afficherGrille(liste) {
 
   // Liste des catégories en haut (seulement s'il y en a plusieurs) : un clic descend jusqu'à elle.
   const sommaire = categories.length > 1 ? creer("nav", { classe: "sommaire-categories", "aria-label": "Catégories" },
+    // Le point de séparation suit le nom, pour qu'une ligne ne commence jamais par « · ».
     categories.map((categorie, numero) => [
-      numero ? creer("span", { classe: "index-separateur", texte: " · " }) : null,
-      creer("button", { type: "button", classe: "bouton-texte", texte: nom(categorie), surclic: () => allerAuGroupe(numero) }),
+      creer("span", { classe: "sommaire-element" },
+        creer("button", { type: "button", classe: "bouton-texte", texte: nom(categorie), surclic: () => allerAuGroupe(numero) }),
+        numero < categories.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
+      " ",
     ])) : null;
 
   groupes.forEach((groupe, numero) => groupe.append(
@@ -1247,13 +1250,17 @@ function afficherIndex() {
       texte: libelle + " (" + entreesIndex(cle).length.toLocaleString("fr-FR") + ")" })));
   choix.addEventListener("change", () => { etat.blocIndex = choix.value; afficher(); window.scrollTo({ top: 0 }); });
 
+  // La ligne du sélecteur et des lettres reste sous l'en-tête : la lettre choisie arrive juste en dessous.
+  const enteteIndex = creer("div", { classe: "index-entete" },
+    choix,
+    creer("nav", { classe: "index-lettres", "aria-label": "Lettres" }, lettres.map((lettre) =>
+      creer("button", { type: "button", classe: "bouton-texte", texte: lettre,
+        surclic: () => window.scrollTo({ behavior: "smooth",
+          top: $("lettre-" + lettre).getBoundingClientRect().top + window.scrollY - enteteIndex.getBoundingClientRect().bottom - 4 }) })))
+  );
+
   $("vue-index").replaceChildren(
-    creer("div", { classe: "index-entete" },
-      choix,
-      creer("nav", { classe: "index-lettres", "aria-label": "Lettres" }, lettres.map((lettre) =>
-        creer("button", { type: "button", classe: "bouton-texte", texte: lettre,
-          surclic: () => $("lettre-" + lettre).scrollIntoView({ behavior: "smooth", block: "start" }) })))
-    ),
+    enteteIndex,
     ...lettres.map((lettre) => creer("section", { classe: "index-lettre" },
       creer("h3", { id: "lettre-" + lettre, texte: lettre }),
       creer("p", { classe: "index-noms" }, parLettre.get(lettre).map((entree, numero) => [

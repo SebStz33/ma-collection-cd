@@ -135,13 +135,14 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 /* ---------- Grille de pochettes ---------- */
 
 /* Une grille par catégorie, avec son titre */
-.sommaire-categories { font-size: 13px; line-height: 1.9; margin: 0 0 20px; }
-.sommaire-categories .bouton-texte { padding: 0; font-size: 13px; }
+.sommaire-categories { font-size: 15px; line-height: 1.9; margin: 0 0 20px; }
+.sommaire-categories .bouton-texte { padding: 0; font-size: 15px; }
+.sommaire-element { white-space: nowrap; }
 .titre-categorie {
   position: sticky; top: var(--hauteur-entete, 112px); z-index: 5;
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 6px;
   font-size: 15px; font-weight: 600; margin: 0 0 12px; padding: 8px 0;
-  background: var(--fond);
+  background: var(--fond); color: var(--accent);
 }
 .titre-categorie .discret { color: var(--texte-2); font-weight: 400; }
 .navigation-categories { display: flex; gap: 14px; margin-left: auto; font-weight: 400; }
@@ -431,12 +432,13 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 
 /* Index : un bloc à la fois, les noms à la suite, regroupés par lettre */
 .index-entete {
+  position: sticky; top: var(--hauteur-entete, 112px); z-index: 5; background: var(--fond);
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 4px 0 10px;
   border-bottom: 1px solid var(--bordure);
 }
 .index-lettres { display: flex; flex-wrap: wrap; gap: 2px; }
 .index-lettres .bouton-texte { padding: 2px 5px; font-size: 13px; }
-.index-lettre h3 { margin: 18px 0 6px; font-size: 15px; color: var(--accent); scroll-margin-top: 140px; }
+.index-lettre h3 { margin: 18px 0 6px; font-size: 15px; color: var(--accent); }
 .index-noms { margin: 0; line-height: 1.9; font-size: 14px; }
 .index-nom { background: none; border: 0; padding: 0; color: var(--texte); cursor: pointer; text-align: left; font: inherit; }
 .index-nom:hover { color: var(--accent); }
