@@ -1276,7 +1276,16 @@ async function appelerDiscogs(chemin, options = {}, jetonAEssayer = jeton()) {
   }
   if (reponse.status === 401 || reponse.status === 403) throw new Error("Discogs refuse le jeton (code " + reponse.status + ").");
   if (reponse.status === 429) throw new Error("Trop de demandes envoyées à Discogs : réessaie dans une minute.");
-  if (!reponse.ok) throw new Error("Discogs a répondu par une erreur (code " + reponse.status + ").");
+  if (!reponse.ok) {
+    // Discogs joint en général son explication : { "message": "…" }, parfois avec des détails.
+    let explication = "";
+    try {
+      const corps = await reponse.json();
+      explication = [corps.message, typeof corps.detail === "string" ? corps.detail : corps.detail && JSON.stringify(corps.detail)]
+        .filter(Boolean).join(" ").replace(/\.\s*$/, "");
+    } catch (erreur) { /* réponse sans explication */ }
+    throw new Error("Discogs a refusé (code " + reponse.status + ")" + (explication ? " : « " + explication + " »" : "") + ".");
+  }
   return reponse.status === 204 ? null : reponse.json();
 }
 
@@ -1425,7 +1434,7 @@ async function ouvrirEdition(edition) {
           await appelerDiscogs(cheminExemplaire, { method: "POST", body: JSON.stringify({ rating: Number(valeur) }) });
         }
       } catch (erreur) {
-        erreurEnvoi = erreur;
+        erreurEnvoi = new Error((saisie.champ ? saisie.champ.nom : "Ma note") + " : " + erreur.message);
         break;
       }
       // On garde la modification sur cet appareil jusqu'à la prochaine synchro.
