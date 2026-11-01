@@ -134,6 +134,23 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 
 /* ---------- Grille de pochettes ---------- */
 
+/* Une grille par catégorie, avec son titre */
+.sommaire-categories { font-size: 15px; line-height: 1.9; margin: 0 0 20px; }
+.sommaire-categories .bouton-texte { padding: 0; font-size: 15px; }
+.sommaire-element { white-space: nowrap; }
+.sommaire-categories .discret { color: var(--texte-2); }
+.titre-categorie {
+  position: sticky; top: var(--hauteur-entete, 112px); z-index: 5;
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 6px;
+  font-size: 15px; font-weight: 600; margin: 0 0 12px; padding: 8px 0;
+  background: var(--fond); color: var(--accent);
+}
+.titre-categorie .discret { color: var(--texte-2); font-weight: 400; }
+.navigation-categories { display: flex; gap: 14px; margin-left: auto; font-weight: 400; }
+.navigation-categories .bouton-texte { padding: 0; font-size: 13px; }
+.groupe-categorie { scroll-margin-top: var(--hauteur-entete, 112px); }
+.groupe-categorie + .groupe-categorie { margin-top: 20px; }
+
 .grille {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -330,6 +347,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .carte-stat.large { grid-column: 1 / -1; }
 .carte-stat h2 { font-size: 15px; margin: 0 0 2px; }
 .carte-stat .note-stat { font-size: 12px; color: var(--texte-discret); margin: 0 0 12px; }
+.carte-stat .note-synchro { margin-top: 20px; }
 
 .chiffres { display: flex; flex-wrap: wrap; gap: 28px; }
 .chiffre .valeur { font-size: 34px; font-weight: 600; line-height: 1.1; }
@@ -416,17 +434,29 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 
 /* Index : un bloc à la fois, les noms à la suite, regroupés par lettre */
 .index-entete {
+  position: sticky; top: var(--hauteur-entete, 112px); z-index: 5; background: var(--fond);
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 4px 0 10px;
   border-bottom: 1px solid var(--bordure);
 }
 .index-lettres { display: flex; flex-wrap: wrap; gap: 2px; }
 .index-lettres .bouton-texte { padding: 2px 5px; font-size: 13px; }
-.index-lettre h3 { margin: 18px 0 6px; font-size: 15px; color: var(--accent); scroll-margin-top: 140px; }
+.index-lettre h3 { margin: 18px 0 6px; font-size: 15px; color: var(--accent); }
 .index-noms { margin: 0; line-height: 1.9; font-size: 14px; }
 .index-nom { background: none; border: 0; padding: 0; color: var(--texte); cursor: pointer; text-align: left; font: inherit; }
 .index-nom:hover { color: var(--accent); }
 .index-nom .discret, .index-separateur { color: var(--texte-discret); }
+/* Un nom et son point restent ensemble ; un long nom (titre et artistes) peut tout de même passer à la ligne. */
+.index-element { white-space: nowrap; }
+.index-element .index-nom { white-space: normal; }
 
 /* Ce qui n'agit pas sur la vue est masqué : tout l'outillage dans l'index, le tri dans les statistiques. */
 body[data-vue="index"] .outils, body[data-vue="index"] .filtres { display: none; }
 body[data-vue="statistiques"] .tri { display: none; }
+
+/* Recherche dans la fiche */
+.ligne-recherche-fiche { display: flex; align-items: center; gap: 10px; margin: -6px 0 16px; }
+.recherche-fiche { flex: 0 1 260px; min-width: 0; color: var(--texte); }
+.resultats-fiche { font-size: 17px; }
+.resultats-fiche.avec-resultats { background: rgba(226, 170, 82, 0.35); color: var(--texte); border-radius: 2px; padding: 0 4px; }
+mark.trouve { background: rgba(226, 170, 82, 0.35); color: inherit; border-radius: 2px; }
+mark.trouve.actuel { background: var(--accent); color: var(--accent-texte); }

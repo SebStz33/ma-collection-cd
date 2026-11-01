@@ -80,7 +80,7 @@ const etat = {
   correspondanceMB: "",     // "", "exacte", "album" ou "aucune"
   avecOeuvres: false,
   oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
-  blocIndex: "compositeurs", // bloc affiché dans l'onglet Index
+  blocIndex: "compositeurs_classiques", // bloc affiché dans l'onglet Index
 };
 
 // Filtres remis à zéro (boutons « Effacer les filtres » et « Effacer ») : la recherche reste.
@@ -631,8 +631,62 @@ function categoriesChoisies(edition) {
   return edition.categories.filter((c) => c !== SANS_CATEGORIE);
 }
 
+/**
+ * Vignettes regroupées par catégorie (dossier Discogs), par ordre alphabétique, « Sans catégorie »
+ * à la fin. Dans chaque groupe, les disques gardent l'ordre du tri choisi. Une édition dont les
+ * exemplaires sont rangés dans deux dossiers apparaît dans les deux.
+ */
 function afficherGrille(liste) {
-  const cartes = liste.map((edition) => {
+  const parCategorie = new Map();
+  for (const edition of liste) {
+    for (const categorie of edition.categories) {
+      if (!parCategorie.has(categorie)) parCategorie.set(categorie, []);
+      parCategorie.get(categorie).push(edition);
+    }
+  }
+  const categories = [...parCategorie.keys()].sort((a, b) =>
+    (a === SANS_CATEGORIE) - (b === SANS_CATEGORIE) || comparerTextes(a, b));
+  const groupes = categories.map((categorie) => creer("section", { classe: "groupe-categorie" }));
+  const allerAuGroupe = (numero) => groupes[numero].scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // Liste des catégories en haut (seulement s'il y en a plusieurs) : un clic descend jusqu'à elle.
+  const sommaire = categories.length > 1 ? creer("nav", { classe: "sommaire-categories", "aria-label": "Catégories" },
+    // Le point de séparation suit le nom, pour qu'une ligne ne commence jamais par « · ».
+    categories.map((categorie, numero) => [
+      creer("span", { classe: "sommaire-element" },
+        creer("button", { type: "button", classe: "bouton-texte", surclic: () => allerAuGroupe(numero) },
+          categorie, creer("span", { classe: "discret", texte: " (" + parCategorie.get(categorie).length + ")" })),
+        numero < categories.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
+      " ",
+    ])) : null;
+
+  groupes.forEach((groupe, numero) => groupe.append(
+    // Titre qui reste en haut de l'écran pendant qu'on fait défiler les vignettes de la catégorie.
+    creer("h2", { classe: "titre-categorie" },
+      categories[numero],
+      creer("span", { classe: "discret", texte: " (" + parCategorie.get(categories[numero]).length + ")" }),
+      categories.length > 1 ? creer("span", { classe: "navigation-categories" },
+        creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Haut", surclic: () => window.scrollTo({ top: 0, behavior: "smooth" }) }),
+        numero < groupes.length - 1
+          ? creer("button", { type: "button", classe: "bouton-texte", texte: "↓ Suivante", surclic: () => allerAuGroupe(numero + 1) })
+          : null,
+        numero > 0
+          ? creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Précédente", surclic: () => allerAuGroupe(numero - 1) })
+          : null
+      ) : null
+    ),
+    creer("div", { classe: "grille" }, cartesDesEditions(parCategorie.get(categories[numero])))
+  ));
+  $("vue-collection").replaceChildren(sommaire || "", ...groupes);
+}
+
+/** Hauteur de l'en-tête collant, pour placer les titres de catégorie juste en dessous. */
+function noterHauteurEntete() {
+  document.documentElement.style.setProperty("--hauteur-entete", document.querySelector(".entete").offsetHeight + "px");
+}
+
+function cartesDesEditions(liste) {
+  return liste.map((edition) => {
     const image = edition.pochette || edition.miniature;
     const nb = edition.exemplaires.length;
     const categories = categoriesChoisies(edition);
@@ -649,7 +703,6 @@ function afficherGrille(liste) {
       categories.length ? creer("p", { classe: "carte-categorie", texte: categories.join(" · ") }) : null
     );
   });
-  $("vue-collection").replaceChildren(...cartes);
 }
 
 // ---------------------------------------------------------------------------
@@ -766,48 +819,136 @@ function ouvrirFiche(edition) {
     );
   });
 
+  // Recherche dans la fiche : pré-remplie avec la recherche de la collection.
+  const champRecherche = creer("input", { type: "search", classe: "recherche-fiche", placeholder: "Chercher dans la fiche",
+    "aria-label": "Chercher dans la fiche", value: etat.recherche, autocomplete: "off" });
+  const resultats = creer("span", { classe: "discret resultats-fiche" });
+
+  const texteFiche = creer("div", {},
+    creer("h2", { id: "fiche-titre", texte: edition.titre }),
+    creer("p", { classe: "sous-titre" },
+      (edition.artistes_principaux || []).map((nom, i) => [
+        i ? ", " : "",
+        creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
+      ])
+    ),
+    creer("p", { classe: "ligne-recherche-fiche" }, champRecherche, resultats),
+    notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
+    // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
+    jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes Custom Fields Discogs",
+      surclic: () => ouvrirEdition(edition) })) : null,
+    creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
+    edition.descriptions.length ? [
+      creer("h3", { texte: "Description" }),
+      edition.descriptions.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
+    ] : null,
+    edition.notesPerso.length ? [
+      creer("h3", { texte: "Notes personnelles" }),
+      edition.notesPerso.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
+    ] : null,
+    liens.length ? [
+      creer("h3", { texte: "Liens externes" }),
+      creer("ul", { classe: "liens-externes" }, liens.map((l) => creer("li", {}, creerLien(l.adresse, l.nom + " ↗")))),
+    ] : null,
+    sectionsPersonnes,
+    creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
+    creer("ul", { classe: "exemplaires" }, exemplaires),
+    (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null, edition })] : null,
+    creer("p", { classe: "liens-bases" },
+      creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
+      edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
+        texte: "Voir sur MusicBrainz ↗" }) : null
+    )
+  );
+
   $("fiche-contenu").replaceChildren(
     creer("div", { classe: "fiche-corps" },
       creer("div", { classe: "fiche-images" }, grande, groupesImages),
-      creer("div", {},
-        creer("h2", { id: "fiche-titre", texte: edition.titre }),
-        creer("p", { classe: "sous-titre" },
-          (edition.artistes_principaux || []).map((nom, i) => [
-            i ? ", " : "",
-            creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
-          ])
-        ),
-        notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
-        // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
-        jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes Custom Fields Discogs",
-          surclic: () => ouvrirEdition(edition) })) : null,
-        creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
-        edition.descriptions.length ? [
-          creer("h3", { texte: "Description" }),
-          edition.descriptions.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
-        ] : null,
-        edition.notesPerso.length ? [
-          creer("h3", { texte: "Notes personnelles" }),
-          edition.notesPerso.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
-        ] : null,
-        liens.length ? [
-          creer("h3", { texte: "Liens externes" }),
-          creer("ul", { classe: "liens-externes" }, liens.map((l) => creer("li", {}, creerLien(l.adresse, l.nom + " ↗")))),
-        ] : null,
-        sectionsPersonnes,
-        creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
-        creer("ul", { classe: "exemplaires" }, exemplaires),
-        (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null, edition })] : null,
-        creer("p", { classe: "liens-bases" },
-          creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
-          edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
-            texte: "Voir sur MusicBrainz ↗" }) : null
-        )
-      )
+      texteFiche
     )
   );
   $("fiche").showModal();
   $("fiche").scrollTop = 0;
+
+  let minuterie = null;
+  let numeroResultat = 0;
+  const chercher = () => {
+    const nombre = surligner(texteFiche, champRecherche.value);
+    numeroResultat = 0;
+    resultats.textContent = !champRecherche.value.trim() ? ""
+      : nombre ? nombre + (nombre > 1 ? " résultats" : " résultat") : "Aucun résultat";
+    resultats.classList.toggle("avec-resultats", nombre > 0);
+    allerAuResultat(texteFiche, 0);
+  };
+  champRecherche.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(chercher, 150); });
+  // Entrée : résultat suivant (et retour au premier après le dernier).
+  champRecherche.addEventListener("keydown", (evenement) => {
+    if (evenement.key !== "Enter") return;
+    evenement.preventDefault();
+    numeroResultat += 1;
+    numeroResultat = allerAuResultat(texteFiche, numeroResultat);
+  });
+  if (champRecherche.value) chercher();
+}
+
+/**
+ * Surligne dans `bloc` tous les passages qui correspondent à un des mots de `recherche`,
+ * sans tenir compte des majuscules ni des accents. Renvoie le nombre de passages.
+ */
+function surligner(bloc, recherche) {
+  // On enlève d'abord le surlignage précédent.
+  for (const marque of bloc.querySelectorAll("mark.trouve")) marque.replaceWith(marque.textContent);
+  bloc.normalize();
+  const mots = normaliser(recherche).split(/\s+/).filter(Boolean);
+  if (!mots.length) return 0;
+
+  const noeuds = [];
+  const parcours = document.createTreeWalker(bloc, NodeFilter.SHOW_TEXT);
+  while (parcours.nextNode()) noeuds.push(parcours.currentNode);
+
+  let nombre = 0;
+  for (const noeud of noeuds) {
+    // Texte simplifié lettre par lettre, en gardant la position de chaque lettre dans le texte d'origine.
+    const original = noeud.textContent;
+    let simple = "";
+    const position = [];
+    for (let i = 0; i < original.length; i++) {
+      const lettre = normaliser(original[i]);
+      simple += lettre;
+      for (let j = 0; j < lettre.length; j++) position.push(i);
+    }
+    // Passages trouvés, dans l'ordre et sans chevauchement : [début, fin] dans le texte d'origine.
+    const passages = [];
+    for (const mot of mots) {
+      for (let debut = simple.indexOf(mot); debut >= 0; debut = simple.indexOf(mot, debut + mot.length)) {
+        passages.push([position[debut], position[debut + mot.length - 1] + 1]);
+      }
+    }
+    passages.sort((a, b) => a[0] - b[0]);
+    const retenus = passages.filter((p, i) => i === 0 || p[0] >= passages[i - 1][1]);
+    if (!retenus.length) continue;
+    const morceaux = [];
+    let curseur = 0;
+    for (const [debut, fin] of retenus) {
+      morceaux.push(original.slice(curseur, debut), creer("mark", { classe: "trouve", texte: original.slice(debut, fin) }));
+      curseur = fin;
+    }
+    morceaux.push(original.slice(curseur));
+    noeud.replaceWith(...morceaux.filter((m) => m !== ""));
+    nombre += retenus.length;
+  }
+  return nombre;
+}
+
+/** Fait défiler la fiche jusqu'au résultat `numero` (le premier après le dernier). Renvoie le numéro affiché. */
+function allerAuResultat(bloc, numero) {
+  const marques = [...bloc.querySelectorAll("mark.trouve")];
+  marques.forEach((m) => m.classList.remove("actuel"));
+  if (!marques.length) return 0;
+  const n = numero % marques.length;
+  marques[n].classList.add("actuel");
+  marques[n].scrollIntoView({ block: "center", behavior: "smooth" });
+  return n;
 }
 
 /**
@@ -1006,14 +1147,61 @@ function cleDeTri(nom, personne) {
 
 /** Les blocs de l'index présents dans la collection : [clé, libellé]. */
 function blocsIndex() {
+  // Compositeurs et œuvres en deux blocs : classiques, puis autres (rangés juste après).
+  const enDeux = (cle, libelle, classiques, autres) => [
+    [cle + "_classiques", classiques, libelle + " 1"],
+    [cle + "_autres", autres, libelle + " 2"],
+  ];
   const blocs = [
     ["titre", "Titres"],
     ["artistes_principaux", "Artistes principaux"],
-    ...CATEGORIES_PERSONNES.filter(({ cle }) => editions.some((e) => (e[cle] || []).length)).map(({ cle, libelle }) => [cle, libelle]),
-    ...(editions.some((e) => e.oeuvres.size) ? [["oeuvres", "Œuvres"]] : []),
+    ...CATEGORIES_PERSONNES.filter(({ cle }) => editions.some((e) => (e[cle] || []).length)).flatMap(({ cle, libelle }) =>
+      cle === "compositeurs" ? enDeux(cle, libelle, "Compositeurs classiques", "Autres compositeurs") : [[cle, libelle]]),
+    ...(editions.some((e) => e.oeuvres.size) ? enDeux("oeuvres", "Œuvres", "Œuvres classiques", "Autres œuvres") : []),
     ["labels", "Labels"],
   ];
-  return blocs.sort((a, b) => comparerTextes(a[1], b[1]));
+  return blocs
+    .filter(([cle]) => !/_(classiques|autres)$/.test(cle) || entreesIndex(cle).length)  // moitié vide : pas de bloc
+    .sort((a, b) => comparerTextes(a[2] || a[1], b[2] || b[1]))
+    .map(([cle, libelle]) => [cle, libelle]);
+}
+
+/** Vrai si l'édition est classée « Classical » sur Discogs. */
+function estClassique(edition) {
+  return (edition.genres || []).includes("Classical");
+}
+
+/**
+ * Pour un bloc coupé en deux (« compositeurs_classiques »…) : vrai si l'entrée va dans ce bloc.
+ * Chaque nom va dans un seul bloc, celui de la majorité de ses éditions (classique en cas d'égalité).
+ */
+function dansLaMoitie(bloc, editionsDuNom) {
+  const classique = majoritairementClassique(editionsDuNom);
+  return bloc.endsWith("_classiques") ? classique : !classique;
+}
+
+/** Vrai si au moins la moitié de ces éditions sont classées « Classical ». */
+function majoritairementClassique(editionsDuNom) {
+  return editionsDuNom.filter(estClassique).length * 2 >= editionsDuNom.length;
+}
+
+/**
+ * Côté de chaque compositeur et de chaque œuvre (id), d'après toute la collection,
+ * pour que le classement ne change pas avec les filtres : Map -> vrai si classique.
+ */
+function cotesClassiques() {
+  const parCompositeur = new Map();
+  const parOeuvre = new Map();
+  const ajouter = (carte, cle, edition) => {
+    if (!carte.has(cle)) carte.set(cle, []);
+    carte.get(cle).push(edition);
+  };
+  for (const edition of editions) {
+    for (const nom of new Set(edition.compositeurs || [])) ajouter(parCompositeur, nom, edition);
+    for (const id of edition.oeuvres.keys()) ajouter(parOeuvre, id, edition);
+  }
+  const cotes = (carte) => new Map([...carte].map(([cle, liste]) => [cle, majoritairementClassique(liste)]));
+  return { compositeurs: cotes(parCompositeur), oeuvres: cotes(parOeuvre) };
 }
 
 /** Entrées d'un bloc : [{ libelle, nombre, cle, clic }]. */
@@ -1024,17 +1212,30 @@ function entreesIndex(bloc) {
       detail: (edition.artistes_principaux || []).join(", "), clic: () => ouvrirFiche(edition),
     }));
   }
-  if (bloc === "oeuvres") {
+  if (bloc.startsWith("oeuvres_")) {
     const parId = new Map();
     for (const edition of editions) {
       for (const oeuvre of edition.oeuvres.values()) {
-        if (!parId.has(oeuvre.id)) parId.set(oeuvre.id, { oeuvre, nombre: 0 });
-        parId.get(oeuvre.id).nombre += 1;
+        if (!parId.has(oeuvre.id)) parId.set(oeuvre.id, { oeuvre, liste: [] });
+        parId.get(oeuvre.id).liste.push(edition);
       }
     }
-    return [...parId.values()].map(({ oeuvre, nombre }) => ({
-      libelle: nomOeuvre(oeuvre), nombre, cle: cleDeTri(oeuvre.titre, false),
+    return [...parId.values()].filter(({ liste }) => dansLaMoitie(bloc, liste)).map(({ oeuvre, liste }) => ({
+      libelle: nomOeuvre(oeuvre), nombre: liste.length, cle: cleDeTri(oeuvre.titre, false),
       clic: () => allerVers({ ...FILTRES_VIDES, oeuvre }),
+    }));
+  }
+  if (bloc.startsWith("compositeurs_")) {
+    const parNom = new Map();
+    for (const edition of editions) {
+      for (const nom of new Set(edition.compositeurs || [])) {
+        if (!parNom.has(nom)) parNom.set(nom, []);
+        parNom.get(nom).push(edition);
+      }
+    }
+    return [...parNom].filter(([, liste]) => dansLaMoitie(bloc, liste)).map(([nom, liste]) => ({
+      libelle: nom, nombre: liste.length, cle: cleDeTri(nom, true),
+      clic: () => allerVers({ ...FILTRES_VIDES, recherche: nom, role: "compositeurs" }, null, "Compositeurs : " + nom),
     }));
   }
   if (bloc === "labels") {
@@ -1058,7 +1259,7 @@ function lettreIndex(cle) {
 
 function afficherIndex() {
   const blocs = blocsIndex();
-  if (!blocs.some(([cle]) => cle === etat.blocIndex)) etat.blocIndex = "compositeurs";
+  if (!blocs.some(([cle]) => cle === etat.blocIndex)) etat.blocIndex = blocs[0][0];
   const entrees = entreesIndex(etat.blocIndex).sort((a, b) => comparerTextes(a.cle, b.cle) || comparerTextes(a.libelle, b.libelle));
 
   // Regroupement par lettre, dans l'ordre : « # » d'abord, puis A à Z.
@@ -1075,22 +1276,29 @@ function afficherIndex() {
       texte: libelle + " (" + entreesIndex(cle).length.toLocaleString("fr-FR") + ")" })));
   choix.addEventListener("change", () => { etat.blocIndex = choix.value; afficher(); window.scrollTo({ top: 0 }); });
 
+  // La ligne du sélecteur et des lettres reste sous l'en-tête : la lettre choisie arrive juste en dessous.
+  const enteteIndex = creer("div", { classe: "index-entete" },
+    choix,
+    creer("nav", { classe: "index-lettres", "aria-label": "Lettres" }, lettres.map((lettre) =>
+      creer("button", { type: "button", classe: "bouton-texte", texte: lettre,
+        surclic: () => window.scrollTo({ behavior: "smooth",
+          top: $("lettre-" + lettre).getBoundingClientRect().top + window.scrollY - enteteIndex.getBoundingClientRect().bottom - 4 }) })))
+  );
+
   $("vue-index").replaceChildren(
-    creer("div", { classe: "index-entete" },
-      choix,
-      creer("nav", { classe: "index-lettres", "aria-label": "Lettres" }, lettres.map((lettre) =>
-        creer("button", { type: "button", classe: "bouton-texte", texte: lettre,
-          surclic: () => $("lettre-" + lettre).scrollIntoView({ behavior: "smooth", block: "start" }) })))
-    ),
+    enteteIndex,
     ...lettres.map((lettre) => creer("section", { classe: "index-lettre" },
       creer("h3", { id: "lettre-" + lettre, texte: lettre }),
-      creer("p", { classe: "index-noms" }, parLettre.get(lettre).map((entree, numero) => [
-        numero ? creer("span", { classe: "index-separateur", texte: " · " }) : null,
-        creer("button", { type: "button", classe: "index-nom", surclic: entree.clic,
-          title: entree.detail || null },
-          entree.libelle,
-          entree.nombre > 1 ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
-          entree.detail ? creer("span", { classe: "discret", texte: " – " + entree.detail }) : null),
+      // Le point de séparation suit le nom, pour qu'une ligne ne commence jamais par « · ».
+      creer("p", { classe: "index-noms" }, parLettre.get(lettre).map((entree, numero, liste) => [
+        creer("span", { classe: "index-element" },
+          creer("button", { type: "button", classe: "index-nom", surclic: entree.clic,
+            title: entree.detail || null },
+            entree.libelle,
+            entree.nombre > 1 ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
+            entree.detail ? creer("span", { classe: "discret", texte: " – " + entree.detail }) : null),
+          numero < liste.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
+        " ",
       ]))
     ))
   );
@@ -1198,6 +1406,23 @@ function afficherStatistiques(liste) {
   }));
   const oeuvresEnPlusieursVersions = new Map([...comptesOeuvres].filter(([, nombre]) => nombre > 1));
 
+  // Compositeurs et œuvres, chacun en deux cartes : classiques et autres (même classement que l'index).
+  const cotes = cotesClassiques();
+  const partager = (compte, estClassiqueNom) => [true, false].map((classique) =>
+    new Map([...compte].filter(([nom]) => estClassiqueNom(nom) === classique)));
+  const [compositeursClassiques, autresCompositeurs] = partager(compositeurs, (nom) => cotes.compositeurs.get(nom));
+  const [oeuvresClassiques, autresOeuvres] = partager(oeuvresEnPlusieursVersions,
+    (nom) => cotes.oeuvres.get(oeuvresParNom.get(nom).id));
+  // Nombre d'œuvres différentes (toutes, pas seulement celles en plusieurs versions), de chaque côté.
+  const idsOeuvres = new Set(liste.flatMap((e) => [...e.oeuvres.keys()]));
+  const nbOeuvresClassiques = [...idsOeuvres].filter((id) => cotes.oeuvres.get(id)).length;
+  const carteCompositeurs = (titre, compte) => compte.size ? carteBarres(titre, "Les 15 premiers", compte, 15,
+    (nom) => chercherNomSansFiche(nom, "compositeurs"),
+    (n) => "Voir les " + n + " compositeurs présents sur au moins 2 éditions") : "";
+  const carteOeuvres = (titre, compte) => compte.size ? carteBarres(titre, "Les 15 premières, d'après MusicBrainz", compte, 15,
+    (nom) => choisirOeuvre(oeuvresParNom.get(nom)),
+    (n) => "Voir les " + n + " œuvres présentes sur au moins 2 éditions") : "";
+
   const chiffre = (valeur, libelle) => creer("div", { classe: "chiffre" },
     creer("div", { classe: "valeur", texte: valeur.toLocaleString("fr-FR") }),
     creer("div", { classe: "libelle", texte: libelle }));
@@ -1216,23 +1441,25 @@ function afficherStatistiques(liste) {
         chiffre(liste.length, "éditions"),
         chiffre(nbExemplaires, "exemplaires"),
         chiffre(nbDisques, "disques physiques"),
-        chiffre(compositeurs.size, "compositeurs"),
+        chiffre(compositeursClassiques.size, "compositeurs classiques"),
+        chiffre(nbOeuvresClassiques, "œuvres classiques"),
+        chiffre(autresCompositeurs.size, "autres compositeurs"),
+        chiffre(idsOeuvres.size - nbOeuvresClassiques, "autres œuvres"),
         chiffre(interpretes.size, "interprètes")
       ),
-      creer("p", { classe: "note-stat", texte: synchro + " Les statistiques portent sur les disques affichés (filtres et recherche compris)." })
+      creer("p", { classe: "note-stat note-synchro", texte: synchro + " Les statistiques portent sur les disques affichés (filtres et recherche compris)." })
     ),
     carteAnnees(liste),
     carteBarres("Catégories", "Dossier Discogs (Custom Field)", compter(liste, EXTRACTEURS.categorie), 20, appliquer("categorie")),
     carteBarres("Genres", "Genres Discogs", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
     carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
     carteBarres("Formats", "", compter(liste, EXTRACTEURS.format), 10, appliquer("format")),
-    carteBarres("Compositeurs les plus présents", "Les 15 premiers", compositeurs, 15, (nom) => chercherNomSansFiche(nom, "compositeurs"),
-      (n) => "Voir les " + n + " compositeurs présents sur au moins 2 éditions"),
+    carteCompositeurs("Compositeurs classiques les plus présents", compositeursClassiques),
+    carteCompositeurs("Autres compositeurs les plus présents", autresCompositeurs),
     carteBarres("Interprètes les plus présents", "Les 15 premiers", interpretes, 15, (nom) => chercherNomSansFiche(nom, "interpretes"),
       (n) => "Voir les " + n + " interprètes présents sur au moins 2 éditions"),
-    ...(oeuvresEnPlusieursVersions.size ? [carteBarres("Œuvres en plusieurs versions", "Les 15 premières, d'après MusicBrainz",
-      oeuvresEnPlusieursVersions, 15, (nom) => choisirOeuvre(oeuvresParNom.get(nom)),
-      (n) => "Voir les " + n + " œuvres présentes sur au moins 2 éditions")] : []),
+    carteOeuvres("Œuvres classiques en plusieurs versions", oeuvresClassiques),
+    carteOeuvres("Autres œuvres en plusieurs versions", autresOeuvres),
     carteBarres("Labels", "Les 15 premiers", compter(liste, EXTRACTEURS.label), 15, appliquer("label"),
       (n) => "Voir les " + n + " labels ayant au moins 2 éditions")
   );
@@ -1589,6 +1816,8 @@ function brancherEvenements() {
 
 brancherEvenements();
 brancherVisionneuse();
+// L'en-tête change de hauteur selon la largeur de l'écran (une ou deux lignes).
+new ResizeObserver(noterHauteurEntete).observe(document.querySelector(".entete"));
 brancherReglageJeton();
 chargerCollection();
 
