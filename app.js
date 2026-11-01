@@ -18,6 +18,7 @@ const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const CHAMP_DESCRIPTION = "Description";
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
+const CATEGORIE_A_VENDRE = "À Vendre";        // dossier Discogs rangé en dernier (casse et accents ignorés)
 const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
 const ZOOM = 2.5;                             // grossissement de la visionneuse
 const LIGNES_MIN_EDITION = 4;                 // hauteur minimale des zones de texte du formulaire
@@ -101,6 +102,12 @@ const $ = (id) => document.getElementById(id);
 /** Met en minuscules et retire les accents : « Dvořák » -> « dvorak ». */
 function normaliser(texte) {
   return String(texte || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+}
+
+/** Ordre des catégories : alphabétique, puis « Sans catégorie », puis « À Vendre » en dernier. */
+function comparerCategories(a, b) {
+  const rang = (c) => normaliser(c) === normaliser(CATEGORIE_A_VENDRE) ? 2 : c === SANS_CATEGORIE ? 1 : 0;
+  return rang(a) - rang(b) || comparerTextes(a, b);
 }
 
 /** Compare deux textes dans l'ordre alphabétique français (accents et majuscules ignorés). */
@@ -395,8 +402,8 @@ const EXTRACTEURS = {
   localisation: (e) => e.localisations,
 };
 
-function remplirListe(select, compte, libelleTous) {
-  const valeurs = [...compte.keys()].sort(comparerTextes);
+function remplirListe(select, compte, libelleTous, comparer = comparerTextes) {
+  const valeurs = [...compte.keys()].sort(comparer);
   select.replaceChildren(
     creer("option", { value: "", texte: libelleTous }),
     ...valeurs.map((v) => creer("option", { value: v, texte: v + " (" + compte.get(v) + ")" }))
@@ -404,7 +411,7 @@ function remplirListe(select, compte, libelleTous) {
 }
 
 function remplirFiltres() {
-  remplirListe($("filtre-categorie"), compter(editions, EXTRACTEURS.categorie), "Toutes");
+  remplirListe($("filtre-categorie"), compter(editions, EXTRACTEURS.categorie), "Toutes", comparerCategories);
   remplirListe($("filtre-genre"), compter(editions, EXTRACTEURS.genre), "Tous");
   remplirListe($("filtre-style"), compter(editions, EXTRACTEURS.style), "Tous");
   remplirListe($("filtre-format"), compter(editions, EXTRACTEURS.format), "Tous");
@@ -632,8 +639,8 @@ function categoriesChoisies(edition) {
 }
 
 /**
- * Vignettes regroupées par catégorie (dossier Discogs), par ordre alphabétique, « Sans catégorie »
- * à la fin. Dans chaque groupe, les disques gardent l'ordre du tri choisi. Une édition dont les
+ * Vignettes regroupées par catégorie (dossier Discogs), dans l'ordre de comparerCategories
+ * (« Sans catégorie » puis « À Vendre » à la fin). Dans chaque groupe, les disques gardent l'ordre du tri choisi. Une édition dont les
  * exemplaires sont rangés dans deux dossiers apparaît dans les deux.
  */
 function afficherGrille(liste) {
@@ -644,8 +651,7 @@ function afficherGrille(liste) {
       parCategorie.get(categorie).push(edition);
     }
   }
-  const categories = [...parCategorie.keys()].sort((a, b) =>
-    (a === SANS_CATEGORIE) - (b === SANS_CATEGORIE) || comparerTextes(a, b));
+  const categories = [...parCategorie.keys()].sort(comparerCategories);
   const groupes = categories.map((categorie) => creer("section", { classe: "groupe-categorie" }));
   const allerAuGroupe = (numero) => groupes[numero].scrollIntoView({ behavior: "smooth", block: "start" });
 
