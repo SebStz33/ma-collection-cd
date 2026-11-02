@@ -455,8 +455,9 @@ body[data-vue="statistiques"] .tri { display: none; }
 
 /* Recherche dans la fiche */
 .ligne-recherche-fiche { display: flex; align-items: center; gap: 10px; margin: -6px 0 16px; }
-.recherche-fiche { flex: 0 1 260px; min-width: 0; color: var(--texte); }
-.resultats-fiche { font-size: 17px; }
+.recherche-fiche { width: 100%; min-width: 0; color: var(--texte); }
+.ligne-recherche-fiche > .case-effacable { flex: 0 1 260px; }
+.resultats-fiche { font-size: 15px; white-space: nowrap; }
 .resultats-fiche.avec-resultats { background: rgba(226, 170, 82, 0.35); color: var(--texte); border-radius: 2px; padding: 0 4px; }
 mark.trouve { background: rgba(226, 170, 82, 0.35); color: inherit; border-radius: 2px; }
 mark.trouve.actuel { background: var(--accent); color: var(--accent-texte); }
@@ -490,3 +491,28 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 /* Coffrets : liens « CD 1 · CD 2… » sous le titre Plages, intertitre au début de chaque disque */
 .liens-disques { margin: -4px 0 10px; line-height: 1.8; }
 .plage-disque { scroll-margin-top: 12px; }
+
+/* Croix ✕ dans les cases de recherche (la croix d'origine du navigateur est masquée) */
+input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; display: none; }
+.case-effacable { position: relative; display: flex; min-width: 0; }
+.case-effacable > input { flex: 1; min-width: 0; padding-right: 28px; }
+.recherche > .case-effacable { flex: 1; }
+.filtre > .case-effacable { width: 100%; }
+.recherche .case-effacable > input { padding-right: 30px; }
+.effacer-champ {
+  position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 22px; padding: 0; border: 0; border-radius: 50%;
+  background: none; color: var(--texte-discret); font-size: 13px; line-height: 22px; cursor: pointer;
+}
+.effacer-champ:hover { color: var(--texte); }
+.effacer-champ[hidden] { display: none; }
+
+/* La colonne de texte de la fiche ne déborde jamais de l'écran */
+.fiche-corps > * { min-width: 0; }
+
+@media (max-width: 700px) {
+  /* Fiche sur iPhone : la recherche sur toute la largeur, puis résultats à gauche et flèches à droite */
+  .ligne-recherche-fiche { flex-wrap: wrap; row-gap: 8px; }
+  .ligne-recherche-fiche > .case-effacable { flex: 1 1 100%; }
+  .fermer-fiche { margin-right: 16px; margin-top: calc(14px + env(safe-area-inset-top)); }
+}
