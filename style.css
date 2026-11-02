@@ -480,3 +480,13 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 .plage:hover > .favori, .favori:focus-visible { opacity: .7; }
 .favori.actif { color: var(--accent); opacity: 1; }
 .favori:disabled { cursor: wait; }
+
+/* Flèches de la fiche : « ↓ Fin » à droite de la recherche, « ↑ Début » tout en bas */
+.lien-fiche { padding: 0; font-size: 13px; white-space: nowrap; }
+.ligne-recherche-fiche .lien-plages { margin-left: auto; }   /* « ↓ Plages ↓ Fin » tout à droite, comme « ↑ Début » */
+.ligne-recherche-fiche .lien-fiche:not(.lien-plages):not(.lien-plages ~ .lien-fiche) { margin-left: auto; }
+.fin-fiche { margin: 18px 0 0; text-align: right; }
+
+/* Coffrets : liens « CD 1 · CD 2… » sous le titre Plages, intertitre au début de chaque disque */
+.liens-disques { margin: -4px 0 10px; line-height: 1.8; }
+.plage-disque { scroll-margin-top: 12px; }

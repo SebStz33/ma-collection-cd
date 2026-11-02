@@ -748,6 +748,11 @@ function cartesDesEditions(liste) {
 // Fiche détaillée
 // ---------------------------------------------------------------------------
 
+/** Fait défiler la fiche jusqu'à cet élément, en douceur. */
+function defilerFicheVers(element) {
+  if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 /** Clic sur un nom dans une fiche : on lance la recherche sur ce nom, dans ce rôle. */
 function chercherNom(nom, role) {
   Object.assign(etat, { recherche: nom, role, vue: "collection" });
@@ -866,6 +871,10 @@ function ouvrirFiche(edition) {
     );
   });
 
+  // Plages, avec un intertitre et un lien par disque pour un coffret.
+  const titrePlages = creer("h3", { texte: "Plages" });
+  const tracklist = listePlagesParDisque(edition.plages || [], { precedente: null, edition });
+
   // Recherche dans la fiche : pré-remplie avec la recherche de la collection.
   const champRecherche = creer("input", { type: "search", classe: "recherche-fiche", placeholder: "Chercher dans la fiche",
     "aria-label": "Chercher dans la fiche", value: etat.recherche, autocomplete: "off" });
@@ -879,7 +888,11 @@ function ouvrirFiche(edition) {
         creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
       ])
     ),
-    creer("p", { classe: "ligne-recherche-fiche" }, champRecherche, resultats),
+    creer("p", { classe: "ligne-recherche-fiche" }, champRecherche, resultats,
+      (edition.plages || []).length ? creer("button", { type: "button", classe: "bouton-texte lien-fiche lien-plages",
+        texte: "↓ Plages", surclic: () => defilerFicheVers(titrePlages) }) : null,
+      creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↓ Fin",
+        surclic: () => $("fiche").scrollTo({ top: $("fiche").scrollHeight, behavior: "smooth" }) })),
     notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
     // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
     jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton bouton-petit", texte: "✎ Modifier mes Custom Fields Discogs",
@@ -901,12 +914,23 @@ function ouvrirFiche(edition) {
     autresCredits ? autresCredits.element : null,
     creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
     creer("ul", { classe: "exemplaires" }, exemplaires),
-    (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null, edition })] : null,
+    (edition.plages || []).length ? [
+      titrePlages,
+      tracklist.disques.length ? creer("p", { classe: "liens-disques" }, tracklist.disques.map((disque, numero) => [
+        numero ? creer("span", { classe: "discret", texte: " · " }) : null,
+        creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: disque,
+          surclic: () => defilerFicheVers(tracklist.liste.querySelector('[data-disque="' + disque + '"]')) }),
+      ])) : null,
+      tracklist.liste,
+    ] : null,
     creer("p", { classe: "liens-bases" },
       creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
       edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
         texte: "Voir sur MusicBrainz ↗" }) : null
-    )
+    ),
+    creer("p", { classe: "fin-fiche" },
+      creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↑ Début",
+        surclic: () => $("fiche").scrollTo({ top: 0, behavior: "smooth" }) }))
   );
 
   $("fiche-contenu").replaceChildren(
@@ -1024,6 +1048,43 @@ function allerAuResultat(bloc, numero) {
  */
 function listePlages(plages, suivi) {
   return creer("ol", { classe: "plages" }, plages.map((plage) => lignePlage(plage, suivi)));
+}
+
+/**
+ * Disque d'un coffret d'après la position Discogs : « 2-5 » ou « CD2-5 » -> « CD 2 »,
+ * « DVD1-3 » -> « DVD 1 », « DVD-3 » -> « DVD ». Null pour une position sans numéro de disque (« 5 », « A2 »).
+ */
+function disqueDeLaPosition(position) {
+  const m = /^(?:(CD|DVD|SACD|BD)(\d*)|(\d+))-\d/i.exec((position || "").trim());
+  if (!m) return null;
+  if (m[3]) return "CD " + Number(m[3]);
+  return m[1].toUpperCase() + (m[2] ? " " + Number(m[2]) : "");   // « DVD-2 » : le seul DVD du coffret
+}
+
+/** Disque d'une plage (pour une œuvre en mouvements : celui de son premier mouvement). */
+function disqueDeLaPlage(plage) {
+  const premiere = plagesReelles(plage)[0];
+  return premiere ? disqueDeLaPosition(premiere.position) : null;
+}
+
+/**
+ * Tracklist d'un coffret : un intertitre « CD 2 » au début de chaque disque, avec un ancre
+ * pour les liens « CD 1 · CD 2… ». Renvoie { liste, disques } ; disques est vide pour un seul disque.
+ */
+function listePlagesParDisque(plages, suivi) {
+  const disques = [...new Set(plages.map(disqueDeLaPlage).filter(Boolean))];
+  if (disques.length < 2) return { liste: listePlages(plages, suivi), disques: [] };
+  const vus = new Set();
+  const lignes = plages.flatMap((plage) => {
+    const disque = disqueDeLaPlage(plage);
+    const debut = disque && !vus.has(disque);
+    if (debut) vus.add(disque);
+    return [
+      debut ? creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque, texte: disque }) : null,
+      lignePlage(plage, suivi),
+    ];
+  });
+  return { liste: creer("ol", { classe: "plages" }, lignes), disques };
 }
 
 /** Les plages réelles du disque sous une plage : elle-même, ou ses mouvements. */
@@ -1888,6 +1949,8 @@ function brancherReglageJeton() {
   const saisie = $("jeton-saisie");
   const etatJeton = $("jeton-etat");
   const decrire = () => {
+    // Le rappel « Ne pas changer sur Discogs » ne concerne que les appareils qui peuvent modifier.
+    $("rappel-discogs").hidden = !jeton();
     etatJeton.textContent = jeton()
       ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier mes Custom Fields Discogs » apparaît dans les fiches."
       : "Aucun jeton sur cet appareil : la page est en lecture seule.";
@@ -1981,6 +2044,7 @@ brancherVisionneuse();
 // L'en-tête change de hauteur selon la largeur de l'écran (une ou deux lignes).
 new ResizeObserver(noterHauteurEntete).observe(document.querySelector(".entete"));
 brancherReglageJeton();
+$("rappel-discogs").hidden = !jeton();   // rappel visible seulement avec un jeton
 chargerCollection();
 
 // Application installable (PWA) : le service worker n'est actif qu'en https,
