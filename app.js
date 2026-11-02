@@ -98,6 +98,31 @@ const FILTRES_SEULS_VIDES = {
 // Recherche et filtres remis à zéro (clic dans l'index).
 const FILTRES_VIDES = { ...FILTRES_SEULS_VIDES, recherche: "", role: "partout" };
 
+/**
+ * Ajoute une croix ✕ à droite, dans une case de recherche : visible quand la case
+ * contient du texte ; un clic l'efface et relance la recherche (événements input et change).
+ * Renvoie l'enveloppe (case + croix), à placer là où était la case.
+ */
+function ajouterCroix(champ) {
+  const croix = creer("button", { type: "button", classe: "effacer-champ", texte: "✕",
+    title: "Effacer", "aria-label": "Effacer" });
+  const enveloppe = creer("span", { classe: "case-effacable" });
+  if (champ.parentNode) champ.replaceWith(enveloppe);
+  enveloppe.append(champ, croix);
+  const montrer = () => { croix.hidden = !champ.value; };
+  champ.addEventListener("input", montrer);
+  croix.addEventListener("click", () => {
+    champ.value = "";
+    champ.dispatchEvent(new Event("input", { bubbles: true }));
+    champ.dispatchEvent(new Event("change", { bubbles: true }));
+    montrer();
+    champ.focus();
+  });
+  montrer();
+  enveloppe.montrer = montrer;   // à rappeler quand le code change la valeur
+  return enveloppe;
+}
+
 // Raccourci pour trouver un élément de la page par son identifiant.
 const $ = (id) => document.getElementById(id);
 
@@ -530,6 +555,8 @@ function ecrireControles() {
   $("filtre-musicbrainz").value = etat.correspondanceMB;
   $("filtre-oeuvres").checked = etat.avecOeuvres;
   $("filtre-favoris").checked = etat.avecFavoris;
+  // Les croix ✕ suivent les valeurs écrites par le code.
+  for (const enveloppe of document.querySelectorAll(".case-effacable")) if (enveloppe.montrer) enveloppe.montrer();
 }
 
 function nombreDeFiltresActifs() {
@@ -892,6 +919,7 @@ function ouvrirFiche(edition) {
   // Recherche dans la fiche : pré-remplie avec la recherche de la collection.
   const champRecherche = creer("input", { type: "search", classe: "recherche-fiche", placeholder: "Chercher dans la fiche",
     "aria-label": "Chercher dans la fiche", value: etat.recherche, autocomplete: "off" });
+  const caseRecherche = ajouterCroix(champRecherche);
   const resultats = creer("span", { classe: "discret resultats-fiche" });
 
   const texteFiche = creer("div", {},
@@ -902,7 +930,7 @@ function ouvrirFiche(edition) {
         creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
       ])
     ),
-    creer("p", { classe: "ligne-recherche-fiche" }, champRecherche, resultats,
+    creer("p", { classe: "ligne-recherche-fiche" }, caseRecherche, resultats,
       (edition.plages || []).length ? creer("button", { type: "button", classe: "bouton-texte lien-fiche lien-plages",
         texte: "↓ Plages", surclic: () => defilerFicheVers(titrePlages) }) : null,
       creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↓ Fin",
@@ -1148,6 +1176,19 @@ function ligneOeuvre(plage, suivi) {
   );
 }
 
+/**
+ * Crédits d'une plage regroupés par rôle, dans l'ordre de Discogs :
+ * « Written-By – A, B · Piano – C » plutôt que « Written-By – A · Written-By – B · Piano – C ».
+ */
+function creditsParRole(credits) {
+  const parRole = new Map();
+  for (const { role, nom } of credits) {
+    if (!parRole.has(role)) parRole.set(role, []);
+    if (!parRole.get(role).includes(nom)) parRole.get(role).push(nom);
+  }
+  return [...parRole].map(([role, noms]) => role + " – " + noms.join(", ")).join(" · ");
+}
+
 function lignePlage(plage, suivi) {
   if (plage.type === "intertitre") return creer("li", { classe: "plage-intertitre", texte: plage.titre });
   const artistes = plage.artistes || [];
@@ -1160,7 +1201,7 @@ function lignePlage(plage, suivi) {
       creer("div", { classe: "plage-titre", texte: plage.titre }),
       artistes.length ? creer("div", { classe: "plage-artistes", texte: artistes.join(", ") }) : null,
       // Crédits au format Discogs : « Piano – Glenn Gould · Conductor – Herbert von Karajan »
-      credits.length ? creer("div", { classe: "plage-credits", texte: credits.map((c) => c.role + " – " + c.nom).join(" · ") }) : null,
+      credits.length ? creer("div", { classe: "plage-credits", texte: creditsParRole(credits) }) : null,
       ligneOeuvre(plage, suivi)
     ),
     creer("span", { classe: "plage-duree", texte: plage.duree }),
@@ -2058,6 +2099,7 @@ brancherVisionneuse();
 // L'en-tête change de hauteur selon la largeur de l'écran (une ou deux lignes).
 new ResizeObserver(noterHauteurEntete).observe(document.querySelector(".entete"));
 brancherReglageJeton();
+for (const id of ["recherche", "filtre-label"]) ajouterCroix($(id));
 $("rappel-discogs").hidden = !jeton();   // rappel visible seulement avec un jeton
 chargerCollection();
 
