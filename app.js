@@ -17,6 +17,7 @@ const CHAMP_LOCALISATION = "Localisation";   // noms des champs personnalisés D
 const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const CHAMP_DESCRIPTION = "Description";
+const CHAMP_FAVORIS = "Pistes favorites";    // numéros des plages favorites, tels que Discogs les écrit : « 1, 8 »
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const CATEGORIE_A_VENDRE = "À Vendre";        // dossier Discogs rangé en dernier (casse et accents ignorés)
 const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
@@ -43,12 +44,15 @@ const CATEGORIES_PERSONNES = [
   { cle: "textes_livret", libelle: "Textes du livret" },
 ];
 
+// Crédits toujours visibles dans la fiche ; les autres sont sous « Voir les autres crédits ».
+const CREDITS_VISIBLES = ["compositeurs", "paroliers", "arrangeurs", "transcriptions", "cadences", "interpretes"];
+
 // Regroupement des formats Discogs pour le filtre et les statistiques (choix du 29/10/2026) :
-// pas de DVD seul ni de vinyle dans la collection. Le JSON garde les formats exacts de Discogs.
+// pas de DVD seul dans la collection. Le JSON garde les formats exacts de Discogs.
+// « Vinyl » et « Cassette » restent tels quels (02/11/2026) : ils signalent une fiche Discogs à corriger.
 const REGROUPEMENT_FORMATS = {
   "DVD": "CD + DVD",
   "All Media": "CD + DVD",
-  "Vinyl": "CD",      // un CD que Discogs ne connaissait qu'en vinyle
 };
 const formatRegroupe = (nom) => REGROUPEMENT_FORMATS[nom] || nom;
 
@@ -80,6 +84,7 @@ const etat = {
   avecNotes: false,
   correspondanceMB: "",     // "", "exacte", "album" ou "aucune"
   avecOeuvres: false,
+  avecFavoris: false,
   oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
   blocIndex: "compositeurs_classiques", // bloc affiché dans l'onglet Index
 };
@@ -87,7 +92,8 @@ const etat = {
 // Filtres remis à zéro (boutons « Effacer les filtres » et « Effacer ») : la recherche reste.
 const FILTRES_SEULS_VIDES = {
   categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
-  localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, oeuvre: null,
+  localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, avecFavoris: false,
+  oeuvre: null,
 };
 // Recherche et filtres remis à zéro (clic dans l'index).
 const FILTRES_VIDES = { ...FILTRES_SEULS_VIDES, recherche: "", role: "partout" };
@@ -229,6 +235,28 @@ function valeursDuChamp(edition, nomChamp) {
   return [...new Set(edition.exemplaires.map((e) => (e.champs[nomChamp] || "").trim()).filter(Boolean))];
 }
 
+/** « 1, 8 » -> ["1", "8"] : positions de plages écrites dans le champ « Pistes favorites ». */
+function lirePositions(texte) {
+  return String(texte || "").split(/[,;\n]/).map((p) => p.trim()).filter(Boolean);
+}
+
+/**
+ * Toutes les plages réelles d'une tracklist, mouvements compris, dans l'ordre du disque.
+ * Chaque plage est donnée avec son titre complet : « Symphony No. 7 – II. Allegretto » pour un mouvement.
+ */
+function toutesLesPlages(plages, parent = "") {
+  return (plages || []).flatMap((plage) => {
+    if (plage.type === "intertitre") return [];
+    const titre = parent ? parent + " – " + plage.titre : plage.titre;
+    return (plage.sous_plages || []).length ? toutesLesPlages(plage.sous_plages, titre) : [{ plage, titre }];
+  });
+}
+
+/** Plages favorites d'une édition, dans l'ordre du disque : [{ plage, titre }]. */
+function plagesFavorites(edition) {
+  return toutesLesPlages(edition.plages).filter(({ plage }) => plage.position && edition.favoris.has(plage.position));
+}
+
 /** « ★★★★☆ » pour une note sur 5. */
 function etoiles(note) {
   return "★".repeat(note) + "☆".repeat(5 - note);
@@ -296,6 +324,7 @@ function regrouperParEdition(disques) {
     edition.localisations = valeursDuChamp(edition, CHAMP_LOCALISATION);
     edition.notesPerso = valeursDuChamp(edition, CHAMP_NOTES_PERSO);
     edition.descriptions = valeursDuChamp(edition, CHAMP_DESCRIPTION);
+    edition.favoris = new Set(valeursDuChamp(edition, CHAMP_FAVORIS).flatMap(lirePositions));
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
@@ -428,6 +457,7 @@ function remplirFiltres() {
   libelleCase("filtre-double", "En double ou plus", (e) => e.exemplaires.length >= 2);
   libelleCase("filtre-notes", "Avec description ou notes", aDesTextes);
   libelleCase("filtre-oeuvres", "Avec œuvres identifiées", (e) => e.oeuvres.size > 0);
+  libelleCase("filtre-favoris", "Avec pistes favorites", (e) => e.favoris.size > 0);
 
   // Les labels sont nombreux : liste de suggestions pour la saisie.
   const labels = [...compter(editions, EXTRACTEURS.label).keys()].sort(comparerTextes);
@@ -466,6 +496,7 @@ function lireControles() {
   etat.avecNotes = $("filtre-notes").checked;
   etat.correspondanceMB = $("filtre-musicbrainz").value;
   etat.avecOeuvres = $("filtre-oeuvres").checked;
+  etat.avecFavoris = $("filtre-favoris").checked;
 }
 
 /** Recopie l'état dans les champs (quand le code change un filtre, par un clic sur un nom par ex.). */
@@ -485,12 +516,13 @@ function ecrireControles() {
   $("filtre-notes").checked = etat.avecNotes;
   $("filtre-musicbrainz").value = etat.correspondanceMB;
   $("filtre-oeuvres").checked = etat.avecOeuvres;
+  $("filtre-favoris").checked = etat.avecFavoris;
 }
 
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
           etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres,
-          etat.oeuvre].filter(Boolean).length;
+          etat.avecFavoris, etat.oeuvre].filter(Boolean).length;
 }
 
 /**
@@ -524,6 +556,7 @@ function correspond(edition) {
   if (etat.avecNotes && !aDesTextes(edition)) return false;
   if (etat.correspondanceMB && correspondanceMB(edition) !== etat.correspondanceMB) return false;
   if (etat.avecOeuvres && !edition.oeuvres.size) return false;
+  if (etat.avecFavoris && !edition.favoris.size) return false;
   if (etat.oeuvre && !edition.oeuvres.has(etat.oeuvre.id)) return false;
   return true;
 }
@@ -788,9 +821,7 @@ function ouvrirFiche(edition) {
     [(edition.codes_barres || []).length > 1 ? "Codes-barres" : "Code-barre", (edition.codes_barres || []).join(", ")],
   ].filter(([, valeur]) => valeur);
 
-  const sectionsPersonnes = CATEGORIES_PERSONNES
-    .filter(({ cle }) => (edition[cle] || []).length)
-    .map(({ cle, libelle }) => [
+  const sectionPersonnes = ({ cle, libelle }) => [
       creer("h3", { texte: libelle }),
       creer("div", { classe: "noms" },
         edition[cle].map((nom) => creer("button", {
@@ -798,7 +829,17 @@ function ouvrirFiche(edition) {
           surclic: () => chercherNom(nom, cle),
         }))
       ),
-    ]);
+    ];
+  const presentes = CATEGORIES_PERSONNES.filter(({ cle }) => (edition[cle] || []).length);
+  const sectionsPersonnes = presentes.filter(({ cle }) => CREDITS_VISIBLES.includes(cle)).map(sectionPersonnes);
+  // Les autres crédits (producteurs, ingénieurs du son…) sont repliés sous un lien.
+  const autresCategories = presentes.filter(({ cle }) => !CREDITS_VISIBLES.includes(cle));
+  const autresCredits = autresCategories.length
+    ? repliable("Voir les autres crédits (" + autresCategories.reduce((n, { cle }) => n + edition[cle].length, 0) + ")",
+      autresCategories.map(sectionPersonnes),
+      // Déjà ouvert si l'on arrive en cherchant dans un de ces rôles.
+      Boolean(etat.recherche) && autresCategories.some(({ cle }) => cle === etat.role))
+    : null;
 
   // Ma note (la première donnée, si j'ai plusieurs exemplaires) et celle des membres de Discogs.
   const maNote = edition.exemplaires.map((e) => e.note).find(Boolean);
@@ -812,7 +853,7 @@ function ouvrirFiche(edition) {
   const liens = valeursDuChamp(edition, CHAMP_LIENS).flatMap(lireLiensExternes);
 
   // Les champs qui ont leur propre place dans la fiche ne sont pas répétés dans « Mon exemplaire ».
-  const champsAPart = [CHAMP_LOCALISATION, CHAMP_DESCRIPTION, CHAMP_NOTES_PERSO, CHAMP_LIENS];
+  const champsAPart = [CHAMP_LOCALISATION, CHAMP_DESCRIPTION, CHAMP_NOTES_PERSO, CHAMP_LIENS, CHAMP_FAVORIS];
   const exemplaires = edition.exemplaires.map((exemplaire, numero) => {
     const autresChamps = Object.entries(exemplaire.champs).filter(([nom]) => !champsAPart.includes(nom));
     return creer("li", {},
@@ -841,22 +882,23 @@ function ouvrirFiche(edition) {
     creer("p", { classe: "ligne-recherche-fiche" }, champRecherche, resultats),
     notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
     // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
-    jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton", texte: "✎ Modifier mes Custom Fields Discogs",
+    jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton bouton-petit", texte: "✎ Modifier mes Custom Fields Discogs",
       surclic: () => ouvrirEdition(edition) })) : null,
     creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
     edition.descriptions.length ? [
       creer("h3", { texte: "Description" }),
-      edition.descriptions.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
+      edition.descriptions.map((texte) => creer("div", { classe: "notes-perso cadre" }, texteAvecLiens(texte))),
     ] : null,
     edition.notesPerso.length ? [
       creer("h3", { texte: "Notes personnelles" }),
-      edition.notesPerso.map((texte) => creer("div", { classe: "notes-perso" }, texteAvecLiens(texte))),
+      edition.notesPerso.map((texte) => creer("div", { classe: "notes-perso cadre" }, texteAvecLiens(texte))),
     ] : null,
     liens.length ? [
       creer("h3", { texte: "Liens externes" }),
       creer("ul", { classe: "liens-externes" }, liens.map((l) => creer("li", {}, creerLien(l.adresse, l.nom + " ↗")))),
     ] : null,
     sectionsPersonnes,
+    autresCredits ? autresCredits.element : null,
     creer("h3", { texte: edition.exemplaires.length > 1 ? "Mes exemplaires" : "Mon exemplaire" }),
     creer("ul", { classe: "exemplaires" }, exemplaires),
     (edition.plages || []).length ? [creer("h3", { texte: "Plages" }), listePlages(edition.plages, { precedente: null, edition })] : null,
@@ -880,6 +922,8 @@ function ouvrirFiche(edition) {
   let numeroResultat = 0;
   const chercher = () => {
     const nombre = surligner(texteFiche, champRecherche.value);
+    // Un nom trouvé dans les crédits repliés : on les ouvre pour le montrer.
+    if (autresCredits && autresCredits.contenu.querySelector("mark.trouve")) autresCredits.ouvrir();
     numeroResultat = 0;
     resultats.textContent = !champRecherche.value.trim() ? ""
       : nombre ? nombre + (nombre > 1 ? " résultats" : " résultat") : "Aucun résultat";
@@ -895,6 +939,22 @@ function ouvrirFiche(edition) {
     numeroResultat = allerAuResultat(texteFiche, numeroResultat);
   });
   if (champRecherche.value) chercher();
+}
+
+/**
+ * Bloc replié sous un lien (« Voir les autres crédits (12) » / « Replier »).
+ * Renvoie { element, contenu, ouvrir } : `ouvrir()` le déplie (recherche dans la fiche).
+ */
+function repliable(texteFerme, enfants, ouvert = false) {
+  const contenu = creer("div", { classe: "repliable" }, enfants);
+  const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus" });
+  const montrer = (oui) => {
+    contenu.hidden = !oui;
+    lien.textContent = oui ? "Replier les autres crédits" : texteFerme;
+  };
+  lien.addEventListener("click", () => montrer(contenu.hidden));
+  montrer(ouvert);
+  return { element: creer("div", {}, lien, contenu), contenu, ouvrir: () => montrer(true) };
 }
 
 /**
@@ -1029,6 +1089,7 @@ function lignePlage(plage, suivi) {
       ligneOeuvre(plage, suivi)
     ),
     creer("span", { classe: "plage-duree", texte: plage.duree }),
+    !(plage.sous_plages || []).length && plage.position && suivi.edition ? boutonFavori(plage, suivi.edition) : creer("span"),
     (plage.sous_plages || []).length ? listePlages(plage.sous_plages, suivi) : null
   );
 }
@@ -1165,6 +1226,7 @@ function blocsIndex() {
       cle === "compositeurs" ? enDeux(cle, libelle, "Compositeurs classiques", "Autres compositeurs") : [[cle, libelle]]),
     ...(editions.some((e) => e.oeuvres.size) ? enDeux("oeuvres", "Œuvres", "Œuvres classiques", "Autres œuvres") : []),
     ["labels", "Labels"],
+    ...(editions.some((e) => e.favoris.size) ? [["pistes_favorites", "Pistes favorites"]] : []),
   ];
   return blocs
     .filter(([cle]) => !/_(classiques|autres)$/.test(cle) || entreesIndex(cle).length)  // moitié vide : pas de bloc
@@ -1217,6 +1279,14 @@ function entreesIndex(bloc) {
       libelle: edition.titre, nombre: null, cle: cleDeTri(edition.titre, false),
       detail: (edition.artistes_principaux || []).join(", "), clic: () => ouvrirFiche(edition),
     }));
+  }
+  if (bloc === "pistes_favorites") {
+    // Une entrée par plage favorite : son titre, puis le disque.
+    return editions.flatMap((edition) => plagesFavorites(edition).map(({ titre }) => ({
+      libelle: titre, nombre: null, cle: cleDeTri(titre, false),
+      detail: edition.titre + ((edition.artistes_principaux || []).length ? " (" + edition.artistes_principaux.join(", ") + ")" : ""),
+      clic: () => ouvrirFiche(edition),
+    })));
   }
   if (bloc.startsWith("oeuvres_")) {
     const parId = new Map();
@@ -1726,6 +1796,92 @@ async function ouvrirEdition(edition) {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Pistes favorites : un cœur par plage, enregistré dans le champ Discogs « Pistes favorites »
+// du premier exemplaire (numéros de plages séparés par des virgules : « 1, 8 »).
+// ---------------------------------------------------------------------------
+
+/** ♡ / ♥ d'une plage. Cliquable seulement sur un appareil où le jeton Discogs est enregistré. */
+function boutonFavori(plage, edition) {
+  const favori = edition.favoris.has(plage.position);
+  if (!jeton()) {
+    return favori ? creer("span", { classe: "favori actif", texte: "♥", title: "Piste favorite" }) : creer("span");
+  }
+  const bouton = creer("button", { type: "button", classe: "favori", "data-position": plage.position });
+  const montrer = (oui) => montrerFavori(bouton, oui);
+  montrer(favori);
+  bouton.addEventListener("click", async () => {
+    const voulu = !bouton.classList.contains("actif");
+    montrer(voulu);              // réponse immédiate à l'écran…
+    bouton.disabled = true;
+    try {
+      const favoris = await basculerFavori(edition, plage.position, voulu);
+      // Discogs a pu avoir d'autres plages favorites (ajoutées sur un autre appareil) : tous les cœurs suivent.
+      for (const autre of document.querySelectorAll("#fiche-contenu .favori[data-position]")) {
+        montrerFavori(autre, favoris.has(autre.dataset.position));
+      }
+    } catch (erreur) {
+      montrer(!voulu);           // … annulée si Discogs refuse
+      window.alert("Pistes favorites : " + erreur.message);
+    }
+    bouton.disabled = false;
+  });
+  return bouton;
+}
+
+function montrerFavori(bouton, oui) {
+  bouton.textContent = oui ? "♥" : "♡";
+  bouton.classList.toggle("actif", oui);
+  bouton.title = oui ? "Retirer des pistes favorites" : "Ajouter aux pistes favorites";
+  bouton.setAttribute("aria-label", bouton.title);
+}
+
+let definitionsChamps = null;   // champs personnalisés Discogs, lus une fois par session
+
+/** Ajoute ou retire une plage du champ « Pistes favorites » sur Discogs, puis met la page à jour. */
+async function basculerFavori(edition, position, ajouter) {
+  // On relit Discogs : la valeur du moment, même si elle a changé depuis la synchro.
+  const [definitions, exemplaires] = await Promise.all([
+    definitionsChamps || appelerDiscogs(cheminCollection() + "/fields"),
+    appelerDiscogs(cheminCollection() + "/releases/" + edition.release_id),
+  ]);
+  definitionsChamps = definitions;
+  const champ = (definitions.fields || []).find((c) => normaliser(c.name.trim()) === normaliser(CHAMP_FAVORIS));
+  if (!champ) throw new Error("le champ « " + CHAMP_FAVORIS + " » n'existe pas dans tes Custom Fields Discogs.");
+  // Le premier exemplaire de l'édition (celui de la fiche, sinon le premier rendu par Discogs).
+  const liste = exemplaires.releases || [];
+  const instance = liste.find((i) => i.instance_id === edition.exemplaires[0].instance_id) || liste[0];
+  if (!instance) throw new Error("exemplaire introuvable sur Discogs.");
+
+  const note = (instance.notes || []).find((n) => n.field_id === champ.id);
+  const positions = new Set(lirePositions(note ? texteBrut(note.value) : ""));
+  if (ajouter) positions.add(position);
+  else positions.delete(position);
+  // Rangées dans l'ordre du disque ; une position inconnue de la tracklist reste, à la fin.
+  const ordre = toutesLesPlages(edition.plages).map(({ plage }) => plage.position);
+  const valeur = [...positions]
+    .sort((a, b) => (ordre.indexOf(a) + 1 || 1e6) - (ordre.indexOf(b) + 1 || 1e6))
+    .join(", ");
+  if (longueurTexte(valeur) > LONGUEUR_MAX_CHAMP) throw new Error("trop de plages pour un champ Discogs (" + LONGUEUR_MAX_CHAMP + " caractères).");
+
+  await appelerDiscogs(cheminCollection() + "/folders/" + instance.folder_id + "/releases/" + edition.release_id
+    + "/instances/" + instance.instance_id + "/fields/" + champ.id,
+    { method: "POST", body: JSON.stringify({ value: valeur }) });
+
+  // Gardée sur cet appareil jusqu'à la prochaine synchro, comme les autres modifications.
+  const toutes = lireStockage(CLE_MODIFICATIONS, {});
+  const modif = toutes[instance.instance_id] || { champs: {} };
+  modif.quand = new Date().toISOString();
+  modif.champs[CHAMP_FAVORIS] = valeur;
+  toutes[instance.instance_id] = modif;
+  ecrireStockage(CLE_MODIFICATIONS, toutes);
+  modifications = toutes;
+  reconstruire();
+  // La fiche ouverte garde son objet : on met à jour ses favoris pour les cœurs suivants.
+  edition.favoris = new Set(lirePositions(valeur));
+  return edition.favoris;
+}
+
 /** Réglage du jeton sur cet appareil : on le vérifie auprès de Discogs avant de le garder. */
 function brancherReglageJeton() {
   const boite = $("reglage-jeton");
@@ -1786,7 +1942,7 @@ function brancherEvenements() {
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
                     "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-localisation", "filtre-double",
-                    "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres"]) {
+                    "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres", "filtre-favoris"]) {
     $(id).addEventListener("change", () => { lireControles(); afficher(); });
   }
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });
