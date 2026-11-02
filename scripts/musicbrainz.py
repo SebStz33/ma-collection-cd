@@ -19,7 +19,10 @@ celle d'une autre édition.
 Si on trouve, on lit pour chaque plage l'œuvre jouée (« Concerto RV 269, I. Allegro »),
 son compositeur (à défaut, ses auteurs-compositeurs) et son œuvre parente (« Concerto RV 269 »). Les plages Discogs et
 MusicBrainz sont associées dans l'ordre : seulement si elles sont aussi nombreuses
-des deux côtés, pour ne jamais attribuer une œuvre à la mauvaise plage.
+des deux côtés, pour ne jamais attribuer une œuvre à la mauvaise plage. Sinon, deuxième
+essai : une œuvre que Discogs découpe en mouvements (7.1, 7.2…) compte pour une seule
+plage, comme sur MusicBrainz quand la suite y tient en une plage ; chaque mouvement
+reçoit alors l'œuvre de cette plage.
 
 Les résultats sont gardés dans data/musicbrainz.json (le « cache ») et relus tous
 les 30 jours. Aucun jeton n'est nécessaire. Règle de MusicBrainz : au plus une
@@ -49,7 +52,9 @@ DISQUES_PAR_SYNCHRO = 200
 # À augmenter quand la façon de chercher change : les disques cherchés avec une
 # version plus ancienne sont alors cherchés à nouveau (après ceux jamais cherchés).
 # Version 2 : codes-barres, auteurs-compositeurs.
-VERSION_RECHERCHE = 2
+# Version 3 : deuxième essai d'association (mouvements Discogs = une plage MusicBrainz) ;
+#             seuls les disques trouvés sans œuvres sont revus (voir a_chercher).
+VERSION_RECHERCHE = 3
 
 # Méthodes qui désignent l'édition exacte (on prend alors aussi ses images).
 METHODES_EXACTES = ("edition", "code_barre")
@@ -249,6 +254,50 @@ def plages_a_associer(plages):
     return resultat
 
 
+def numero_de_plage(position):
+    """
+    Numéro de la plage du disque pour une position Discogs de mouvement :
+    « 7.2 » -> « 7 », « 7b » -> « 7 » ; une position simple (« 7 », « 1-3 ») reste telle quelle.
+    """
+    position = (position or "").strip()
+    debut, _, fin = position.rpartition(".")
+    if debut and fin.isdigit():
+        return debut
+    if len(position) > 1 and position[-1].isalpha() and position[-2].isdigit():
+        return position[:-1]
+    return position
+
+
+def blocs_a_associer(plages):
+    """
+    Deuxième façon de compter : des mouvements qui partagent un même numéro de plage
+    (7.1, 7.2… ou 7a, 7b…) comptent pour une seule plage, comme sur MusicBrainz quand
+    la suite y tient en une plage. Des mouvements numérotés chacun (1, 2… 6 sous
+    « Háry János Suite ») restent des plages séparées. Renvoie une liste de blocs,
+    chacun étant la liste de ses plages Discogs.
+    """
+    blocs = []
+    for plage in plages or []:
+        if plage.get("type") == "intertitre":
+            continue
+        sous_plages = [p for p in plage.get("sous_plages") or [] if p.get("type") != "intertitre"]
+        if not sous_plages:
+            blocs.append([plage])
+            continue
+        numeros = {numero_de_plage(p.get("position")) for p in sous_plages}
+        positions = {(p.get("position") or "").strip() for p in sous_plages}
+        if len(numeros) == 1 and not numeros & positions:
+            blocs.append(plages_a_associer(sous_plages))  # 7.1 à 7.5 : une seule plage du disque
+        else:
+            blocs.extend(blocs_a_associer(sous_plages))
+    return blocs
+
+
+def nombres_acceptes(plages):
+    """Nombres de plages MusicBrainz qu'on sait associer : plage par plage, ou mouvements groupés."""
+    return {len(plages_a_associer(plages)), len(blocs_a_associer(plages))}
+
+
 def ajouter_oeuvres(plages, oeuvres, avec_parente=True):
     """
     Renvoie une copie des plages Discogs où chaque plage reçoit sa clé « oeuvre » (ou aucune).
@@ -258,9 +307,16 @@ def ajouter_oeuvres(plages, oeuvres, avec_parente=True):
     a_associer = plages_a_associer(copie)
     for plage in a_associer:
         plage.pop("oeuvre", None)
-    if oeuvres and len(oeuvres) == len(a_associer):
-        for plage, oeuvre in zip(a_associer, oeuvres):
-            if oeuvre:
+    if not oeuvres:
+        return copie
+    if len(oeuvres) == len(a_associer):
+        paires = [([plage], oeuvre) for plage, oeuvre in zip(a_associer, oeuvres)]
+    else:
+        blocs = blocs_a_associer(copie)
+        paires = list(zip(blocs, oeuvres)) if len(oeuvres) == len(blocs) else []
+    for bloc, oeuvre in paires:
+        if oeuvre:
+            for plage in bloc:
                 plage["oeuvre"] = oeuvre if avec_parente else dict(oeuvre, parente=None)
     return copie
 
@@ -288,8 +344,11 @@ def a_chercher(entree, nb_plages):
     """Vrai si ce disque doit être (re)cherché sur MusicBrainz."""
     if not entree or entree.get("nb_plages") != nb_plages:
         return True  # jamais cherché, ou tracklist Discogs modifiée depuis
-    if entree.get("version", 1) < VERSION_RECHERCHE:
-        return True  # cherché avant un changement de la façon de chercher
+    version = entree.get("version", 1)
+    if version < 2:
+        return True  # cherché avant les codes-barres : tout est à revoir
+    if version < VERSION_RECHERCHE and entree.get("release") and not entree.get("oeuvres"):
+        return True  # trouvé sans œuvres : le deuxième essai d'association peut aider
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
@@ -320,8 +379,8 @@ def mettre_a_jour(fichier, disques, tout=False):
             # Un disque en erreur ne doit pas bloquer la synchro : il sera repris la prochaine fois.
             print("  Disque %s ignoré pour MusicBrainz (%s)" % (release_id, erreur))
             continue
-        if oeuvres is not None and len(oeuvres) != nb_plages:
-            oeuvres = None  # nombre de plages différent : on n'associe rien
+        if oeuvres is not None and len(oeuvres) not in nombres_acceptes(plages):
+            oeuvres = None  # nombre de plages différent, même en groupant les mouvements : on n'associe rien
         cache[str(release_id)] = {
             "maj": date.today().isoformat(),
             "version": VERSION_RECHERCHE,

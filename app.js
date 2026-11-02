@@ -879,7 +879,9 @@ function ouvrirFiche(edition) {
         creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
       ])
     ),
-    creer("p", { classe: "ligne-recherche-fiche" }, champRecherche, resultats),
+    creer("p", { classe: "ligne-recherche-fiche" }, champRecherche, resultats,
+      creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↓ Fin",
+        surclic: () => $("fiche").scrollTo({ top: $("fiche").scrollHeight, behavior: "smooth" }) })),
     notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
     // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
     jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton bouton-petit", texte: "✎ Modifier mes Custom Fields Discogs",
@@ -906,7 +908,10 @@ function ouvrirFiche(edition) {
       creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
       edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
         texte: "Voir sur MusicBrainz ↗" }) : null
-    )
+    ),
+    creer("p", { classe: "fin-fiche" },
+      creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↑ Début",
+        surclic: () => $("fiche").scrollTo({ top: 0, behavior: "smooth" }) }))
   );
 
   $("fiche-contenu").replaceChildren(
@@ -1888,6 +1893,8 @@ function brancherReglageJeton() {
   const saisie = $("jeton-saisie");
   const etatJeton = $("jeton-etat");
   const decrire = () => {
+    // Le rappel « Ne pas changer sur Discogs » ne concerne que les appareils qui peuvent modifier.
+    $("rappel-discogs").hidden = !jeton();
     etatJeton.textContent = jeton()
       ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier mes Custom Fields Discogs » apparaît dans les fiches."
       : "Aucun jeton sur cet appareil : la page est en lecture seule.";
@@ -1981,6 +1988,7 @@ brancherVisionneuse();
 // L'en-tête change de hauteur selon la largeur de l'écran (une ou deux lignes).
 new ResizeObserver(noterHauteurEntete).observe(document.querySelector(".entete"));
 brancherReglageJeton();
+$("rappel-discogs").hidden = !jeton();   // rappel visible seulement avec un jeton
 chargerCollection();
 
 // Application installable (PWA) : le service worker n'est actif qu'en https,
