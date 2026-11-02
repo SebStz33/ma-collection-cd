@@ -483,4 +483,5 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 
 /* Flèches de la fiche : « ↓ Fin » à droite de la recherche, « ↑ Début » tout en bas */
 .lien-fiche { padding: 0; font-size: 13px; white-space: nowrap; }
+.ligne-recherche-fiche .lien-fiche { margin-left: auto; }   /* tout à droite, comme « ↑ Début » */
 .fin-fiche { margin: 18px 0 0; text-align: right; }
