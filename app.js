@@ -639,19 +639,23 @@ function afficher() {
   $("nb-filtres").textContent = nbFiltres;
   $("nb-filtres").hidden = nbFiltres === 0;
 
-  afficherMessage(resultats.length ? "" : "Aucun disque ne correspond à ces critères.");
+  // Le tirage au hasard porte sur toute la collection : le message des filtres n'y a pas de sens.
+  afficherMessage(resultats.length || etat.vue === "hasard" ? "" : "Aucun disque ne correspond à ces critères.");
   afficherBandeau(resultats.length);
 
   $("vue-collection").hidden = etat.vue !== "collection";
   $("vue-statistiques").hidden = etat.vue !== "statistiques";
   $("vue-index").hidden = etat.vue !== "index";
-  // La feuille de style masque ce qui n'agit pas sur la vue : tout l'outillage dans l'index, le tri dans les statistiques.
+  $("vue-hasard").hidden = etat.vue !== "hasard";
+  // La feuille de style masque ce qui n'agit pas sur la vue : tout l'outillage dans l'index
+  // et dans « Au hasard », le tri dans les statistiques.
   document.body.dataset.vue = etat.vue;
   document.querySelectorAll(".onglet").forEach((b) => b.classList.toggle("actif", b.dataset.vue === etat.vue));
 
   if (etat.vue === "collection") afficherGrille(resultats);
   else if (etat.vue === "statistiques") afficherStatistiques(resultats);
-  else afficherIndex();
+  else if (etat.vue === "index") afficherIndex();
+  else afficherHasard();
 }
 
 // D'où l'on vient quand on clique sur une œuvre ou un nom (une fiche, les statistiques
@@ -782,6 +786,69 @@ function cartesDesEditions(liste) {
       categories.length ? creer("p", { classe: "carte-categorie", texte: categories.join(" · ") }) : null
     );
   });
+}
+
+// ---------------------------------------------------------------------------
+// Au hasard : quelques éditions tirées au sort
+// ---------------------------------------------------------------------------
+
+const NOMBRE_MINIMUM = 9;        // au moins 9 disques (carré 3 × 3 sur iPhone), en rangées complètes
+const NOMBRE_PREPARE = 40;       // vignettes préparées (plus qu'une rangée sur le plus grand écran)
+const LIEN_FISHER_YATES = "https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates";
+
+let tirage = null;   // éditions mélangées ; null = à tirer de nouveau (à chaque clic sur l'onglet)
+
+/**
+ * Mélange de Fisher-Yates : renvoie une copie de la liste dans un ordre au hasard,
+ * chaque ordre ayant exactement la même chance de sortir.
+ * On part de la fin : pour chaque place i, on tire au sort une place j entre 0 et i
+ * (i compris) et on échange les deux disques. La partie après i est déjà mélangée.
+ */
+function melanger(liste) {
+  const copie = [...liste];
+  for (let i = copie.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));   // entier au hasard de 0 à i
+    [copie[i], copie[j]] = [copie[j], copie[i]];      // échange des deux disques
+  }
+  return copie;
+}
+
+/** Une édition est « à vendre » quand tous ses exemplaires sont dans le dossier « À Vendre ». */
+function estAVendre(edition) {
+  return edition.categories.every((c) => normaliser(c) === normaliser(CATEGORIE_A_VENDRE));
+}
+
+/**
+ * Nombre de disques à montrer : des rangées complètes, et au moins NOMBRE_MINIMUM.
+ * 3 par rangée (iPhone) → 9 ; 4 → 12 ; 5 → 10 ; 6 → 12 ; 7 → 14 ; 9 → 9 ; 12 → 12.
+ */
+function nombreAMontrer(colonnes) {
+  return colonnes * Math.ceil(NOMBRE_MINIMUM / colonnes);
+}
+
+/** Montre juste assez de vignettes pour remplir les rangées de la grille (appelé aussi quand la fenêtre change de taille). */
+function ajusterHasard() {
+  const grille = document.querySelector("#vue-hasard .grille");
+  if (!grille || $("vue-hasard").hidden) return;
+  // La feuille de style décide du nombre de colonnes selon la largeur : on le relit.
+  const colonnes = getComputedStyle(grille).gridTemplateColumns.split(" ").filter(Boolean).length || 1;
+  const nombre = nombreAMontrer(colonnes);
+  [...grille.children].forEach((carte, rang) => { carte.hidden = rang >= nombre; });
+}
+
+function afficherHasard() {
+  if (!tirage) tirage = melanger(editions.filter((e) => !estAVendre(e))).slice(0, NOMBRE_PREPARE);
+  $("vue-hasard").replaceChildren(
+    creer("p", { classe: "hasard-haut" },
+      creer("button", { type: "button", classe: "bouton", texte: "Nouveau tirage",
+        surclic: () => { tirage = null; afficher(); } })),
+    creer("div", { classe: "grille" }, cartesDesEditions(tirage)),
+    creer("hr", { classe: "hasard-trait" }),
+    creer("p", { classe: "hasard-methode" },
+      "Tirage réalisé par la méthode de ",
+      creer("a", { href: LIEN_FISHER_YATES, target: "_blank", rel: "noopener", texte: "Fisher-Yates" }))
+  );
+  ajusterHasard();
 }
 
 // ---------------------------------------------------------------------------
@@ -2075,8 +2142,11 @@ function brancherEvenements() {
 
   document.querySelectorAll(".onglet").forEach((bouton) => bouton.addEventListener("click", () => {
     etat.vue = bouton.dataset.vue;
+    if (etat.vue === "hasard") tirage = null;   // chaque ouverture de l'onglet = un nouveau tirage
     afficher();
   }));
+  // Fenêtre redimensionnée : même tirage, seul le nombre de disques montrés s'adapte.
+  window.addEventListener("resize", ajusterHasard);
 
   // Panneau des filtres sur téléphone
   $("ouvrir-filtres").addEventListener("click", () => $("filtres").classList.add("ouvert"));

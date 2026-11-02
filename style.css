@@ -449,8 +449,15 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .index-element { white-space: nowrap; }
 .index-element .index-nom { white-space: normal; }
 
-/* Ce qui n'agit pas sur la vue est masqué : tout l'outillage dans l'index, le tri dans les statistiques. */
+/* Ce qui n'agit pas sur la vue est masqué : tout l'outillage dans l'index et « Au hasard », le tri dans les statistiques. */
 body[data-vue="index"] .outils, body[data-vue="index"] .filtres { display: none; }
+body[data-vue="hasard"] .outils, body[data-vue="hasard"] .filtres { display: none; }
+
+/* Au hasard : bouton en haut, trait blanc sur toute la largeur sous les vignettes, puis la méthode. */
+.hasard-haut { margin: 0 0 16px; }
+.hasard-trait { border: 0; border-top: 1px solid var(--texte); margin: 24px 0 10px; }
+.hasard-methode { margin: 0; font-size: 13px; color: var(--texte-discret); }
+.hasard-methode a { color: var(--accent); }
 body[data-vue="statistiques"] .tri { display: none; }
 
 /* Recherche dans la fiche */
