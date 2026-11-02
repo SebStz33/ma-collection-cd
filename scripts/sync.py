@@ -518,6 +518,7 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     )
     # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
     disque["musicbrainz_methode"] = entree_mb.get("methode")
+    disque["annees_enregistrement"] = entree_mb.get("annees_enregistrement")  # [première, dernière] ou None
     return disque
 
 

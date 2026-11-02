@@ -262,6 +262,19 @@ function etoiles(note) {
   return "★".repeat(note) + "☆".repeat(5 - note);
 }
 
+/**
+ * Ligne « Année d'enregistrement : 1958 » ou « Années d'enregistrement : 1958 – 1963 »
+ * (d'après MusicBrainz), ou rien si on ne les connaît pas.
+ */
+function anneesEnregistrement(edition) {
+  const annees = edition.annees_enregistrement;
+  if (!annees || !annees.length) return [];
+  const [premiere, derniere] = annees;
+  return premiere === derniere
+    ? [["Année d'enregistrement", String(premiere)]]
+    : [["Années d'enregistrement", premiere + " – " + derniere]];
+}
+
 /** Décrit les formats : « Box Set + 5 × CD (Album, Remastered) ». */
 function decrireFormats(formats) {
   return (formats || []).map((f) => {
@@ -818,7 +831,8 @@ function ouvrirFiche(edition) {
 
   const informations = [
     ["Catégorie", categoriesChoisies(edition).join(" · ")],
-    ["Année", edition.annee || "inconnue"],
+    ["Année de parution", edition.annee || "inconnue"],
+    ...anneesEnregistrement(edition),
     ["Label", (edition.labels || []).map((l) => l.nom + (l.catno ? " – " + l.catno : "")).join(" ; ")],
     ["Format", decrireFormatsFiche(edition.formats)],
     ["Genres", (edition.genres || []).join(", ")],
@@ -1489,7 +1503,7 @@ function carteAnnees(liste) {
   const sansAnnee = liste.filter((e) => !e.annee).length;
   const annees = [...compte.keys()];
   const carte = creer("section", { classe: "carte-stat large" },
-    creer("h2", { texte: "Années d'édition" }),
+    creer("h2", { texte: "Années de parution" }),
     creer("p", { classe: "note-stat", texte: "Année de ton édition, pas de l'œuvre. " +
       (sansAnnee ? pluriel(sansAnnee, "édition") + " sans année. " : "") + "Clic sur une colonne pour filtrer." })
   );
