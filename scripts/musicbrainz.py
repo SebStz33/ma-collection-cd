@@ -24,6 +24,10 @@ essai : une œuvre que Discogs découpe en mouvements (7.1, 7.2…) compte pour 
 plage, comme sur MusicBrainz quand la suite y tient en une plage ; chaque mouvement
 reçoit alors l'œuvre de cette plage.
 
+Pour une édition exacte, on lit aussi les dates d'enregistrement des plages, quand
+MusicBrainz les a (« enregistré en Autriche, 1958-02 », dates des interprètes…) :
+on en garde la première et la dernière année.
+
 Les résultats sont gardés dans data/musicbrainz.json (le « cache ») et relus tous
 les 30 jours. Aucun jeton n'est nécessaire. Règle de MusicBrainz : au plus une
 requête par seconde, et une application qui se présente dans le « User-Agent ».
@@ -54,7 +58,8 @@ DISQUES_PAR_SYNCHRO = 200
 # Version 2 : codes-barres, auteurs-compositeurs.
 # Version 3 : deuxième essai d'association (mouvements Discogs = une plage MusicBrainz) ;
 #             seuls les disques trouvés sans œuvres sont revus (voir a_chercher).
-VERSION_RECHERCHE = 3
+# Version 4 : années d'enregistrement ; seules les éditions exactes sont revues.
+VERSION_RECHERCHE = 4
 
 # Méthodes qui désignent l'édition exacte (on prend alors aussi ses images).
 METHODES_EXACTES = ("edition", "code_barre")
@@ -193,14 +198,40 @@ def oeuvre_de_plage(plage_mb):
     return {"id": oeuvre["id"], "titre": oeuvre.get("title", ""), "compositeur": compositeur, "parente": parente}
 
 
-def lire_oeuvres(identifiant):
-    """Renvoie la liste des œuvres (ou None) de chaque plage d'une édition MusicBrainz, dans l'ordre."""
+# Relations d'un enregistrement dont la date est celle de l'enregistrement : le lieu, l'œuvre
+# jouée et les interprètes. Pas le mixage ni le mastering, souvent refaits des années plus tard.
+RELATIONS_DATEES = {
+    "recorded at", "recorded in", "performance", "performer", "instrument", "vocal",
+    "conductor", "performing orchestra", "chorus master", "concertmaster",
+}
+
+
+def annees_de_plage(plage_mb):
+    """Années d'enregistrement d'une plage MusicBrainz (ensemble, vide si MusicBrainz n'en a pas)."""
+    annees = set()
+    for relation in (plage_mb.get("recording") or {}).get("relations", []):
+        if relation.get("type") not in RELATIONS_DATEES:
+            continue
+        for cle in ("begin", "end"):
+            date_texte = relation.get(cle) or ""
+            if len(date_texte) >= 4 and date_texte[:4].isdigit():
+                annees.add(int(date_texte[:4]))
+    return annees
+
+
+def lire_edition_mb(identifiant):
+    """
+    Lit une édition MusicBrainz. Renvoie (œuvres, années) : la liste des œuvres (ou None)
+    de chaque plage, dans l'ordre, et [première, dernière] année d'enregistrement (ou None).
+    """
     edition = appeler("release/%s" % identifiant, {
-        "inc": "recordings+recording-level-rels+work-rels+work-level-rels+artist-rels",
+        "inc": "recordings+recording-level-rels+work-rels+work-level-rels+artist-rels+place-rels+area-rels",
     })
     if not edition:
-        return None
-    return [oeuvre_de_plage(plage) for support in edition.get("media", []) for plage in support.get("tracks", [])]
+        return None, None
+    plages = [plage for support in edition.get("media", []) for plage in support.get("tracks", [])]
+    annees = set().union(*(annees_de_plage(plage) for plage in plages)) if plages else set()
+    return [oeuvre_de_plage(plage) for plage in plages], ([min(annees), max(annees)] if annees else None)
 
 
 def en_https(adresse):
@@ -347,8 +378,10 @@ def a_chercher(entree, nb_plages):
     version = entree.get("version", 1)
     if version < 2:
         return True  # cherché avant les codes-barres : tout est à revoir
-    if version < VERSION_RECHERCHE and entree.get("release") and not entree.get("oeuvres"):
+    if version < 3 and entree.get("release") and not entree.get("oeuvres"):
         return True  # trouvé sans œuvres : le deuxième essai d'association peut aider
+    if version < 4 and entree.get("methode") in METHODES_EXACTES:
+        return True  # édition exacte : on lit en plus ses années d'enregistrement
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
@@ -373,7 +406,7 @@ def mettre_a_jour(fichier, disques, tout=False):
         nb_plages = len(plages_a_associer(plages))
         try:
             identifiant, methode = trouver_edition(release_id, master_id, nb_plages, codes_barres)
-            oeuvres = lire_oeuvres(identifiant) if identifiant else None
+            oeuvres, annees = lire_edition_mb(identifiant) if identifiant else (None, None)
             images = lire_images(identifiant) if methode in METHODES_EXACTES else []
         except (urllib.error.URLError, ValueError, OSError) as erreur:
             # Un disque en erreur ne doit pas bloquer la synchro : il sera repris la prochaine fois.
@@ -389,6 +422,8 @@ def mettre_a_jour(fichier, disques, tout=False):
             "release": identifiant,
             "oeuvres": oeuvres if oeuvres and any(oeuvres) else None,
             "images": images,
+            # Seulement pour l'édition exacte : celles d'une autre édition de l'album pourraient différer.
+            "annees_enregistrement": annees if methode in METHODES_EXACTES else None,
         }
         if numero % 25 == 0 or numero == len(a_faire):
             print("  %d/%d" % (numero, len(a_faire)))
