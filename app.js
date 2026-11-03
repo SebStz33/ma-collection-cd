@@ -548,7 +548,7 @@ function remplirFiltres() {
   }
   const libelleCase = (id, texte, test) => { $(id).nextElementSibling.textContent = texte + nombre(test); };
   libelleCase("filtre-double", "En double ou plus", (e) => e.exemplaires.length >= 2);
-  libelleCase("filtre-notes", "Avec description ou notes", aDesTextes);
+  libelleCase("filtre-notes", "Description ou notes", aDesTextes);
   libelleCase("filtre-oeuvres", "Avec œuvres identifiées", (e) => e.oeuvres.size > 0);
   libelleCase("filtre-favoris", "Avec pistes favorites", (e) => e.favoris.size > 0);
 
