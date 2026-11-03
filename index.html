@@ -23,7 +23,10 @@
   <header class="entete">
     <div class="entete-ligne">
       <h1 class="titre-site">Ma collection</h1>
-      <p class="compteur" id="compteur"></p>
+      <div class="ligne-compteur">
+        <p class="compteur" id="compteur"></p>
+        <button type="button" class="bouton-texte effacer-entete" id="effacer-filtres-entete" hidden>✕ Effacer les filtres</button>
+      </div>
       <nav class="onglets" aria-label="Vue">
         <button type="button" class="onglet actif" data-vue="collection">Collection</button>
         <button type="button" class="onglet" data-vue="statistiques">Statistiques</button>
