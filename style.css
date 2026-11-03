@@ -59,10 +59,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .entete-ligne + .entete-ligne { margin-top: 10px; }
 
 .titre-site { font-size: 19px; font-weight: 600; margin: 0; }
-.ligne-compteur { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
 .compteur { margin: 0; color: var(--texte-2); font-size: 13px; flex: 1; }
-/* « Effacer les filtres » à droite du compteur, quand un filtre est actif */
-.effacer-entete { font-size: 13px; white-space: nowrap; }
+/* « ✕ Effacer » à droite du bouton Filtres : sur téléphone seulement, quand un filtre est actif */
+.effacer-entete { display: none; font-size: 14px; white-space: nowrap; }
 
 .onglets { display: flex; background: var(--surface); border-radius: var(--rayon); padding: 3px; }
 .onglet {
@@ -122,11 +121,14 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 }
 .filtres-entete { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .filtres-entete h2 { font-size: 15px; margin: 0; }
-.filtres-titre { display: flex; align-items: baseline; gap: 12px; }
 #effacer-filtres-haut { font-size: 13px; }
 #fermer-filtres { display: none; }
 
 .filtre { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; font-size: 13px; color: var(--texte-2); }
+/* Titres des filtres (Catégorie, Genre…) : en blanc et en gras, pour ressortir au-dessus des cases grises */
+.filtre:not(.case) > span:first-child { color: var(--texte); font-weight: 600; }
+/* « ✕ Effacer les filtres » en bas du panneau : en ambre, sans cadre */
+.effacer-bas { font-size: 14px; padding: 4px 0; }
 .filtre select, .filtre input { width: 100%; color: var(--texte); }
 .filtre.case { flex-direction: row; align-items: center; gap: 8px; color: var(--texte); }
 .filtre.case input { width: auto; accent-color: var(--accent); }
@@ -411,9 +413,14 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   .edition { padding: 16px; padding-top: calc(16px + env(safe-area-inset-top)); }
   .edition textarea, .edition select, .petite-boite input { font-size: 16px; }  /* évite le zoom automatique de l'iPhone */
   .entete { padding-left: 12px; padding-right: 12px; }
-  .ligne-compteur { flex-basis: 100%; order: 3; }
+  .compteur { flex-basis: 100%; order: 3; }
+  .effacer-entete:not([hidden]) { display: inline-block; }
   .onglets { margin-left: auto; }
   .tri span { display: none; }
+  /* Le tri prend la place qui reste : « Filtres » et « ✕ Effacer » tiennent sur la même ligne */
+  .recherche { flex-basis: 100%; }
+  .tri { flex: 1 1 0; min-width: 0; }
+  .tri select { width: 100%; min-width: 0; }
   .bouton-filtres { display: inline-block; }
 
   /* Les filtres deviennent un panneau qui glisse depuis la gauche */
@@ -426,7 +433,9 @@ input:focus-visible, select:focus-visible, button:focus-visible {
     box-shadow: 0 0 40px rgba(0, 0, 0, .6);
   }
   .filtres.ouvert { transform: none; }
-  #fermer-filtres { display: inline-block; }
+  #fermer-filtres { display: inline-block; justify-self: end; }
+  /* En-tête du panneau : « Filtres » à gauche, « ✕ Effacer » au milieu, « Fermer » à droite */
+  .filtres-entete { display: grid; grid-template-columns: 1fr auto 1fr; }
 
   .contenu { padding: 12px; }
   .grille { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 10px; }
