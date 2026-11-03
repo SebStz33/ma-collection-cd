@@ -699,6 +699,8 @@ function afficher() {
   const nbFiltres = nombreDeFiltresActifs();
   $("nb-filtres").textContent = nbFiltres;
   $("nb-filtres").hidden = nbFiltres === 0;
+  // Bouton « Effacer les filtres » à droite du compteur : sans repasser par le panneau des filtres.
+  $("effacer-filtres-entete").hidden = nbFiltres === 0 || etat.vue !== "collection";
 
   // Le tirage au hasard porte sur toute la collection : le message des filtres n'y a pas de sens.
   afficherMessage(resultats.length || etat.vue === "hasard" ? "" : "Aucun disque ne correspond à ces critères.");
@@ -939,17 +941,25 @@ function chercherNom(nom, role) {
  */
 function vignettesRepliables(boutons) {
   const bloc = creer("div", { classe: "vignettes" }, boutons);
-  if (boutons.length <= VIGNETTES_VISIBLES) return bloc;
-  const cacher = (oui) => boutons.slice(VIGNETTES_VISIBLES).forEach((b) => { b.hidden = oui; });
-  cacher(true);
+  let visibles = VIGNETTES_VISIBLES;
   let deroule = false;
-  const texte = () => deroule ? "Replier" : "Voir les " + (boutons.length - VIGNETTES_VISIBLES) + " photos restantes";
-  const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus", texte: texte(),
-    surclic: () => {
-      deroule = !deroule;
-      cacher(!deroule);
-      lien.textContent = texte();
-    } });
+  const texte = () => deroule ? "Replier" : "Voir les " + (boutons.length - visibles) + " photos restantes";
+  const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus",
+    surclic: () => { deroule = !deroule; montrer(); } });
+  const montrer = () => {
+    boutons.forEach((b, numero) => { b.hidden = !deroule && numero >= visibles; });
+    lien.hidden = boutons.length <= visibles;
+    lien.textContent = texte();
+  };
+  // Sur téléphone, une seule rangée par source : autant de vignettes que la largeur en laisse passer.
+  // Appelé une fois la fiche affichée (il faut connaître la largeur).
+  bloc.ajuster = () => {
+    if (!window.matchMedia("(max-width: 700px)").matches || !boutons.length) return;
+    const largeurVignette = boutons[0].getBoundingClientRect().width + 6;   // vignette + écart (6 px)
+    visibles = Math.max(1, Math.floor((bloc.clientWidth + 6) / largeurVignette));
+    montrer();
+  };
+  montrer();
   return [bloc, lien];
 }
 
@@ -1117,6 +1127,7 @@ function ouvrirFiche(edition) {
   );
   $("fiche").showModal();
   $("fiche").scrollTop = 0;
+  document.querySelectorAll("#fiche .vignettes").forEach((bloc) => bloc.ajuster && bloc.ajuster());
 
   let minuterie = null;
   let numeroResultat = 0;
@@ -2278,7 +2289,7 @@ function brancherEvenements() {
   }
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });
 
-  for (const id of ["effacer-filtres", "effacer-filtres-haut"]) {
+  for (const id of ["effacer-filtres", "effacer-filtres-haut", "effacer-filtres-entete"]) {
     $(id).addEventListener("click", () => {
       Object.assign(etat, FILTRES_SEULS_VIDES);
       ecrireControles();

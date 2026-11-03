@@ -59,7 +59,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .entete-ligne + .entete-ligne { margin-top: 10px; }
 
 .titre-site { font-size: 19px; font-weight: 600; margin: 0; }
+.ligne-compteur { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
 .compteur { margin: 0; color: var(--texte-2); font-size: 13px; flex: 1; }
+/* « Effacer les filtres » à droite du compteur, quand un filtre est actif */
+.effacer-entete { font-size: 13px; white-space: nowrap; }
 
 .onglets { display: flex; background: var(--surface); border-radius: var(--rayon); padding: 3px; }
 .onglet {
@@ -408,7 +411,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   .edition { padding: 16px; padding-top: calc(16px + env(safe-area-inset-top)); }
   .edition textarea, .edition select, .petite-boite input { font-size: 16px; }  /* évite le zoom automatique de l'iPhone */
   .entete { padding-left: 12px; padding-right: 12px; }
-  .compteur { flex-basis: 100%; order: 3; }
+  .ligne-compteur { flex-basis: 100%; order: 3; }
   .onglets { margin-left: auto; }
   .tri span { display: none; }
   .bouton-filtres { display: inline-block; }
