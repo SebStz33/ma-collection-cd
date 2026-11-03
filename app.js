@@ -25,7 +25,7 @@ const STATUTS_CONNUS = ["À écouter", "Favori"];         // boutons proposés s
 const REPERES_STATUT = { "a ecouter": "🎧", favori: "★" }; // repère par statut (clé sans accents ni majuscules)
 const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
 const CHAMP_LIVE = "Live / Studio";           // champ liste Discogs : « Live », « Live et Studio », « Studio » ou vide
-const NON_PRECISE = "Non précisé";            // « Live / Studio » d'un disque dont le champ « Live » est vide
+const NON_PRECISE = "Non renseigné";          // « Live / Studio » vide, ou option « Non renseigné » sur Discogs
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const CATEGORIE_A_VENDRE = "À Vendre";        // dossier Discogs rangé en dernier (casse et accents ignorés)
 const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
@@ -517,7 +517,7 @@ function repereStatut(statut) {
   return REPERES_STATUT[normaliser(statut)] || null;
 }
 
-/** Ordre des choix « Live / Studio » : alphabétique, « Non précisé » (champ vide) en dernier. */
+/** Ordre des choix « Live / Studio » : alphabétique, « Non renseigné » (champ vide) en dernier. */
 function comparerEnregistrements(a, b) {
   return (a === NON_PRECISE) - (b === NON_PRECISE) || comparerTextes(a, b);
 }
