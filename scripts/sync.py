@@ -523,6 +523,15 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
     disque["musicbrainz_methode"] = entree_mb.get("methode")
     disque["annees_enregistrement"] = entree_mb.get("annees_enregistrement")  # [première, dernière] ou None
+    # Année de parution : celle de Discogs, sinon celle de l'édition exacte sur MusicBrainz.
+    # La source est gardée pour plus tard ; la page ne l'affiche pas.
+    if disque["annee"]:
+        disque["annee_source"] = "discogs"
+    elif entree_mb.get("annee_parution"):
+        disque["annee"] = entree_mb["annee_parution"]
+        disque["annee_source"] = "musicbrainz"
+    else:
+        disque["annee_source"] = None
     return disque
 
 
@@ -600,8 +609,9 @@ def main():
         if details:
             a_chercher[e["id"]] = (e["id"], e.get("basic_information", {}).get("master_id"),
                                    details["plages"], details.get("codes_barres") or [])
+    sans_annee = {e["id"] for e in elements if not e.get("basic_information", {}).get("year")}
     oeuvres = musicbrainz.mettre_a_jour(FICHIER_MUSICBRAINZ, list(a_chercher.values()),
-                                        tout="--musicbrainz-tout" in sys.argv)
+                                        tout="--musicbrainz-tout" in sys.argv, sans_annee=sans_annee)
 
     print("5/5 Écriture de data/collection.json...")
     disques = [
