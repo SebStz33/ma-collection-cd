@@ -18,13 +18,13 @@ const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const CHAMP_DESCRIPTION = "Description";
 const CHAMP_FAVORIS = "Pistes favorites";    // numéros des plages favorites, tels que Discogs les écrit : « 1, 8 »
-const CHAMP_STATUT = "Statut";                // champ liste Discogs : « À écouter », « Favori »… ou « Aucun »
+const CHAMP_STATUT = "Statut d’écoute";       // champ liste Discogs : « À écouter », « Favori »… ou « Aucun »
 const STATUT_NEUTRE = "Aucun";                // option de « Statut » qui démarque (Discogs refuse de vider une liste)
 const SANS_STATUT = "Sans statut";            // filtre et stats : « Aucun » ou champ vide
 const STATUTS_CONNUS = ["À écouter", "Favori"];         // boutons proposés si la synchro n'a pas encore lu la liste
 const REPERES_STATUT = { "a ecouter": "🎧", favori: "★" }; // repère par statut (clé sans accents ni majuscules)
 const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
-const CHAMP_LIVE = "Live";                    // champ liste Discogs : « Live », « Live et Studio » ou vide
+const CHAMP_LIVE = "Live / Studio";           // champ liste Discogs : « Live », « Live et Studio », « Studio » ou vide
 const NON_PRECISE = "Non précisé";            // « Live / Studio » d'un disque dont le champ « Live » est vide
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const CATEGORIE_A_VENDRE = "À Vendre";        // dossier Discogs rangé en dernier (casse et accents ignorés)
@@ -267,7 +267,9 @@ function aDesTextes(edition) {
 
 /** Vrai si deux noms de champ sont les mêmes, sans tenir compte de la casse ni des accents (« A ecouter » = « À écouter »). */
 function memeNom(a, b) {
-  return normaliser(String(a).trim()) === normaliser(String(b).trim());
+  // L'apostrophe droite ' et l'apostrophe typographique ’ comptent pareil.
+  const nettoyer = (texte) => normaliser(String(texte).trim().replace(/[’‘`´]/g, "'"));
+  return nettoyer(a) === nettoyer(b);
 }
 
 /** Comme valeursDuChamp, mais le nom du champ est reconnu sans tenir compte de la casse ni des accents. */
@@ -1782,8 +1784,8 @@ function afficherStatistiques(liste) {
     carteBarres("Genres", "Genres Discogs", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
     carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
     carteBarres("Formats", "", compter(liste, EXTRACTEURS.format), 10, appliquer("format")),
-    carteBarres("Statut d'écoute", "Custom Field Discogs « Statut »", compter(liste, EXTRACTEURS.statut), 10, appliquer("statut")),
-    carteBarres("Live / Studio", "Custom Field Discogs « Live »", compter(liste, EXTRACTEURS.enregistrement), 10,
+    carteBarres("Statut d’écoute", "Custom Field Discogs « " + CHAMP_STATUT + " »", compter(liste, EXTRACTEURS.statut), 10, appliquer("statut")),
+    carteBarres("Live / Studio", "Custom Field Discogs « " + CHAMP_LIVE + " »", compter(liste, EXTRACTEURS.enregistrement), 10,
       appliquer("enregistrement")),
     carteCompositeurs("Compositeurs classiques les plus présents", compositeursClassiques),
     carteCompositeurs("Autres compositeurs les plus présents", autresCompositeurs),
