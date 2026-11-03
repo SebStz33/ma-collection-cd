@@ -25,7 +25,7 @@ const STATUTS_CONNUS = ["À écouter", "Favori"];         // boutons proposés s
 const REPERES_STATUT = { "a ecouter": "🎧", favori: "★" }; // repère par statut (clé sans accents ni majuscules)
 const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
 const CHAMP_LIVE = "Live";                    // champ liste Discogs : « Live », « Live et Studio » ou vide
-const STUDIO = "Studio";                      // enregistrement d'un disque dont le champ « Live » est vide
+const NON_PRECISE = "Non précisé";            // « Live / Studio » d'un disque dont le champ « Live » est vide
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const CATEGORIE_A_VENDRE = "À Vendre";        // dossier Discogs rangé en dernier (casse et accents ignorés)
 const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
@@ -386,7 +386,7 @@ function regrouperParEdition(disques) {
     edition.descriptions = valeursDuChamp(edition, CHAMP_DESCRIPTION);
     edition.favoris = new Set(valeursDuChamp(edition, CHAMP_FAVORIS).flatMap(lirePositions));
     edition.statut = valeursDuChampSouple(edition, CHAMP_STATUT).find((v) => !memeNom(v, STATUT_NEUTRE)) || "";
-    edition.enregistrement = valeursDuChampSouple(edition, CHAMP_LIVE)[0] || STUDIO;
+    edition.enregistrement = valeursDuChampSouple(edition, CHAMP_LIVE)[0] || NON_PRECISE;
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
@@ -515,9 +515,9 @@ function repereStatut(statut) {
   return REPERES_STATUT[normaliser(statut)] || null;
 }
 
-/** Ordre des choix d'enregistrement : alphabétique, « Studio » (champ vide) en dernier. */
+/** Ordre des choix « Live / Studio » : alphabétique, « Non précisé » (champ vide) en dernier. */
 function comparerEnregistrements(a, b) {
-  return (a === STUDIO) - (b === STUDIO) || comparerTextes(a, b);
+  return (a === NON_PRECISE) - (b === NON_PRECISE) || comparerTextes(a, b);
 }
 
 function remplirListe(select, compte, libelleTous, comparer = comparerTextes) {
@@ -987,7 +987,7 @@ function ouvrirFiche(edition) {
   const informations = [
     ["Catégorie", categoriesChoisies(edition).join(" · ")],
     ["Année de parution", edition.annee || "inconnue"],
-    ["Enregistrement", edition.enregistrement === STUDIO ? "" : edition.enregistrement],
+    ["Live / Studio", edition.enregistrement === NON_PRECISE ? "" : edition.enregistrement],
     ...anneesEnregistrement(edition),
     ["Label", (edition.labels || []).map((l) => l.nom + (l.catno ? " – " + l.catno : "")).join(" ; ")],
     ["Format", decrireFormatsFiche(edition.formats)],
@@ -1782,8 +1782,8 @@ function afficherStatistiques(liste) {
     carteBarres("Genres", "Genres Discogs", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
     carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
     carteBarres("Formats", "", compter(liste, EXTRACTEURS.format), 10, appliquer("format")),
-    carteBarres("Statut", "Custom Field Discogs « Statut »", compter(liste, EXTRACTEURS.statut), 10, appliquer("statut")),
-    carteBarres("Enregistrement", "Custom Field Discogs « Live » (vide = Studio)", compter(liste, EXTRACTEURS.enregistrement), 10,
+    carteBarres("Statut d'écoute", "Custom Field Discogs « Statut »", compter(liste, EXTRACTEURS.statut), 10, appliquer("statut")),
+    carteBarres("Live / Studio", "Custom Field Discogs « Live »", compter(liste, EXTRACTEURS.enregistrement), 10,
       appliquer("enregistrement")),
     carteCompositeurs("Compositeurs classiques les plus présents", compositeursClassiques),
     carteCompositeurs("Autres compositeurs les plus présents", autresCompositeurs),
