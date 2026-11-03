@@ -1927,7 +1927,9 @@ async function ouvrirEdition(edition) {
     const lignes = champs.map((champ) => {
       const avant = valeurs[champ.id] || "";
       const controle = champ.type === "dropdown"
-        ? creerListe([["", "—"], ...(champ.options || []).map((o) => [o, o])], avant)
+        // Discogs refuse de vider une liste par l'API (« not a valid option », 422, constaté le 3/11/2026) :
+        // « — » n'est proposé que tant que la liste est vide.
+        ? creerListe([...(avant ? [] : [["", "—"]]), ...(champ.options || []).map((o) => [o, o])], avant)
         : creer("textarea", { rows: Math.max(champ.lines || 0, LIGNES_MIN_EDITION) });
       // Compteur sous les zones de texte : « 212 / 255 », en rouge au-delà de la limite de Discogs.
       const compteur = champ.type === "dropdown" ? null : creer("span", { classe: "compteur-caracteres" });
