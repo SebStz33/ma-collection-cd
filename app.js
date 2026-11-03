@@ -392,6 +392,9 @@ function regrouperParEdition(disques) {
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
+    // Clés de tri par nom de famille, comme dans l'index : « Glenn Gould » est rangé à Gould.
+    edition.cleArtiste = (edition.artistes_principaux || []).length ? cleDeTri(edition.artistes_principaux[0], true) : "";
+    edition.cleCompositeur = (edition.compositeurs || []).length ? cleDeTri(edition.compositeurs[0], true) : "";
     edition.index = construireIndexRecherche(edition);
     return edition;
   });
@@ -664,13 +667,12 @@ function correspond(edition) {
 
 /** Ordre d'affichage selon le tri choisi. Les valeurs manquantes vont à la fin. */
 function trier(liste) {
-  const premier = (valeurs) => (valeurs && valeurs[0]) || "";
   const avecVide = (a, b, comparer) => (!a && !b ? 0 : !a ? 1 : !b ? -1 : comparer(a, b));
   const parTitre = (a, b) => comparerTextes(a.titre, b.titre);
 
   const comparateurs = {
-    artiste: (a, b) => avecVide(premier(a.artistes_principaux), premier(b.artistes_principaux), comparerTextes) || parTitre(a, b),
-    compositeur: (a, b) => avecVide(premier(a.compositeurs), premier(b.compositeurs), comparerTextes) || parTitre(a, b),
+    artiste: (a, b) => avecVide(a.cleArtiste, b.cleArtiste, comparerTextes) || parTitre(a, b),
+    compositeur: (a, b) => avecVide(a.cleCompositeur, b.cleCompositeur, comparerTextes) || parTitre(a, b),
     titre: parTitre,
     annee: (a, b) => avecVide(a.annee, b.annee, (x, y) => x - y) || parTitre(a, b),
     ajout: (a, b) => avecVide(b.date_ajout, a.date_ajout, comparerTextes),  // plus récents d'abord
