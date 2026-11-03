@@ -187,8 +187,9 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   background: rgba(0, 0, 0, 0.7); color: var(--accent);
   font-size: 13px; line-height: 1; padding: 4px 6px; border-radius: 10px;
 }
-/* Repère des disques « À écouter » */
-.repere-a-ecouter {
+/* Repère du statut (🎧 À écouter, ★ Favori…) */
+.repere-statut {
+  color: var(--accent);
   position: absolute; bottom: 6px; right: 6px;
   background: rgba(0, 0, 0, 0.7);
   font-size: 13px; line-height: 1; padding: 4px 6px; border-radius: 10px;
@@ -477,10 +478,10 @@ mark.trouve.actuel { background: var(--accent); color: var(--accent-texte); }
 
 /* Bouton et recherche de la fiche, en plus petit */
 .bouton-petit { font-size: 13px; padding: 4px 10px; }
-/* Fiche : « À écouter » à côté de « Modifier mes Custom Fields » */
+/* Fiche : boutons du statut à côté de « Modifier mes Custom Fields » */
 .boutons-fiche { display: flex; flex-wrap: wrap; gap: 8px; }
-.bouton-a-ecouter.actif { background: var(--accent); color: var(--accent-texte); border-color: var(--accent); }
-.etiquette-a-ecouter {
+.bouton-statut.actif { background: var(--accent); color: var(--accent-texte); border-color: var(--accent); }
+.etiquette-statut {
   display: inline-block; font-size: 13px; padding: 3px 10px; border-radius: 10px;
   background: var(--accent); color: var(--accent-texte);
 }
