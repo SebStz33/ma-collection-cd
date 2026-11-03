@@ -208,9 +208,13 @@ def appeler_api(chemin, token, parametres=None):
 
 
 def lire_champs_perso(token):
-    """Renvoie la correspondance numéro -> nom de mes champs personnalisés."""
+    """Renvoie la correspondance numéro -> nom de mes champs personnalisés,
+    et les choix de chaque champ liste (dropdown) : {"Statut": ["À écouter", "Favori", "Aucun"]}."""
     reponse = appeler_api("/users/%s/collection/fields" % UTILISATEUR, token)
-    return {champ["id"]: champ["name"].strip() for champ in reponse.get("fields", [])}
+    champs = reponse.get("fields", [])
+    noms = {champ["id"]: champ["name"].strip() for champ in champs}
+    options = {champ["name"].strip(): champ.get("options") or [] for champ in champs if champ.get("type") == "dropdown"}
+    return noms, options
 
 
 def lire_dossiers(token):
@@ -563,7 +567,7 @@ def main():
     token = lire_token()
 
     print("1/5 Lecture des champs personnalisés et des dossiers...")
-    champs_perso = lire_champs_perso(token)
+    champs_perso, options_listes = lire_champs_perso(token)
     print("  %d champs : %s" % (len(champs_perso), ", ".join(champs_perso.values()) or "aucun"))
     dossiers = lire_dossiers(token)
     categories = [nom for numero, nom in dossiers.items() if numero not in DOSSIERS_SANS_CATEGORIE]
@@ -611,6 +615,7 @@ def main():
         "genere_le": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "nb_disques": len(disques),
         "champs_perso": list(champs_perso.values()),
+        "options_listes": options_listes,
         "disques": disques,
     }
 

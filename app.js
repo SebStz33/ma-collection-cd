@@ -18,6 +18,14 @@ const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const CHAMP_DESCRIPTION = "Description";
 const CHAMP_FAVORIS = "Pistes favorites";    // numéros des plages favorites, tels que Discogs les écrit : « 1, 8 »
+const CHAMP_STATUT = "Statut d’écoute";       // champ liste Discogs : « À écouter », « Favori »… ou « Aucun »
+const STATUT_NEUTRE = "Aucun";                // option de « Statut » qui démarque (Discogs refuse de vider une liste)
+const SANS_STATUT = "Sans statut";            // filtre et stats : « Aucun » ou champ vide
+const STATUTS_CONNUS = ["À écouter", "Favori"];         // boutons proposés si la synchro n'a pas encore lu la liste
+const REPERES_STATUT = { "a ecouter": "🎧", favori: "★" }; // repère par statut (clé sans accents ni majuscules)
+const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
+const CHAMP_LIVE = "Live / Studio";           // champ liste Discogs : « Live », « Live et Studio », « Studio » ou vide
+const NON_PRECISE = "Non renseigné";          // « Live / Studio » vide, ou option « Non renseigné » sur Discogs
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const CATEGORIE_A_VENDRE = "À Vendre";        // dossier Discogs rangé en dernier (casse et accents ignorés)
 const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
@@ -85,6 +93,8 @@ const etat = {
   correspondanceMB: "",     // "", "exacte", "album" ou "aucune"
   avecOeuvres: false,
   avecFavoris: false,
+  statut: "",               // "" (tous), "À écouter", "Favori"…, ou SANS_STATUT
+  enregistrement: "",       // "" (tous), "Live", "Live et Studio", "Studio"…
   oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
   blocIndex: "compositeurs_classiques", // bloc affiché dans l'onglet Index
 };
@@ -93,7 +103,7 @@ const etat = {
 const FILTRES_SEULS_VIDES = {
   categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
   localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, avecFavoris: false,
-  oeuvre: null,
+  statut: "", enregistrement: "", oeuvre: null,
 };
 // Recherche et filtres remis à zéro (clic dans l'index).
 const FILTRES_VIDES = { ...FILTRES_SEULS_VIDES, recherche: "", role: "partout" };
@@ -255,6 +265,20 @@ function aDesTextes(edition) {
   return edition.descriptions.length > 0 || edition.notesPerso.length > 0;
 }
 
+/** Vrai si deux noms de champ sont les mêmes, sans tenir compte de la casse ni des accents (« A ecouter » = « À écouter »). */
+function memeNom(a, b) {
+  // L'apostrophe droite ' et l'apostrophe typographique ’ comptent pareil.
+  const nettoyer = (texte) => normaliser(String(texte).trim().replace(/[’‘`´]/g, "'"));
+  return nettoyer(a) === nettoyer(b);
+}
+
+/** Comme valeursDuChamp, mais le nom du champ est reconnu sans tenir compte de la casse ni des accents. */
+function valeursDuChampSouple(edition, nomChamp) {
+  return [...new Set(edition.exemplaires.flatMap((e) => Object.entries(e.champs)
+    .filter(([nom]) => memeNom(nom, nomChamp))
+    .map(([, valeur]) => String(valeur || "").trim())).filter(Boolean))];
+}
+
 /** Valeurs d'un champ pour tous les exemplaires d'une édition, sans répétition. */
 function valeursDuChamp(edition, nomChamp) {
   return [...new Set(edition.exemplaires.map((e) => (e.champs[nomChamp] || "").trim()).filter(Boolean))];
@@ -363,6 +387,8 @@ function regrouperParEdition(disques) {
     edition.notesPerso = valeursDuChamp(edition, CHAMP_NOTES_PERSO);
     edition.descriptions = valeursDuChamp(edition, CHAMP_DESCRIPTION);
     edition.favoris = new Set(valeursDuChamp(edition, CHAMP_FAVORIS).flatMap(lirePositions));
+    edition.statut = valeursDuChampSouple(edition, CHAMP_STATUT).find((v) => !memeNom(v, STATUT_NEUTRE)) || "";
+    edition.enregistrement = valeursDuChampSouple(edition, CHAMP_LIVE)[0] || NON_PRECISE;
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
@@ -467,7 +493,34 @@ const EXTRACTEURS = {
   format: (e) => (e.formats || []).map((f) => formatRegroupe(f.nom)),
   label: (e) => (e.labels || []).map((l) => l.nom),
   localisation: (e) => e.localisations,
+  enregistrement: (e) => [e.enregistrement],
+  statut: (e) => [e.statut || SANS_STATUT],
 };
+
+/** Ordre des statuts : dans l'ordre de la liste Discogs, « Sans statut » en dernier. */
+function comparerStatuts(a, b) {
+  const ordre = optionsStatut();
+  const rang = (v) => (v === SANS_STATUT ? 1e6 : (ordre.findIndex((o) => memeNom(o, v)) + 1 || 1e5));
+  return rang(a) - rang(b) || comparerTextes(a, b);
+}
+
+/** Choix de « Statut » proposés en boutons (sans l'option neutre) : ceux de la liste Discogs lue par la synchro. */
+function optionsStatut() {
+  const listes = infosCollection.options_listes || {};
+  const nom = Object.keys(listes).find((n) => memeNom(n, CHAMP_STATUT));
+  const options = nom ? listes[nom] : STATUTS_CONNUS;
+  return options.filter((o) => !memeNom(o, STATUT_NEUTRE));
+}
+
+/** Repère d'un statut : 🎧, ★, ou, pour un statut ajouté plus tard sur Discogs, son nom. */
+function repereStatut(statut) {
+  return REPERES_STATUT[normaliser(statut)] || null;
+}
+
+/** Ordre des choix « Live / Studio » : alphabétique, « Non renseigné » (champ vide) en dernier. */
+function comparerEnregistrements(a, b) {
+  return (a === NON_PRECISE) - (b === NON_PRECISE) || comparerTextes(a, b);
+}
 
 function remplirListe(select, compte, libelleTous, comparer = comparerTextes) {
   const valeurs = [...compte.keys()].sort(comparer);
@@ -483,6 +536,8 @@ function remplirFiltres() {
   remplirListe($("filtre-style"), compter(editions, EXTRACTEURS.style), "Tous");
   remplirListe($("filtre-format"), compter(editions, EXTRACTEURS.format), "Tous");
   remplirListe($("filtre-localisation"), compter(editions, EXTRACTEURS.localisation), "Toutes");
+  remplirListe($("filtre-enregistrement"), compter(editions, EXTRACTEURS.enregistrement), "Tous", comparerEnregistrements);
+  remplirListe($("filtre-statut"), compter(editions, EXTRACTEURS.statut), "Tous", comparerStatuts);
 
   // Nombre d'éditions de toute la collection, à côté des choix fixes et des cases à cocher.
   const nombre = (test) => " (" + editions.filter(test).length + ")";
@@ -493,7 +548,7 @@ function remplirFiltres() {
   }
   const libelleCase = (id, texte, test) => { $(id).nextElementSibling.textContent = texte + nombre(test); };
   libelleCase("filtre-double", "En double ou plus", (e) => e.exemplaires.length >= 2);
-  libelleCase("filtre-notes", "Avec description ou notes", aDesTextes);
+  libelleCase("filtre-notes", "Description ou notes", aDesTextes);
   libelleCase("filtre-oeuvres", "Avec œuvres identifiées", (e) => e.oeuvres.size > 0);
   libelleCase("filtre-favoris", "Avec pistes favorites", (e) => e.favoris.size > 0);
 
@@ -535,6 +590,8 @@ function lireControles() {
   etat.correspondanceMB = $("filtre-musicbrainz").value;
   etat.avecOeuvres = $("filtre-oeuvres").checked;
   etat.avecFavoris = $("filtre-favoris").checked;
+  etat.statut = $("filtre-statut").value;
+  etat.enregistrement = $("filtre-enregistrement").value;
 }
 
 /** Recopie l'état dans les champs (quand le code change un filtre, par un clic sur un nom par ex.). */
@@ -555,6 +612,8 @@ function ecrireControles() {
   $("filtre-musicbrainz").value = etat.correspondanceMB;
   $("filtre-oeuvres").checked = etat.avecOeuvres;
   $("filtre-favoris").checked = etat.avecFavoris;
+  $("filtre-statut").value = etat.statut;
+  $("filtre-enregistrement").value = etat.enregistrement;
   // Les croix ✕ suivent les valeurs écrites par le code.
   for (const enveloppe of document.querySelectorAll(".case-effacable")) if (enveloppe.montrer) enveloppe.montrer();
 }
@@ -562,7 +621,7 @@ function ecrireControles() {
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
           etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres,
-          etat.avecFavoris, etat.oeuvre].filter(Boolean).length;
+          etat.avecFavoris, etat.statut, etat.enregistrement, etat.oeuvre].filter(Boolean).length;
 }
 
 /**
@@ -597,6 +656,8 @@ function correspond(edition) {
   if (etat.correspondanceMB && correspondanceMB(edition) !== etat.correspondanceMB) return false;
   if (etat.avecOeuvres && !edition.oeuvres.size) return false;
   if (etat.avecFavoris && !edition.favoris.size) return false;
+  if (etat.statut && (edition.statut || SANS_STATUT) !== etat.statut) return false;
+  if (etat.enregistrement && edition.enregistrement !== etat.enregistrement) return false;
   if (etat.oeuvre && !edition.oeuvres.has(etat.oeuvre.id)) return false;
   return true;
 }
@@ -779,7 +840,9 @@ function cartesDesEditions(liste) {
           ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
           : creer("span", { classe: "sans-image", texte: "♪" }),
         nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null,
-        aDesTextes(edition) ? creer("span", { classe: "repere-notes", texte: "✎", title: "Description ou notes personnelles" }) : null
+        aDesTextes(edition) ? creer("span", { classe: "repere-notes", texte: "✎", title: "Description ou notes personnelles" }) : null,
+        edition.statut ? creer("span", { classe: "repere-statut", texte: repereStatut(edition.statut) || edition.statut,
+          title: edition.statut }) : null
       ),
       creer("p", { classe: "carte-titre", texte: edition.titre }),
       creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") }),
@@ -926,6 +989,7 @@ function ouvrirFiche(edition) {
   const informations = [
     ["Catégorie", categoriesChoisies(edition).join(" · ")],
     ["Année de parution", edition.annee || "inconnue"],
+    ["Live / Studio", edition.enregistrement === NON_PRECISE ? "" : edition.enregistrement],
     ...anneesEnregistrement(edition),
     ["Label", (edition.labels || []).map((l) => l.nom + (l.catno ? " – " + l.catno : "")).join(" ; ")],
     ["Format", decrireFormatsFiche(edition.formats)],
@@ -966,9 +1030,10 @@ function ouvrirFiche(edition) {
   const liens = valeursDuChamp(edition, CHAMP_LIENS).flatMap(lireLiensExternes);
 
   // Les champs qui ont leur propre place dans la fiche ne sont pas répétés dans « Mon exemplaire ».
-  const champsAPart = [CHAMP_LOCALISATION, CHAMP_DESCRIPTION, CHAMP_NOTES_PERSO, CHAMP_LIENS, CHAMP_FAVORIS];
+  const champsAPart = [CHAMP_LOCALISATION, CHAMP_DESCRIPTION, CHAMP_NOTES_PERSO, CHAMP_LIENS, CHAMP_FAVORIS,
+    CHAMP_STATUT, CHAMP_LIVE];
   const exemplaires = edition.exemplaires.map((exemplaire, numero) => {
-    const autresChamps = Object.entries(exemplaire.champs).filter(([nom]) => !champsAPart.includes(nom));
+    const autresChamps = Object.entries(exemplaire.champs).filter(([nom]) => !champsAPart.some((c) => memeNom(c, nom)));
     return creer("li", {},
       creer("strong", { texte: exemplaire.champs[CHAMP_LOCALISATION] || "Localisation non renseignée" }),
       edition.exemplaires.length > 1 ? creer("span", { classe: "discret", texte: "  (exemplaire " + (numero + 1) + ")" }) : null,
@@ -1003,9 +1068,11 @@ function ouvrirFiche(edition) {
       creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↓ Fin",
         surclic: () => $("fiche").scrollTo({ top: $("fiche").scrollHeight, behavior: "smooth" }) })),
     notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
-    // Bouton visible seulement sur un appareil où le jeton Discogs est enregistré.
-    jeton() ? creer("p", {}, creer("button", { type: "button", classe: "bouton bouton-petit", texte: "✎ Modifier mes Custom Fields Discogs",
-      surclic: () => ouvrirEdition(edition) })) : null,
+    // Boutons visibles seulement sur un appareil où le jeton Discogs est enregistré.
+    jeton() ? creer("p", { classe: "boutons-fiche" }, boutonsStatut(edition),
+      creer("button", { type: "button", classe: "bouton bouton-petit", texte: "✎ Modifier mes Custom Fields Discogs",
+        surclic: () => ouvrirEdition(edition) }))
+      : edition.statut ? creer("p", {}, creer("span", { classe: "etiquette-statut", texte: libelleStatut(edition.statut) })) : null,
     creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
     edition.descriptions.length ? [
       creer("h3", { texte: "Description" }),
@@ -1410,6 +1477,9 @@ function blocsIndex() {
     ...(editions.some((e) => e.oeuvres.size) ? enDeux("oeuvres", "Œuvres", "Œuvres classiques", "Autres œuvres") : []),
     ["labels", "Labels"],
     ...(editions.some((e) => e.favoris.size) ? [["pistes_favorites", "Pistes favorites"]] : []),
+    // Un bloc par statut présent (« Favoris », « À écouter »…) : les albums, par titre.
+    ...[...new Set(editions.map((e) => e.statut).filter(Boolean))].map((statut) =>
+      ["statut:" + statut, BLOCS_STATUT[normaliser(statut)] || statut]),
   ];
   return blocs
     .filter(([cle]) => !/_(classiques|autres)$/.test(cle) || entreesIndex(cle).length)  // moitié vide : pas de bloc
@@ -1457,8 +1527,9 @@ function cotesClassiques() {
 
 /** Entrées d'un bloc : [{ libelle, nombre, cle, clic }]. */
 function entreesIndex(bloc) {
-  if (bloc === "titre") {
-    return editions.map((edition) => ({
+  if (bloc === "titre" || bloc.startsWith("statut:")) {
+    const statut = bloc.slice("statut:".length);
+    return editions.filter((e) => bloc === "titre" || e.statut === statut).map((edition) => ({
       libelle: edition.titre, nombre: null, cle: cleDeTri(edition.titre, false),
       detail: (edition.artistes_principaux || []).join(", "), clic: () => ouvrirFiche(edition),
     }));
@@ -1713,6 +1784,9 @@ function afficherStatistiques(liste) {
     carteBarres("Genres", "Genres Discogs", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
     carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
     carteBarres("Formats", "", compter(liste, EXTRACTEURS.format), 10, appliquer("format")),
+    carteBarres("Statut d’écoute", "Custom Field Discogs « " + CHAMP_STATUT + " »", compter(liste, EXTRACTEURS.statut), 10, appliquer("statut")),
+    carteBarres("Live / Studio", "Custom Field Discogs « " + CHAMP_LIVE + " »", compter(liste, EXTRACTEURS.enregistrement), 10,
+      appliquer("enregistrement")),
     carteCompositeurs("Compositeurs classiques les plus présents", compositeursClassiques),
     carteCompositeurs("Autres compositeurs les plus présents", autresCompositeurs),
     carteBarres("Interprètes les plus présents", "Les 15 premiers", interpretes, 15, (nom) => chercherNomSansFiche(nom, "interpretes"),
@@ -1887,7 +1961,9 @@ async function ouvrirEdition(edition) {
     const lignes = champs.map((champ) => {
       const avant = valeurs[champ.id] || "";
       const controle = champ.type === "dropdown"
-        ? creerListe([["", "—"], ...(champ.options || []).map((o) => [o, o])], avant)
+        // Discogs refuse de vider une liste par l'API (« not a valid option », 422, constaté le 3/11/2026) :
+        // « — » n'est proposé que tant que la liste est vide.
+        ? creerListe([...(avant ? [] : [["", "—"]]), ...(champ.options || []).map((o) => [o, o])], avant)
         : creer("textarea", { rows: Math.max(champ.lines || 0, LIGNES_MIN_EDITION) });
       // Compteur sous les zones de texte : « 212 / 255 », en rouge au-delà de la limite de Discogs.
       const compteur = champ.type === "dropdown" ? null : creer("span", { classe: "compteur-caracteres" });
@@ -2023,21 +2099,8 @@ let definitionsChamps = null;   // champs personnalisés Discogs, lus une fois p
 
 /** Ajoute ou retire une plage du champ « Pistes favorites » sur Discogs, puis met la page à jour. */
 async function basculerFavori(edition, position, ajouter) {
-  // On relit Discogs : la valeur du moment, même si elle a changé depuis la synchro.
-  const [definitions, exemplaires] = await Promise.all([
-    definitionsChamps || appelerDiscogs(cheminCollection() + "/fields"),
-    appelerDiscogs(cheminCollection() + "/releases/" + edition.release_id),
-  ]);
-  definitionsChamps = definitions;
-  const champ = (definitions.fields || []).find((c) => normaliser(c.name.trim()) === normaliser(CHAMP_FAVORIS));
-  if (!champ) throw new Error("le champ « " + CHAMP_FAVORIS + " » n'existe pas dans tes Custom Fields Discogs.");
-  // Le premier exemplaire de l'édition (celui de la fiche, sinon le premier rendu par Discogs).
-  const liste = exemplaires.releases || [];
-  const instance = liste.find((i) => i.instance_id === edition.exemplaires[0].instance_id) || liste[0];
-  if (!instance) throw new Error("exemplaire introuvable sur Discogs.");
-
-  const note = (instance.notes || []).find((n) => n.field_id === champ.id);
-  const positions = new Set(lirePositions(note ? texteBrut(note.value) : ""));
+  const { champ, instance, valeurActuelle } = await lireChampDiscogs(edition, CHAMP_FAVORIS);
+  const positions = new Set(lirePositions(valeurActuelle));
   if (ajouter) positions.add(position);
   else positions.delete(position);
   // Rangées dans l'ordre du disque ; une position inconnue de la tracklist reste, à la fin.
@@ -2047,22 +2110,104 @@ async function basculerFavori(edition, position, ajouter) {
     .join(", ");
   if (longueurTexte(valeur) > LONGUEUR_MAX_CHAMP) throw new Error("trop de plages pour un champ Discogs (" + LONGUEUR_MAX_CHAMP + " caractères).");
 
+  await ecrireChampDiscogs(edition, champ, instance, valeur);
+  // La fiche ouverte garde son objet : on met à jour ses favoris pour les cœurs suivants.
+  edition.favoris = new Set(lirePositions(valeur));
+  return edition.favoris;
+}
+
+/**
+ * Relit sur Discogs un champ personnalisé du premier exemplaire d'une édition : la valeur du moment,
+ * même si elle a changé depuis la synchro. Renvoie { champ, instance, valeurActuelle }.
+ */
+async function lireChampDiscogs(edition, nomChamp) {
+  const [definitions, exemplaires] = await Promise.all([
+    definitionsChamps || appelerDiscogs(cheminCollection() + "/fields"),
+    appelerDiscogs(cheminCollection() + "/releases/" + edition.release_id),
+  ]);
+  definitionsChamps = definitions;
+  const champ = (definitions.fields || []).find((c) => memeNom(c.name, nomChamp));
+  if (!champ) throw new Error("le champ « " + nomChamp + " » n'existe pas dans tes Custom Fields Discogs.");
+  // Le premier exemplaire de l'édition (celui de la fiche, sinon le premier rendu par Discogs).
+  const liste = exemplaires.releases || [];
+  const instance = liste.find((i) => i.instance_id === edition.exemplaires[0].instance_id) || liste[0];
+  if (!instance) throw new Error("exemplaire introuvable sur Discogs.");
+  const note = (instance.notes || []).find((n) => n.field_id === champ.id);
+  return { champ, instance, valeurActuelle: note ? texteBrut(note.value) : "" };
+}
+
+/** Écrit la valeur d'un champ sur Discogs, la garde sur cet appareil jusqu'à la synchro, puis recalcule la page. */
+async function ecrireChampDiscogs(edition, champ, instance, valeur) {
   await appelerDiscogs(cheminCollection() + "/folders/" + instance.folder_id + "/releases/" + edition.release_id
     + "/instances/" + instance.instance_id + "/fields/" + champ.id,
     { method: "POST", body: JSON.stringify({ value: valeur }) });
 
   // Gardée sur cet appareil jusqu'à la prochaine synchro, comme les autres modifications.
+  // Rangée sous le nom du champ tel que la synchro l'écrit (celui de Discogs).
   const toutes = lireStockage(CLE_MODIFICATIONS, {});
   const modif = toutes[instance.instance_id] || { champs: {} };
   modif.quand = new Date().toISOString();
-  modif.champs[CHAMP_FAVORIS] = valeur;
+  modif.champs[champ.name.trim()] = valeur;
   toutes[instance.instance_id] = modif;
   ecrireStockage(CLE_MODIFICATIONS, toutes);
   modifications = toutes;
   reconstruire();
-  // La fiche ouverte garde son objet : on met à jour ses favoris pour les cœurs suivants.
-  edition.favoris = new Set(lirePositions(valeur));
-  return edition.favoris;
+}
+
+// ---------------------------------------------------------------------------
+// Statut : un bouton par choix de la liste Discogs « Statut » (🎧 À écouter, ★ Favori…),
+// enregistré sur le premier exemplaire. Un clic sur le bouton actif remet « Aucun ».
+// ---------------------------------------------------------------------------
+
+function libelleStatut(statut) {
+  const repere = repereStatut(statut);
+  return repere ? repere + " " + statut : statut;
+}
+
+function boutonsStatut(edition) {
+  const boutons = optionsStatut().map((statut) => {
+    const bouton = creer("button", { type: "button", classe: "bouton bouton-petit bouton-statut", texte: libelleStatut(statut) });
+    bouton.dataset.statut = statut;
+    return bouton;
+  });
+  const montrer = (statut) => {
+    for (const bouton of boutons) {
+      const actif = memeNom(bouton.dataset.statut, statut);
+      bouton.classList.toggle("actif", actif);
+      bouton.setAttribute("aria-pressed", actif ? "true" : "false");
+      bouton.title = actif ? "Retirer « " + bouton.dataset.statut + " »" : "Marquer « " + bouton.dataset.statut + " »";
+    }
+  };
+  montrer(edition.statut);
+  for (const bouton of boutons) {
+    bouton.addEventListener("click", async () => {
+      const avant = edition.statut;
+      const voulu = memeNom(bouton.dataset.statut, avant) ? "" : bouton.dataset.statut;
+      montrer(voulu);            // réponse immédiate à l'écran…
+      boutons.forEach((b) => { b.disabled = true; });
+      try {
+        await changerStatut(edition, voulu);
+      } catch (erreur) {
+        montrer(avant);          // … annulée si Discogs refuse
+        window.alert("Statut : " + erreur.message);
+      }
+      boutons.forEach((b) => { b.disabled = false; });
+    });
+  }
+  return boutons;
+}
+
+/** Écrit le statut voulu (ou « Aucun » pour "") dans le champ « Statut » du premier exemplaire. */
+async function changerStatut(edition, statut) {
+  const resultat = await lireChampDiscogs(edition, CHAMP_STATUT);
+  const options = resultat.champ.options || [];
+  // La valeur écrite est l'option telle qu'elle est écrite sur Discogs (Discogs n'accepte que ses options).
+  const option = options.find((o) => memeNom(o, statut || STATUT_NEUTRE));
+  if (!option) {
+    throw new Error("l'option « " + (statut || STATUT_NEUTRE) + " » n'existe pas dans la liste « " + CHAMP_STATUT + " » sur Discogs.");
+  }
+  await ecrireChampDiscogs(edition, resultat.champ, resultat.instance, option);
+  edition.statut = statut;       // la fiche ouverte garde son objet
 }
 
 /** Réglage du jeton sur cet appareil : on le vérifie auprès de Discogs avant de le garder. */
@@ -2127,7 +2272,8 @@ function brancherEvenements() {
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
                     "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-localisation", "filtre-double",
-                    "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres", "filtre-favoris"]) {
+                    "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres", "filtre-favoris",
+                    "filtre-statut", "filtre-enregistrement"]) {
     $(id).addEventListener("change", () => { lireControles(); afficher(); });
   }
   $("filtre-label").addEventListener("input", () => { lireControles(); afficher(); });
