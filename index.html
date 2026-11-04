@@ -47,6 +47,7 @@
           <option value="compositeur">Compositeur</option>
           <option value="titre">Titre</option>
           <option value="annee">Année de parution</option>
+          <option value="enregistrement">Année d'enregistrement</option>
           <option value="ajout">Date d'ajout</option>
         </select>
       </label>
@@ -81,6 +82,13 @@
         <div class="annees">
           <input type="number" id="filtre-annee-min" inputmode="numeric" placeholder="de" aria-label="Année minimum">
           <input type="number" id="filtre-annee-max" inputmode="numeric" placeholder="à" aria-label="Année maximum">
+        </div>
+      </div>
+      <div class="filtre">
+        <span>Année d'enregistrement</span>
+        <div class="annees">
+          <input type="number" id="filtre-enreg-min" inputmode="numeric" placeholder="de" aria-label="Année d'enregistrement minimum">
+          <input type="number" id="filtre-enreg-max" inputmode="numeric" placeholder="à" aria-label="Année d'enregistrement maximum">
         </div>
       </div>
       <label class="filtre"><span>Localisation</span><select id="filtre-localisation"></select></label>
