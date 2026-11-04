@@ -61,7 +61,7 @@ DISQUES_PAR_SYNCHRO = 200
 # Version 4 : années d'enregistrement ; seules les éditions exactes sont revues.
 # Version 5 : année de parution de l'édition (quand Discogs n'en a pas) ; seules les éditions
 #             exactes sans année Discogs sont revues.
-VERSION_RECHERCHE = 6
+VERSION_RECHERCHE = 7
 
 # Méthodes qui désignent l'édition exacte (on prend alors aussi ses images).
 METHODES_EXACTES = ("edition", "code_barre")
@@ -400,6 +400,8 @@ def a_chercher(entree, nb_plages, sans_annee=False):
     annees = entree.get("annees_enregistrement")
     if version < 6 and annees and annees[0] < PREMIERE_ANNEE_POSSIBLE:
         return True  # année d'enregistrement impossible (erreur MusicBrainz) : on relit sans elle
+    if version < 7 and entree.get("methode") == "album":
+        return True  # trouvé par l'album : on lit en plus les années d'enregistrement de cette édition
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
@@ -442,8 +444,9 @@ def mettre_a_jour(fichier, disques, tout=False, sans_annee=()):
             "release": identifiant,
             "oeuvres": oeuvres if oeuvres and any(oeuvres) else None,
             "images": images,
-            # Seulement pour l'édition exacte : celles d'une autre édition de l'album pourraient différer.
-            "annees_enregistrement": annees if methode in METHODES_EXACTES else None,
+            # Années d'enregistrement : aussi pour une autre édition du même album (les enregistrements
+            # sont en général les mêmes d'une réédition à l'autre) ; sync.py en note la source.
+            "annees_enregistrement": annees if methode in METHODES_EXACTES + ("album",) else None,
             "annee_parution": annee_parution if methode in METHODES_EXACTES else None,
         }
         if numero % 25 == 0 or numero == len(a_faire):

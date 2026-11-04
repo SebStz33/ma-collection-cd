@@ -35,6 +35,7 @@ import urllib.request
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+import annees
 import musicbrainz
 
 # ---------------------------------------------------------------------------
@@ -52,6 +53,7 @@ RACINE = Path(__file__).resolve().parent.parent
 FICHIER_SORTIE = RACINE / "data" / "collection.json"
 FICHIER_RAPPORT_ROLES = RACINE / "data" / "rapport_roles.txt"
 FICHIER_MUSICBRAINZ = RACINE / "data" / "musicbrainz.json"
+FICHIER_RAPPORT_ANNEES = RACINE / "data" / "rapport_annees.txt"
 
 # Champs personnalisés à ne pas publier sur le site (qui est public).
 # Ils sont retirés seulement par la synchro automatique de GitHub ;
@@ -123,7 +125,7 @@ ROLES_NON_INTERPRETE_EXACTS = {"other", "score"}
 
 # Ce que la fiche complète apporte, en plus des catégories de personnes.
 # Une fiche connue à laquelle il manque une de ces clés est relue.
-CLES_DETAILS = CATEGORIES + ["plages", "images", "codes_barres", "note_communaute", "details_maj"]
+CLES_DETAILS = CATEGORIES + ["plages", "images", "codes_barres", "note_communaute", "notes_discogs", "details_maj"]
 
 # Dossiers Discogs qui ne sont pas une catégorie choisie par moi :
 # 0 = « All » (toute la collection), 1 = « Uncategorized » (non classé).
@@ -429,6 +431,8 @@ def extraire_details(fiche):
     details["images"] = images
     details["codes_barres"] = codes_barres(fiche)
     details["note_communaute"] = note_communaute(fiche)
+    # Texte libre « Notes » de la fiche (« Recorded at Van Gelder Studio, March 6, 1958… »).
+    details["notes_discogs"] = (fiche.get("notes") or "").strip() or None
     details["details_maj"] = date.today().isoformat()
     return details
 
@@ -505,7 +509,8 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
         "url_discogs": "https://www.discogs.com/release/%s" % element.get("id"),
     }
     vides = {categorie: [] for categorie in CATEGORIES}
-    vides.update({"plages": [], "images": [], "codes_barres": [], "note_communaute": None, "details_maj": None})
+    vides.update({"plages": [], "images": [], "codes_barres": [], "note_communaute": None, "notes_discogs": None,
+                  "details_maj": None})
     disque.update(vides)
     disque.update(details or {})
 
@@ -522,7 +527,17 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     )
     # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
     disque["musicbrainz_methode"] = entree_mb.get("methode")
-    disque["annees_enregistrement"] = entree_mb.get("annees_enregistrement")  # [première, dernière] ou None
+    # Années d'enregistrement [première, dernière] ou None, et leur source : "musicbrainz" (édition exacte),
+    # "musicbrainz_album" (autre édition du même album) ou "manuelle" (scripts/annees.py).
+    disque["annees_enregistrement"] = entree_mb.get("annees_enregistrement")
+    disque["annees_enregistrement_source"] = None
+    if disque["annees_enregistrement"]:
+        exacte = entree_mb.get("methode") in musicbrainz.METHODES_EXACTES
+        disque["annees_enregistrement_source"] = "musicbrainz" if exacte else "musicbrainz_album"
+    if disque["release_id"] in annees.ANNEES_CORRIGEES:
+        correction = annees.ANNEES_CORRIGEES[disque["release_id"]]
+        disque["annees_enregistrement"] = list(correction) if correction else None
+        disque["annees_enregistrement_source"] = "manuelle" if correction else None
     # Année de parution : celle de Discogs, sinon celle de l'édition exacte sur MusicBrainz.
     # La source est gardée pour plus tard ; la page ne l'affiche pas.
     if disque["annee"]:
@@ -636,6 +651,7 @@ def main():
     temporaire.write_text(json.dumps(resultat, ensure_ascii=False, indent=2), encoding="utf-8")
     temporaire.replace(FICHIER_SORTIE)
 
+    annees.ecrire_rapport(FICHIER_RAPPORT_ANNEES, disques)
     print("Terminé : %d disques enregistrés." % len(disques))
     print()
     toutes_les_fiches = {e["id"] for e in elements}

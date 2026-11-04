@@ -322,9 +322,12 @@ function anneesEnregistrement(edition) {
   const annees = edition.annees_enregistrement;
   if (!annees || !annees.length) return [];
   const [premiere, derniere] = annees;
+  // Années lues sur une autre édition du même album (MusicBrainz) : on le précise.
+  const source = edition.annees_enregistrement_source === "musicbrainz_album"
+    ? " (d'après une autre édition de l'album)" : "";
   return premiere === derniere
-    ? [["Année d'enregistrement", String(premiere)]]
-    : [["Années d'enregistrement", premiere + " – " + derniere]];
+    ? [["Année d'enregistrement", premiere + source]]
+    : [["Années d'enregistrement", premiere + " – " + derniere + source]];
 }
 
 /** Décrit les formats : « Box Set + 5 × CD (Album, Remastered) ». */
