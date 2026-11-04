@@ -679,6 +679,25 @@ function correspond(edition) {
   return true;
 }
 
+/**
+ * Pour chaque tri : la valeur montrée au-dessus de la photo (rien pour Artiste principal et Titre,
+ * déjà écrits sous la photo) et l'intertitre des éditions qui n'ont pas cette valeur (rangées à la fin).
+ */
+const INFOS_DE_TRI = {
+  artiste: { sans: "Sans artiste principal", manque: (e) => !e.cleArtiste },
+  compositeur: { sans: "Sans compositeur", manque: (e) => !e.cleCompositeur,
+    valeur: (e) => (e.compositeurs || [])[0] || "" },
+  annee: { sans: "Sans année de parution", manque: (e) => !e.annee, valeur: (e) => (e.annee ? String(e.annee) : "") },
+  enregistrement: { sans: "Sans année d'enregistrement", manque: (e) => !(e.annees_enregistrement || []).length,
+    valeur: (e) => {
+      const annees = e.annees_enregistrement;
+      if (!annees || !annees.length) return "";
+      return annees[0] === annees[1] ? String(annees[0]) : annees[0] + " – " + annees[1];
+    } },
+  ajout: { sans: "Sans date d'ajout", manque: (e) => !e.date_ajout,
+    valeur: (e) => (e.date_ajout ? new Date(e.date_ajout).toLocaleDateString("fr-FR") : "") },
+};
+
 /** Ordre d'affichage selon le tri choisi. Les valeurs manquantes vont à la fin. */
 function trier(liste) {
   const avecVide = (a, b, comparer) => (!a && !b ? 0 : !a ? 1 : !b ? -1 : comparer(a, b));
@@ -840,7 +859,7 @@ function afficherGrille(liste) {
           : null
       ) : null
     ),
-    creer("div", { classe: "grille" }, cartesDesEditions(parCategorie.get(categories[numero])))
+    creer("div", { classe: "grille" }, cartesAvecIntertitre(parCategorie.get(categories[numero])))
   ));
   $("vue-collection").replaceChildren(sommaire || "", ...groupes);
 }
@@ -850,12 +869,28 @@ function noterHauteurEntete() {
   document.documentElement.style.setProperty("--hauteur-entete", document.querySelector(".entete").offsetHeight + "px");
 }
 
-function cartesDesEditions(liste) {
+/**
+ * Vignettes de la vue Collection : valeur du tri au-dessus de chaque photo, et intertitre
+ * « Sans … (N) » sur toute la largeur avant les éditions qui n'ont pas cette valeur (rangées à la fin).
+ */
+function cartesAvecIntertitre(liste) {
+  const infos = INFOS_DE_TRI[etat.tri] || {};
+  const cartes = cartesDesEditions(liste, infos.valeur);
+  const premierManquant = infos.manque ? liste.findIndex(infos.manque) : -1;
+  if (premierManquant < 0) return cartes;
+  const intertitre = creer("h3", { classe: "intertitre-tri" }, infos.sans,
+    creer("span", { classe: "discret", texte: " (" + (liste.length - premierManquant) + ")" }));
+  return [...cartes.slice(0, premierManquant), intertitre, ...cartes.slice(premierManquant)];
+}
+
+/** `valeurDeTri` (facultatif) : texte écrit au-dessus de la photo (ligne vide si l'édition n'en a pas). */
+function cartesDesEditions(liste, valeurDeTri) {
   return liste.map((edition) => {
     const image = edition.pochette || edition.miniature;
     const nb = edition.exemplaires.length;
     const categories = categoriesChoisies(edition);
     return creer("button", { classe: "carte", type: "button", surclic: () => ouvrirFiche(edition) },
+      valeurDeTri ? creer("p", { classe: "carte-tri", texte: valeurDeTri(edition) || "\u00a0" }) : null,
       creer("div", { classe: "pochette" },
         image
           ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })

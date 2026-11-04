@@ -208,6 +208,18 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .carte-categorie { font-size: 11px; color: var(--accent); opacity: .75; }
+/* Valeur du tri choisi, au-dessus de la photo (non cliquable : petite, sans soulignement) */
+.carte-tri {
+  margin: 0 0 4px; font-size: 12px; color: var(--accent);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* « Sans année d'enregistrement (210) » : sépare les éditions rangées à la fin, sur toute la largeur */
+.intertitre-tri {
+  grid-column: 1 / -1; margin: 10px 0 0; padding-top: 10px;
+  border-top: 1px solid var(--bordure); font-size: 14px; font-weight: 600; color: var(--accent);
+}
+.intertitre-tri .discret { color: var(--texte-2); font-weight: 400; }
+.intertitre-tri:first-child { margin-top: 0; padding-top: 0; border-top: 0; }  /* aucune édition au-dessus */
 
 /* ---------- Fiche détaillée ---------- */
 
