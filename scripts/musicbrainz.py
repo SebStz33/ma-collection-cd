@@ -61,7 +61,7 @@ DISQUES_PAR_SYNCHRO = 200
 # Version 4 : années d'enregistrement ; seules les éditions exactes sont revues.
 # Version 5 : année de parution de l'édition (quand Discogs n'en a pas) ; seules les éditions
 #             exactes sans année Discogs sont revues.
-VERSION_RECHERCHE = 7
+VERSION_RECHERCHE = 8
 
 # Méthodes qui désignent l'édition exacte (on prend alors aussi ses images).
 METHODES_EXACTES = ("edition", "code_barre")
@@ -315,7 +315,7 @@ def numero_de_plage(position):
 def blocs_a_associer(plages):
     """
     Deuxième façon de compter : des mouvements qui partagent un même numéro de plage
-    (7.1, 7.2… ou 7a, 7b…) comptent pour une seule plage, comme sur MusicBrainz quand
+    (7.1, 7.2… ou 7a, 7b…, ou la même position répétée : 5-3, 5-3…) comptent pour une seule plage, comme sur MusicBrainz quand
     la suite y tient en une plage. Des mouvements numérotés chacun (1, 2… 6 sous
     « Háry János Suite ») restent des plages séparées. Renvoie une liste de blocs,
     chacun étant la liste de ses plages Discogs.
@@ -330,11 +330,21 @@ def blocs_a_associer(plages):
             continue
         numeros = {numero_de_plage(p.get("position")) for p in sous_plages}
         positions = {(p.get("position") or "").strip() for p in sous_plages}
-        if len(numeros) == 1 and not numeros & positions:
+        meme_position = len(positions) == 1 and len(sous_plages) > 1  # 5-3, 5-3, 5-3… : une seule plage
+        if (len(numeros) == 1 and not numeros & positions) or meme_position:
             blocs.append(plages_a_associer(sous_plages))  # 7.1 à 7.5 : une seule plage du disque
         else:
             blocs.extend(blocs_a_associer(sous_plages))
     return blocs
+
+
+def a_mouvements_meme_position(plages):
+    """Vrai si une œuvre a plusieurs mouvements à la même position (5-3, 5-3… : une seule plage du disque)."""
+    for plage in plages or []:
+        sous_plages = plage.get("sous_plages") or []
+        if len(sous_plages) > 1 and len({(p.get("position") or "").strip() for p in sous_plages}) == 1:
+            return True
+    return False
 
 
 def nombres_acceptes(plages):
@@ -384,7 +394,7 @@ def ecrire_cache(fichier, cache):
     temporaire.replace(fichier)
 
 
-def a_chercher(entree, nb_plages, sans_annee=False):
+def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False):
     """Vrai si ce disque doit être (re)cherché sur MusicBrainz. `sans_annee` : Discogs n'a pas son année."""
     if not entree or entree.get("nb_plages") != nb_plages:
         return True  # jamais cherché, ou tracklist Discogs modifiée depuis
@@ -402,6 +412,8 @@ def a_chercher(entree, nb_plages, sans_annee=False):
         return True  # année d'enregistrement impossible (erreur MusicBrainz) : on relit sans elle
     if version < 7 and entree.get("methode") == "album":
         return True  # trouvé par l'album : on lit en plus les années d'enregistrement de cette édition
+    if version < 8 and meme_position and entree.get("release") and not entree.get("oeuvres"):
+        return True  # mouvements à la même position (5-3, 5-3…) : désormais comptés pour une plage
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
@@ -416,7 +428,8 @@ def mettre_a_jour(fichier, disques, tout=False, sans_annee=()):
     """
     cache = lire_cache(fichier)
     a_faire = [d for d in disques
-               if a_chercher(cache.get(str(d[0])), len(plages_a_associer(d[2])), d[0] in sans_annee)]
+               if a_chercher(cache.get(str(d[0])), len(plages_a_associer(d[2])), d[0] in sans_annee,
+                             a_mouvements_meme_position(d[2]))]
     # Les disques jamais cherchés d'abord, puis les recherches les plus anciennes.
     a_faire.sort(key=lambda d: (str(d[0]) in cache, (cache.get(str(d[0])) or {}).get("version", 1),
                                 (cache.get(str(d[0])) or {}).get("maj", "")))
