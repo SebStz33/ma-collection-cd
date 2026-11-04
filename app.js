@@ -87,6 +87,8 @@ const etat = {
   label: "",
   anneeMin: null,
   anneeMax: null,
+  enregMin: null,           // années d'enregistrement (MusicBrainz), « de… à… »
+  enregMax: null,
   localisation: "",
   double: false,
   avecNotes: false,
@@ -102,6 +104,7 @@ const etat = {
 // Filtres remis à zéro (boutons « Effacer les filtres » et « Effacer ») : la recherche reste.
 const FILTRES_SEULS_VIDES = {
   categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
+  enregMin: null, enregMax: null,
   localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, avecFavoris: false,
   statut: "", enregistrement: "", oeuvre: null,
 };
@@ -587,6 +590,8 @@ function lireControles() {
   etat.label = $("filtre-label").value.trim();
   etat.anneeMin = parseInt($("filtre-annee-min").value, 10) || null;
   etat.anneeMax = parseInt($("filtre-annee-max").value, 10) || null;
+  etat.enregMin = parseInt($("filtre-enreg-min").value, 10) || null;
+  etat.enregMax = parseInt($("filtre-enreg-max").value, 10) || null;
   etat.localisation = $("filtre-localisation").value;
   etat.double = $("filtre-double").checked;
   etat.avecNotes = $("filtre-notes").checked;
@@ -609,6 +614,8 @@ function ecrireControles() {
   $("filtre-label").value = etat.label;
   $("filtre-annee-min").value = etat.anneeMin || "";
   $("filtre-annee-max").value = etat.anneeMax || "";
+  $("filtre-enreg-min").value = etat.enregMin || "";
+  $("filtre-enreg-max").value = etat.enregMax || "";
   $("filtre-localisation").value = etat.localisation;
   $("filtre-double").checked = etat.double;
   $("filtre-notes").checked = etat.avecNotes;
@@ -623,7 +630,7 @@ function ecrireControles() {
 
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
-          etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres,
+          etat.enregMin, etat.enregMax, etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres,
           etat.avecFavoris, etat.statut, etat.enregistrement, etat.oeuvre].filter(Boolean).length;
 }
 
@@ -653,6 +660,13 @@ function correspond(edition) {
   if ((etat.anneeMin || etat.anneeMax) && !edition.annee) return false;
   if (etat.anneeMin && edition.annee < etat.anneeMin) return false;
   if (etat.anneeMax && edition.annee > etat.anneeMax) return false;
+  if (etat.enregMin || etat.enregMax) {
+    // L'édition passe si sa période d'enregistrement [première, dernière] touche les années choisies.
+    const annees = edition.annees_enregistrement;
+    if (!annees || !annees.length) return false;
+    if (etat.enregMin && annees[1] < etat.enregMin) return false;
+    if (etat.enregMax && annees[0] > etat.enregMax) return false;
+  }
   if (etat.localisation && !edition.localisations.includes(etat.localisation)) return false;
   if (etat.double && edition.exemplaires.length < 2) return false;
   if (etat.avecNotes && !aDesTextes(edition)) return false;
@@ -675,6 +689,9 @@ function trier(liste) {
     compositeur: (a, b) => avecVide(a.cleCompositeur, b.cleCompositeur, comparerTextes) || parTitre(a, b),
     titre: parTitre,
     annee: (a, b) => avecVide(a.annee, b.annee, (x, y) => x - y) || parTitre(a, b),
+    // Première année d'enregistrement, puis la dernière (1958 avant 1958 – 1963).
+    enregistrement: (a, b) => avecVide(a.annees_enregistrement, b.annees_enregistrement,
+      (x, y) => x[0] - y[0] || x[1] - y[1]) || parTitre(a, b),
     ajout: (a, b) => avecVide(b.date_ajout, a.date_ajout, comparerTextes),  // plus récents d'abord
   };
   return [...liste].sort(comparateurs[etat.tri] || comparateurs.artiste);
@@ -1689,14 +1706,43 @@ function carteBarres(titre, note, compte, limite, auClic, voirPlus = null) {
   );
 }
 
-/** Histogramme des années d'édition, une colonne par année. */
+/** Histogramme des années de parution (année de ton édition), une colonne par année. */
 function carteAnnees(liste) {
-  const compte = compter(liste, (e) => (e.annee ? [e.annee] : []));
-  const sansAnnee = liste.filter((e) => !e.annee).length;
+  return carteHistogramme(liste, {
+    titre: "Années de parution",
+    explication: "Année de ton édition, pas de l'œuvre. ",
+    anneesDe: (e) => (e.annee ? [e.annee] : []),
+    filtrer: (annee) => ({ anneeMin: annee, anneeMax: annee }),
+  });
+}
+
+/**
+ * Histogramme des années d'enregistrement (MusicBrainz). Une édition enregistrée de 1956 à 1958
+ * compte dans chacune de ces trois années, comme le filtre « de… à… » qui la retrouve pour 1957.
+ */
+function carteAnneesEnregistrement(liste) {
+  return carteHistogramme(liste, {
+    titre: "Années d'enregistrement",
+    explication: "D'après MusicBrainz (éditions exactes). Un enregistrement sur plusieurs années compte dans chacune. ",
+    anneesDe: (e) => {
+      const annees = e.annees_enregistrement;
+      if (!annees || !annees.length) return [];
+      const liste = [];
+      for (let annee = annees[0]; annee <= annees[1]; annee++) liste.push(annee);
+      return liste;
+    },
+    filtrer: (annee) => ({ enregMin: annee, enregMax: annee }),
+  });
+}
+
+/** Histogramme d'années, une colonne par année ; un clic sur une colonne filtre la collection. */
+function carteHistogramme(liste, { titre, explication, anneesDe, filtrer }) {
+  const compte = compter(liste, anneesDe);
+  const sansAnnee = liste.filter((e) => !anneesDe(e).length).length;
   const annees = [...compte.keys()];
   const carte = creer("section", { classe: "carte-stat large" },
-    creer("h2", { texte: "Années de parution" }),
-    creer("p", { classe: "note-stat", texte: "Année de ton édition, pas de l'œuvre. " +
+    creer("h2", { texte: titre }),
+    creer("p", { classe: "note-stat", texte: explication +
       (sansAnnee ? pluriel(sansAnnee, "édition") + " sans année. " : "") + "Clic sur une colonne pour filtrer." })
   );
   if (!annees.length) return carte;
@@ -1711,7 +1757,7 @@ function carteAnnees(liste) {
       type: "button", classe: "colonne", "aria-label": annee + " : " + nombre,
       "data-infobulle": annee + " · " + pluriel(nombre, "édition"),
       disabled: nombre === 0,
-      surclic: () => { Object.assign(etat, { anneeMin: annee, anneeMax: annee, vue: "collection" }); ecrireControles(); afficher(); },
+      surclic: () => { Object.assign(etat, filtrer(annee), { vue: "collection" }); ecrireControles(); afficher(); },
     }, creer("span", { classe: "colonne-remplie", style: "height:" + (100 * nombre / maximum).toFixed(1) + "%" })));
   }
   const infobulle = creer("div", { classe: "infobulle", hidden: true });
@@ -1793,6 +1839,7 @@ function afficherStatistiques(liste) {
       creer("p", { classe: "note-stat note-synchro", texte: synchro + " Les statistiques portent sur les disques affichés (filtres et recherche compris)." })
     ),
     carteAnnees(liste),
+    carteAnneesEnregistrement(liste),
     carteBarres("Catégories", "Dossier Discogs (Custom Field)", compter(liste, EXTRACTEURS.categorie), 20, appliquer("categorie")),
     carteBarres("Genres", "Genres Discogs", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
     carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
@@ -2284,7 +2331,7 @@ function brancherEvenements() {
   });
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
-                    "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-localisation", "filtre-double",
+                    "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-enreg-min", "filtre-enreg-max", "filtre-localisation", "filtre-double",
                     "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres", "filtre-favoris",
                     "filtre-statut", "filtre-enregistrement"]) {
     $(id).addEventListener("change", () => { lireControles(); afficher(); });

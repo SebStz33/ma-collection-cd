@@ -61,7 +61,7 @@ DISQUES_PAR_SYNCHRO = 200
 # Version 4 : années d'enregistrement ; seules les éditions exactes sont revues.
 # Version 5 : année de parution de l'édition (quand Discogs n'en a pas) ; seules les éditions
 #             exactes sans année Discogs sont revues.
-VERSION_RECHERCHE = 5
+VERSION_RECHERCHE = 6
 
 # Méthodes qui désignent l'édition exacte (on prend alors aussi ses images).
 METHODES_EXACTES = ("edition", "code_barre")
@@ -207,6 +207,10 @@ RELATIONS_DATEES = {
     "conductor", "performing orchestra", "chorus master", "concertmaster",
 }
 
+# Premier enregistrement sonore (phonographe d'Edison) : une date plus ancienne est une erreur de
+# saisie sur MusicBrainz (1772 pour 1972, par exemple) et n'est pas gardée.
+PREMIERE_ANNEE_POSSIBLE = 1877
+
 
 def annees_de_plage(plage_mb):
     """Années d'enregistrement d'une plage MusicBrainz (ensemble, vide si MusicBrainz n'en a pas)."""
@@ -217,7 +221,9 @@ def annees_de_plage(plage_mb):
         for cle in ("begin", "end"):
             date_texte = relation.get(cle) or ""
             if len(date_texte) >= 4 and date_texte[:4].isdigit():
-                annees.add(int(date_texte[:4]))
+                annee = int(date_texte[:4])
+                if PREMIERE_ANNEE_POSSIBLE <= annee <= date.today().year:
+                    annees.add(annee)
     return annees
 
 
@@ -391,6 +397,9 @@ def a_chercher(entree, nb_plages, sans_annee=False):
         return True  # édition exacte : on lit en plus ses années d'enregistrement
     if version < 5 and sans_annee and entree.get("methode") in METHODES_EXACTES:
         return True  # pas d'année sur Discogs : on lit celle de l'édition MusicBrainz
+    annees = entree.get("annees_enregistrement")
+    if version < 6 and annees and annees[0] < PREMIERE_ANNEE_POSSIBLE:
+        return True  # année d'enregistrement impossible (erreur MusicBrainz) : on relit sans elle
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
