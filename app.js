@@ -322,9 +322,12 @@ function anneesEnregistrement(edition) {
   const annees = edition.annees_enregistrement;
   if (!annees || !annees.length) return [];
   const [premiere, derniere] = annees;
+  // Années lues sur une autre édition du même album (MusicBrainz) : on le précise.
+  const source = edition.annees_enregistrement_source === "musicbrainz_album"
+    ? " (d'après une autre édition de l'album)" : "";
   return premiere === derniere
-    ? [["Année d'enregistrement", String(premiere)]]
-    : [["Années d'enregistrement", premiere + " – " + derniere]];
+    ? [["Année d'enregistrement", premiere + source]]
+    : [["Années d'enregistrement", premiere + " – " + derniere + source]];
 }
 
 /** Décrit les formats : « Box Set + 5 × CD (Album, Remastered) ». */
@@ -849,6 +852,8 @@ function afficherGrille(liste) {
     creer("h2", { classe: "titre-categorie" },
       categories[numero],
       creer("span", { classe: "discret", texte: " (" + parCategorie.get(categories[numero]).length + ")" }),
+      // Rappel du tri choisi : le titre reste en haut de l'écran pendant le défilement.
+      creer("span", { classe: "tri-categorie", texte: "· tri par " + libelleDuTri() }),
       categories.length > 1 ? creer("span", { classe: "navigation-categories" },
         creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Haut", surclic: () => window.scrollTo({ top: 0, behavior: "smooth" }) }),
         numero < groupes.length - 1
@@ -862,6 +867,13 @@ function afficherGrille(liste) {
     creer("div", { classe: "grille" }, cartesAvecIntertitre(parCategorie.get(categories[numero])))
   ));
   $("vue-collection").replaceChildren(sommaire || "", ...groupes);
+}
+
+/** Libellé du tri choisi, en minuscule : « année d'enregistrement ». */
+function libelleDuTri() {
+  const option = $("tri").selectedOptions[0];
+  const texte = option ? option.textContent : "";
+  return texte.charAt(0).toLowerCase() + texte.slice(1);
 }
 
 /** Hauteur de l'en-tête collant, pour placer les titres de catégorie juste en dessous. */
@@ -878,19 +890,20 @@ function cartesAvecIntertitre(liste) {
   const cartes = cartesDesEditions(liste, infos.valeur);
   const premierManquant = infos.manque ? liste.findIndex(infos.manque) : -1;
   if (premierManquant < 0) return cartes;
-  const intertitre = creer("h3", { classe: "intertitre-tri" }, infos.sans,
-    creer("span", { classe: "discret", texte: " (" + (liste.length - premierManquant) + ")" }));
+  const intertitre = creer("h3", { classe: "intertitre-tri",
+    texte: infos.sans + " (" + (liste.length - premierManquant) + ")" });
   return [...cartes.slice(0, premierManquant), intertitre, ...cartes.slice(premierManquant)];
 }
 
-/** `valeurDeTri` (facultatif) : texte écrit au-dessus de la photo (ligne vide si l'édition n'en a pas). */
+/** `valeurDeTri` (facultatif) : texte écrit au-dessus de la photo (rien si l'édition n'en a pas). */
 function cartesDesEditions(liste, valeurDeTri) {
   return liste.map((edition) => {
     const image = edition.pochette || edition.miniature;
     const nb = edition.exemplaires.length;
     const categories = categoriesChoisies(edition);
     return creer("button", { classe: "carte", type: "button", surclic: () => ouvrirFiche(edition) },
-      valeurDeTri ? creer("p", { classe: "carte-tri", texte: valeurDeTri(edition) || "\u00a0" }) : null,
+      // Pas de ligne pour une édition sans valeur : elles sont toutes sous l'intertitre « Sans … ».
+      valeurDeTri && valeurDeTri(edition) ? creer("p", { classe: "carte-tri", texte: valeurDeTri(edition) }) : null,
       creer("div", { classe: "pochette" },
         image
           ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })

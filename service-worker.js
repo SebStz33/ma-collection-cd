@@ -5,7 +5,7 @@
    ========================================================================== */
 
 // Changer ce numéro force le navigateur à recharger les fichiers de la page.
-const VERSION = "v35";
+const VERSION = "v37";
 const RESERVE_PAGE = "page-" + VERSION;
 const RESERVE_POCHETTES = "pochettes";
 
