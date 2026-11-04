@@ -1230,6 +1230,11 @@
   "version": 4
  },
  "1006731": {
+  "annee_parution": 1996,
+  "annees_enregistrement": [
+   1994,
+   1994
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/df2c7f05-b9a7-4a93-a5ac-ae1b7d14df94/14537268016-250.jpg",
@@ -1238,7 +1243,7 @@
     "url": "https://coverartarchive.org/release/df2c7f05-b9a7-4a93-a5ac-ae1b7d14df94/14537268016-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 15,
   "oeuvres": [
@@ -1346,7 +1351,7 @@
    }
   ],
   "release": "df2c7f05-b9a7-4a93-a5ac-ae1b7d14df94",
-  "version": 2
+  "version": 5
  },
  "10165463": {
   "images": [],
@@ -1358,6 +1363,11 @@
   "version": 2
  },
  "10167249": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1981,
+   1982
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/9b02998d-be79-47a5-9979-2bf776673d43/42811068605-250.jpg",
@@ -1366,7 +1376,7 @@
     "url": "https://coverartarchive.org/release/9b02998d-be79-47a5-9979-2bf776673d43/42811068605-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -1426,7 +1436,7 @@
    }
   ],
   "release": "9b02998d-be79-47a5-9979-2bf776673d43",
-  "version": 2
+  "version": 5
  },
  "1018824": {
   "annees_enregistrement": [
@@ -1552,6 +1562,7 @@
   "version": 4
  },
  "10189430": {
+  "annee_parution": 2000,
   "annees_enregistrement": [
    1962,
    1970
@@ -1690,7 +1701,7 @@
     "url": "https://coverartarchive.org/release/564a0a09-837f-4657-bd17-845eb825e340/38174924679-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 27,
   "oeuvres": [
@@ -1861,7 +1872,7 @@
    }
   ],
   "release": "564a0a09-837f-4657-bd17-845eb825e340",
-  "version": 4
+  "version": 5
  },
  "10215386": {
   "annees_enregistrement": [
@@ -2101,6 +2112,8 @@
   "version": 4
  },
  "10232984": {
+  "annee_parution": 1982,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/cb3e8112-5391-4bd0-9e9d-5150605b536e/31671791482-250.jpg",
@@ -2115,7 +2128,7 @@
     "url": "https://coverartarchive.org/release/cb3e8112-5391-4bd0-9e9d-5150605b536e/31671792195-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 6,
   "oeuvres": [
@@ -2175,9 +2188,14 @@
    }
   ],
   "release": "cb3e8112-5391-4bd0-9e9d-5150605b536e",
-  "version": 2
+  "version": 5
  },
  "10321533": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1962,
+   1962
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/c803041d-f824-4623-838e-59df06547064/42154229789-250.jpg",
@@ -2192,7 +2210,7 @@
     "url": "https://coverartarchive.org/release/c803041d-f824-4623-838e-59df06547064/42154292551-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 5,
   "oeuvres": [
@@ -2243,7 +2261,7 @@
    }
   ],
   "release": "c803041d-f824-4623-838e-59df06547064",
-  "version": 2
+  "version": 5
  },
  "1037997": {
   "annees_enregistrement": [
@@ -2420,6 +2438,7 @@
   "version": 4
  },
  "10414040": {
+  "annee_parution": 1991,
   "annees_enregistrement": [
    1991,
    1991
@@ -2438,7 +2457,7 @@
     "url": "https://coverartarchive.org/release/8346d141-b40a-4ed9-b1c6-b1fbb2226547/7479953233-500.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 18,
   "oeuvres": [
@@ -2584,7 +2603,7 @@
      "id": "fc10db1c-2ff1-44ea-96ed-c14eab6103b5",
      "titre": "Concerto in B-flat major, RV 163 \"Conca\""
     },
-    "titre": "Concerto in B-flat major, RV 163 \"Conca\": I. (Allegro) - Allegro molto"
+    "titre": "Concerto in B-flat major, RV 163 \"Conca\": I. (Allegro) – Allegro molto"
    },
    {
     "compositeur": "Antonio Vivaldi",
@@ -2606,9 +2625,14 @@
    }
   ],
   "release": "8346d141-b40a-4ed9-b1c6-b1fbb2226547",
-  "version": 4
+  "version": 5
  },
  "10449763": {
+  "annee_parution": 1992,
+  "annees_enregistrement": [
+   1957,
+   1957
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/a6c56ab7-8d56-4157-97ef-c639cf35f4a1/36000102494-250.jpg",
@@ -2623,7 +2647,7 @@
     "url": "https://coverartarchive.org/release/a6c56ab7-8d56-4157-97ef-c639cf35f4a1/36000103260-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 9,
   "oeuvres": [
@@ -2683,7 +2707,7 @@
    }
   ],
   "release": "a6c56ab7-8d56-4157-97ef-c639cf35f4a1",
-  "version": 2
+  "version": 5
  },
  "10474904": {
   "images": [],
@@ -2770,6 +2794,178 @@
   "release": "21938965-5c06-4a1b-bef0-4470144dace9",
   "version": 2
  },
+ "10525501": {
+  "annee_parution": 1997,
+  "annees_enregistrement": [
+   1959,
+   1960
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/15473907820-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/15473907820.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/15473907820-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830737791-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830737791.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830737791-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830739047-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830739047.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830739047-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830741436-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830741436.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830741436-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830743738-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830743738.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830743738-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830744630-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830744630.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830744630-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830746408-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830746408.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830746408-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830747356-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830747356.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830747356-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830750093-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830750093.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830750093-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830750655-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830750655.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830750655-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830752221-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830752221.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830752221-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830753869-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830753869.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830753869-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830754717-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830754717.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830754717-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830755231-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830755231.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830755231-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830756011-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830756011.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830756011-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830756504-250.jpg",
+    "original": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830756504.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4f2525cf-1bcc-3bff-905b-75a5aecc90ee/33830756504-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 8,
+  "oeuvres": [
+   {
+    "compositeur": "Joaquín Rodrigo",
+    "id": "df754996-c4f2-36a5-8323-7d5036a3f70a",
+    "parente": {
+     "id": "4344e777-556c-3f2f-b4fd-96c852f9f1e9",
+     "titre": "Concierto de Aranjuez"
+    },
+    "titre": "Concierto de Aranjuez: II. Adagio"
+   },
+   {
+    "compositeur": "Manuel de Falla",
+    "id": "b0c2ff9e-f39e-354f-aec2-26286c8348d3",
+    "parente": {
+     "id": "26ea58b3-7528-4eed-b319-850808d54825",
+     "titre": "El amor brujo"
+    },
+    "titre": "El amor brujo: X. Canción del fuego fatuo"
+   },
+   {
+    "compositeur": "Gil Evans",
+    "id": "b88f114a-f21e-4c25-a3c7-aa56736746fd",
+    "parente": null,
+    "titre": "The Pan Piper"
+   },
+   {
+    "compositeur": "Gil Evans",
+    "id": "02afbccc-739a-4128-ab18-c8a2849d841f",
+    "parente": null,
+    "titre": "Saeta"
+   },
+   {
+    "compositeur": "Gil Evans",
+    "id": "cae4e98b-d6c1-43f2-978d-20a0d12d737c",
+    "parente": null,
+    "titre": "Solea"
+   },
+   {
+    "compositeur": "Heitor Villa‐Lobos",
+    "id": "10db0059-efa5-4e38-a7b2-33538fdacfd2",
+    "parente": null,
+    "titre": "Song of Our Country"
+   },
+   {
+    "compositeur": "Joaquín Rodrigo",
+    "id": "df754996-c4f2-36a5-8323-7d5036a3f70a",
+    "parente": {
+     "id": "4344e777-556c-3f2f-b4fd-96c852f9f1e9",
+     "titre": "Concierto de Aranjuez"
+    },
+    "titre": "Concierto de Aranjuez: II. Adagio"
+   },
+   {
+    "compositeur": "Joaquín Rodrigo",
+    "id": "df754996-c4f2-36a5-8323-7d5036a3f70a",
+    "parente": {
+     "id": "4344e777-556c-3f2f-b4fd-96c852f9f1e9",
+     "titre": "Concierto de Aranjuez"
+    },
+    "titre": "Concierto de Aranjuez: II. Adagio"
+   }
+  ],
+  "release": "4f2525cf-1bcc-3bff-905b-75a5aecc90ee",
+  "version": 5
+ },
  "10564650": {
   "images": [],
   "maj": "2026-11-01",
@@ -2780,6 +2976,11 @@
   "version": 2
  },
  "10602519": {
+  "annee_parution": 2001,
+  "annees_enregistrement": [
+   1958,
+   1959
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/16c98579-84f3-415f-9469-c8dbce49a9a6/14169338891-250.jpg",
@@ -2800,7 +3001,7 @@
     "url": "https://coverartarchive.org/release/16c98579-84f3-415f-9469-c8dbce49a9a6/14169343624-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 15,
   "oeuvres": [
@@ -2941,9 +3142,14 @@
    }
   ],
   "release": "16c98579-84f3-415f-9469-c8dbce49a9a6",
-  "version": 2
+  "version": 5
  },
  "1061615": {
+  "annee_parution": 2002,
+  "annees_enregistrement": [
+   2001,
+   2001
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/02bdc6e5-ed26-4cce-847c-7cb205e254c5/41337134085-250.jpg",
@@ -3048,7 +3254,7 @@
     "url": "https://coverartarchive.org/release/02bdc6e5-ed26-4cce-847c-7cb205e254c5/41337144699-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 29,
   "oeuvres": [
@@ -3315,54 +3521,53 @@
    }
   ],
   "release": "02bdc6e5-ed26-4cce-847c-7cb205e254c5",
-  "version": 2
+  "version": 5
  },
  "10655586": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1987,
+   1987
+  ],
   "images": [
    {
-    "miniature": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548628491-250.jpg",
-    "original": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548628491.jpg",
+    "miniature": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030314487-250.jpg",
+    "original": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030314487.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548628491-1200.jpg"
+    "url": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030314487-1200.jpg"
    },
    {
-    "miniature": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548629415-250.jpg",
-    "original": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548629415.jpg",
+    "miniature": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030317860-250.jpg",
+    "original": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030317860.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548629415-1200.jpg"
+    "url": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030317860-1200.jpg"
    },
    {
-    "miniature": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548630532-250.jpg",
-    "original": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548630532.jpg",
+    "miniature": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030320754-250.jpg",
+    "original": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030320754.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548630532-1200.jpg"
+    "url": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030320754-1200.jpg"
    },
    {
-    "miniature": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548632024-250.jpg",
-    "original": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548632024.jpg",
+    "miniature": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030322334-250.jpg",
+    "original": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030322334.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548632024-1200.jpg"
+    "url": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030322334-1200.jpg"
    },
    {
-    "miniature": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633107-250.jpg",
-    "original": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633107.jpg",
+    "miniature": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030322902-250.jpg",
+    "original": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030322902.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633107-1200.jpg"
+    "url": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030322902-1200.jpg"
    },
    {
-    "miniature": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633612-250.jpg",
-    "original": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633612.jpg",
+    "miniature": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030342411-250.jpg",
+    "original": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030342411.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633612-1200.jpg"
-   },
-   {
-    "miniature": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633938-250.jpg",
-    "original": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633938.pdf",
-    "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/ff341834-f609-4a6b-9530-59407f5bb675/34548633938-1200.jpg"
+    "url": "https://coverartarchive.org/release/3e322fb5-315a-45a3-9c79-d74e231dafd1/42030342411-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 12,
   "oeuvres": [
@@ -3445,8 +3650,8 @@
     "titre": "Radetzky‐Marsch, op. 228"
    }
   ],
-  "release": "ff341834-f609-4a6b-9530-59407f5bb675",
-  "version": 2
+  "release": "3e322fb5-315a-45a3-9c79-d74e231dafd1",
+  "version": 5
  },
  "10664681": {
   "annees_enregistrement": null,
@@ -3663,6 +3868,11 @@
   "version": 2
  },
  "10822711": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1974,
+   1974
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/07d6595c-90f3-4bba-be5a-e419274ac138/7368616583-250.jpg",
@@ -3725,7 +3935,7 @@
     "url": "https://coverartarchive.org/release/07d6595c-90f3-4bba-be5a-e419274ac138/7368628510-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -3785,7 +3995,7 @@
    }
   ],
   "release": "07d6595c-90f3-4bba-be5a-e419274ac138",
-  "version": 2
+  "version": 5
  },
  "1088316": {
   "annees_enregistrement": [
@@ -3994,8 +4204,13 @@
   "version": 4
  },
  "10897770": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1961,
+   1969
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -4055,7 +4270,7 @@
    }
   ],
   "release": "0e25e3f6-3c5d-42ff-91d3-c78b8d490893",
-  "version": 2
+  "version": 5
  },
  "10927976": {
   "images": [],
@@ -4224,6 +4439,7 @@
   "version": 4
  },
  "11202078": {
+  "annee_parution": 1989,
   "annees_enregistrement": [
    1988,
    1988
@@ -4278,7 +4494,7 @@
     "url": "https://coverartarchive.org/release/687bee09-a033-46bc-96f9-8c17d90a0797/26071895249-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 5,
   "oeuvres": [
@@ -4314,7 +4530,7 @@
    }
   ],
   "release": "687bee09-a033-46bc-96f9-8c17d90a0797",
-  "version": 4
+  "version": 5
  },
  "11205201": {
   "annees_enregistrement": [
@@ -4578,6 +4794,11 @@
   "version": 4
  },
  "11205456": {
+  "annee_parution": 2006,
+  "annees_enregistrement": [
+   1989,
+   1990
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/84f5c81e-1ad5-432f-9541-3b3b8708f670/18105139317-250.jpg",
@@ -4586,7 +4807,7 @@
     "url": "https://coverartarchive.org/release/84f5c81e-1ad5-432f-9541-3b3b8708f670/18105139317-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 55,
   "oeuvres": [
@@ -5084,7 +5305,7 @@
    }
   ],
   "release": "84f5c81e-1ad5-432f-9541-3b3b8708f670",
-  "version": 2
+  "version": 5
  },
  "11246852": {
   "annees_enregistrement": [
@@ -5562,15 +5783,22 @@
   "version": 4
  },
  "11428932": {
+  "annee_parution": 2017,
+  "annees_enregistrement": [
+   2006,
+   2006
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 16,
   "oeuvres": null,
   "release": "770fdf1d-90c3-466a-8584-62fefb499371",
-  "version": 2
+  "version": 5
  },
  "11528736": {
+  "annee_parution": 1999,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/7c9dfcc3-54fb-4f63-ac79-068a746f6bfb/6573838336-250.jpg",
@@ -5579,7 +5807,7 @@
     "url": "https://coverartarchive.org/release/7c9dfcc3-54fb-4f63-ac79-068a746f6bfb/6573838336-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 5,
   "oeuvres": [
@@ -5627,11 +5855,13 @@
    }
   ],
   "release": "7c9dfcc3-54fb-4f63-ac79-068a746f6bfb",
-  "version": 2
+  "version": 5
  },
  "1158558": {
+  "annee_parution": 1998,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 4,
   "oeuvres": [
@@ -5661,7 +5891,7 @@
    }
   ],
   "release": "088c8eba-f211-3f7a-b5e1-5b5bedf4f4af",
-  "version": 2
+  "version": 5
  },
  "11698725": {
   "images": [],
@@ -6234,6 +6464,48 @@
   "release": "ed061c03-c197-3790-8d8d-7938bc6aed8f",
   "version": 4
  },
+ "1212931": {
+  "annee_parution": 1998,
+  "annees_enregistrement": [
+   1960,
+   1960
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/27a3e4c3-c23b-4bc6-af1a-b4da84853129/20260232001-250.jpg",
+    "original": "https://coverartarchive.org/release/27a3e4c3-c23b-4bc6-af1a-b4da84853129/20260232001.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/27a3e4c3-c23b-4bc6-af1a-b4da84853129/20260232001-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "edition",
+  "nb_plages": 7,
+  "oeuvres": [
+   null,
+   {
+    "compositeur": "Ornette Coleman",
+    "id": "b85bcce1-3596-456c-9873-b7caa9d5528a",
+    "parente": null,
+    "titre": "Beauty Is a Rare Thing"
+   },
+   null,
+   {
+    "compositeur": "George Gershwin",
+    "id": "13869248-f36a-3fe0-a8bd-7c0d2793d8d9",
+    "parente": {
+     "id": "ae045f98-4072-4b16-8f3c-152c9cde0a62",
+     "titre": "Crazy for You"
+    },
+    "titre": "Embraceable You"
+   },
+   null,
+   null,
+   null
+  ],
+  "release": "27a3e4c3-c23b-4bc6-af1a-b4da84853129",
+  "version": 5
+ },
  "12168439": {
   "images": [],
   "maj": "2026-11-02",
@@ -6244,6 +6516,11 @@
   "version": 2
  },
  "1224379": {
+  "annee_parution": 2000,
+  "annees_enregistrement": [
+   1999,
+   1999
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/e9e58bbe-1c17-4e35-a724-44db65369ae8/19350126536-250.jpg",
@@ -6252,7 +6529,7 @@
     "url": "https://coverartarchive.org/release/e9e58bbe-1c17-4e35-a724-44db65369ae8/19350126536-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 30,
   "oeuvres": [
@@ -6438,9 +6715,14 @@
    }
   ],
   "release": "e9e58bbe-1c17-4e35-a724-44db65369ae8",
-  "version": 2
+  "version": 5
  },
  "12247485": {
+  "annee_parution": 1995,
+  "annees_enregistrement": [
+   1959,
+   1962
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/f73a49fc-740b-4b72-83ff-fecf5a5b99e6/9940150006-250.jpg",
@@ -6455,7 +6737,7 @@
     "url": "https://coverartarchive.org/release/f73a49fc-740b-4b72-83ff-fecf5a5b99e6/9940153030-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 6,
   "oeuvres": [
@@ -6515,11 +6797,16 @@
    }
   ],
   "release": "f73a49fc-740b-4b72-83ff-fecf5a5b99e6",
-  "version": 2
+  "version": 5
  },
  "12319400": {
+  "annee_parution": 2003,
+  "annees_enregistrement": [
+   1974,
+   1974
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 4,
   "oeuvres": [
@@ -6561,7 +6848,7 @@
    }
   ],
   "release": "683866b3-1471-4c64-a1f7-207e78980200",
-  "version": 2
+  "version": 5
  },
  "12379659": {
   "annees_enregistrement": null,
@@ -6753,6 +7040,11 @@
   "version": 4
  },
  "1241989": {
+  "annee_parution": 2008,
+  "annees_enregistrement": [
+   2007,
+   2007
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/8620cbe3-cd6e-4e10-ac6b-8a73d36c0ce4/16157163904-250.jpg",
@@ -6761,7 +7053,7 @@
     "url": "https://coverartarchive.org/release/8620cbe3-cd6e-4e10-ac6b-8a73d36c0ce4/16157163904-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -6803,7 +7095,7 @@
    }
   ],
   "release": "8620cbe3-cd6e-4e10-ac6b-8a73d36c0ce4",
-  "version": 2
+  "version": 5
  },
  "1248416": {
   "annees_enregistrement": [
@@ -7169,15 +7461,22 @@
   "version": 4
  },
  "12608534": {
+  "annee_parution": 2018,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": null,
   "release": "c6ceab94-6fe1-4cc4-ab9c-2aab8e07a1f3",
-  "version": 2
+  "version": 5
  },
  "12710212": {
+  "annee_parution": 1982,
+  "annees_enregistrement": [
+   1979,
+   1979
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/4175b5f4-5008-4a0d-9868-889d92321995/13602677807-250.jpg",
@@ -7204,7 +7503,7 @@
     "url": "https://coverartarchive.org/release/4175b5f4-5008-4a0d-9868-889d92321995/29223780361-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": [
@@ -7294,9 +7593,11 @@
    }
   ],
   "release": "4175b5f4-5008-4a0d-9868-889d92321995",
-  "version": 2
+  "version": 5
  },
  "12758282": {
+  "annee_parution": 2016,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/37c691c8-ffaa-4d9f-9f1d-78f7bf3f8373/18917837583-250.jpg",
@@ -7311,12 +7612,12 @@
     "url": "https://coverartarchive.org/release/37c691c8-ffaa-4d9f-9f1d-78f7bf3f8373/18917839137-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 1237,
   "oeuvres": null,
   "release": "37c691c8-ffaa-4d9f-9f1d-78f7bf3f8373",
-  "version": 2
+  "version": 5
  },
  "12826207": {
   "annees_enregistrement": [
@@ -7339,6 +7640,7 @@
   "version": 4
  },
  "1282998": {
+  "annee_parution": 1992,
   "annees_enregistrement": [
    1959,
    1959
@@ -7417,7 +7719,7 @@
     "url": "https://coverartarchive.org/release/a411291d-dba6-32f0-beb5-9147605e33fe/1347865529371-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 7,
   "oeuvres": [
@@ -7465,9 +7767,113 @@
    }
   ],
   "release": "a411291d-dba6-32f0-beb5-9147605e33fe",
-  "version": 4
+  "version": 5
+ },
+ "12925616": {
+  "annee_parution": 1996,
+  "annees_enregistrement": null,
+  "images": [],
+  "maj": "2026-11-04",
+  "methode": "edition",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "compositeur": "[unknown]",
+    "id": "961fd320-e234-40a1-a8f2-0d6c3dc569a0",
+    "parente": null,
+    "titre": "Walkin’"
+   },
+   {
+    "compositeur": "Ray Henderson",
+    "id": "a9afcd74-b1d0-30b6-b63c-5a09a45f5bcf",
+    "parente": null,
+    "titre": "Bye Bye Blackbird"
+   },
+   {
+    "compositeur": "Cole Porter",
+    "id": "c9a51eb1-c80a-33e9-b015-370654cda985",
+    "parente": {
+     "id": "a846a13a-62b8-4123-95ef-85581c7f4cac",
+     "titre": "Silk Stockings"
+    },
+    "titre": "All of You"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "e25f63c9-bc0b-49f6-a984-48236b84d79a",
+    "parente": null,
+    "titre": "No Blues"
+   },
+   null,
+   {
+    "compositeur": "Danny Small",
+    "id": "8cef2e71-8f29-377f-a620-3eda1e3f46d1",
+    "parente": null,
+    "titre": "Love, I Found You"
+   },
+   {
+    "compositeur": "Thelonious Monk",
+    "id": "08ee3a2f-6905-3660-8d36-f55df4774b97",
+    "parente": null,
+    "titre": "Well, You Needn’t"
+   }
+  ],
+  "release": "5e5d1022-6d21-4bba-92d7-22a53f3e332e",
+  "version": 5
+ },
+ "12928243": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "images": [],
+  "maj": "2026-11-04",
+  "methode": "album",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "compositeur": "Thelonious Monk",
+    "id": "08ee3a2f-6905-3660-8d36-f55df4774b97",
+    "parente": null,
+    "titre": "Well, You Needn’t"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "beaeae32-3476-3db9-b078-7706c3f5cc42",
+    "parente": null,
+    "titre": "Fran‐Dance"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "2fafd730-423f-342e-b6c7-3a7d6599a72e",
+    "parente": null,
+    "titre": "So What"
+   },
+   {
+    "compositeur": "Sonny Rollins",
+    "id": "9bd0305e-0636-3624-972e-ec5b55631ea8",
+    "parente": null,
+    "titre": "Oleo"
+   },
+   {
+    "compositeur": "Frank Loesser",
+    "id": "a9cd2932-dc41-38f4-896d-ca0b5abae751",
+    "parente": {
+     "id": "c414fd93-73a4-4972-aae6-80cb05343f37",
+     "titre": "Guys and Dolls"
+    },
+    "titre": "If I Were a Bell"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "e9a15423-6f66-49f6-88bc-76dd6d976c87",
+    "parente": null,
+    "titre": "Neo"
+   }
+  ],
+  "release": "4c6e21b7-f1e3-4115-9a35-0a03cd5fea0d",
+  "version": 5
  },
  "13007042": {
+  "annee_parution": null,
   "annees_enregistrement": [
    1998,
    1998
@@ -7480,7 +7886,7 @@
     "url": "https://coverartarchive.org/release/9a4fb67a-6142-45b7-93d2-4535c1ab38ae/27687485085-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 12,
   "oeuvres": [
@@ -7558,9 +7964,14 @@
    }
   ],
   "release": "9a4fb67a-6142-45b7-93d2-4535c1ab38ae",
-  "version": 4
+  "version": 5
  },
  "13053502": {
+  "annee_parution": 1995,
+  "annees_enregistrement": [
+   1970,
+   1971
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/c6275a6c-0ffd-3fcb-a08a-6119ed13e97e/11638434053-250.jpg",
@@ -7593,7 +8004,7 @@
     "url": "https://coverartarchive.org/release/c6275a6c-0ffd-3fcb-a08a-6119ed13e97e/13170267809-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 12,
   "oeuvres": [
@@ -7707,7 +8118,7 @@
    }
   ],
   "release": "c6275a6c-0ffd-3fcb-a08a-6119ed13e97e",
-  "version": 2
+  "version": 5
  },
  "13127292": {
   "annees_enregistrement": null,
@@ -7922,6 +8333,8 @@
   "version": 4
  },
  "13340754": {
+  "annee_parution": 2002,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/eadb548a-cfcb-4895-ba73-6e1e272cd53b/22513399065-250.jpg",
@@ -7936,21 +8349,23 @@
     "url": "https://coverartarchive.org/release/eadb548a-cfcb-4895-ba73-6e1e272cd53b/22513400734-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 9,
   "oeuvres": null,
   "release": "eadb548a-cfcb-4895-ba73-6e1e272cd53b",
-  "version": 2
+  "version": 5
  },
  "13366326": {
+  "annee_parution": 2009,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 935,
   "oeuvres": null,
   "release": "8a6ea415-28c0-471e-b212-042834c38974",
-  "version": 2
+  "version": 5
  },
  "13366688": {
   "images": [],
@@ -8077,6 +8492,7 @@
   "version": 2
  },
  "13567589": {
+  "annee_parution": 1988,
   "annees_enregistrement": [
    1975,
    1977
@@ -8125,7 +8541,7 @@
     "url": "https://coverartarchive.org/release/0e2de304-d55d-41e2-9dbf-6866a79cd19b/45692251768-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 12,
   "oeuvres": [
@@ -8239,11 +8655,16 @@
    }
   ],
   "release": "0e2de304-d55d-41e2-9dbf-6866a79cd19b",
-  "version": 4
+  "version": 5
  },
  "13571387": {
+  "annee_parution": 1994,
+  "annees_enregistrement": [
+   1978,
+   1993
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 250,
   "oeuvres": [
@@ -10025,7 +10446,7 @@
    }
   ],
   "release": "94a254f1-440d-4bc3-9914-e305cb894131",
-  "version": 2
+  "version": 5
  },
  "13573074": {
   "annees_enregistrement": null,
@@ -10333,6 +10754,11 @@
   "version": 2
  },
  "13661894": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1957,
+   1973
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/79a7e8bb-9a2d-4cd2-842a-e22ccfd000c8/15386953926-250.jpg",
@@ -10353,7 +10779,7 @@
     "url": "https://coverartarchive.org/release/79a7e8bb-9a2d-4cd2-842a-e22ccfd000c8/15386956390-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 26,
   "oeuvres": [
@@ -10593,7 +11019,7 @@
    }
   ],
   "release": "79a7e8bb-9a2d-4cd2-842a-e22ccfd000c8",
-  "version": 2
+  "version": 5
  },
  "13706604": {
   "annees_enregistrement": [
@@ -10987,6 +11413,7 @@
   "version": 4
  },
  "13878575": {
+  "annee_parution": 1990,
   "annees_enregistrement": [
    1975,
    1979
@@ -11011,7 +11438,7 @@
     "url": "https://coverartarchive.org/release/a70013d5-2606-4097-976a-c44a486b9cb3/40898002342-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 6,
   "oeuvres": [
@@ -11071,7 +11498,7 @@
    }
   ],
   "release": "a70013d5-2606-4097-976a-c44a486b9cb3",
-  "version": 4
+  "version": 5
  },
  "14092159": {
   "images": [],
@@ -11082,7 +11509,63 @@
   "release": null,
   "version": 2
  },
+ "14157154": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "images": [],
+  "maj": "2026-11-04",
+  "methode": "album",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "compositeur": "Richard Rodgers",
+    "id": "ce1b19ac-fe5b-3ce8-83bd-81dde7a54e7a",
+    "parente": {
+     "id": "03d3b169-7ec3-4c14-8cdb-5956de86b177",
+     "titre": "Oklahoma!"
+    },
+    "titre": "The Surrey With the Fringe on Top"
+   },
+   {
+    "compositeur": "Kenny Clarke, Dizzy Gillespie",
+    "id": "50685bab-4a91-389c-81e6-c77299cca221",
+    "parente": null,
+    "titre": "Salt Peanuts"
+   },
+   {
+    "compositeur": "Sammy Fain",
+    "id": "8ecb916b-7d4f-3a70-b188-8f7a10eb4177",
+    "parente": null,
+    "titre": "Something I Dreamed Last Night"
+   },
+   {
+    "compositeur": "Ernö Rapée",
+    "id": "c85a5a4c-6bde-420b-b372-965be052a53c",
+    "parente": {
+     "id": "84903919-6c92-47a2-8ecb-87d7b11d21ed",
+     "titre": "The Girl’s Suite"
+    },
+    "titre": "Diane"
+   },
+   {
+    "compositeur": "Thelonious Monk",
+    "id": "08ee3a2f-6905-3660-8d36-f55df4774b97",
+    "parente": null,
+    "titre": "Well, You Needn’t"
+   },
+   {
+    "compositeur": "Victor Young",
+    "id": "d896ff41-9dc0-3e9c-9312-75e76a4b12c5",
+    "parente": null,
+    "titre": "When I Fall in Love"
+   }
+  ],
+  "release": "05149aa8-8d77-31fb-a5aa-468adb348b29",
+  "version": 5
+ },
  "14217786": {
+  "annee_parution": 2011,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/fd750aaa-1ec2-4245-96c1-d3cb2c68e47f/41862989987-250.jpg",
@@ -11139,7 +11622,7 @@
     "url": "https://coverartarchive.org/release/fd750aaa-1ec2-4245-96c1-d3cb2c68e47f/41863076786-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 15,
   "oeuvres": [
@@ -11236,7 +11719,7 @@
    }
   ],
   "release": "fd750aaa-1ec2-4245-96c1-d3cb2c68e47f",
-  "version": 2
+  "version": 5
  },
  "14462014": {
   "images": [],
@@ -11248,6 +11731,11 @@
   "version": 2
  },
  "14464478": {
+  "annee_parution": 1992,
+  "annees_enregistrement": [
+   1990,
+   1991
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/72ab3dfc-9031-4abb-9da7-e5a1907a577b/15584502357-250.jpg",
@@ -11256,7 +11744,7 @@
     "url": "https://coverartarchive.org/release/72ab3dfc-9031-4abb-9da7-e5a1907a577b/15584502357-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 49,
   "oeuvres": [
@@ -11703,7 +12191,7 @@
    }
   ],
   "release": "72ab3dfc-9031-4abb-9da7-e5a1907a577b",
-  "version": 2
+  "version": 5
  },
  "14470143": {
   "images": [],
@@ -11834,6 +12322,70 @@
   "release": "2b55aa04-e0a4-3935-91d7-b0163ca60a2c",
   "version": 4
  },
+ "14489914": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1772,
+   1972
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576518493-250.jpg",
+    "original": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576518493.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576518493-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576519303-250.jpg",
+    "original": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576519303.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576519303-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576520586-250.jpg",
+    "original": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576520586.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576520586-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576521006-250.jpg",
+    "original": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576521006.pdf",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576521006-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 4,
+  "oeuvres": [
+   {
+    "compositeur": "Chick Corea",
+    "id": "6b9084f6-a1e4-4fb2-9b7a-a1e3b964accf",
+    "parente": null,
+    "titre": "Return to Forever"
+   },
+   {
+    "compositeur": "Chick Corea",
+    "id": "f0b42ad1-fd48-4699-9b34-f8513d7438f4",
+    "parente": null,
+    "titre": "Crystal Silence"
+   },
+   {
+    "compositeur": "Chick Corea",
+    "id": "153560e2-4e31-4cb7-9362-203ffaf7fda4",
+    "parente": null,
+    "titre": "What Game Shall We Play Today"
+   },
+   {
+    "compositeur": "Chick Corea",
+    "id": "3f571116-b049-482f-ae67-aaf4f876f901",
+    "parente": null,
+    "titre": "Sometime Ago / La Fiesta"
+   }
+  ],
+  "release": "85c834f5-1ab7-4df1-8469-47fdda149781",
+  "version": 5
+ },
  "14497454": {
   "annees_enregistrement": null,
   "images": [
@@ -11885,9 +12437,10 @@
   "version": 4
  },
  "14503980": {
+  "annee_parution": 1986,
   "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 9,
   "oeuvres": [
@@ -11953,18 +12506,23 @@
    }
   ],
   "release": "6673c5ec-7508-3773-ab86-7a98307721a9",
-  "version": 4
+  "version": 5
  },
  "1463863": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1972,
+   1975
+  ],
   "images": [
    {
-    "miniature": "https://coverartarchive.org/release/bf05fa08-bf04-48b5-85b4-87558b2b627f/41511528433-250.jpg",
-    "original": "https://coverartarchive.org/release/bf05fa08-bf04-48b5-85b4-87558b2b627f/41511528433.png",
+    "miniature": "https://coverartarchive.org/release/89b8e8e5-d27a-4f75-81b8-bfbb0a11d545/44339380533-250.jpg",
+    "original": "https://coverartarchive.org/release/89b8e8e5-d27a-4f75-81b8-bfbb0a11d545/44339380533.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/bf05fa08-bf04-48b5-85b4-87558b2b627f/41511528433-1200.jpg"
+    "url": "https://coverartarchive.org/release/89b8e8e5-d27a-4f75-81b8-bfbb0a11d545/44339380533-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 9,
   "oeuvres": [
@@ -12050,10 +12608,12 @@
     "titre": "Concerto in C major for Flute, Harp & Orchestra, K. 297c/299: III. Rondeau. Allegro"
    }
   ],
-  "release": "bf05fa08-bf04-48b5-85b4-87558b2b627f",
-  "version": 2
+  "release": "89b8e8e5-d27a-4f75-81b8-bfbb0a11d545",
+  "version": 5
  },
  "14659104": {
+  "annee_parution": 2019,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/bf3e7ed0-9a37-47c5-9939-bbb09f361d61/32307960612-250.jpg",
@@ -12062,7 +12622,7 @@
     "url": "https://coverartarchive.org/release/bf3e7ed0-9a37-47c5-9939-bbb09f361d61/32307960612-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 8,
   "oeuvres": [
@@ -12107,7 +12667,7 @@
    }
   ],
   "release": "bf3e7ed0-9a37-47c5-9939-bbb09f361d61",
-  "version": 2
+  "version": 5
  },
  "14699850": {
   "images": [],
@@ -12148,6 +12708,11 @@
   "version": 4
  },
  "14877903": {
+  "annee_parution": 2003,
+  "annees_enregistrement": [
+   2002,
+   2003
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/59e38761-5771-34f5-8d6d-84d994ccb099/11638778684-250.jpg",
@@ -12162,7 +12727,7 @@
     "url": "https://coverartarchive.org/release/59e38761-5771-34f5-8d6d-84d994ccb099/44685532930-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 12,
   "oeuvres": [
@@ -12276,7 +12841,7 @@
    }
   ],
   "release": "59e38761-5771-34f5-8d6d-84d994ccb099",
-  "version": 2
+  "version": 5
  },
  "14892080": {
   "images": [],
@@ -12305,6 +12870,11 @@
   "version": 4
  },
  "1529034": {
+  "annee_parution": 1985,
+  "annees_enregistrement": [
+   1981,
+   1981
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/8cb1f24a-c209-45a6-afbf-ed280ab16d07/32760647971-250.jpg",
@@ -12337,7 +12907,7 @@
     "url": "https://coverartarchive.org/release/8cb1f24a-c209-45a6-afbf-ed280ab16d07/4598562163-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 8,
   "oeuvres": [
@@ -12412,7 +12982,7 @@
    }
   ],
   "release": "8cb1f24a-c209-45a6-afbf-ed280ab16d07",
-  "version": 2
+  "version": 5
  },
  "15307462": {
   "annees_enregistrement": null,
@@ -12467,6 +13037,11 @@
   "version": 4
  },
  "15407642": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1983,
+   1984
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/7725a673-1131-40c8-878d-5ca4856dc394/39559509833-250.jpg",
@@ -12487,7 +13062,7 @@
     "url": "https://coverartarchive.org/release/7725a673-1131-40c8-878d-5ca4856dc394/39559511102-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -12547,9 +13122,14 @@
    }
   ],
   "release": "7725a673-1131-40c8-878d-5ca4856dc394",
-  "version": 2
+  "version": 5
  },
  "1554982": {
+  "annee_parution": 1998,
+  "annees_enregistrement": [
+   1995,
+   1995
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/1828ce9b-32ac-4696-9e30-89f7b117c5a2/18652001055-250.jpg",
@@ -12564,7 +13144,7 @@
     "url": "https://coverartarchive.org/release/1828ce9b-32ac-4696-9e30-89f7b117c5a2/22770444959-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 21,
   "oeuvres": [
@@ -12759,7 +13339,7 @@
    }
   ],
   "release": "1828ce9b-32ac-4696-9e30-89f7b117c5a2",
-  "version": 2
+  "version": 5
  },
  "15643794": {
   "images": [],
@@ -12771,6 +13351,8 @@
   "version": 2
  },
  "15670909": {
+  "annee_parution": 1991,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/b4eab6c0-162c-4dfb-a277-9fda3945e62d/3011549248-250.jpg",
@@ -12785,12 +13367,12 @@
     "url": "https://coverartarchive.org/release/b4eab6c0-162c-4dfb-a277-9fda3945e62d/32184840207-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 30,
   "oeuvres": null,
   "release": "b4eab6c0-162c-4dfb-a277-9fda3945e62d",
-  "version": 2
+  "version": 5
  },
  "15675682": {
   "annees_enregistrement": [
@@ -12868,6 +13450,7 @@
   "version": 4
  },
  "15703324": {
+  "annee_parution": 2001,
   "annees_enregistrement": null,
   "images": [
    {
@@ -12925,7 +13508,7 @@
     "url": "https://coverartarchive.org/release/0d4aa90e-02d9-3003-a77f-a9706c1ac77e/40888013843-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 11,
   "oeuvres": [
@@ -12997,7 +13580,7 @@
    }
   ],
   "release": "0d4aa90e-02d9-3003-a77f-a9706c1ac77e",
-  "version": 4
+  "version": 5
  },
  "15746498": {
   "annees_enregistrement": [
@@ -13304,6 +13887,8 @@
   "version": 4
  },
  "15968732": {
+  "annee_parution": 1997,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/46d788a8-d262-4026-894c-97e0d047de82/30741171745-250.jpg",
@@ -13312,12 +13897,12 @@
     "url": "https://coverartarchive.org/release/46d788a8-d262-4026-894c-97e0d047de82/30741171745-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": null,
   "release": "46d788a8-d262-4026-894c-97e0d047de82",
-  "version": 2
+  "version": 5
  },
  "15970155": {
   "images": [],
@@ -13719,6 +14304,11 @@
   "version": 4
  },
  "1651390": {
+  "annee_parution": 1991,
+  "annees_enregistrement": [
+   1972,
+   1972
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/78f30916-fdf4-40fe-b7ff-3b373ada9e06/11508245251-250.jpg",
@@ -13727,7 +14317,7 @@
     "url": "https://coverartarchive.org/release/78f30916-fdf4-40fe-b7ff-3b373ada9e06/11508245251-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 24,
   "oeuvres": [
@@ -13949,7 +14539,7 @@
    }
   ],
   "release": "78f30916-fdf4-40fe-b7ff-3b373ada9e06",
-  "version": 2
+  "version": 5
  },
  "16525272": {
   "annees_enregistrement": null,
@@ -14222,12 +14812,13 @@
   "version": 4
  },
  "1655652": {
+  "annee_parution": 1986,
   "annees_enregistrement": [
    1971,
    1972
   ],
   "images": [],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 6,
   "oeuvres": [
@@ -14287,9 +14878,14 @@
    }
   ],
   "release": "c77a4d1e-9885-45f4-ad61-27b8fe98139c",
-  "version": 4
+  "version": 5
  },
  "1667005": {
+  "annee_parution": 2000,
+  "annees_enregistrement": [
+   1999,
+   1999
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/48909ca3-b94a-4b72-bd3d-8f9cac7d721c/15769267690-250.jpg",
@@ -14298,7 +14894,7 @@
     "url": "https://coverartarchive.org/release/48909ca3-b94a-4b72-bd3d-8f9cac7d721c/15769267690-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 32,
   "oeuvres": [
@@ -14592,7 +15188,7 @@
    }
   ],
   "release": "48909ca3-b94a-4b72-bd3d-8f9cac7d721c",
-  "version": 2
+  "version": 5
  },
  "1679719": {
   "annees_enregistrement": [
@@ -14694,6 +15290,11 @@
   "version": 4
  },
  "16868658": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1965,
+   1965
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/936f07f9-25aa-4dbc-9d6b-422adc8f76f5/13582419522-250.jpg",
@@ -14714,7 +15315,7 @@
     "url": "https://coverartarchive.org/release/936f07f9-25aa-4dbc-9d6b-422adc8f76f5/22830624037-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 12,
   "oeuvres": [
@@ -14828,7 +15429,7 @@
    }
   ],
   "release": "936f07f9-25aa-4dbc-9d6b-422adc8f76f5",
-  "version": 2
+  "version": 5
  },
  "17046864": {
   "annees_enregistrement": [
@@ -15511,6 +16112,8 @@
   "version": 2
  },
  "1832455": {
+  "annee_parution": 2003,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/c435e03c-858e-4769-abf3-5c017b6ba110/30736119939-250.jpg",
@@ -15531,16 +16134,21 @@
     "url": "https://coverartarchive.org/release/c435e03c-858e-4769-abf3-5c017b6ba110/30736121855-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 13,
   "oeuvres": null,
   "release": "c435e03c-858e-4769-abf3-5c017b6ba110",
-  "version": 2
+  "version": 5
  },
  "1836255": {
+  "annee_parution": 1992,
+  "annees_enregistrement": [
+   1979,
+   1979
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 14,
   "oeuvres": [
@@ -15660,7 +16268,7 @@
    }
   ],
   "release": "acaec52e-527f-3961-8fd1-b0425e9bd486",
-  "version": 2
+  "version": 5
  },
  "18394207": {
   "images": [],
@@ -15727,6 +16335,7 @@
   "version": 2
  },
  "1855693": {
+  "annee_parution": 1996,
   "annees_enregistrement": [
    1996,
    1996
@@ -15859,7 +16468,7 @@
     "url": "https://coverartarchive.org/release/2d206acb-2a1c-3d98-bd91-f5d3d1a99043/27814708296-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 12,
   "oeuvres": [
@@ -15949,9 +16558,14 @@
    }
   ],
   "release": "2d206acb-2a1c-3d98-bd91-f5d3d1a99043",
-  "version": 4
+  "version": 5
  },
  "1855732": {
+  "annee_parution": 1998,
+  "annees_enregistrement": [
+   1998,
+   1998
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/4ef516e3-5efe-3a24-858e-4a8ccb2f8469/15019829823-250.jpg",
@@ -15960,7 +16574,7 @@
     "url": "https://coverartarchive.org/release/4ef516e3-5efe-3a24-858e-4a8ccb2f8469/15019829823-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 14,
   "oeuvres": [
@@ -16071,9 +16685,14 @@
    }
   ],
   "release": "4ef516e3-5efe-3a24-858e-4a8ccb2f8469",
-  "version": 2
+  "version": 5
  },
  "18592480": {
+  "annee_parution": 1983,
+  "annees_enregistrement": [
+   1982,
+   1982
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/d42453f6-aebf-4e88-8c45-41e907db9f81/41184119507-250.jpg",
@@ -16112,7 +16731,7 @@
     "url": "https://coverartarchive.org/release/d42453f6-aebf-4e88-8c45-41e907db9f81/33822784647-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 6,
   "oeuvres": [
@@ -16172,7 +16791,7 @@
    }
   ],
   "release": "d42453f6-aebf-4e88-8c45-41e907db9f81",
-  "version": 2
+  "version": 5
  },
  "18629341": {
   "images": [],
@@ -16182,6 +16801,125 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "1871852": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1958,
+   1958
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/76318376-dd96-4f98-bf1d-816713afc3b5/19826261049-250.jpg",
+    "original": "https://coverartarchive.org/release/76318376-dd96-4f98-bf1d-816713afc3b5/19826261049.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/76318376-dd96-4f98-bf1d-816713afc3b5/19826261049-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/76318376-dd96-4f98-bf1d-816713afc3b5/4895343646-250.jpg",
+    "original": "https://coverartarchive.org/release/76318376-dd96-4f98-bf1d-816713afc3b5/4895343646.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/76318376-dd96-4f98-bf1d-816713afc3b5/4895343646-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 13,
+  "oeuvres": [
+   {
+    "compositeur": "George Gershwin",
+    "id": "ff8918fb-cb86-3148-b5e9-47ae8c1a9323",
+    "parente": {
+     "id": "1c40e317-4360-48fe-a6f9-cc3cdebdb554",
+     "titre": "Porgy and Bess: Act II, Scene I"
+    },
+    "titre": "Porgy and Bess: Act II, Scene I. “Buzzard keep on flyin’”"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "826c6acc-1f69-3dfc-8fda-6ff5e304f72a",
+    "parente": null,
+    "titre": "Bess, You Is My Woman Now"
+   },
+   {
+    "compositeur": "Gil Evans",
+    "id": "dfebd5b6-18af-4b7c-95f4-93ba24b9f879",
+    "parente": null,
+    "titre": "Gone"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "4024e41d-726b-3e33-b6ad-afa4ac559de9",
+    "parente": {
+     "id": "e9dcc48e-800f-4064-b827-1df8527a68f1",
+     "titre": "Porgy and Bess: Act I, Scene II"
+    },
+    "titre": "Porgy and Bess: Act I, Scene II. “Gone, gone, gone (Where is brudder Robbins?)”"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "986359d8-34ff-3fe2-84fe-155b5f167975",
+    "parente": null,
+    "titre": "Summertime"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "0a9d7ea7-5c1b-3692-9dd9-272169f8e540",
+    "parente": {
+     "id": "9e3c79fc-9518-4fd1-866d-2c649cf5f201",
+     "titre": "Porgy and Bess: Act III, Scene III"
+    },
+    "titre": "Porgy and Bess: Act III, Scene III. “Oh Bess, oh where’s my Bess”"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "41dfdf2b-a8e7-319c-a641-e464780249ce",
+    "parente": {
+     "id": "efc76139-fe5f-4270-b7e6-8f3ae8471267",
+     "titre": "Porgy and Bess: Act II"
+    },
+    "titre": "Porgy and Bess: Act II. “Oh, Doctor Jesus”"
+   },
+   null,
+   {
+    "compositeur": "George Gershwin",
+    "id": "9b1feb10-1ca2-37e9-965b-dd03d5e2cb2e",
+    "parente": null,
+    "titre": "My Man’s Gone Now"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "8812f327-e92e-37b9-bdc4-2cc1ade322c8",
+    "parente": null,
+    "titre": "It Ain’t Necessarily So"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "b7c2adab-bda7-35e9-9da0-0d62fd3538d9",
+    "parente": {
+     "id": "25a8172c-c283-4241-9c76-b0bb1dc38090",
+     "titre": "Porgy and Bess: Act I, Scene I"
+    },
+    "titre": "Porgy and Bess: Act I, Scene I. “Here Come de Honey Man”"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "e91712f5-51ba-31f3-a04c-3749f0f5e454",
+    "parente": null,
+    "titre": "I Loves You, Porgy"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "78fe603c-7c17-3bb9-8a4c-b661942044eb",
+    "parente": {
+     "id": "8182c032-a498-4f41-a87e-1ef49d2f9838",
+     "titre": "Porgy and Bess: Act III, Scene II"
+    },
+    "titre": "Porgy and Bess: Act III, Scene II. “There’s a Boat Dat’s Leavin’ Soon for New York”"
+   }
+  ],
+  "release": "76318376-dd96-4f98-bf1d-816713afc3b5",
+  "version": 5
  },
  "18769333": {
   "images": [],
@@ -16193,6 +16931,11 @@
   "version": 2
  },
  "18823477": {
+  "annee_parution": 1998,
+  "annees_enregistrement": [
+   1995,
+   1995
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/afadfeaf-0c05-4b49-a29a-023d3df63b08/24786356977-250.jpg",
@@ -16201,7 +16944,7 @@
     "url": "https://coverartarchive.org/release/afadfeaf-0c05-4b49-a29a-023d3df63b08/24786356977-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 4,
   "oeuvres": [
@@ -16243,7 +16986,7 @@
    }
   ],
   "release": "afadfeaf-0c05-4b49-a29a-023d3df63b08",
-  "version": 2
+  "version": 5
  },
  "19128700": {
   "images": [],
@@ -16255,8 +16998,26 @@
   "version": 2
  },
  "19533991": {
-  "images": [],
-  "maj": "2026-11-02",
+  "annee_parution": 1992,
+  "annees_enregistrement": [
+   1971,
+   1973
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/533ab133-089e-42db-a86f-347aa8633d72/38552004607-250.jpg",
+    "original": "https://coverartarchive.org/release/533ab133-089e-42db-a86f-347aa8633d72/38552004607.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/533ab133-089e-42db-a86f-347aa8633d72/38552004607-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/533ab133-089e-42db-a86f-347aa8633d72/38552005146-250.jpg",
+    "original": "https://coverartarchive.org/release/533ab133-089e-42db-a86f-347aa8633d72/38552005146.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/533ab133-089e-42db-a86f-347aa8633d72/38552005146-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 48,
   "oeuvres": [
@@ -16693,8 +17454,8 @@
     "titre": "Symphony no. 102 in B-flat major, Hob. I:102: IV. Finale. Presto"
    }
   ],
-  "release": "54d3a4c4-b9e0-4a00-bcc9-20d05bc9e8fb",
-  "version": 2
+  "release": "533ab133-089e-42db-a86f-347aa8633d72",
+  "version": 5
  },
  "1953585": {
   "annees_enregistrement": [
@@ -16825,6 +17586,11 @@
   "version": 4
  },
  "1962284": {
+  "annee_parution": 2003,
+  "annees_enregistrement": [
+   1986,
+   1986
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/5c592a1e-29d3-4d94-b4d9-1574589b0fa4/3638567454-250.jpg",
@@ -16839,7 +17605,7 @@
     "url": "https://coverartarchive.org/release/5c592a1e-29d3-4d94-b4d9-1574589b0fa4/3638571080-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 9,
   "oeuvres": [
@@ -16907,7 +17673,7 @@
    }
   ],
   "release": "5c592a1e-29d3-4d94-b4d9-1574589b0fa4",
-  "version": 2
+  "version": 5
  },
  "1965876": {
   "annees_enregistrement": [
@@ -17030,6 +17796,11 @@
   "version": 4
  },
  "19882867": {
+  "annee_parution": 1991,
+  "annees_enregistrement": [
+   1990,
+   1990
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/0c68aff2-9132-4be0-8d4a-b07a9d8835e5/43504205879-250.jpg",
@@ -17038,7 +17809,7 @@
     "url": "https://coverartarchive.org/release/0c68aff2-9132-4be0-8d4a-b07a9d8835e5/43504205879-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": [
@@ -17143,7 +17914,7 @@
    }
   ],
   "release": "0c68aff2-9132-4be0-8d4a-b07a9d8835e5",
-  "version": 2
+  "version": 5
  },
  "20144050": {
   "images": [],
@@ -17380,12 +18151,13 @@
   "version": 4
  },
  "20465815": {
+  "annee_parution": null,
   "annees_enregistrement": [
    1969,
    1993
   ],
   "images": [],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 17,
   "oeuvres": [
@@ -17493,7 +18265,7 @@
    }
   ],
   "release": "c193f5b1-7d36-4ef7-a60e-a8f67afa58c3",
-  "version": 4
+  "version": 5
  },
  "20485585": {
   "images": [],
@@ -17617,6 +18389,8 @@
   "version": 4
  },
  "2070889": {
+  "annee_parution": 2009,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/3848dbd0-0aea-4ac6-bd72-4d0c19995c37/5930129447-250.jpg",
@@ -20931,12 +21705,12 @@
     "url": "https://coverartarchive.org/release/3848dbd0-0aea-4ac6-bd72-4d0c19995c37/17260048885-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 774,
   "oeuvres": null,
   "release": "3848dbd0-0aea-4ac6-bd72-4d0c19995c37",
-  "version": 2
+  "version": 5
  },
  "2073609": {
   "annees_enregistrement": [
@@ -21056,6 +21830,11 @@
   "version": 2
  },
  "2092955": {
+  "annee_parution": 2003,
+  "annees_enregistrement": [
+   2001,
+   2001
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/69ca5794-b728-49a4-b743-6f6cad64f0af/32883973500-250.jpg",
@@ -21070,7 +21849,7 @@
     "url": "https://coverartarchive.org/release/69ca5794-b728-49a4-b743-6f6cad64f0af/32883974793-1200.jpg"
    }
   ],
-  "maj": "2026-11-01",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": [
@@ -21110,7 +21889,7 @@
    null
   ],
   "release": "69ca5794-b728-49a4-b743-6f6cad64f0af",
-  "version": 2
+  "version": 5
  },
  "20949256": {
   "images": [],
@@ -21245,6 +22024,11 @@
   "version": 4
  },
  "2129302": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1987,
+   1987
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/54d6edbb-c58d-4b01-871f-5bc4ae7fddcf/6425008519-250.jpg",
@@ -21331,7 +22115,7 @@
     "url": "https://coverartarchive.org/release/54d6edbb-c58d-4b01-871f-5bc4ae7fddcf/43156686777-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 17,
   "oeuvres": [
@@ -21490,9 +22274,11 @@
    }
   ],
   "release": "54d6edbb-c58d-4b01-871f-5bc4ae7fddcf",
-  "version": 2
+  "version": 5
  },
  "214306": {
+  "annee_parution": 2003,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/91c9983d-9e06-4943-9f57-ebacf8b4602b/6122278965-250.jpg",
@@ -21501,12 +22287,12 @@
     "url": "https://coverartarchive.org/release/91c9983d-9e06-4943-9f57-ebacf8b4602b/6122278965-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 54,
   "oeuvres": null,
   "release": "91c9983d-9e06-4943-9f57-ebacf8b4602b",
-  "version": 2
+  "version": 5
  },
  "21442324": {
   "images": [],
@@ -21518,6 +22304,11 @@
   "version": 2
  },
  "2156676": {
+  "annee_parution": 1999,
+  "annees_enregistrement": [
+   1997,
+   1997
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/a371a5e3-5eef-4b90-a2c1-98f628c21bcb/33782461207-250.jpg",
@@ -21532,7 +22323,7 @@
     "url": "https://coverartarchive.org/release/a371a5e3-5eef-4b90-a2c1-98f628c21bcb/33782461531-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 8,
   "oeuvres": [
@@ -21556,7 +22347,7 @@
    null
   ],
   "release": "a371a5e3-5eef-4b90-a2c1-98f628c21bcb",
-  "version": 2
+  "version": 5
  },
  "2171688": {
   "annees_enregistrement": null,
@@ -21765,6 +22556,11 @@
   "version": 4
  },
  "2231391": {
+  "annee_parution": 1995,
+  "annees_enregistrement": [
+   1959,
+   1966
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/a4d17824-4005-4c35-9855-9d2b071a81e9/14643634170-250.jpg",
@@ -21779,7 +22575,7 @@
     "url": "https://coverartarchive.org/release/a4d17824-4005-4c35-9855-9d2b071a81e9/14643636050-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 23,
   "oeuvres": [
@@ -21992,7 +22788,7 @@
    }
   ],
   "release": "a4d17824-4005-4c35-9855-9d2b071a81e9",
-  "version": 2
+  "version": 5
  },
  "2236405": {
   "annees_enregistrement": [
@@ -22719,6 +23515,11 @@
   "version": 4
  },
  "2276282": {
+  "annee_parution": 2005,
+  "annees_enregistrement": [
+   1964,
+   1964
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/4fa9c6d8-731e-3870-8b5b-580811b2d4e0/25423620348-250.jpg",
@@ -22739,7 +23540,7 @@
     "url": "https://coverartarchive.org/release/4fa9c6d8-731e-3870-8b5b-580811b2d4e0/25423619775-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 4,
   "oeuvres": [
@@ -22781,7 +23582,7 @@
    }
   ],
   "release": "4fa9c6d8-731e-3870-8b5b-580811b2d4e0",
-  "version": 2
+  "version": 5
  },
  "228656": {
   "annees_enregistrement": null,
@@ -22988,6 +23789,11 @@
   "version": 4
  },
  "2357892": {
+  "annee_parution": 1993,
+  "annees_enregistrement": [
+   1993,
+   1993
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/b8d5ea71-cfe7-4c0a-9a74-2d69c57d73cd/22290612014-250.jpg",
@@ -23002,7 +23808,7 @@
     "url": "https://coverartarchive.org/release/b8d5ea71-cfe7-4c0a-9a74-2d69c57d73cd/22290559604-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 15,
   "oeuvres": [
@@ -23028,7 +23834,7 @@
    null
   ],
   "release": "b8d5ea71-cfe7-4c0a-9a74-2d69c57d73cd",
-  "version": 2
+  "version": 5
  },
  "23866520": {
   "images": [],
@@ -23040,13 +23846,15 @@
   "version": 2
  },
  "2394117": {
+  "annee_parution": 2009,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 10,
   "oeuvres": null,
   "release": "ca41448c-fcaf-4911-9938-21108aa65641",
-  "version": 2
+  "version": 5
  },
  "2399321": {
   "annees_enregistrement": [
@@ -23300,6 +24108,8 @@
   "version": 4
  },
  "2453355": {
+  "annee_parution": 1990,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/f429ed2e-1dbc-4a1b-bd72-f8fffd063a3e/12327998510-250.jpg",
@@ -23308,7 +24118,7 @@
     "url": "https://coverartarchive.org/release/f429ed2e-1dbc-4a1b-bd72-f8fffd063a3e/12327998510-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 2,
   "oeuvres": [
@@ -23332,9 +24142,10 @@
    }
   ],
   "release": "f429ed2e-1dbc-4a1b-bd72-f8fffd063a3e",
-  "version": 2
+  "version": 5
  },
  "24871277": {
+  "annee_parution": null,
   "annees_enregistrement": [
    1972,
    1972
@@ -23353,7 +24164,7 @@
     "url": "https://coverartarchive.org/release/121b9428-5f50-4f39-8ef5-0a68495c322f/15889696584-500.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 16,
   "oeuvres": [
@@ -23503,9 +24314,14 @@
    }
   ],
   "release": "121b9428-5f50-4f39-8ef5-0a68495c322f",
-  "version": 4
+  "version": 5
  },
  "2495011": {
+  "annee_parution": 1996,
+  "annees_enregistrement": [
+   1974,
+   1974
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/515fe32a-1e77-3796-ace1-ef2677f90396/36032417198-250.jpg",
@@ -23634,7 +24450,7 @@
     "url": "https://coverartarchive.org/release/515fe32a-1e77-3796-ace1-ef2677f90396/36015906748-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 20,
   "oeuvres": [
@@ -23820,7 +24636,7 @@
    }
   ],
   "release": "515fe32a-1e77-3796-ace1-ef2677f90396",
-  "version": 2
+  "version": 5
  },
  "2498070": {
   "annees_enregistrement": null,
@@ -24010,7 +24826,93 @@
   "release": "3874e929-cc29-4834-b72f-8c09e983ac1a",
   "version": 4
  },
+ "25280053": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "images": [],
+  "maj": "2026-11-04",
+  "methode": "album",
+  "nb_plages": 10,
+  "oeuvres": [
+   {
+    "compositeur": "Richard Rodgers",
+    "id": "24370021-5f38-39cf-9494-001b10a66181",
+    "parente": {
+     "id": "ffd56e80-c879-4f79-828a-3f8d43cc36d3",
+     "titre": "Babes in Arms"
+    },
+    "titre": "My Funny Valentine"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "e71c46a7-53a3-46e7-b93f-b154399f991e",
+    "parente": null,
+    "titre": "Blues by Five"
+   },
+   {
+    "compositeur": "Sonny Rollins",
+    "id": "e5413e11-6aec-3b13-8989-8a531202fbd4",
+    "parente": null,
+    "titre": "Airegin"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "cb5180e3-5b19-3989-b3e0-dbda1362fbc4",
+    "parente": null,
+    "titre": "Tune Up"
+   },
+   {
+    "compositeur": "Frank Loesser",
+    "id": "a9cd2932-dc41-38f4-896d-ca0b5abae751",
+    "parente": {
+     "id": "c414fd93-73a4-4972-aae6-80cb05343f37",
+     "titre": "Guys and Dolls"
+    },
+    "titre": "If I Were a Bell"
+   },
+   {
+    "compositeur": "Harry Warren",
+    "id": "492492fc-e659-3215-b775-7a6c986f0473",
+    "parente": null,
+    "titre": "You’re My Everything"
+   },
+   {
+    "compositeur": "Richard Rodgers",
+    "id": "a56aa3b1-2afa-36d1-b09c-c7bb559d1a66",
+    "parente": {
+     "id": "ee7874c3-491b-4bf5-b5d8-064145fee40e",
+     "titre": "Pal Joey"
+    },
+    "titre": "I Could Write a Book"
+   },
+   {
+    "compositeur": "Sonny Rollins",
+    "id": "9bd0305e-0636-3624-972e-ec5b55631ea8",
+    "parente": null,
+    "titre": "Oleo"
+   },
+   {
+    "compositeur": "Jimmy Van Heusen",
+    "id": "6d489d45-3e3b-3bd9-a178-caa47b30366c",
+    "parente": null,
+    "titre": "It Could Happen to You"
+   },
+   {
+    "compositeur": "Dizzy Gillespie",
+    "id": "683d70a3-be0c-36c8-95e8-5f384434a06f",
+    "parente": null,
+    "titre": "Woody ’n’ You"
+   }
+  ],
+  "release": "fb6e7ee7-4d9a-4a1f-9d01-556cebc73d88",
+  "version": 5
+ },
  "25435495": {
+  "annee_parution": 1997,
+  "annees_enregistrement": [
+   1961,
+   1961
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/4ed4218e-4b96-47e0-986d-391b3aa9f5f5/14468419354-250.jpg",
@@ -24031,7 +24933,7 @@
     "url": "https://coverartarchive.org/release/4ed4218e-4b96-47e0-986d-391b3aa9f5f5/32445995116-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 22,
   "oeuvres": [
@@ -24172,9 +25074,14 @@
    }
   ],
   "release": "4ed4218e-4b96-47e0-986d-391b3aa9f5f5",
-  "version": 2
+  "version": 5
  },
  "25535047": {
+  "annee_parution": 1995,
+  "annees_enregistrement": [
+   1994,
+   1995
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/8869a1b4-6d9f-49d3-a227-a367603f9d96/5502651930-250.jpg",
@@ -24189,7 +25096,7 @@
     "url": "https://coverartarchive.org/release/8869a1b4-6d9f-49d3-a227-a367603f9d96/5499115321-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 9,
   "oeuvres": [
@@ -24249,7 +25156,7 @@
    }
   ],
   "release": "8869a1b4-6d9f-49d3-a227-a367603f9d96",
-  "version": 2
+  "version": 5
  },
  "25793689": {
   "annees_enregistrement": [
@@ -24282,6 +25189,11 @@
   "version": 4
  },
  "2629224": {
+  "annee_parution": 1991,
+  "annees_enregistrement": [
+   1959,
+   1959
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/61852aa6-7717-46e5-b3af-10efd896ec6c/13348085484-250.jpg",
@@ -24314,7 +25226,7 @@
     "url": "https://coverartarchive.org/release/61852aa6-7717-46e5-b3af-10efd896ec6c/13348090860-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 6,
   "oeuvres": [
@@ -24351,9 +25263,14 @@
    }
   ],
   "release": "61852aa6-7717-46e5-b3af-10efd896ec6c",
-  "version": 2
+  "version": 5
  },
  "2638742": {
+  "annee_parution": 1992,
+  "annees_enregistrement": [
+   1991,
+   1991
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/118e5f8c-abab-49d6-9a93-d352ccff02fe/17410915295-250.jpg",
@@ -24368,7 +25285,7 @@
     "url": "https://coverartarchive.org/release/118e5f8c-abab-49d6-9a93-d352ccff02fe/17410917257-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 40,
   "oeuvres": [
@@ -24734,9 +25651,14 @@
    }
   ],
   "release": "118e5f8c-abab-49d6-9a93-d352ccff02fe",
-  "version": 2
+  "version": 5
  },
  "2639039": {
+  "annee_parution": 1994,
+  "annees_enregistrement": [
+   1991,
+   1991
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/94fe35ca-4fda-4757-b178-b901bc2faf89/39791839820-250.jpg",
@@ -24865,7 +25787,7 @@
     "url": "https://coverartarchive.org/release/94fe35ca-4fda-4757-b178-b901bc2faf89/39792327479-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 24,
   "oeuvres": [
@@ -25087,7 +26009,7 @@
    }
   ],
   "release": "94fe35ca-4fda-4757-b178-b901bc2faf89",
-  "version": 2
+  "version": 5
  },
  "26513576": {
   "images": [],
@@ -25279,12 +26201,13 @@
   "version": 4
  },
  "26993211": {
+  "annee_parution": 1986,
   "annees_enregistrement": [
    1963,
    1963
   ],
   "images": [],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 7,
   "oeuvres": [
@@ -25335,7 +26258,7 @@
    }
   ],
   "release": "5cb84fbc-13e9-4014-9d33-d8c23cfcb343",
-  "version": 4
+  "version": 5
  },
  "27157164": {
   "annees_enregistrement": [
@@ -25560,6 +26483,8 @@
   "version": 4
  },
  "2811320": {
+  "annee_parution": 1994,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/e369924e-b3b1-4b25-a7d3-d6a7ebb4c041/2124407701-250.jpg",
@@ -25574,7 +26499,7 @@
     "url": "https://coverartarchive.org/release/e369924e-b3b1-4b25-a7d3-d6a7ebb4c041/2124411491-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": [
@@ -25646,9 +26571,10 @@
    }
   ],
   "release": "e369924e-b3b1-4b25-a7d3-d6a7ebb4c041",
-  "version": 2
+  "version": 5
  },
  "28230340": {
+  "annee_parution": 2004,
   "annees_enregistrement": [
    1984,
    1986
@@ -25661,7 +26587,7 @@
     "url": "https://coverartarchive.org/release/5e80a604-10c9-4c94-984d-9cfe5b45245c/2767241960-500.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 76,
   "oeuvres": [
@@ -26351,7 +27277,7 @@
    }
   ],
   "release": "5e80a604-10c9-4c94-984d-9cfe5b45245c",
-  "version": 4
+  "version": 5
  },
  "28328062": {
   "images": [],
@@ -26587,6 +27513,11 @@
   "version": 2
  },
  "3031014": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1981,
+   1981
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/68568e48-336e-3914-ac90-ea0ea3b757ec/19688280294-250.jpg",
@@ -26619,7 +27550,7 @@
     "url": "https://coverartarchive.org/release/68568e48-336e-3914-ac90-ea0ea3b757ec/19688282483-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 21,
   "oeuvres": [
@@ -26808,9 +27739,14 @@
    }
   ],
   "release": "68568e48-336e-3914-ac90-ea0ea3b757ec",
-  "version": 2
+  "version": 5
  },
  "30321050": {
+  "annee_parution": 2023,
+  "annees_enregistrement": [
+   2022,
+   2022
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/c6a85f3b-706f-4949-b889-94d22c8af97f/35663533610-250.jpg",
@@ -26819,12 +27755,12 @@
     "url": "https://coverartarchive.org/release/c6a85f3b-706f-4949-b889-94d22c8af97f/35663533610-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 9,
   "oeuvres": null,
   "release": "c6a85f3b-706f-4949-b889-94d22c8af97f",
-  "version": 2
+  "version": 5
  },
  "30485759": {
   "images": [],
@@ -26885,6 +27821,11 @@
   "version": 2
  },
  "3095801": {
+  "annee_parution": 1984,
+  "annees_enregistrement": [
+   1983,
+   1983
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/68a0be78-7170-4f02-82c5-5602caa669a0/2278172751-250.jpg",
@@ -26923,7 +27864,7 @@
     "url": "https://coverartarchive.org/release/68a0be78-7170-4f02-82c5-5602caa669a0/12318035894-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 10,
   "oeuvres": [
@@ -27010,7 +27951,7 @@
    }
   ],
   "release": "68a0be78-7170-4f02-82c5-5602caa669a0",
-  "version": 2
+  "version": 5
  },
  "31144115": {
   "annees_enregistrement": null,
@@ -27106,6 +28047,75 @@
   "release": "8f9f62fb-0cf6-46bb-a901-43f7cadd12ab",
   "version": 4
  },
+ "3123932": {
+  "annee_parution": 1990,
+  "annees_enregistrement": [
+   1961,
+   1961
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567640819-250.jpg",
+    "original": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567640819.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567640819-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567642641-250.jpg",
+    "original": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567642641.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567642641-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567643094-250.jpg",
+    "original": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567643094.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567643094-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567643399-250.jpg",
+    "original": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567643399.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/93801349-740f-4ece-8b02-dda85369e5f3/24567643399-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "edition",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "compositeur": "Frank Churchill",
+    "id": "1f07d205-045f-3c1b-967e-f1b3259e1bc8",
+    "parente": {
+     "id": "5875ce55-c6b3-414d-be14-d856306fe5c3",
+     "titre": "Snow White and the Seven Dwarfs"
+    },
+    "titre": "Someday My Prince Will Come"
+   },
+   null,
+   null,
+   {
+    "compositeur": "Miles Davis",
+    "id": "0ce4c35c-04f1-48ce-be32-446e25e07a95",
+    "parente": null,
+    "titre": "Drad‐Dog"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "de80956e-4532-4eae-a14e-d5ffb5d1211a",
+    "parente": null,
+    "titre": "Teo"
+   },
+   {
+    "compositeur": "Jimmy Van Heusen",
+    "id": "b9d062f2-0807-31e4-9eda-d2cf893f4e81",
+    "parente": null,
+    "titre": "I Thought About You"
+   }
+  ],
+  "release": "93801349-740f-4ece-8b02-dda85369e5f3",
+  "version": 5
+ },
  "31263949": {
   "images": [],
   "maj": "2026-11-01",
@@ -27125,6 +28135,11 @@
   "version": 2
  },
  "3176784": {
+  "annee_parution": 2011,
+  "annees_enregistrement": [
+   2010,
+   2010
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/dd824a40-72b4-40ec-a384-16a09473d75a/33711083219-250.jpg",
@@ -27175,7 +28190,7 @@
     "url": "https://coverartarchive.org/release/dd824a40-72b4-40ec-a384-16a09473d75a/15387596587-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 25,
   "oeuvres": [
@@ -27385,7 +28400,7 @@
    }
   ],
   "release": "dd824a40-72b4-40ec-a384-16a09473d75a",
-  "version": 2
+  "version": 5
  },
  "3193631": {
   "annees_enregistrement": [
@@ -29233,6 +30248,7 @@
   "version": 2
  },
  "3303964": {
+  "annee_parution": 2000,
   "annees_enregistrement": null,
   "images": [
    {
@@ -29278,7 +30294,7 @@
     "url": "https://coverartarchive.org/release/0cfa9e94-3360-30b3-acc8-d3d1db979756/40887956625-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 13,
   "oeuvres": [
@@ -29362,7 +30378,7 @@
    }
   ],
   "release": "0cfa9e94-3360-30b3-acc8-d3d1db979756",
-  "version": 4
+  "version": 5
  },
  "3323799": {
   "images": [],
@@ -29390,6 +30406,154 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "33763557": {
+  "annee_parution": 2003,
+  "annees_enregistrement": [
+   1957,
+   1957
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/2d17b1e1-d8cd-4c73-9e2c-d38abe770194/6196014120-250.jpg",
+    "original": "https://coverartarchive.org/release/2d17b1e1-d8cd-4c73-9e2c-d38abe770194/6196014120.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2d17b1e1-d8cd-4c73-9e2c-d38abe770194/6196014120-500.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 26,
+  "oeuvres": [
+   {
+    "compositeur": "Miles Davis",
+    "id": "7b27a3de-9aa5-3d12-8c64-dfb9f1c66956",
+    "parente": null,
+    "titre": "Générique"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "697fc642-2873-3990-ae05-9895c525c904",
+    "parente": null,
+    "titre": "L'assassinat de Carala"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "5b26c927-ba2f-3982-90f0-6ee035076a08",
+    "parente": null,
+    "titre": "Sur l’autoroute"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "d06d349a-77f6-3464-9152-3aa475ec9c7f",
+    "parente": null,
+    "titre": "Julien dans l'ascenseur"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "811e12e3-34a4-3e17-94a2-a0a693394b06",
+    "parente": null,
+    "titre": "Florence sur les Champs-Élysées"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "b28f213c-7cfd-35b5-a03e-3adfe4ed2e16",
+    "parente": null,
+    "titre": "Dîner au motel"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "81368f9c-6123-3aa8-82ca-ad17823d2e89",
+    "parente": null,
+    "titre": "Évasion de Julien"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "ab822304-7b3e-3543-91a5-ffffad217c4a",
+    "parente": null,
+    "titre": "Visite du vigile"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "eddd5f4c-c472-380a-be76-f2a38b03161e",
+    "parente": null,
+    "titre": "Au bar du petit bac"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "2699b5d3-5853-32a6-8a7e-91bf2d70f164",
+    "parente": null,
+    "titre": "Chez le photographe du motel"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "811e12e3-34a4-3e17-94a2-a0a693394b06",
+    "parente": null,
+    "titre": "Florence sur les Champs-Élysées"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "811e12e3-34a4-3e17-94a2-a0a693394b06",
+    "parente": null,
+    "titre": "Florence sur les Champs-Élysées"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "811e12e3-34a4-3e17-94a2-a0a693394b06",
+    "parente": null,
+    "titre": "Florence sur les Champs-Élysées"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "811e12e3-34a4-3e17-94a2-a0a693394b06",
+    "parente": null,
+    "titre": "Florence sur les Champs-Élysées"
+   },
+   null,
+   null,
+   {
+    "compositeur": "Miles Davis",
+    "id": "697fc642-2873-3990-ae05-9895c525c904",
+    "parente": null,
+    "titre": "L'assassinat de Carala"
+   },
+   null,
+   {
+    "compositeur": "Miles Davis",
+    "id": "d06e6746-bb54-408b-aca1-6ff14c6896d8",
+    "parente": null,
+    "titre": "Final"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "d06e6746-bb54-408b-aca1-6ff14c6896d8",
+    "parente": null,
+    "titre": "Final"
+   },
+   null,
+   null,
+   {
+    "compositeur": "Miles Davis",
+    "id": "eddd5f4c-c472-380a-be76-f2a38b03161e",
+    "parente": null,
+    "titre": "Au bar du petit bac"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "eddd5f4c-c472-380a-be76-f2a38b03161e",
+    "parente": null,
+    "titre": "Au bar du petit bac"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "bab5674c-bc9c-43cb-9e0a-6e923694ab45",
+    "parente": null,
+    "titre": "Séquence voiture"
+   },
+   null
+  ],
+  "release": "2d17b1e1-d8cd-4c73-9e2c-d38abe770194",
+  "version": 5
  },
  "33835950": {
   "annees_enregistrement": [
@@ -29527,6 +30691,11 @@
   "version": 4
  },
  "3419248": {
+  "annee_parution": 2001,
+  "annees_enregistrement": [
+   1999,
+   2000
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/1e420d4b-aa3a-499c-ad94-536e9ddab994/24173162349-250.jpg",
@@ -29541,7 +30710,7 @@
     "url": "https://coverartarchive.org/release/1e420d4b-aa3a-499c-ad94-536e9ddab994/24173165586-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 8,
   "oeuvres": [
@@ -29595,7 +30764,7 @@
    }
   ],
   "release": "1e420d4b-aa3a-499c-ad94-536e9ddab994",
-  "version": 2
+  "version": 5
  },
  "34224352": {
   "images": [],
@@ -29607,6 +30776,7 @@
   "version": 2
  },
  "3428020": {
+  "annee_parution": 1990,
   "annees_enregistrement": [
    1962,
    1964
@@ -29631,7 +30801,7 @@
     "url": "https://coverartarchive.org/release/7fa607b3-b57f-4e39-8eba-e038cc0fee6c/8130417062-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 5,
   "oeuvres": [
@@ -29676,7 +30846,7 @@
    }
   ],
   "release": "7fa607b3-b57f-4e39-8eba-e038cc0fee6c",
-  "version": 4
+  "version": 5
  },
  "34421608": {
   "annees_enregistrement": null,
@@ -29714,6 +30884,11 @@
   "version": 2
  },
  "35590882": {
+  "annee_parution": 2024,
+  "annees_enregistrement": [
+   2023,
+   2023
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/6f5714d3-f504-4057-9941-245a0e86b54e/43108242765-250.jpg",
@@ -29722,7 +30897,7 @@
     "url": "https://coverartarchive.org/release/6f5714d3-f504-4057-9941-245a0e86b54e/43108242765-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 19,
   "oeuvres": [
@@ -29843,7 +31018,7 @@
    }
   ],
   "release": "6f5714d3-f504-4057-9941-245a0e86b54e",
-  "version": 2
+  "version": 5
  },
  "35615785": {
   "images": [],
@@ -29855,6 +31030,11 @@
   "version": 2
  },
  "35744971": {
+  "annee_parution": 2025,
+  "annees_enregistrement": [
+   2019,
+   2019
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/d262ed02-9a5a-43d6-8652-33b8fefbb345/45066444893-250.jpg",
@@ -29863,7 +31043,7 @@
     "url": "https://coverartarchive.org/release/d262ed02-9a5a-43d6-8652-33b8fefbb345/45066444893-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 43,
   "oeuvres": [
@@ -30122,9 +31302,10 @@
    }
   ],
   "release": "d262ed02-9a5a-43d6-8652-33b8fefbb345",
-  "version": 2
+  "version": 5
  },
  "3594247": {
+  "annee_parution": 2004,
   "annees_enregistrement": [
    1978,
    1978
@@ -30191,7 +31372,7 @@
     "url": "https://coverartarchive.org/release/df27468b-faa2-4cf8-933f-27bc50273ff7/15845296918-500.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 9,
   "oeuvres": [
@@ -30251,7 +31432,7 @@
    }
   ],
   "release": "df27468b-faa2-4cf8-933f-27bc50273ff7",
-  "version": 4
+  "version": 5
  },
  "35981860": {
   "images": [],
@@ -30288,6 +31469,66 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "3638703": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "images": [],
+  "maj": "2026-11-04",
+  "methode": "album",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "compositeur": "Milt Jackson",
+    "id": "e8381339-0422-421f-9fb8-f7a4211ce05c",
+    "parente": null,
+    "titre": "Bags’ Groove"
+   },
+   {
+    "compositeur": "Milt Jackson",
+    "id": "e8381339-0422-421f-9fb8-f7a4211ce05c",
+    "parente": null,
+    "titre": "Bags’ Groove"
+   },
+   {
+    "compositeur": "Sonny Rollins",
+    "id": "e5413e11-6aec-3b13-8989-8a531202fbd4",
+    "parente": null,
+    "titre": "Airegin"
+   },
+   {
+    "compositeur": "Sonny Rollins",
+    "id": "9bd0305e-0636-3624-972e-ec5b55631ea8",
+    "parente": null,
+    "titre": "Oleo"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "f53d7dd0-fdbd-3901-adf8-9b1ab3121e9e",
+    "parente": {
+     "id": "ae045f98-4072-4b16-8f3c-152c9cde0a62",
+     "titre": "Crazy for You"
+    },
+    "titre": "But Not for Me"
+   },
+   {
+    "compositeur": "Sonny Rollins",
+    "id": "5643590b-280b-3954-b284-c06ce4a0c53b",
+    "parente": null,
+    "titre": "Doxy"
+   },
+   {
+    "compositeur": "George Gershwin",
+    "id": "f53d7dd0-fdbd-3901-adf8-9b1ab3121e9e",
+    "parente": {
+     "id": "ae045f98-4072-4b16-8f3c-152c9cde0a62",
+     "titre": "Crazy for You"
+    },
+    "titre": "But Not for Me"
+   }
+  ],
+  "release": "087f4c62-ba68-3303-b692-5a0c20e0fce9",
+  "version": 5
  },
  "36751258": {
   "images": [],
@@ -30452,13 +31693,15 @@
   "version": 4
  },
  "3703299": {
+  "annee_parution": 2001,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": null,
   "release": "e6d24922-ebb9-4808-b943-20e740e04df4",
-  "version": 2
+  "version": 5
  },
  "37318365": {
   "images": [],
@@ -30470,8 +31713,13 @@
   "version": 2
  },
  "3752440": {
+  "annee_parution": 1990,
+  "annees_enregistrement": [
+   1990,
+   1990
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 8,
   "oeuvres": [
@@ -30543,7 +31791,7 @@
    }
   ],
   "release": "3def760a-88b3-4e24-a5e3-cc77c26f5410",
-  "version": 2
+  "version": 5
  },
  "37583475": {
   "images": [],
@@ -30555,8 +31803,10 @@
   "version": 2
  },
  "3809481": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": [
@@ -30628,7 +31878,152 @@
    }
   ],
   "release": "7531d07c-0423-4205-b272-da72a1144dd6",
-  "version": 2
+  "version": 5
+ },
+ "38452113": {
+  "annee_parution": 1989,
+  "annees_enregistrement": [
+   1949,
+   1950
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/18855849852-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/18855849852.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/18855849852-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/18855857554-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/18855857554.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/18855857554-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533026261-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533026261.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533026261-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533026700-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533026700.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533026700-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533027027-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533027027.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533027027-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533027543-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533027543.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533027543-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533028667-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533028667.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533028667-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533029377-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533029377.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533029377-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533029909-250.jpg",
+    "original": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533029909.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2fcf12f4-986c-439c-a258-9dd14d9419ab/44533029909-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 12,
+  "oeuvres": [
+   {
+    "compositeur": "Denzil Best",
+    "id": "6dd05b6c-6b37-4673-a47f-40fc7a733255",
+    "parente": null,
+    "titre": "Move"
+   },
+   {
+    "compositeur": "Gerry Mulligan",
+    "id": "92adbc17-46c9-49e8-a3fa-c0653f182b34",
+    "parente": null,
+    "titre": "Jeru"
+   },
+   {
+    "compositeur": "Chummy MacGregor, Johnny Mercer",
+    "id": "8120ef76-c6a7-4229-a994-f056899dc56e",
+    "parente": null,
+    "titre": "Moon Dreams"
+   },
+   {
+    "compositeur": "Gerry Mulligan",
+    "id": "b321f93f-11ad-4afe-a5d1-0c8cab2a4f2b",
+    "parente": null,
+    "titre": "Venus de Milo"
+   },
+   {
+    "compositeur": "Miles Davis, Bud Powell",
+    "id": "e9e3c2f7-77c5-365a-b6b8-acc473cdeb71",
+    "parente": null,
+    "titre": "Budo"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "0d2f593b-33f9-4f3a-9bc8-21b92ecb919d",
+    "parente": null,
+    "titre": "Deception"
+   },
+   {
+    "compositeur": "George Wallington",
+    "id": "e23c297b-bb1e-3bc5-b058-4db5d62afef1",
+    "parente": null,
+    "titre": "Godchild"
+   },
+   {
+    "compositeur": "Gil Evans, Cleo Henry",
+    "id": "09a5aad2-2c02-4315-8bfb-29351cdde2e3",
+    "parente": null,
+    "titre": "Boplicity"
+   },
+   {
+    "compositeur": "Gerry Mulligan",
+    "id": "3d6f428c-5b7d-489d-852b-f6ba8cf28d17",
+    "parente": null,
+    "titre": "Rocker"
+   },
+   {
+    "compositeur": "John Carisi",
+    "id": "89967e58-40f3-3580-a912-db56cfbc63ce",
+    "parente": null,
+    "titre": "Israel"
+   },
+   {
+    "compositeur": "John Lewis",
+    "id": "a2de1251-2c31-4468-bc73-76fb2a1fe9f9",
+    "parente": null,
+    "titre": "Rouge"
+   },
+   {
+    "compositeur": "Jimmy Van Heusen",
+    "id": "dc44da88-6352-336a-ae81-2abeb81cc40a",
+    "parente": {
+     "id": "b3ba99aa-7cbf-490a-8dd2-892e02b30375",
+     "titre": "Swingin’ the Dream"
+    },
+    "titre": "Darn That Dream"
+   }
+  ],
+  "release": "2fcf12f4-986c-439c-a258-9dd14d9419ab",
+  "version": 5
  },
  "38928": {
   "annees_enregistrement": null,
@@ -30836,6 +32231,7 @@
   "version": 4
  },
  "3894492": {
+  "annee_parution": 1985,
   "annees_enregistrement": [
    1985,
    1985
@@ -30920,7 +32316,7 @@
     "url": "https://coverartarchive.org/release/82af81c4-0cfa-4382-abc6-2ec08a79b431/26233215691-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 11,
   "oeuvres": [
@@ -30992,18 +32388,23 @@
    }
   ],
   "release": "82af81c4-0cfa-4382-abc6-2ec08a79b431",
-  "version": 4
+  "version": 5
  },
  "3899039": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1987,
+   1987
+  ],
   "images": [
    {
-    "miniature": "https://coverartarchive.org/release/95c17836-7a17-3535-af4b-20a5dda44681/30523042920-250.jpg",
-    "original": "https://coverartarchive.org/release/95c17836-7a17-3535-af4b-20a5dda44681/30523042920.jpg",
+    "miniature": "https://coverartarchive.org/release/58c5d63f-3097-47e0-9676-1071a4f586c8/32966830890-250.jpg",
+    "original": "https://coverartarchive.org/release/58c5d63f-3097-47e0-9676-1071a4f586c8/32966830890.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/95c17836-7a17-3535-af4b-20a5dda44681/30523042920-1200.jpg"
+    "url": "https://coverartarchive.org/release/58c5d63f-3097-47e0-9676-1071a4f586c8/32966830890-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 8,
   "oeuvres": [
@@ -31065,10 +32466,15 @@
     "titre": "Totentanz, S. 126/2"
    }
   ],
-  "release": "95c17836-7a17-3535-af4b-20a5dda44681",
-  "version": 2
+  "release": "58c5d63f-3097-47e0-9676-1071a4f586c8",
+  "version": 5
  },
  "4155871": {
+  "annee_parution": 2001,
+  "annees_enregistrement": [
+   2000,
+   2000
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/d605cb38-597b-4541-9fe9-b8ec36f43623/12661462325-250.jpg",
@@ -31077,7 +32483,7 @@
     "url": "https://coverartarchive.org/release/d605cb38-597b-4541-9fe9-b8ec36f43623/12661462325-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 12,
   "oeuvres": [
@@ -31158,7 +32564,7 @@
    }
   ],
   "release": "d605cb38-597b-4541-9fe9-b8ec36f43623",
-  "version": 2
+  "version": 5
  },
  "4224187": {
   "images": [],
@@ -31431,13 +32837,15 @@
   "version": 4
  },
  "4281460": {
+  "annee_parution": 1999,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 6,
   "oeuvres": null,
   "release": "a9cacf8f-e8ee-40e8-88f6-60afc5f7a670",
-  "version": 2
+  "version": 5
  },
  "4285213": {
   "annees_enregistrement": null,
@@ -31620,6 +33028,7 @@
   "version": 4
  },
  "4318814": {
+  "annee_parution": 1990,
   "annees_enregistrement": [
    1960,
    1964
@@ -31644,7 +33053,7 @@
     "url": "https://coverartarchive.org/release/0a4ee43a-44c9-4fbf-a928-d5372d26eee8/26637639888-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 14,
   "oeuvres": [
@@ -31773,7 +33182,7 @@
    }
   ],
   "release": "0a4ee43a-44c9-4fbf-a928-d5372d26eee8",
-  "version": 4
+  "version": 5
  },
  "4323311": {
   "annees_enregistrement": [
@@ -32346,6 +33755,216 @@
   "release": "f2de6721-44b8-4385-83ea-92f50c91dfce",
   "version": 4
  },
+ "4617163": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1952,
+   1954
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/92a83feb-4a77-4048-b1a1-3fa07d4f0dae/36830724967-250.jpg",
+    "original": "https://coverartarchive.org/release/92a83feb-4a77-4048-b1a1-3fa07d4f0dae/36830724967.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/92a83feb-4a77-4048-b1a1-3fa07d4f0dae/36830724967-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/92a83feb-4a77-4048-b1a1-3fa07d4f0dae/36830725370-250.jpg",
+    "original": "https://coverartarchive.org/release/92a83feb-4a77-4048-b1a1-3fa07d4f0dae/36830725370.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/92a83feb-4a77-4048-b1a1-3fa07d4f0dae/36830725370-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 15,
+  "oeuvres": [
+   {
+    "compositeur": "[traditional]",
+    "id": "0e29de59-030d-4e0f-b30f-529eba30435c",
+    "parente": null,
+    "titre": "Dear Old Stockholm"
+   },
+   null,
+   {
+    "compositeur": "Oscar Pettiford",
+    "id": "40e1941a-557a-4021-ad71-7adb048e0b33",
+    "parente": null,
+    "titre": "Chance It"
+   },
+   {
+    "compositeur": "Jackie McLean",
+    "id": "227437b0-e392-48d2-93f3-e83d6e83ff5c",
+    "parente": null,
+    "titre": "Donna"
+   },
+   {
+    "compositeur": "Jackie McLean",
+    "id": "227437b0-e392-48d2-93f3-e83d6e83ff5c",
+    "parente": null,
+    "titre": "Donna"
+   },
+   {
+    "compositeur": "Dizzy Gillespie",
+    "id": "683d70a3-be0c-36c8-95e8-5f384434a06f",
+    "parente": null,
+    "titre": "Woody ’n’ You"
+   },
+   {
+    "compositeur": "Dizzy Gillespie",
+    "id": "683d70a3-be0c-36c8-95e8-5f384434a06f",
+    "parente": null,
+    "titre": "Woody ’n’ You"
+   },
+   {
+    "compositeur": "Jerome Kern",
+    "id": "03afac4f-e4f2-3a29-a2e7-745cebcccee3",
+    "parente": {
+     "id": "31d6ec87-c10e-43e9-a47e-db3ad959ec64",
+     "titre": "Roberta"
+    },
+    "titre": "Yesterdays"
+   },
+   {
+    "compositeur": "Irving Berlin",
+    "id": "5757fff7-068f-3328-8eb0-cb427891e0cd",
+    "parente": null,
+    "titre": "How Deep Is the Ocean?"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "c15d298c-1f4e-428d-94da-a9c3e2a4aafb",
+    "parente": null,
+    "titre": "Take-Off"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "3524b18f-2faa-4d02-9e28-925e1bc1267f",
+    "parente": null,
+    "titre": "Lazy Susan"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "165c2e9a-e61f-4dfb-bb74-2c369befec46",
+    "parente": null,
+    "titre": "The Leap"
+   },
+   {
+    "compositeur": "Thelonious Monk",
+    "id": "08ee3a2f-6905-3660-8d36-f55df4774b97",
+    "parente": null,
+    "titre": "Well, You Needn’t"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "9aabed43-3c5e-435c-b9cf-0288bfee7cf0",
+    "parente": null,
+    "titre": "Weirdo"
+   },
+   {
+    "compositeur": "Richard Rodgers",
+    "id": "5cec5322-d9df-340f-aa1c-5428dc61095f",
+    "parente": null,
+    "titre": "It Never Entered My Mind"
+   }
+  ],
+  "release": "92a83feb-4a77-4048-b1a1-3fa07d4f0dae",
+  "version": 5
+ },
+ "4617194": {
+  "annee_parution": 1990,
+  "annees_enregistrement": [
+   1953,
+   1953
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/f029d4ca-3b7c-464d-bdfc-bd392734ccb9/36830843360-250.jpg",
+    "original": "https://coverartarchive.org/release/f029d4ca-3b7c-464d-bdfc-bd392734ccb9/36830843360.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/f029d4ca-3b7c-464d-bdfc-bd392734ccb9/36830843360-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/f029d4ca-3b7c-464d-bdfc-bd392734ccb9/36830693195-250.jpg",
+    "original": "https://coverartarchive.org/release/f029d4ca-3b7c-464d-bdfc-bd392734ccb9/36830693195.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/f029d4ca-3b7c-464d-bdfc-bd392734ccb9/36830693195-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "edition",
+  "nb_plages": 11,
+  "oeuvres": [
+   {
+    "compositeur": "J.J. Johnson",
+    "id": "f526861c-cd0c-4104-b635-c2f04a57e4c0",
+    "parente": null,
+    "titre": "Kelo"
+   },
+   {
+    "compositeur": "J.J. Johnson",
+    "id": "f526861c-cd0c-4104-b635-c2f04a57e4c0",
+    "parente": null,
+    "titre": "Kelo"
+   },
+   {
+    "compositeur": "J.J. Johnson",
+    "id": "264896cb-634b-41f2-8784-0264cfc3fef2",
+    "parente": null,
+    "titre": "Enigma"
+   },
+   {
+    "compositeur": "J.J. Johnson",
+    "id": "264896cb-634b-41f2-8784-0264cfc3fef2",
+    "parente": null,
+    "titre": "Enigma"
+   },
+   {
+    "compositeur": "Ray Brown, Walter “Gil” Fuller",
+    "id": "c775b5b6-47b2-4a32-8a7a-ebb27b354ab4",
+    "parente": null,
+    "titre": "Ray's Idea"
+   },
+   {
+    "compositeur": "Ray Brown, Walter “Gil” Fuller",
+    "id": "c775b5b6-47b2-4a32-8a7a-ebb27b354ab4",
+    "parente": null,
+    "titre": "Ray's Idea"
+   },
+   {
+    "compositeur": "Bud Powell",
+    "id": "5d861692-5518-355e-abfb-2f5f0b571320",
+    "parente": null,
+    "titre": "Tempus Fugit"
+   },
+   {
+    "compositeur": "Bud Powell",
+    "id": "5d861692-5518-355e-abfb-2f5f0b571320",
+    "parente": null,
+    "titre": "Tempus Fugit"
+   },
+   {
+    "compositeur": "Jimmy Heath",
+    "id": "1bae1172-e956-3e0a-80d2-c73df6672c34",
+    "parente": null,
+    "titre": "C.T.A."
+   },
+   {
+    "compositeur": "Jimmy Heath",
+    "id": "1bae1172-e956-3e0a-80d2-c73df6672c34",
+    "parente": null,
+    "titre": "C.T.A."
+   },
+   {
+    "compositeur": "Walter “Gil” Fuller, Dizzy Gillespie",
+    "id": "4ceea15c-d157-46e4-b793-2c0988cba15e",
+    "parente": null,
+    "titre": "I Waited for You"
+   }
+  ],
+  "release": "f029d4ca-3b7c-464d-bdfc-bd392734ccb9",
+  "version": 5
+ },
  "4642250": {
   "annees_enregistrement": [
    1993,
@@ -32458,6 +34077,70 @@
   ],
   "release": "c72c704e-f413-4db8-99e0-a6372b8a16b8",
   "version": 4
+ },
+ "469682": {
+  "annee_parution": 1990,
+  "annees_enregistrement": [
+   1958,
+   1958
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295176470-250.jpg",
+    "original": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295176470.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295176470-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295177749-250.jpg",
+    "original": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295177749.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295177749-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295178825-250.jpg",
+    "original": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295178825.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ec13f267-4449-4c40-899d-bb7de433c2a0/13295178825-500.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 4,
+  "oeuvres": [
+   {
+    "compositeur": "Thelonious Monk",
+    "id": "f989d10e-d5fb-307f-9275-8019a5081afe",
+    "parente": null,
+    "titre": "Straight, No Chaser"
+   },
+   {
+    "compositeur": "Richard Rodgers",
+    "id": "24370021-5f38-39cf-9494-001b10a66181",
+    "parente": {
+     "id": "ffd56e80-c879-4f79-828a-3f8d43cc36d3",
+     "titre": "Babes in Arms"
+    },
+    "titre": "My Funny Valentine"
+   },
+   {
+    "compositeur": "Frank Loesser",
+    "id": "a9cd2932-dc41-38f4-896d-ca0b5abae751",
+    "parente": {
+     "id": "c414fd93-73a4-4972-aae6-80cb05343f37",
+     "titre": "Guys and Dolls"
+    },
+    "titre": "If I Were a Bell"
+   },
+   {
+    "compositeur": "Sonny Rollins",
+    "id": "9bd0305e-0636-3624-972e-ec5b55631ea8",
+    "parente": null,
+    "titre": "Oleo"
+   }
+  ],
+  "release": "ec13f267-4449-4c40-899d-bb7de433c2a0",
+  "version": 5
  },
  "4701907": {
   "annees_enregistrement": null,
@@ -32948,6 +34631,7 @@
   "version": 4
  },
  "4808990": {
+  "annee_parution": 1991,
   "annees_enregistrement": [
    1991,
    1991
@@ -32990,7 +34674,7 @@
     "url": "https://coverartarchive.org/release/c6cce39f-791e-3c65-914b-0fb09ca0e38e/42123580196-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 12,
   "oeuvres": [
@@ -33068,7 +34752,7 @@
    }
   ],
   "release": "c6cce39f-791e-3c65-914b-0fb09ca0e38e",
-  "version": 4
+  "version": 5
  },
  "493612": {
   "annees_enregistrement": null,
@@ -33086,6 +34770,48 @@
   "oeuvres": null,
   "release": "8980a343-6889-4d84-a045-151b304be77b",
   "version": 4
+ },
+ "494098": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "images": [],
+  "maj": "2026-11-04",
+  "methode": "album",
+  "nb_plages": 5,
+  "oeuvres": [
+   {
+    "compositeur": "[unknown]",
+    "id": "961fd320-e234-40a1-a8f2-0d6c3dc569a0",
+    "parente": null,
+    "titre": "Walkin’"
+   },
+   {
+    "compositeur": "Dizzy Gillespie, Frank Paparelli",
+    "id": "7c68547b-2fa6-3ef3-b6b2-80d4f997d030",
+    "parente": null,
+    "titre": "Blue ’n’ Boogie"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "d73f8e96-325d-3211-89ba-b3ebd3df6199",
+    "parente": null,
+    "titre": "Solar"
+   },
+   {
+    "compositeur": "Gene de Paul",
+    "id": "1e4f4f3d-6bfe-3a99-9c46-d2eb1c83e09c",
+    "parente": null,
+    "titre": "You Don’t Know What Love Is"
+   },
+   {
+    "compositeur": "Walter Donaldson",
+    "id": "ec4219ef-463f-381f-b5d1-3cf85dbecdc3",
+    "parente": null,
+    "titre": "Love Me or Leave Me"
+   }
+  ],
+  "release": "066c73cc-904c-3b10-a6c2-7eaa63f632cd",
+  "version": 5
  },
  "496512": {
   "annees_enregistrement": null,
@@ -33184,6 +34910,11 @@
   "version": 4
  },
  "4978861": {
+  "annee_parution": 1993,
+  "annees_enregistrement": [
+   1969,
+   1985
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/cb36979b-5829-4ced-857d-6e8423402a93/25673799414-250.jpg",
@@ -33210,7 +34941,7 @@
     "url": "https://coverartarchive.org/release/cb36979b-5829-4ced-857d-6e8423402a93/25673798424-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 37,
   "oeuvres": [
@@ -33438,7 +35169,7 @@
    }
   ],
   "release": "cb36979b-5829-4ced-857d-6e8423402a93",
-  "version": 2
+  "version": 5
  },
  "50304": {
   "annees_enregistrement": null,
@@ -33483,6 +35214,11 @@
   "version": 4
  },
  "5039412": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1972,
+   1972
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/f344ad5c-8bd5-4ec3-bb6a-8853d8d5f61e/40916081932-250.jpg",
@@ -33539,7 +35275,7 @@
     "url": "https://coverartarchive.org/release/f344ad5c-8bd5-4ec3-bb6a-8853d8d5f61e/40916078378-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 12,
   "oeuvres": [
@@ -33653,7 +35389,7 @@
    }
   ],
   "release": "f344ad5c-8bd5-4ec3-bb6a-8853d8d5f61e",
-  "version": 2
+  "version": 5
  },
  "5075975": {
   "annees_enregistrement": [
@@ -34473,6 +36209,11 @@
   "version": 4
  },
  "5136763": {
+  "annee_parution": 1990,
+  "annees_enregistrement": [
+   1925,
+   1928
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/6554f1b3-b36e-44be-a7cf-1ecb54797f0d/6144916662-250.jpg",
@@ -34505,7 +36246,7 @@
     "url": "https://coverartarchive.org/release/6554f1b3-b36e-44be-a7cf-1ecb54797f0d/6144922443-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 23,
   "oeuvres": [
@@ -34649,7 +36390,7 @@
    }
   ],
   "release": "6554f1b3-b36e-44be-a7cf-1ecb54797f0d",
-  "version": 2
+  "version": 5
  },
  "5137868": {
   "annees_enregistrement": [
@@ -34700,6 +36441,7 @@
   "version": 4
  },
  "5153591": {
+  "annee_parution": 1990,
   "annees_enregistrement": [
    1981,
    1981
@@ -34784,7 +36526,7 @@
     "url": "https://coverartarchive.org/release/312d4e3b-deea-30ba-bf0a-99976848eb9c/45773177529-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 9,
   "oeuvres": [
@@ -34844,7 +36586,7 @@
    }
   ],
   "release": "312d4e3b-deea-30ba-bf0a-99976848eb9c",
-  "version": 4
+  "version": 5
  },
  "5196050": {
   "annees_enregistrement": [
@@ -35126,6 +36868,11 @@
   "version": 4
  },
  "5246183": {
+  "annee_parution": 2010,
+  "annees_enregistrement": [
+   2010,
+   2010
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/0341efc7-7b51-414c-b2eb-392f8af630f4/9060864392-250.jpg",
@@ -35152,7 +36899,7 @@
     "url": "https://coverartarchive.org/release/0341efc7-7b51-414c-b2eb-392f8af630f4/9060881891-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 9,
   "oeuvres": [
@@ -35236,9 +36983,10 @@
    }
   ],
   "release": "0341efc7-7b51-414c-b2eb-392f8af630f4",
-  "version": 2
+  "version": 5
  },
  "5347857": {
+  "annee_parution": 1989,
   "annees_enregistrement": null,
   "images": [
    {
@@ -35260,7 +37008,7 @@
     "url": "https://coverartarchive.org/release/2d38329b-21f1-365e-bd02-18f2b0bcc9ce/9607088965-500.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 10,
   "oeuvres": [
@@ -35356,7 +37104,7 @@
    }
   ],
   "release": "2d38329b-21f1-365e-bd02-18f2b0bcc9ce",
-  "version": 4
+  "version": 5
  },
  "5378824": {
   "annees_enregistrement": [
@@ -35459,6 +37207,11 @@
   "version": 4
  },
  "5478181": {
+  "annee_parution": 1995,
+  "annees_enregistrement": [
+   1995,
+   1995
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/25d8ad84-7d79-4328-879a-65d99bb30e1b/34857725851-250.jpg",
@@ -35473,7 +37226,7 @@
     "url": "https://coverartarchive.org/release/25d8ad84-7d79-4328-879a-65d99bb30e1b/34857726552-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -35510,7 +37263,7 @@
    null
   ],
   "release": "25d8ad84-7d79-4328-879a-65d99bb30e1b",
-  "version": 2
+  "version": 5
  },
  "5569033": {
   "images": [],
@@ -37331,6 +39084,11 @@
   "version": 2
  },
  "6270862": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1965,
+   1978
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/7165388f-c955-4eb6-8831-2aac698f1c93/20847994401-250.jpg",
@@ -37351,7 +39109,7 @@
     "url": "https://coverartarchive.org/release/7165388f-c955-4eb6-8831-2aac698f1c93/20848001009-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -37411,7 +39169,7 @@
    }
   ],
   "release": "7165388f-c955-4eb6-8831-2aac698f1c93",
-  "version": 2
+  "version": 5
  },
  "6297564": {
   "annees_enregistrement": null,
@@ -37455,6 +39213,11 @@
   "version": 4
  },
  "6298938": {
+  "annee_parution": 1995,
+  "annees_enregistrement": [
+   1994,
+   1994
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/0e4b21e2-d735-476c-9b32-6eea27ba401b/31969810032-250.jpg",
@@ -37577,16 +39340,21 @@
     "url": "https://coverartarchive.org/release/0e4b21e2-d735-476c-9b32-6eea27ba401b/19618534065-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 19,
   "oeuvres": null,
   "release": "0e4b21e2-d735-476c-9b32-6eea27ba401b",
-  "version": 2
+  "version": 5
  },
  "6369520": {
+  "annee_parution": 2011,
+  "annees_enregistrement": [
+   1980,
+   2010
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 454,
   "oeuvres": [
@@ -40875,9 +42643,14 @@
    }
   ],
   "release": "ec6cc9da-ea70-46fa-b446-3e3e59d0c761",
-  "version": 2
+  "version": 5
  },
  "6471403": {
+  "annee_parution": 2000,
+  "annees_enregistrement": [
+   1999,
+   1999
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/eae702d6-2c73-4e7a-922f-87bf6debafed/40928058267-250.jpg",
@@ -40898,7 +42671,7 @@
     "url": "https://coverartarchive.org/release/eae702d6-2c73-4e7a-922f-87bf6debafed/40928059987-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 24,
   "oeuvres": [
@@ -41048,7 +42821,7 @@
    }
   ],
   "release": "eae702d6-2c73-4e7a-922f-87bf6debafed",
-  "version": 2
+  "version": 5
  },
  "6478348": {
   "images": [],
@@ -41154,6 +42927,11 @@
   "release": "c06e6fd5-ebad-44e1-b1ef-908aa9a5ce89"
  },
  "6627715": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1959,
+   1968
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/1bd5d704-6080-40c4-ae4b-b3d467e3fab1/14644031362-250.jpg",
@@ -41162,7 +42940,7 @@
     "url": "https://coverartarchive.org/release/1bd5d704-6080-40c4-ae4b-b3d467e3fab1/14644031362-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 172,
   "oeuvres": [
@@ -42713,7 +44491,7 @@
    }
   ],
   "release": "1bd5d704-6080-40c4-ae4b-b3d467e3fab1",
-  "version": 2
+  "version": 5
  },
  "666189": {
   "images": [],
@@ -43423,6 +45201,11 @@
   "version": 4
  },
  "7002721": {
+  "annee_parution": 1996,
+  "annees_enregistrement": [
+   1995,
+   1995
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/59fbaf2c-201e-436c-8632-766865a9b4b6/33738872559-250.jpg",
@@ -43449,7 +45232,7 @@
     "url": "https://coverartarchive.org/release/59fbaf2c-201e-436c-8632-766865a9b4b6/33738870385-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 9,
   "oeuvres": [
@@ -43536,7 +45319,7 @@
    }
   ],
   "release": "59fbaf2c-201e-436c-8632-766865a9b4b6",
-  "version": 2
+  "version": 5
  },
  "7012975": {
   "images": [],
@@ -43968,6 +45751,11 @@
   "version": 4
  },
  "7231950": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1954,
+   1969
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/a7148b3b-ef30-4d77-a6a1-986821818e0e/23729202144-250.jpg",
@@ -43982,7 +45770,7 @@
     "url": "https://coverartarchive.org/release/a7148b3b-ef30-4d77-a6a1-986821818e0e/23729203975-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 26,
   "oeuvres": [
@@ -44189,9 +45977,14 @@
    }
   ],
   "release": "a7148b3b-ef30-4d77-a6a1-986821818e0e",
-  "version": 2
+  "version": 5
  },
  "7314460": {
+  "annee_parution": 1998,
+  "annees_enregistrement": [
+   1997,
+   1997
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/55344cb8-9980-37ad-b40a-d8af2966e0c3/17046445084-250.jpg",
@@ -44200,7 +45993,7 @@
     "url": "https://coverartarchive.org/release/55344cb8-9980-37ad-b40a-d8af2966e0c3/17046445084-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 20,
   "oeuvres": [
@@ -44383,9 +46176,14 @@
    }
   ],
   "release": "55344cb8-9980-37ad-b40a-d8af2966e0c3",
-  "version": 2
+  "version": 5
  },
  "7337962": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1975,
+   1975
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/fbc3d024-2ce4-4f28-b8c9-2d4febba165b/19740461275-250.jpg",
@@ -44412,7 +46210,7 @@
     "url": "https://coverartarchive.org/release/fbc3d024-2ce4-4f28-b8c9-2d4febba165b/19740466574-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -44472,7 +46270,7 @@
    }
   ],
   "release": "fbc3d024-2ce4-4f28-b8c9-2d4febba165b",
-  "version": 2
+  "version": 5
  },
  "7382636": {
   "annees_enregistrement": [
@@ -44957,6 +46755,11 @@
   "version": 2
  },
  "7562589": {
+  "annee_parution": 2015,
+  "annees_enregistrement": [
+   2010,
+   2010
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/76d48975-ae9c-4604-a443-c945105fb899/38797518050-250.jpg",
@@ -44965,7 +46768,7 @@
     "url": "https://coverartarchive.org/release/76d48975-ae9c-4604-a443-c945105fb899/38797518050-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 9,
   "oeuvres": [
@@ -45025,7 +46828,7 @@
    }
   ],
   "release": "76d48975-ae9c-4604-a443-c945105fb899",
-  "version": 2
+  "version": 5
  },
  "7568917": {
   "images": [],
@@ -45037,13 +46840,15 @@
   "version": 2
  },
  "7597755": {
+  "annee_parution": 2015,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 11,
   "oeuvres": null,
   "release": "4023665b-2e61-49c5-86a3-20201801b6f0",
-  "version": 2
+  "version": 5
  },
  "768493": {
   "annees_enregistrement": [
@@ -45163,6 +46968,11 @@
   "version": 4
  },
  "7710639": {
+  "annee_parution": 2000,
+  "annees_enregistrement": [
+   1999,
+   1999
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/935aae8e-5a29-422e-b9e0-420d3ef4feea/10296800046-250.jpg",
@@ -45195,7 +47005,7 @@
     "url": "https://coverartarchive.org/release/935aae8e-5a29-422e-b9e0-420d3ef4feea/41330117285-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 27,
   "oeuvres": [
@@ -45444,9 +47254,10 @@
    }
   ],
   "release": "935aae8e-5a29-422e-b9e0-420d3ef4feea",
-  "version": 2
+  "version": 5
  },
  "7717308": {
+  "annee_parution": 1997,
   "annees_enregistrement": [
    1993,
    1994
@@ -45465,7 +47276,7 @@
     "url": "https://coverartarchive.org/release/87298594-ea2e-4610-883b-1b148d0d35db/9836948913-500.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 23,
   "oeuvres": [
@@ -45678,7 +47489,7 @@
    }
   ],
   "release": "87298594-ea2e-4610-883b-1b148d0d35db",
-  "version": 4
+  "version": 5
  },
  "7809501": {
   "images": [],
@@ -45824,6 +47635,7 @@
   "version": 2
  },
  "7984655": {
+  "annee_parution": 1983,
   "annees_enregistrement": [
    1979,
    1979
@@ -45842,7 +47654,7 @@
     "url": "https://coverartarchive.org/release/68c54fe4-0b04-4b8f-8b72-1f5bad0f238f/44767025942-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 14,
   "oeuvres": [
@@ -45965,7 +47777,7 @@
    }
   ],
   "release": "68c54fe4-0b04-4b8f-8b72-1f5bad0f238f",
-  "version": 4
+  "version": 5
  },
  "800142": {
   "annees_enregistrement": [
@@ -46625,6 +48437,82 @@
   "release": "ec11e948-191b-45bf-bd44-c7415475cc41",
   "version": 4
  },
+ "8222669": {
+  "annee_parution": 1999,
+  "annees_enregistrement": [
+   1972,
+   1972
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/6fe5c354-b011-3df7-b1fe-de4738ee8fec/9087161570-250.jpg",
+    "original": "https://coverartarchive.org/release/6fe5c354-b011-3df7-b1fe-de4738ee8fec/9087161570.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/6fe5c354-b011-3df7-b1fe-de4738ee8fec/9087161570-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 9,
+  "oeuvres": [
+   {
+    "compositeur": "Chick Corea",
+    "id": "e0cc451f-a743-4935-b5a3-b7d602ff7840",
+    "parente": null,
+    "titre": "Señor Mouse"
+   },
+   {
+    "compositeur": "Steve Swallow",
+    "id": "a0f9648d-8a6a-46ee-9ad1-a5ed8fd8593f",
+    "parente": null,
+    "titre": "Arise, Her Eyes"
+   },
+   {
+    "compositeur": "Steve Swallow",
+    "id": "a3fea028-e93c-4676-bab2-88440dae95fc",
+    "parente": null,
+    "titre": "I’m Your Pal"
+   },
+   {
+    "compositeur": "Chick Corea",
+    "id": "7102df8c-1c31-45e6-8e6b-ebec0fbb1f2b",
+    "parente": null,
+    "titre": "Desert Air"
+   },
+   {
+    "compositeur": "Chick Corea",
+    "id": "f0b42ad1-fd48-4699-9b34-f8513d7438f4",
+    "parente": null,
+    "titre": "Crystal Silence"
+   },
+   {
+    "compositeur": "Steve Swallow",
+    "id": "3e50e73a-6f80-3d79-95d9-e466450690ac",
+    "parente": null,
+    "titre": "Falling Grace"
+   },
+   {
+    "compositeur": "Carla Bley, Michael Gibbs",
+    "id": "6b2610d6-eb59-44f2-b4cc-c9c6dd260cc3",
+    "parente": null,
+    "titre": "Feelings and Things"
+   },
+   {
+    "compositeur": "Chick Corea",
+    "id": "928a1ad3-7324-35a9-8fad-6d7b6c6a810a",
+    "parente": null,
+    "titre": "Children's Song"
+   },
+   {
+    "compositeur": "Chick Corea",
+    "id": "153560e2-4e31-4cb7-9362-203ffaf7fda4",
+    "parente": null,
+    "titre": "What Game Shall We Play Today"
+   }
+  ],
+  "release": "6fe5c354-b011-3df7-b1fe-de4738ee8fec",
+  "version": 5
+ },
  "8242183": {
   "annees_enregistrement": [
    1998,
@@ -46918,6 +48806,7 @@
   "version": 4
  },
  "8291612": {
+  "annee_parution": null,
   "annees_enregistrement": null,
   "images": [
    {
@@ -46933,7 +48822,7 @@
     "url": "https://coverartarchive.org/release/c710727a-a812-46e2-a2dd-e40bff8f600d/24958377908-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 7,
   "oeuvres": [
@@ -46999,7 +48888,7 @@
    }
   ],
   "release": "c710727a-a812-46e2-a2dd-e40bff8f600d",
-  "version": 4
+  "version": 5
  },
  "8322175": {
   "images": [],
@@ -47011,12 +48900,13 @@
   "version": 2
  },
  "8337754": {
+  "annee_parution": 1988,
   "annees_enregistrement": [
    1980,
    1980
   ],
   "images": [],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 8,
   "oeuvres": [
@@ -47094,7 +48984,7 @@
    }
   ],
   "release": "098163fc-d677-479e-86ca-8c3a9212a9d1",
-  "version": 4
+  "version": 5
  },
  "8357118": {
   "annees_enregistrement": null,
@@ -47347,6 +49237,11 @@
   "version": 2
  },
  "8534769": {
+  "annee_parution": 1989,
+  "annees_enregistrement": [
+   1987,
+   1987
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/60afc612-bd46-44fd-abb7-0463d103824b/23728942121-250.jpg",
@@ -47367,7 +49262,7 @@
     "url": "https://coverartarchive.org/release/60afc612-bd46-44fd-abb7-0463d103824b/10827181622-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 14,
   "oeuvres": [
@@ -47499,7 +49394,7 @@
    }
   ],
   "release": "60afc612-bd46-44fd-abb7-0463d103824b",
-  "version": 2
+  "version": 5
  },
  "8547592": {
   "images": [],
@@ -47684,6 +49579,11 @@
   "version": 4
  },
  "8662372": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1960,
+   1977
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/ad353304-c81c-4e7e-bc73-117d82c23f2b/19740353183-250.jpg",
@@ -47788,7 +49688,7 @@
     "url": "https://coverartarchive.org/release/ad353304-c81c-4e7e-bc73-117d82c23f2b/34997606620-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 29,
   "oeuvres": [
@@ -48040,7 +49940,7 @@
    }
   ],
   "release": "ad353304-c81c-4e7e-bc73-117d82c23f2b",
-  "version": 2
+  "version": 5
  },
  "8767620": {
   "annees_enregistrement": null,
@@ -48124,6 +50024,11 @@
   "version": 4
  },
  "8935729": {
+  "annee_parution": 2018,
+  "annees_enregistrement": [
+   1971,
+   1971
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/12cabc26-cb13-4b80-9f07-5d8820e8f348/35214713068-250.jpg",
@@ -48132,7 +50037,7 @@
     "url": "https://coverartarchive.org/release/12cabc26-cb13-4b80-9f07-5d8820e8f348/35214713068-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 13,
   "oeuvres": [
@@ -48249,9 +50154,119 @@
    }
   ],
   "release": "12cabc26-cb13-4b80-9f07-5d8820e8f348",
-  "version": 2
+  "version": 5
+ },
+ "8938457": {
+  "annee_parution": 1999,
+  "annees_enregistrement": [
+   1964,
+   1964
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/0ec2899b-62f9-46dc-9154-c2777ef8f99c/41616236419-250.jpg",
+    "original": "https://coverartarchive.org/release/0ec2899b-62f9-46dc-9154-c2777ef8f99c/41616236419.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/0ec2899b-62f9-46dc-9154-c2777ef8f99c/41616236419-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/0ec2899b-62f9-46dc-9154-c2777ef8f99c/41616237296-250.jpg",
+    "original": "https://coverartarchive.org/release/0ec2899b-62f9-46dc-9154-c2777ef8f99c/41616237296.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/0ec2899b-62f9-46dc-9154-c2777ef8f99c/41616237296-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 13,
+  "oeuvres": [
+   null,
+   {
+    "compositeur": "Frank Loesser",
+    "id": "a9cd2932-dc41-38f4-896d-ca0b5abae751",
+    "parente": {
+     "id": "c414fd93-73a4-4972-aae6-80cb05343f37",
+     "titre": "Guys and Dolls"
+    },
+    "titre": "If I Were a Bell"
+   },
+   {
+    "compositeur": "Richard Rodgers",
+    "id": "24370021-5f38-39cf-9494-001b10a66181",
+    "parente": {
+     "id": "ffd56e80-c879-4f79-828a-3f8d43cc36d3",
+     "titre": "Babes in Arms"
+    },
+    "titre": "My Funny Valentine"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "2fafd730-423f-342e-b6c7-3a7d6599a72e",
+    "parente": null,
+    "titre": "So What"
+   },
+   {
+    "compositeur": "[unknown]",
+    "id": "961fd320-e234-40a1-a8f2-0d6c3dc569a0",
+    "parente": null,
+    "titre": "Walkin’"
+   },
+   {
+    "compositeur": "Cole Porter",
+    "id": "c9a51eb1-c80a-33e9-b015-370654cda985",
+    "parente": {
+     "id": "a846a13a-62b8-4123-95ef-85581c7f4cac",
+     "titre": "Silk Stockings"
+    },
+    "titre": "All of You"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "8e897f2c-285a-327b-bb74-6dff23096b62",
+    "parente": null,
+    "titre": "Milestones"
+   },
+   {
+    "compositeur": "Joseph Kosma",
+    "id": "048b4b7a-07c4-3e33-959f-268199324401",
+    "parente": null,
+    "titre": "Autumn Leaves"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "804062eb-2480-43ab-bb3f-b08dd0e16e8e",
+    "parente": null,
+    "titre": "Theme"
+   },
+   null,
+   {
+    "compositeur": "Miles Davis",
+    "id": "d8eb6409-6dc2-33c8-8f8f-fd3c2ecd7fef",
+    "parente": null,
+    "titre": "Four"
+   },
+   {
+    "compositeur": "Miles Davis, Victor Feldman",
+    "id": "caf31d7d-3f08-4ae9-9ad3-ab176ad43407",
+    "parente": null,
+    "titre": "Seven Steps to Heaven"
+   },
+   {
+    "compositeur": "Isham Jones",
+    "id": "0e46af26-d9e9-39b8-ac0a-8463fe0f2244",
+    "parente": null,
+    "titre": "There Is No Greater Love"
+   }
+  ],
+  "release": "0ec2899b-62f9-46dc-9154-c2777ef8f99c",
+  "version": 5
  },
  "8947604": {
+  "annee_parution": 1997,
+  "annees_enregistrement": [
+   1984,
+   1985
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/21176151-6931-4a51-9db1-6ba7461b1e29/22820456646-250.jpg",
@@ -48266,7 +50281,7 @@
     "url": "https://coverartarchive.org/release/21176151-6931-4a51-9db1-6ba7461b1e29/22820458333-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 54,
   "oeuvres": [
@@ -48758,7 +50773,7 @@
    }
   ],
   "release": "21176151-6931-4a51-9db1-6ba7461b1e29",
-  "version": 2
+  "version": 5
  },
  "8959828": {
   "annees_enregistrement": null,
@@ -48778,6 +50793,7 @@
   "version": 4
  },
  "8964505": {
+  "annee_parution": 1992,
   "annees_enregistrement": [
    1984,
    1984
@@ -48802,7 +50818,7 @@
     "url": "https://coverartarchive.org/release/fce1fa9e-4a12-40ad-aa5e-b9213465fd7e/39947793390-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 4,
   "oeuvres": [
@@ -48841,9 +50857,14 @@
    }
   ],
   "release": "fce1fa9e-4a12-40ad-aa5e-b9213465fd7e",
-  "version": 4
+  "version": 5
  },
  "9023828": {
+  "annee_parution": 1991,
+  "annees_enregistrement": [
+   1990,
+   1990
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/1b12ac11-d773-48e5-9427-9b637370605c/28791834628-250.jpg",
@@ -48852,7 +50873,7 @@
     "url": "https://coverartarchive.org/release/1b12ac11-d773-48e5-9427-9b637370605c/28791834628-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 17,
   "oeuvres": [
@@ -48993,7 +51014,7 @@
    }
   ],
   "release": "1b12ac11-d773-48e5-9427-9b637370605c",
-  "version": 2
+  "version": 5
  },
  "9041853": {
   "annees_enregistrement": null,
@@ -49113,6 +51134,11 @@
   "version": 4
  },
  "9068950": {
+  "annee_parution": 2000,
+  "annees_enregistrement": [
+   1957,
+   1957
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/abced449-98cf-430b-a54a-5ffd2c69c1f5/15192712400-250.jpg",
@@ -49121,7 +51147,7 @@
     "url": "https://coverartarchive.org/release/abced449-98cf-430b-a54a-5ffd2c69c1f5/15192712400-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 6,
   "oeuvres": [
@@ -49181,9 +51207,14 @@
    }
   ],
   "release": "abced449-98cf-430b-a54a-5ffd2c69c1f5",
-  "version": 2
+  "version": 5
  },
  "9133431": {
+  "annee_parution": 1985,
+  "annees_enregistrement": [
+   1984,
+   1984
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/8a8614d0-73b3-4443-8b05-549e6eb57966/43594624334-250.jpg",
@@ -49210,7 +51241,7 @@
     "url": "https://coverartarchive.org/release/8a8614d0-73b3-4443-8b05-549e6eb57966/43594626114-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 7,
   "oeuvres": [
@@ -49276,9 +51307,10 @@
    }
   ],
   "release": "8a8614d0-73b3-4443-8b05-549e6eb57966",
-  "version": 2
+  "version": 5
  },
  "915811": {
+  "annee_parution": null,
   "annees_enregistrement": [
    1957,
    1957
@@ -49291,7 +51323,7 @@
     "url": "https://coverartarchive.org/release/48aadd81-ed0f-4dae-bc79-0bf1f621f589/41877140975-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 6,
   "oeuvres": [
@@ -49333,7 +51365,7 @@
    }
   ],
   "release": "48aadd81-ed0f-4dae-bc79-0bf1f621f589",
-  "version": 4
+  "version": 5
  },
  "9169640": {
   "annees_enregistrement": [
@@ -49743,6 +51775,11 @@
   "version": 4
  },
  "9218802": {
+  "annee_parution": 1991,
+  "annees_enregistrement": [
+   1971,
+   1977
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/edee8f93-124c-4e5a-a9d2-0ff83dc6fe5e/14547383818-250.jpg",
@@ -49757,7 +51794,7 @@
     "url": "https://coverartarchive.org/release/edee8f93-124c-4e5a-a9d2-0ff83dc6fe5e/14547385322-1200.jpg"
    }
   ],
-  "maj": "2026-11-01",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 19,
   "oeuvres": [
@@ -49898,7 +51935,7 @@
    }
   ],
   "release": "edee8f93-124c-4e5a-a9d2-0ff83dc6fe5e",
-  "version": 2
+  "version": 5
  },
  "9232748": {
   "annees_enregistrement": [
@@ -50374,6 +52411,7 @@
   "version": 2
  },
  "9283696": {
+  "annee_parution": 1992,
   "annees_enregistrement": [
    1983,
    1985
@@ -50386,7 +52424,7 @@
     "url": "https://coverartarchive.org/release/fdb2621c-929d-4ff5-b8b9-3ac7b79a0fcd/28470964134-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 8,
   "oeuvres": [
@@ -50464,7 +52502,7 @@
    }
   ],
   "release": "fdb2621c-929d-4ff5-b8b9-3ac7b79a0fcd",
-  "version": 4
+  "version": 5
  },
  "9286875": {
   "images": [],
@@ -51089,6 +53127,7 @@
   "version": 4
  },
  "9491756": {
+  "annee_parution": 1984,
   "annees_enregistrement": [
    1982,
    1982
@@ -51149,7 +53188,7 @@
     "url": "https://coverartarchive.org/release/0947fb51-95d4-47ac-9bc3-64c117d5a331/40714710309-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 8,
   "oeuvres": [
@@ -51227,9 +53266,96 @@
    }
   ],
   "release": "0947fb51-95d4-47ac-9bc3-64c117d5a331",
-  "version": 4
+  "version": 5
+ },
+ "9542096": {
+  "annee_parution": 1992,
+  "annees_enregistrement": [
+   1969,
+   1969
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117318386-250.jpg",
+    "original": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117318386.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117318386-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117320478-250.jpg",
+    "original": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117320478.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117320478-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117321135-250.jpg",
+    "original": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117321135.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117321135-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117321836-250.jpg",
+    "original": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117321836.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117321836-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117322658-250.jpg",
+    "original": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117322658.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd11570a-fdf5-3186-8700-6126c6098e3d/23117322658-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-04",
+  "methode": "code_barre",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "compositeur": "Joe Zawinul",
+    "id": "73670b7f-765b-30e9-bdb0-95baa37d7842",
+    "parente": null,
+    "titre": "Pharaoh’s Dance"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "2b3c7fe5-dbc2-3195-808d-5fe7648f7719",
+    "parente": null,
+    "titre": "Bitches Brew"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "a8eadfee-5e4f-4871-b8e3-226a0e1220ca",
+    "parente": null,
+    "titre": "Spanish Key"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "773fae85-892a-4549-b969-ef49c8fc897e",
+    "parente": null,
+    "titre": "John McLaughlin"
+   },
+   {
+    "compositeur": "Miles Davis",
+    "id": "4b6f52e3-5913-4271-80e9-1280ca9f6552",
+    "parente": null,
+    "titre": "Miles Runs The Voodoo Down"
+   },
+   {
+    "compositeur": "Wayne Shorter",
+    "id": "d2f1931a-28f6-4aae-90a1-f518b74b8282",
+    "parente": null,
+    "titre": "Sanctuary"
+   }
+  ],
+  "release": "fd11570a-fdf5-3186-8700-6126c6098e3d",
+  "version": 5
  },
  "9585817": {
+  "annee_parution": 2008,
+  "annees_enregistrement": [
+   1988,
+   1988
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/c2302042-3652-4e7c-bd1f-2068d235dad9/11774367849-250.jpg",
@@ -51238,7 +53364,7 @@
     "url": "https://coverartarchive.org/release/c2302042-3652-4e7c-bd1f-2068d235dad9/11774367849-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "code_barre",
   "nb_plages": 12,
   "oeuvres": [
@@ -51352,9 +53478,11 @@
    }
   ],
   "release": "c2302042-3652-4e7c-bd1f-2068d235dad9",
-  "version": 2
+  "version": 5
  },
  "9589587": {
+  "annee_parution": 1990,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/c7677a7d-f280-41b5-877f-c69e620360ad/17521878697-250.jpg",
@@ -51507,7 +53635,7 @@
     "url": "https://coverartarchive.org/release/c7677a7d-f280-41b5-877f-c69e620360ad/17521900973-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 22,
   "oeuvres": [
@@ -51540,9 +53668,11 @@
    null
   ],
   "release": "c7677a7d-f280-41b5-877f-c69e620360ad",
-  "version": 2
+  "version": 5
  },
  "960148": {
+  "annee_parution": 2007,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/f84024b0-75fc-4d80-bcfd-08f1a5cd1d3f/10355366330-250.jpg",
@@ -51551,7 +53681,7 @@
     "url": "https://coverartarchive.org/release/f84024b0-75fc-4d80-bcfd-08f1a5cd1d3f/10355366330-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-04",
   "methode": "edition",
   "nb_plages": 10,
   "oeuvres": [
@@ -51582,7 +53712,7 @@
    null
   ],
   "release": "f84024b0-75fc-4d80-bcfd-08f1a5cd1d3f",
-  "version": 2
+  "version": 5
  },
  "9671065": {
   "images": [],
