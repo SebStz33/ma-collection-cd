@@ -26,6 +26,9 @@ const REPERES_STATUT = { "a ecouter": "🎧", favori: "★" }; // repère par st
 const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
 const CHAMP_ANNEE_MANUELLE = "Année d’enregistrement (manuelle)";  // champ texte : « 1958 », « 1958-1961 » ou « à trouver »
 const A_TROUVER = "à trouver";
+const CHAMP_PHOTO = "Photo principale";        // champ liste Discogs : « Automatique » (MusicBrainz d'abord) ou « Discogs »
+const PHOTO_DISCOGS = "Discogs";
+const PHOTO_AUTOMATIQUE = "Automatique";
 const CHAMP_LIVE = "Live / Studio";           // champ liste Discogs : « Live », « Live et Studio », « Studio » ou vide
 const NON_PRECISE = "Non renseigné";          // « Live / Studio » vide, ou option « Non renseigné » sur Discogs
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
@@ -460,6 +463,8 @@ function regrouperParEdition(disques) {
     edition.favoris = new Set(valeursDuChamp(edition, CHAMP_FAVORIS).flatMap(lirePositions));
     edition.statut = valeursDuChampSouple(edition, CHAMP_STATUT).find((v) => !memeNom(v, STATUT_NEUTRE)) || "";
     edition.enregistrement = valeursDuChampSouple(edition, CHAMP_LIVE)[0] || NON_PRECISE;
+    // « Photo principale » = « Discogs » : la grande photo de la fiche est celle de Discogs, pas celle de MusicBrainz.
+    edition.photoDiscogs = valeursDuChampSouple(edition, CHAMP_PHOTO).some((v) => memeNom(v, PHOTO_DISCOGS));
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
@@ -1100,11 +1105,18 @@ function vignettesRepliables(boutons) {
   return [bloc, lien];
 }
 
-function ouvrirFiche(edition) {
+/**
+ * Bloc des photos de la fiche : la grande photo, puis les miniatures par source.
+ * MusicBrainz d'abord (souvent en meilleure définition), sauf si « Photo principale » vaut « Discogs ».
+ */
+function blocPhotos(edition) {
   // Images : celles de la fiche complète, sinon la pochette seule.
-  const images = (edition.images && edition.images.length)
+  const toutes = (edition.images && edition.images.length)
     ? edition.images
     : [{ url: edition.pochette, miniature: edition.miniature }].filter((i) => i.url);
+  const deMusicBrainz = toutes.filter((image) => image.type === "musicbrainz");
+  const deDiscogs = toutes.filter((image) => image.type !== "musicbrainz");
+  const images = edition.photoDiscogs && deDiscogs.length ? [...deDiscogs, ...deMusicBrainz] : [...deMusicBrainz, ...deDiscogs];
 
   // Un clic sur la grande image l'ouvre en plein écran, sur l'image affichée.
   let numeroAffiche = 0;
@@ -1122,23 +1134,34 @@ function ouvrirFiche(edition) {
     },
   }, creer("img", { src: image.miniature || image.url, alt: "", loading: "lazy" }));
 
-  // Les images par source, chacune avec sa légende : MusicBrainz d'abord, puis Discogs.
+  // Les images par source, chacune avec sa légende, dans l'ordre de la grande photo.
   // Une seule image en tout : pas de miniatures, juste la légende sous la grande image.
   const sources = [
     ["MusicBrainz", images.map((image, numero) => [image, numero]).filter(([image]) => image.type === "musicbrainz")],
     ["Discogs", images.map((image, numero) => [image, numero]).filter(([image]) => image.type !== "musicbrainz")],
   ].filter(([, liste]) => liste.length);
+  if (images.length && images[0].type !== "musicbrainz") sources.reverse();
   const groupesImages = sources.map(([source, liste]) => [
     creer("p", { classe: "legende-photos", texte: "photos " + source }),
     images.length > 1 ? vignettesRepliables(liste.map(([image, numero]) => vignette(image, numero))) : null,
   ]);
+  return creer("div", { classe: "fiche-images" }, grande, groupesImages);
+}
+
+/** Vrai si l'édition a des photos des deux sources : le choix de la grande photo a alors un sens. */
+function aDeuxSourcesDePhotos(edition) {
+  const images = edition.images || [];
+  return images.some((i) => i.type === "musicbrainz") && images.some((i) => i.type !== "musicbrainz");
+}
+
+function ouvrirFiche(edition) {
 
   const informations = [
     ["Catégorie", categoriesChoisies(edition).join(" · ")],
-    ["Année de parution", edition.annee || "inconnue"],
-    ["Live / Studio", edition.enregistrement === NON_PRECISE ? "" : edition.enregistrement],
     ...anneesEnregistrement(edition),
+    ["Live / Studio", edition.enregistrement === NON_PRECISE ? "" : edition.enregistrement],
     ["Label", (edition.labels || []).map((l) => l.nom + (l.catno ? " – " + l.catno : "")).join(" ; ")],
+    ["Année de parution", edition.annee || "inconnue"],
     ["Format", decrireFormatsFiche(edition.formats)],
     ["Genres", (edition.genres || []).join(", ")],
     ["Styles", (edition.styles || []).join(", ")],
@@ -1184,7 +1207,7 @@ function ouvrirFiche(edition) {
 
   // Les champs qui ont leur propre place dans la fiche ne sont pas répétés dans « Mon exemplaire ».
   const champsAPart = [CHAMP_LOCALISATION, CHAMP_DESCRIPTION, CHAMP_NOTES_PERSO, CHAMP_LIENS, CHAMP_FAVORIS,
-    CHAMP_STATUT, CHAMP_LIVE];
+    CHAMP_STATUT, CHAMP_LIVE, CHAMP_ANNEE_MANUELLE, CHAMP_PHOTO];
   const exemplaires = edition.exemplaires.map((exemplaire, numero) => {
     const autresChamps = Object.entries(exemplaire.champs).filter(([nom]) => !champsAPart.some((c) => memeNom(c, nom)));
     return creer("li", {},
@@ -1223,7 +1246,7 @@ function ouvrirFiche(edition) {
     notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
     // Boutons visibles seulement sur un appareil où le jeton Discogs est enregistré.
     jeton() ? creer("p", { classe: "boutons-fiche" }, boutonsStatut(edition),
-      creer("button", { type: "button", classe: "bouton bouton-petit", texte: "✎ Modifier mes Custom Fields Discogs",
+      creer("button", { type: "button", classe: "bouton-texte lien-fiche lien-modifier", texte: "✎ Modifier mes Custom Fields Discogs",
         surclic: () => ouvrirEdition(edition) }))
       : edition.statut ? creer("p", {}, creer("span", { classe: "etiquette-statut", texte: libelleStatut(edition.statut) })) : null,
     creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
@@ -1259,6 +1282,7 @@ function ouvrirFiche(edition) {
         texte: "Voir sur MusicBrainz ↗" }) : null
     ),
     blocSources(edition),
+    jeton() && aDeuxSourcesDePhotos(edition) ? creer("p", { classe: "boutons-fiche" }, interrupteurPhoto(edition)) : null,
     creer("p", { classe: "fin-fiche" },
       creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↑ Début",
         surclic: () => $("fiche").scrollTo({ top: 0, behavior: "smooth" }) }))
@@ -1266,7 +1290,7 @@ function ouvrirFiche(edition) {
 
   $("fiche-contenu").replaceChildren(
     creer("div", { classe: "fiche-corps" },
-      creer("div", { classe: "fiche-images" }, grande, groupesImages),
+      blocPhotos(edition),
       texteFiche
     )
   );
@@ -1465,11 +1489,30 @@ function listePlagesParDisque(plages, suivi) {
     const debut = disque && !vus.has(disque);
     if (debut) vus.add(disque);
     return [
-      debut ? creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque, texte: disque }) : null,
+      debut ? intertitreDisque(disques, disque) : null,
       lignePlage(plage, suivi),
     ];
   });
   return { liste: creer("ol", { classe: "plages" }, lignes), disques };
+}
+
+/**
+ * Intertitre « CD 2 » d'un coffret, avec à droite « ↑ Préc. » (sauf le premier disque)
+ * et « ↓ Suiv. » (sauf le dernier), pour passer d'un disque à l'autre.
+ */
+function intertitreDisque(disques, disque) {
+  const numero = disques.indexOf(disque);
+  const aller = (cible) => (evenement) => {
+    const liste = evenement.currentTarget.closest(".plages");
+    defilerFicheVers(liste.querySelector('[data-disque="' + cible + '"]'));
+  };
+  const lien = (texte, cible, titre) => creer("button", { type: "button", classe: "bouton-texte lien-fiche",
+    texte, title: titre + " : " + cible, surclic: aller(cible) });
+  return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
+    creer("span", { texte: disque }),
+    creer("span", { classe: "navigation-disques" },
+      numero > 0 ? lien("↑ Préc.", disques[numero - 1], "Disque précédent") : null,
+      numero < disques.length - 1 ? lien("↓ Suiv.", disques[numero + 1], "Disque suivant") : null));
 }
 
 /** Les plages réelles du disque sous une plage : elle-même, ou ses mouvements. */
@@ -2457,6 +2500,49 @@ async function changerStatut(edition, statut) {
   }
   await ecrireChampDiscogs(edition, resultat.champ, resultat.instance, option);
   edition.statut = statut;       // la fiche ouverte garde son objet
+}
+
+// ---------------------------------------------------------------------------
+// Grande photo : interrupteur « Grande photo : Discogs » en fin de fiche, enregistré dans le
+// champ liste Discogs « Photo principale » (« Discogs » ou « Automatique » : l'API ne sait pas vider une liste).
+// ---------------------------------------------------------------------------
+
+function interrupteurPhoto(edition) {
+  const bouton = creer("button", { type: "button", classe: "bouton bouton-petit bouton-statut", texte: "Grande photo : Discogs" });
+  const montrer = (oui) => {
+    bouton.classList.toggle("actif", oui);
+    bouton.setAttribute("aria-pressed", oui ? "true" : "false");
+    bouton.title = oui ? "Revenir à la photo MusicBrainz en grand" : "Afficher la photo Discogs en grand";
+  };
+  const remplacerPhotos = () => {
+    const ancien = $("fiche").querySelector(".fiche-images");
+    const nouveau = blocPhotos(edition);
+    ancien.replaceWith(nouveau);
+    nouveau.querySelectorAll(".vignettes").forEach((bloc) => bloc.ajuster && bloc.ajuster());
+  };
+  montrer(edition.photoDiscogs);
+  bouton.addEventListener("click", async () => {
+    const avant = edition.photoDiscogs;
+    const voulu = !avant;
+    montrer(voulu);
+    bouton.disabled = true;
+    try {
+      const { champ, instance } = await lireChampDiscogs(edition, CHAMP_PHOTO);
+      const option = (champ.options || []).find((o) => memeNom(o, voulu ? PHOTO_DISCOGS : PHOTO_AUTOMATIQUE));
+      if (!option) {
+        throw new Error("l'option « " + (voulu ? PHOTO_DISCOGS : PHOTO_AUTOMATIQUE) + " » n'existe pas dans la liste « "
+          + CHAMP_PHOTO + " » sur Discogs.");
+      }
+      await ecrireChampDiscogs(edition, champ, instance, option);
+      edition.photoDiscogs = voulu;   // la fiche ouverte garde son objet
+      remplacerPhotos();
+    } catch (erreur) {
+      montrer(avant);
+      window.alert("Grande photo : " + erreur.message);
+    }
+    bouton.disabled = false;
+  });
+  return bouton;
 }
 
 /** Réglage du jeton sur cet appareil : on le vérifie auprès de Discogs avant de le garder. */

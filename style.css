@@ -544,6 +544,11 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 /* Coffrets : liens « CD 1 · CD 2… » sous le titre Plages, intertitre au début de chaque disque */
 .liens-disques { margin: -4px 0 10px; line-height: 1.8; }
 .plage-disque { scroll-margin-top: 12px; }
+/* Intertitre d'un disque de coffret : nom à gauche, « ↑ Préc. · ↓ Suiv. » à droite. */
+.plage-disque { display: flex; align-items: baseline; gap: 12px; }
+.navigation-disques { margin-left: auto; display: flex; gap: 14px; font-weight: 400; }
+/* « ✎ Modifier mes Custom Fields Discogs » : un lien ambre, sans boîte (les boutons 🎧 / ★ gardent la leur). */
+.boutons-fiche { align-items: center; }
 
 /* Croix ✕ dans les cases de recherche (la croix d'origine du navigateur est masquée) */
 input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; display: none; }
@@ -580,4 +585,8 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
    fait moins de 16 px. Toutes les cases et listes passent donc en 16 px sur téléphone. */
 @media (max-width: 700px) {
   input, select, textarea { font-size: 16px !important; }
+}
+/* Téléphone : la croix ✕ de la fiche est fixe en haut à droite ; l'intertitre d'un disque s'arrête dessous. */
+@media (max-width: 700px) {
+  .plage-disque { scroll-margin-top: 56px; }
 }
