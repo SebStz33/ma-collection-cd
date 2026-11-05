@@ -1,31 +1,58 @@
 """
-Années d'enregistrement : corrections à la main, et repérage dans les textes Discogs.
+Années d'enregistrement : saisie manuelle, MusicBrainz, notes Discogs et titre ; disques « live ».
 
-Sources, de la plus sûre à la moins sûre :
-  1. ANNEES_CORRIGEES ci-dessous (écrites à la main) : elles l'emportent sur tout ;
+Sources de l'année d'enregistrement, de la plus sûre à la moins sûre (la première trouvée gagne) :
+  1. le champ perso Discogs « Année d’enregistrement (manuelle) », rempli à la main :
+     « 1958 », « 1958-1961 » ou « à trouver » (l'année connue est fausse, la vraie reste à trouver) ;
   2. MusicBrainz, édition exacte (lien Discogs ou code-barre) ;
-  3. MusicBrainz, autre édition du même album (même nombre de plages) ;
-  4. le texte « Notes » de la fiche Discogs et le titre du disque : pour l'instant,
-     seulement dans le rapport data/rapport_annees.txt, à relire avant de les afficher.
+  3. MusicBrainz, autre édition du même album (trouvée par le master Discogs) ;
+  4. le texte « Notes » de la fiche Discogs (« Recorded March 6, 1958 ») ;
+  5. le titre du disque (« Bossa Nova 1958-1961 »), sauf en classique, où une année dans le titre
+     est souvent celle de l'œuvre (« Requiem (Version 1893) »).
+
+L'outil n'écrit jamais dans le champ manuel : vide, il laisse faire les autres sources.
 
 Ce module n'utilise que la bibliothèque standard de Python.
 """
 
 import re
+import unicodedata
 from datetime import date
 
 # ---------------------------------------------------------------------------
-# Corrections à la main
+# Saisie manuelle (champ perso Discogs)
 # ---------------------------------------------------------------------------
 
-# Numéro de l'édition Discogs (le nombre à la fin de l'adresse discogs.com/release/…)
-#   -> (première année, dernière année) : c'est elle qui s'affiche ;
-#   -> None : aucune année d'enregistrement ne s'affiche (aucune source n'est fiable).
-# Exemple :
-#   1234567: (1994, 1995),   # Flûte Panorama : années de composition dans le titre
-#   7654321: None,
-ANNEES_CORRIGEES = {
-}
+CHAMP_MANUEL = "Année d’enregistrement (manuelle)"
+A_TROUVER = "à trouver"
+
+
+def simplifier(texte):
+    """Minuscules, sans accents, apostrophes droites : pour comparer des noms écrits un peu différemment."""
+    texte = unicodedata.normalize("NFD", (texte or "").strip().lower())
+    texte = "".join(c for c in texte if unicodedata.category(c) != "Mn")
+    return re.sub(r"[’‘`´]", "'", texte)
+
+
+def saisie_manuelle(champs):
+    """
+    Lit le champ manuel parmi les champs perso d'un exemplaire. Renvoie :
+      ("annees", [première, dernière]) ; ("a_trouver", None) ; ("illisible", texte) ; ou None (champ vide).
+    """
+    valeur = next((v for nom, v in (champs or {}).items() if simplifier(nom) == simplifier(CHAMP_MANUEL)), "")
+    valeur = (valeur or "").strip()
+    if not valeur:
+        return None
+    if simplifier(valeur) == simplifier(A_TROUVER):
+        return "a_trouver", None
+    periode = re.fullmatch(r"(\d{4})(?:\s*[-–/]\s*(\d{4}))?", valeur)
+    if periode:
+        debut = int(periode.group(1))
+        fin = int(periode.group(2) or debut)
+        if PREMIERE_ANNEE_POSSIBLE <= debut <= fin <= date.today().year:
+            return "annees", [debut, fin]
+    return "illisible", valeur
+
 
 # Premier enregistrement sonore (phonographe d'Edison) : une année plus ancienne n'est pas
 # une année d'enregistrement (c'est souvent celle de la composition, ou une faute de frappe).
@@ -36,7 +63,8 @@ PREMIERE_ANNEE_POSSIBLE = 1877
 # ---------------------------------------------------------------------------
 
 # Une année, ou une période : « 1958 », « 1958-1961 », « 1955-60 », « 1955/56 », « 1958 – 1961 ».
-MOTIF_ANNEES = re.compile(r"(?<!\d)(1[89]\d\d|20\d\d)(?:\s*[-–/]\s*(\d{4}|\d{2}))?(?!\d)")
+# « 1970s » (une décennie) et « 1958’s » ne comptent pas.
+MOTIF_ANNEES = re.compile(r"(?<!\d)(1[89]\d\d|20\d\d)(?:\s*[-–/]\s*(\d{4}|\d{2}))?(?![\d]|['’]?s\b)")
 
 # Mots qui annoncent un enregistrement, en plusieurs langues (texte mis en minuscules).
 MOTS_ENREGISTREMENT = re.compile(
@@ -106,6 +134,52 @@ def annees_du_titre(titre):
 
 
 # ---------------------------------------------------------------------------
+# Choix de l'année et disques live
+# ---------------------------------------------------------------------------
+
+def choisir_annees(disque, annees_mb, methode_mb, exactes, avec_manuelle=True):
+    """
+    Renvoie ([première, dernière] ou None, source) selon l'ordre de priorité ci-dessus
+    (sans la saisie manuelle si avec_manuelle est faux : c'est l'année « automatique »).
+    Sources : "manuelle", "a_trouver", "musicbrainz", "musicbrainz_album", "notes_discogs", "titre", ou None.
+    `exactes` : méthodes MusicBrainz qui désignent l'édition exacte.
+    """
+    manuelle = saisie_manuelle(disque.get("champs")) if avec_manuelle else None
+    if manuelle and manuelle[0] == "annees":
+        return manuelle[1], "manuelle"
+    if manuelle and manuelle[0] == "a_trouver":
+        return None, "a_trouver"
+    if annees_mb:
+        return list(annees_mb), ("musicbrainz" if methode_mb in exactes else "musicbrainz_album")
+    notes, _ = annees_des_notes(disque.get("notes_discogs"))
+    if notes:
+        return list(notes), "notes_discogs"
+    if "Classical" not in (disque.get("genres") or []):
+        titre = annees_du_titre(disque.get("titre"))
+        if titre:
+            return list(titre), "titre"
+    return None, None
+
+
+# Notes ou titre d'un disque enregistré en concert, en plusieurs langues.
+MOTS_LIVE = re.compile(
+    r"recorded live|live recording|live at|live in\b|live from|enregistrement public|enregistr[ée]+ en public"
+    r"|en concert|in concert|concert recording|recorded in concert|live-aufnahme|mitschnitt|en vivo|dal vivo",
+    re.IGNORECASE,
+)
+
+
+def indice_live(disque):
+    """Bout de texte qui montre que le disque est « live » (notes Discogs ou titre), ou None."""
+    for texte in (disque.get("titre"), disque.get("notes_discogs")):
+        trouve = MOTS_LIVE.search(texte or "")
+        if trouve:
+            debut = max(0, trouve.start() - 30)
+            return " ".join((texte or "")[debut:trouve.end() + 50].split())
+    return None
+
+
+# ---------------------------------------------------------------------------
 # Rapport
 # ---------------------------------------------------------------------------
 
@@ -117,57 +191,54 @@ def texte_periode(annees):
 
 def ecrire_rapport(fichier, disques):
     """
-    Rapport des années trouvées dans les notes Discogs et les titres, pour les relire
-    avant de les afficher. `disques` : les disques déjà construits (format de collection.json).
+    Rapport de contrôle : années tirées des notes et des titres (affichées, à vérifier),
+    saisies manuelles illisibles, et disques qui semblent « live » sans l'être dans Discogs.
+    `disques` : les disques déjà construits (format de collection.json).
     """
-    vus = set()
-    nouvelles, comparaisons = [], []
+    vus, editions = set(), []
     for disque in disques:
-        if disque["release_id"] in vus:
-            continue  # un doublon (2 exemplaires) n'est listé qu'une fois
-        vus.add(disque["release_id"])
-        notes, phrases = annees_des_notes(disque.get("notes_discogs"))
-        titre = annees_du_titre(disque.get("titre"))
-        if not notes and not titre:
-            continue
-        ligne = (disque, notes, phrases, titre)
-        if disque.get("annees_enregistrement"):
-            comparaisons.append(ligne)
-        else:
-            nouvelles.append(ligne)
+        if disque["release_id"] not in vus:  # un doublon (2 exemplaires) n'est listé qu'une fois
+            vus.add(disque["release_id"])
+            editions.append(disque)
 
-    def decrire(disque, notes, phrases, titre):
+    def nom(disque):
         artistes = ", ".join(disque.get("artistes_principaux") or [])
-        lignes = ["%s — %s (édition %s)" % (artistes, disque.get("titre"), disque["release_id"])]
-        if titre:
-            lignes.append("    titre : %s" % texte_periode(titre))
-        if notes:
-            lignes.append("    notes : %s   « %s »" % (texte_periode(notes), " / ".join(phrases)))
-        if disque.get("annees_enregistrement"):
-            lignes.append("    déjà connu : %s (%s)" % (texte_periode(disque["annees_enregistrement"]),
-                                                       disque.get("annees_enregistrement_source")))
-        return "\n".join(lignes)
+        return "%s — %s (édition %s)" % (artistes, disque.get("titre"), disque["release_id"])
 
-    # Pour juger la méthode : là où une année est déjà connue, la trouvée concorde-t-elle ?
-    def concorde(trouvee, connue):
-        return trouvee and connue and trouvee[0] <= connue[1] and connue[0] <= trouvee[1]
-    accords = sum(1 for d, n, _, t in comparaisons
-                  if all(concorde(x, d["annees_enregistrement"]) for x in (n, t) if x))
+    par_source = {}
+    for disque in editions:
+        par_source.setdefault(disque.get("annees_enregistrement_source"), []).append(disque)
 
-    sans_notes = sum(1 for d in disques if "notes_discogs" not in d)
-    texte = [
-        "Années d'enregistrement trouvées dans les notes Discogs et les titres, le %s" % date.today().isoformat(),
-        "Rien de ceci n'est affiché : à relire, puis à corriger dans scripts/annees.py (ANNEES_CORRIGEES).",
-        "",
-        "1. Éditions SANS année d'enregistrement : %d gagneraient une année" % len(nouvelles),
-        "",
-    ] + [decrire(*l) + "\n" for l in nouvelles] + [
-        "",
-        "2. Éditions qui ont DÉJÀ une année (contrôle de la méthode) : %d sur %d concordent"
-        % (accords, len(comparaisons)),
-        "",
-    ] + [decrire(*l) + "\n" for l in comparaisons]
-    if sans_notes:
-        texte.insert(2, "(%d disques dont les notes Discogs n'ont pas encore été lues.)" % sans_notes)
-    fichier.write_text("\n".join(texte) + "\n", encoding="utf-8")
-    print("  Rapport des années enregistré dans data/rapport_annees.txt (%d nouvelles)" % len(nouvelles))
+    lignes = ["Rapport des années d'enregistrement et des disques live, le %s" % date.today().isoformat(), "",
+              "Sources des années d'enregistrement (%d éditions) :" % len(editions)]
+    libelles = [("manuelle", "saisie manuelle"), ("musicbrainz", "MB sur édition exacte"),
+                ("musicbrainz_album", "MB sur autre édition de l'album"), ("notes_discogs", "notes Discogs"),
+                ("titre", "titre"), ("a_trouver", "« à trouver »"), (None, "aucune année")]
+    for cle, libelle in libelles:
+        lignes.append("  %-34s %d" % (libelle, len(par_source.get(cle, []))))
+
+    lignes += ["", "1. Années tirées des notes Discogs (affichées ; à corriger dans le champ manuel si besoin)", ""]
+    for disque in par_source.get("notes_discogs", []):
+        _, phrases = annees_des_notes(disque.get("notes_discogs"))
+        lignes += [nom(disque), "    %s   « %s »" % (texte_periode(disque["annees_enregistrement"]), " / ".join(phrases)), ""]
+
+    lignes += ["", "2. Années tirées du titre (affichées, hors classique)", ""]
+    for disque in par_source.get("titre", []):
+        lignes += [nom(disque), "    %s" % texte_periode(disque["annees_enregistrement"]), ""]
+
+    illisibles = [(d, saisie_manuelle(d.get("champs"))[1]) for d in editions
+                  if (saisie_manuelle(d.get("champs")) or ("",))[0] == "illisible"]
+    lignes += ["", "3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 » ou « à trouver ») : %d"
+               % len(illisibles), ""]
+    for disque, valeur in illisibles:
+        lignes += [nom(disque), "    « %s »" % valeur, ""]
+
+    live = [(d, indice_live(d)) for d in editions]
+    sans_champ = [(d, i) for d, i in live if i and not (d.get("champs") or {}).get("Live / Studio")]
+    lignes += ["", "4. Disques qui semblent live (notes ou titre), sans « Live / Studio » dans Discogs : %d"
+               % len(sans_champ), "   Rien n'est affiché : à relire avant de décider.", ""]
+    for disque, indice in sans_champ:
+        lignes += [nom(disque), "    « %s »" % indice, ""]
+
+    fichier.write_text("\n".join(lignes) + "\n", encoding="utf-8")
+    print("  Rapport enregistré dans data/rapport_annees.txt")
