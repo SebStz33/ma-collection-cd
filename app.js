@@ -30,6 +30,7 @@ const CHAMP_PHOTO = "Photo principale";        // champ liste Discogs : « Autom
 const PHOTO_DISCOGS = "Discogs";
 const PHOTO_AUTOMATIQUE = "Automatique";
 const CHAMP_LIVE = "Live / Studio";           // champ liste Discogs : « Live », « Live et Studio », « Studio » ou vide
+const LIVE = "Live";                           // option de « Live / Studio » donnée automatiquement
 const NON_PRECISE = "Non renseigné";          // « Live / Studio » vide, ou option « Non renseigné » sur Discogs
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const CATEGORIE_A_VENDRE = "À Vendre";        // dossier Discogs rangé en dernier (casse et accents ignorés)
@@ -462,7 +463,11 @@ function regrouperParEdition(disques) {
     edition.descriptions = valeursDuChamp(edition, CHAMP_DESCRIPTION);
     edition.favoris = new Set(valeursDuChamp(edition, CHAMP_FAVORIS).flatMap(lirePositions));
     edition.statut = valeursDuChampSouple(edition, CHAMP_STATUT).find((v) => !memeNom(v, STATUT_NEUTRE)) || "";
-    edition.enregistrement = valeursDuChampSouple(edition, CHAMP_LIVE)[0] || NON_PRECISE;
+    // « Live / Studio » : le champ perso Discogs s'il est rempli, sinon « Live » si le titre ou les notes
+    // Discogs le disent (live_auto_source, calculé par la synchro), sinon « Non renseigné ».
+    const live = valeursDuChampSouple(edition, CHAMP_LIVE).find((v) => !memeNom(v, NON_PRECISE));
+    edition.liveAuto = !live && Boolean(edition.live_auto_source);
+    edition.enregistrement = live || (edition.liveAuto ? LIVE : NON_PRECISE);
     // « Photo principale » = « Discogs » : la grande photo de la fiche est celle de Discogs, pas celle de MusicBrainz.
     edition.photoDiscogs = valeursDuChampSouple(edition, CHAMP_PHOTO).some((v) => memeNom(v, PHOTO_DISCOGS));
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
@@ -1365,6 +1370,7 @@ function blocSources(edition) {
     ["Correspondance MusicBrainz", methodes[edition.musicbrainz_methode] || "pas encore cherchée"],
     ["Œuvres identifiées (MusicBrainz)", edition.musicbrainz_methode && edition.musicbrainz_methode !== "aucune" ? oeuvres : null],
     ["Année d'enregistrement", anneesSource],
+    ["Live / Studio", edition.liveAuto ? SOURCES_ANNEES[edition.live_auto_source] : null],
     ["Année de parution", parution],
     ["Photos", photos],
     ["Mise à jour", edition.details_maj ? "fiche Discogs relue le " + formaterDate(edition.details_maj) : null],
@@ -2067,7 +2073,7 @@ function afficherStatistiques(liste) {
     carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),
     carteBarres("Formats", "", compter(liste, EXTRACTEURS.format), 10, appliquer("format")),
     carteBarres("Statut d’écoute", "Custom Field Discogs « " + CHAMP_STATUT + " »", compter(liste, EXTRACTEURS.statut), 10, appliquer("statut")),
-    carteBarres("Live / Studio", "Custom Field Discogs « " + CHAMP_LIVE + " »", compter(liste, EXTRACTEURS.enregistrement), 10,
+    carteBarres("Live / Studio", "Custom Field Discogs « " + CHAMP_LIVE + " », sinon « Live » d’après le titre ou les notes Discogs", compter(liste, EXTRACTEURS.enregistrement), 10,
       appliquer("enregistrement")),
     carteCompositeurs("Compositeurs classiques les plus présents", compositeursClassiques),
     carteCompositeurs("Autres compositeurs les plus présents", autresCompositeurs),

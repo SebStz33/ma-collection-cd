@@ -1,5 +1,6 @@
 """
-Années d'enregistrement : saisie manuelle, MusicBrainz, notes Discogs et titre ; disques « live ».
+Années d'enregistrement : saisie manuelle, MusicBrainz, notes Discogs et titre ; disques « live »
+(« Live » automatique d'après le titre ou les notes, quand le champ « Live / Studio » est vide).
 
 Sources de l'année d'enregistrement, de la plus sûre à la moins sûre (la première trouvée gagne) :
   1. le champ perso Discogs « Année d’enregistrement (manuelle) », rempli à la main :
@@ -24,6 +25,8 @@ from datetime import date
 # ---------------------------------------------------------------------------
 
 CHAMP_MANUEL = "Année d’enregistrement (manuelle)"
+CHAMP_LIVE = "Live / Studio"
+NON_RENSEIGNE = "Non renseigné"
 A_TROUVER = "à trouver"
 
 
@@ -161,22 +164,37 @@ def choisir_annees(disque, annees_mb, methode_mb, exactes, avec_manuelle=True):
     return None, None
 
 
-# Notes ou titre d'un disque enregistré en concert, en plusieurs langues.
+# Notes ou titre d'un disque enregistré en concert, en plusieurs langues. Des expressions entières :
+# « Violin Concerto » ne contient pas « in concert » ; « recorded live to two-track » (jargon de
+# studio : enregistré sans montage) n'est pas un concert.
 MOTS_LIVE = re.compile(
-    r"recorded live|live recording|live at|live in\b|live from|enregistrement public|enregistr[ée]+ en public"
-    r"|en concert|in concert|concert recording|recorded in concert|live-aufnahme|mitschnitt|en vivo|dal vivo",
+    r"\b(?:recorded live(?!\s+to\b)|live recordings?|live at|live in|live from|enregistrement public"
+    r"|enregistr[ée]+ en public|en concert|in concert|concert recordings?|live-aufnahme|konzertmitschnitt|mitschnitt"
+    r"|en vivo|dal vivo)\b",
     re.IGNORECASE,
 )
 
 
 def indice_live(disque):
-    """Bout de texte qui montre que le disque est « live » (notes Discogs ou titre), ou None."""
-    for texte in (disque.get("titre"), disque.get("notes_discogs")):
+    """
+    Le disque semble « live » d'après son titre ou ses notes Discogs :
+    renvoie (source, bout de texte) avec source "titre" ou "notes_discogs", ou None.
+    """
+    for source, texte in (("titre", disque.get("titre")), ("notes_discogs", disque.get("notes_discogs"))):
         trouve = MOTS_LIVE.search(texte or "")
         if trouve:
             debut = max(0, trouve.start() - 30)
-            return " ".join((texte or "")[debut:trouve.end() + 50].split())
+            return source, " ".join((texte or "")[debut:trouve.end() + 50].split())
     return None
+
+
+def source_live_auto(disque):
+    """
+    Source du « Live » automatique ("titre", "notes_discogs") ou None. La page ne l'applique que
+    si le champ perso Discogs « Live / Studio » est vide : le champ reste toujours prioritaire.
+    """
+    indice = indice_live(disque)
+    return indice[0] if indice else None
 
 
 # ---------------------------------------------------------------------------
@@ -233,12 +251,16 @@ def ecrire_rapport(fichier, disques):
     for disque, valeur in illisibles:
         lignes += [nom(disque), "    « %s »" % valeur, ""]
 
+    def champ_live(disque):
+        valeur = next((v for n, v in (disque.get("champs") or {}).items() if simplifier(n) == simplifier(CHAMP_LIVE)), "")
+        return "" if simplifier(valeur) == simplifier(NON_RENSEIGNE) else (valeur or "").strip()
+
     live = [(d, indice_live(d)) for d in editions]
-    sans_champ = [(d, i) for d, i in live if i and not (d.get("champs") or {}).get("Live / Studio")]
-    lignes += ["", "4. Disques qui semblent live (notes ou titre), sans « Live / Studio » dans Discogs : %d"
-               % len(sans_champ), "   Rien n'est affiché : à relire avant de décider.", ""]
-    for disque, indice in sans_champ:
-        lignes += [nom(disque), "    « %s »" % indice, ""]
+    sans_champ = [(d, i) for d, i in live if i and not champ_live(d)]
+    lignes += ["", "4. « Live » automatique (notes ou titre, champ « Live / Studio » vide) : %d" % len(sans_champ),
+               "   Affiché « Live » dans la page. Une erreur : choisir « Studio » ou « Live et Studio » dans Discogs.", ""]
+    for disque, (source, extrait) in sans_champ:
+        lignes += [nom(disque), "    %s : « %s »" % ("titre" if source == "titre" else "notes", extrait), ""]
 
     fichier.write_text("\n".join(lignes) + "\n", encoding="utf-8")
     print("  Rapport enregistré dans data/rapport_annees.txt")
