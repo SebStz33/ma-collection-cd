@@ -256,6 +256,9 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .fiche h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--texte-discret); margin: 18px 0 6px; }
 
 .noms { display: flex; flex-wrap: wrap; gap: 6px; }
+/* Rubrique de crédits limitée à une ligne (la hauteur d'un nom, mesurée par la page). */
+.noms-replies { max-height: var(--hauteur-ligne, 26px); overflow: hidden; }
+.voir-noms { margin-top: 6px; }
 .nom {
   background: var(--surface-2); border: 1px solid var(--bordure); border-radius: 14px;
   padding: 3px 10px; font-size: 13px; cursor: pointer;

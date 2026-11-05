@@ -499,10 +499,55 @@ function regrouperParEdition(disques) {
     appliquerAnneesManuelles(edition);
     // Clés de tri par nom de famille, comme dans l'index : « Glenn Gould » est rangé à Gould.
     edition.cleArtiste = (edition.artistes_principaux || []).length ? cleDeTri(edition.artistes_principaux[0], true) : "";
-    edition.cleCompositeur = (edition.compositeurs || []).length ? cleDeTri(edition.compositeurs[0], true) : "";
+    // Compositeur principal : le plus présent sur les plages (Discogs ne cite pas toujours le principal en
+    // premier, surtout dans un coffret). Il sert au tri par compositeur et à la valeur affichée au-dessus de la photo.
+    edition.presence = presenceDesNoms(edition);
+    edition.compositeurPrincipal = parPresence(edition, edition.compositeurs)[0] || "";
+    edition.cleCompositeur = edition.compositeurPrincipal ? cleDeTri(edition.compositeurPrincipal, true) : "";
     edition.index = construireIndexRecherche(edition);
     return edition;
   });
+}
+
+/**
+ * Nombre de plages où chaque nom est crédité : { compte: Map(nom normalisé -> plages), total }.
+ * Un crédit posé sur un groupe de plages (une œuvre et ses mouvements) compte pour chacune ;
+ * le compositeur de l'œuvre trouvé par MusicBrainz compte aussi.
+ */
+function presenceDesNoms(edition) {
+  const compte = new Map();
+  let total = 0;
+  const parcourir = (plages, herites) => {
+    for (const plage of plages || []) {
+      if (plage.type === "intertitre") continue;
+      const noms = new Set(herites);
+      for (const nom of plage.artistes || []) noms.add(normaliser(nom));
+      for (const credit of plage.credits || []) noms.add(normaliser(credit.nom));
+      if ((plage.sous_plages || []).length) {
+        parcourir(plage.sous_plages, noms);
+        continue;
+      }
+      if (plage.oeuvre && plage.oeuvre.compositeur) {
+        for (const nom of plage.oeuvre.compositeur.split(", ")) noms.add(normaliser(nom));
+      }
+      total += 1;
+      for (const nom of noms) compte.set(nom, (compte.get(nom) || 0) + 1);
+    }
+  };
+  parcourir(edition.plages, new Set());
+  return { compte, total };
+}
+
+/**
+ * Les noms rangés du plus présent sur les plages au moins présent (ordre de Discogs à égalité).
+ * Un nom crédité seulement sur le disque entier, sans plage précise, vaut pour toutes les plages.
+ */
+function parPresence(edition, noms) {
+  const { compte, total } = edition.presence || { compte: new Map(), total: 0 };
+  const poids = (nom) => compte.get(normaliser(nom)) || total;
+  return (noms || []).map((nom, rang) => [nom, poids(nom), rang])
+    .sort((a, b) => b[1] - a[1] || a[2] - b[2])
+    .map(([nom]) => nom);
 }
 
 /** Prépare, pour chaque édition, les textes dans lesquels la recherche cherchera. */
@@ -792,7 +837,7 @@ function correspond(edition) {
 const INFOS_DE_TRI = {
   artiste: { sans: "Sans artiste principal", manque: (e) => !e.cleArtiste },
   compositeur: { sans: "Sans compositeur", manque: (e) => !e.cleCompositeur,
-    valeur: (e) => (e.compositeurs || [])[0] || "" },
+    valeur: (e) => e.compositeurPrincipal || "" },
   annee: { sans: "Sans année de parution", manque: (e) => !e.annee, valeur: (e) => (e.annee ? String(e.annee) : "") },
   enregistrement: { sans: "Sans année d'enregistrement", manque: (e) => !(e.annees_enregistrement || []).length,
     valeur: (e) => {
@@ -1196,10 +1241,10 @@ function ouvrirFiche(edition) {
     [(edition.codes_barres || []).length > 1 ? "Codes-barres" : "Code-barre", (edition.codes_barres || []).join(", ")],
   ].filter(([, valeur]) => valeur);
 
+  // Les noms les plus présents sur les plages d'abord ; une seule ligne affichée, « Voir les N » pour le reste.
   const sectionPersonnes = ({ cle, libelle }) => [
       creer("h3", { texte: libelle }),
-      creer("div", { classe: "noms" },
-        edition[cle].map((nom) => creer("button", {
+      nomsSurUneLigne(parPresence(edition, edition[cle]).map((nom) => creer("button", {
           type: "button", classe: "nom", texte: nom, title: "Chercher " + nom + " (" + libelle.toLowerCase() + ")",
           surclic: () => chercherNom(nom, cle),
         }))
@@ -1325,13 +1370,23 @@ function ouvrirFiche(edition) {
   $("fiche").showModal();
   $("fiche").scrollTop = 0;
   document.querySelectorAll("#fiche .vignettes").forEach((bloc) => bloc.ajuster && bloc.ajuster());
+  ajusterNoms($("fiche"));
+  // Autres crédits dépliés : leurs rubriques se mesurent à ce moment-là.
+  if (autresCredits) autresCredits.element.firstChild.addEventListener("click", () => ajusterNoms(autresCredits.contenu));
 
   let minuterie = null;
   let numeroResultat = 0;
   const chercher = () => {
     const nombre = surligner(texteFiche, champRecherche.value);
     // Un nom trouvé dans les crédits repliés : on les ouvre pour le montrer.
-    if (autresCredits && autresCredits.contenu.querySelector("mark.trouve")) autresCredits.ouvrir();
+    if (autresCredits && autresCredits.contenu.querySelector("mark.trouve")) {
+      autresCredits.ouvrir();
+      ajusterNoms(autresCredits.contenu);
+    }
+    // Un nom trouvé dans une rubrique limitée à une ligne : on la déplie.
+    texteFiche.querySelectorAll(".noms-ligne").forEach((bloc) => {
+      if (bloc.querySelector("mark.trouve") && bloc.ouvrir) bloc.ouvrir();
+    });
     if (notesDiscogs && notesDiscogs.contenu.querySelector("mark.trouve")) notesDiscogs.ouvrir();
     numeroResultat = 0;
     resultats.textContent = !champRecherche.value.trim() ? ""
@@ -1401,6 +1456,39 @@ function blocSources(edition) {
   return creer("div", { classe: "sources-fiche" },
     creer("h3", { texte: "Sources" }),
     creer("dl", {}, lignes.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])));
+}
+
+/**
+ * Noms d'une rubrique de crédits sur une seule ligne, avec « Voir les N » / « Replier » s'il en reste
+ * de cachés. La hauteur d'une ligne se mesure une fois la fiche affichée : appeler ajusterNoms(fiche).
+ */
+function nomsSurUneLigne(boutons) {
+  const noms = creer("div", { classe: "noms noms-replies" }, boutons);
+  const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus voir-noms" });
+  lien.hidden = true;
+  let ouvert = false;
+  const montrer = () => {
+    noms.classList.toggle("noms-replies", !ouvert);
+    lien.textContent = ouvert ? "Replier" : "Voir les " + boutons.length;
+  };
+  lien.addEventListener("click", () => { ouvert = !ouvert; montrer(); });
+  const bloc = creer("div", { classe: "noms-ligne" }, noms, lien);
+  bloc.ajuster = () => {
+    if (!noms.offsetParent) return;            // rubrique repliée : mesurée quand elle s'ouvre
+    const ligne = boutons.length ? boutons[0].offsetHeight : 0;
+    noms.style.setProperty("--hauteur-ligne", ligne + "px");
+    const deborde = boutons.some((b) => b.offsetTop - boutons[0].offsetTop > ligne / 2);
+    lien.hidden = !deborde;
+    if (!deborde) ouvert = false;
+    montrer();
+  };
+  bloc.ouvrir = () => { ouvert = true; montrer(); };
+  return bloc;
+}
+
+/** Mesure les rubriques de noms affichées (voir nomsSurUneLigne). */
+function ajusterNoms(racine) {
+  racine.querySelectorAll(".noms-ligne").forEach((bloc) => bloc.ajuster && bloc.ajuster());
 }
 
 /**
