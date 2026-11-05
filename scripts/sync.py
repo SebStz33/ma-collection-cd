@@ -520,6 +520,8 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     entree_mb = entree_mb or {}
     disque["plages"] = musicbrainz.ajouter_oeuvres(disque["plages"], entree_mb.get("oeuvres"),
                                                    avec_parente="Classical" in disque["genres"])
+    # Durées : celles de Discogs, complétées par MusicBrainz (édition exacte) pour les plages qui n'en ont pas.
+    disque["plages"] = musicbrainz.ajouter_durees(disque["plages"], entree_mb.get("durees"))
     # Images MusicBrainz (haute définition) d'abord, puis celles de Discogs.
     disque["images"] = (entree_mb.get("images") or []) + [i for i in disque["images"] if i.get("type") != "musicbrainz"]
     disque["musicbrainz"] = (

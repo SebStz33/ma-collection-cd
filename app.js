@@ -1236,6 +1236,7 @@ function ouvrirFiche(edition) {
     ["Label", (edition.labels || []).map((l) => l.nom + (l.catno ? " – " + l.catno : "")).join(" ; ")],
     ["Année de parution", edition.annee || "inconnue"],
     ["Format", decrireFormatsFiche(edition.formats)],
+    ["Durée", texteDuree(dureeTotale(edition.plages || []))],
     ["Genres", (edition.genres || []).join(", ")],
     ["Styles", (edition.styles || []).join(", ")],
     [(edition.codes_barres || []).length > 1 ? "Codes-barres" : "Code-barre", (edition.codes_barres || []).join(", ")],
@@ -1450,6 +1451,11 @@ function blocSources(edition) {
     ["Année d'enregistrement", anneesSource],
     ["Live / Studio", edition.liveAuto ? SOURCES_ANNEES[edition.live_auto_source] : null],
     ["Année de parution", parution],
+    ["Durées", (() => {
+      const reelles = (edition.plages || []).flatMap(plagesReelles);
+      const mb = reelles.filter((p) => p.duree_source === "musicbrainz").length;
+      return mb ? (mb === reelles.length ? "MusicBrainz" : "Discogs, et MusicBrainz pour " + mb + " plage" + (mb > 1 ? "s" : "")) : null;
+    })()],
     ["Photos", photos],
     ["Mise à jour", edition.details_maj ? "fiche Discogs relue le " + formaterDate(edition.details_maj) : null],
   ].filter(([, valeur]) => valeur);
@@ -1572,6 +1578,28 @@ function allerAuResultat(bloc, numero) {
  * `suivi.precedente` : identifiant de la dernière œuvre MusicBrainz affichée, pour ne
  * l'écrire qu'une fois sur une suite de mouvements de la même œuvre ; `suivi.edition` : la fiche.
  */
+/** « 4:20 » ou « 1:02:05 » -> secondes ; null si la durée est absente ou illisible. */
+function secondesDe(duree) {
+  const parties = String(duree || "").trim().split(":");
+  if (parties.length < 2 || parties.some((p) => !/^\d+$/.test(p))) return null;
+  return parties.reduce((total, partie) => total * 60 + Number(partie), 0);
+}
+
+/** Durée totale de plages : { secondes, complete } (complete faux si une plage n'a pas de durée). */
+function dureeTotale(plages) {
+  const durees = plages.flatMap(plagesReelles).map((p) => secondesDe(p.duree));
+  return { secondes: durees.reduce((t, d) => t + (d || 0), 0), complete: durees.every((d) => d !== null) };
+}
+
+/** « 47 min », « 1 h 12 min », « au moins 1 h 10 min » ; "" si aucune durée connue. */
+function texteDuree({ secondes, complete }) {
+  if (!secondes) return "";
+  const minutes = Math.round(secondes / 60);
+  const heures = Math.floor(minutes / 60);
+  const texte = heures ? heures + " h " + String(minutes % 60).padStart(2, "0") + " min" : Math.max(minutes, 1) + " min";
+  return complete ? texte : "au moins " + texte;
+}
+
 function listePlages(plages, suivi) {
   return creer("ol", { classe: "plages" }, plages.map((plage) => lignePlage(plage, suivi)));
 }
@@ -1606,7 +1634,7 @@ function listePlagesParDisque(plages, suivi) {
     const debut = disque && !vus.has(disque);
     if (debut) vus.add(disque);
     return [
-      debut ? intertitreDisque(disques, disque) : null,
+      debut ? intertitreDisque(disques, disque, texteDuree(dureeTotale(plages.filter((p) => disqueDeLaPlage(p) === disque)))) : null,
       lignePlage(plage, suivi),
     ];
   });
@@ -1617,7 +1645,7 @@ function listePlagesParDisque(plages, suivi) {
  * Intertitre « CD 2 » d'un coffret, avec à droite « ↑↑ ↑ Préc. » (sauf au début)
  * et « ↓ Suiv. ↓↓ » (sauf à la fin), pour passer d'un disque à l'autre ou aller au premier / dernier.
  */
-function intertitreDisque(disques, disque) {
+function intertitreDisque(disques, disque, duree = "") {
   const numero = disques.indexOf(disque);
   const aller = (cible) => (evenement) => {
     const liste = evenement.currentTarget.closest(".plages");
@@ -1627,6 +1655,7 @@ function intertitreDisque(disques, disque) {
     texte, title: titre + " : " + cible, surclic: aller(cible) });
   return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
     creer("span", { texte: disque }),
+    duree ? creer("span", { classe: "duree-disque", texte: duree }) : null,
     // ↑↑ (premier disque) et ↓↓ (dernier) seulement s'ils mènent ailleurs que « Préc. » et « Suiv. ».
     creer("span", { classe: "navigation-disques" },
       numero > 1 ? lien("↑↑", disques[0], "Premier disque", "fleche-double") : null,
@@ -1710,7 +1739,11 @@ function lignePlage(plage, suivi) {
       credits.length ? creer("div", { classe: "plage-credits", texte: creditsParRole(credits) }) : null,
       ligneOeuvre(plage, suivi)
     ),
-    creer("span", { classe: "plage-duree", texte: plage.duree }),
+    // Une œuvre en plusieurs mouvements : la durée totale de ses mouvements.
+    (plage.sous_plages || []).length && !plage.duree
+      ? creer("span", { classe: "plage-duree duree-oeuvre", texte: texteDuree(dureeTotale(plage.sous_plages)) })
+      : creer("span", { classe: "plage-duree", texte: plage.duree,
+        title: plage.duree_source === "musicbrainz" ? "Durée MusicBrainz (absente de Discogs)" : null }),
     !(plage.sous_plages || []).length && plage.position && suivi.edition ? boutonFavori(plage, suivi.edition) : creer("span"),
     (plage.sous_plages || []).length ? listePlages(plage.sous_plages, suivi) : null
   );
