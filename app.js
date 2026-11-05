@@ -1503,8 +1503,8 @@ function listePlagesParDisque(plages, suivi) {
 }
 
 /**
- * Intertitre « CD 2 » d'un coffret, avec à droite « ↑ Préc. » (sauf le premier disque)
- * et « ↓ Suiv. » (sauf le dernier), pour passer d'un disque à l'autre.
+ * Intertitre « CD 2 » d'un coffret, avec à droite « ⇈ ↑ Préc. » (sauf au début)
+ * et « ↓ Suiv. ⇊ » (sauf à la fin), pour passer d'un disque à l'autre ou aller au premier / dernier.
  */
 function intertitreDisque(disques, disque) {
   const numero = disques.indexOf(disque);
@@ -1516,9 +1516,12 @@ function intertitreDisque(disques, disque) {
     texte, title: titre + " : " + cible, surclic: aller(cible) });
   return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
     creer("span", { texte: disque }),
+    // ⇈ (premier disque) et ⇊ (dernier) seulement s'ils mènent ailleurs que « Préc. » et « Suiv. ».
     creer("span", { classe: "navigation-disques" },
+      numero > 1 ? lien("⇈", disques[0], "Premier disque") : null,
       numero > 0 ? lien("↑ Préc.", disques[numero - 1], "Disque précédent") : null,
-      numero < disques.length - 1 ? lien("↓ Suiv.", disques[numero + 1], "Disque suivant") : null));
+      numero < disques.length - 1 ? lien("↓ Suiv.", disques[numero + 1], "Disque suivant") : null,
+      numero < disques.length - 2 ? lien("⇊", disques[disques.length - 1], "Dernier disque") : null));
 }
 
 /** Les plages réelles du disque sous une plage : elle-même, ou ses mouvements. */
