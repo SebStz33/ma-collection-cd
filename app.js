@@ -21,8 +21,9 @@ const CHAMP_FAVORIS = "Pistes favorites";    // numéros des plages favorites, t
 const CHAMP_STATUT = "Statut d’écoute";       // champ liste Discogs : « À écouter », « Favori »… ou « Aucun »
 const STATUT_NEUTRE = "Aucun";                // option de « Statut » qui démarque (Discogs refuse de vider une liste)
 const SANS_STATUT = "Sans statut";            // filtre et stats : « Aucun » ou champ vide
-const STATUTS_CONNUS = ["À écouter", "Favori"];         // boutons proposés si la synchro n'a pas encore lu la liste
-const REPERES_STATUT = { "a ecouter": "🎧", favori: "★" }; // repère par statut (clé sans accents ni majuscules)
+const STATUTS_CONNUS = ["À écouter", "Favori", "À chercher"];         // boutons proposés si la synchro n'a pas encore lu la liste
+const REPERES_STATUT = { "a ecouter": "🎧", favori: "★", "a chercher": "🔍" }; // repère par statut (clé sans accents ni majuscules)
+// « À chercher » : disque physique égaré (la Localisation dit où chercher), à distinguer de la localisation « Introuvable ».
 const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
 const CHAMP_ANNEE_MANUELLE = "Année d’enregistrement (manuelle)";  // champ texte : « 1958 », « 1958-1961 » ou « à trouver »
 const A_TROUVER = "à trouver";
