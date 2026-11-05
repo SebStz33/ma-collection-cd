@@ -1745,7 +1745,10 @@ function lignePlage(plage, suivi) {
       ? creer("span", { classe: "plage-duree duree-oeuvre", texte: texteDuree(dureeTotale(plage.sous_plages)) })
       : creer("span", { classe: "plage-duree", texte: plage.duree,
         title: plage.duree_source === "musicbrainz" ? "Durée MusicBrainz (absente de Discogs)" : null }),
-    !(plage.sous_plages || []).length && plage.position && suivi.edition ? boutonFavori(plage, suivi.edition) : creer("span"),
+    // Un cœur par plage ; sur une œuvre à mouvements, un cœur qui coche ou décoche tous ses mouvements.
+    !suivi.edition ? creer("span")
+      : (plage.sous_plages || []).length ? boutonFavoriGroupe(plage, suivi.edition)
+      : plage.position ? boutonFavori(plage, suivi.edition) : creer("span"),
     (plage.sous_plages || []).length ? listePlages(plage.sous_plages, suivi) : null
   );
 }
@@ -2508,22 +2511,38 @@ async function ouvrirEdition(edition) {
 
 /** ♡ / ♥ d'une plage. Cliquable seulement sur un appareil où le jeton Discogs est enregistré. */
 function boutonFavori(plage, edition) {
-  const favori = edition.favoris.has(plage.position);
+  return coeur(edition, [plage.position], "Piste favorite");
+}
+
+/**
+ * ♡ / ♥ d'une œuvre à mouvements (un concerto, une sonate) : plein quand tous ses mouvements sont
+ * favoris ; un clic les ajoute tous (ou les retire tous). Seuls les mouvements sont enregistrés.
+ */
+function boutonFavoriGroupe(groupe, edition) {
+  const positions = toutesLesPlages(groupe.sous_plages).map(({ plage }) => plage.position).filter(Boolean);
+  return positions.length ? coeur(edition, positions, "Tous les mouvements en favoris") : creer("span");
+}
+
+/** Cœur pour une ou plusieurs positions de plages : plein si elles sont toutes favorites. */
+function coeur(edition, positions, titreFixe) {
+  const tous = (favoris) => positions.every((p) => favoris.has(p));
   if (!jeton()) {
-    return favori ? creer("span", { classe: "favori actif", texte: "♥", title: "Piste favorite" }) : creer("span");
+    return tous(edition.favoris) ? creer("span", { classe: "favori actif", texte: "♥", title: titreFixe }) : creer("span");
   }
-  const bouton = creer("button", { type: "button", classe: "favori", "data-position": plage.position });
-  const montrer = (oui) => montrerFavori(bouton, oui);
-  montrer(favori);
+  const bouton = creer("button", { type: "button", classe: "favori", "data-positions": positions.join("|") });
+  const montrer = (oui) => montrerFavori(bouton, oui, positions.length > 1);
+  montrer(tous(edition.favoris));
   bouton.addEventListener("click", async () => {
     const voulu = !bouton.classList.contains("actif");
     montrer(voulu);              // réponse immédiate à l'écran…
     bouton.disabled = true;
     try {
-      const favoris = await basculerFavori(edition, plage.position, voulu);
-      // Discogs a pu avoir d'autres plages favorites (ajoutées sur un autre appareil) : tous les cœurs suivent.
-      for (const autre of document.querySelectorAll("#fiche-contenu .favori[data-position]")) {
-        montrerFavori(autre, favoris.has(autre.dataset.position));
+      const favoris = await basculerFavori(edition, positions, voulu);
+      // Discogs a pu avoir d'autres plages favorites (ajoutées sur un autre appareil) : tous les cœurs suivent,
+      // ceux des plages comme ceux des œuvres.
+      for (const autre of document.querySelectorAll("#fiche-contenu .favori[data-positions]")) {
+        const liste = autre.dataset.positions.split("|");
+        montrerFavori(autre, liste.every((p) => favoris.has(p)), liste.length > 1);
       }
     } catch (erreur) {
       montrer(!voulu);           // … annulée si Discogs refuse
@@ -2534,21 +2553,25 @@ function boutonFavori(plage, edition) {
   return bouton;
 }
 
-function montrerFavori(bouton, oui) {
+function montrerFavori(bouton, oui, groupe = false) {
   bouton.textContent = oui ? "♥" : "♡";
   bouton.classList.toggle("actif", oui);
-  bouton.title = oui ? "Retirer des pistes favorites" : "Ajouter aux pistes favorites";
+  bouton.title = groupe
+    ? (oui ? "Retirer tous les mouvements des pistes favorites" : "Ajouter tous les mouvements aux pistes favorites")
+    : (oui ? "Retirer des pistes favorites" : "Ajouter aux pistes favorites");
   bouton.setAttribute("aria-label", bouton.title);
 }
 
 let definitionsChamps = null;   // champs personnalisés Discogs, lus une fois par session
 
-/** Ajoute ou retire une plage du champ « Pistes favorites » sur Discogs, puis met la page à jour. */
-async function basculerFavori(edition, position, ajouter) {
+/** Ajoute ou retire des plages (une liste de positions) du champ « Pistes favorites » sur Discogs, puis met la page à jour. */
+async function basculerFavori(edition, aChanger, ajouter) {
   const { champ, instance, valeurActuelle } = await lireChampDiscogs(edition, CHAMP_FAVORIS);
   const positions = new Set(lirePositions(valeurActuelle));
-  if (ajouter) positions.add(position);
-  else positions.delete(position);
+  for (const position of aChanger) {
+    if (ajouter) positions.add(position);
+    else positions.delete(position);
+  }
   // Rangées dans l'ordre du disque ; une position inconnue de la tracklist reste, à la fin.
   const ordre = toutesLesPlages(edition.plages).map(({ plage }) => plage.position);
   const valeur = [...positions]
