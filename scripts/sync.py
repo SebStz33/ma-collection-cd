@@ -534,6 +534,9 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     choix = (disque, entree_mb.get("annees_enregistrement"), entree_mb.get("methode"), musicbrainz.METHODES_EXACTES)
     disque["annees_enregistrement"], disque["annees_enregistrement_source"] = annees.choisir_annees(*choix)
     disque["annees_enregistrement_auto"] = list(annees.choisir_annees(*choix, avec_manuelle=False))
+    # « Live » automatique d'après le titre ou les notes Discogs ("titre", "notes_discogs" ou None) :
+    # la page l'applique seulement si le champ perso « Live / Studio » est vide.
+    disque["live_auto_source"] = annees.source_live_auto(disque)
     # Année de parution : celle de Discogs, sinon celle de l'édition exacte sur MusicBrainz.
     # La source est gardée pour plus tard ; la page ne l'affiche pas.
     if disque["annee"]:
