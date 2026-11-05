@@ -243,6 +243,9 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .fiche-images img.grande { width: 100%; border-radius: 8px; display: block; background: var(--fond); cursor: zoom-in; }
 .vignettes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
 .legende-photos { margin: 10px 0 0; font-size: 12px; color: var(--texte-discret); }
+/* Peu de photos : les groupes MusicBrainz et Discogs côte à côte, chacun avec sa légende. */
+.groupes-photos.sur-une-ligne { display: flex; flex-wrap: wrap; column-gap: 28px; }
+.groupes-photos.sur-une-ligne .legende-photos { width: 0; white-space: nowrap; }
 .vignettes button { padding: 0; border: 2px solid transparent; border-radius: 4px; background: none; cursor: pointer; }
 .vignettes button.actif { border-color: var(--accent); }
 .vignettes img { width: 52px; height: 52px; object-fit: cover; display: block; border-radius: 2px; }
@@ -256,6 +259,9 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .fiche h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--texte-discret); margin: 18px 0 6px; }
 
 .noms { display: flex; flex-wrap: wrap; gap: 6px; }
+/* Rubrique de crédits limitée à une ligne (la hauteur d'un nom, mesurée par la page). */
+.noms-replies { max-height: var(--hauteur-ligne, 26px); overflow: hidden; }
+.voir-noms { margin-top: 6px; }
 .nom {
   background: var(--surface-2); border: 1px solid var(--bordure); border-radius: 14px;
   padding: 3px 10px; font-size: 13px; cursor: pointer;
@@ -275,6 +281,9 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .plage > .plages .plage:last-child { border-bottom: 0; }
 .plage-oeuvre > div .plage-titre { font-weight: 600; }
 .plage-position, .plage-duree { color: var(--texte-discret); font-variant-numeric: tabular-nums; }
+.duree-oeuvre { white-space: nowrap; }
+/* Durée d'un disque de coffret, à côté de son nom (« CD 3  74 min »). */
+.duree-disque { color: var(--texte-discret); font-weight: 400; font-size: 13px; }
 .plage-artistes { color: var(--texte-2); font-size: 13px; }
 .plage-credits { color: var(--texte-discret); font-size: 12px; }
 .plage-intertitre { font-weight: 600; color: var(--accent); padding: 12px 0 4px; border-bottom: 1px solid var(--bordure); }

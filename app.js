@@ -21,8 +21,9 @@ const CHAMP_FAVORIS = "Pistes favorites";    // numéros des plages favorites, t
 const CHAMP_STATUT = "Statut d’écoute";       // champ liste Discogs : « À écouter », « Favori »… ou « Aucun »
 const STATUT_NEUTRE = "Aucun";                // option de « Statut » qui démarque (Discogs refuse de vider une liste)
 const SANS_STATUT = "Sans statut";            // filtre et stats : « Aucun » ou champ vide
-const STATUTS_CONNUS = ["À écouter", "Favori"];         // boutons proposés si la synchro n'a pas encore lu la liste
-const REPERES_STATUT = { "a ecouter": "🎧", favori: "★" }; // repère par statut (clé sans accents ni majuscules)
+const STATUTS_CONNUS = ["À écouter", "Favori", "À chercher"];         // boutons proposés si la synchro n'a pas encore lu la liste
+const REPERES_STATUT = { "a ecouter": "🎧", favori: "★", "a chercher": "🔍" }; // repère par statut (clé sans accents ni majuscules)
+// « À chercher » : disque physique égaré (la Localisation dit où chercher), à distinguer de la localisation « Introuvable ».
 const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
 const CHAMP_ANNEE_MANUELLE = "Année d’enregistrement (manuelle)";  // champ texte : « 1958 », « 1958-1961 » ou « à trouver »
 const A_TROUVER = "à trouver";
@@ -499,10 +500,55 @@ function regrouperParEdition(disques) {
     appliquerAnneesManuelles(edition);
     // Clés de tri par nom de famille, comme dans l'index : « Glenn Gould » est rangé à Gould.
     edition.cleArtiste = (edition.artistes_principaux || []).length ? cleDeTri(edition.artistes_principaux[0], true) : "";
-    edition.cleCompositeur = (edition.compositeurs || []).length ? cleDeTri(edition.compositeurs[0], true) : "";
+    // Compositeur principal : le plus présent sur les plages (Discogs ne cite pas toujours le principal en
+    // premier, surtout dans un coffret). Il sert au tri par compositeur et à la valeur affichée au-dessus de la photo.
+    edition.presence = presenceDesNoms(edition);
+    edition.compositeurPrincipal = parPresence(edition, edition.compositeurs)[0] || "";
+    edition.cleCompositeur = edition.compositeurPrincipal ? cleDeTri(edition.compositeurPrincipal, true) : "";
     edition.index = construireIndexRecherche(edition);
     return edition;
   });
+}
+
+/**
+ * Nombre de plages où chaque nom est crédité : { compte: Map(nom normalisé -> plages), total }.
+ * Un crédit posé sur un groupe de plages (une œuvre et ses mouvements) compte pour chacune ;
+ * le compositeur de l'œuvre trouvé par MusicBrainz compte aussi.
+ */
+function presenceDesNoms(edition) {
+  const compte = new Map();
+  let total = 0;
+  const parcourir = (plages, herites) => {
+    for (const plage of plages || []) {
+      if (plage.type === "intertitre") continue;
+      const noms = new Set(herites);
+      for (const nom of plage.artistes || []) noms.add(normaliser(nom));
+      for (const credit of plage.credits || []) noms.add(normaliser(credit.nom));
+      if ((plage.sous_plages || []).length) {
+        parcourir(plage.sous_plages, noms);
+        continue;
+      }
+      if (plage.oeuvre && plage.oeuvre.compositeur) {
+        for (const nom of plage.oeuvre.compositeur.split(", ")) noms.add(normaliser(nom));
+      }
+      total += 1;
+      for (const nom of noms) compte.set(nom, (compte.get(nom) || 0) + 1);
+    }
+  };
+  parcourir(edition.plages, new Set());
+  return { compte, total };
+}
+
+/**
+ * Les noms rangés du plus présent sur les plages au moins présent (ordre de Discogs à égalité).
+ * Un nom crédité seulement sur le disque entier, sans plage précise, vaut pour toutes les plages.
+ */
+function parPresence(edition, noms) {
+  const { compte, total } = edition.presence || { compte: new Map(), total: 0 };
+  const poids = (nom) => compte.get(normaliser(nom)) || total;
+  return (noms || []).map((nom, rang) => [nom, poids(nom), rang])
+    .sort((a, b) => b[1] - a[1] || a[2] - b[2])
+    .map(([nom]) => nom);
 }
 
 /** Prépare, pour chaque édition, les textes dans lesquels la recherche cherchera. */
@@ -792,7 +838,7 @@ function correspond(edition) {
 const INFOS_DE_TRI = {
   artiste: { sans: "Sans artiste principal", manque: (e) => !e.cleArtiste },
   compositeur: { sans: "Sans compositeur", manque: (e) => !e.cleCompositeur,
-    valeur: (e) => (e.compositeurs || [])[0] || "" },
+    valeur: (e) => e.compositeurPrincipal || "" },
   annee: { sans: "Sans année de parution", manque: (e) => !e.annee, valeur: (e) => (e.annee ? String(e.annee) : "") },
   enregistrement: { sans: "Sans année d'enregistrement", manque: (e) => !(e.annees_enregistrement || []).length,
     valeur: (e) => {
@@ -1109,6 +1155,9 @@ function chercherNom(nom, role) {
  * « Voir les N photos restantes » pour déplier les autres (les coffrets en ont parfois des centaines).
  * Les vignettes repliées sont seulement cachées : la visionneuse les parcourt toujours.
  */
+// Jusqu'à 5 photos en tout (une ligne sur iPhone), MusicBrainz et Discogs sont côte à côte.
+const PHOTOS_SUR_UNE_LIGNE = 5;
+
 function vignettesRepliables(boutons) {
   const bloc = creer("div", { classe: "vignettes" }, boutons);
   let visibles = VIGNETTES_VISIBLES;
@@ -1169,11 +1218,15 @@ function blocPhotos(edition) {
     ["Discogs", images.map((image, numero) => [image, numero]).filter(([image]) => image.type !== "musicbrainz")],
   ].filter(([, liste]) => liste.length);
   if (images.length && images[0].type !== "musicbrainz") sources.reverse();
-  const groupesImages = sources.map(([source, liste]) => [
-    creer("p", { classe: "legende-photos", texte: "photos " + source }),
+  // Peu de photos (PHOTOS_SUR_UNE_LIGNE au plus, toutes sources) : les deux groupes côte à côte, sur une ligne,
+  // avec une légende courte (« MusicBrainz », « Discogs ») qui ne force pas la largeur du groupe.
+  const surUneLigne = sources.length > 1 && images.length <= PHOTOS_SUR_UNE_LIGNE;
+  const groupesImages = sources.map(([source, liste]) => creer("div", { classe: "groupe-photos" },
+    creer("p", { classe: "legende-photos", texte: (surUneLigne ? "" : "photos ") + source }),
     images.length > 1 ? vignettesRepliables(liste.map(([image, numero]) => vignette(image, numero))) : null,
-  ]);
-  return creer("div", { classe: "fiche-images" }, grande, groupesImages);
+  ));
+  return creer("div", { classe: "fiche-images" }, grande,
+    creer("div", { classe: surUneLigne ? "groupes-photos sur-une-ligne" : "groupes-photos" }, groupesImages));
 }
 
 /** Vrai si l'édition a des photos des deux sources : le choix de la grande photo a alors un sens. */
@@ -1191,15 +1244,16 @@ function ouvrirFiche(edition) {
     ["Label", (edition.labels || []).map((l) => l.nom + (l.catno ? " – " + l.catno : "")).join(" ; ")],
     ["Année de parution", edition.annee || "inconnue"],
     ["Format", decrireFormatsFiche(edition.formats)],
+    ["Durée", texteDuree(dureeTotale(edition.plages || []))],
     ["Genres", (edition.genres || []).join(", ")],
     ["Styles", (edition.styles || []).join(", ")],
     [(edition.codes_barres || []).length > 1 ? "Codes-barres" : "Code-barre", (edition.codes_barres || []).join(", ")],
   ].filter(([, valeur]) => valeur);
 
+  // Les noms les plus présents sur les plages d'abord ; une seule ligne affichée, « Voir les N » pour le reste.
   const sectionPersonnes = ({ cle, libelle }) => [
       creer("h3", { texte: libelle }),
-      creer("div", { classe: "noms" },
-        edition[cle].map((nom) => creer("button", {
+      nomsSurUneLigne(parPresence(edition, edition[cle]).map((nom) => creer("button", {
           type: "button", classe: "nom", texte: nom, title: "Chercher " + nom + " (" + libelle.toLowerCase() + ")",
           surclic: () => chercherNom(nom, cle),
         }))
@@ -1325,13 +1379,23 @@ function ouvrirFiche(edition) {
   $("fiche").showModal();
   $("fiche").scrollTop = 0;
   document.querySelectorAll("#fiche .vignettes").forEach((bloc) => bloc.ajuster && bloc.ajuster());
+  ajusterNoms($("fiche"));
+  // Autres crédits dépliés : leurs rubriques se mesurent à ce moment-là.
+  if (autresCredits) autresCredits.element.firstChild.addEventListener("click", () => ajusterNoms(autresCredits.contenu));
 
   let minuterie = null;
   let numeroResultat = 0;
   const chercher = () => {
     const nombre = surligner(texteFiche, champRecherche.value);
     // Un nom trouvé dans les crédits repliés : on les ouvre pour le montrer.
-    if (autresCredits && autresCredits.contenu.querySelector("mark.trouve")) autresCredits.ouvrir();
+    if (autresCredits && autresCredits.contenu.querySelector("mark.trouve")) {
+      autresCredits.ouvrir();
+      ajusterNoms(autresCredits.contenu);
+    }
+    // Un nom trouvé dans une rubrique limitée à une ligne : on la déplie.
+    texteFiche.querySelectorAll(".noms-ligne").forEach((bloc) => {
+      if (bloc.querySelector("mark.trouve") && bloc.ouvrir) bloc.ouvrir();
+    });
     if (notesDiscogs && notesDiscogs.contenu.querySelector("mark.trouve")) notesDiscogs.ouvrir();
     numeroResultat = 0;
     resultats.textContent = !champRecherche.value.trim() ? ""
@@ -1395,12 +1459,50 @@ function blocSources(edition) {
     ["Année d'enregistrement", anneesSource],
     ["Live / Studio", edition.liveAuto ? SOURCES_ANNEES[edition.live_auto_source] : null],
     ["Année de parution", parution],
+    ["Durées", (() => {
+      const reelles = (edition.plages || []).flatMap(plagesReelles);
+      const mb = reelles.filter((p) => p.duree_source === "musicbrainz").length;
+      return mb ? (mb === reelles.length ? "MusicBrainz" : "Discogs, et MusicBrainz pour " + mb + " plage" + (mb > 1 ? "s" : "")) : null;
+    })()],
     ["Photos", photos],
     ["Mise à jour", edition.details_maj ? "fiche Discogs relue le " + formaterDate(edition.details_maj) : null],
   ].filter(([, valeur]) => valeur);
   return creer("div", { classe: "sources-fiche" },
     creer("h3", { texte: "Sources" }),
     creer("dl", {}, lignes.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])));
+}
+
+/**
+ * Noms d'une rubrique de crédits sur une seule ligne, avec « Voir les N » / « Replier » s'il en reste
+ * de cachés. La hauteur d'une ligne se mesure une fois la fiche affichée : appeler ajusterNoms(fiche).
+ */
+function nomsSurUneLigne(boutons) {
+  const noms = creer("div", { classe: "noms noms-replies" }, boutons);
+  const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus voir-noms" });
+  lien.hidden = true;
+  let ouvert = false;
+  const montrer = () => {
+    noms.classList.toggle("noms-replies", !ouvert);
+    lien.textContent = ouvert ? "Replier" : "Voir les " + boutons.length;
+  };
+  lien.addEventListener("click", () => { ouvert = !ouvert; montrer(); });
+  const bloc = creer("div", { classe: "noms-ligne" }, noms, lien);
+  bloc.ajuster = () => {
+    if (!noms.offsetParent) return;            // rubrique repliée : mesurée quand elle s'ouvre
+    const ligne = boutons.length ? boutons[0].offsetHeight : 0;
+    noms.style.setProperty("--hauteur-ligne", ligne + "px");
+    const deborde = boutons.some((b) => b.offsetTop - boutons[0].offsetTop > ligne / 2);
+    lien.hidden = !deborde;
+    if (!deborde) ouvert = false;
+    montrer();
+  };
+  bloc.ouvrir = () => { ouvert = true; montrer(); };
+  return bloc;
+}
+
+/** Mesure les rubriques de noms affichées (voir nomsSurUneLigne). */
+function ajusterNoms(racine) {
+  racine.querySelectorAll(".noms-ligne").forEach((bloc) => bloc.ajuster && bloc.ajuster());
 }
 
 /**
@@ -1484,6 +1586,28 @@ function allerAuResultat(bloc, numero) {
  * `suivi.precedente` : identifiant de la dernière œuvre MusicBrainz affichée, pour ne
  * l'écrire qu'une fois sur une suite de mouvements de la même œuvre ; `suivi.edition` : la fiche.
  */
+/** « 4:20 » ou « 1:02:05 » -> secondes ; null si la durée est absente ou illisible. */
+function secondesDe(duree) {
+  const parties = String(duree || "").trim().split(":");
+  if (parties.length < 2 || parties.some((p) => !/^\d+$/.test(p))) return null;
+  return parties.reduce((total, partie) => total * 60 + Number(partie), 0);
+}
+
+/** Durée totale de plages : { secondes, complete } (complete faux si une plage n'a pas de durée). */
+function dureeTotale(plages) {
+  const durees = plages.flatMap(plagesReelles).map((p) => secondesDe(p.duree));
+  return { secondes: durees.reduce((t, d) => t + (d || 0), 0), complete: durees.every((d) => d !== null) };
+}
+
+/** « 47 min », « 1 h 12 min », « au moins 1 h 10 min » ; "" si aucune durée connue. */
+function texteDuree({ secondes, complete }) {
+  if (!secondes) return "";
+  const minutes = Math.round(secondes / 60);
+  const heures = Math.floor(minutes / 60);
+  const texte = heures ? heures + " h " + String(minutes % 60).padStart(2, "0") + " min" : Math.max(minutes, 1) + " min";
+  return complete ? texte : "au moins " + texte;
+}
+
 function listePlages(plages, suivi) {
   return creer("ol", { classe: "plages" }, plages.map((plage) => lignePlage(plage, suivi)));
 }
@@ -1518,7 +1642,7 @@ function listePlagesParDisque(plages, suivi) {
     const debut = disque && !vus.has(disque);
     if (debut) vus.add(disque);
     return [
-      debut ? intertitreDisque(disques, disque) : null,
+      debut ? intertitreDisque(disques, disque, texteDuree(dureeTotale(plages.filter((p) => disqueDeLaPlage(p) === disque)))) : null,
       lignePlage(plage, suivi),
     ];
   });
@@ -1529,7 +1653,7 @@ function listePlagesParDisque(plages, suivi) {
  * Intertitre « CD 2 » d'un coffret, avec à droite « ↑↑ ↑ Préc. » (sauf au début)
  * et « ↓ Suiv. ↓↓ » (sauf à la fin), pour passer d'un disque à l'autre ou aller au premier / dernier.
  */
-function intertitreDisque(disques, disque) {
+function intertitreDisque(disques, disque, duree = "") {
   const numero = disques.indexOf(disque);
   const aller = (cible) => (evenement) => {
     const liste = evenement.currentTarget.closest(".plages");
@@ -1539,6 +1663,7 @@ function intertitreDisque(disques, disque) {
     texte, title: titre + " : " + cible, surclic: aller(cible) });
   return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
     creer("span", { texte: disque }),
+    duree ? creer("span", { classe: "duree-disque", texte: duree }) : null,
     // ↑↑ (premier disque) et ↓↓ (dernier) seulement s'ils mènent ailleurs que « Préc. » et « Suiv. ».
     creer("span", { classe: "navigation-disques" },
       numero > 1 ? lien("↑↑", disques[0], "Premier disque", "fleche-double") : null,
@@ -1622,8 +1747,15 @@ function lignePlage(plage, suivi) {
       credits.length ? creer("div", { classe: "plage-credits", texte: creditsParRole(credits) }) : null,
       ligneOeuvre(plage, suivi)
     ),
-    creer("span", { classe: "plage-duree", texte: plage.duree }),
-    !(plage.sous_plages || []).length && plage.position && suivi.edition ? boutonFavori(plage, suivi.edition) : creer("span"),
+    // Une œuvre en plusieurs mouvements : la durée totale de ses mouvements.
+    (plage.sous_plages || []).length && !plage.duree
+      ? creer("span", { classe: "plage-duree duree-oeuvre", texte: texteDuree(dureeTotale(plage.sous_plages)) })
+      : creer("span", { classe: "plage-duree", texte: plage.duree,
+        title: plage.duree_source === "musicbrainz" ? "Durée MusicBrainz (absente de Discogs)" : null }),
+    // Un cœur par plage ; sur une œuvre à mouvements, un cœur qui coche ou décoche tous ses mouvements.
+    !suivi.edition ? creer("span")
+      : (plage.sous_plages || []).length ? boutonFavoriGroupe(plage, suivi.edition)
+      : plage.position ? boutonFavori(plage, suivi.edition) : creer("span"),
     (plage.sous_plages || []).length ? listePlages(plage.sous_plages, suivi) : null
   );
 }
@@ -2386,22 +2518,38 @@ async function ouvrirEdition(edition) {
 
 /** ♡ / ♥ d'une plage. Cliquable seulement sur un appareil où le jeton Discogs est enregistré. */
 function boutonFavori(plage, edition) {
-  const favori = edition.favoris.has(plage.position);
+  return coeur(edition, [plage.position], "Piste favorite");
+}
+
+/**
+ * ♡ / ♥ d'une œuvre à mouvements (un concerto, une sonate) : plein quand tous ses mouvements sont
+ * favoris ; un clic les ajoute tous (ou les retire tous). Seuls les mouvements sont enregistrés.
+ */
+function boutonFavoriGroupe(groupe, edition) {
+  const positions = toutesLesPlages(groupe.sous_plages).map(({ plage }) => plage.position).filter(Boolean);
+  return positions.length ? coeur(edition, positions, "Tous les mouvements en favoris") : creer("span");
+}
+
+/** Cœur pour une ou plusieurs positions de plages : plein si elles sont toutes favorites. */
+function coeur(edition, positions, titreFixe) {
+  const tous = (favoris) => positions.every((p) => favoris.has(p));
   if (!jeton()) {
-    return favori ? creer("span", { classe: "favori actif", texte: "♥", title: "Piste favorite" }) : creer("span");
+    return tous(edition.favoris) ? creer("span", { classe: "favori actif", texte: "♥", title: titreFixe }) : creer("span");
   }
-  const bouton = creer("button", { type: "button", classe: "favori", "data-position": plage.position });
-  const montrer = (oui) => montrerFavori(bouton, oui);
-  montrer(favori);
+  const bouton = creer("button", { type: "button", classe: "favori", "data-positions": positions.join("|") });
+  const montrer = (oui) => montrerFavori(bouton, oui, positions.length > 1);
+  montrer(tous(edition.favoris));
   bouton.addEventListener("click", async () => {
     const voulu = !bouton.classList.contains("actif");
     montrer(voulu);              // réponse immédiate à l'écran…
     bouton.disabled = true;
     try {
-      const favoris = await basculerFavori(edition, plage.position, voulu);
-      // Discogs a pu avoir d'autres plages favorites (ajoutées sur un autre appareil) : tous les cœurs suivent.
-      for (const autre of document.querySelectorAll("#fiche-contenu .favori[data-position]")) {
-        montrerFavori(autre, favoris.has(autre.dataset.position));
+      const favoris = await basculerFavori(edition, positions, voulu);
+      // Discogs a pu avoir d'autres plages favorites (ajoutées sur un autre appareil) : tous les cœurs suivent,
+      // ceux des plages comme ceux des œuvres.
+      for (const autre of document.querySelectorAll("#fiche-contenu .favori[data-positions]")) {
+        const liste = autre.dataset.positions.split("|");
+        montrerFavori(autre, liste.every((p) => favoris.has(p)), liste.length > 1);
       }
     } catch (erreur) {
       montrer(!voulu);           // … annulée si Discogs refuse
@@ -2412,21 +2560,25 @@ function boutonFavori(plage, edition) {
   return bouton;
 }
 
-function montrerFavori(bouton, oui) {
+function montrerFavori(bouton, oui, groupe = false) {
   bouton.textContent = oui ? "♥" : "♡";
   bouton.classList.toggle("actif", oui);
-  bouton.title = oui ? "Retirer des pistes favorites" : "Ajouter aux pistes favorites";
+  bouton.title = groupe
+    ? (oui ? "Retirer tous les mouvements des pistes favorites" : "Ajouter tous les mouvements aux pistes favorites")
+    : (oui ? "Retirer des pistes favorites" : "Ajouter aux pistes favorites");
   bouton.setAttribute("aria-label", bouton.title);
 }
 
 let definitionsChamps = null;   // champs personnalisés Discogs, lus une fois par session
 
-/** Ajoute ou retire une plage du champ « Pistes favorites » sur Discogs, puis met la page à jour. */
-async function basculerFavori(edition, position, ajouter) {
+/** Ajoute ou retire des plages (une liste de positions) du champ « Pistes favorites » sur Discogs, puis met la page à jour. */
+async function basculerFavori(edition, aChanger, ajouter) {
   const { champ, instance, valeurActuelle } = await lireChampDiscogs(edition, CHAMP_FAVORIS);
   const positions = new Set(lirePositions(valeurActuelle));
-  if (ajouter) positions.add(position);
-  else positions.delete(position);
+  for (const position of aChanger) {
+    if (ajouter) positions.add(position);
+    else positions.delete(position);
+  }
   // Rangées dans l'ordre du disque ; une position inconnue de la tracklist reste, à la fin.
   const ordre = toutesLesPlages(edition.plages).map(({ plage }) => plage.position);
   const valeur = [...positions]
