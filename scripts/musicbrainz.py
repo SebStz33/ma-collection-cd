@@ -61,7 +61,14 @@ DISQUES_PAR_SYNCHRO = 200
 # Version 4 : années d'enregistrement ; seules les éditions exactes sont revues.
 # Version 5 : année de parution de l'édition (quand Discogs n'en a pas) ; seules les éditions
 #             exactes sans année Discogs sont revues.
-VERSION_RECHERCHE = 8
+# Version 9 : éditions de plus de 500 enregistrements (gros coffrets) : œuvres et années lues par paquets
+#             (voir lire_relations_par_paquets) ; seules ces éditions sont revues.
+VERSION_RECHERCHE = 9
+
+# Au-delà de ce nombre d'enregistrements, le serveur MusicBrainz ne renvoie plus les relations (œuvres,
+# dates) dans la lecture d'une édition, pour ne pas saturer : on les lit alors par paquets de 100.
+MAX_RELATIONS_PAR_EDITION = 500
+TAILLE_PAQUET = 100
 
 # Méthodes qui désignent l'édition exacte (on prend alors aussi ses images).
 METHODES_EXACTES = ("edition", "code_barre")
@@ -227,6 +234,30 @@ def annees_de_plage(plage_mb):
     return annees
 
 
+def lire_relations_par_paquets(identifiant):
+    """
+    Enregistrements d'une très grosse édition, avec leurs relations, lus par paquets de 100 :
+    {identifiant d'enregistrement: enregistrement}. Si MusicBrainz refuse les relations des œuvres
+    (compositeur, œuvre parente) dans ce type de lecture, on se contente des œuvres elles-mêmes.
+    """
+    inclusions = ["work-rels+work-level-rels+artist-rels+place-rels+area-rels", "work-rels+artist-rels+place-rels+area-rels"]
+    for inc in inclusions:
+        enregistrements, decalage = {}, 0
+        try:
+            while True:
+                reponse = appeler("recording", {"release": identifiant, "inc": inc,
+                                                "limit": TAILLE_PAQUET, "offset": decalage}) or {}
+                paquet = reponse.get("recordings", [])
+                enregistrements.update((r["id"], r) for r in paquet)
+                decalage += len(paquet)
+                if not paquet or decalage >= reponse.get("recording-count", 0):
+                    return enregistrements
+        except urllib.error.HTTPError as erreur:
+            if erreur.code != 400 or inc == inclusions[-1]:
+                raise
+    return {}
+
+
 def lire_edition_mb(identifiant):
     """
     Lit une édition MusicBrainz. Renvoie (œuvres, années, année de parution) : la liste des œuvres
@@ -239,6 +270,14 @@ def lire_edition_mb(identifiant):
     if not edition:
         return None, None, None
     plages = [plage for support in edition.get("media", []) for plage in support.get("tracks", [])]
+    if len(plages) > MAX_RELATIONS_PAR_EDITION:
+        # Gros coffret : les relations manquent dans la réponse ; on les lit à part et on les rattache
+        # à chaque plage par l'identifiant de son enregistrement.
+        enregistrements = lire_relations_par_paquets(identifiant)
+        for plage in plages:
+            complet = enregistrements.get((plage.get("recording") or {}).get("id"))
+            if complet:
+                plage["recording"] = complet
     annees = set().union(*(annees_de_plage(plage) for plage in plages)) if plages else set()
     # Date de l'édition : « 1994-05-02 », « 1994 » ou absente.
     date_edition = edition.get("date") or ""
@@ -414,6 +453,8 @@ def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False):
         return True  # trouvé par l'album : on lit en plus les années d'enregistrement de cette édition
     if version < 8 and meme_position and entree.get("release") and not entree.get("oeuvres"):
         return True  # mouvements à la même position (5-3, 5-3…) : désormais comptés pour une plage
+    if version < 9 and nb_plages > MAX_RELATIONS_PAR_EDITION and entree.get("release") and not entree.get("oeuvres"):
+        return True  # gros coffret trouvé sans œuvres : on lit désormais ses relations par paquets
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
