@@ -1155,6 +1155,9 @@ function chercherNom(nom, role) {
  * « Voir les N photos restantes » pour déplier les autres (les coffrets en ont parfois des centaines).
  * Les vignettes repliées sont seulement cachées : la visionneuse les parcourt toujours.
  */
+// Jusqu'à 5 photos en tout (une ligne sur iPhone), MusicBrainz et Discogs sont côte à côte.
+const PHOTOS_SUR_UNE_LIGNE = 5;
+
 function vignettesRepliables(boutons) {
   const bloc = creer("div", { classe: "vignettes" }, boutons);
   let visibles = VIGNETTES_VISIBLES;
@@ -1215,11 +1218,15 @@ function blocPhotos(edition) {
     ["Discogs", images.map((image, numero) => [image, numero]).filter(([image]) => image.type !== "musicbrainz")],
   ].filter(([, liste]) => liste.length);
   if (images.length && images[0].type !== "musicbrainz") sources.reverse();
-  const groupesImages = sources.map(([source, liste]) => [
-    creer("p", { classe: "legende-photos", texte: "photos " + source }),
+  // Peu de photos (PHOTOS_SUR_UNE_LIGNE au plus, toutes sources) : les deux groupes côte à côte, sur une ligne,
+  // avec une légende courte (« MusicBrainz », « Discogs ») qui ne force pas la largeur du groupe.
+  const surUneLigne = sources.length > 1 && images.length <= PHOTOS_SUR_UNE_LIGNE;
+  const groupesImages = sources.map(([source, liste]) => creer("div", { classe: "groupe-photos" },
+    creer("p", { classe: "legende-photos", texte: (surUneLigne ? "" : "photos ") + source }),
     images.length > 1 ? vignettesRepliables(liste.map(([image, numero]) => vignette(image, numero))) : null,
-  ]);
-  return creer("div", { classe: "fiche-images" }, grande, groupesImages);
+  ));
+  return creer("div", { classe: "fiche-images" }, grande,
+    creer("div", { classe: surUneLigne ? "groupes-photos sur-une-ligne" : "groupes-photos" }, groupesImages));
 }
 
 /** Vrai si l'édition a des photos des deux sources : le choix de la grande photo a alors un sens. */
