@@ -547,6 +547,8 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 /* Intertitre d'un disque de coffret : nom à gauche, « ↑ Préc. · ↓ Suiv. » à droite. */
 .plage-disque { display: flex; align-items: baseline; gap: 12px; }
 .navigation-disques { margin-left: auto; display: flex; gap: 14px; font-weight: 400; }
+/* Double flèche faite de deux flèches simples (même police, même taille), resserrées. */
+.fleche-double { letter-spacing: -0.35em; padding-right: 0.35em; }
 /* « ✎ Modifier mes Custom Fields Discogs » : un lien ambre, sans boîte (les boutons 🎧 / ★ gardent la leur). */
 .boutons-fiche { align-items: center; }
 
