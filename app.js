@@ -24,6 +24,8 @@ const SANS_STATUT = "Sans statut";            // filtre et stats : « Aucun » o
 const STATUTS_CONNUS = ["À écouter", "Favori"];         // boutons proposés si la synchro n'a pas encore lu la liste
 const REPERES_STATUT = { "a ecouter": "🎧", favori: "★" }; // repère par statut (clé sans accents ni majuscules)
 const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
+const CHAMP_ANNEE_MANUELLE = "Année d’enregistrement (manuelle)";  // champ texte : « 1958 », « 1958-1961 » ou « à trouver »
+const A_TROUVER = "à trouver";
 const CHAMP_LIVE = "Live / Studio";           // champ liste Discogs : « Live », « Live et Studio », « Studio » ou vide
 const NON_PRECISE = "Non renseigné";          // « Live / Studio » vide, ou option « Non renseigné » sur Discogs
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
@@ -94,6 +96,7 @@ const etat = {
   avecNotes: false,
   correspondanceMB: "",     // "", "exacte", "album" ou "aucune"
   avecOeuvres: false,
+  oeuvresIncompletes: false,
   avecFavoris: false,
   statut: "",               // "" (tous), "À écouter", "Favori"…, ou SANS_STATUT
   enregistrement: "",       // "" (tous), "Live", "Live et Studio", "Studio"…
@@ -105,7 +108,8 @@ const etat = {
 const FILTRES_SEULS_VIDES = {
   categorie: "", genre: "", style: "", format: "", label: "", anneeMin: null, anneeMax: null,
   enregMin: null, enregMax: null,
-  localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, avecFavoris: false,
+  localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, oeuvresIncompletes: false,
+  avecFavoris: false,
   statut: "", enregistrement: "", oeuvre: null,
 };
 // Recherche et filtres remis à zéro (clic dans l'index).
@@ -315,19 +319,80 @@ function etoiles(note) {
 }
 
 /**
- * Ligne « Année d'enregistrement : 1958 » ou « Années d'enregistrement : 1958 – 1963 »
- * (d'après MusicBrainz), ou rien si on ne les connaît pas.
+ * Ligne « Année d'enregistrement : 1958 », « Années d'enregistrement : 1958 – 1963 »
+ * ou « Année d'enregistrement : à trouver » ; rien si on ne la connaît pas.
+ * La provenance est dans le bloc « Sources » en fin de fiche.
  */
 function anneesEnregistrement(edition) {
+  if (edition.annees_enregistrement_source === "a_trouver") return [["Année d'enregistrement", A_TROUVER]];
   const annees = edition.annees_enregistrement;
   if (!annees || !annees.length) return [];
   const [premiere, derniere] = annees;
-  // Années lues sur une autre édition du même album (MusicBrainz) : on le précise.
-  const source = edition.annees_enregistrement_source === "musicbrainz_album"
-    ? " (d'après une autre édition de l'album)" : "";
   return premiere === derniere
-    ? [["Année d'enregistrement", premiere + source]]
-    : [["Années d'enregistrement", premiere + " – " + derniere + source]];
+    ? [["Année d'enregistrement", String(premiere)]]
+    : [["Années d'enregistrement", premiere + " – " + derniere]];
+}
+
+/** Texte d'une période : « 1958 » ou « 1958 – 1963 ». */
+function textePeriode(annees) {
+  return annees[0] === annees[1] ? String(annees[0]) : annees[0] + " – " + annees[1];
+}
+
+// Provenance des années d'enregistrement (clé écrite par la synchro, voir scripts/annees.py).
+const SOURCES_ANNEES = {
+  manuelle: "correction manuelle",
+  a_trouver: "« à trouver » (saisie manuelle)",
+  musicbrainz: "MB sur édition exacte",
+  musicbrainz_album: "MB sur autre édition de l'album",
+  notes_discogs: "notes Discogs",
+  titre: "titre",
+};
+
+/**
+ * Lit le champ manuel « Année d’enregistrement (manuelle) » : { annees: [a, b] }, { aTrouver: true },
+ * ou null (vide ou illisible). Même règle que scripts/annees.py.
+ */
+function saisieAnneesManuelle(edition) {
+  const valeur = valeursDuChampSouple(edition, CHAMP_ANNEE_MANUELLE)[0] || "";
+  if (!valeur) return null;
+  if (memeNom(valeur, A_TROUVER)) return { aTrouver: true };
+  const periode = valeur.match(/^(\d{4})(?:\s*[-–/]\s*(\d{4}))?$/);
+  if (!periode) return null;
+  const debut = Number(periode[1]);
+  const fin = Number(periode[2] || debut);
+  return debut <= fin ? { annees: [debut, fin] } : null;
+}
+
+/**
+ * Années d'enregistrement de l'édition : la saisie manuelle si elle existe (y compris une modification
+ * faite depuis la page, avant la synchro), sinon l'année trouvée automatiquement par la synchro.
+ */
+function appliquerAnneesManuelles(edition) {
+  const [anneesAuto, sourceAuto] = edition.annees_enregistrement_auto
+    || [edition.annees_enregistrement, edition.annees_enregistrement_source];
+  const manuelle = saisieAnneesManuelle(edition);
+  if (manuelle && manuelle.annees) {
+    edition.annees_enregistrement = manuelle.annees;
+    edition.annees_enregistrement_source = "manuelle";
+  } else if (manuelle && manuelle.aTrouver) {
+    edition.annees_enregistrement = null;
+    edition.annees_enregistrement_source = "a_trouver";
+  } else {
+    edition.annees_enregistrement = anneesAuto || null;
+    edition.annees_enregistrement_source = anneesAuto ? sourceAuto : null;
+  }
+}
+
+/** Plages de l'édition (mouvements compris) : { total, avecOeuvre }. */
+function compterOeuvres(edition) {
+  const plages = toutesLesPlages(edition.plages);
+  return { total: plages.length, avecOeuvre: plages.filter(({ plage }) => plage.oeuvre).length };
+}
+
+/** Vrai si MusicBrainz n'a donné une œuvre qu'à une partie des plages. */
+function oeuvresIncompletes(edition) {
+  const { total, avecOeuvre } = compterOeuvres(edition);
+  return avecOeuvre > 0 && avecOeuvre < total;
 }
 
 /** Décrit les formats : « Box Set + 5 × CD (Album, Remastered) ». */
@@ -398,6 +463,7 @@ function regrouperParEdition(disques) {
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
     edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
+    appliquerAnneesManuelles(edition);
     // Clés de tri par nom de famille, comme dans l'index : « Glenn Gould » est rangé à Gould.
     edition.cleArtiste = (edition.artistes_principaux || []).length ? cleDeTri(edition.artistes_principaux[0], true) : "";
     edition.cleCompositeur = (edition.compositeurs || []).length ? cleDeTri(edition.compositeurs[0], true) : "";
@@ -559,6 +625,7 @@ function remplirFiltres() {
   libelleCase("filtre-double", "En double ou plus", (e) => e.exemplaires.length >= 2);
   libelleCase("filtre-notes", "Description ou notes", aDesTextes);
   libelleCase("filtre-oeuvres", "Avec œuvres identifiées", (e) => e.oeuvres.size > 0);
+  libelleCase("filtre-oeuvres-incompletes", "Œuvres incomplètes", oeuvresIncompletes);
   libelleCase("filtre-favoris", "Avec pistes favorites", (e) => e.favoris.size > 0);
 
   // Les labels sont nombreux : liste de suggestions pour la saisie.
@@ -600,6 +667,7 @@ function lireControles() {
   etat.avecNotes = $("filtre-notes").checked;
   etat.correspondanceMB = $("filtre-musicbrainz").value;
   etat.avecOeuvres = $("filtre-oeuvres").checked;
+  etat.oeuvresIncompletes = $("filtre-oeuvres-incompletes").checked;
   etat.avecFavoris = $("filtre-favoris").checked;
   etat.statut = $("filtre-statut").value;
   etat.enregistrement = $("filtre-enregistrement").value;
@@ -624,6 +692,7 @@ function ecrireControles() {
   $("filtre-notes").checked = etat.avecNotes;
   $("filtre-musicbrainz").value = etat.correspondanceMB;
   $("filtre-oeuvres").checked = etat.avecOeuvres;
+  $("filtre-oeuvres-incompletes").checked = etat.oeuvresIncompletes;
   $("filtre-favoris").checked = etat.avecFavoris;
   $("filtre-statut").value = etat.statut;
   $("filtre-enregistrement").value = etat.enregistrement;
@@ -633,7 +702,7 @@ function ecrireControles() {
 
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
-          etat.enregMin, etat.enregMax, etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres,
+          etat.enregMin, etat.enregMax, etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres, etat.oeuvresIncompletes,
           etat.avecFavoris, etat.statut, etat.enregistrement, etat.oeuvre].filter(Boolean).length;
 }
 
@@ -675,6 +744,7 @@ function correspond(edition) {
   if (etat.avecNotes && !aDesTextes(edition)) return false;
   if (etat.correspondanceMB && correspondanceMB(edition) !== etat.correspondanceMB) return false;
   if (etat.avecOeuvres && !edition.oeuvres.size) return false;
+  if (etat.oeuvresIncompletes && !oeuvresIncompletes(edition)) return false;
   if (etat.avecFavoris && !edition.favoris.size) return false;
   if (etat.statut && (edition.statut || SANS_STATUT) !== etat.statut) return false;
   if (etat.enregistrement && edition.enregistrement !== etat.enregistrement) return false;
@@ -1095,6 +1165,12 @@ function ouvrirFiche(edition) {
       Boolean(etat.recherche) && autresCategories.some(({ cle }) => cle === etat.role))
     : null;
 
+  // Texte « Notes » de la fiche Discogs (souvent un vrai livret : lieux, dates, musiciens), replié.
+  const notesDiscogs = edition.notes_discogs
+    ? repliable("Voir les notes Discogs", creer("div", { classe: "notes-perso cadre notes-discogs" },
+      texteAvecLiens(nettoyerNotesDiscogs(edition.notes_discogs))), false, "Replier les notes Discogs")
+    : null;
+
   // Ma note (la première donnée, si j'ai plusieurs exemplaires) et celle des membres de Discogs.
   const maNote = edition.exemplaires.map((e) => e.note).find(Boolean);
   const communaute = edition.note_communaute;
@@ -1176,11 +1252,13 @@ function ouvrirFiche(edition) {
       ])) : null,
       tracklist.liste,
     ] : null,
+    notesDiscogs ? notesDiscogs.element : null,
     creer("p", { classe: "liens-bases" },
       creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
       edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
         texte: "Voir sur MusicBrainz ↗" }) : null
     ),
+    blocSources(edition),
     creer("p", { classe: "fin-fiche" },
       creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↑ Début",
         surclic: () => $("fiche").scrollTo({ top: 0, behavior: "smooth" }) }))
@@ -1202,6 +1280,7 @@ function ouvrirFiche(edition) {
     const nombre = surligner(texteFiche, champRecherche.value);
     // Un nom trouvé dans les crédits repliés : on les ouvre pour le montrer.
     if (autresCredits && autresCredits.contenu.querySelector("mark.trouve")) autresCredits.ouvrir();
+    if (notesDiscogs && notesDiscogs.contenu.querySelector("mark.trouve")) notesDiscogs.ouvrir();
     numeroResultat = 0;
     resultats.textContent = !champRecherche.value.trim() ? ""
       : nombre ? nombre + (nombre > 1 ? " résultats" : " résultat") : "Aucun résultat";
@@ -1220,15 +1299,67 @@ function ouvrirFiche(edition) {
 }
 
 /**
+ * Notes Discogs sans leurs balises : « [a=Glenn Gould] » -> « Glenn Gould », « [url=https://…]texte[/url] » -> « texte »,
+ * « [b]…[/b] » -> « … ». Les identifiants seuls (« [r123456] », « [l789] ») sont retirés.
+ */
+function nettoyerNotesDiscogs(texte) {
+  return String(texte)
+    .replace(/\[url=([^\]]+)\]([\s\S]*?)\[\/url\]/gi, "$2 ($1)")
+    .replace(/\[[almr]=([^\]]+)\]/gi, "$1")
+    .replace(/\[[almr]\d+\]/gi, "")
+    .replace(/\[\/?[biu]\]/gi, "")
+    .replace(/[ \t]+\n/g, "\n")
+    .trim();
+}
+
+/**
+ * Bloc « Sources » en fin de fiche : d'où viennent les informations (MusicBrainz, Discogs, saisie).
+ * En petit et en gris, pour rester discret.
+ */
+function blocSources(edition) {
+  const methodes = {
+    edition: "édition exacte (lien Discogs sur MusicBrainz)",
+    code_barre: "édition exacte (code-barre)",
+    album: "par le master Discogs de l'album",
+    aucune: "aucune",
+  };
+  const { total, avecOeuvre } = compterOeuvres(edition);
+  const oeuvres = !total ? null
+    : avecOeuvre === total ? "toutes les plages (" + total + ")"
+    : avecOeuvre ? avecOeuvre + " plages sur " + total
+    : "aucune";
+  const anneesSource = SOURCES_ANNEES[edition.annees_enregistrement_source];
+  const parution = !edition.annee ? null
+    : edition.annee_source === "musicbrainz" ? "MusicBrainz (absente de Discogs)" : "Discogs";
+  const images = edition.images || [];
+  const nbMB = images.filter((i) => i.type === "musicbrainz").length;
+  const photos = images.length
+    ? [nbMB ? nbMB + " MusicBrainz (HD)" : null, images.length - nbMB ? (images.length - nbMB) + " Discogs" : null]
+      .filter(Boolean).join(" + ")
+    : null;
+  const lignes = [
+    ["Correspondance MusicBrainz", methodes[edition.musicbrainz_methode] || "pas encore cherchée"],
+    ["Œuvres identifiées (MusicBrainz)", edition.musicbrainz_methode && edition.musicbrainz_methode !== "aucune" ? oeuvres : null],
+    ["Année d'enregistrement", anneesSource],
+    ["Année de parution", parution],
+    ["Photos", photos],
+    ["Mise à jour", edition.details_maj ? "fiche Discogs relue le " + formaterDate(edition.details_maj) : null],
+  ].filter(([, valeur]) => valeur);
+  return creer("div", { classe: "sources-fiche" },
+    creer("h3", { texte: "Sources" }),
+    creer("dl", {}, lignes.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])));
+}
+
+/**
  * Bloc replié sous un lien (« Voir les autres crédits (12) » / « Replier »).
  * Renvoie { element, contenu, ouvrir } : `ouvrir()` le déplie (recherche dans la fiche).
  */
-function repliable(texteFerme, enfants, ouvert = false) {
+function repliable(texteFerme, enfants, ouvert = false, texteOuvert = "Replier les autres crédits") {
   const contenu = creer("div", { classe: "repliable" }, enfants);
   const lien = creer("button", { type: "button", classe: "bouton-texte voir-plus" });
   const montrer = (oui) => {
     contenu.hidden = !oui;
-    lien.textContent = oui ? "Replier les autres crédits" : texteFerme;
+    lien.textContent = oui ? texteOuvert : texteFerme;
   };
   lien.addEventListener("click", () => montrer(contenu.hidden));
   montrer(ouvert);
@@ -1771,7 +1902,7 @@ function carteAnnees(liste) {
 function carteAnneesEnregistrement(liste) {
   return carteHistogramme(liste, {
     titre: "Années d'enregistrement",
-    explication: "D'après MusicBrainz (éditions exactes). Un enregistrement sur plusieurs années compte dans chacune. ",
+    explication: "D'après MusicBrainz, les notes Discogs, le titre ou ta saisie. Un enregistrement sur plusieurs années compte dans chacune. ",
     anneesDe: (e) => {
       const annees = e.annees_enregistrement;
       if (!annees || !annees.length) return [];
@@ -2034,6 +2165,14 @@ function ajusterHauteur(zoneTexte) {
   zoneTexte.style.height = (zoneTexte.scrollHeight + 2) + "px";
 }
 
+/** Texte grisé du champ manuel : « auto : 1958 (notes Discogs) — ou 1958, 1958-1961, à trouver ». */
+function indicationAnneeAuto(edition) {
+  const [annees, source] = edition.annees_enregistrement_auto || [];
+  const formats = "1958, 1958-1961 ou « à trouver »";
+  return annees ? "auto : " + textePeriode(annees) + " (" + SOURCES_ANNEES[source] + ") — sinon " + formats
+    : "aucune année trouvée automatiquement — " + formats;
+}
+
 /** Remplace la fiche par le formulaire de modification, rempli avec les valeurs lues sur Discogs. */
 async function ouvrirEdition(edition) {
   const message = creer("p", { classe: "message-edition", texte: "Lecture des valeurs actuelles sur Discogs…" });
@@ -2073,6 +2212,8 @@ async function ouvrirEdition(edition) {
         // « — » n'est proposé que tant que la liste est vide.
         ? creerListe([...(avant ? [] : [["", "—"]]), ...(champ.options || []).map((o) => [o, o])], avant)
         : creer("textarea", { rows: Math.max(champ.lines || 0, LIGNES_MIN_EDITION) });
+      // Champ « Année d’enregistrement (manuelle) » : l'année trouvée automatiquement, en grisé.
+      if (memeNom(champ.name, CHAMP_ANNEE_MANUELLE)) controle.placeholder = indicationAnneeAuto(edition);
       // Compteur sous les zones de texte : « 212 / 255 », en rouge au-delà de la limite de Discogs.
       const compteur = champ.type === "dropdown" ? null : creer("span", { classe: "compteur-caracteres" });
       if (compteur) {
@@ -2380,7 +2521,7 @@ function brancherEvenements() {
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
                     "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-enreg-min", "filtre-enreg-max", "filtre-localisation", "filtre-double",
-                    "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres", "filtre-favoris",
+                    "filtre-notes", "filtre-musicbrainz", "filtre-oeuvres", "filtre-oeuvres-incompletes", "filtre-favoris",
                     "filtre-statut", "filtre-enregistrement"]) {
     $(id).addEventListener("change", () => { lireControles(); afficher(); });
   }

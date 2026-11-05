@@ -527,17 +527,13 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     )
     # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
     disque["musicbrainz_methode"] = entree_mb.get("methode")
-    # Années d'enregistrement [première, dernière] ou None, et leur source : "musicbrainz" (édition exacte),
-    # "musicbrainz_album" (autre édition du même album) ou "manuelle" (scripts/annees.py).
-    disque["annees_enregistrement"] = entree_mb.get("annees_enregistrement")
-    disque["annees_enregistrement_source"] = None
-    if disque["annees_enregistrement"]:
-        exacte = entree_mb.get("methode") in musicbrainz.METHODES_EXACTES
-        disque["annees_enregistrement_source"] = "musicbrainz" if exacte else "musicbrainz_album"
-    if disque["release_id"] in annees.ANNEES_CORRIGEES:
-        correction = annees.ANNEES_CORRIGEES[disque["release_id"]]
-        disque["annees_enregistrement"] = list(correction) if correction else None
-        disque["annees_enregistrement_source"] = "manuelle" if correction else None
+    # Années d'enregistrement [première, dernière] ou None, et leur source (ordre de priorité
+    # et liste des sources : voir scripts/annees.py). L'année « automatique » (sans la saisie
+    # manuelle) est gardée à part : la page l'applique quand le champ manuel est vidé, sans attendre
+    # la synchro, et la montre en grisé dans le formulaire ✎.
+    choix = (disque, entree_mb.get("annees_enregistrement"), entree_mb.get("methode"), musicbrainz.METHODES_EXACTES)
+    disque["annees_enregistrement"], disque["annees_enregistrement_source"] = annees.choisir_annees(*choix)
+    disque["annees_enregistrement_auto"] = list(annees.choisir_annees(*choix, avec_manuelle=False))
     # Année de parution : celle de Discogs, sinon celle de l'édition exacte sur MusicBrainz.
     # La source est gardée pour plus tard ; la page ne l'affiche pas.
     if disque["annee"]:

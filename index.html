@@ -97,7 +97,7 @@
         <select id="filtre-musicbrainz">
           <option value="">Toutes</option>
           <option value="exacte" data-libelle="Édition exacte">Édition exacte</option>
-          <option value="album" data-libelle="Par l’album">Par l’album</option>
+          <option value="album" data-libelle="Par le master">Par le master</option>
           <option value="aucune" data-libelle="Sans correspondance">Sans correspondance</option>
         </select>
       </label>
@@ -116,6 +116,10 @@
         <span>Avec œuvres identifiées</span>
       </label>
       <label class="filtre case">
+        <input type="checkbox" id="filtre-oeuvres-incompletes">
+        <span>Œuvres incomplètes</span>
+      </label>
+      <label class="filtre case">
         <input type="checkbox" id="filtre-favoris">
         <span>Avec pistes favorites</span>
       </label>
@@ -123,7 +127,7 @@
       <button type="button" class="bouton-texte effacer-bas" id="effacer-filtres">✕ Effacer les filtres</button>
       <button type="button" class="bouton-texte bouton-jeton" id="ouvrir-jeton">⚙︎ Jeton Discogs</button>
       <p class="rappel-discogs" id="rappel-discogs" hidden>Ne pas changer sur Discogs : noms des champs Custom Fields (Description,
-        Notes personnelles, Localisation, Liens externes, Pistes favorites, Statut d’écoute et son option « Aucun », Live / Studio...), nom du dossier « À Vendre » (sauf casse et accents) et nom d’utilisateur SebSteinmetz. Nouveau jeton : mettre à jour le secret GitHub et sur chaque appareil avec droits de modification.</p>
+        Notes personnelles, Localisation, Liens externes, Pistes favorites, Statut d’écoute et son option « Aucun », Live / Studio, Année d’enregistrement (manuelle)...), nom du dossier « À Vendre » (sauf casse et accents) et nom d’utilisateur SebSteinmetz. Nouveau jeton : mettre à jour le secret GitHub et sur chaque appareil avec droits de modification.</p>
     </aside>
 
     <main class="contenu">
