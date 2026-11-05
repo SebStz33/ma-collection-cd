@@ -1,812 +1,302 @@
-Années d'enregistrement trouvées dans les notes Discogs et les titres, le 2026-11-05
-Rien de ceci n'est affiché : à relire, puis à corriger dans scripts/annees.py (ANNEES_CORRIGEES).
+Rapport des années d'enregistrement et des disques live, le 2026-11-05
 
-1. Éditions SANS année d'enregistrement : 78 gagneraient une année
+Sources des années d'enregistrement (431 éditions) :
+  saisie manuelle                    4
+  MB sur édition exacte              228
+  MB sur autre édition de l'album    17
+  notes Discogs                      71
+  titre                              3
+  « à trouver »                      0
+  aucune année                       108
 
-Aldo Ciccolini — Enregistrements EMI 1950-1991 (édition 13366326)
-    titre : 1950 – 1991
-    notes : 1950 – 1968   « Recorded 1953 (CD 1: 1-12), 1950 (CD 1: 13-17), 1956 (CD 2 : 1-12), 1954 (CD 2: 13-16), 1951 (CD 3: 1-3), 1953 (CD 3: 4-7), 1956 (CD 3 : 8), 1968 (CD 3 : 9) , 1 »
-
-Alfred Brendel — The Complete Philips Recordings (édition 12758282)
-    notes : 1961 – 2008   « Recording Location: Walthamstow Assembly Hall, London, May 1976 / Recording Locations: London, September 1979 (2-1 to 2-6), June 1982 (4-1 to 4-7), March 1984 (3-4 to 3-6, 3-9, 3-10), July 1985 (5-1 to 5-9); / Recording Locations: Wembley Town Hall, 4-8 May 1975 (6-7 to 7-4); / Recorded in March 1982 (6-1 to 6-3), March 1984 (6-4 to 6-6), July 1989 (7-5) / Recording Locations: Brent Town Hall, Wembley, London, 26-29 September 1970 (15-4 to 15-6, 16-4 to 16-6), 28-30 June 1971 (18-4 to 18-6, 20-4 to 20-6), 25-27 Ju / Recording Locations: Usher Hall, Edinburgh, March 1998 (Disc 23), 3-6 July 2001 (Disc 25), 5-11 August 2004 (Disc 26); / Recording Location: Mozart Saal, Konzerthaus, Vienna, March 1999 [DDD] / Recording Locations: Palais de la Musique et des Congrès, Strasbourg, 27 & 28 January 1978 (28-1, live recording); / Recording Locations: Mozarteum, Salzburg, 13-18 September 1970 (34-8 to 35-2, 36-1 to 36-4, 37-4, 37-5); / Recording Locations: The Maltings, Snape, Suffolk, November 1992 (43-1 to 43-10, 44-6 to 44-9), February 1994 (38-1 to 38-12, 42-12, 42-13, 45-8 to 45-10), Octo / Recording Locations: London, March 1984 (48-1 to 48-27) / Recorded in July 1990 (48-28 to 48-47) / Recording Locations: Henry Wood Hall, London, March 1984 (49-28), September 1996 / Recording Location: London, November 1988 / Recording Location: Walthamstow Assembly Hall, London, 10-12 November 1975 (51-1 to 51-3, 52-1 to 52-3), 19 January 1976 (52-4 to 52-6), 29 & 30 March 1976 (53- / Recording Location: Großer Saal, Musikverein, Vienna, December 1997 (Disc 54), February 1998 (Disc 56), December 1998 (Disc 55) / Recording Locations: Mozarteum, Salzburg, 13-17 November 1971 (60-5 to 61-4, 63-1 to 63-4, 63-11), February 1998 (56-1 to 56-3), December 1998 (55-1 to 55-6); / Recorded in February 1972 (58-1 to 58-3, 59-5 to 59-8), October 1973 (62-9), June 1974 (61-8 to 61-10) / Recording Locations: Reitstadel, Neumarkt, Germany, September 1987 (Discs 64, 66, 67), December 1987 (Disc 65), March 1988 (Disc 69), July 1988 (Discs 68, 70) / Recording Locations: Watford Town Hall, London,13 & 14 June 1979 (71-1, 71-2); / Recording Locations: Watford Town Hall, London,13 & 14 June 1979 (72-1 to 72-3); / Recording Locations: The Colosseum, Watford, September 1997 (73-1 to 73-3); / Recording Locations: London, August 1980 (74-1 to 74-21); / Recording Locations: London, July 1985 (75-19 to 75-34), December 1986 (75-35, 75-36); / Recorded in July 1990 (75-1 to 75-18) / Recording Locations: Walthamstow Assembly Hall, London, 3-8 May 1972 (76-1 to 76-8); / Recording Location: Watford Town Hall, London, June 1981 (77-1 to 77-3); / Recorded in June 1972 (77-4 to 77-10) and October 1991 (77-11, 77-12) / Recording Location: Watford Town Hall, London, March 1986 (78-4 to 78-10); / Recorded in October 1997 (78-1 to 78-3) / Recording Locations: Grote Zaal, Concertgebouw, Amsterdam, 1981 (79-11, live recording); / Recorded in March 1986 (79-10) / Recording Locations: Queen Elizabeth Hall, London, 1972 (80-10, 80-11, live recording); / Recorded in May 1976 (80-5, 80-6), December 1986 (80-4), October 1991 (80-7, 80-9) / Recording Location: Watford Town Hall, London, June 1981 (81-5 to 81-8); / Recorded in May 1976 (81-2, 81-3), December 1986 (81-1), October 1991 (81-4) / Recording Location: Grote Zaal, Concertgebouw, Amsterdam, May 1973 / Recording Locations: Jesus-Christus-Kirche, Berlin, September 1986 (83-1 to 83-3); / Recording Location: Grote Zaal, Concertgebouw, Amsterdam, December 1973 / Recording Locations: Reitstadel, Neumarkt/Oberplaz, Germany, November 1989 (85-5 to 85-8); / Recorded in September 1991 (85-1 to 85-4) / Recording Locations: Herkulessaal, Munich, December 1971 (86-1 to 86-4); / Recording Location: London, July 1986 / Recording Location: Jugendstilsaal, Vienna, 2-8 July 2003 / Recording Location: Jugendstilsaal, Vienna, 1-5 July 2004 / Recording Location: Henry Wood Hall, London, 16 & 17 August 1977 / Recording Location: Reitstadel, Neumarkt, Germany, September 1994 / Recorded in September 1979 / Recorded in August 1982 / Recorded in September 1982 / Recording Location: Wigmore Hall, London, 5-7 November 2003 / Recording Location: Berlin, July 1985 / Recording Location: Wigmore Hall, London, 8 & 10 October 2003 / Recording Location: Sofiensaal, Vienna, September 1961 / Recording Location: Royal Festival Hall, London, 8 February 1976 / Recording Location: Royal Festival Hall, London, 30 May 2001 / Recording Location: Queen Elizabeth Hall, London, 20 October 1982 (102-1 to 102-4), 2 February 1983 (102-5, 102-6) / Recording Location: Manchester, July 1991 / Recording Locations: Royal Festival Hall, London, June 1997 (105-5 to 105-8); Alte Oper, Frankfurt am Main, September 1998 (104-1 to 104-4); Grote Zaal, Concert / Recording Location: Großes Festspielhaus, Salzburg, August 1981 (106-2 to 106-4), August 1984 (106-5 to 106-10), August 1985 (106-1) / Recording Locations: Royal Festival Hall, London, 13 May 1968 (107-1) [ADD]; 25 March 1990 (107-2), 22 October 1997 (107-3, 107-4); / Recording Location: Orchestra Hall, Chicago, June 1983 / Recording Locations: Herkulessaal, Munich, 28 February & 1 March 1985 (111-1 to 111-3); / Recording Locations: Großer Sendesaal des Landesfunkhauses Niedersachsen, NDR, 14 December 2008 (113-4 to 114-11); »
+1. Années tirées des notes Discogs (affichées ; à corriger dans le champ manuel si besoin)
 
 Anne Ducros — Purple Songs (édition 3703299)
-    notes : 1999   « Recorded February 1999 »
-
-Antonio Carlos Jobim, Vinicius De Moraes, João Gilberto — Bossa Nova 1958-1961 "La Sainte Trinité" (édition 16190661)
-    titre : 1958 – 1961
+    1999   « Recorded February 1999 »
 
 Arturo Benedetti Michelangeli, Frédéric Chopin — Arturo Benedetti Michelangeli Plays Chopin (édition 5805270)
-    notes : 1985   « Recorded live in Bregenz, March 3, 1985 »
+    1985   « Recorded live in Bregenz, March 3, 1985 »
 
 B For Bang — Across The Universe Of Languages (édition 2171688)
-    notes : 2006   « Recorded at RadioRai (studio A), Rome, Italy, 21st-30th August 2006. Except for voice on track 15 recorded at Studioeuropa, Torino, Italy. All tracks mixed at H »
+    2006   « Recorded at RadioRai (studio A), Rome, Italy, 21st-30th August 2006. Except for voice on track 15 recorded at Studioeuropa, Torino, Italy. All tracks mixed at H »
 
 Barclay James Harvest — Everyone Is Everybody Else (édition 8357118)
-    notes : 1974 – 1975   « Recorded at Olympic Studios, London in March 1974 / Recorded and mixed at Advision Studios, London 21st February 1975 / recorded at Olympic studios, Barnes, London March - April 1974 / recorded and mixed at Polydor studios, London, 5th January 1975 »
+    1974 – 1975   « Recorded at Olympic Studios, London in March 1974 / Recorded and mixed at Advision Studios, London 21st February 1975 / recorded at Olympic studios, Barnes, London March - April 1974 / recorded and mixed at Polydor studios, London, 5th January 1975 »
 
 Blazin' Quartet, Srđan Ivanović — Cosmogonie (édition 37318365)
-    notes : 2025   « Recorded on September 30 and October 1, 2025, at Sierra Studio A, Athens. »
+    2025   « Recorded on September 30 and October 1, 2025, at Sierra Studio A, Athens. »
 
 Carlos Maza — Chocala (édition 12487094)
-    notes : 2003   « Recorded April 1st to 5th 2003 at Studio Gil Evans (Amiens, France). »
+    2003   « Recorded April 1st to 5th 2003 at Studio Gil Evans (Amiens, France). »
 
 Charles Gounod, Barbara Hendricks, Laurence Dale, Jean-Philippe Lafont, Chœur de Radio France, Nouvel Orchestre Philharmonique De Radio-France, Georges Prêtre — St. Cecilia Mass = Cäcilienmesse = Messe Solennelle De Sainte Cécile (édition 16525272)
-    notes : 1983   « Recorded: Salle Wagram, Paris, December 20-21, 1983. »
+    1983   « Recorded: Salle Wagram, Paris, December 20-21, 1983. »
 
 Chavela Vargas — La Llorona (édition 10512687)
-    notes : 1993   « Grabado en Madrid, abril de 1993. »
+    1993   « Grabado en Madrid, abril de 1993. »
 
 Choeur Arsys Bourgogne, Pierre Cao, L'Arpeggiata, Christina Pluhar — Vêpres Sous Charles VI À Vienne (édition 14699850)
-    notes : 2002   « Recording at Chapelle des Parlementaires, Paris in May 2002 »
+    2002   « Recording at Chapelle des Parlementaires, Paris in May 2002 »
 
 Claude Debussy, Concertgebouworkest, Bernard Haitink — La Mer - Ibéria - Prélude À L'après-Midi D'un Faune (édition 8291612)
-    notes : 1976 – 1977   « recorded: Concertgebouw, Amsterdam, 12/1976 & 12/1977 ("Ibéria") »
+    1976 – 1977   « recorded: Concertgebouw, Amsterdam, 12/1976 & 12/1977 ("Ibéria") »
 
 Claude Debussy, Claude Helffer, Håkon Austbø — Œuvres Pour Deux Pianos & Pour Piano À Quatre Mains (édition 8547592)
-    notes : 1972 – 1973   « recorded December 1972 / January 1973 »
+    1972 – 1973   « recorded December 1972 / January 1973 »
 
 Céline Moinet, Johann Sebastian Bach, Carl Philipp Emanuel Bach, Luciano Berio, Benjamin Britten — Oboe (édition 8004395)
-    notes : 2011   « Enregistrement avril-mai 2011, Teldex Studio Berlin »
+    2011   « Enregistrement avril-mai 2011, Teldex Studio Berlin »
 
 Denis Levaillant — Blue Songs (édition 30200936)
-    notes : 2020   « Recorded in 2020 at the Paris Forêt Studio »
+    2020   « Recorded in 2020 at the Paris Forêt Studio »
 
 Denis Matsuev, Ludwig van Beethoven, Pyotr Ilyich Tchaikovsky, Franz Liszt, Sergei Prokofiev — Denis Matsouev, Piano (édition 7557380)
-    notes : 2000   « Recorded live on May, 27th 2000, at the Notre-Dame D'Auvers-Sur-Oise church, during the famous Auvers-Sur-Oise classical festival. »
+    2000   « Recorded live on May, 27th 2000, at the Notre-Dame D'Auvers-Sur-Oise church, during the famous Auvers-Sur-Oise classical festival. »
 
 Eliso Bolkvadze, Wolfgang Amadeus Mozart, Michel Sogny, Ludwig van Beethoven, Maurice Ravel, Frédéric Chopin — Récital Festival Michel Sogny Château De Coppet ● August 18/2007 (édition 8406781)
-    titre : 2007
-    notes : 2007   « Recorded on August 18, 2007 at Château de Coppet (Suisse). Enregistrement public - Live Recording. »
+    2007   « Recorded on August 18, 2007 at Château de Coppet (Suisse). Enregistrement public - Live Recording. »
 
 Ensemble Venance Fortunat, Anne-Marie Deschamps — Le Chant Des Origines. Graduel De Bellelay (XIIe Siècle) (édition 19128700)
-    notes : 2005   « Recorded 2005 at “l’église des Jésuites à Porrentruy (Suisse)”. »
+    2005   « Recorded 2005 at “l’église des Jésuites à Porrentruy (Suisse)”. »
 
 Francesco Tristano — Not For Piano (édition 960148)
-    notes : 2005   « Recorded October 2005 at 'Le studio de Meudon' France. »
+    2005   « Recorded October 2005 at 'Le studio de Meudon' France. »
 
 Franz Liszt, Claudio Arrau, London Symphony Orchestra, Sir Colin Davis — The Piano Concertos / 3 Etudes De Concert (édition 10165463)
-    notes : 1976 – 1979   « Recorded: London, 12/1979 (Concertos); 11/1976 (Etudes)" »
+    1976 – 1979   « Recorded: London, 12/1979 (Concertos); 11/1976 (Etudes)" »
 
 Franz Schubert, Noël Lee, Jean-Louis Beaumadier — Sonate Arpeggione (édition 9406179)
-    notes : 1991   « Enregistrement réalisé en 1991. »
+    1991   « Enregistrement réalisé en 1991. »
 
 Fred Pouget — Sauvage (édition 35615785)
-    notes : 2024   « Recorded and mixed at Gil Evans studio in Amiens from June 22nd to 27th, 2024 »
-
-Friedrich Gulda — Récital Montpellier, 1993 (édition 9210647)
-    titre : 1993
+    2024   « Recorded and mixed at Gil Evans studio in Amiens from June 22nd to 27th, 2024 »
 
 Frédéric Chopin, Polish Festival Orchestra, Krystian Zimerman — Piano Concertos Nos. 1 & 2 (édition 4281460)
-    notes : 1999   « Recording: Torino, Auditorium Giovanni Agnelli, 8/1999. »
+    1999   « Recording: Torino, Auditorium Giovanni Agnelli, 8/1999. »
 
 Gabriel Fauré, Sheila Armstrong, Dietrich Fischer-Dieskau, Orchestre De Paris, Daniel Barenboim — Requiem (édition 8429177)
-    notes : 1974   « Recorded in Paris, Salle Wagram, 31.I & 1.II.1974. »
+    1974   « Recorded in Paris, Salle Wagram, 31.I & 1.II.1974. »
 
 Georg Friedrich Händel, David Daniels, Orchestra Of The Age Of Enlightenment, Roger Norrington — Operatic Arias (édition 16547625)
-    notes : 1998   « Recorded 11, 13 & 15 February 1998. »
+    1998   « Recorded 11, 13 & 15 February 1998. »
 
 Herbert Distel — La Stazione (édition 2453355)
-    notes : 1987   « recorded in 1987 at Central Station in Milan/Italy »
+    1987   « recorded in 1987 at Central Station in Milan/Italy »
 
 Jamie Cullum — Twentysomething (édition 12379659)
-    notes : 2003 – 2004   « recorded and mixed at: Mayfair Studios June/July 2003. Originally / recorded at Stebbing Recording Studio, New Zealand, July 2004. / recorded at BBC Broadcasting House for the Jo Whiley Show, February 2004. / recorded live at St. Lukes, London on 27 September 2003, for the South Bank Show. »
+    2003 – 2004   « recorded and mixed at: Mayfair Studios June/July 2003. Originally / recorded at Stebbing Recording Studio, New Zealand, July 2004. / recorded at BBC Broadcasting House for the Jo Whiley Show, February 2004. / recorded live at St. Lukes, London on 27 September 2003, for the South Bank Show. »
 
 Jeanne Lee — Conspiracy (édition 27185319)
-    notes : 1974   « recorded by George Klabin, Sound Ideas Studio, New York, February 1974. »
+    1974   « recorded by George Klabin, Sound Ideas Studio, New York, February 1974. »
 
 Johann Sebastian Bach, Andreas Scholl, Barbara Schlick, Christoph Prégardien, Gotthold Schwarz, Concerto Vocale Leipzig, Ensemble Baroque De Limoges, Christophe Coin — Cantatas (édition 4780223)
-    notes : 1993   « Recorded in November 1993 in the church of Ponitz (Thuringen, Germany) »
+    1993   « Recorded in November 1993 in the church of Ponitz (Thuringen, Germany) »
 
 Johann Sebastian Bach, Barbara Schlick, Andreas Scholl, Christoph Prégardien, Gotthold Schwarz, Ensemble Baroque De Limoges, Concerto Vocale Leipzig, Christophe Coin — Cantates BWV 180, 49, 115 (édition 4748253)
-    notes : 1993   « Recorded at Ponitz Church (Thüringen - Germany) in November 1993 »
+    1993   « Recorded at Ponitz Church (Thüringen - Germany) in November 1993 »
 
 Johann Sebastian Bach, Gustav Leonhardt — French Suites - Inventions & Sinfonias - Italian Concerto Etc. (édition 7809501)
-    notes : 1974 – 1975   « Recording: Doopsgezinde Kerk, Haarlem, The Netherlands, February & December 1975 (CD1) , November 1974 (CD2) . »
+    1974 – 1975   « Recording: Doopsgezinde Kerk, Haarlem, The Netherlands, February & December 1975 (CD1) , November 1974 (CD2) . »
 
 Johann Sebastian Bach, Glenn Gould, András Schiff — Glenn Gould & András Schiff Play Bach (édition 6998918)
-    notes : 1955 – 1978   « recorded in 1955 (when Gould was 23) / recorded in 1978 »
+    1955 – 1978   « recorded in 1955 (when Gould was 23) / recorded in 1978 »
 
 Johann Sebastian Bach, André Isoir — L'Art De La Fugue (édition 8049334)
-    notes : 1999   « Enregistrement de 1999 »
+    1999   « Enregistrement de 1999 »
 
 Johann Sebastian Bach, Jan Kobow, Stephan Macleod, Francis Jacob, Katharine Fuge, Carlos Mena, Ricercar Consort, Philippe Pierlot — Tombeau De Sa Majesté La Reine De Pologne (édition 4658378)
-    notes : 2006   « Recorded at the Temple of Loumarin in October 2006 »
+    2006   « Recorded at the Temple of Loumarin in October 2006 »
 
 John Adams, London Sinfonietta, Kronos Quartet — Gnarly Buttons & John's Book Of Alleged Dances (édition 23866520)
-    notes : 1995 – 1997   « recorded at Skywalker Sound, Nicasio, CA in August 1996. / recorded at Skywalker Sound in August 1995. / recorded at Air Studios, London, England in July 1997; edited and mixed at Galaxy Classics, Mol, Belgium. »
+    1995 – 1997   « recorded at Skywalker Sound, Nicasio, CA in August 1996. / recorded at Skywalker Sound in August 1995. / recorded at Air Studios, London, England in July 1997; edited and mixed at Galaxy Classics, Mol, Belgium. »
 
 Joseph Haydn, Quatuor Mosaïques — Les Sept Dernières Paroles De Notre Rédempteur Sur La Croix (édition 5585885)
-    notes : 1992   « Recorded live on April 17 (Good Friday), 1992 in the Abbey of Fontevraud. »
+    1992   « Recorded live on April 17 (Good Friday), 1992 in the Abbey of Fontevraud. »
 
 Joseph Haydn, Zhu Xiao-Mei — Sonates (édition 22909949)
-    notes : 2008   « Enregistré en Juin 2008 dans l’église protestante de Bon-Secours, Paris »
+    2008   « Enregistré en Juin 2008 dans l’église protestante de Bon-Secours, Paris »
 
 Joseph Phibbs, Wolfgang Amadeus Mozart, Mark Van De Wiel, Philharmonia Orchestra, The London Chamber Orchestra, Christopher Warren-Green — Clarinet Concertos (édition 20485585)
-    notes : 2013 – 2017   « recorded in Henry Wood Hall, London on 12th November 2017. / recorded live in concert in Cadogan Hall, London on 23rd January 2013. »
+    2013 – 2017   « recorded in Henry Wood Hall, London on 12th November 2017. / recorded live in concert in Cadogan Hall, London on 23rd January 2013. »
 
 Julie Campiche — Unspoken (édition 36751258)
-    notes : 2024   « Recorded by: Marelle Studio by Fabien Iannone June 2024 »
+    2024   « Recorded by: Marelle Studio by Fabien Iannone June 2024 »
 
 Julien Lourau — Forget² (édition 11267710)
-    notes : 2004   « Recorded june and october 2004 at Studio 440 (Montreuil) by Mickaël Seminatore & Jeff Sharel. Mixed fall 2004 by Jeff Sharel. »
+    2004   « Recorded june and october 2004 at Studio 440 (Montreuil) by Mickaël Seminatore & Jeff Sharel. Mixed fall 2004 by Jeff Sharel. »
 
 Karen Lano — My Name Is Hope Webster (édition 2992592)
-    notes : 2009   « Recorded in March 2009 »
+    2009   « Recorded in March 2009 »
 
 Louis Couperin, Blandine Verlet — Les Piéces De Clavessin De Mr. Louis Couperin - Tome I (édition 14892080)
-    notes : 1986   « Recorded October 1986 »
+    1986   « Recorded October 1986 »
 
 Louis-Nicolas Clérambault, Les Demoiselles De Saint-Cyr, Emmanuel Mandrin — Chants Et Motets Pour La Royale Maison De Saint-Louis (édition 11908366)
-    notes : 1993   « Recorded 20-24 June 1993. »
+    1993   « Recorded 20-24 June 1993. »
 
 Manu Codjia, Daniel Humair, François Moutin — Songlines (édition 7884170)
-    notes : 2006   « Recorded and mixed at Studio La Buissonne in Pernes-Les-Fontaines in September 2006 »
+    2006   « Recorded and mixed at Studio La Buissonne in Pernes-Les-Fontaines in September 2006 »
 
 Marc Antoine Charpentier, Les Arts Florissants, William Christie — Les Arts Florissants (édition 10232984)
-    notes : 1981   « Recorded May 1981 »
+    1981   « Recorded May 1981 »
 
 Maurice Ravel, Samson François — L'Œuvre Pour Piano Seul (édition 10474904)
-    notes : 1967   « Recorded: Monte-Carlo, Salle de l'Alcazar & Paris, Salle Wagram, 22-24. III., 4. IV., 1-8. VI. & 18-21. VII. 1967. »
+    1967   « Recorded: Monte-Carlo, Salle de l'Alcazar & Paris, Salle Wagram, 22-24. III., 4. IV., 1-8. VI. & 18-21. VII. 1967. »
 
 Maurice Ravel, Samson François, André Cluytens, Orchestre De La Société Des Concerts Du Conservatoire — Piano Concertos, Valses Nobles Et Sentimentales, Gaspard De La Nuit (édition 13762047)
-    notes : 1959 – 1967   « recorded 1-3. VIII. 1959, Salle Wagram, Paris / recorded 22-24.II, 4.IV, 18.VI & 18-21.VII, 1967, Salle de l'Alcazar, Monte Carlo & Salle Wagram, Paris. / recorded 5 & 8. VI. 1967, Salle de l'Alcazar, Monte Carlo. DRM »
+    1959 – 1967   « recorded 1-3. VIII. 1959, Salle Wagram, Paris / recorded 22-24.II, 4.IV, 18.VI & 18-21.VII, 1967, Salle de l'Alcazar, Monte Carlo & Salle Wagram, Paris. / recorded 5 & 8. VI. 1967, Salle de l'Alcazar, Monte Carlo. DRM »
 
 Michael Gregory Jackson — Frequency Equilibrium Koan (édition 33367019)
-    notes : 1970 – 1977   « Recorded live at The Ladies' Fort, 2 Bond Street NYC 1977 / recording at The Ladies' Fort, 2 Bond Street, NYC 1977, (a jazz performance loft set up by Joe Lee Wilson in the 1970s) »
+    1977   « Recorded live at The Ladies' Fort, 2 Bond Street NYC 1977 / recording at The Ladies' Fort, 2 Bond Street, NYC 1977, (a jazz performance loft set up by Joe Lee Wilson in the 1970s) »
 
 Michel Bismut, Jorge Pardo, Nabil Khalidi, Keyvan Chemirani — UR (édition 19537585)
-    notes : 1995   « Enregistré au studio La Buissone, Pernes les fontaines en Mai 1995 (sauf 2 & 9 - Studio Village [...] en Mars 1995). »
-
-Michel Debost, Christian Ivaldi, Various — Flûte Panorama - 1 (Paris 1920 - 1960) (édition 6875144)
-    titre : 1920 – 1960
+    1995   « Enregistré au studio La Buissone, Pernes les fontaines en Mai 1995 (sauf 2 & 9 - Studio Village [...] en Mars 1995). »
 
 Michel Jonasz — En Concert Au Palais Des Sports (édition 6957128)
-    notes : 1985   « Recorded February 1985 »
+    1985   « Recorded February 1985 »
 
 Miles Davis, Hank Mobley, Wynton Kelly, Paul Chambers, Jimmy Cobb — San Francisco, 1961 Miles Davis At The "Blackhawk" Vol. 1 (édition 12925616)
-    titre : 1961
-    notes : 1961   « Recorded at "The Blackhawk", San Francisco, April 14-15, 1961 »
+    1961   « Recorded at "The Blackhawk", San Francisco, April 14-15, 1961 »
 
 Miles Davis, Hank Mobley, Wynton Kelly, Paul Chambers, Jimmy Cobb — San Francisco, 1961 Miles Davis At The "Blackhawk" Vol. 2 (édition 12928243)
-    titre : 1961
-    notes : 1961   « Recorded at "The Blackhawk", San Francisco, April 14-15, 1961. / Recorded at "The Blackhawk", San Francisco, April 22, 1961. »
+    1961   « Recorded at "The Blackhawk", San Francisco, April 14-15, 1961. / Recorded at "The Blackhawk", San Francisco, April 22, 1961. »
 
 Mirijam Contzen, Johann Sebastian Bach, Tibor Varga, Béla Bartók, Igor Stravinsky, Eugène Ysaÿe — Solo (édition 14462014)
-    notes : 2004   « Recording: January 12-14, 2004, Reitstadel Neumarkt »
+    2004   « Recording: January 12-14, 2004, Reitstadel Neumarkt »
 
 Oskar Morawetz, István Anhalt, Jacques Hétu, Barbara Pentland, Fartein Valen, Glenn Gould — Glenn Gould Plays Contemporary Music (édition 21442324)
-    notes : 1966 – 1972   « Recording (Track 1): 30th Street Studio, New York City, June 27 & 28, 1966 / Recording (Track 2): 30th Street Studio, New York City, July 25, 1967 / Recording (Track 3): 30th Street Studio, New York City, August 11, 1967 / Recording (Track 4): 30th Street Studio, New York City, July 25, 1967 (First release) / Recording (Tracks 5 to 7): Radio Broadcast, CBC Studios, Toronto, Canada, July 18, 1972 (First release) »
+    1966 – 1972   « Recording (Track 1): 30th Street Studio, New York City, June 27 & 28, 1966 / Recording (Track 2): 30th Street Studio, New York City, July 25, 1967 / Recording (Track 3): 30th Street Studio, New York City, August 11, 1967 / Recording (Track 4): 30th Street Studio, New York City, July 25, 1967 (First release) / Recording (Tracks 5 to 7): Radio Broadcast, CBC Studios, Toronto, Canada, July 18, 1972 (First release) »
 
 Paco De Lucía, John McLaughlin — Live At Montreux 1987 (édition 9250054)
-    titre : 1987
-    notes : 1987   « Recorded July 15th, 1987 »
+    1987   « Recorded July 15th, 1987 »
 
 Paul Bley — Circles (édition 31144115)
-    notes : 1970 – 1972   « Recorded in New York City between 1970 and 1972. / Recorded December 9, 1970. / Recorded January 21, 1971. / Recorded March 9, 1971. / Recorded November 24, 1972. »
+    1970 – 1972   « Recorded in New York City between 1970 and 1972. / Recorded December 9, 1970. / Recorded January 21, 1971. / Recorded March 9, 1971. / Recorded November 24, 1972. »
 
 Pierre de Bethmann — Cubique (édition 2394117)
-    notes : 2009   « Recorded June 15-15, 2009 at Ferber Studio A, Paris »
+    2009   « Recorded June 15-15, 2009 at Ferber Studio A, Paris »
 
 Quentin Ghomari — Ôtrium (édition 24996514)
-    notes : 2021   « Recorded on 13th and 14th of December 2021 at Midi Live, Villetanneuse »
+    2021   « Recorded on 13th and 14th of December 2021 at Midi Live, Villetanneuse »
 
 Robert Schumann, Catherine Collard — Vol. 1 (édition 18769333)
-    notes : 1988   « Recorded 25 & 26 August 1988 »
+    1988   « Recorded 25 & 26 August 1988 »
 
 Robert Wyatt — Cuckooland (édition 493612)
-    notes : 2002 – 2003   « Recorded at Phil Manzanera's Gallery Studio, London, in summer 2002, and spring 2003. »
+    2002 – 2003   « Recorded at Phil Manzanera's Gallery Studio, London, in summer 2002, and spring 2003. »
 
 Sarah McKenzie — We Could Be Lovers (édition 7597755)
-    notes : 2014   « Recorded March 2014 »
+    2014   « Recorded March 2014 »
 
 Sergio Tiempo — Recital In The Concertgebouw Amsterdam (édition 8607718)
-    notes : 1986   « Recorded live in The Concertgebouw, Amsterdam on 20.4.1986. »
+    1986   « Recorded live in The Concertgebouw, Amsterdam on 20.4.1986. »
 
 Sonya Yoncheva — Rebirth (édition 34724037)
-    notes : 2020   « Recording June 24-28 2020 at Salle de Musique, La Chauxj-de-Fonds (Switzerland) »
+    2020   « Recording June 24-28 2020 at Salle de Musique, La Chauxj-de-Fonds (Switzerland) »
 
 Steve Dobrogosz — Golden Slumbers (édition 3019977)
-    notes : 2009   « Recorded at Rainbow Studio, Oslo, May 5th, 2009 »
+    2009   « Recorded at Rainbow Studio, Oslo, May 5th, 2009 »
 
 Sœur Marie Keyrouz — Chant Traditionnel Maronite (édition 15670909)
-    notes : 1990   « Enregistrement juillet 1990, Eglise Evangélique Allemande, Paris. »
+    1990   « Enregistrement juillet 1990, Eglise Evangélique Allemande, Paris. »
 
 Teitur, Aarhus Jazz Orchestra — Songs From A Social Distance (édition 31263949)
-    notes : 2021   « Recorded in Århus Domkirke, Denmark on Feb. 27, 2021 »
+    2021   « Recorded in Århus Domkirke, Denmark on Feb. 27, 2021 »
 
 The Good, The Bad & The Queen — The Good, The Bad & The Queen (édition 13127292)
-    notes : 2005   « session date: 7th June, 2005 (choir) / session date: 28th April, 2005 (violins, violas & double basses) / session date: 5th October, 2005 (violins, violas & double bass) »
+    2005   « session date: 7th June, 2005 (choir) / session date: 28th April, 2005 (violins, violas & double basses) / session date: 5th October, 2005 (violins, violas & double bass) »
 
 Tigran Hamasyan — A Fable (édition 15307462)
-    notes : 2010   « Recorded in September 2010 at Studio Sequenza in Montreuil, France »
-
-Various, Roland Kovac, Donald Byrd, Helen Merrill, Albert Mangelsdorff, Stan Getz, Bud Shank, Don Menza, Lee Konitz — Hello Baden Baden Sessions 1955-60 - Unreleased Radio Tapes (édition 8506468)
-    titre : 1955 – 1960
-
-Various — You & The Night & The Music - La Soirée Jazz De L'Année 2012 À L'Olympia (édition 7917892)
-    titre : 2012
+    2010   « Recorded in September 2010 at Studio Sequenza in Montreuil, France »
 
 Witold Lutoslawski, Camerata Silesia, Anna Szostak, Polish National Radio Symphony Orchestra, Antoni Wit — Concerto For Orchestra, Three Poems • Mi-Parti (Orchestral Works Vol. 5) (édition 6149422)
-    notes : 1996 – 1997   « Recorded at the Concert Hall of the PNRSO, Katowice, Poland, in September and December, 1996 and in January, 1997. »
+    1996 – 1997   « Recorded at the Concert Hall of the PNRSO, Katowice, Poland, in September and December, 1996 and in January, 1997. »
 
 Wolfgang Amadeus Mozart, English Chamber Orchestra, Murray Perahia, Radu Lupu — Concertos For Two & Three Pianos - Andante And Variations For Four Hands In G Major, K. 501 - Fantasia In F Minor, K. 608 (édition 7981634)
-    notes : 1988 – 1990   « Recorded at Snape Maltings Concert Hall, Snape, England, June 23 & 24, 1988 (K. 242/365); Abbey Road Studio 1, London, June 27&30, 1990 (K. 501/608) »
+    1988 – 1990   « Recorded at Snape Maltings Concert Hall, Snape, England, June 23 & 24, 1988 (K. 242/365); Abbey Road Studio 1, London, June 27&30, 1990 (K. 501/608) »
 
 Wolfgang Amadeus Mozart, Vladimir Ashkenazy, Malcolm Frager — Piano Sonatas = Klaviersonaten - Sonata For 2 Pianos = Sonate Für 2 Klaviere  K576 - K310 - K448 (édition 12092523)
-    notes : 1967 – 1968   « Recording location Kingsway Hall, London 1967-1968 ( 1 to 7) »
+    1967 – 1968   « Recording location Kingsway Hall, London 1967-1968 ( 1 to 7) »
 
 Wolfgang Amadeus Mozart, Alexei Lubimov — Sonaten KV 533/494, 545, 570, 576 (Vol. VI) (édition 12168439)
-    notes : 1990   « Recorded in January 1990. »
+    1990   « Recorded in January 1990. »
 
 Wolfgang Amadeus Mozart, The Academy Of St. Martin-in-the-Fields, Sir Neville Marriner — Symphonien 40 & 41 "Jupiter" (édition 12521471)
-    notes : 1984 – 1986   « recorded X.& XI.1986 and originally / recorded XII.1984 and originally »
+    1984 – 1986   « recorded X.& XI.1986 and originally / recorded XII.1984 and originally »
 
 
-2. Éditions qui ont DÉJÀ une année (contrôle de la méthode) : 138 sur 141 concordent
+2. Années tirées du titre (affichées, hors classique)
 
-Alfred Deller, Gustav Leonhardt — Deller's Choice - A Concert Of Music Both Rare And Rewarding (édition 13461040)
-    notes : 1959   « Recorded April 1959 at Vienna, Austria »
-    déjà connu : 1959 (musicbrainz)
+Antonio Carlos Jobim, Vinicius De Moraes, João Gilberto — Bossa Nova 1958-1961 "La Sainte Trinité" (édition 16190661)
+    1958 – 1961
 
-Antonio Vivaldi, Europa Galante, Fabio Biondi — Le Quattro Stagioni (édition 10414040)
-    notes : 1991   « Recorded in Graz, Austria in 1991. »
-    déjà connu : 1991 (musicbrainz)
+Various, Roland Kovac, Donald Byrd, Helen Merrill, Albert Mangelsdorff, Stan Getz, Bud Shank, Don Menza, Lee Konitz — Hello Baden Baden Sessions 1955-60 - Unreleased Radio Tapes (édition 8506468)
+    1955 – 1960
 
-Antonio Vivaldi, Il Giardino Armonico, Enrico Onofri, Giovanni Antonini — Les 4 Saisons (édition 8001642)
-    notes : 1993   « Recording location: Lugano, Radio della Svizzera Italiana (RTSI), Studio 1, September 1993 »
-    déjà connu : 1993 (musicbrainz)
+Various — You & The Night & The Music - La Soirée Jazz De L'Année 2012 À L'Olympia (édition 7917892)
+    2012
 
-Antonio Vivaldi, Andreas Scholl, Ensemble 415, Chiara Banchini — Stabat Mater (édition 1554982)
-    notes : 1995   « Recorded June 1995. »
-    déjà connu : 1995 (musicbrainz)
 
-Antonio Vivaldi, Johann Sebastian Bach — VIvaldi: Gloria / Bach: Magnificat (édition 7717308)
-    notes : 1994   « Recorded at St. Peter's Church, Hale, Cheshire, 1994. »
-    déjà connu : 1993 – 1994 (musicbrainz)
+3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 » ou « à trouver ») : 0
 
-Antonín Dvořák, Max Bruch, Pyotr Ilyich Tchaikovsky, Janos Starker, London Symphony Orchestra, Antal Dorati — Cello Concerto In B Minor, Op. 104 / Kol Nidrei / Variations On A Rococo Theme (édition 3428020)
-    notes : 1962 – 1964   « recorded July 6, 7 and 10, 1962, at Watford Town Hall outside London, on 3 track 35mm magnetic film and half-inch, using 3 Telefunken 201 microphones. / recorded June 26 and 27, 1964, at Watford Town Hall, on 3 track half-inch tape, using 3 Telefunken 201 microphones. »
-    déjà connu : 1962 – 1964 (musicbrainz)
 
-Antonín Dvořák, Antal Dorati, London Symphony Orchestra — Symphony No. 7 In D Minor / Symphony No. 8 In G Major (édition 3226630)
-    notes : 1959 – 1963   « recorded on July 17 and 18, 1963, on both three-track 35mm film and half-inch three-track tape.  Because of the present unavailability of the film, this CD has / recorded on June 19 and 20, 1959, on half-inch three-track tape and was originally »
-    déjà connu : 1959 – 1963 (musicbrainz)
+4. « Live » automatique (notes ou titre, champ « Live / Studio » vide) : 19
+   Affiché « Live » dans la page. Une erreur : choisir « Studio » ou « Live et Studio » dans Discogs.
 
-Arnold Schoenberg, Anton Webern, Alban Berg, Peter Hill — Piano Music (édition 5196050)
-    notes : 1996   « Recorded November 25-27, 1996. »
-    déjà connu : 1996 (musicbrainz)
+András Schiff — Encores After Beethoven (édition 9423778)
+    notes : « 06 May 21, 2006 / Vol. VII Concert recordings at Tonhalle Zürich March 2004 – May 2006 An ECM »
 
-Art Blakey & The Jazz Messengers, Thelonious Monk — Art Blakey's Jazz Messengers With Thelonious Monk (édition 915811)
-    notes : 1957   « Recorded in New York May 14 and 15, 1957 »
-    déjà connu : 1957 (musicbrainz)
-
-Art Blakey & The Jazz Messengers — The Best Of Art Blakey And The Jazz Messengers (édition 275258)
-    notes : 1958 – 1964   « Recorded on October 30, 1958 in Hackensack, New Jersey. / Recorded on March 6, 1960 in Englewood Cliffs, New Jersey. / Recorded on August 14, 1960 in Englewood Cliffs, New Jersey. / Recorded on October 2, 1961 in Englewood Cliffs, New Jersey. / Recorded on February 10, 1964 in Englewood Cliffs, New Jersey. »
-    déjà connu : 1958 – 1964 (musicbrainz)
-
-Béla Bartók, Chicago Symphony Orchestra, Chicago Symphony Chorus, Pierre Boulez — The Miraculous Mandarin / Music For Strings, Percussion And Celesta (édition 1006731)
-    notes : 1994   « Recording: Chicago, Orchestra Hall, 12/1994. »
-    déjà connu : 1994 (musicbrainz)
-
-Béla Bartók, Pierre Boulez, New York Philharmonic — The Miraculous Mandarin = Der Wunderbare Mandarin = Le Mandarin Merveilleux  / Four Orchestral Pieces / Three Village Scenes (édition 9218802)
-    notes : 1971 – 1977   « Recording: Manhattan Centre, New York City, February 7, 1977. / Recording: Philharmonic Hall (now Avery Fisher Hall), New York City, May 11, 1971. »
-    déjà connu : 1971 – 1977 (musicbrainz)
-
-Béla Bartók, Yehudi Menuhin, Antal Dorati, Minneapolis Symphony Orchestra — Violin Concerto No.2, Second Suite (édition 10002045)
-    notes : 1955 – 1957   « recorded 2/1957 at Carnegie Hall, NYC, / recorded 11/1955 at Northrop Auditorium, Minneapolis. »
-    déjà connu : 1955 – 1957 (musicbrainz)
-
-Camille Saint-Saëns, Paul Paray, Paul Paray, Detroit Symphony Orchestra — Symphony No. 3 / Mass For The 500th Anniversary Of The Death Of Joan Of Arc (édition 5378824)
-    notes : 1956 – 1957   « Recorded: 10/1957 (1–4) and 10/1956 (5–9), USA »
-    déjà connu : 1956 – 1957 (musicbrainz)
-
-Carla Bley — 4X4 (édition 1773949)
-    notes : 1999   « Recorded July 1999 at Rainbow Studio, Oslo »
-    déjà connu : 1999 (musicbrainz)
-
-Carla Bley — Big Band Theory (édition 4642250)
-    notes : 1993   « Recorded July 2/3, 1993, at Angel Studios, London »
-    déjà connu : 1993 (musicbrainz)
+Arturo Benedetti Michelangeli, Frédéric Chopin — Arturo Benedetti Michelangeli Plays Chopin (édition 5805270)
+    notes : « Recorded live in Bregenz, March 3, 1985 »
 
 Carla Bley, Steve Swallow, The Partyka Brass Quintet — Carla's Christmas Carols (édition 2399321)
-    notes : 2008   « Recorded December 8/9, 2008 and mixed and / recorded on December 4, 2008, live in Berlin at The Passionskirche »
-    déjà connu : 2008 (musicbrainz)
+    notes : « recorded on December 4, 2008, live in Berlin at The Passionskirche This project was or »
 
 Carla Bley — Fleur Carnivore (édition 11202078)
-    notes : 1988   « Recorded live, November 14-16, 1988, at The Montmartre, Copenhagen, Denmark »
-    déjà connu : 1988 (musicbrainz)
+    notes : « Recorded live, November 14-16, 1988, at The Montmartre, Copenha »
 
-Charlie Christian — Volume 4 - 1940 - Complete Edition (édition 11205201)
-    titre : 1940
-    déjà connu : 1940 (musicbrainz)
+Denis Matsuev, Ludwig van Beethoven, Pyotr Ilyich Tchaikovsky, Franz Liszt, Sergei Prokofiev — Denis Matsouev, Piano (édition 7557380)
+    notes : « Recorded live on May, 27th 2000, at the Notre-Dame D'Auvers-Sur »
 
-Chet Baker — Chet (édition 14489748)
-    notes : 1958 – 1959   « Recorded in New York City on December 30, 1958 and January 19, 1959. »
-    déjà connu : 1958 – 1959 (musicbrainz)
-
-Chet Baker Sextet — Chet Is Back! (édition 3265283)
-    notes : 1962   « Recorded in Rome, Italy, at the RCA Italiana Studios, January 5, 1962. »
-    déjà connu : 1962 (musicbrainz)
-
-Chicago Underground Quartet — Chicago Underground Quartet (édition 50304)
-    notes : 2000   « Recorded at Soma, August 2000, mixed at Soma December 2000. »
-    déjà connu : 2000 (musicbrainz_album)
-
-Chick Corea — Return To Forever (édition 14489914)
-    notes : 1972   « Recorded February 2 and 3, 1972 / Recorded February 1972 »
-    déjà connu : 1972 (musicbrainz)
-
-Chœur De Chambre Accentus, Akademie Für Alte Musik Berlin, Sandrine Piau, Ruth Sandhoff, Robert Getchell, Harry van der Kamp, Laurence Equilbey, Joseph Haydn — Les Sept Dernières Paroles Du Christ (édition 7414475)
-    notes : 2005   « Recorded in December 2005 in Théâtre de Poissy (France) . »
-    déjà connu : 2005 (musicbrainz)
-
-Claude Debussy, Maria Ewing, François Le Roux, José van Dam, Jean-Philippe Courtis, Christa Ludwig, Konzertvereinigung Wiener Staatsopernchor, Wiener Philharmoniker, Claudio Abbado — Pelléas Et Mélisande (édition 2638742)
-    notes : 1991   « Recorded: Wien, Konzerthaus, Grosser Saal, 1/1991 »
-    déjà connu : 1991 (musicbrainz)
-
-Claude Debussy, Krystian Zimerman — Préludes (édition 2639039)
-    notes : 1991   « Recording: Kassel, Stadthalle, Festsaal, 9/1991 »
-    déjà connu : 1991 (musicbrainz)
-
-Claudio Monteverdi, Les Arts Florissants, William Christie — Selva Morale E Spirituale (édition 1962284)
-    notes : 1986   « Recorded July 1986 at Eglise Evangélique Allemande de Paris. »
-    déjà connu : 1986 (musicbrainz)
-
-Claudio Monteverdi, Concerto Vocale, René Jacobs — Un Concert Spirituel (édition 12710212)
-    notes : 1979   « Recorded July 1979. »
-    déjà connu : 1979 (musicbrainz)
-
-Cyrus Chestnut — The Dark Before The Dawn (édition 11408358)
-    notes : 1994   « Recorded live to two-track analog at Power Station, Studio A, on August 23, 24, and 25, 1994. »
-    déjà connu : 1994 (musicbrainz)
-
-David Bowie — The Singles Collection (édition 4978861)
-    notes : 1969 – 1981   « recordings is owned by Jones Music/Mainman S.A. under exclusive license to EMI Records Ltd. Original Release: Track 1 1969, Tracks 2-4, 6 & 7 1972, Tracks 5 & 1 / recordings is owned by Virgin Music Ltd. Original Release: Track 1 1977, Track 2 1978, Tracks 3 & 4 1979, Tracks 5-7 1980, Tracks 8, 9, 10 1981, Tracks 11, 12, »
-    déjà connu : 1969 – 1985 (musicbrainz)
-
-Dizzy Gillespie — At Newport (édition 10449763)
-    notes : 1957   « Recorded in concert at the Newport Jazz Festival, Newport R. I., July 6, 1957. »
-    déjà connu : 1957 (musicbrainz)
-
-Edvard Grieg, Emil Gilels — Lyrische Stücke • Lyric Pieces (édition 2495011)
-    notes : 1974   « Recording: Berlin, Jesus-Christus-Kirche, 6/1974 »
-    déjà connu : 1974 (musicbrainz)
-
-Ensemble Organum, Marcel Pérès — Chant Mozarabe (édition 6298938)
-    notes : 1994   « Enregistrement mai 1994 »
-    déjà connu : 1994 (musicbrainz)
-
-Fabien Tehericsen, Louis Sclavis, WDR Rundfunkorchester Köln — Le Concerto Improvisé (édition 3419248)
-    notes : 1999 – 2000   « Recorded between November 1999 and April 2000 at WDR FHS, Klaus-von-Bismarck-Saal, Cologne, Germany »
-    déjà connu : 1999 – 2000 (musicbrainz)
-
-Frank Sinatra — Songs For Swingin' Lovers (édition 4553492)
-    notes : 1954 – 1955   « recorded 1955. / recorded 1954. »
-    déjà connu : 1953 – 1956 (musicbrainz)
-
-Franz Liszt, Krystian Zimerman, Boston Symphony Orchestra, Seiji Ozawa — Klavierkonzerte Nos 1 & 2 = Piano Concertos = Concertos Pour Piano · Totentanz (édition 3899039)
-    notes : 1987   « Recording: Boston, Symphony Hall, 4/1987 »
-    déjà connu : 1987 (musicbrainz)
-
-Franz Schubert, Wolfgang Amadeus Mozart, Amadeus-Quartett, William Pleeth — String Quintet In C D 956 / Adagio & Fugue K.546 (édition 6270862)
-    notes : 1965 – 1978   « Recordings: Berlin, Ufa-Studio, 5/1965 (Schubert); München, Plenarsaal der Akademie der Wissenschaften, 11/1978 (Mozart). »
-    déjà connu : 1965 – 1978 (musicbrainz)
-
-Frédéric Chopin, Jean-Marc Luisada — 17 Valses (édition 9023828)
-    notes : 1990   « Recording: Hamburg-Harburg, Friedrich-Ebert-Halle, 6/1990 »
-    déjà connu : 1990 (musicbrainz)
-
-Frédéric Chopin, Nikolai Lugansky — 24 Préludes (édition 1061615)
-    notes : 2001   « Recorded at Teldec Studios, Berlin, 20th - 24th April 2001 »
-    déjà connu : 2001 (musicbrainz)
-
-Frédéric Chopin, Nikolai Lugansky — Etudes (édition 7710639)
-    notes : 1999   « recording: November 13-16, 1999; »
-    déjà connu : 1999 (musicbrainz)
-
-Frédéric Chopin, Daniel Barenboim — Nocturnes (édition 3031014)
-    notes : 1981   « Recording: Berlin, Studio Lankwitz, 1 & 5 / 1981 »
-    déjà connu : 1981 (musicbrainz)
-
-Frédéric Chopin, Claudio Arrau — Waltzes = Walzer = Valses (édition 7984655)
-    notes : 1979   « Recorded · Aufnahme · Enregistrement: La Chaux de Fonds, Switzerland, 3/1979 »
-    déjà connu : 1979 (musicbrainz)
-
-Gabor Szabo — High Contrast (édition 3233842)
-    notes : 1970 – 1971   « recorded probably February 1971 at Capitol Studios, Hollywood. / recorded probably December 1970 at The Record Plant, Hollywood. »
-    déjà connu : 1970 – 1971 (musicbrainz_album)
-
-Gabriel Fauré, Michel Corboz, Frédéric Lodéon, Armin Jordan, Marie-Claire Alain, Jean Sourisse — Requiem / Elegie / Messe Basse (édition 17453098)
-    notes : 1972 – 1982   « recorded at Casino de Berne (Switzerland), 05/1972: Maîtrise Saint-Pierre-aux-Liens de Bulle (choir) and Orchestre Symphonique de Berne. / recorded at Palais des Congrès de Monte-Carlo, 07/1982: Orchestre Philharmonique de Monte-Carlo. / recorded at Église de Saint-Germain-en-Laye (France), 12/1982: Ensemble vocal "Audite Nova" de Paris. »
-    déjà connu : 1972 – 1982 (musicbrainz)
-
-Gabriel Fauré, André Messager, Agnès Mellon, Peter Kooij, La Chapelle Royale, Ensemble Musique Oblique, Philippe Herreweghe — Requiem Op. 48 (Version 1893) / Messe Des Pêcheurs De Villerville (édition 9585817)
-    titre : 1893
-    déjà connu : 1988 (musicbrainz)
-
-Gary Burton / Chick Corea — Crystal Silence (édition 8222669)
-    notes : 1972   « Recorded on November 6, 1972 at Arne Bendiksen Studio, Oslo »
-    déjà connu : 1972 (musicbrainz)
-
-George Benson — White Rabbit (édition 13706604)
-    notes : 1971   « Recorded at Van Gelder Studios, Englewood Cliffs, New Jersey, November 23, 24 and 30, 1971. »
-    déjà connu : 1971 (musicbrainz)
-
-Glenn Gould, Johann Sebastian Bach — The Art Of The Fugue, BWV 1080 (Excerpts) = Die Kunst Der Fuge; Prelude & Fugue On BACH, BWV 898 (édition 16234070)
-    notes : 1967 – 1981   « Recording (Tracks 10 to 12): CBC television broadcast, CBC Studios, Toronto, Canada, Spring 1981 / Recording (Tracks 13 to 15): CBC radio broadcast, CBC Studios, Toronto, Canada, November 23, 1967; Mono. (First authorized release) / Recording (Track 16): CBC television broadcast, CBC Studios, Toronto, Canada, Spring 1981 / Recording (Track 17): Eaton's Auditorium, Toronto, Canada, April 5, 1980 (First release) »
-    déjà connu : 1962 – 1981 (musicbrainz)
-
-Gustav Mahler, Christine Schäfer, Deutsches Symphonie-Orchester Berlin, Christoph Eschenbach — Symphonie No. 1, Rückert-Lieder (édition 16003225)
-    notes : 2008   « Recording: Haus des Rundfunks, großer Saal - 22.-26.11.2008 »
-    déjà connu : 2008 (musicbrainz)
-
-Gustav Mahler, Chicago Symphony Orchestra, Pierre Boulez — Symphonie No. 9 (édition 18823477)
-    notes : 1995   « Recording: Chicago, Medinah Temple, 12/1995 »
-    déjà connu : 1995 (musicbrainz)
-
-Hector Berlioz, Boston Symphony Orchestra, Charles Munch — Symphonie Fantastique (édition 10321533)
-    notes : 1962   « Recorded in April 1962. »
-    déjà connu : 1962 (musicbrainz)
-
-Heinz Holliger, Guillaume de Machaut — Machaut-Transkriptionen (édition 7562589)
-    notes : 2010   « Recorded November 2010 »
-    déjà connu : 2010 (musicbrainz)
-
-Henry Desmarest, Les Arts Florissants, William Christie — Grands Motets Lorrains (édition 6471403)
-    notes : 1999   « Recorded October 13-14, 1999, Arsenal, Metz, France. »
-    déjà connu : 1999 (musicbrainz)
-
-Henry Purcell, Alfred Deller, Wieland Kuijken, William Christie, Roderick Skeaping — Music For A While / O Solitude (édition 1836255)
-    notes : 1979   « Enregistrement Avril 1979 »
-    déjà connu : 1979 (musicbrainz)
-
-Hildegard Von Bingen, Gothic Voices, Emma Kirkby, Christopher Page — A Feather On The Breath Of God (édition 1529034)
-    notes : 1981   « Recorded in the Church of St. Jude-on-the-Hill, Hampstead, London, on 14 September 1981 »
-    déjà connu : 1981 (musicbrainz)
-
-Igor Stravinsky, Maurice Ravel, The Philadelphia Orchestra, Eugene Ormandy, The Cleveland Orchestra, George Szell — Pétrouchka / The Firebird (Suite 1919) / Daphnis Et Chloé (édition 9371345)
-    titre : 1919
-    déjà connu : 1961 – 1963 (musicbrainz)
-
-Igor Stravinsky, Antal Dorati, London Symphony Orchestra — The Firebird (Complete Ballet) • Fireworks • The Song Of The Nightingale • Tango • Scherzo Á La Russe (édition 7382636)
-    notes : 1959 – 1964   « recorded on June 7, 1959; Fireworks and Scherzo a la russe, on June 27, 1964; Tango on July 7, 1964; Song of the Nightingale on June 22 and June 24, 1964. All w »
-    déjà connu : 1959 – 1964 (musicbrainz)
-
-James Carter Quartet — Jurassic Classics (édition 2521976)
-    notes : 1994   « Recorded at Power Station, NYC on April 16 & 17, 1994 »
-    déjà connu : 1994 (musicbrainz)
-
-Jehan Alain, Eric Lebrun — Organ Works Vol. 1 (édition 6751716)
-    notes : 1995   « Recorded at the Church of Saint-Antoine des Quinze-Vingts, Paris, with the authorisation of Père Mollat du Jourdin, from 13th to 17th Junie, 1995. »
-    déjà connu : 1995 (musicbrainz)
-
-Johann Sebastian Bach, Gustav Leonhardt, Frans Brüggen — Brandenburgische Konzerte 1-3 / Flute Sonata 1 (édition 13567589)
-    notes : 1980   « Recorded in 1980. »
-    déjà connu : 1975 – 1977 (musicbrainz)
-
-Johann Sebastian Bach, The English Concert, Trevor Pinnock — Brandenburgische Konzerte 4•5•6 = Brandenburg Concertos = Concertos Brandebourgeois (édition 10885590)
-    notes : 1982   « Recording: London, Henry Wood Hall, 1982. »
-    déjà connu : 1982 (musicbrainz)
-
-Johann Sebastian Bach, Bach Collegium Japan, Masaaki Suzuki — Cantatas 22 : BWV 20 O Ewigkeit, Du Donnerwort - BWV 7 Christ Unser Herr Zum Joradan Kam - BWV 94 Was Frag Ich Nach Der Welt (édition 9348080)
-    notes : 2002   « Recorded April 19-23, 2002 at the Kobe Shoin Women's University Chapel, Japan. »
-    déjà connu : 2002 (musicbrainz)
-
-Johann Sebastian Bach, Hilary Hahn, The Los Angeles Chamber Orchestra, Jeffrey Kahane — Concertos (édition 14877903)
-    notes : 2002 – 2003   « Recordings: Los Angeles, The Colburn School Of Performing Arts., Herbert ZIpper Concert Hall, 10/2002 (BWV 1042, 1041); 1/2003 (BWV 1041, 1060) »
-    déjà connu : 2002 – 2003 (musicbrainz)
-
-Johann Sebastian Bach, Gidon Kremer, Heinz Holliger — Concertos BWV 1041, 1042, 1043, 1060 (édition 7002653)
-    notes : 1982   « Recorded London, February 1982 (tracks 1 to 9), and June 1982 (tracks 10 to 12) »
-    déjà connu : 1982 (musicbrainz)
-
-Johann Sebastian Bach, Café Zimmermann — Concerts Avec Plusieurs Instruments (Vol. I À VI) Intégrale (édition 3238283)
-    notes : 2000 – 2010   « recorded August 2000 & August 2001 at Paris, Chapelle de l'hôpital Notre-Dame de Bon Secours. / recorded at l'Arsenal de Metz in June 2003. / recorded in February and August 2004 at l'Arsenal de Metz. / recorded at Temple Saint-Jean de Mulhouse in July 2008 & at l'Arsenal de Metz in February 2004 (BWV 1061). / recorded February 2004 at l'Arsenal de Metz & March 2010 and May 2010 at Temple Saint-Jean de Mulhouse. / recorded February 2004 at l'Arsenal de Metz (BWV 1065) & March 2010 and May 2010 at Temple Saint-Jean de Mulhouse. »
-    déjà connu : 2000 – 2008 (musicbrainz)
-
-Johann Sebastian Bach, Keller Quartet — Die Kunst Der Fuge (édition 7314460)
-    notes : 1997   « Recorded May 1997 »
-    déjà connu : 1997 (musicbrainz)
-
-Johann Sebastian Bach, Murray Perahia — English Suites Nos. 1, 3 & 6 (édition 10215386)
-    notes : 1997   « Recorded at: La Chaux-de-Fonds, Switzerland (at Musica Théâtre according to external source), July 9-14, 1997 »
-    déjà connu : 1997 (musicbrainz)
-
-Johann Sebastian Bach, Murray Perahia — English Suites Nos. 2, 4 & 5 (édition 4224257)
-    notes : 1998   « Recorded July 9-14, 1998 using 20-bit technology. SBM »
-    déjà connu : 1997 – 1998 (musicbrainz)
-
-Johann Sebastian Bach, Evgeni Koroliov — Goldberg-Variationen = Variations Goldberg = Goldberg Variations BWV 988 (édition 1667005)
-    notes : 1999   « Recorded 25-29/4/1999 Festeburgkirche, Frankfurt am Main. »
-    déjà connu : 1999 (musicbrainz)
-
-Johann Sebastian Bach, Evgeni Koroliov — Inventions & Sinfonias BWV 772-801 (édition 1224379)
-    notes : 1999   « Rec. 20-23/12/1999 at HR-Sendesaal, Frankfurt am Main »
-    déjà connu : 1999 (musicbrainz)
-
-Johann Sebastian Bach, Murray Perahia, The Academy Of St. Martin-in-the-Fields — Keyboard Concertos Nos. 1, 2 & 4 (édition 8551462)
-    notes : 2000   « Recorded May 14-16, 2000 at Air Studios, Lyndhurst Hall, London »
-    déjà connu : 2000 (musicbrainz)
-
-Johann Sebastian Bach, Murray Perahia, The Academy Of St. Martin-in-the-Fields — Keyboard Concertos Nos. 3, 5, 6, 7 (édition 8146452)
-    notes : 2000   « Recorded May 12-13, 2000 at Air Studios, Lyndhurst Hall, London, except Tracks 4-6 recorded May 14-16, 2000 at Air Studios, Lyndhurst Hall, London. »
-    déjà connu : 2000 (musicbrainz)
-
-Johann Sebastian Bach, Friedrich Gulda — The Well-tempered Clavier Bk 2 (édition 5580206)
-    notes : 1973   « Recorded: MPS-Tonstudio, Villingen, Germany, 5/1973 »
-    déjà connu : 1973 (musicbrainz)
-
-Johann Sebastian Bach, Glenn Gould — The Well-Tempered Clavier II = Das Wohltemperierte Clavier II = Le Clavier Bien Tempéré II (édition 1000798)
-    notes : 1966 – 1971   « Recording (Track 1-1, 1-2): 30th Street Studio, New York City, August 8, 1966 and February 20, 1967 / Recording (Track 1-3, 1-4): 30th Street Studio, New York City, August 8, 1966 and February 20, 1967 / Recording (Track 1-5, 1-6): 30th Street Studio, New York City, August 8, 1966 and February 20, 1967 / Recording (Track 1-7, 1-8): 30th Street Studio, New York City, January 24, 1967 / Recording (Track 1-9, 1-10): 30th Street Studio, New York City, January 24, 1967 / Recording (Track 1-11, 1-12): 30th Street Studio, New York City, August 8, 1966 / Recording (Track 1-13, 1-14): 30th Street Studio, New York City, August 8, 1966; January 24 and February 20, 1967 / Recording (Track 1-15, 1-16): 30th Street Studio, New York City, February 20, 1967 / Recording (Track 1-17, 1-18): 30th Street Studio, New York City, September 11 & 12 and December 3, 4 & 17, 1969 / Recording (Track 1-19, 1-20): 30th Street Studio, New York City, December 18, 1969 / Recording (Track 1-21, 1-22): 30th Street Studio, New York City, December 18, 1969 / Recording (Track 1-23, 1-24): 30th Street Studio, New York City, December 3 & 4, 1969 / Recording (Track 2-1, 2-2): 30th Street Studio, New York City, December 3 & 4, 1969 / Recording (Track 2-3, 2-4): 30th Street Studio, New York City, September 11 & 12 and December 17 & 18, 1969 / Recording (Track 2-5, 2-6): 30th Street Studio, New York City, December 3 & 4, 1969 / Recording (Track 2-7, 2-8): 30th Street Studio, New York City, December 17, 1969 / Recording (Track 2-9, 2-10): Eaton's Auditorium, Toronto, Canada, January 11 & 31, 1971 / Recording (Track 2-11, 2-12): Eaton's Auditorium, Toronto, Canada, January 11 & 24, 1971 / Recording (Track 2-13, 2-14): Eaton's Auditorium, Toronto, Canada, January 10 & 24, 1971 / Recording (Track 2-15, 2-16): Eaton's Auditorium, Toronto, Canada, January 10 & 11, 1971 / Recording (Track 2-17, 2-18): Eaton's Auditorium, Toronto, Canada, January 31, 1971 / Recording (Track 2-19, 2-20): Eaton's Auditorium, Toronto, Canada, January 31, 1971 / Recording (Track 2-21, 2-22): Eaton's Auditorium, Toronto, Canada, January 24, 1971 / Recording (Track 2-23, 2-24): Eaton's Auditorium, Toronto, Canada, January 24 & 31, 1971 »
-    déjà connu : 1966 – 1971 (musicbrainz)
-
-Johann Sebastian Bach, Friedrich Gulda — The Well-tempered Clavier, Bk 1 (édition 5580098)
-    notes : 1972   « Recorded: MPS-Tonstudio, Villingen, Germany, 4/1972 »
-    déjà connu : 1972 (musicbrainz)
-
-Johann Sebastian Bach, La Chapelle Royale, Philippe Herreweghe — Trauerode BWV 198 / Cantate BWV 78 (édition 2129302)
-    notes : 1987   « Enregistrement novembre 1987. »
-    déjà connu : 1987 (musicbrainz)
-
-Johann Sebastian Bach, Glenn Gould — Two- And Three-Part Inventions BWV 772–801 (édition 5075975)
-    notes : 1964   « Recording: 30th Street Studio, New York City, March 18 & 19, 1964 »
-    déjà connu : 1957 – 1964 (musicbrainz)
+Eliso Bolkvadze, Wolfgang Amadeus Mozart, Michel Sogny, Ludwig van Beethoven, Maurice Ravel, Frédéric Chopin — Récital Festival Michel Sogny Château De Coppet ● August 18/2007 (édition 8406781)
+    notes : « t Château de Coppet (Suisse). Enregistrement public - Live Recording. P.C. 2008 »
 
 Johannes Brahms, Cheryl Studer, Andreas Schmidt, Radiokören, Eric Ericsons Kammarkör, Berliner Philharmoniker, Claudio Abbado — Ein Deutsches Requiem (édition 5575647)
-    notes : 1992   « Recording: Berlin, Philharmonie, 10/1992 »
-    déjà connu : 1992 (musicbrainz)
+    notes : « ilharmoniker · CLAUDIO ABBADO Konzertmitschnitt/Live recording/Enregistrement public/Registrazion »
 
-John Coltrane — A Love Supreme (édition 2276282)
-    notes : 1964   « Recorded December 1964 at Van Gelder Recording Studio, Englewood Cliffs, New Jersey. »
-    déjà connu : 1964 (musicbrainz)
+Joseph Haydn, Quatuor Mosaïques — Les Sept Dernières Paroles De Notre Rédempteur Sur La Croix (édition 5585885)
+    notes : « ÏVE (on disc) Made in Austria Recorded live on April 17 (Good Friday), 1992 in the Abbey of F »
 
-John Coltrane, Johnny Hartman — John Coltrane & Johnny Hartman (édition 26993211)
-    notes : 1963   « Recorded at Van Gelder Studio, March 7, 1963. »
-    déjà connu : 1963 (musicbrainz)
+Joseph Phibbs, Wolfgang Amadeus Mozart, Mark Van De Wiel, Philharmonia Orchestra, The London Chamber Orchestra, Christopher Warren-Green — Clarinet Concertos (édition 20485585)
+    notes : « 017. Mozart Clarinet Concerto recorded live in concert in Cadogan Hall, London on 23rd Januar »
 
-John Coltrane — Lush Life (édition 13328498)
-    notes : 1957 – 1958   « Recorded May 31, August 16, 1957 and January 10, 1958, New York City »
-    déjà connu : 1957 – 1958 (musicbrainz_album)
-
-John Coltrane — Stellar Regions (édition 973124)
-    notes : 1967   « Recorded at the Van Gelder Studio, Englewood Cliffs, New Jersey on February 15, 1967. / recorded on February 15, 1967, but in fact it was not. »
-    déjà connu : 1967 (musicbrainz)
-
-John Coltrane — The Classic Quartet - Complete Impulse! Studio Recordings (édition 679039)
-    notes : 1961 – 1965   « Recorded at the Van Gelder Studio, Englewood Cliffs, New Jersey from December, 1961 to September, 1965. »
-    déjà connu : 1961 – 1965 (musicbrainz)
-
-John Coltrane — The Complete 1961 Village Vanguard Recordings (édition 25435495)
-    titre : 1961
-    notes : 1961   « Recorded on November 1, 2, 3 & 5, 1961 at the Village Vanguard in New York City. »
-    déjà connu : 1961 (musicbrainz)
-
-John Coltrane — The Heavyweight Champion (The Complete Atlantic Recordings) (édition 2249591)
-    notes : 1959 – 1961   « Recorded on Jan 15th, 1959 Atlantic Studios, New York City / Recorded on March 26th, 1959 Atlantic Studios, New York City / Recorded on May 4th, 1959 Atlantic Studios, New York City / Recorded on May 5th, 1959 Atlantic Studios, New York City / Recorded on November 24th, 1959 Atlantic Studios, New York City / Recorded on Dec 2nd, 1959 Atlantic Studios, New York City / Recorded on June 28th, 1960 Atlantic Studios, New York City / Recorded on July 8th, 1960 Atlantic Studios, New York City / Recorded on October 21st, 1960 Atlantic Studios, New York City / Recorded on October 24th, 1960 Atlantic Studios, New York City / Recorded on October 26th, 1960 Atlantic Studios, New York City / Recorded on October 26th, 1960 at Atlantic Studios, New York City / Recorded on May 25th, 1961 at  Atlantic Studios, New York City »
-    déjà connu : 1959 – 1961 (musicbrainz)
-
-John Williams — Portrait of John Williams (édition 15746498)
-    notes : 1982   « Recorded at AIR Studios, London, June 21 - 25, 1982 »
-    déjà connu : 1982 (musicbrainz)
-
-John Williams — The Baroque Album (édition 7934323)
-    notes : 1987   « Recorded April 30-May 8, 1987. »
-    déjà connu : 1987 (musicbrainz)
-
-Joseph Haydn, London Philharmonic Orchestra, Eugen Jochum — 12 "London" Symphonies (édition 19533991)
-    notes : 1971   « Recordings: Barking (England), Assembly Hall: 10/1971 (102–104), »
-    déjà connu : 1971 – 1973 (musicbrainz)
-
-Joseph Haydn, The English Concert, The English Concert Choir, Trevor Pinnock — Stabat Mater (édition 1132185)
-    notes : 1989   « Recording: London, Tootling, All Saints' Church, 7/1989. »
-    déjà connu : 1989 (musicbrainz)
-
-Joseph Haydn, Philharmonia Hungarica, Antal Dorati — Symphonies 94, 96 & 100 (édition 5039412)
-    notes : 1972   « Recording location: Marl, Germany, November/December 1972. »
-    déjà connu : 1972 (musicbrainz)
-
-Karlheinz Stockhausen, Ensemble Musique Vivante, Diego Masson — Aus Den Sieben Tagen (édition 230457)
-    notes : 1969   « Enregistrés les 6 et 7 juin 1969 à Paris, aux Studios Davout. / Recorded on June 6 and 7, 1969, in Paris at the Studios Davout. / Enregistrement juin 1969 au Studio Davout, Paris. »
-    déjà connu : 1969 (musicbrainz_album)
-
-Kathleen Battle, Robert Sadin — Grace (édition 7401192)
-    notes : 1995   « Recorded at St. George's Episcopal Church, Stuyvesant Square, NYC on November 17-30, 1995 »
-    déjà connu : 1990 – 1995 (musicbrainz)
-
-Laurence Equilbey, Chœur De Chambre Accentus — Accentus I Transcriptions (édition 2092955)
-    notes : 2001   « Recording in february 2001 in the Arsenal Hall of Metz (France). »
-    déjà connu : 2001 (musicbrainz)
-
-Laurent Cugny Tentet — Zeitgeist (édition 30321050)
-    notes : 2022   « Recorded Sept. 2022 at studio Midilive, Villateneuse »
-    déjà connu : 2022 (musicbrainz)
-
-Louis Armstrong — Hot Five & Hot Seven 1925-1928 (édition 5136763)
-    titre : 1925 – 1928
-    déjà connu : 1925 – 1928 (musicbrainz)
+Kathleen Battle, Wiener Philharmoniker, Herbert von Karajan — Neujahrskonzert In Wien / New Year's Concert / Concert Du Nouvel An (édition 10655586)
+    notes : « Live recording. »
 
 Ludwig van Beethoven, Rudolf Serkin — Klaviersonaten = Piano Sonatas Op. 109 • Op. 110 • Op. 111 (édition 8534769)
-    notes : 1987   « Recording: Wien, Konzerthaus, 10/1987 »
-    déjà connu : 1987 (musicbrainz)
+    notes : « é en RFA par Neef, Wittingen Konzertmitschnitt/Live recording/Enregistrement public/Registrazion »
 
-Ludwig van Beethoven, Rudolf Serkin — Piano Concerto No. 3 - Piano Concerto No. 5 (édition 11246852)
-    notes : 1962 – 1964   « Recorded on January 20, 1964 in New York (Op. 37),  May 1, 1962 in New York (Op. 73 ) »
-    déjà connu : 1962 – 1964 (musicbrainz)
+Ludwig van Beethoven, Nikolaus Harnoncourt, The Chamber Orchestra Of Europe — Symphony No.1 Symphony No. 3 "Eroica" (édition 2343664)
+    notes : « Music Manufacturing Europe. Live recording at Stefaniensaal, Graz (Austria): July, 3, 1990: »
 
-Ludwig van Beethoven, Murray Perahia, Concertgebouworkest, Bernard Haitink — Piano Concerto No. 5 "Emperor" "L'Empereur" (édition 5137868)
-    notes : 1986   « Recorded at the Concertgebouw, Amsterdam, 1986. »
-    déjà connu : 1986 (musicbrainz)
+Michael Gregory Jackson — Frequency Equilibrium Koan (édition 33367019)
+    notes : « Recorded live at The Ladies' Fort, 2 Bond Street NYC 1977 CD l »
 
-Ludwig van Beethoven, Alban Berg Quartett — The Complete String Quartets = Die Sämtlichen Streichquartette = Les Quatuors À Cordes (édition 1001503)
-    notes : 1978 – 1980   « Recorded: VIII. 1978 (Op. 59 No. 3), XII. 1978 (Op. 74), I. 1979 (Op. 95), IV. 1979 (Op. 59 No. 1), VI. 1979 (Op. 59 No. 2), VI. 1980 (Op. 18 Nos. 1, 4 & 6), I. »
-    déjà connu : 1978 – 1983 (musicbrainz)
+Michel Jonasz — En Concert Au Palais Des Sports (édition 6957128)
+    titre : « En Concert Au Palais Des Sports »
 
-Léo Delibes, Antal Dorati, Minnesota Orchestra, Anatole Fistoulari, London Symphony Orchestra — Coppélia, Complete Ballet / Sylvia, Ballet In Three Acts  (édition 3230450)
-    notes : 1958   « recorded on June 28 and 29, 1958, in Watford Town Hall, outside London.  Recording sessions for Coppélia took place in Northrop Auditorium in Minneapolis on Dec »
-    déjà connu : 1957 – 1958 (musicbrainz)
-
-Maurice Ravel, Sergei Rachmaninoff, Arturo Benedetti Michelangeli, Philharmonia Orchestra, Ettore Gracis — Piano Concerto In G / Piano Concerto No. 4 (édition 9068950)
-    notes : 1957   « Recorded  in No. 1 Studio, Abbey Road, London on 7, 8, 10 March 1957 »
-    déjà connu : 1957 (musicbrainz)
-
-Maurice Ravel, Pierre-Laurent Aimard, The Cleveland Orchestra, Pierre Boulez — The Piano Concertos 🞄 Miroirs (édition 5246183)
-    notes : 2010   « Recording: February 2010, Severance Hall »
-    déjà connu : 2010 (musicbrainz)
-
-Miles Davis — Birth Of The Cool (édition 38452113)
-    notes : 1949 – 1950   « recorded January 21, 1949, in New York City. / recorded April 22, 1949, in New York City. / recorded March 9, 1950, in New York City. »
-    déjà connu : 1949 – 1950 (musicbrainz)
-
-Miles Davis — Bitches Brew (édition 9542096)
-    notes : 1969   « Recorded in New York, August 19-20-21, 1969. »
-    déjà connu : 1969 (musicbrainz)
-
-Miles Davis — Milestones (New York │ Berlin │ Tokyo) (édition 8938457)
-    notes : 1964   « Live at Lincoln Center, New York City [not Philharmonic Hall, as listed in booklet] - 12. February 1964. / Live at the Philharmonic Hall, Berlin, Germany - 25. September 1964. / Live at the Shinjuku Kohseinenkin Hall, Tokyo, Japan - 14. July 1964. »
-    déjà connu : 1964 (musicbrainz)
-
-Miles Davis — Sketches Of Spain (édition 10525501)
-    notes : 1959 – 1960   « Recorded at 34th Street Studio, NYC, Nov 15th 1959, Nov 20th 1959 & Mar 10th 1960 »
-    déjà connu : 1959 – 1960 (musicbrainz)
-
-Miles Davis — Someday My Prince Will Come (édition 3123932)
-    notes : 1961   « Recorded March 7, 20, and 21, 1961 at Columbia 30th Street Studio, New York. »
-    déjà connu : 1961 (musicbrainz)
-
-Miles Davis — Volume 2 (édition 4617194)
-    notes : 1953   « Recorded on April 20, 1953 at WOR Studios, New York City »
-    déjà connu : 1953 (musicbrainz)
-
-Miles Davis — Volume One (édition 4617163)
-    notes : 1952 – 1954   « recorded May 9, 1952 at WOR Studios, New York City. / recorded on March 6, 1954 at the Van Gelder Studio, Hackensack, New Jersey. »
-    déjà connu : 1952 – 1954 (musicbrainz)
-
-Miles Davis All Stars — Walkin' (édition 494098)
-    notes : 1954   « Recorded in Hackensack, NJ; April 29, 1954. / Recorded in Hackensack, NJ; April 3, 1954. »
-    déjà connu : 1954 (musicbrainz_album)
-
-Montserrat Figueras, La Capella Reial De Catalunya, Jordi Savall — El Cant De La Sibil.la (édition 4667335)
-    notes : 1988   « Recorded at the Collégiale de Cardona, Catalogne, in March 1988. »
-    déjà connu : 1988 (musicbrainz)
-
-Nik Bärtsch's Ronin — Holon (édition 1241989)
-    notes : 2007   « Recorded July 2007 »
-    déjà connu : 2007 (musicbrainz)
-
-Orchestre National De Jazz, Daniel Yvinec, John Hollenbeck — Shut Up And Dance  (édition 5101085)
-    notes : 2010   « Recorded in June 2010 »
-    déjà connu : 2010 (musicbrainz)
-
-Paul Simon — Graceland (édition 26619107)
-    notes : 1985   « recorded October 10, 1985 »
-    déjà connu : 1985 – 1986 (musicbrainz)
+Paco De Lucía — En Vivo Desde El Teatro Real (édition 6053212)
+    titre : « En Vivo Desde El Teatro Real »
 
 Prima Materia, Rashied Ali — Meditations (édition 5478181)
-    notes : 1995   « Recorded live at the Knitting Factory on June 23, 1995 during the What is Jazz? Festival. »
-    déjà connu : 1995 (musicbrainz)
+    notes : « Recorded live at the Knitting Factory on June 23, 1995 during t »
 
-Rashied Ali, Louis Belogenis — Rings Of Saturn (édition 2156676)
-    notes : 1997   « Recorded August 9th and 19th, 1997 at Survival Studios. »
-    déjà connu : 1997 (musicbrainz)
-
-Robert Schumann, Arturo Benedetti Michelangeli — Carnaval · Faschingsschwank Aus Wien (édition 13661894)
-    notes : 1957   « Recording: London, BBC Studios, 3/1957 »
-    déjà connu : 1957 – 1973 (musicbrainz)
-
-Romano, Sclavis, Texier, Guy Le Querrec — Carnet De Routes (édition 25535047)
-    notes : 1994 – 1995   « Recorded and mixed at Studio de la Maison de la Culture d'Amiens in 1994 and 1995. »
-    déjà connu : 1994 – 1995 (musicbrainz)
-
-Samson François, Frédéric Chopin — Chopin 14 Valses 4 Impromptus 4 Ballades 4 Scherzos (édition 7231950)
-    notes : 1957 – 1963   « Enregistré/Recorded/Aufgenommen : Paris, Salle Wagram, I.1963 (Valses) ; Salle de la Mutualité, 27.XII.1957 (Impromptus) »
-    déjà connu : 1954 – 1969 (musicbrainz)
-
-Santana — Inner Secrets (édition 3594247)
-    notes : 1978   « Recorded at Western Recorders, Los Angeles, California. July & August, 1978. »
-    déjà connu : 1978 (musicbrainz)
-
-Sergei Prokofiev, Camille Saint-Saëns, Francis Poulenc — Pierre Et Le Loup / Le Carnaval Des Animaux / L'Histoire de Babar (édition 4323311)
-    notes : 1965 – 1975   « Enregistré à Paris, Salle Wagram, 1965-1975 »
-    déjà connu : 1965 – 1966 (musicbrainz)
-
-Sergei Prokofiev, Modest Mussorgsky, Minneapolis Symphony Orchestra, Stanislaw Skrowaczewski, London Symphony Orchestra, Antal Dorati — Romeo And Juliet, Ballet Suites Nos. 1 & 2 / A Night On Bald Mountain  (édition 4318814)
-    notes : 1962   « recorded at Edison High School, Minneapolis, USA, 4/1962; »
-    déjà connu : 1960 – 1964 (musicbrainz)
-
-Sergei Rachmaninoff, Vladimir Ashkenazy, London Symphony Orchestra, André Previn — Piano Concertos 1-4 (édition 13053502)
-    notes : 1970 – 1971   « Recording location: Kingsway Hall, London, April 1970-November 1971 »
-    déjà connu : 1970 – 1971 (musicbrainz)
-
-Sergei Rachmaninoff, Pyotr Ilyich Tchaikovsky, Sviatoslav Richter, Stanislaw Wislocki, Herbert von Karajan — Rachmaninov: Piano Concerto No. 2 / Tchaikovsky: Piano Concerto No.1 (édition 12247485)
-    notes : 1959 – 1962   « Recorded in Warsaw, Philharmonie on 26th to 28th April 1959; / Recorded in Vienna, Musikvereins-Saal on 24th to 26th September 1962; »
-    déjà connu : 1959 – 1962 (musicbrainz)
-
-Steve Coleman And Five Elements — Curves Of Life (édition 814229)
-    notes : 1995   « Recorded Live at the Hot Brass Club in Paris, France, March 24 and March 29, 1995. »
-    déjà connu : 1995 (musicbrainz)
-
-Steve Reich — Drumming (édition 12319400)
-    notes : 1974   « Recording: Hamburg (Rahlstedt), Musikstudio 1, 1/1974. »
-    déjà connu : 1974 (musicbrainz)
-
-Sylvain Beuf — Octovoice (édition 12592055)
-    notes : 2004   « recorded in 2004 studio Alhambra à Rochefort France »
-    déjà connu : 2004 (musicbrainz)
-
-The Cannonball Adderley Quintet — In San Francisco (édition 2629224)
-    notes : 1959   « Recorded live at The Jazz Workshop in San Francisco, October 18 and 20, 1959. »
-    déjà connu : 1959 (musicbrainz)
-
-The Ornette Coleman Quartet — This Is Our Music (édition 1212931)
-    notes : 1960   « recorded in 1960" [disc] »
-    déjà connu : 1960 (musicbrainz)
+Sergio Tiempo — Recital In The Concertgebouw Amsterdam (édition 8607718)
+    notes : « Recorded live in The Concertgebouw, Amsterdam on 20.4.1986. »
 
 Uri Caine — Agent Orange (édition 27298569)
-    notes : 2018   « Recorded Live at Brussels Jazz Festival Flagey, Studio 4, Brussels, Jan. 18th, 2018. »
-    déjà connu : 2018 (musicbrainz)
-
-Various — Lumières: La Musique Du XVIIIe Siècle = 18th Century: The Age Of Enlightenment = 18. Jahrhundert: Die Zeit Der Aufklärung (édition 6369520)
-    notes : 1980 – 2010   « Enregistrements: (1-10) septembre 1993, Musée d'Art et d'Histoire de Neuchâtel; (11-18) mai 1994 Musée des Beaux-Arts de Chartres; (19-25) mars 1992; Salle d'or / Enregistrements: (1-7) août 1986, Studio 103, Maison de Radio-France, Paris - En coproduction avec le Ministère de la Culture, la Fondation Total pour la Musiqu / Enregistrement: En coproduction avec ROC GmbH. Mai 2006, Teldex Studio Berlin. Total times: 80'11-74'50. / Enregistrements: (1-12) septembre 2009, Teldex Studio Berlin; (13-15) mars 2001, Christus-Kirche, Berlin-Oberschöneweide; (16-18) mai 2008, St. Jude's-on-the-Hi / Enregistrements: (1-6) décembre 1994, Église de Sometan (Suisse); (7-9) mars 2003, Teldex Studio Berlin; (10-12) mai 2010, Teldex Studio Berlin; (13-15) octobre / Enregistrements: (1-3) août 2009, Paulussaal, Fribourg-en-Brisgau; (4-5) octobre 1990; Coproduction avec WDR; (6-8) avril 2005; Paulussaal, Fribourg-en-Brisgau; / Enregistrements: (1-3) avril 2006, Grand Auditoire de l'université de Salzbourg. En coproduction avec Salinen Austria AG; (4-6) juillet 2009, Maida Vale, Londre / Enregistrements: (1-2) juin 1986, Chiesa di San Giorgio, Morbio Inferiore (Suisse); (3-6) octobre 2001, Christuskirche, Berlin-Oberschöneweide; (7-9) mars 2006, / Enregistrements: (1-8) octobre 2001, Teldex Studio Berlin; (9-12) avril 2005, Paulussaal, Fribourg-en-Brisgau. Total time: 72'34. / Enregistrements: (1-4) février 2004, H. Rosbaud-Studio Baden-Baden / SWR; (5-8) août 2006, Tirol Saal, Congress Innsbruck. Total time: 65'55. / Enregistrement: Octobre 1998, Arsenal de Metz. Total time: 62'29. / Enregistrement: Septembre 1992, Paris, salle Berthier. Total times: 60'08-47'54-61'38. / Enregistrement: Janvier 2001, Teldec-Studio Berlin. Total times: 40'10-50'34. / Enregistrement: Avril 2003, Stolberger Saal, Cologne. En coproduction avec la WDR3. Total times: 45'16-57'05-69'48. / Enregistrements: (1-4) mai 1992, Boxgrove Priory, Chichester; (5-8) juillet 1995, Forde Abbey, Chard, Somerset (GB) - En coproduction avec la WDR; (9-12) juin 1 / Enregistrements: (1-13) octobre 1991, Skywalker Sound, LucasArts Entertainment Company, Nicasio (USA); (14-15) janvier 1980, Notre-Dame des Anges, Lurs; (16-20) / Enregistrements: (1-3) juin 2001, Salle de musique de la Chaux-de-Fonds (Suisse); (4-6) mai 1990, State University of New York, Purchase; (7-10) juillet 2006, T / Enregistrements: (1-6) août 2001, Salle modulable de l'IRCAM, Paris; (7-12) octobre 2007, Teldex Studio Berlin. Total time: 68'37. / Enregistrements: (1-3) mars 2003, Salle Stolberger, Cologne; (4-9) mars 2004, Teldex Studio Berlin; (10-12) janvier 2010, Air Studios, Lyndhurst Hall, Londres. / Enregistrements: (1-4) octobre-novembre 2006, (5-7) avril 2005, (8-10) décembre 2005, Teldex Studio Berlin. Total time: 69'28. / Enregistrements: (1-3) février 2010, Teldex Studio Berlin; (4-7) août-septembre 2008, Teldex Studio Berlin; (8-11) Vereenidge Doopsgezinde Gemeente, Haarlem (NL / Enregistrements: (1-4) février 2010, Teldex Studio Berlin; (5-12) mai 2006 et février 2007, The Fisher Center for the Performing Arts, Bard College, Annandale-o / Enregistrements: (1-6) août-septembre 2008, Oji Hall, Tokyo; (7-10) novembre 2007, American Academy of Arts & Letters, New York. Total time: 71'50. »
-    déjà connu : 1980 – 2010 (musicbrainz)
-
-Willy DeVille — (Live) (édition 2357892)
-    notes : 1993   « Recorded in June and October 1993 at: »
-    déjà connu : 1993 (musicbrainz)
-
-Wolfgang Amadeus Mozart, Karl Böhm — 2 Flötenkonzerte / Konzert Für Flöte Und Harfe (édition 1463863)
-    notes : 1974 – 1976   « Recorded in 1974. / Recorded in 1976. »
-    déjà connu : 1972 – 1975 (musicbrainz)
-
-Wolfgang Amadeus Mozart, Jack Brymer, Neil Black, The Academy Of St. Martin-in-the-Fields, Sir Neville Marriner — Clarinet Concerto KV 622 · Oboe Concerto KV 314 (Original Recording Featured In "Out Of Africa") (édition 1655652)
-    notes : 1971 – 1972   « Recorded · Aufnahmen · Enregistrement: London, 9/1971 (KV 622); 6/1972 (KV 314) »
-    déjà connu : 1971 – 1972 (musicbrainz)
-
-Wolfgang Amadeus Mozart, Maria João Pires — Klaviersonaten = Piano Sonatas K. 331 »Alla Turca« · K. 457; Fantasias K. 397 · K. 475 (édition 3752440)
-    notes : 1990   « Recording: Hamburg (Harburg), Friedrich-Ebert-Halle, 4/1990 »
-    déjà connu : 1990 (musicbrainz)
-
-Wolfgang Amadeus Mozart, Christian Zacharias — Les Sonates Pour Piano (édition 8947604)
-    notes : 1984 – 1985   « Recorded at Historische Reitstadl, Neumarkt, Germany, between June 1984 and October 1985. »
-    déjà connu : 1984 – 1985 (musicbrainz)
-
-Wolfgang Amadeus Mozart, Murray Perahia, English Chamber Orchestra — Perahia Plays And Conducts Mozart (Piano Concerto No. 22, K.482 • Piano Concerto No. 24, K.491) (édition 13878575)
-    notes : 1975 – 1979   « Recorded at EMI Studios, London, 1979. / Recorded at EMI Studios, London, 1975. »
-    déjà connu : 1975 – 1979 (musicbrainz)
-
-Wolfgang Amadeus Mozart, Josep Colom — Piano Sonatas K. 333, 457, 545 & 576 (édition 35590882)
-    notes : 2023   « Recorded between 3-5 April, 2023 at Auditorio de Zaragoza, Sala Mozart, Zaragoza, Spain »
-    déjà connu : 2023 (musicbrainz)
+    notes : « ries "Jazz Meets Symphonic." Recorded Live at Brussels Jazz Festival Flagey, Studio 4, Bruss »
 
 Wolfgang Amadeus Mozart, Philippe Herreweghe — Requiem (édition 5793978)
-    notes : 1996   « Recorded live October 9 & 10, 1996, at Auditorium Igor Stravinski, Montreux. »
-    déjà connu : 1996 (musicbrainz_album)
-
-Wolfgang Amadeus Mozart, Franz Schubert, Murray Perahia, Radu Lupu — Sonata For 2 Pianos In D Major, K. 448 / Fantasia For Piano, 4 Hands In F Minor, Op.103, D 940 (édition 8964505)
-    notes : 1984   « Recording: The Maltings, Snape, UK, June 21, 25 & 26, 1984 (tracks: 1 to 4). »
-    déjà connu : 1984 (musicbrainz)
-
-Wolfgang Amadeus Mozart, Maria João Pires — Sonate KV 284 - Fantaisie KV 475 - Sonate KV 457 (édition 9133431)
-    notes : 1984   « Recording: Salle Adyar, Paris, February 1984 »
-    déjà connu : 1984 (musicbrainz)
+    notes : « book in a paper slip case. Recorded live October 9 & 10, 1996, at Auditorium Igor Stravins »
 
