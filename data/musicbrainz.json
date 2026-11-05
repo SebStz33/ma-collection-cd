@@ -2719,8 +2719,10 @@
   "version": 2
  },
  "10512687": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-01",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 11,
   "oeuvres": [
@@ -2792,7 +2794,7 @@
    }
   ],
   "release": "21938965-5c06-4a1b-bef0-4470144dace9",
-  "version": 2
+  "version": 8
  },
  "10525501": {
   "annee_parution": 1997,
@@ -3780,8 +3782,13 @@
   "version": 4
  },
  "10739212": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   2006,
+   2006
+  ],
   "images": [],
-  "maj": "2026-11-01",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 13,
   "oeuvres": [
@@ -3865,7 +3872,7 @@
    }
   ],
   "release": "096281e9-99bc-4377-a611-f9ecd350144c",
-  "version": 2
+  "version": 8
  },
  "10822711": {
   "annee_parution": 1987,
@@ -5894,8 +5901,13 @@
   "version": 5
  },
  "11698725": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1958,
+   1968
+  ],
   "images": [],
-  "maj": "2026-11-01",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 20,
   "oeuvres": [
@@ -6021,7 +6033,7 @@
    }
   ],
   "release": "1146b57c-a99c-4403-b65e-debbc82ef000",
-  "version": 2
+  "version": 8
  },
  "11735886": {
   "annees_enregistrement": [
@@ -7825,7 +7837,7 @@
   "annee_parution": null,
   "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-04",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 6,
   "oeuvres": [
@@ -7870,7 +7882,7 @@
    }
   ],
   "release": "4c6e21b7-f1e3-4115-9a35-0a03cd5fea0d",
-  "version": 5
+  "version": 8
  },
  "13007042": {
   "annee_parution": null,
@@ -8292,9 +8304,13 @@
   "version": 2
  },
  "13328498": {
-  "annees_enregistrement": null,
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1957,
+   1958
+  ],
   "images": [],
-  "maj": "2026-11-03",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 5,
   "oeuvres": [
@@ -8330,7 +8346,7 @@
    }
   ],
   "release": "007efea2-e763-4d04-97e1-95d096fd36b8",
-  "version": 4
+  "version": 8
  },
  "13340754": {
   "annee_parution": 2002,
@@ -10596,6 +10612,11 @@
   "version": 4
  },
  "13634388": {
+  "annee_parution": 1985,
+  "annees_enregistrement": [
+   1983,
+   1983
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/98c613c1-efef-4b20-ada2-369b37528078/17526564109-250.jpg",
@@ -10628,7 +10649,7 @@
     "url": "https://coverartarchive.org/release/98c613c1-efef-4b20-ada2-369b37528078/22027404690-1200.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "code_barre",
   "nb_plages": 12,
   "oeuvres": [
@@ -10742,7 +10763,7 @@
    }
   ],
   "release": "98c613c1-efef-4b20-ada2-369b37528078",
-  "version": 2
+  "version": 8
  },
  "13644827": {
   "images": [],
@@ -11511,9 +11532,12 @@
  },
  "14157154": {
   "annee_parution": null,
-  "annees_enregistrement": null,
+  "annees_enregistrement": [
+   1956,
+   1956
+  ],
   "images": [],
-  "maj": "2026-11-04",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 6,
   "oeuvres": [
@@ -11561,7 +11585,7 @@
    }
   ],
   "release": "05149aa8-8d77-31fb-a5aa-468adb348b29",
-  "version": 5
+  "version": 8
  },
  "14217786": {
   "annee_parution": 2011,
@@ -12325,7 +12349,7 @@
  "14489914": {
   "annee_parution": null,
   "annees_enregistrement": [
-   1772,
+   1972,
    1972
   ],
   "images": [
@@ -12354,7 +12378,7 @@
     "url": "https://coverartarchive.org/release/85c834f5-1ab7-4df1-8469-47fdda149781/31576521006-1200.jpg"
    }
   ],
-  "maj": "2026-11-04",
+  "maj": "2026-11-05",
   "methode": "code_barre",
   "nb_plages": 4,
   "oeuvres": [
@@ -12384,7 +12408,7 @@
    }
   ],
   "release": "85c834f5-1ab7-4df1-8469-47fdda149781",
-  "version": 5
+  "version": 8
  },
  "14497454": {
   "annees_enregistrement": null,
@@ -15702,12 +15726,137 @@
   "version": 4
  },
  "17453098": {
-  "images": [],
-  "maj": "2026-10-31",
-  "methode": "aucune",
+  "annee_parution": 1986,
+  "annees_enregistrement": [
+   1972,
+   1982
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/a4d2c4d6-1645-4d6e-8d23-e14c797be2d4/19832816091-250.jpg",
+    "original": "https://coverartarchive.org/release/a4d2c4d6-1645-4d6e-8d23-e14c797be2d4/19832816091.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/a4d2c4d6-1645-4d6e-8d23-e14c797be2d4/19832816091-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/a4d2c4d6-1645-4d6e-8d23-e14c797be2d4/19832819332-250.jpg",
+    "original": "https://coverartarchive.org/release/a4d2c4d6-1645-4d6e-8d23-e14c797be2d4/19832819332.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/a4d2c4d6-1645-4d6e-8d23-e14c797be2d4/19832819332-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-05",
+  "methode": "code_barre",
   "nb_plages": 12,
-  "oeuvres": null,
-  "release": null
+  "oeuvres": [
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "82ad69d4-d6d1-3c7f-9f32-61f0ae9fbaec",
+    "parente": {
+     "id": "5cb34cb0-60c7-47e7-ad52-0df5681fd196",
+     "titre": "Requiem, op. 48"
+    },
+    "titre": "Requiem, op. 48: I. Introït et Kyrie"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "3099610b-1c18-3ee8-9649-246a561c94a4",
+    "parente": {
+     "id": "5cb34cb0-60c7-47e7-ad52-0df5681fd196",
+     "titre": "Requiem, op. 48"
+    },
+    "titre": "Requiem, op. 48: II. Offertoire"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "97d4839c-3b4c-3fd2-89e0-50f2f3f45822",
+    "parente": {
+     "id": "5cb34cb0-60c7-47e7-ad52-0df5681fd196",
+     "titre": "Requiem, op. 48"
+    },
+    "titre": "Requiem, op. 48: III. Sanctus"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "d0c70942-2cd0-33bc-b2ae-726b19b118f9",
+    "parente": {
+     "id": "5cb34cb0-60c7-47e7-ad52-0df5681fd196",
+     "titre": "Requiem, op. 48"
+    },
+    "titre": "Requiem, op. 48: IV. Pie Jesu"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "2b467e89-0a1b-34a2-a141-0e557e95c4fd",
+    "parente": {
+     "id": "5cb34cb0-60c7-47e7-ad52-0df5681fd196",
+     "titre": "Requiem, op. 48"
+    },
+    "titre": "Requiem, op. 48: V. Agnus Dei et Lux Aeterna"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "97ec2563-e23b-37dc-b950-eaa4eb4b12cb",
+    "parente": {
+     "id": "5cb34cb0-60c7-47e7-ad52-0df5681fd196",
+     "titre": "Requiem, op. 48"
+    },
+    "titre": "Requiem, op. 48: VI. Libera me"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "da60277e-400a-3d26-8c70-c2e6ea756b1f",
+    "parente": {
+     "id": "5cb34cb0-60c7-47e7-ad52-0df5681fd196",
+     "titre": "Requiem, op. 48"
+    },
+    "titre": "Requiem, op. 48: VII. In Paradisum"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "577c097a-0dd6-4ba2-91bd-9b2b77c10ea0",
+    "parente": null,
+    "titre": "Élégie, op. 24"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "23c10a02-1590-4d1e-99f2-2e1741c4d840",
+    "parente": {
+     "id": "b0b85f7e-51cd-422e-ae3c-75ab645f233a",
+     "titre": "Messe basse"
+    },
+    "titre": "Messe basse: I. Kyrie"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "24924014-21da-414f-bee4-0ba6d9834d66",
+    "parente": {
+     "id": "b0b85f7e-51cd-422e-ae3c-75ab645f233a",
+     "titre": "Messe basse"
+    },
+    "titre": "Messe basse: II. Sanctus"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "1a2088a2-3f76-421e-b52a-a098e30a0861",
+    "parente": {
+     "id": "b0b85f7e-51cd-422e-ae3c-75ab645f233a",
+     "titre": "Messe basse"
+    },
+    "titre": "Messe basse: III. Benedictus"
+   },
+   {
+    "compositeur": "Gabriel Fauré",
+    "id": "3f95ff9c-7760-4031-837c-44763ce21d47",
+    "parente": {
+     "id": "b0b85f7e-51cd-422e-ae3c-75ab645f233a",
+     "titre": "Messe basse"
+    },
+    "titre": "Messe basse: IV. Agnus Dei"
+   }
+  ],
+  "release": "a4d2c4d6-1645-4d6e-8d23-e14c797be2d4",
+  "version": 8
  },
  "17553553": {
   "images": [],
@@ -16271,8 +16420,13 @@
   "version": 5
  },
  "18394207": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1977,
+   1977
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 6,
   "oeuvres": [
@@ -16332,7 +16486,7 @@
    }
   ],
   "release": "95fbe7bb-9baa-4974-833f-d2d363bd2939",
-  "version": 2
+  "version": 8
  },
  "1855693": {
   "annee_parution": 1996,
@@ -23668,8 +23822,13 @@
   "version": 2
  },
  "230457": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1969,
+   1969
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 2,
   "oeuvres": [
@@ -23693,7 +23852,7 @@
    }
   ],
   "release": "c100f843-ddce-3450-9c9b-553a7f4c35d1",
-  "version": 2
+  "version": 8
  },
  "2343664": {
   "annees_enregistrement": [
@@ -24828,9 +24987,12 @@
  },
  "25280053": {
   "annee_parution": null,
-  "annees_enregistrement": null,
+  "annees_enregistrement": [
+   1956,
+   1956
+  ],
   "images": [],
-  "maj": "2026-11-04",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 10,
   "oeuvres": [
@@ -24905,7 +25067,7 @@
    }
   ],
   "release": "fb6e7ee7-4d9a-4a1f-9d01-556cebc73d88",
-  "version": 5
+  "version": 8
  },
  "25435495": {
   "annee_parution": 1997,
@@ -27289,8 +27451,13 @@
   "version": 2
  },
  "28826422": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1975,
+   1975
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 11,
   "oeuvres": [
@@ -27395,7 +27562,7 @@
    }
   ],
   "release": "1c30cf65-d138-47b7-953f-02945f29edcb",
-  "version": 2
+  "version": 8
  },
  "2930881": {
   "annees_enregistrement": null,
@@ -27763,8 +27930,13 @@
   "version": 5
  },
  "30485759": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1986,
+   1987
+  ],
   "images": [],
-  "maj": "2026-11-01",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 8,
   "oeuvres": [
@@ -27818,7 +27990,7 @@
    }
   ],
   "release": "0877db8a-8eab-44fd-ba94-51c0722be1ef",
-  "version": 2
+  "version": 8
  },
  "3095801": {
   "annee_parution": 1984,
@@ -29225,8 +29397,13 @@
   "version": 4
  },
  "3233842": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1970,
+   1971
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 7,
   "oeuvres": [
@@ -29249,7 +29426,7 @@
    null
   ],
   "release": "4235d1f6-db7a-4485-b23c-b833888f53df",
-  "version": 2
+  "version": 8
  },
  "3238283": {
   "annees_enregistrement": [
@@ -30123,6 +30300,11 @@
   "version": 4
  },
  "32748171": {
+  "annee_parution": 2001,
+  "annees_enregistrement": [
+   1994,
+   1994
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/de8bb779-3da4-4195-81a1-4962d0fa3d9e/10303671336-250.jpg",
@@ -30131,7 +30313,7 @@
     "url": "https://coverartarchive.org/release/de8bb779-3da4-4195-81a1-4962d0fa3d9e/10303671336-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "code_barre",
   "nb_plages": 12,
   "oeuvres": [
@@ -30245,7 +30427,7 @@
    }
   ],
   "release": "de8bb779-3da4-4195-81a1-4962d0fa3d9e",
-  "version": 2
+  "version": 8
  },
  "3303964": {
   "annee_parution": 2000,
@@ -31472,9 +31654,12 @@
  },
  "3638703": {
   "annee_parution": null,
-  "annees_enregistrement": null,
+  "annees_enregistrement": [
+   1954,
+   1956
+  ],
   "images": [],
-  "maj": "2026-11-04",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 7,
   "oeuvres": [
@@ -31528,7 +31713,7 @@
    }
   ],
   "release": "087f4c62-ba68-3303-b692-5a0c20e0fce9",
-  "version": 5
+  "version": 8
  },
  "36751258": {
   "images": [],
@@ -34773,9 +34958,12 @@
  },
  "494098": {
   "annee_parution": null,
-  "annees_enregistrement": null,
+  "annees_enregistrement": [
+   1954,
+   1954
+  ],
   "images": [],
-  "maj": "2026-11-04",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 5,
   "oeuvres": [
@@ -34811,7 +34999,7 @@
    }
   ],
   "release": "066c73cc-904c-3b10-a6c2-7eaa63f632cd",
-  "version": 5
+  "version": 8
  },
  "496512": {
   "annees_enregistrement": null,
@@ -35172,14 +35360,18 @@
   "version": 5
  },
  "50304": {
-  "annees_enregistrement": null,
+  "annee_parution": null,
+  "annees_enregistrement": [
+   2000,
+   2000
+  ],
   "images": [],
-  "maj": "2026-11-03",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 9,
   "oeuvres": null,
   "release": "453620ff-a24d-4126-bf60-e78d8a48f737",
-  "version": 4
+  "version": 8
  },
  "5034836": {
   "annees_enregistrement": null,
@@ -37275,6 +37467,11 @@
   "version": 2
  },
  "5575647": {
+  "annee_parution": 1993,
+  "annees_enregistrement": [
+   1992,
+   1992
+  ],
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/98769db6-ee90-45b4-ab7d-7979804230fa/15153817998-250.jpg",
@@ -37301,7 +37498,7 @@
     "url": "https://coverartarchive.org/release/98769db6-ee90-45b4-ab7d-7979804230fa/15153821362-500.jpg"
    }
   ],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "code_barre",
   "nb_plages": 7,
   "oeuvres": [
@@ -37370,7 +37567,7 @@
    }
   ],
   "release": "98769db6-ee90-45b4-ab7d-7979804230fa",
-  "version": 2
+  "version": 8
  },
  "5579615": {
   "annees_enregistrement": [
@@ -38667,8 +38864,13 @@
   "version": 4
  },
  "5793978": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1996,
+   1996
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 15,
   "oeuvres": [
@@ -38806,7 +39008,7 @@
    }
   ],
   "release": "134c2e21-3fea-421e-9ff3-4d0a20501dad",
-  "version": 2
+  "version": 8
  },
  "5805270": {
   "images": [],
@@ -39008,8 +39210,13 @@
   "version": 4
  },
  "6219754": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1966,
+   1966
+  ],
   "images": [],
-  "maj": "2026-11-01",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 10,
   "oeuvres": [
@@ -39081,7 +39288,7 @@
    }
   ],
   "release": "09e49b6f-a621-4ba8-9f22-83ffa66d6133",
-  "version": 2
+  "version": 8
  },
  "6270862": {
   "annee_parution": 1988,
@@ -42833,6 +43040,8 @@
   "version": 2
  },
  "6517195": {
+  "annee_parution": 2015,
+  "annees_enregistrement": null,
   "images": [
    {
     "miniature": "https://coverartarchive.org/release/c06e6fd5-ebad-44e1-b1ef-908aa9a5ce89/13957152319-250.jpg",
@@ -42853,78 +43062,79 @@
     "url": "https://coverartarchive.org/release/c06e6fd5-ebad-44e1-b1ef-908aa9a5ce89/13957161335-500.jpg"
    }
   ],
-  "maj": "2026-10-31",
+  "maj": "2026-11-05",
   "methode": "edition",
   "nb_plages": 11,
   "oeuvres": [
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Michael Chabon, Mark Ronson",
     "id": "e81f31f6-8717-4df4-92e2-a0f70aa6685d",
     "parente": null,
     "titre": "Uptown’s First Finale"
    },
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Michael Chabon, Kevin Parker, Mark Ronson",
     "id": "a0a66606-001b-4f22-897a-bd52e841438a",
     "parente": null,
     "titre": "Summer Breaking"
    },
    {
-    "compositeur": null,
+    "compositeur": "Thomas Brenneck, Brody Brown, Philip Lawrence, Bruno Mars, Nick Movshon, Mystikal, Mark Ronson, Homer Steinweiss",
     "id": "b5932b09-55ce-4f64-8b7e-0c67775862dc",
     "parente": null,
     "titre": "Feel Right"
    },
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Devon Gallaspy, Philip Lawrence, Bruno Mars, Mark Ronson, Lonnie Simmons, Rudolph Taylor, Trinidad James, Charlie Wilson, Robert Wilson, Ronnie Wilson",
     "id": "c62f7e22-a04f-475e-af94-97a660d313bc",
     "parente": null,
     "titre": "Uptown Funk"
    },
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Michael Chabon, Mark Ronson",
     "id": "c6093374-7351-49a9-a1ca-be261ce9231d",
     "parente": null,
     "titre": "I Can’t Lose"
    },
    {
-    "compositeur": null,
+    "compositeur": "Michael Chabon, Kevin Parker",
     "id": "0118067b-a27d-452c-9ac7-d4091e2ec571",
     "parente": null,
     "titre": "Daffodils"
    },
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Michael Chabon, Mark Ronson",
     "id": "e47fdc2f-055d-4700-950b-e7f81025d5c4",
     "parente": null,
     "titre": "Crack In the Pearl"
    },
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Michael Chabon, Alex Greenwald, Nick Movshon, Mark Ronson, Rufus Wainwright",
     "id": "9b226af0-0533-46cf-b684-f96725b555fc",
     "parente": null,
     "titre": "In Case of Fire"
    },
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Michael Chabon, Emile Haynie, Kevin Parker, Mark Ronson, Chris Vatalaro",
     "id": "32d71735-6009-4e03-a5ce-480d72fee9b5",
     "parente": null,
     "titre": "Leaving Los Feliz"
    },
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Michael Chabon, Mark Ronson, Andrew Wyatt",
     "id": "3271126e-a4e8-40b6-8ab8-485b3ffafe2a",
     "parente": null,
     "titre": "Heavy & Rolling"
    },
    {
-    "compositeur": null,
+    "compositeur": "Jeff Bhasker, Michael Chabon, Mark Ronson",
     "id": "57cbce8f-8537-49ab-bc08-26fb5d5e3102",
     "parente": null,
     "titre": "Crack In The Pearl II"
    }
   ],
-  "release": "c06e6fd5-ebad-44e1-b1ef-908aa9a5ce89"
+  "release": "c06e6fd5-ebad-44e1-b1ef-908aa9a5ce89",
+  "version": 8
  },
  "6627715": {
   "annee_parution": 1988,
@@ -44558,6 +44768,7 @@
   "version": 4
  },
  "679039": {
+  "annee_parution": 1998,
   "annees_enregistrement": [
    1961,
    1965
@@ -44780,12 +44991,433 @@
     "url": "https://coverartarchive.org/release/9932c604-a68d-4a09-baeb-4589bfba0ddb/24182668180-1200.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-05",
   "methode": "edition",
   "nb_plages": 70,
-  "oeuvres": null,
+  "oeuvres": [
+   {
+    "compositeur": "[traditional]",
+    "id": "e674e7bc-da4a-32df-ac3a-b2397f0c391d",
+    "parente": null,
+    "titre": "Greensleeves"
+   },
+   {
+    "compositeur": "Richard Rodgers",
+    "id": "fe055727-d9c6-353d-a6c2-4144ea6dd50c",
+    "parente": null,
+    "titre": "It’s Easy to Remember (and So Hard to Forget)"
+   },
+   {
+    "compositeur": "Frank Loesser",
+    "id": "1d1cd5e2-4731-3add-bd5a-71da78bf7417",
+    "parente": null,
+    "titre": "Inchworm"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "3c822560-a61d-36d3-aa2f-34ab39d39111",
+    "parente": null,
+    "titre": "Big Nick"
+   },
+   {
+    "compositeur": "Harold Arlen",
+    "id": "42fa85c9-389c-4d85-bab9-877daff7398a",
+    "parente": null,
+    "titre": "Out of This World"
+   },
+   {
+    "compositeur": "Mal Waldron",
+    "id": "99c40aca-bc94-4ba3-9605-bfb0cb26a0ea",
+    "parente": null,
+    "titre": "Soul Eyes"
+   },
+   {
+    "compositeur": "John Coltrane, Eric Dolphy",
+    "id": "4e17a5f6-a8e2-47ef-a9d2-195113910c18",
+    "parente": null,
+    "titre": "Red Planet"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "16ac6087-6f9a-4db5-a0aa-5ad035944c84",
+    "parente": null,
+    "titre": "Tunji"
+   },
+   {
+    "compositeur": "Jimmy Van Heusen",
+    "id": "3b48a9fd-b08e-3fdc-bac4-f81fb7e6c7b0",
+    "parente": null,
+    "titre": "Nancy (With the Laughing Face)"
+   },
+   {
+    "compositeur": "Bob Haggart",
+    "id": "f5cf3dae-2d9d-3bc2-ba94-8133f7617fa6",
+    "parente": null,
+    "titre": "What’s New?"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "23b1b7ca-4cfb-3e9d-b9e2-e1852764f52b",
+    "parente": null,
+    "titre": "Up 'Gainst the Wall"
+   },
+   {
+    "compositeur": "Jimmy McHugh",
+    "id": "a6279c26-4691-3105-9ba3-4e9259e599fc",
+    "parente": null,
+    "titre": "Too Young to Go Steady"
+   },
+   {
+    "compositeur": "Arthur Altman, Jack Lawrence",
+    "id": "d074d059-d8a0-3b2f-8b2a-9138d7166a42",
+    "parente": null,
+    "titre": "All or Nothing at All"
+   },
+   {
+    "compositeur": "Mack Gordon, Harry Warren",
+    "id": "b38e34e8-2965-39b3-8289-9b5e4a1f7d59",
+    "parente": null,
+    "titre": "I Wish I Knew"
+   },
+   {
+    "compositeur": "Gene de Paul",
+    "id": "1e4f4f3d-6bfe-3a99-9c46-d2eb1c83e09c",
+    "parente": null,
+    "titre": "You Don’t Know What Love Is"
+   },
+   {
+    "compositeur": "Jimmy McHugh",
+    "id": "aac15434-2e0f-351b-94f0-563866b3e0f9",
+    "parente": null,
+    "titre": "Say It Over and Over Again"
+   },
+   {
+    "compositeur": "Franz Lehár",
+    "id": "14f6379c-a11d-47f0-8bcf-c5c41f88fe14",
+    "parente": null,
+    "titre": "Vilia"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "469120aa-8a5b-30bf-8608-45b938686d41",
+    "parente": null,
+    "titre": "After the Rain"
+   },
+   {
+    "compositeur": "[traditional]",
+    "id": "0e29de59-030d-4e0f-b30f-529eba30435c",
+    "parente": null,
+    "titre": "Dear Old Stockholm"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "1727a09c-6b70-3ebc-985c-ca509290eab1",
+    "parente": null,
+    "titre": "Your Lady"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "bfd877de-c3fd-3b3b-9fdf-1b2fa2bdfecf",
+    "parente": null,
+    "titre": "Alabama"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "6b930570-a7c6-3217-8684-12b557ab1e24",
+    "parente": null,
+    "titre": "Lonnie’s Lament"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "d0747b55-4eae-30af-8f81-d05f7b8f8085",
+    "parente": null,
+    "titre": "The Drum Thing"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "63c27e4a-731b-36b9-ae84-0ae1351b5707",
+    "parente": null,
+    "titre": "Wise One"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "657710e4-a513-306a-bdd2-f80c8e835576",
+    "parente": null,
+    "titre": "Crescent"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "57a7cb80-55cd-352a-b5ed-16aafec65e2d",
+    "parente": null,
+    "titre": "Bessie's Blues"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "6c068e9b-1caf-3d0b-8586-fc242578529f",
+    "parente": {
+     "id": "8148dda2-7d5c-4baa-8e1f-91968e31b3ea",
+     "titre": "A Love Supreme"
+    },
+    "titre": "A Love Supreme, Part 1: Acknowledgement"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "d36e3624-0bd9-39b4-9faf-b86dcf97554f",
+    "parente": {
+     "id": "8148dda2-7d5c-4baa-8e1f-91968e31b3ea",
+     "titre": "A Love Supreme"
+    },
+    "titre": "A Love Supreme, Part 2: Resolution"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "444cfd30-5408-3384-b3ef-4af8192aad75",
+    "parente": {
+     "id": "8148dda2-7d5c-4baa-8e1f-91968e31b3ea",
+     "titre": "A Love Supreme"
+    },
+    "titre": "A Love Supreme, Part 3: Pursuance"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "30964911-9fe4-4d59-97e9-43590135773c",
+    "parente": {
+     "id": "8148dda2-7d5c-4baa-8e1f-91968e31b3ea",
+     "titre": "A Love Supreme"
+    },
+    "titre": "A Love Supreme, Part 4: Psalm"
+   },
+   {
+    "compositeur": "eden ahbez",
+    "id": "2e99ea26-6e86-3c23-879b-ecf44ab840fd",
+    "parente": null,
+    "titre": "Nature Boy"
+   },
+   {
+    "compositeur": "eden ahbez",
+    "id": "2e99ea26-6e86-3c23-879b-ecf44ab840fd",
+    "parente": null,
+    "titre": "Nature Boy"
+   },
+   {
+    "compositeur": "Anthony Newley",
+    "id": "e04a779d-4f24-329e-a857-77251e24c303",
+    "parente": {
+     "id": "ae16c1c8-a2f9-4357-86ae-bdd9de375cb1",
+     "titre": "The Roar of the Greasepaint – The Smell of the Crowd"
+    },
+    "titre": "Feeling Good"
+   },
+   {
+    "compositeur": "Richard M. Sherman, Robert B. Sherman",
+    "id": "961f7ef6-fe8e-3e86-b145-dc0b073f4e10",
+    "parente": {
+     "id": "6902fe8a-41b2-435d-8a39-2c07ab630b28",
+     "titre": "Mary Poppins"
+    },
+    "titre": "Chim Chim Cher-ee"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "5d4bc65d-76d7-3e6d-84a2-c11b2ed549bf",
+    "parente": null,
+    "titre": "Brazilia"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "2b0e8888-4b53-3348-a447-9173e349ecc1",
+    "parente": null,
+    "titre": "Song of Praise"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "e5cf173e-12c2-3842-955a-f2d20567d331",
+    "parente": null,
+    "titre": "After the Crescent"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "7691eb8b-7a8b-335e-9421-b1286766ae1b",
+    "parente": null,
+    "titre": "Dear Lord"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "d7165326-52d4-3073-a3bb-faef6a0b8e7e",
+    "parente": null,
+    "titre": "One Down, One Up"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "45c0def1-8616-3f27-9368-f5f9e13acd11",
+    "parente": null,
+    "titre": "Welcome"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "37314537-5edb-43cd-a504-55dc4bb0b34d",
+    "parente": null,
+    "titre": "The Last Blues"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "1c29d665-4622-43ee-87d5-bc5494ad186a",
+    "parente": null,
+    "titre": "Untitled Original 90314"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "252b79b4-fcdd-3cd5-b855-65a801bc098c",
+    "parente": null,
+    "titre": "Transition"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "f07f3634-a14f-3fdc-bede-8e27873295c9",
+    "parente": null,
+    "titre": "Suite: Prayer and Meditation"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "e63b0f81-274d-3430-96cb-fd0f37faba26",
+    "parente": null,
+    "titre": "Living Space"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "86e7b41c-0973-4d71-8eb6-f95b298c8052",
+    "parente": null,
+    "titre": "Dusk Dawn"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "53abb93f-02b3-49c6-b624-1525172d8668",
+    "parente": null,
+    "titre": "Vigil"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "fca10c6b-2c9c-4dae-82d8-64f2b51ce2d8",
+    "parente": null,
+    "titre": "Untitled Original 90320"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "241310a5-f94d-3e8c-9693-876fcc970b45",
+    "parente": null,
+    "titre": "Dearly Beloved"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "c34d3837-cfb6-3d8e-af5f-b87e95460007",
+    "parente": null,
+    "titre": "Attaining"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "e29672c5-7dce-354a-bfb3-76261f69a312",
+    "parente": null,
+    "titre": "Sun Ship"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "82e9148b-e27b-344c-8a62-605090b0dee6",
+    "parente": null,
+    "titre": "Ascent"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "08d5851a-dbd7-315a-bb6b-47a6cf57688d",
+    "parente": null,
+    "titre": "Amen"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "446135b4-b0e1-36a2-85d7-b45d51f5b81e",
+    "parente": null,
+    "titre": "Love"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "ce92cde2-d9b6-3e3d-86a2-8942c177cb50",
+    "parente": null,
+    "titre": "Compassion"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "75e48b65-2a22-34a9-9efe-1c1ca9d85494",
+    "parente": null,
+    "titre": "Joy"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "3d9f96a2-be31-3118-869b-df2b06ca4c94",
+    "parente": null,
+    "titre": "Consequences"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "caee0559-6e45-3ba6-9973-d9ba9a7f5fda",
+    "parente": null,
+    "titre": "Serenity"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "75e48b65-2a22-34a9-9efe-1c1ca9d85494",
+    "parente": null,
+    "titre": "Joy"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "657710e4-a513-306a-bdd2-f80c8e835576",
+    "parente": null,
+    "titre": "Crescent"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "57a7cb80-55cd-352a-b5ed-16aafec65e2d",
+    "parente": null,
+    "titre": "Bessie's Blues"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "2b0e8888-4b53-3348-a447-9173e349ecc1",
+    "parente": null,
+    "titre": "Song of Praise"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "d36e3624-0bd9-39b4-9faf-b86dcf97554f",
+    "parente": {
+     "id": "8148dda2-7d5c-4baa-8e1f-91968e31b3ea",
+     "titre": "A Love Supreme"
+    },
+    "titre": "A Love Supreme, Part 2: Resolution"
+   },
+   {
+    "compositeur": "Anthony Newley",
+    "id": "e04a779d-4f24-329e-a857-77251e24c303",
+    "parente": {
+     "id": "ae16c1c8-a2f9-4357-86ae-bdd9de375cb1",
+     "titre": "The Roar of the Greasepaint – The Smell of the Crowd"
+    },
+    "titre": "Feeling Good"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "7691eb8b-7a8b-335e-9421-b1286766ae1b",
+    "parente": null,
+    "titre": "Dear Lord"
+   },
+   {
+    "compositeur": "John Coltrane",
+    "id": "e63b0f81-274d-3430-96cb-fd0f37faba26",
+    "parente": null,
+    "titre": "Living Space"
+   }
+  ],
   "release": "9932c604-a68d-4a09-baeb-4589bfba0ddb",
-  "version": 4
+  "version": 8
  },
  "6875144": {
   "annees_enregistrement": null,
@@ -45322,8 +45954,13 @@
   "version": 5
  },
  "7012975": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1984,
+   1984
+  ],
   "images": [],
-  "maj": "2026-11-02",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 4,
   "oeuvres": [
@@ -45359,7 +45996,7 @@
    }
   ],
   "release": "9b917a1f-7070-38b5-82e0-9cf0987de7ea",
-  "version": 2
+  "version": 8
  },
  "7034057": {
   "images": [],
@@ -47616,14 +48253,15 @@
   "version": 4
  },
  "796877": {
+  "annee_parution": null,
   "annees_enregistrement": null,
   "images": [],
-  "maj": "2026-11-03",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 21,
   "oeuvres": null,
   "release": "f082aa3f-6384-460e-a91e-2bf5711b0662",
-  "version": 4
+  "version": 8
  },
  "7981634": {
   "images": [],
@@ -53883,8 +54521,13 @@
   "version": 4
  },
  "9753841": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1997,
+   1997
+  ],
   "images": [],
-  "maj": "2026-11-01",
+  "maj": "2026-11-05",
   "methode": "album",
   "nb_plages": 11,
   "oeuvres": [
@@ -53956,7 +54599,7 @@
    }
   ],
   "release": "8ec19bba-6f9e-4146-8dec-ed9393002456",
-  "version": 2
+  "version": 8
  },
  "9896650": {
   "images": [],
