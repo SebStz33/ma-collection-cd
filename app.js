@@ -70,6 +70,19 @@ const REGROUPEMENT_FORMATS = {
 };
 const formatRegroupe = (nom) => REGROUPEMENT_FORMATS[nom] || nom;
 
+// Coffret (« Box Set » sur Discogs) : affiché en français, avec le type de disques qu'il contient.
+const FORMAT_COFFRET = "Box Set";
+const NOMS_DISQUES = { Vinyl: ["Vinyle", "Vinyles"], LP: ["Vinyle", "Vinyles"] };   // CD, DVD… restent tels quels
+const nomDeDisque = (nom, nombre) => (NOMS_DISQUES[nom] || [nom, nom])[nombre > 1 ? 1 : 0];
+
+/** Formats d'une édition pour le filtre et les stats : « Coffret CD » plutôt que « Box Set » + « CD ». */
+function formatsAffiches(formats) {
+  formats = formats || [];
+  if (!formats.some((f) => f.nom === FORMAT_COFFRET)) return formats.map((f) => formatRegroupe(f.nom));
+  const contenu = formats.find((f) => !FORMATS_EMBALLAGE.includes(f.nom));
+  return ["Coffret " + (contenu ? nomDeDisque(contenu.nom, 2) : "")].map((t) => t.trim());
+}
+
 // Formats Discogs qui sont des emballages et non des disques (pour le comptage).
 const FORMATS_EMBALLAGE = ["Box Set", "All Media"];
 
@@ -399,8 +412,18 @@ function oeuvresIncompletes(edition) {
   return avecOeuvre > 0 && avecOeuvre < total;
 }
 
-/** Décrit les formats : « Box Set + 5 × CD (Album, Remastered) ». */
+/** Décrit les formats : « 2 × CD (Album, Remastered) », ou pour un coffret « Coffret 5 CD (Compilation, Remastered) ». */
 function decrireFormats(formats) {
+  if ((formats || []).some((f) => f.nom === FORMAT_COFFRET)) {
+    // Nombre de disques par type (CD, Vinyle…), puis les précisions de Discogs, sans répétition.
+    const parType = new Map();
+    for (const f of formats.filter((f) => !FORMATS_EMBALLAGE.includes(f.nom))) {
+      parType.set(f.nom, (parType.get(f.nom) || 0) + (f.quantite || 1));
+    }
+    const contenu = [...parType].map(([nom, nombre]) => nombre + " " + nomDeDisque(nom, nombre)).join(" + ");
+    const details = [...new Set(formats.flatMap((f) => f.descriptions || []))];
+    return "Coffret " + contenu + (details.length ? " (" + details.join(", ") + ")" : "");
+  }
   return (formats || []).map((f) => {
     const quantite = f.quantite > 1 ? f.quantite + " × " : "";
     const details = f.descriptions && f.descriptions.length ? " (" + f.descriptions.join(", ") + ")" : "";
@@ -575,7 +598,7 @@ const EXTRACTEURS = {
   categorie: (e) => e.categories,
   genre: (e) => e.genres || [],
   style: (e) => e.styles || [],
-  format: (e) => (e.formats || []).map((f) => formatRegroupe(f.nom)),
+  format: (e) => formatsAffiches(e.formats),
   label: (e) => (e.labels || []).map((l) => l.nom),
   localisation: (e) => e.localisations,
   enregistrement: (e) => [e.enregistrement],
@@ -737,7 +760,7 @@ function correspond(edition) {
   if (etat.categorie && !edition.categories.includes(etat.categorie)) return false;
   if (etat.genre && !(edition.genres || []).includes(etat.genre)) return false;
   if (etat.style && !(edition.styles || []).includes(etat.style)) return false;
-  if (etat.format && !(edition.formats || []).some((f) => formatRegroupe(f.nom) === etat.format)) return false;
+  if (etat.format && !formatsAffiches(edition.formats).includes(etat.format)) return false;
   if (etat.label && !(edition.labels || []).some((l) => normaliser(l.nom).includes(normaliser(etat.label)))) return false;
   if ((etat.anneeMin || etat.anneeMax) && !edition.annee) return false;
   if (etat.anneeMin && edition.annee < etat.anneeMin) return false;
@@ -1503,8 +1526,8 @@ function listePlagesParDisque(plages, suivi) {
 }
 
 /**
- * Intertitre « CD 2 » d'un coffret, avec à droite « ⇈ ↑ Préc. » (sauf au début)
- * et « ↓ Suiv. ⇊ » (sauf à la fin), pour passer d'un disque à l'autre ou aller au premier / dernier.
+ * Intertitre « CD 2 » d'un coffret, avec à droite « ↑↑ ↑ Préc. » (sauf au début)
+ * et « ↓ Suiv. ↓↓ » (sauf à la fin), pour passer d'un disque à l'autre ou aller au premier / dernier.
  */
 function intertitreDisque(disques, disque) {
   const numero = disques.indexOf(disque);
@@ -1512,16 +1535,16 @@ function intertitreDisque(disques, disque) {
     const liste = evenement.currentTarget.closest(".plages");
     defilerFicheVers(liste.querySelector('[data-disque="' + cible + '"]'));
   };
-  const lien = (texte, cible, titre) => creer("button", { type: "button", classe: "bouton-texte lien-fiche",
+  const lien = (texte, cible, titre, classe = "") => creer("button", { type: "button", classe: ("bouton-texte lien-fiche " + classe).trim(),
     texte, title: titre + " : " + cible, surclic: aller(cible) });
   return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
     creer("span", { texte: disque }),
-    // ⇈ (premier disque) et ⇊ (dernier) seulement s'ils mènent ailleurs que « Préc. » et « Suiv. ».
+    // ↑↑ (premier disque) et ↓↓ (dernier) seulement s'ils mènent ailleurs que « Préc. » et « Suiv. ».
     creer("span", { classe: "navigation-disques" },
-      numero > 1 ? lien("⇈", disques[0], "Premier disque") : null,
+      numero > 1 ? lien("↑↑", disques[0], "Premier disque", "fleche-double") : null,
       numero > 0 ? lien("↑ Préc.", disques[numero - 1], "Disque précédent") : null,
       numero < disques.length - 1 ? lien("↓ Suiv.", disques[numero + 1], "Disque suivant") : null,
-      numero < disques.length - 2 ? lien("⇊", disques[disques.length - 1], "Dernier disque") : null));
+      numero < disques.length - 2 ? lien("↓↓", disques[disques.length - 1], "Dernier disque", "fleche-double") : null));
 }
 
 /** Les plages réelles du disque sous une plage : elle-même, ou ses mouvements. */
