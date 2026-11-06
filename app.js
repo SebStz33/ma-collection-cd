@@ -49,7 +49,6 @@ const META_CATEGORIES = {
 const META_PAR_DEFAUT = "Divers";             // méta-catégorie d'un nouveau dossier, tant qu'il n'est pas dans la table
 const META_CLASSIQUE = "Classique";           // sert aussi à séparer compositeurs et œuvres « classiques / autres »
 const PREFIXE_META = "méta:";                 // valeur du filtre Catégorie pour une méta-catégorie (« méta:Jazz »)
-const CLE_METAS_OUVERTES = "metas-ouvertes";  // méta-catégories dépliées dans la vue Collection (réglage du navigateur)
 const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
 const ZOOM = 2.5;                             // grossissement de la visionneuse
 const LIGNES_MIN_EDITION = 4;                 // hauteur minimale des zones de texte du formulaire
@@ -1018,96 +1017,87 @@ function categoriesChoisies(edition) {
   return edition.categories.filter((c) => c !== SANS_CATEGORIE);
 }
 
+/** Ordre des catégories dans la vue Collection : par méta-catégorie (alphabétique), puis comme comparerCategories. */
+function comparerCategoriesParMeta(a, b) {
+  return comparerTextes(metaDeCategorie(a), metaDeCategorie(b)) || comparerCategories(a, b);
+}
+
 /**
- * Vue Collection : un bloc par méta-catégorie (ordre alphabétique), replié au départ.
- * Replié, le bloc montre son nom, son nombre d'éditions et ses catégories. Déplié, il montre
- * ses catégories comme groupes de vignettes (ordre de comparerCategories : « Sans catégorie »
- * puis « À Vendre » à la fin). Une édition rangée dans deux dossiers apparaît dans les deux.
- * Avec une recherche ou un filtre, tous les blocs qui ont des résultats sont dépliés.
+ * Boutons « Tout · Chanson · Classique… » en haut de la vue Collection. Ils règlent le filtre
+ * Catégorie sur une méta-catégorie (comme la liste des filtres) ; un clic sur le bouton actif revient à « Tout ».
+ */
+function boutonsMetas() {
+  const metas = [...new Set(editions.flatMap((e) => e.metas))].sort(comparerTextes);
+  if (metas.length < 2) return null;
+  const choisir = (valeur) => {
+    etat.categorie = etat.categorie === valeur ? "" : valeur;
+    ecrireControles();
+    afficher();
+    window.scrollTo({ top: 0 });
+  };
+  return creer("nav", { classe: "boutons-metas", "aria-label": "Méta-catégories" },
+    creer("button", { type: "button", classe: "bouton-meta" + (etat.categorie ? "" : " actif"), texte: "Tout",
+      surclic: () => choisir("") }),
+    metas.map((meta) => creer("button", { type: "button",
+      classe: "bouton-meta" + (etat.categorie === PREFIXE_META + meta ? " actif" : ""), texte: meta,
+      surclic: () => choisir(PREFIXE_META + meta) })));
+}
+
+/**
+ * Vignettes regroupées par catégorie (dossier Discogs), elles-mêmes rangées par méta-catégorie
+ * (ordre alphabétique), avec le nom de la méta-catégorie au-dessus de ses catégories. Dans une
+ * méta-catégorie, ordre de comparerCategories (« Sans catégorie » puis « À Vendre » à la fin).
+ * Dans chaque groupe, les disques gardent l'ordre du tri choisi. Une édition dont les
+ * exemplaires sont rangés dans deux dossiers apparaît dans les deux.
  */
 function afficherGrille(liste) {
-  const parMeta = new Map();
+  const parCategorie = new Map();
+  const parMeta = new Map();   // méta-catégorie -> éditions (sans doublon)
   for (const edition of liste) {
     for (const categorie of edition.categories) {
+      if (!parCategorie.has(categorie)) parCategorie.set(categorie, []);
+      parCategorie.get(categorie).push(edition);
       const meta = metaDeCategorie(categorie);
-      if (!parMeta.has(meta)) parMeta.set(meta, { editions: new Set(), parCategorie: new Map() });
-      const groupe = parMeta.get(meta);
-      groupe.editions.add(edition);
-      if (!groupe.parCategorie.has(categorie)) groupe.parCategorie.set(categorie, []);
-      groupe.parCategorie.get(categorie).push(edition);
+      if (!parMeta.has(meta)) parMeta.set(meta, new Set());
+      parMeta.get(meta).add(edition);
     }
   }
+  const categories = [...parCategorie.keys()].sort(comparerCategoriesParMeta);
   const metas = [...parMeta.keys()].sort(comparerTextes);
-  // Avec une recherche ou un filtre (ou une seule méta-catégorie), tout est déplié ;
-  // sinon on reprend les blocs dépliés la dernière fois sur cet appareil.
-  const toutDeplier = Boolean(etat.recherche) || nombreDeFiltresActifs() > 0 || metas.length === 1;
-  const ouvertes = new Set(toutDeplier ? metas : lireStockage(CLE_METAS_OUVERTES, []));
-
-  const blocs = metas.map((meta) => blocMeta(meta, parMeta.get(meta), ouvertes.has(meta), toutDeplier));
-  const tout = metas.length > 1 ? creer("div", { classe: "commandes-metas" },
-    creer("button", { type: "button", classe: "bouton-texte", texte: "Tout déplier",
-      surclic: () => blocs.forEach((b) => b.ouvrir(true)) }),
-    creer("button", { type: "button", classe: "bouton-texte", texte: "Tout replier",
-      surclic: () => blocs.forEach((b) => b.ouvrir(false)) })) : null;
-  $("vue-collection").replaceChildren(tout || "", ...blocs);
-}
-
-/**
- * Bloc d'une méta-catégorie. Les vignettes ne sont construites qu'au dépliage :
- * la page reste rapide avec plus de 1 000 disques. `toutDeplie` vrai (recherche ou filtre) :
- * le dépliage n'est pas gardé en mémoire.
- */
-function blocMeta(meta, groupe, ouvert, toutDeplie) {
-  const categories = [...groupe.parCategorie.keys()].sort(comparerCategories);
-  const bloc = creer("section", { classe: "groupe-meta" });
-  const fleche = creer("span", { classe: "fleche-meta", "aria-hidden": "true" });
-  const bouton = creer("button", { type: "button", classe: "bouton-meta" },
-    fleche, meta, creer("span", { classe: "discret", texte: " (" + groupe.editions.size + ")" }));
-  // Noms des catégories : un clic déplie le bloc et descend jusqu'à la catégorie.
-  const liste = creer("p", { classe: "categories-meta" }, categories.map((categorie, numero) => [
-    creer("span", { classe: "sommaire-element" },
-      creer("button", { type: "button", classe: "bouton-texte",
-        surclic: () => { bloc.ouvrir(true); bloc.groupes[numero].scrollIntoView({ behavior: "smooth", block: "start" }); } },
-        categorie, creer("span", { classe: "discret", texte: " (" + groupe.parCategorie.get(categorie).length + ")" })),
-      numero < categories.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
-    " ",
-  ]));
-  const contenu = creer("div", { classe: "contenu-meta" });
-  bloc.append(creer("h2", { classe: "titre-meta" }, bouton), liste, contenu);
-  bloc.groupes = [];
-
-  bloc.ouvrir = (oui) => {
-    bloc.classList.toggle("ouvert", oui);
-    bouton.setAttribute("aria-expanded", oui ? "true" : "false");
-    fleche.textContent = oui ? "▾ " : "▸ ";
-    contenu.hidden = !oui;
-    if (oui && !bloc.groupes.length) {
-      bloc.groupes = groupesDeCategories(categories, groupe.parCategorie);
-      contenu.replaceChildren(...bloc.groupes);
-    }
-    if (!toutDeplie) {
-      const ouvertes = new Set(lireStockage(CLE_METAS_OUVERTES, []));
-      if (oui) ouvertes.add(meta); else ouvertes.delete(meta);
-      ecrireStockage(CLE_METAS_OUVERTES, [...ouvertes]);
-    }
-  };
-  bouton.addEventListener("click", () => bloc.ouvrir(!bloc.classList.contains("ouvert")));
-  bloc.ouvrir(ouvert);
-  return bloc;
-}
-
-/** Groupes de vignettes d'une méta-catégorie : un par catégorie, avec son titre et ses flèches. */
-function groupesDeCategories(categories, parCategorie) {
   const groupes = categories.map(() => creer("section", { classe: "groupe-categorie" }));
-  const allerAuGroupe = (numero) => groupes[numero].scrollIntoView({ behavior: "smooth", block: "start" });
+  const titresMetas = new Map(metas.map((meta) => [meta,
+    creer("h2", { classe: "titre-meta" }, meta, creer("span", { classe: "discret", texte: " (" + parMeta.get(meta).size + ")" }))]));
+  const allerA = (element) => element.scrollIntoView({ behavior: "smooth", block: "start" });
+  const allerAuGroupe = (numero) => allerA(groupes[numero]);
+  const nombre = (n) => creer("span", { classe: "discret", texte: " (" + n + ")" });
+
+  // Sommaire à deux niveaux (s'il y a plusieurs catégories) : une ligne par méta-catégorie, puis ses catégories.
+  // Un clic descend jusqu'à la méta-catégorie ou jusqu'à la catégorie.
+  const sommaire = categories.length > 1 ? creer("nav", { classe: "sommaire-categories", "aria-label": "Catégories" },
+    metas.map((meta) => {
+      const siennes = categories.filter((c) => metaDeCategorie(c) === meta);
+      return creer("p", { classe: "sommaire-meta" },
+        creer("button", { type: "button", classe: "bouton-texte sommaire-nom-meta", surclic: () => allerA(titresMetas.get(meta)) },
+          meta, nombre(parMeta.get(meta).size)),
+        creer("span", { classe: "index-separateur", texte: " : " }),
+        // Le point de séparation suit le nom, pour qu'une ligne ne commence jamais par « · ».
+        siennes.map((categorie, rang) => [
+          creer("span", { classe: "sommaire-element" },
+            creer("button", { type: "button", classe: "bouton-texte", surclic: () => allerAuGroupe(categories.indexOf(categorie)) },
+              categorie, nombre(parCategorie.get(categorie).length)),
+            rang < siennes.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
+          " ",
+        ]));
+    })) : null;
+
   groupes.forEach((groupe, numero) => groupe.append(
     // Titre qui reste en haut de l'écran pendant qu'on fait défiler les vignettes de la catégorie.
     creer("h3", { classe: "titre-categorie" },
       categories[numero],
-      creer("span", { classe: "discret", texte: " (" + parCategorie.get(categories[numero]).length + ")" }),
+      nombre(parCategorie.get(categories[numero]).length),
       // Rappel du tri choisi : le titre reste en haut de l'écran pendant le défilement.
       creer("span", { classe: "tri-categorie", texte: "· tri par " + libelleDuTri() }),
-      creer("span", { classe: "navigation-categories" },
+      categories.length > 1 ? creer("span", { classe: "navigation-categories" },
         creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Haut", surclic: () => window.scrollTo({ top: 0, behavior: "smooth" }) }),
         numero < groupes.length - 1
           ? creer("button", { type: "button", classe: "bouton-texte", texte: "↓ Suivante", surclic: () => allerAuGroupe(numero + 1) })
@@ -1115,11 +1105,19 @@ function groupesDeCategories(categories, parCategorie) {
         numero > 0
           ? creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Précédente", surclic: () => allerAuGroupe(numero - 1) })
           : null
-      )
+      ) : null
     ),
     creer("div", { classe: "grille" }, cartesAvecIntertitre(parCategorie.get(categories[numero])))
   ));
-  return groupes;
+
+  // Nom de la méta-catégorie juste avant sa première catégorie.
+  const contenu = [];
+  categories.forEach((categorie, numero) => {
+    const meta = metaDeCategorie(categorie);
+    if (numero === 0 || metaDeCategorie(categories[numero - 1]) !== meta) contenu.push(titresMetas.get(meta));
+    contenu.push(groupes[numero]);
+  });
+  $("vue-collection").replaceChildren(boutonsMetas() || "", sommaire || "", ...contenu);
 }
 
 /** Libellé du tri choisi, en minuscule : « année d'enregistrement ». */
@@ -1996,6 +1994,7 @@ function blocsIndex() {
       cle === "compositeurs" ? enDeux(cle, libelle, "Compositeurs classiques", "Autres compositeurs") : [[cle, libelle]]),
     ...(editions.some((e) => e.oeuvres.size) ? enDeux("oeuvres", "Œuvres", "Œuvres classiques", "Autres œuvres") : []),
     ["labels", "Labels"],
+    ["categories", "Catégories"],
     ...(editions.some((e) => e.favoris.size) ? [["pistes_favorites", "Pistes favorites"]] : []),
     // Un bloc par statut présent (« Favoris », « À écouter »…) : les albums, par titre.
     ...[...new Set(editions.map((e) => e.statut).filter(Boolean))].map((statut) =>
@@ -2052,6 +2051,14 @@ function cotesClassiques() {
 
 /** Entrées d'un bloc : [{ libelle, nombre, cle, clic }]. */
 function entreesIndex(bloc) {
+  if (bloc === "categories") {
+    // Rangées par méta-catégorie (champ `groupe`), pas par lettre ; un clic montre la catégorie dans la Collection.
+    const compte = compter(editions, EXTRACTEURS.categorie);
+    return [...compte].map(([categorie, nombre]) => ({
+      libelle: categorie, nombre, cle: categorie, groupe: metaDeCategorie(categorie),
+      clic: () => allerVers({ ...FILTRES_VIDES, categorie }, null, "Catégorie : " + categorie),
+    }));
+  }
   if (bloc === "titre" || bloc.startsWith("statut:")) {
     const statut = bloc.slice("statut:".length);
     return editions.filter((e) => bloc === "titre" || e.statut === statut).map((edition) => ({
@@ -2115,16 +2122,28 @@ function lettreIndex(cle) {
 function afficherIndex() {
   const blocs = blocsIndex();
   if (!blocs.some(([cle]) => cle === etat.blocIndex)) etat.blocIndex = blocs[0][0];
-  const entrees = entreesIndex(etat.blocIndex).sort((a, b) => comparerTextes(a.cle, b.cle) || comparerTextes(a.libelle, b.libelle));
+  const parMeta = etat.blocIndex === "categories";
+  const entrees = entreesIndex(etat.blocIndex).sort(parMeta ? (a, b) => comparerCategories(a.cle, b.cle)
+    : (a, b) => comparerTextes(a.cle, b.cle) || comparerTextes(a.libelle, b.libelle));
 
   // Regroupement par lettre, dans l'ordre : « # » d'abord, puis A à Z.
+  // Bloc « Catégories » : regroupement par méta-catégorie (ordre alphabétique) à la place des lettres.
   const parLettre = new Map();
   for (const entree of entrees) {
-    const lettre = lettreIndex(entree.cle);
+    const lettre = entree.groupe || lettreIndex(entree.cle);
     if (!parLettre.has(lettre)) parLettre.set(lettre, []);
     parLettre.get(lettre).push(entree);
   }
-  const lettres = [...parLettre.keys()].sort((a, b) => (a === "#" ? -1 : b === "#" ? 1 : a.localeCompare(b)));
+  const lettres = [...parLettre.keys()].sort(parMeta ? comparerTextes
+    : (a, b) => (a === "#" ? -1 : b === "#" ? 1 : a.localeCompare(b)));
+  // Titre d'une méta-catégorie : cliquable, il montre toute la méta-catégorie dans la Collection.
+  const nbParMeta = parMeta ? compter(editions, (e) => e.metas) : null;
+  const titreGroupe = (lettre) => parMeta
+    ? creer("h3", { id: "lettre-" + lettre },
+        creer("button", { type: "button", classe: "index-nom index-meta",
+          surclic: () => allerVers({ ...FILTRES_VIDES, categorie: PREFIXE_META + lettre }, null, "Méta-catégorie : " + lettre) },
+          lettre, creer("span", { classe: "discret", texte: " (" + nbParMeta.get(lettre) + ")" })))
+    : creer("h3", { id: "lettre-" + lettre, texte: lettre });
 
   const choix = creer("select", { id: "bloc-index", "aria-label": "Bloc de l'index" },
     blocs.map(([cle, libelle]) => creer("option", { value: cle, selected: cle === etat.blocIndex,
@@ -2143,14 +2162,14 @@ function afficherIndex() {
   $("vue-index").replaceChildren(
     enteteIndex,
     ...lettres.map((lettre) => creer("section", { classe: "index-lettre" },
-      creer("h3", { id: "lettre-" + lettre, texte: lettre }),
+      titreGroupe(lettre),
       // Le point de séparation suit le nom, pour qu'une ligne ne commence jamais par « · ».
       creer("p", { classe: "index-noms" }, parLettre.get(lettre).map((entree, numero, liste) => [
         creer("span", { classe: "index-element" },
           creer("button", { type: "button", classe: "index-nom", surclic: entree.clic,
             title: entree.detail || null },
             entree.libelle,
-            entree.nombre > 1 ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
+            entree.nombre > 1 || (parMeta && entree.nombre) ? creer("span", { classe: "discret", texte: " (" + entree.nombre + ")" }) : null,
             entree.detail ? creer("span", { classe: "discret", texte: " – " + entree.detail }) : null),
           numero < liste.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
         " ",
