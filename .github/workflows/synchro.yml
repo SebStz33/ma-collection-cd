@@ -2,7 +2,7 @@
 # GitHub lance scripts/sync.py sur une de ses machines, puis enregistre
 # data/collection.json (et data/musicbrainz.json) dans le dépôt : GitHub Pages republie alors le site.
 
-name: Synchro Discogs
+name: Synchro Discogs et MusicBrainz
 
 on:
   schedule:
