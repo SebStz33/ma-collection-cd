@@ -35,6 +35,21 @@ const LIVE = "Live";                           // option de « Live / Studio » 
 const NON_PRECISE = "Non renseigné";          // « Live / Studio » vide, ou option « Non renseigné » sur Discogs
 const SANS_CATEGORIE = "Sans catégorie";      // exemplaires rangés dans aucun dossier Discogs
 const CATEGORIE_A_VENDRE = "À Vendre";        // dossier Discogs rangé en dernier (casse et accents ignorés)
+// Méta-catégories : chaque dossier Discogs (catégorie) est rangé dans une seule méta-catégorie.
+// Rien n'est écrit sur Discogs : la table est ici. Un dossier absent de la table va dans META_PAR_DEFAUT.
+// Les noms des dossiers sont comparés sans tenir compte des majuscules ni des accents.
+const META_CATEGORIES = {
+  Chanson: ["Chanson française", "Chanson internationale"],
+  Classique: ["Classique divers", "Classique Orchestre", "Classique Voix", "Clavecin et Orgue", "Guitare classique",
+              "Opéra - Lyrique", "Piano Classique", "Piano et Orchestre", "String quartet", "Violon"],
+  Divers: ["Electronic", "Pop Rock Folk", "Soull Funk R&B GBM", "Soundtrack B.O.", SANS_CATEGORIE, CATEGORIE_A_VENDRE],
+  Jazz: ["Blues", "Jazz", "Jazz Big Band", "Jazz Guitar", "Jazz piano trio", "Jazz vocal", "Latin Jazz", "Piano solo"],
+  World: ["Brazil", "Flamenco", "India", "World"],
+};
+const META_PAR_DEFAUT = "Divers";             // méta-catégorie d'un nouveau dossier, tant qu'il n'est pas dans la table
+const META_CLASSIQUE = "Classique";           // sert aussi à séparer compositeurs et œuvres « classiques / autres »
+const PREFIXE_META = "méta:";                 // valeur du filtre Catégorie pour une méta-catégorie (« méta:Jazz »)
+const CLE_METAS_OUVERTES = "metas-ouvertes";  // méta-catégories dépliées dans la vue Collection (réglage du navigateur)
 const VIGNETTES_VISIBLES = 14;                // vignettes par source de photos, avant « Voir les N photos restantes »
 const ZOOM = 2.5;                             // grossissement de la visionneuse
 const LIGNES_MIN_EDITION = 4;                 // hauteur minimale des zones de texte du formulaire
@@ -168,6 +183,19 @@ const $ = (id) => document.getElementById(id);
 /** Met en minuscules et retire les accents : « Dvořák » -> « dvorak ». */
 function normaliser(texte) {
   return String(texte || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+}
+
+/** Méta-catégorie d'une catégorie (dossier Discogs), d'après la table META_CATEGORIES. */
+function metaDeCategorie(categorie) {
+  for (const [meta, categories] of Object.entries(META_CATEGORIES)) {
+    if (categories.some((c) => normaliser(c) === normaliser(categorie))) return meta;
+  }
+  return META_PAR_DEFAUT;
+}
+
+/** Vrai si la catégorie est « Sans catégorie » ou « À Vendre » : elle ne dit rien du genre de musique. */
+function categorieNeutre(categorie) {
+  return categorie === SANS_CATEGORIE || normaliser(categorie) === normaliser(CATEGORIE_A_VENDRE);
 }
 
 /** Ordre des catégories : alphabétique, puis « Sans catégorie », puis « À Vendre » en dernier. */
@@ -496,6 +524,7 @@ function regrouperParEdition(disques) {
     edition.photoDiscogs = valeursDuChampSouple(edition, CHAMP_PHOTO).some((v) => memeNom(v, PHOTO_DISCOGS));
     // Catégories (dossiers Discogs) des exemplaires : en général une seule.
     edition.categories = [...new Set(edition.exemplaires.map((e) => e.categorie_perso || SANS_CATEGORIE))];
+    edition.metas = [...new Set(edition.categories.map(metaDeCategorie))];
     edition.oeuvres = oeuvresDeLEdition(edition.plages || []);
     appliquerAnneesManuelles(edition);
     // Clés de tri par nom de famille, comme dans l'index : « Glenn Gould » est rangé à Gould.
@@ -684,8 +713,27 @@ function remplirListe(select, compte, libelleTous, comparer = comparerTextes) {
   );
 }
 
+/**
+ * Liste « Catégorie » : chaque méta-catégorie (« Jazz (115) », qui prend tous ses dossiers),
+ * suivie de ses catégories en retrait. Les valeurs des méta-catégories commencent par PREFIXE_META,
+ * pour ne pas confondre la méta « Jazz » et le dossier « Jazz ».
+ */
+function remplirFiltreCategorie() {
+  const parMeta = compter(editions, (e) => e.metas);
+  const parCategorie = compter(editions, EXTRACTEURS.categorie);
+  const retrait = "\u00a0\u00a0\u00a0\u00a0";
+  $("filtre-categorie").replaceChildren(
+    creer("option", { value: "", texte: "Toutes" }),
+    ...[...parMeta.keys()].sort(comparerTextes).flatMap((meta) => [
+      creer("option", { value: PREFIXE_META + meta, classe: "option-meta", texte: meta + " (" + parMeta.get(meta) + ")" }),
+      ...[...parCategorie.keys()].filter((c) => metaDeCategorie(c) === meta).sort(comparerCategories)
+        .map((c) => creer("option", { value: c, texte: retrait + c + " (" + parCategorie.get(c) + ")" })),
+    ])
+  );
+}
+
 function remplirFiltres() {
-  remplirListe($("filtre-categorie"), compter(editions, EXTRACTEURS.categorie), "Toutes", comparerCategories);
+  remplirFiltreCategorie();
   remplirListe($("filtre-genre"), compter(editions, EXTRACTEURS.genre), "Tous");
   remplirListe($("filtre-style"), compter(editions, EXTRACTEURS.style), "Tous");
   remplirListe($("filtre-format"), compter(editions, EXTRACTEURS.format), "Tous");
@@ -803,7 +851,9 @@ function correspond(edition) {
     const mots = normaliser(etat.recherche).split(/\s+/);
     if (!mots.every((mot) => texte.includes(mot))) return false;
   }
-  if (etat.categorie && !edition.categories.includes(etat.categorie)) return false;
+  if (etat.categorie && !(etat.categorie.startsWith(PREFIXE_META)
+    ? edition.metas.includes(etat.categorie.slice(PREFIXE_META.length))
+    : edition.categories.includes(etat.categorie))) return false;
   if (etat.genre && !(edition.genres || []).includes(etat.genre)) return false;
   if (etat.style && !(edition.styles || []).includes(etat.style)) return false;
   if (etat.format && !formatsAffiches(edition.formats).includes(etat.format)) return false;
@@ -969,41 +1019,95 @@ function categoriesChoisies(edition) {
 }
 
 /**
- * Vignettes regroupées par catégorie (dossier Discogs), dans l'ordre de comparerCategories
- * (« Sans catégorie » puis « À Vendre » à la fin). Dans chaque groupe, les disques gardent l'ordre du tri choisi. Une édition dont les
- * exemplaires sont rangés dans deux dossiers apparaît dans les deux.
+ * Vue Collection : un bloc par méta-catégorie (ordre alphabétique), replié au départ.
+ * Replié, le bloc montre son nom, son nombre d'éditions et ses catégories. Déplié, il montre
+ * ses catégories comme groupes de vignettes (ordre de comparerCategories : « Sans catégorie »
+ * puis « À Vendre » à la fin). Une édition rangée dans deux dossiers apparaît dans les deux.
+ * Avec une recherche ou un filtre, tous les blocs qui ont des résultats sont dépliés.
  */
 function afficherGrille(liste) {
-  const parCategorie = new Map();
+  const parMeta = new Map();
   for (const edition of liste) {
     for (const categorie of edition.categories) {
-      if (!parCategorie.has(categorie)) parCategorie.set(categorie, []);
-      parCategorie.get(categorie).push(edition);
+      const meta = metaDeCategorie(categorie);
+      if (!parMeta.has(meta)) parMeta.set(meta, { editions: new Set(), parCategorie: new Map() });
+      const groupe = parMeta.get(meta);
+      groupe.editions.add(edition);
+      if (!groupe.parCategorie.has(categorie)) groupe.parCategorie.set(categorie, []);
+      groupe.parCategorie.get(categorie).push(edition);
     }
   }
-  const categories = [...parCategorie.keys()].sort(comparerCategories);
-  const groupes = categories.map((categorie) => creer("section", { classe: "groupe-categorie" }));
+  const metas = [...parMeta.keys()].sort(comparerTextes);
+  // Avec une recherche ou un filtre (ou une seule méta-catégorie), tout est déplié ;
+  // sinon on reprend les blocs dépliés la dernière fois sur cet appareil.
+  const toutDeplier = Boolean(etat.recherche) || nombreDeFiltresActifs() > 0 || metas.length === 1;
+  const ouvertes = new Set(toutDeplier ? metas : lireStockage(CLE_METAS_OUVERTES, []));
+
+  const blocs = metas.map((meta) => blocMeta(meta, parMeta.get(meta), ouvertes.has(meta), toutDeplier));
+  const tout = metas.length > 1 ? creer("div", { classe: "commandes-metas" },
+    creer("button", { type: "button", classe: "bouton-texte", texte: "Tout déplier",
+      surclic: () => blocs.forEach((b) => b.ouvrir(true)) }),
+    creer("button", { type: "button", classe: "bouton-texte", texte: "Tout replier",
+      surclic: () => blocs.forEach((b) => b.ouvrir(false)) })) : null;
+  $("vue-collection").replaceChildren(tout || "", ...blocs);
+}
+
+/**
+ * Bloc d'une méta-catégorie. Les vignettes ne sont construites qu'au dépliage :
+ * la page reste rapide avec plus de 1 000 disques. `toutDeplie` vrai (recherche ou filtre) :
+ * le dépliage n'est pas gardé en mémoire.
+ */
+function blocMeta(meta, groupe, ouvert, toutDeplie) {
+  const categories = [...groupe.parCategorie.keys()].sort(comparerCategories);
+  const bloc = creer("section", { classe: "groupe-meta" });
+  const fleche = creer("span", { classe: "fleche-meta", "aria-hidden": "true" });
+  const bouton = creer("button", { type: "button", classe: "bouton-meta" },
+    fleche, meta, creer("span", { classe: "discret", texte: " (" + groupe.editions.size + ")" }));
+  // Noms des catégories : un clic déplie le bloc et descend jusqu'à la catégorie.
+  const liste = creer("p", { classe: "categories-meta" }, categories.map((categorie, numero) => [
+    creer("span", { classe: "sommaire-element" },
+      creer("button", { type: "button", classe: "bouton-texte",
+        surclic: () => { bloc.ouvrir(true); bloc.groupes[numero].scrollIntoView({ behavior: "smooth", block: "start" }); } },
+        categorie, creer("span", { classe: "discret", texte: " (" + groupe.parCategorie.get(categorie).length + ")" })),
+      numero < categories.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
+    " ",
+  ]));
+  const contenu = creer("div", { classe: "contenu-meta" });
+  bloc.append(creer("h2", { classe: "titre-meta" }, bouton), liste, contenu);
+  bloc.groupes = [];
+
+  bloc.ouvrir = (oui) => {
+    bloc.classList.toggle("ouvert", oui);
+    bouton.setAttribute("aria-expanded", oui ? "true" : "false");
+    fleche.textContent = oui ? "▾ " : "▸ ";
+    contenu.hidden = !oui;
+    if (oui && !bloc.groupes.length) {
+      bloc.groupes = groupesDeCategories(categories, groupe.parCategorie);
+      contenu.replaceChildren(...bloc.groupes);
+    }
+    if (!toutDeplie) {
+      const ouvertes = new Set(lireStockage(CLE_METAS_OUVERTES, []));
+      if (oui) ouvertes.add(meta); else ouvertes.delete(meta);
+      ecrireStockage(CLE_METAS_OUVERTES, [...ouvertes]);
+    }
+  };
+  bouton.addEventListener("click", () => bloc.ouvrir(!bloc.classList.contains("ouvert")));
+  bloc.ouvrir(ouvert);
+  return bloc;
+}
+
+/** Groupes de vignettes d'une méta-catégorie : un par catégorie, avec son titre et ses flèches. */
+function groupesDeCategories(categories, parCategorie) {
+  const groupes = categories.map(() => creer("section", { classe: "groupe-categorie" }));
   const allerAuGroupe = (numero) => groupes[numero].scrollIntoView({ behavior: "smooth", block: "start" });
-
-  // Liste des catégories en haut (seulement s'il y en a plusieurs) : un clic descend jusqu'à elle.
-  const sommaire = categories.length > 1 ? creer("nav", { classe: "sommaire-categories", "aria-label": "Catégories" },
-    // Le point de séparation suit le nom, pour qu'une ligne ne commence jamais par « · ».
-    categories.map((categorie, numero) => [
-      creer("span", { classe: "sommaire-element" },
-        creer("button", { type: "button", classe: "bouton-texte", surclic: () => allerAuGroupe(numero) },
-          categorie, creer("span", { classe: "discret", texte: " (" + parCategorie.get(categorie).length + ")" })),
-        numero < categories.length - 1 ? creer("span", { classe: "index-separateur", texte: " ·" }) : null),
-      " ",
-    ])) : null;
-
   groupes.forEach((groupe, numero) => groupe.append(
     // Titre qui reste en haut de l'écran pendant qu'on fait défiler les vignettes de la catégorie.
-    creer("h2", { classe: "titre-categorie" },
+    creer("h3", { classe: "titre-categorie" },
       categories[numero],
       creer("span", { classe: "discret", texte: " (" + parCategorie.get(categories[numero]).length + ")" }),
       // Rappel du tri choisi : le titre reste en haut de l'écran pendant le défilement.
       creer("span", { classe: "tri-categorie", texte: "· tri par " + libelleDuTri() }),
-      categories.length > 1 ? creer("span", { classe: "navigation-categories" },
+      creer("span", { classe: "navigation-categories" },
         creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Haut", surclic: () => window.scrollTo({ top: 0, behavior: "smooth" }) }),
         numero < groupes.length - 1
           ? creer("button", { type: "button", classe: "bouton-texte", texte: "↓ Suivante", surclic: () => allerAuGroupe(numero + 1) })
@@ -1011,11 +1115,11 @@ function afficherGrille(liste) {
         numero > 0
           ? creer("button", { type: "button", classe: "bouton-texte", texte: "↑ Précédente", surclic: () => allerAuGroupe(numero - 1) })
           : null
-      ) : null
+      )
     ),
     creer("div", { classe: "grille" }, cartesAvecIntertitre(parCategorie.get(categories[numero])))
   ));
-  $("vue-collection").replaceChildren(sommaire || "", ...groupes);
+  return groupes;
 }
 
 /** Libellé du tri choisi, en minuscule : « année d'enregistrement ». */
@@ -1903,9 +2007,14 @@ function blocsIndex() {
     .map(([cle, libelle]) => [cle, libelle]);
 }
 
-/** Vrai si l'édition est classée « Classical » sur Discogs. */
+/**
+ * Vrai si l'édition est classique : rangée dans un dossier de la méta-catégorie « Classique ».
+ * Seulement « Sans catégorie » ou « À Vendre » : on se fie au genre « Classical » de Discogs.
+ */
 function estClassique(edition) {
-  return (edition.genres || []).includes("Classical");
+  const rangees = edition.categories.filter((c) => !categorieNeutre(c));
+  if (!rangees.length) return (edition.genres || []).includes("Classical");
+  return rangees.some((c) => metaDeCategorie(c) === META_CLASSIQUE);
 }
 
 /**
@@ -1917,7 +2026,7 @@ function dansLaMoitie(bloc, editionsDuNom) {
   return bloc.endsWith("_classiques") ? classique : !classique;
 }
 
-/** Vrai si au moins la moitié de ces éditions sont classées « Classical ». */
+/** Vrai si au moins la moitié de ces éditions sont classiques (voir estClassique). */
 function majoritairementClassique(editionsDuNom) {
   return editionsDuNom.filter(estClassique).length * 2 >= editionsDuNom.length;
 }
@@ -2226,6 +2335,8 @@ function afficherStatistiques(liste) {
     ),
     carteAnnees(liste),
     carteAnneesEnregistrement(liste),
+    carteBarres("Méta-catégories", "Regroupement des dossiers Discogs", compter(liste, (e) => e.metas), 10,
+      (meta) => appliquer("categorie")(PREFIXE_META + meta)),
     carteBarres("Catégories", "Dossier Discogs (Custom Field)", compter(liste, EXTRACTEURS.categorie), 20, appliquer("categorie")),
     carteBarres("Genres", "Genres Discogs", compter(liste, EXTRACTEURS.genre), 15, appliquer("genre")),
     carteBarres("Localisation", "", compter(liste, EXTRACTEURS.localisation), 15, appliquer("localisation")),

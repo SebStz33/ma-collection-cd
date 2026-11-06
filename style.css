@@ -140,10 +140,25 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 /* ---------- Grille de pochettes ---------- */
 
 /* Une grille par catégorie, avec son titre */
-.sommaire-categories { font-size: 15px; line-height: 1.9; margin: 0 0 20px; }
-.sommaire-categories .bouton-texte { padding: 0; font-size: 15px; }
+/* Méta-catégories : un bloc par méta, replié au départ, avec la liste de ses catégories */
+.commandes-metas { display: flex; justify-content: flex-end; gap: 14px; margin: 0 0 6px; }
+.commandes-metas .bouton-texte { padding: 0; font-size: 13px; }
+.groupe-meta { border-top: 1px solid var(--bordure); padding: 10px 0 12px; scroll-margin-top: var(--hauteur-entete, 112px); }
+.groupe-meta:last-child { border-bottom: 1px solid var(--bordure); }
+.titre-meta { margin: 0; font-size: 18px; font-weight: 600; }
+.bouton-meta {
+  background: none; border: 0; padding: 4px 0; cursor: pointer; text-align: left;
+  font: inherit; color: var(--texte); width: 100%;
+}
+.bouton-meta .discret { color: var(--texte-2); font-weight: 400; }
+.fleche-meta { display: inline-block; width: 1.1em; color: var(--accent); }
+.categories-meta { font-size: 14px; line-height: 1.9; margin: 2px 0 0 1.1em; }
+.categories-meta .bouton-texte { padding: 0; font-size: 14px; color: var(--texte-2); }
+.categories-meta .discret { color: var(--texte-discret); }
+.groupe-meta.ouvert .categories-meta { margin-bottom: 14px; }
+.groupe-meta.ouvert .categories-meta .bouton-texte { color: var(--accent); }
 .sommaire-element { white-space: nowrap; }
-.sommaire-categories .discret { color: var(--texte-2); }
+#filtre-categorie .option-meta { font-weight: 600; }
 .titre-categorie {
   position: sticky; top: var(--hauteur-entete, 112px); z-index: 5;
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 6px;
