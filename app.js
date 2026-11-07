@@ -954,7 +954,7 @@ function afficher() {
   document.body.dataset.vue = etat.vue;
   document.querySelectorAll(".onglet").forEach((b) => b.classList.toggle("actif", b.dataset.vue === etat.vue));
 
-  if (etat.vue === "collection") afficherGrille(resultats);
+  if (etat.vue === "collection") (etat.oeuvre ? afficherPageOeuvre : afficherGrille)(resultats);
   else if (etat.vue === "statistiques") afficherStatistiques(resultats);
   else if (etat.vue === "index") afficherIndex();
   else afficherHasard();
@@ -975,10 +975,12 @@ function afficherBandeau(nombre) {
   const origine = retour && (retour.edition ? "à la fiche" : retour.etat.vue === "index" ? "à l'index" : "aux statistiques");
   $("bandeau-oeuvre").replaceChildren(
     retour ? creer("button", { type: "button", classe: "bouton bouton-revenir", texte: "← Revenir " + origine, surclic: revenir }) : null,
+    // Page Œuvre : son titre est dans la page ; sans « Revenir », un bouton pour retrouver la collection.
     ...(etat.oeuvre
-      ? [creer("span", { texte: "Œuvre : " }), creer("strong", { texte: nomOeuvre(etat.oeuvre) })]
-      : [creer("strong", { texte: retour.libelle })]),
-    creer("span", { classe: "discret", texte: " · " + pluriel(nombre, "édition") + " dans ma cédéthèque" })
+      ? (retour ? [] : [creer("button", { type: "button", classe: "bouton bouton-revenir", texte: "← Toute la collection",
+          surclic: () => { etat.oeuvre = null; ecrireControles(); afficher(); } })])
+      : [creer("strong", { texte: retour.libelle }),
+        creer("span", { classe: "discret", texte: " · " + pluriel(nombre, "édition") + " dans ma cédéthèque" })])
   );
 }
 
@@ -1010,6 +1012,256 @@ function allerVers(changements, edition = null, libelle = "") {
 /** Clic sur une œuvre : on affiche les disques qui la contiennent. `edition` : la fiche d'où l'on vient. */
 function choisirOeuvre(oeuvre, edition = null) {
   allerVers({ oeuvre, recherche: "", role: "partout" }, edition);
+}
+
+// ---------------------------------------------------------------------------
+// Page Œuvre : toutes mes versions d'une œuvre MusicBrainz
+// ---------------------------------------------------------------------------
+
+const INTERPRETES_VISIBLES = 3;                 // noms par version, avant « +N »
+const ADRESSE_MB_OEUVRE = "https://musicbrainz.org/work/";
+const API_MB = "https://musicbrainz.org/ws/2/work/";
+const API_WIKIDATA = "https://www.wikidata.org/w/api.php";
+const CLE_WIKIPEDIA = "wikipedia-oeuvres";      // réglage du navigateur : id d'œuvre -> { url, langue, date }
+const JOURS_SANS_ARTICLE = 30;                  // « pas d'article » : on redemande à MusicBrainz au bout de 30 jours
+
+/** Vrai si les deux noms désignent la même personne : même nom de famille (« Frédéric » / « Fryderyk » Chopin). */
+function memePersonne(a, b) {
+  const nomDeFamille = (nom) => normaliser(nom).split(/[\s,]+/).filter(Boolean).pop() || "";
+  return normaliser(a) === normaliser(b) || (nomDeFamille(a).length > 2 && nomDeFamille(a) === nomDeFamille(b));
+}
+
+/**
+ * Interprètes d'une version : les noms crédités sur ses plages (piano, direction, orchestre…),
+ * sinon les artistes principaux de l'édition, sans les compositeurs.
+ */
+function interpretesDeLaVersion(edition, plages, oeuvre) {
+  const compositeurs = [...(edition.compositeurs || []), ...String(oeuvre.compositeur || "").split(/,\s*/)].filter(Boolean);
+  const pasCompositeur = (nom) => nom && !/^various$/i.test(nom) && !compositeurs.some((c) => memePersonne(c, nom));
+  const surLesPlages = plages.flatMap(({ plage, groupes }) => [plage, ...groupes].flatMap((p) => [
+    ...(p.artistes || []),
+    ...(p.credits || []).filter((c) => !estCreditDeCompositeur(c)).map((c) => c.nom),
+  ]));
+  const noms = surLesPlages.filter(pasCompositeur);
+  return [...new Set(noms.length ? noms : (edition.artistes_principaux || []).filter(pasCompositeur))];
+}
+
+/**
+ * Plages réelles avec les groupes qui les contiennent ({ plage, groupes }) : dans une compilation,
+ * l'interprète est souvent crédité sur le titre de l'œuvre (le groupe), pas sur chaque mouvement.
+ */
+function plagesAvecHeritage(plages, groupes = []) {
+  return (plages || []).flatMap((plage) => {
+    if (plage.type === "intertitre") return [];
+    return (plage.sous_plages || []).length
+      ? plagesAvecHeritage(plage.sous_plages, [plage, ...groupes])
+      : [{ plage, groupes }];
+  });
+}
+
+/** Titre d'une partie sans le titre de l'œuvre devant : « Selva morale e spirituale: Gloria » -> « Gloria ». */
+function titreDeLaPartie(titre, titreOeuvre) {
+  // « : » ou « : » à la française (espace avant) selon la langue du titre MusicBrainz.
+  if (!titre.startsWith(titreOeuvre)) return titre;
+  const reste = titre.slice(titreOeuvre.length).match(/^\s*:\s*(.+)$/);
+  return reste ? reste[1] : titre;
+}
+
+/**
+ * Mes versions de l'œuvre, parmi les éditions `liste` : une par édition, avec ses plages,
+ * sa durée, ses interprètes et ses parties (mouvements ou pièces : id -> { titre, secondes }).
+ */
+function versionsDeLOeuvre(oeuvre, liste) {
+  return liste.filter((e) => e.oeuvres.has(oeuvre.id)).flatMap((edition) => {
+    const plages = plagesAvecHeritage(edition.plages).map((element, rang) => ({ ...element, rang }))
+      .filter(({ plage }) => plage.oeuvre && oeuvreDeReference(plage.oeuvre).id === oeuvre.id);
+    // Un coffret peut contenir plusieurs enregistrements de la même œuvre (Ciccolini : quatre Suite bergamasque) :
+    // une partie déjà vue ouvre une nouvelle version. Celle-ci reprend les plages qui la précèdent
+    // sans interruption sur le même disque (Prélude et Menuet avant le 2e Clair de lune).
+    const idDe = ({ plage }) => plage.oeuvre.parente ? plage.oeuvre.id : "entiere";
+    const occurrences = [];
+    for (const element of plages) {
+      const courante = occurrences[occurrences.length - 1];
+      if (!courante || courante.some((e) => idDe(e) === idDe(element))) {
+        const reprises = [];
+        while (courante && courante.length) {
+          const derniere = courante[courante.length - 1];
+          const suivante = reprises[0] || element;
+          if (derniere.rang !== suivante.rang - 1
+            || disqueDeLaPosition(derniere.plage.position) !== disqueDeLaPosition(element.plage.position)
+            || reprises.some((e) => idDe(e) === idDe(derniere)) || idDe(derniere) === idDe(element)) break;
+          reprises.unshift(courante.pop());
+        }
+        if (courante && !courante.length) occurrences.pop();
+        occurrences.push(reprises);
+      }
+      occurrences[occurrences.length - 1].push(element);
+    }
+    return occurrences.map((plagesVersion) => {
+      const parties = new Map();
+      for (const { plage } of plagesVersion) {
+        const id = plage.oeuvre.parente ? plage.oeuvre.id : "entiere";
+        const titre = plage.oeuvre.parente ? titreDeLaPartie(plage.oeuvre.titre, oeuvre.titre) : "Œuvre entière";
+        if (!parties.has(id)) parties.set(id, { titre, secondes: 0 });
+        parties.get(id).secondes += secondesDe(plage.duree) || 0;
+      }
+      return {
+        edition, parties, plages: plagesVersion,
+        // Plusieurs versions dans la même édition : on dit sur quel disque est chacune (« CD 12 »).
+        disque: occurrences.length > 1 ? disqueDeLaPosition(plagesVersion[0].plage.position) : null,
+        duree: dureeTotale(plagesVersion.map(({ plage }) => plage)),
+        interpretes: interpretesDeLaVersion(edition, plagesVersion, oeuvre),
+        annees: edition.annees_enregistrement && edition.annees_enregistrement.length ? edition.annees_enregistrement : null,
+      };
+    });
+  });
+}
+
+/** Ordre des versions : par année d'enregistrement, puis de parution ; sans année à la fin. */
+function comparerVersions(a, b) {
+  const annee = (v) => (v.annees ? v.annees[0] : v.edition.annee) || Infinity;
+  return annee(a) - annee(b) || comparerTextes(a.edition.titre, b.edition.titre);
+}
+
+/** « 23 min » ou « 23 min 40 s » sous l'heure : la comparaison des versions a besoin des secondes. */
+function texteDureeFine({ secondes, complete }) {
+  if (!secondes) return "";
+  if (secondes >= 3600) return texteDuree({ secondes, complete });
+  const texte = Math.floor(secondes / 60) + " min " + String(secondes % 60).padStart(2, "0") + " s";
+  return complete ? texte : "au moins " + texte;
+}
+
+/** « 4:05 » pour une case du tableau des parties. */
+function texteMinutes(secondes) {
+  return secondes ? Math.floor(secondes / 60) + ":" + String(secondes % 60).padStart(2, "0") : "";
+}
+
+/** Nom court d'une version (tête de colonne) : son premier interprète, ou le titre du disque. */
+function nomCourtDeLaVersion(version) {
+  return (version.interpretes[0] || version.edition.titre) + (version.disque ? " (" + version.disque + ")" : "");
+}
+
+function afficherPageOeuvre(liste) {
+  const oeuvre = etat.oeuvre;
+  const versions = versionsDeLOeuvre(oeuvre, liste).sort(comparerVersions);
+  const dureeMax = Math.max(...versions.map((v) => v.duree.secondes), 1);
+  const liens = creer("p", { classe: "oeuvre-liens" },
+    creerLien(ADRESSE_MB_OEUVRE + oeuvre.id, "MusicBrainz"));
+  ajouterLienWikipedia(liens, oeuvre.id);
+  $("vue-collection").replaceChildren(creer("article", { classe: "page-oeuvre" },
+    creer("p", { classe: "oeuvre-surtitre", texte: "Œuvre" }),
+    creer("h2", { classe: "oeuvre-titre", texte: oeuvre.titre }),
+    oeuvre.compositeur ? creer("p", { classe: "oeuvre-compositeur", texte: oeuvre.compositeur }) : null,
+    liens,
+    creer("h3", { classe: "oeuvre-intertitre" }, pluriel(versions.length, "version") + " dans ma cédéthèque",
+      creer("span", { classe: "discret", texte: " · par année d'enregistrement" })),
+    creer("ol", { classe: "versions" }, versions.map((v) => ligneVersion(v, dureeMax))),
+    tableauDesParties(versions)
+  ));
+}
+
+/** Une version : pochette, interprètes, disque, années, durée (avec une barre pour comparer). */
+function ligneVersion(version, dureeMax) {
+  const { edition, interpretes, annees, duree, parties } = version;
+  const image = edition.miniature || edition.pochette;
+  const enPlus = interpretes.length - INTERPRETES_VISIBLES;
+  const dates = [
+    annees ? (annees[0] === annees[1] ? "Enregistré en " : "Enregistré de ") + textePeriode(annees).replace(" – ", " à ") : null,
+    edition.annee ? "parution " + edition.annee : null,
+    (edition.labels || [])[0] ? edition.labels[0].nom : null,
+  ].filter(Boolean).join(" · ");
+  const nbParties = [...parties.keys()].filter((id) => id !== "entiere").length;
+  return creer("li", {},
+    creer("button", { type: "button", classe: "version", surclic: () => ouvrirFiche(edition),
+      title: "Ouvrir la fiche du disque" },
+      creer("span", { classe: "version-pochette" },
+        image ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
+          : creer("span", { classe: "sans-image", texte: "♪" })),
+      creer("span", { classe: "version-texte" },
+        creer("span", { classe: "version-interpretes",
+          texte: (interpretes.slice(0, INTERPRETES_VISIBLES).join(", ") || "Interprètes non indiqués")
+            + (enPlus > 0 ? " +" + enPlus : "") }),
+        creer("span", { classe: "version-disque", texte: edition.titre + (version.disque ? " · " + version.disque : "") }),
+        dates ? creer("span", { classe: "version-dates", texte: dates }) : null,
+        creer("span", { classe: "version-duree" },
+          creer("span", { classe: "version-barre", style: "width:" + Math.round(duree.secondes / dureeMax * 100) + "%" }),
+          creer("span", { texte: [texteDureeFine(duree) || "durée inconnue",
+            nbParties ? pluriel(nbParties, "partie") : null].filter(Boolean).join(" · ") })))));
+}
+
+/**
+ * Tableau des parties (mouvements ou pièces) : une ligne par partie, une colonne par version,
+ * avec la durée dans chaque case. Seulement pour une œuvre en plusieurs parties et au moins 2 versions.
+ */
+function tableauDesParties(versions) {
+  const toutes = new Map();   // id -> titre, dans l'ordre de la version qui en a le plus
+  const parNombre = [...versions].sort((a, b) => b.parties.size - a.parties.size);
+  for (const v of parNombre) for (const [id, partie] of v.parties) if (!toutes.has(id)) toutes.set(id, partie.titre);
+  if (versions.length < 2 || [...toutes.keys()].filter((id) => id !== "entiere").length < 2) return null;
+  const tableau = creer("table", { classe: "tableau-parties" },
+    creer("thead", {}, creer("tr", {},
+      creer("th", { texte: "Partie" }),
+      versions.map((v) => creer("th", { texte: nomCourtDeLaVersion(v), title: v.interpretes.join(", ") + " · " + v.edition.titre })))),
+    creer("tbody", {}, [...toutes].map(([id, titre]) => creer("tr", {},
+      creer("th", { texte: titre }),
+      versions.map((v) => {
+        const partie = v.parties.get(id);
+        return creer("td", { texte: partie ? texteMinutes(partie.secondes) || "✓" : "–",
+          classe: partie ? null : "absente" });
+      })))));
+  return creer("section", { classe: "parties" },
+    creer("h3", { classe: "oeuvre-intertitre" }, "Parties",
+      creer("span", { classe: "discret", texte: " · « – » : absente de cette version" })),
+    creer("div", { classe: "tableau-defilant" }, tableau));
+}
+
+/**
+ * Ajoute le lien Wikipédia de l'œuvre (article en français, sinon en anglais), trouvé par
+ * MusicBrainz -> Wikidata au moment où l'on ouvre la page, puis gardé dans le navigateur.
+ */
+async function ajouterLienWikipedia(liens, id) {
+  const reserve = lireStockage(CLE_WIKIPEDIA, {});
+  let article = reserve[id];
+  const perime = article && !article.url && Date.now() - article.date > JOURS_SANS_ARTICLE * 86400000;
+  if (!article || perime) {
+    const attente = creer("span", { classe: "discret", texte: "Wikipédia : recherche…" });
+    liens.append(attente);
+    try {
+      article = { ...(await chercherArticle(id)), date: Date.now() };
+      ecrireStockage(CLE_WIKIPEDIA, { ...lireStockage(CLE_WIKIPEDIA, {}), [id]: article });
+    } catch (erreur) {
+      article = null;   // hors connexion ou service indisponible : on réessaiera à la prochaine visite
+    }
+    attente.remove();
+  }
+  if (article && article.url) {
+    liens.append(creerLien(article.url, "Wikipédia" + (article.langue === "fr" ? "" : " (" + article.langue + ")")));
+  } else {
+    liens.append(creer("span", { classe: "discret", texte: article ? "Pas d'article Wikipédia" : "Wikipédia indisponible" }));
+  }
+}
+
+/** { url, langue } de l'article Wikipédia de l'œuvre MusicBrainz, ou { url: null }. */
+async function chercherArticle(id) {
+  const reponse = await fetch(API_MB + encodeURIComponent(id) + "?inc=url-rels&fmt=json", { headers: { Accept: "application/json" } });
+  if (!reponse.ok) throw new Error("MusicBrainz : code " + reponse.status);
+  const relations = (await reponse.json()).relations || [];
+  const adresse = (type) => (relations.find((r) => r.type === type && r.url) || { url: {} }).url.resource;
+  const wikidata = (adresse("wikidata") || "").match(/Q\d+/);
+  if (wikidata) {
+    const parametres = new URLSearchParams({ action: "wbgetentities", ids: wikidata[0], props: "sitelinks/urls",
+      sitefilter: "frwiki|enwiki", format: "json", origin: "*" });
+    const reponseWd = await fetch(API_WIKIDATA + "?" + parametres);
+    if (!reponseWd.ok) throw new Error("Wikidata : code " + reponseWd.status);
+    const liensWd = (((await reponseWd.json()).entities || {})[wikidata[0]] || {}).sitelinks || {};
+    for (const langue of ["fr", "en"]) {
+      if (liensWd[langue + "wiki"]) return { url: liensWd[langue + "wiki"].url, langue };
+    }
+  }
+  // Ancien type de lien : MusicBrainz pointe directement vers un article.
+  const direct = adresse("wikipedia");
+  if (direct) return { url: direct, langue: (direct.match(/^https?:\/\/(\w+)\./) || [, "?"])[1] };
+  return { url: null };
 }
 
 /** Catégories à afficher : on ne montre pas « Sans catégorie » sur les vignettes et la fiche. */

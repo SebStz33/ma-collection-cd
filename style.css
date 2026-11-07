@@ -620,3 +620,50 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
 @media (max-width: 700px) {
   .plage-disque { scroll-margin-top: 56px; }
 }
+
+/* ---------- Page Œuvre : mes versions d'une œuvre ---------- */
+.page-oeuvre { max-width: 900px; }
+.oeuvre-surtitre { margin: 0; color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.oeuvre-titre { margin: 2px 0 4px; font-size: 22px; line-height: 1.25; overflow-wrap: anywhere; }
+.oeuvre-compositeur { margin: 0 0 6px; color: var(--texte-2); font-size: 16px; }
+.oeuvre-liens { display: flex; flex-wrap: wrap; gap: 0 18px; margin: 0 0 18px; font-size: 14px; }
+.oeuvre-liens a { color: var(--accent); }
+.oeuvre-liens .discret { color: var(--texte-discret); }
+.oeuvre-intertitre { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+.oeuvre-intertitre .discret { color: var(--texte-2); font-weight: 400; font-size: 13px; }
+
+.versions { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 8px; }
+.version {
+  display: flex; gap: 12px; width: 100%; padding: 8px; text-align: left; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon);
+}
+.version:hover { border-color: var(--texte-discret); }
+.version-pochette { flex: 0 0 64px; width: 64px; height: 64px; border-radius: 4px; overflow: hidden; background: var(--surface-2);
+  display: flex; align-items: center; justify-content: center; }
+.version-pochette img { width: 100%; height: 100%; object-fit: cover; }
+.version-texte { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.version-interpretes { font-weight: 600; overflow-wrap: anywhere; }
+.version-disque { color: var(--texte-2); font-size: 13px; overflow-wrap: anywhere; }
+.version-dates { color: var(--texte-discret); font-size: 13px; }
+.version-duree { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; font-size: 13px; color: var(--texte-2);
+  font-variant-numeric: tabular-nums; }
+.version-barre { display: block; height: 4px; min-width: 2px; border-radius: 2px; background: var(--accent); }
+
+/* Tableau des parties : il défile de côté s'il est plus large que l'écran (la page, elle, ne bouge pas). */
+.parties { margin-bottom: 24px; }
+.tableau-defilant { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--bordure); border-radius: var(--rayon); }
+.tableau-parties { border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; min-width: 100%; }
+.tableau-parties th, .tableau-parties td { padding: 6px 10px; border-bottom: 1px solid var(--bordure); vertical-align: top; }
+.tableau-parties thead th { position: sticky; top: 0; background: var(--surface-2); text-align: right; font-weight: 600;
+  max-width: 140px; white-space: normal; }
+.tableau-parties thead th:first-child, .tableau-parties tbody th { text-align: left; }
+.tableau-parties tbody th { font-weight: 400; color: var(--texte); min-width: 180px; max-width: 360px; }
+.tableau-parties td { text-align: right; white-space: nowrap; color: var(--texte-2); }
+.tableau-parties td.absente { color: var(--texte-discret); }
+.tableau-parties tbody tr:last-child > * { border-bottom: 0; }
+
+@media (max-width: 700px) {
+  .oeuvre-titre { font-size: 19px; }
+  .version-pochette { flex-basis: 52px; width: 52px; height: 52px; }
+  .tableau-parties tbody th { min-width: 140px; }
+}
