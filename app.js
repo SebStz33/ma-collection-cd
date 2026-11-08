@@ -867,29 +867,137 @@ function correspondanceMB(edition) {
 }
 
 /** Vrai si l'édition passe la recherche et tous les filtres. */
-// Numéro de catalogue tapé dans une recherche : « K. 386 », « k386 », « BWV 1007 », « op. 27 », « no 2 »…
-const RE_NUMERO_CHERCHE = /(?:^|[^a-z0-9])(bwv|buxwv|hwv|twv|rv|kv|k|hob|woo|op|d|s|l|sv|sz|bb|fp|cd|b|kk|z|wq|h|no|nr|n°)\.?\s*(\d+[a-z]?)(?![0-9])/g;
+// ---------------------------------------------------------------------------
+// Recherche « intelligente » : un petit analyseur à descente récursive
+// ---------------------------------------------------------------------------
+// Syntaxe (convention de Google, opérateurs en MAJUSCULES seulement) :
+//   bach gould            les deux mots, n'importe où (ET implicite)
+//   "glenn gould"         l'expression entière (guillemets droits, “ ” ou « »)
+//   bach OU haendel       l'un ou l'autre
+//   chopin SAUF nocturnes exclure
+//   (bach OU haendel) gould   parenthèses pour combiner
+//   K. 386, BWV 1007, op. 27  un numéro de catalogue compte comme un tout
+// Priorités, comme × avant + en calcul : SAUF, puis ET, puis OU.
+
+const TYPES_CATALOGUE = "bwv|buxwv|hwv|twv|rv|kv|k|hob|woo|op|d|s|l|sv|sz|bb|fp|cd|b|kk|z|wq|h|no|nr|n°";
+// Un jeton : parenthèse, expression entre guillemets, numéro de catalogue, ou mot.
+const RE_JETON = new RegExp(
+  "[()]" +
+  "|[\"“”«»„][^\"“”«»„]*[\"“”«»„]?" +
+  "|(?:" + TYPES_CATALOGUE + ")\\.?\\s*\\d+[a-z]?(?![0-9])(?=[\\s()\"“”«»„,;]|$)" +
+  "|[^\\s()\"“”«»„]+", "gi");
+const OPERATEURS = { ET: "et", OU: "ou", SAUF: "sauf" };
+
+const echapperRegex = (texte) => texte.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /**
- * Motifs d'une recherche, sur du texte normalisé : un par mot tapé, mais un numéro de catalogue
- * compte comme un tout (« K. 386 » cherche K. 386 ou KV 386, et non « k. » d'un côté et « 386 » de l'autre).
- * Chaque motif est une expression régulière dont le 2e groupe est le passage trouvé (pour le surlignage).
+ * Feuille de l'arbre : une expression régulière sur le texte normalisé, dont le 2e groupe
+ * est le passage trouvé (pour le surlignage).
  */
-function motifsDeRecherche(recherche) {
-  const echapper = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const motifs = [];
-  const reste = normaliser(recherche).replace(RE_NUMERO_CHERCHE, (tout, type, numero) => {
-    const types = type === "k" || type === "kv" ? "kv?" : ["no", "nr", "n°"].includes(type) ? "(?:no|nr|n°)" : echapper(type);
-    motifs.push(new RegExp("(^|[^a-z0-9])(" + types + "\\.?\\s*" + echapper(numero) + ")(?![0-9])", "g"));
-    return " ";
-  });
-  for (const mot of reste.split(/\s+/).filter(Boolean)) motifs.push(new RegExp("()(" + echapper(mot) + ")", "g"));
-  return motifs;
+function feuille(jeton) {
+  if (/^["“”«»„]/.test(jeton)) {
+    const expression = normaliser(jeton.replace(/["“”«»„]/g, "")).trim();
+    if (!expression) return null;
+    return { feuille: new RegExp("()(" + echapperRegex(expression).replace(/\s+/g, "\\s+") + ")", "g") };
+  }
+  const numero = new RegExp("^(" + TYPES_CATALOGUE + ")\\.?\\s*(\\d+[a-z]?)$", "i").exec(normaliser(jeton));
+  if (numero) {
+    const type = numero[1].toLowerCase();
+    const types = type === "k" || type === "kv" ? "kv?" : ["no", "nr", "n°"].includes(type) ? "(?:no|nr|n°)" : echapperRegex(type);
+    return { feuille: new RegExp("(^|[^a-z0-9])(" + types + "\\.?\\s*" + echapperRegex(numero[2]) + ")(?![0-9])", "g") };
+  }
+  return { feuille: new RegExp("()(" + echapperRegex(normaliser(jeton)) + ")", "g") };
 }
 
-/** Vrai si `texte` (déjà normalisé) contient chaque mot tapé et chaque numéro de catalogue. */
+/** Arbre de la recherche : { et: [...] }, { ou: [...] }, { non: … } ou { feuille: RegExp } ; null si vide. */
+function analyserRecherche(recherche) {
+  const jetons = String(recherche || "").match(RE_JETON) || [];
+  let i = 0;
+  const regarder = () => jetons[i];
+  const estOperateur = (j) => Object.prototype.hasOwnProperty.call(OPERATEURS, j);
+
+  // ou := et ( OU et )*
+  const lireOu = () => {
+    const membres = [lireEt()];
+    while (regarder() === "OU") { i++; membres.push(lireEt()); }
+    const utiles = membres.filter(Boolean);
+    return utiles.length > 1 ? { ou: utiles } : utiles[0] || null;
+  };
+  // et := sauf ( [ET] sauf )*   (le ET est implicite entre deux termes)
+  const lireEt = () => {
+    const membres = [];
+    while (i < jetons.length && regarder() !== "OU" && regarder() !== ")") {
+      if (regarder() === "ET") { i++; continue; }
+      membres.push(lireSauf());
+    }
+    const utiles = membres.filter(Boolean);
+    return utiles.length > 1 ? { et: utiles } : utiles[0] || null;
+  };
+  // sauf := SAUF sauf | primaire
+  const lireSauf = () => {
+    if (regarder() === "SAUF") {
+      i++;
+      const terme = i < jetons.length && !estOperateur(regarder()) && regarder() !== ")" ? lireSauf() : null;
+      return terme ? { non: terme } : null;
+    }
+    return lirePrimaire();
+  };
+  // primaire := ( ou ) | feuille   (une parenthèse non fermée est fermée d'office)
+  const lirePrimaire = () => {
+    const jeton = jetons[i++];
+    if (jeton === "(") {
+      const dedans = lireOu();
+      if (regarder() === ")") i++;
+      return dedans;
+    }
+    return feuille(jeton);
+  };
+
+  const arbre = lireOu();
+  while (i < jetons.length) {   // parenthèse fermante en trop : on l'ignore et on continue
+    i++;
+    const suite = lireOu();
+    if (suite) return arbre ? { et: [arbre, suite] } : suite;
+  }
+  return arbre;
+}
+
+// La même recherche est évaluée pour chaque disque : on garde le dernier arbre construit.
+let derniereRecherche = { texte: null, arbre: null };
+function arbreDe(recherche) {
+  if (derniereRecherche.texte !== recherche) derniereRecherche = { texte: recherche, arbre: analyserRecherche(recherche) };
+  return derniereRecherche.arbre;
+}
+
+/** Petit bouton « ? » à côté d'un champ de recherche : il ouvre l'aide sur la syntaxe. */
+function boutonAide() {
+  return creer("button", { type: "button", classe: "bouton-aide", "aria-label": "Syntaxe de la recherche", texte: "?",
+    surclic: () => $("aide-recherche").showModal() });
+}
+
+function evaluer(arbre, texte) {
+  if (!arbre) return true;
+  if (arbre.feuille) { arbre.feuille.lastIndex = 0; return arbre.feuille.test(texte); }
+  if (arbre.non) return !evaluer(arbre.non, texte);
+  if (arbre.et) return arbre.et.every((a) => evaluer(a, texte));
+  return arbre.ou.some((a) => evaluer(a, texte));
+}
+
+/** Vrai si `texte` (déjà normalisé) répond à la recherche. */
 function rechercheTrouvee(texte, recherche) {
-  return motifsDeRecherche(recherche).every((motif) => motif.test(texte));
+  return evaluer(arbreDe(recherche), texte);
+}
+
+/** Expressions à surligner : toutes les feuilles, sauf celles qu'on exclut (SAUF). */
+function motifsDeRecherche(recherche) {
+  const motifs = [];
+  const parcourir = (arbre) => {
+    if (!arbre || arbre.non) return;
+    if (arbre.feuille) motifs.push(arbre.feuille);
+    else (arbre.et || arbre.ou).forEach(parcourir);
+  };
+  parcourir(arbreDe(recherche));
+  return motifs;
 }
 
 function correspond(edition) {
@@ -1399,8 +1507,8 @@ function afficherOeuvres() {
     .filter(({ oeuvres }) => oeuvres.length);
   const nbOeuvres = visibles.reduce((total, g) => total + g.oeuvres.length, 0);
 
-  const recherche = creer("input", { type: "search", classe: "oeuvres-recherche", value: ongletOeuvres.recherche,
-    placeholder: "Titre, compositeur ou catalogue (BWV 772, K475…)", "aria-label": "Rechercher une œuvre" });
+  const recherche = creer("input", { type: "search", classe: "oeuvres-recherche", autocomplete: "off", value: ongletOeuvres.recherche,
+    placeholder: "Titre, compositeur, catalogue (ET, OU…)", "aria-label": "Rechercher une œuvre" });
   recherche.addEventListener("input", () => {
     ongletOeuvres.recherche = recherche.value;
     afficherOeuvres();
@@ -1417,7 +1525,7 @@ function afficherOeuvres() {
 
   $("vue-oeuvres").replaceChildren(
     creer("div", { classe: "oeuvres-outils" },
-      recherche, genre,
+      creer("span", { classe: "oeuvres-champ" }, recherche, boutonAide()), genre,
       creer("label", { classe: "case" }, plusieurs, " Au moins 2 versions")),
     creer("p", { classe: "oeuvres-compte discret", texte: pluriel(nbOeuvres, "œuvre") + " · " + pluriel(visibles.length, "compositeur")
       + (cherche ? "" : " · touche un compositeur pour voir ses œuvres") }),
@@ -1836,7 +1944,7 @@ function ouvrirFiche(edition) {
   const tracklist = listePlagesParDisque(edition.plages || [], { precedente: null, edition });
 
   // Recherche dans la fiche : pré-remplie avec la recherche de la collection.
-  const champRecherche = creer("input", { type: "search", classe: "recherche-fiche", placeholder: "Chercher dans la fiche",
+  const champRecherche = creer("input", { type: "search", classe: "recherche-fiche", placeholder: "Chercher (ET, OU, SAUF…)",
     "aria-label": "Chercher dans la fiche", value: etat.recherche, autocomplete: "off" });
   const caseRecherche = ajouterCroix(champRecherche);
   const resultats = creer("span", { classe: "discret resultats-fiche" });
@@ -1849,7 +1957,7 @@ function ouvrirFiche(edition) {
         creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
       ])
     ),
-    creer("p", { classe: "ligne-recherche-fiche" }, caseRecherche, resultats,
+    creer("p", { classe: "ligne-recherche-fiche" }, caseRecherche, boutonAide(), resultats,
       (edition.plages || []).length ? creer("button", { type: "button", classe: "bouton-texte lien-fiche lien-plages",
         texte: "↓ Plages", surclic: () => defilerFicheVers(titrePlages) }) : null,
       creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↓ Fin",
@@ -3307,6 +3415,10 @@ function brancherReglageJeton() {
     boite.showModal();
   });
   $("jeton-fermer").addEventListener("click", () => boite.close());
+  // Aide de la recherche : bouton « ? » de l'en-tête (ceux de la fiche et de l'onglet Œuvres sont créés avec eux).
+  document.querySelectorAll("[data-aide-recherche]").forEach((b) => b.addEventListener("click", () => $("aide-recherche").showModal()));
+  $("aide-fermer").addEventListener("click", () => $("aide-recherche").close());
+  $("aide-recherche").addEventListener("click", (e) => { if (e.target === $("aide-recherche")) $("aide-recherche").close(); });
   $("jeton-effacer").addEventListener("click", () => {
     ecrireStockage(CLE_JETON, null);
     decrire();

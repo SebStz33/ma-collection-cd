@@ -696,3 +696,23 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 @media (max-width: 380px) {
   .onglet { font-size: 12.5px; padding: 5px 1px; }
 }
+
+/* ---------- « ? » : aide sur la syntaxe de la recherche ---------- */
+.bouton-aide {
+  flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; padding: 0; cursor: pointer;
+  border: 1px solid var(--bordure); background: var(--surface); color: var(--texte-2); font-size: 14px; line-height: 1;
+}
+.bouton-aide:hover { color: var(--accent); border-color: var(--accent); }
+.recherche { align-items: center; }
+.recherche .bouton-aide { margin: 0 6px; }
+.oeuvres-champ { display: flex; align-items: center; gap: 8px; flex: 1 1 280px; min-width: 0; }
+.oeuvres-champ .oeuvres-recherche { flex: 1 1 auto; }
+.aide-recherche { max-width: 460px; }
+.aide-recherche dl { margin: 0 0 12px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; }
+.aide-recherche dt { font-family: ui-monospace, Menlo, monospace; color: var(--accent); white-space: nowrap; }
+.aide-recherche dd { margin: 0; color: var(--texte-2); }
+@media (max-width: 700px) {
+  .oeuvres-champ { flex-basis: 100%; }
+  .aide-recherche dl { grid-template-columns: 1fr; gap: 2px; }
+  .aide-recherche dd { margin-bottom: 8px; }
+}
