@@ -1256,22 +1256,44 @@ function versionsDeLOeuvre(oeuvre, liste) {
   return liste.filter((e) => e.oeuvres.has(oeuvre.id)).flatMap((edition) => {
     const plages = plagesAvecHeritage(edition.plages).map((element, rang) => ({ ...element, rang }))
       .filter(({ plage }) => plage.oeuvre && oeuvreDeReference(plage.oeuvre).id === oeuvre.id);
-    // Un coffret peut contenir plusieurs enregistrements de la même œuvre (Ciccolini : quatre Suite bergamasque) :
-    // une partie déjà vue ouvre une nouvelle version. Celle-ci reprend les plages qui la précèdent
-    // sans interruption sur le même disque (Prélude et Menuet avant le 2e Clair de lune).
+    // Un coffret peut contenir plusieurs enregistrements de la même œuvre (Ciccolini : quatre Suite bergamasque).
+    // Une partie déjà vue ouvre une nouvelle version quand l'œuvre recommence : après une coupure (autre
+    // disque, autres plages entre deux), si la partie avait été entendue avant une coupure (Clair de lune
+    // seul au CD 20, puis toute la suite au CD 21), ou si la plage suivante répète aussi une partie (Gould :
+    // Contrapunctus I, II… à l'orgue, puis au piano). Sinon elle reste dans la version : un mouvement
+    // en deux plages (Saint-Saëns, 3e symphonie), une reprise (Grande Ritournelle de La Belle Excentrique),
+    // les deux états du Canon XIV (Emerson), ou une erreur de rattachement sur MusicBrainz.
+    // La nouvelle version reprend les plages qui la précèdent sans interruption sur le même disque,
+    // si elles suivent une coupure (Prélude et Menuet en tête du CD 21, après un Clair de lune seul au CD 20).
     const idDe = ({ plage }) => idDeLaPartie(plage, oeuvre);
+    const disqueDe = ({ plage }) => disqueDeLaPosition(plage.position);
+    const contigues = (avant, apres) => avant.rang === apres.rang - 1 && disqueDe(avant) === disqueDe(apres);
     const occurrences = [];
-    for (const element of plages) {
+    plages.forEach((element, i) => {
       const courante = occurrences[occurrences.length - 1];
       const derniere = courante && courante[courante.length - 1];
+      const suivante = plages[i + 1];
+      const dejaVue = (e) => courante.some((x) => idDe(x) === idDe(e));
       // Œuvre entière découpée en plages sans mouvements MB (Le Mandarin merveilleux : 11 plages
       // reliées chacune à l'œuvre) : les plages qui se suivent sur le même disque forment une seule version.
       const suiteDeLOeuvre = derniere && idDe(element) === "entiere" && idDe(derniere) === "entiere"
         && derniere.rang === element.rang - 1
         && disqueDeLaPosition(derniere.plage.position) === disqueDeLaPosition(element.plage.position);
-      if (!courante || (!suiteDeLOeuvre && courante.some((e) => idDe(e) === idDe(element)))) {
+      // Début de la dernière suite sans coupure (autre disque, ou plage non contiguë) de la version en cours.
+      let coupure = courante ? courante.length - 1 : 0;
+      while (coupure > 0 && contigues(courante[coupure - 1], courante[coupure])) coupure--;
+      // Même partie que la plage juste avant : un mouvement en plusieurs plages (Magnificat en 13 plages).
+      const memePartie = derniere && idDe(element) !== "entiere" && idDe(derniere) === idDe(element)
+        && contigues(derniere, element);
+      const recommence = courante && !suiteDeLOeuvre && !memePartie && dejaVue(element)
+        && (!contigues(derniere, element)
+          || (suivante && contigues(element, suivante) && idDe(suivante) !== idDe(element) && dejaVue(suivante))
+          || courante.slice(0, coupure).some((x) => idDe(x) === idDe(element)));
+      if (!courante || recommence) {
         const reprises = [];
-        while (courante && courante.length) {
+        // Plages reprenables : celles qui suivent la dernière coupure ; aucune s'il n'y en a pas.
+        if (coupure === 0) coupure = courante ? courante.length : 0;
+        while (courante && courante.length > coupure) {
           const derniere = courante[courante.length - 1];
           const suivante = reprises[0] || element;
           if (derniere.rang !== suivante.rang - 1
@@ -1283,7 +1305,7 @@ function versionsDeLOeuvre(oeuvre, liste) {
         occurrences.push(reprises);
       }
       occurrences[occurrences.length - 1].push(element);
-    }
+    });
     return occurrences.map((plagesVersion) => {
       const parties = new Map();
       for (const { plage } of plagesVersion) {
