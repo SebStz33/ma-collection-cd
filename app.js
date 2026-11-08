@@ -867,12 +867,30 @@ function correspondanceMB(edition) {
 }
 
 /** Vrai si l'édition passe la recherche et tous les filtres. */
+// Numéro de catalogue tapé dans une recherche : « K. 386 », « k386 », « BWV 1007 », « op. 27 », « no 2 »…
+const RE_NUMERO_CHERCHE = /(?:^|[^a-z0-9])(bwv|buxwv|hwv|twv|rv|kv|k|hob|woo|op|d|s|l|sv|sz|bb|fp|cd|b|kk|z|wq|h|no|nr|n°)\.?\s*(\d+[a-z]?)(?![0-9])/g;
+
+/**
+ * Vrai si `texte` (déjà normalisé) contient la recherche. Chaque mot tapé doit être présent
+ * (« bach gould » trouve Bach joué par Gould), mais un numéro de catalogue compte comme un tout :
+ * « K. 386 » cherche K. 386 (ou KV 386), et non « k. » d'un côté et « 386 » de l'autre.
+ */
+function rechercheTrouvee(texte, recherche) {
+  const numeros = [];
+  const reste = normaliser(recherche).replace(RE_NUMERO_CHERCHE, (tout, type, numero) => {
+    numeros.push([type, numero]);
+    return " ";
+  });
+  const echapper = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return numeros.every(([type, numero]) => {
+    const types = type === "k" || type === "kv" ? "kv?" : type === "no" || type === "nr" || type === "n°" ? "(?:no|nr|n°)" : echapper(type);
+    return new RegExp("(?:^|[^a-z0-9])" + types + "\\.?\\s*" + echapper(numero) + "(?![0-9])").test(texte);
+  }) && reste.split(/\s+/).filter(Boolean).every((mot) => texte.includes(mot));
+}
+
 function correspond(edition) {
   if (etat.recherche) {
-    const texte = edition.index[etat.role] || "";
-    // Chaque mot tapé doit être présent : « bach gould » trouve Bach joué par Gould.
-    const mots = normaliser(etat.recherche).split(/\s+/);
-    if (!mots.every((mot) => texte.includes(mot))) return false;
+    if (!rechercheTrouvee(edition.index[etat.role] || "", etat.recherche)) return false;
   }
   if (etat.categorie && !(etat.categorie.startsWith(PREFIXE_META)
     ? edition.metas.includes(etat.categorie.slice(PREFIXE_META.length))
@@ -1335,11 +1353,6 @@ function catalogueDe(titre) {
   return { type, numero: Number(m[2]), suffixe: m[3].toLowerCase() };
 }
 
-/** Texte comparable pour la recherche : sans accents, majuscules, espaces ni points (« K475 » trouve « K. 475 »). */
-function texteCompact(texte) {
-  return normaliser(texte).replace(/[\s.,'’-]/g, "");
-}
-
 /**
  * Les œuvres de la collection, groupées par compositeur : [{ compositeur, oeuvres: [{ oeuvre, versions }] }].
  * Dans un compositeur, ordre du catalogue le plus fréquent chez lui (BWV chez Bach, op. chez Chopin),
@@ -1375,9 +1388,9 @@ function oeuvresParCompositeur(classiques) {
 
 function afficherOeuvres() {
   const groupes = oeuvresParCompositeur(ongletOeuvres.classiques);
-  const cherche = texteCompact(ongletOeuvres.recherche);
+  const cherche = ongletOeuvres.recherche.trim();
   const garde = ({ oeuvre, versions }, compositeur) => (!ongletOeuvres.plusieurs || versions > 1)
-    && (!cherche || texteCompact(oeuvre.titre + " " + compositeur).includes(cherche));
+    && (!cherche || rechercheTrouvee(normaliser(oeuvre.titre + " " + compositeur), cherche));
   const visibles = groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter((o) => garde(o, compositeur)) }))
     .filter(({ oeuvres }) => oeuvres.length);
   const nbOeuvres = visibles.reduce((total, g) => total + g.oeuvres.length, 0);
