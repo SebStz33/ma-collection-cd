@@ -871,21 +871,25 @@ function correspondanceMB(edition) {
 const RE_NUMERO_CHERCHE = /(?:^|[^a-z0-9])(bwv|buxwv|hwv|twv|rv|kv|k|hob|woo|op|d|s|l|sv|sz|bb|fp|cd|b|kk|z|wq|h|no|nr|n°)\.?\s*(\d+[a-z]?)(?![0-9])/g;
 
 /**
- * Vrai si `texte` (déjà normalisé) contient la recherche. Chaque mot tapé doit être présent
- * (« bach gould » trouve Bach joué par Gould), mais un numéro de catalogue compte comme un tout :
- * « K. 386 » cherche K. 386 (ou KV 386), et non « k. » d'un côté et « 386 » de l'autre.
+ * Motifs d'une recherche, sur du texte normalisé : un par mot tapé, mais un numéro de catalogue
+ * compte comme un tout (« K. 386 » cherche K. 386 ou KV 386, et non « k. » d'un côté et « 386 » de l'autre).
+ * Chaque motif est une expression régulière dont le 2e groupe est le passage trouvé (pour le surlignage).
  */
-function rechercheTrouvee(texte, recherche) {
-  const numeros = [];
+function motifsDeRecherche(recherche) {
+  const echapper = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const motifs = [];
   const reste = normaliser(recherche).replace(RE_NUMERO_CHERCHE, (tout, type, numero) => {
-    numeros.push([type, numero]);
+    const types = type === "k" || type === "kv" ? "kv?" : ["no", "nr", "n°"].includes(type) ? "(?:no|nr|n°)" : echapper(type);
+    motifs.push(new RegExp("(^|[^a-z0-9])(" + types + "\\.?\\s*" + echapper(numero) + ")(?![0-9])", "g"));
     return " ";
   });
-  const echapper = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return numeros.every(([type, numero]) => {
-    const types = type === "k" || type === "kv" ? "kv?" : type === "no" || type === "nr" || type === "n°" ? "(?:no|nr|n°)" : echapper(type);
-    return new RegExp("(?:^|[^a-z0-9])" + types + "\\.?\\s*" + echapper(numero) + "(?![0-9])").test(texte);
-  }) && reste.split(/\s+/).filter(Boolean).every((mot) => texte.includes(mot));
+  for (const mot of reste.split(/\s+/).filter(Boolean)) motifs.push(new RegExp("()(" + echapper(mot) + ")", "g"));
+  return motifs;
+}
+
+/** Vrai si `texte` (déjà normalisé) contient chaque mot tapé et chaque numéro de catalogue. */
+function rechercheTrouvee(texte, recherche) {
+  return motifsDeRecherche(recherche).every((motif) => motif.test(texte));
 }
 
 function correspond(edition) {
@@ -2054,8 +2058,8 @@ function surligner(bloc, recherche) {
   // On enlève d'abord le surlignage précédent.
   for (const marque of bloc.querySelectorAll("mark.trouve")) marque.replaceWith(marque.textContent);
   bloc.normalize();
-  const mots = normaliser(recherche).split(/\s+/).filter(Boolean);
-  if (!mots.length) return 0;
+  const motifs = motifsDeRecherche(recherche);
+  if (!motifs.length) return 0;
 
   const noeuds = [];
   const parcours = document.createTreeWalker(bloc, NodeFilter.SHOW_TEXT);
@@ -2074,9 +2078,10 @@ function surligner(bloc, recherche) {
     }
     // Passages trouvés, dans l'ordre et sans chevauchement : [début, fin] dans le texte d'origine.
     const passages = [];
-    for (const mot of mots) {
-      for (let debut = simple.indexOf(mot); debut >= 0; debut = simple.indexOf(mot, debut + mot.length)) {
-        passages.push([position[debut], position[debut + mot.length - 1] + 1]);
+    for (const motif of motifs) {
+      for (const trouve of simple.matchAll(motif)) {
+        const debut = trouve.index + trouve[1].length;
+        passages.push([position[debut], position[debut + trouve[2].length - 1] + 1]);
       }
     }
     passages.sort((a, b) => a[0] - b[0]);
