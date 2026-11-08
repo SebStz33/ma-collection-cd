@@ -679,9 +679,9 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 .oeuvres-outils label { display: inline-flex; align-items: center; gap: 6px; color: var(--texte-2); white-space: nowrap; }
 .oeuvres-compte { margin: 0 0 4px; color: var(--texte-discret); font-size: 13px; }
 .oeuvres-compositeur { border-bottom: 1px solid var(--bordure); }
-.oeuvres-compositeur summary { padding: 9px 0; cursor: pointer; font-weight: 600; }
-.oeuvres-compositeur summary .discret { color: var(--texte-discret); font-weight: 400; }
-.oeuvres-compositeur[open] summary { color: var(--accent); }
+.oeuvres-compositeur > summary { padding: 9px 0; cursor: pointer; font-weight: 600; }
+.oeuvres-compositeur > summary .discret { color: var(--texte-discret); font-weight: 400; }
+.oeuvres-compositeur[open] > summary { color: var(--accent); }
 .oeuvres-liste { list-style: none; margin: 0 0 10px; padding: 0 0 0 16px; display: grid; gap: 6px; }
 .oeuvres-liste .index-nom { overflow-wrap: anywhere; }
 .oeuvres-versions { color: var(--accent); font-size: 13px; }
@@ -721,3 +721,16 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 .oeuvres-tri { margin: 0 0 12px; font-size: 13px; color: var(--texte-discret); }
 .oeuvres-tri .bouton-texte { padding: 0; font-size: inherit; }
 .oeuvres-tri .tri-actif { color: var(--texte-2); }
+
+/* Au hasard : 10 œuvres classiques et 10 autres, sous les disques (côte à côte sur grand écran) */
+.hasard-oeuvres { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px 32px; margin: 24px 0 0; }
+.hasard-oeuvres h3 { margin: 0 0 10px; padding-bottom: 6px; font-size: 16px; border-bottom: 1px solid var(--bordure); }
+.hasard-oeuvres-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.hasard-oeuvres-liste .index-nom { overflow-wrap: anywhere; text-align: left; }
+.hasard-oeuvres-liste .discret { color: var(--texte-discret); }
+
+/* Onglet Œuvres : intertitre de catégorie chez un compositeur (quand ses œuvres sont dans plusieurs catégories) */
+.oeuvres-categorie { margin: 4px 0 6px 16px; font-size: 13px; color: var(--accent); }
+.oeuvres-bloc-categorie > summary.oeuvres-categorie { cursor: pointer; padding: 4px 0; margin-bottom: 2px; font-size: 14px; }
+.oeuvres-bloc-categorie > summary .discret { color: var(--texte-discret); }
+.oeuvres-bloc-categorie > .oeuvres-liste { padding-left: 32px; }

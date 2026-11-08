@@ -1134,7 +1134,7 @@ function afficherBandeau(nombre) {
   $("bandeau-oeuvre").hidden = !visible;
   if (!visible) return;
   const origine = retour && (retour.edition ? "à la fiche" : retour.etat.vue === "index" ? "à l'index"
-    : retour.etat.vue === "oeuvres" ? "à la liste des œuvres" : "aux statistiques");
+    : retour.etat.vue === "oeuvres" ? "à la liste des œuvres" : retour.etat.vue === "hasard" ? "au tirage" : "aux statistiques");
   $("bandeau-oeuvre").replaceChildren(
     retour ? creer("button", { type: "button", classe: "bouton bouton-revenir", texte: "← Revenir " + origine, surclic: revenir }) : null,
     // Page Œuvre : son titre est dans la page ; sans « Revenir », un bouton pour retrouver la collection.
@@ -1460,7 +1460,10 @@ async function chercherArticle(id) {
 const RE_CATALOGUE = /\b(BuxWV|BWV|HWV|TWV|RV|KV|K|Hob|WoO|op|D|S|L|SV|Sz|BB|FP|CD|B|KK|Z|Wq|H)\.?\s*(?:[IVXL]+[a-z]?\s*:\s*)?(\d+)([a-z]?)/i;
 
 // Réglages de l'onglet, gardés pendant la visite (retour depuis une page Œuvre).
-const ongletOeuvres = { recherche: "", plusieurs: false, classiques: true, alphabetique: false, ouverts: new Set() };
+// `categorie` : comme le filtre Catégorie de la Collection (« méta:Classique », un dossier, ou "" pour toutes).
+const ongletOeuvres = { recherche: "", plusieurs: false, categorie: "méta:Classique", alphabetique: false, ouverts: new Set(),
+  categoriesOuvertes: new Set() };   // « compositeur|catégorie » dépliés chez les compositeurs d'au moins SEUIL_CATEGORIES œuvres
+const SEUIL_CATEGORIES = 12;   // à partir de ce nombre d'œuvres, un compositeur montre d'abord ses catégories, repliées
 
 /** { type: "BWV", numero: 772, suffixe: "" } ou null. « KV » et « K » comptent comme un seul catalogue. */
 function catalogueDe(titre) {
@@ -1476,22 +1479,24 @@ function catalogueDe(titre) {
  * puis des autres catalogues, puis les œuvres sans numéro, par titre.
  */
 // Calculé une fois par collection (le regroupement compte les versions de chaque œuvre : ~0,3 s).
-let groupesEnReserve = { editions: null, classiques: null, groupes: null };
+let groupesEnReserve = { editions: null, groupes: null };
 
+/** Toutes les œuvres ; avec `classiques` (vrai ou faux), seulement les classiques ou seulement les autres. */
 function oeuvresParCompositeur(classiques) {
-  const r = groupesEnReserve;
-  if (r.editions !== editions || r.classiques !== classiques) {
-    groupesEnReserve = { editions, classiques, groupes: calculerOeuvresParCompositeur(classiques) };
+  if (groupesEnReserve.editions !== editions) {
+    groupesEnReserve = { editions, groupes: calculerOeuvresParCompositeur() };
   }
-  return groupesEnReserve.groupes;
+  const groupes = groupesEnReserve.groupes;
+  if (classiques === undefined) return groupes;
+  return groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter((o) => o.classique === classiques) }))
+    .filter(({ oeuvres }) => oeuvres.length);
 }
 
-function calculerOeuvresParCompositeur(classiques) {
+function calculerOeuvresParCompositeur() {
   const cotes = cotesClassiques().oeuvres;
   const parId = new Map();
   for (const edition of editions) {
     for (const oeuvre of edition.oeuvres.values()) {
-      if (cotes.get(oeuvre.id) !== classiques) continue;
       if (!parId.has(oeuvre.id)) parId.set(oeuvre.id, { oeuvre, editions: [] });
       parId.get(oeuvre.id).editions.push(edition);
     }
@@ -1500,7 +1505,12 @@ function calculerOeuvresParCompositeur(classiques) {
   for (const { oeuvre, editions: liste } of parId.values()) {
     const nom = oeuvre.compositeur || "Compositeur inconnu";
     if (!parCompositeur.has(nom)) parCompositeur.set(nom, []);
-    parCompositeur.get(nom).push({ oeuvre, versions: versionsDeLOeuvre(oeuvre, liste).length, catalogue: catalogueDe(oeuvre.titre) });
+    const versions = versionsDeLOeuvre(oeuvre, liste);
+    // Texte où chercher : titre, compositeur et interprètes de toutes les versions (calculé une fois).
+    const interpretes = [...new Set(versions.flatMap((v) => v.interpretes))];
+    parCompositeur.get(nom).push({ oeuvre, editions: liste, versions: versions.length, catalogue: catalogueDe(oeuvre.titre),
+      classique: cotes.get(oeuvre.id),
+      texte: normaliser([oeuvre.titre, nom, ...interpretes].join(" ")) });
   }
   return [...parCompositeur].map(([compositeur, oeuvres]) => {
     const frequence = new Map();
@@ -1516,17 +1526,15 @@ function calculerOeuvresParCompositeur(classiques) {
 
 function afficherOeuvres() {
   const recherche = creer("input", { type: "search", classe: "oeuvres-recherche", autocomplete: "off", value: ongletOeuvres.recherche,
-    placeholder: "Titre, compositeur, n° de catalogue", "aria-label": "Rechercher une œuvre" });
+    placeholder: "Ex. titre, compositeur, interprète, n° de catalogue…", "aria-label": "Rechercher une œuvre" });
   // Pendant la frappe, seule la liste est redessinée (le champ garde le curseur), après une pause.
   let minuterie = null;
   const lancer = () => { clearTimeout(minuterie); ongletOeuvres.recherche = recherche.value; afficherListeOeuvres(); };
   recherche.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(lancer, DELAI_RECHERCHE); });
   recherche.addEventListener("keydown", (e) => { if (e.key === "Enter") lancer(); });
   recherche.addEventListener("efface", lancer);
-  const genre = creer("select", { "aria-label": "Œuvres classiques ou autres" },
-    creer("option", { value: "oui", selected: ongletOeuvres.classiques, texte: "Œuvres classiques" }),
-    creer("option", { value: "non", selected: !ongletOeuvres.classiques, texte: "Autres œuvres" }));
-  genre.addEventListener("change", () => { ongletOeuvres.classiques = genre.value === "oui"; afficherListeOeuvres(); });
+  const genre = menuCategoriesOeuvres();
+  genre.addEventListener("change", () => { ongletOeuvres.categorie = genre.value; afficherListeOeuvres(); });
   const plusieurs = creer("input", { type: "checkbox", checked: ongletOeuvres.plusieurs });
   plusieurs.addEventListener("change", () => { ongletOeuvres.plusieurs = plusieurs.checked; afficherListeOeuvres(); });
 
@@ -1539,13 +1547,94 @@ function afficherOeuvres() {
   afficherListeOeuvres();
 }
 
+/** Vrai si l'édition est dans la catégorie choisie (« méta:Jazz », un dossier, ou "" pour toutes). */
+function editionDansCategorie(edition, categorie) {
+  if (!categorie) return true;
+  return categorie.startsWith(PREFIXE_META) ? edition.metas.includes(categorie.slice(PREFIXE_META.length))
+    : edition.categories.includes(categorie);
+}
+
+/** Menu « Catégorie » de l'onglet Œuvres : méta-catégories, puis leurs dossiers en retrait, avec le nombre d'œuvres. */
+function menuCategoriesOeuvres() {
+  const toutes = oeuvresParCompositeur().flatMap((g) => g.oeuvres);
+  const compte = new Map();
+  for (const { editions: liste } of toutes) {
+    for (const cle of new Set(liste.flatMap((e) => [...e.metas.map((m) => PREFIXE_META + m), ...e.categories]))) {
+      compte.set(cle, (compte.get(cle) || 0) + 1);
+    }
+  }
+  const retrait = "\u00a0\u00a0\u00a0\u00a0";
+  const option = (value, texte) => creer("option", { value, texte: texte + " (" + compte.get(value) + ")",
+    selected: ongletOeuvres.categorie === value, classe: value.startsWith(PREFIXE_META) ? "option-meta" : null });
+  const metas = [...compte.keys()].filter((c) => c.startsWith(PREFIXE_META)).map((c) => c.slice(PREFIXE_META.length));
+  return creer("select", { "aria-label": "Catégorie" },
+    creer("option", { value: "", selected: !ongletOeuvres.categorie, texte: "Toutes (" + toutes.length + ")" }),
+    ...metas.sort(comparerTextes).flatMap((meta) => [
+      option(PREFIXE_META + meta, meta),
+      ...[...compte.keys()].filter((c) => !c.startsWith(PREFIXE_META) && metaDeCategorie(c) === meta).sort(comparerCategories)
+        .map((c) => option(c, retrait + c)),
+    ]));
+}
+
+/**
+ * Catégorie où ranger l'œuvre chez son compositeur : celle de la plupart de ses disques,
+ * parmi les catégories qui répondent au choix du menu (à égalité : l'ordre habituel des catégories).
+ */
+function categorieDeLOeuvre(liste, categorie) {
+  const compte = new Map();
+  for (const edition of liste) {
+    if (!editionDansCategorie(edition, categorie)) continue;
+    for (const c of edition.categories) {
+      if (categorie && !editionDansCategorie({ metas: [metaDeCategorie(c)], categories: [c] }, categorie)) continue;
+      compte.set(c, (compte.get(c) || 0) + 1);
+    }
+  }
+  return [...compte].sort((a, b) => b[1] - a[1] || comparerCategories(a[0], b[0]))[0]?.[0] || SANS_CATEGORIE;
+}
+
+/**
+ * Œuvres d'un compositeur, sous un intertitre par catégorie. À partir de SEUIL_CATEGORIES œuvres,
+ * chaque catégorie est un bloc repliable (déplié pendant une recherche).
+ */
+function listeOeuvresDuCompositeur(oeuvres, compositeur, cherche) {
+  const ligne = ({ oeuvre, versions }) => creer("li", {},
+    creer("button", { type: "button", classe: "index-nom", surclic: () => allerVers({ ...FILTRES_VIDES, oeuvre }) },
+      oeuvre.titre,
+      versions > 1 ? creer("span", { classe: "oeuvres-versions", texte: " · " + versions + " versions" }) : null));
+  const parCategorie = new Map();
+  for (const o of oeuvres) {
+    const c = categorieDeLOeuvre(o.editions, ongletOeuvres.categorie);
+    if (!parCategorie.has(c)) parCategorie.set(c, []);
+    parCategorie.get(c).push(o);   // l'ordre du catalogue est gardé dans chaque catégorie
+  }
+  const categories = [...parCategorie].sort((a, b) => comparerCategoriesParMeta(a[0], b[0]));
+  if (oeuvres.length < SEUIL_CATEGORIES) {
+    return categories.flatMap(([c, liste]) => [
+      creer("p", { classe: "oeuvres-categorie", texte: c }),
+      creer("ul", { classe: "oeuvres-liste" }, liste.map(ligne)),
+    ]);
+  }
+  return categories.map(([c, liste]) => {
+    const cle = compositeur + "|" + c;
+    const bloc = creer("details", { classe: "oeuvres-bloc-categorie", open: cherche || ongletOeuvres.categoriesOuvertes.has(cle) },
+      creer("summary", { classe: "oeuvres-categorie" }, c, creer("span", { classe: "discret", texte: " (" + liste.length + ")" })),
+      creer("ul", { classe: "oeuvres-liste" }, liste.map(ligne)));
+    bloc.addEventListener("toggle", () => {
+      if (cherche) return;
+      if (bloc.open) ongletOeuvres.categoriesOuvertes.add(cle); else ongletOeuvres.categoriesOuvertes.delete(cle);
+    });
+    return bloc;
+  });
+}
+
 /** Compte et compositeurs de l'onglet Œuvres, d'après la recherche et les réglages. */
 function afficherListeOeuvres() {
-  const groupes = oeuvresParCompositeur(ongletOeuvres.classiques);
+  const groupes = oeuvresParCompositeur();
   const cherche = arbreDe(ongletOeuvres.recherche) !== null;
-  const garde = ({ oeuvre, versions }, compositeur) => (!ongletOeuvres.plusieurs || versions > 1)
-    && (!cherche || rechercheTrouvee(normaliser(oeuvre.titre + " " + compositeur), ongletOeuvres.recherche));
-  const visibles = groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter((o) => garde(o, compositeur)) }))
+  const garde = ({ versions, texte, editions: liste }) => (!ongletOeuvres.plusieurs || versions > 1)
+    && (!ongletOeuvres.categorie || liste.some((e) => editionDansCategorie(e, ongletOeuvres.categorie)))
+    && (!cherche || rechercheTrouvee(texte, ongletOeuvres.recherche));
+  const visibles = groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter(garde) }))
     .filter(({ oeuvres }) => oeuvres.length);
   // Par défaut, les compositeurs les plus représentés d'abord (à égalité : ordre alphabétique, celui des groupes).
   if (!ongletOeuvres.alphabetique) visibles.sort((a, b) => b.oeuvres.length - a.oeuvres.length);
@@ -1553,7 +1642,7 @@ function afficherListeOeuvres() {
 
   $("oeuvres-resultats").replaceChildren(
     creer("p", { classe: "oeuvres-compte discret", texte: pluriel(nbOeuvres, "œuvre") + " · " + pluriel(visibles.length, "compositeur")
-      + (cherche ? "" : " · touche un compositeur pour voir ses œuvres") }),
+ }),
     creer("p", { classe: "oeuvres-tri discret" }, "Compositeurs : ",
       ...[[false, "par nombre d'œuvres"], [true, "alphabétique"]].flatMap(([alpha, texte], i) => [i ? " · " : "",
         ongletOeuvres.alphabetique === alpha ? creer("span", { classe: "tri-actif", texte })
@@ -1564,10 +1653,7 @@ function afficherListeOeuvres() {
       // Ouvert si l'on cherche quelque chose, ou si on l'avait ouvert (retour depuis une page Œuvre).
       const bloc = creer("details", { classe: "oeuvres-compositeur", open: cherche || ongletOeuvres.ouverts.has(compositeur) },
         creer("summary", {}, compositeur, creer("span", { classe: "discret", texte: " (" + oeuvres.length + ")" })),
-        creer("ul", { classe: "oeuvres-liste" }, oeuvres.map(({ oeuvre, versions }) => creer("li", {},
-          creer("button", { type: "button", classe: "index-nom", surclic: () => allerVers({ ...FILTRES_VIDES, oeuvre }) },
-            oeuvre.titre,
-            versions > 1 ? creer("span", { classe: "oeuvres-versions", texte: " · " + versions + " versions" }) : null)))));
+        ...listeOeuvresDuCompositeur(oeuvres, compositeur, cherche));
       bloc.addEventListener("toggle", () => {
         if (cherche) return;
         if (bloc.open) ongletOeuvres.ouverts.add(compositeur); else ongletOeuvres.ouverts.delete(compositeur);
@@ -1764,6 +1850,8 @@ const NOMBRE_PREPARE = 40;       // vignettes préparées (plus qu'une rangée s
 const LIEN_FISHER_YATES = "https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates";
 
 let tirage = null;   // éditions mélangées ; null = à tirer de nouveau (à chaque clic sur l'onglet)
+let tirageOeuvres = null;   // { classiques, autres } : NOMBRE_OEUVRES œuvres de chaque sorte, tirées en même temps
+const NOMBRE_OEUVRES = 10;
 
 /**
  * Mélange de Fisher-Yates : renvoie une copie de la liste dans un ordre au hasard,
@@ -1804,12 +1892,28 @@ function ajusterHasard() {
 }
 
 function afficherHasard() {
-  if (!tirage) tirage = melanger(editions.filter((e) => !estAVendre(e))).slice(0, NOMBRE_PREPARE);
+  if (!tirage) {
+    tirage = melanger(editions.filter((e) => !estAVendre(e))).slice(0, NOMBRE_PREPARE);
+    // Œuvres présentes sur au moins un disque qui n'est pas à vendre.
+    const tirer = (classiques) => melanger(oeuvresParCompositeur(classiques).flatMap((g) => g.oeuvres)
+      .filter((o) => !o.editions.every(estAVendre))).slice(0, NOMBRE_OEUVRES);
+    tirageOeuvres = { classiques: tirer(true), autres: tirer(false) };
+  }
+  const listeOeuvres = (titre, oeuvres) => creer("section", { classe: "hasard-oeuvres-bloc" },
+    creer("h3", { texte: titre }),
+    creer("ul", { classe: "hasard-oeuvres-liste" }, oeuvres.map(({ oeuvre, versions }) => creer("li", {},
+      creer("button", { type: "button", classe: "index-nom", surclic: () => allerVers({ ...FILTRES_VIDES, oeuvre }) },
+        oeuvre.titre,
+        creer("span", { classe: "discret", texte: " · " + (oeuvre.compositeur || "Compositeur inconnu") }),
+        versions > 1 ? creer("span", { classe: "oeuvres-versions", texte: " · " + versions + " versions" }) : null)))));
   $("vue-hasard").replaceChildren(
     creer("p", { classe: "hasard-haut" },
       creer("button", { type: "button", classe: "bouton", texte: "Nouveau tirage",
         surclic: () => { tirage = null; afficher(); } })),
     creer("div", { classe: "grille" }, cartesDesEditions(tirage)),
+    creer("div", { classe: "hasard-oeuvres" },
+      listeOeuvres(NOMBRE_OEUVRES + " œuvres classiques", tirageOeuvres.classiques),
+      listeOeuvres(NOMBRE_OEUVRES + " autres œuvres", tirageOeuvres.autres)),
     creer("hr", { classe: "hasard-trait" }),
     creer("p", { classe: "hasard-methode" },
       "Tirage réalisé par la méthode de ",
