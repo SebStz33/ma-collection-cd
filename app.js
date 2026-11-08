@@ -164,6 +164,7 @@ function ajouterCroix(champ) {
     champ.value = "";
     champ.dispatchEvent(new Event("input", { bubbles: true }));
     champ.dispatchEvent(new Event("change", { bubbles: true }));
+    champ.dispatchEvent(new Event("efface"));   // pour relancer la recherche sans attendre la pause
     montrer();
     champ.focus();
   });
@@ -1459,7 +1460,7 @@ async function chercherArticle(id) {
 const RE_CATALOGUE = /\b(BuxWV|BWV|HWV|TWV|RV|KV|K|Hob|WoO|op|D|S|L|SV|Sz|BB|FP|CD|B|KK|Z|Wq|H)\.?\s*(?:[IVXL]+[a-z]?\s*:\s*)?(\d+)([a-z]?)/i;
 
 // Réglages de l'onglet, gardés pendant la visite (retour depuis une page Œuvre).
-const ongletOeuvres = { recherche: "", plusieurs: false, classiques: true, ouverts: new Set() };
+const ongletOeuvres = { recherche: "", plusieurs: false, classiques: true, alphabetique: false, ouverts: new Set() };
 
 /** { type: "BWV", numero: 772, suffixe: "" } ou null. « KV » et « K » comptent comme un seul catalogue. */
 function catalogueDe(titre) {
@@ -1515,12 +1516,13 @@ function calculerOeuvresParCompositeur(classiques) {
 
 function afficherOeuvres() {
   const recherche = creer("input", { type: "search", classe: "oeuvres-recherche", autocomplete: "off", value: ongletOeuvres.recherche,
-    placeholder: "Titre, compositeur, catalogue (ET, OU…)", "aria-label": "Rechercher une œuvre" });
+    placeholder: "Titre, compositeur, n° de catalogue", "aria-label": "Rechercher une œuvre" });
   // Pendant la frappe, seule la liste est redessinée (le champ garde le curseur), après une pause.
   let minuterie = null;
   const lancer = () => { clearTimeout(minuterie); ongletOeuvres.recherche = recherche.value; afficherListeOeuvres(); };
   recherche.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(lancer, DELAI_RECHERCHE); });
   recherche.addEventListener("keydown", (e) => { if (e.key === "Enter") lancer(); });
+  recherche.addEventListener("efface", lancer);
   const genre = creer("select", { "aria-label": "Œuvres classiques ou autres" },
     creer("option", { value: "oui", selected: ongletOeuvres.classiques, texte: "Œuvres classiques" }),
     creer("option", { value: "non", selected: !ongletOeuvres.classiques, texte: "Autres œuvres" }));
@@ -1530,7 +1532,7 @@ function afficherOeuvres() {
 
   $("vue-oeuvres").replaceChildren(
     creer("div", { classe: "oeuvres-outils" },
-      creer("span", { classe: "oeuvres-champ" }, recherche, boutonAide()), genre,
+      creer("span", { classe: "oeuvres-champ" }, ajouterCroix(recherche), boutonAide()), genre,
       creer("label", { classe: "case" }, plusieurs, " Au moins 2 versions")),
     creer("div", { id: "oeuvres-resultats" })
   );
@@ -1545,11 +1547,18 @@ function afficherListeOeuvres() {
     && (!cherche || rechercheTrouvee(normaliser(oeuvre.titre + " " + compositeur), ongletOeuvres.recherche));
   const visibles = groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter((o) => garde(o, compositeur)) }))
     .filter(({ oeuvres }) => oeuvres.length);
+  // Par défaut, les compositeurs les plus représentés d'abord (à égalité : ordre alphabétique, celui des groupes).
+  if (!ongletOeuvres.alphabetique) visibles.sort((a, b) => b.oeuvres.length - a.oeuvres.length);
   const nbOeuvres = visibles.reduce((total, g) => total + g.oeuvres.length, 0);
 
   $("oeuvres-resultats").replaceChildren(
     creer("p", { classe: "oeuvres-compte discret", texte: pluriel(nbOeuvres, "œuvre") + " · " + pluriel(visibles.length, "compositeur")
       + (cherche ? "" : " · touche un compositeur pour voir ses œuvres") }),
+    creer("p", { classe: "oeuvres-tri discret" }, "Compositeurs : ",
+      ...[[false, "par nombre d'œuvres"], [true, "alphabétique"]].flatMap(([alpha, texte], i) => [i ? " · " : "",
+        ongletOeuvres.alphabetique === alpha ? creer("span", { classe: "tri-actif", texte })
+          : creer("button", { type: "button", classe: "bouton-texte", texte,
+              surclic: () => { ongletOeuvres.alphabetique = alpha; afficherListeOeuvres(); } })])),
     ...(nbOeuvres ? [] : [creer("p", { classe: "discret", texte: "Aucune œuvre ne correspond." })]),
     ...visibles.map(({ compositeur, oeuvres }) => {
       // Ouvert si l'on cherche quelque chose, ou si on l'avait ouvert (retour depuis une page Œuvre).
@@ -3501,6 +3510,7 @@ function brancherEvenements() {
     minuterie = setTimeout(lancer, DELAI_RECHERCHE);
   });
   $("recherche").addEventListener("keydown", (e) => { if (e.key === "Enter") lancer(); });
+  $("recherche").addEventListener("efface", lancer);
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
                     "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-enreg-min", "filtre-enreg-max", "filtre-localisation", "filtre-double",

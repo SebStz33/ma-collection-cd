@@ -677,7 +677,7 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 }
 .oeuvres-recherche { flex: 1 1 280px; min-width: 0; }
 .oeuvres-outils label { display: inline-flex; align-items: center; gap: 6px; color: var(--texte-2); white-space: nowrap; }
-.oeuvres-compte { margin: 0 0 12px; color: var(--texte-discret); font-size: 13px; }
+.oeuvres-compte { margin: 0 0 4px; color: var(--texte-discret); font-size: 13px; }
 .oeuvres-compositeur { border-bottom: 1px solid var(--bordure); }
 .oeuvres-compositeur summary { padding: 9px 0; cursor: pointer; font-weight: 600; }
 .oeuvres-compositeur summary .discret { color: var(--texte-discret); font-weight: 400; }
@@ -706,7 +706,7 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 .recherche { align-items: center; }
 .recherche .bouton-aide { margin: 0 6px; }
 .oeuvres-champ { display: flex; align-items: center; gap: 8px; flex: 1 1 280px; min-width: 0; }
-.oeuvres-champ .oeuvres-recherche { flex: 1 1 auto; }
+.oeuvres-champ .oeuvres-recherche, .oeuvres-champ > .case-effacable { flex: 1 1 auto; }
 .aide-recherche { max-width: 460px; }
 .aide-recherche dl { margin: 0 0 12px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; }
 .aide-recherche dt { font-family: ui-monospace, Menlo, monospace; color: var(--accent); white-space: nowrap; }
@@ -716,3 +716,8 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
   .aide-recherche dl { grid-template-columns: 1fr; gap: 2px; }
   .aide-recherche dd { margin-bottom: 8px; }
 }
+
+/* Onglet Œuvres : « Compositeurs : par nombre d'œuvres · alphabétique » (le choix actif en clair, l'autre en lien ambre) */
+.oeuvres-tri { margin: 0 0 12px; font-size: 13px; color: var(--texte-discret); }
+.oeuvres-tri .bouton-texte { padding: 0; font-size: inherit; }
+.oeuvres-tri .tri-actif { color: var(--texte-2); }
