@@ -879,6 +879,7 @@ function correspondanceMB(edition) {
 //   K. 386, BWV 1007, op. 27  un numéro de catalogue compte comme un tout
 // Priorités, comme × avant + en calcul : SAUF, puis ET, puis OU.
 
+const DELAI_RECHERCHE = 300;   // ms de pause dans la frappe avant de chercher (Entrée : tout de suite)
 const TYPES_CATALOGUE = "bwv|buxwv|hwv|twv|rv|kv|k|hob|woo|op|d|s|l|sv|sz|bb|fp|cd|b|kk|z|wq|h|no|nr|n°";
 // Un jeton : parenthèse, expression entre guillemets, numéro de catalogue, ou mot.
 const RE_JETON = new RegExp(
@@ -965,6 +966,8 @@ function analyserRecherche(recherche) {
 // La même recherche est évaluée pour chaque disque : on garde le dernier arbre construit.
 let derniereRecherche = { texte: null, arbre: null };
 function arbreDe(recherche) {
+  // Un seul caractère ne trie rien d'utile (« b » est partout) : on attend le deuxième.
+  if (String(recherche || "").trim().length < 2) return null;
   if (derniereRecherche.texte !== recherche) derniereRecherche = { texte: recherche, arbre: analyserRecherche(recherche) };
   return derniereRecherche.arbre;
 }
@@ -1081,6 +1084,7 @@ function afficherMessage(texte) {
 }
 
 function afficher() {
+  tourDAffichage++;
   const resultats = trier(editions.filter(correspond));
 
   // Compteur en haut : « 42 éditions sur 355 · 358 exemplaires »
@@ -1470,7 +1474,18 @@ function catalogueDe(titre) {
  * Dans un compositeur, ordre du catalogue le plus fréquent chez lui (BWV chez Bach, op. chez Chopin),
  * puis des autres catalogues, puis les œuvres sans numéro, par titre.
  */
+// Calculé une fois par collection (le regroupement compte les versions de chaque œuvre : ~0,3 s).
+let groupesEnReserve = { editions: null, classiques: null, groupes: null };
+
 function oeuvresParCompositeur(classiques) {
+  const r = groupesEnReserve;
+  if (r.editions !== editions || r.classiques !== classiques) {
+    groupesEnReserve = { editions, classiques, groupes: calculerOeuvresParCompositeur(classiques) };
+  }
+  return groupesEnReserve.groupes;
+}
+
+function calculerOeuvresParCompositeur(classiques) {
   const cotes = cotesClassiques().oeuvres;
   const parId = new Map();
   for (const edition of editions) {
@@ -1499,40 +1514,46 @@ function oeuvresParCompositeur(classiques) {
 }
 
 function afficherOeuvres() {
-  const groupes = oeuvresParCompositeur(ongletOeuvres.classiques);
-  const cherche = ongletOeuvres.recherche.trim();
-  const garde = ({ oeuvre, versions }, compositeur) => (!ongletOeuvres.plusieurs || versions > 1)
-    && (!cherche || rechercheTrouvee(normaliser(oeuvre.titre + " " + compositeur), cherche));
-  const visibles = groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter((o) => garde(o, compositeur)) }))
-    .filter(({ oeuvres }) => oeuvres.length);
-  const nbOeuvres = visibles.reduce((total, g) => total + g.oeuvres.length, 0);
-
   const recherche = creer("input", { type: "search", classe: "oeuvres-recherche", autocomplete: "off", value: ongletOeuvres.recherche,
     placeholder: "Titre, compositeur, catalogue (ET, OU…)", "aria-label": "Rechercher une œuvre" });
-  recherche.addEventListener("input", () => {
-    ongletOeuvres.recherche = recherche.value;
-    afficherOeuvres();
-    const champ = document.querySelector(".oeuvres-recherche");   // la vue est redessinée : on garde le curseur
-    champ.focus();
-    champ.setSelectionRange(champ.value.length, champ.value.length);
-  });
+  // Pendant la frappe, seule la liste est redessinée (le champ garde le curseur), après une pause.
+  let minuterie = null;
+  const lancer = () => { clearTimeout(minuterie); ongletOeuvres.recherche = recherche.value; afficherListeOeuvres(); };
+  recherche.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(lancer, DELAI_RECHERCHE); });
+  recherche.addEventListener("keydown", (e) => { if (e.key === "Enter") lancer(); });
   const genre = creer("select", { "aria-label": "Œuvres classiques ou autres" },
     creer("option", { value: "oui", selected: ongletOeuvres.classiques, texte: "Œuvres classiques" }),
     creer("option", { value: "non", selected: !ongletOeuvres.classiques, texte: "Autres œuvres" }));
-  genre.addEventListener("change", () => { ongletOeuvres.classiques = genre.value === "oui"; afficherOeuvres(); });
+  genre.addEventListener("change", () => { ongletOeuvres.classiques = genre.value === "oui"; afficherListeOeuvres(); });
   const plusieurs = creer("input", { type: "checkbox", checked: ongletOeuvres.plusieurs });
-  plusieurs.addEventListener("change", () => { ongletOeuvres.plusieurs = plusieurs.checked; afficherOeuvres(); });
+  plusieurs.addEventListener("change", () => { ongletOeuvres.plusieurs = plusieurs.checked; afficherListeOeuvres(); });
 
   $("vue-oeuvres").replaceChildren(
     creer("div", { classe: "oeuvres-outils" },
       creer("span", { classe: "oeuvres-champ" }, recherche, boutonAide()), genre,
       creer("label", { classe: "case" }, plusieurs, " Au moins 2 versions")),
+    creer("div", { id: "oeuvres-resultats" })
+  );
+  afficherListeOeuvres();
+}
+
+/** Compte et compositeurs de l'onglet Œuvres, d'après la recherche et les réglages. */
+function afficherListeOeuvres() {
+  const groupes = oeuvresParCompositeur(ongletOeuvres.classiques);
+  const cherche = arbreDe(ongletOeuvres.recherche) !== null;
+  const garde = ({ oeuvre, versions }, compositeur) => (!ongletOeuvres.plusieurs || versions > 1)
+    && (!cherche || rechercheTrouvee(normaliser(oeuvre.titre + " " + compositeur), ongletOeuvres.recherche));
+  const visibles = groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter((o) => garde(o, compositeur)) }))
+    .filter(({ oeuvres }) => oeuvres.length);
+  const nbOeuvres = visibles.reduce((total, g) => total + g.oeuvres.length, 0);
+
+  $("oeuvres-resultats").replaceChildren(
     creer("p", { classe: "oeuvres-compte discret", texte: pluriel(nbOeuvres, "œuvre") + " · " + pluriel(visibles.length, "compositeur")
       + (cherche ? "" : " · touche un compositeur pour voir ses œuvres") }),
     ...(nbOeuvres ? [] : [creer("p", { classe: "discret", texte: "Aucune œuvre ne correspond." })]),
     ...visibles.map(({ compositeur, oeuvres }) => {
       // Ouvert si l'on cherche quelque chose, ou si on l'avait ouvert (retour depuis une page Œuvre).
-      const bloc = creer("details", { classe: "oeuvres-compositeur", open: Boolean(cherche) || ongletOeuvres.ouverts.has(compositeur) },
+      const bloc = creer("details", { classe: "oeuvres-compositeur", open: cherche || ongletOeuvres.ouverts.has(compositeur) },
         creer("summary", {}, compositeur, creer("span", { classe: "discret", texte: " (" + oeuvres.length + ")" })),
         creer("ul", { classe: "oeuvres-liste" }, oeuvres.map(({ oeuvre, versions }) => creer("li", {},
           creer("button", { type: "button", classe: "index-nom", surclic: () => allerVers({ ...FILTRES_VIDES, oeuvre }) },
@@ -1682,28 +1703,47 @@ function cartesAvecIntertitre(liste) {
 }
 
 /** `valeurDeTri` (facultatif) : texte écrit au-dessus de la photo (rien si l'édition n'en a pas). */
+// Vignettes déjà construites, réutilisées d'un affichage à l'autre : pendant la frappe d'une recherche,
+// le navigateur n'a pas à recréer (et redécoder) des centaines d'images. Clé : ce qui change sur la vignette.
+let cartesEnReserve = new WeakMap();   // édition -> Map(clé -> élément)
+let tourDAffichage = 0;                 // une vignette déjà placée dans ce tour est recréée (édition dans deux catégories)
+
 function cartesDesEditions(liste, valeurDeTri) {
   return liste.map((edition) => {
-    const image = edition.pochette || edition.miniature;
-    const nb = edition.exemplaires.length;
-    const categories = categoriesChoisies(edition);
-    return creer("button", { classe: "carte", type: "button", surclic: () => ouvrirFiche(edition) },
-      // Pas de ligne pour une édition sans valeur : elles sont toutes sous l'intertitre « Sans … ».
-      valeurDeTri && valeurDeTri(edition) ? creer("p", { classe: "carte-tri", texte: valeurDeTri(edition) }) : null,
-      creer("div", { classe: "pochette" },
-        image
-          ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
-          : creer("span", { classe: "sans-image", texte: "♪" }),
-        nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null,
-        aDesTextes(edition) ? creer("span", { classe: "repere-notes", texte: "✎", title: "Description ou notes personnelles" }) : null,
-        edition.statut ? creer("span", { classe: "repere-statut", texte: repereStatut(edition.statut) || edition.statut,
-          title: edition.statut }) : null
-      ),
-      creer("p", { classe: "carte-titre", texte: edition.titre }),
-      creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") }),
-      categories.length ? creer("p", { classe: "carte-categorie", texte: categories.join(" · ") }) : null
-    );
+    const cle = [valeurDeTri ? valeurDeTri(edition) : "", edition.statut || "", aDesTextes(edition),
+      edition.exemplaires.length, categoriesChoisies(edition).join("|"), edition.pochette || edition.miniature || ""].join("\u0001");
+    if (!cartesEnReserve.has(edition)) cartesEnReserve.set(edition, new Map());
+    const reserve = cartesEnReserve.get(edition);
+    const carte = reserve.get(cle);
+    if (carte && carte.tour !== tourDAffichage) { carte.tour = tourDAffichage; return carte; }
+    const nouvelle = carteDeLEdition(edition, valeurDeTri);
+    nouvelle.tour = tourDAffichage;
+    if (!carte) reserve.set(cle, nouvelle);
+    return nouvelle;
   });
+}
+
+/** Une vignette : pochette, repères, titre, artistes, catégories. */
+function carteDeLEdition(edition, valeurDeTri) {
+  const image = edition.pochette || edition.miniature;
+  const nb = edition.exemplaires.length;
+  const categories = categoriesChoisies(edition);
+  return creer("button", { classe: "carte", type: "button", surclic: () => ouvrirFiche(edition) },
+    // Pas de ligne pour une édition sans valeur : elles sont toutes sous l'intertitre « Sans … ».
+    valeurDeTri && valeurDeTri(edition) ? creer("p", { classe: "carte-tri", texte: valeurDeTri(edition) }) : null,
+    creer("div", { classe: "pochette" },
+      image
+        ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
+        : creer("span", { classe: "sans-image", texte: "♪" }),
+      nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null,
+      aDesTextes(edition) ? creer("span", { classe: "repere-notes", texte: "✎", title: "Description ou notes personnelles" }) : null,
+      edition.statut ? creer("span", { classe: "repere-statut", texte: repereStatut(edition.statut) || edition.statut,
+        title: edition.statut }) : null
+    ),
+    creer("p", { classe: "carte-titre", texte: edition.titre }),
+    creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") }),
+    categories.length ? creer("p", { classe: "carte-categorie", texte: categories.join(" · ") }) : null
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -2040,7 +2080,7 @@ function ouvrirFiche(edition) {
     resultats.classList.toggle("avec-resultats", nombre > 0);
     allerAuResultat(texteFiche, 0);
   };
-  champRecherche.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(chercher, 150); });
+  champRecherche.addEventListener("input", () => { clearTimeout(minuterie); minuterie = setTimeout(chercher, DELAI_RECHERCHE); });
   // Entrée : résultat suivant (et retour au premier après le dernier).
   champRecherche.addEventListener("keydown", (evenement) => {
     if (evenement.key !== "Enter") return;
@@ -3452,12 +3492,15 @@ function brancherReglageJeton() {
 // ---------------------------------------------------------------------------
 
 function brancherEvenements() {
-  // Recherche : on attend une courte pause dans la frappe avant de recalculer.
+  // Recherche : on attend une pause dans la frappe (DELAI_RECHERCHE) avant de recalculer ;
+  // la touche Entrée lance la recherche tout de suite.
   let minuterie = null;
+  const lancer = () => { clearTimeout(minuterie); lireControles(); afficher(); };
   $("recherche").addEventListener("input", () => {
     clearTimeout(minuterie);
-    minuterie = setTimeout(() => { lireControles(); afficher(); }, 150);
+    minuterie = setTimeout(lancer, DELAI_RECHERCHE);
   });
+  $("recherche").addEventListener("keydown", (e) => { if (e.key === "Enter") lancer(); });
 
   for (const id of ["role-recherche", "tri", "filtre-categorie", "filtre-genre", "filtre-style", "filtre-format",
                     "filtre-label", "filtre-annee-min", "filtre-annee-max", "filtre-enreg-min", "filtre-enreg-max", "filtre-localisation", "filtre-double",
