@@ -1686,6 +1686,8 @@ function afficherListeOeuvres() {
         ongletOeuvres.alphabetique === alpha ? creer("span", { classe: "tri-actif", texte })
           : creer("button", { type: "button", classe: "bouton-texte", texte,
               surclic: () => { ongletOeuvres.alphabetique = alpha; afficherListeOeuvres(); } })])),
+    creer("p", { classe: "oeuvres-explication discret",
+      texte: "Une œuvre est placée dans la catégorie de la majorité de ses disques. Sur sa page, chaque version porte la catégorie de son disque." }),
     ...(nbOeuvres ? [] : [creer("p", { classe: "discret", texte: "Aucune œuvre ne correspond." })]),
     ...visibles.map(({ compositeur, oeuvres }) => {
       // Ouvert si l'on cherche quelque chose, ou si on l'avait ouvert (retour depuis une page Œuvre).
