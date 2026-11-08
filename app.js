@@ -1352,7 +1352,14 @@ function nomCourtDeLaVersion(version) {
 
 function afficherPageOeuvre(liste) {
   const oeuvre = etat.oeuvre;
-  const versions = versionsDeLOeuvre(oeuvre, liste).sort(comparerVersions);
+  // Rangées par catégorie (ordre habituel), puis par année d'enregistrement dans chaque catégorie.
+  const versions = versionsDeLOeuvre(oeuvre, liste).map((v) => ({ ...v, categorie: categorieDeLaVersion(v) }))
+    .sort((a, b) => comparerCategoriesParMeta(a.categorie, b.categorie) || comparerVersions(a, b));
+  const parCategorie = new Map();
+  for (const v of versions) {
+    if (!parCategorie.has(v.categorie)) parCategorie.set(v.categorie, []);
+    parCategorie.get(v.categorie).push(v);
+  }
   const dureeMax = Math.max(...versions.map((v) => v.duree.secondes), 1);
   const liens = creer("p", { classe: "oeuvre-liens" },
     creerLien(ADRESSE_MB_OEUVRE + oeuvre.id, "MusicBrainz"));
@@ -1363,10 +1370,18 @@ function afficherPageOeuvre(liste) {
     oeuvre.compositeur ? creer("p", { classe: "oeuvre-compositeur", texte: oeuvre.compositeur }) : null,
     liens,
     creer("h3", { classe: "oeuvre-intertitre" }, pluriel(versions.length, "version") + " dans ma cédéthèque",
-      creer("span", { classe: "discret", texte: " · par année d'enregistrement" })),
-    creer("ol", { classe: "versions" }, versions.map((v) => ligneVersion(v, dureeMax))),
+      creer("span", { classe: "discret", texte: " · par catégorie, puis par année d'enregistrement" })),
+    [...parCategorie].map(([categorie, liste]) => [
+      creer("p", { classe: "versions-categorie", texte: categorie }),
+      creer("ol", { classe: "versions" }, liste.map((v) => ligneVersion(v, dureeMax))),
+    ]),
     tableauDesParties(versions)
   ));
+}
+
+/** Catégorie d'une version : celle de son disque (la première dans l'ordre habituel s'il y en a plusieurs). */
+function categorieDeLaVersion(version) {
+  return [...version.edition.categories].sort(comparerCategoriesParMeta)[0] || SANS_CATEGORIE;
 }
 
 /** Une version : pochette, interprètes, disque, années, durée (avec une barre pour comparer). */
@@ -1411,7 +1426,8 @@ function tableauDesParties(versions) {
   const tableau = creer("table", { classe: "tableau-parties" },
     creer("thead", {}, creer("tr", {},
       creer("th", { texte: "Partie" }),
-      versions.map((v) => creer("th", { texte: nomCourtDeLaVersion(v), title: v.interpretes.join(", ") + " · " + v.edition.titre })))),
+      versions.map((v) => creer("th", { title: v.interpretes.join(", ") + " · " + v.edition.titre },
+        nomCourtDeLaVersion(v), creer("span", { classe: "colonne-categorie", texte: v.categorie }))))),
     creer("tbody", {}, [...toutes].map(([id, titre]) => creer("tr", {},
       creer("th", { texte: titre }),
       versions.map((v) => {
@@ -3081,7 +3097,124 @@ function afficherStatistiques(liste) {
     carteOeuvres("Œuvres classiques en plusieurs versions", oeuvresClassiques),
     carteOeuvres("Autres œuvres en plusieurs versions", autresOeuvres),
     carteBarres("Labels", "Les 15 premiers", compter(liste, EXTRACTEURS.label), 15, appliquer("label"),
-      (n) => "Voir les " + n + " labels ayant au moins 2 éditions")
+      (n) => "Voir les " + n + " labels ayant au moins 2 éditions"),
+    blocVerificationsMusicBrainz()
+  );
+}
+
+// ---------------------------------------------------------------------------
+// À vérifier sur MusicBrainz : rattachements plage -> œuvre qui semblent faux.
+// Calculé sur toute la collection ; une ligne disparaît à la synchro qui suit sa correction sur MusicBrainz.
+// ---------------------------------------------------------------------------
+
+const VALEURS_ROMAINES = { i: 1, v: 5, x: 10, l: 50, c: 100 };
+
+/** Valeur d'un chiffre romain en minuscules (« xiv » -> 14). */
+function valeurRomaine(texte) {
+  let total = 0;
+  for (let k = 0; k < texte.length; k++) {
+    const valeur = VALEURS_ROMAINES[texte[k]], suivante = VALEURS_ROMAINES[texte[k + 1]] || 0;
+    total += valeur < suivante ? -valeur : valeur;
+  }
+  return total;
+}
+
+/** Numéros d'un titre, arabes ou romains : « 3. Menuetto » et « III. Minuetto » donnent tous deux 3. */
+function numerosDuTitre(titre) {
+  return new Set((normaliser(titre).match(/\b(\d+|[ivxlc]{2,}|i|v|x)\b/g) || [])
+    .map((m) => (/\d/.test(m) ? Number(m) : valeurRomaine(m))));
+}
+
+/** Mots de 4 lettres ou plus d'un titre (sans les chiffres romains). */
+function motsDuTitre(titre) {
+  return normaliser(titre).split(/[^a-z]+/).filter((m) => m.length >= 4 && !/^[ivxlc]+$/.test(m));
+}
+
+/** Deux mots « se ressemblent » : mêmes 3 premières lettres, ou mêmes consonnes (Menuetto / Minuetto, Rondo / Rondeau). */
+function motsSemblables(a, b) {
+  const consonnes = (m) => m.replace(/[aeiouy]/g, "").replace(/(.)\1+/g, "$1").slice(0, 4);
+  return a.slice(0, 3) === b.slice(0, 3) || consonnes(a) === consonnes(b);
+}
+
+let verificationsEnReserve = { editions: null, types: null };
+
+/** { trous, doubles, titres } : listes de { edition, plage, texte }. */
+function rattachementsSuspects() {
+  if (verificationsEnReserve.editions === editions) return verificationsEnReserve.types;
+  const types = { trous: [], doubles: [], titres: [] };
+  const nomDePlage = (plage) => "plage " + plage.position + " · « " + plage.titre + " »";
+
+  // 1. Plage sans œuvre entre deux plages de la même œuvre.
+  for (const edition of editions) {
+    const plages = plagesAvecHeritage(edition.plages).map(({ plage }) => plage);
+    plages.forEach((plage, i) => {
+      const avant = plages[i - 1], apres = plages[i + 1];
+      if (plage.oeuvre || !avant || !apres || !avant.oeuvre || !apres.oeuvre) return;
+      const oeuvre = oeuvreDeReference(avant.oeuvre);
+      if (oeuvre.id !== oeuvreDeReference(apres.oeuvre).id) return;
+      types.trous.push({ edition, plage, texte: nomDePlage(plage) + " : reliée à rien, entre deux plages de « " + oeuvre.titre + " »" });
+    });
+  }
+
+  for (const { oeuvres } of oeuvresParCompositeur()) {
+    for (const { oeuvre, editions: liste } of oeuvres) {
+      for (const version of versionsDeLOeuvre(oeuvre, liste)) {
+        // 2. Partie reliée deux fois dans la même version (pas à la suite : un mouvement en deux plages est normal).
+        const ids = version.plages.map(({ plage }) => idDeLaPartie(plage, oeuvre));
+        version.plages.forEach(({ plage }, i) => {
+          if (ids[i] === "entiere" || ids[i - 1] === ids[i] || ids.indexOf(ids[i]) === i) return;
+          types.doubles.push({ edition: version.edition, plage,
+            texte: nomDePlage(plage) + " → « " + titreDeLaPartie(plage.oeuvre.titre, oeuvre.titre) + " », déjà reliée à la plage "
+              + version.plages[ids.indexOf(ids[i])].plage.position });
+        });
+
+        // 3. Titre MusicBrainz sans rapport avec le titre Discogs : ni mot semblable ni numéro commun.
+        // Seulement dans une version où la plupart des titres se ressemblent (même langue, mêmes conventions).
+        const lignes = version.plages.filter(({ plage }) => plage.oeuvre.parente).map(({ plage }) => {
+          const partie = titreDeLaPartie(plage.oeuvre.titre, oeuvre.titre);
+          const a = motsDuTitre(plage.titre), b = motsDuTitre(partie);
+          const numeros = numerosDuTitre(partie);
+          const proche = a.some((m) => b.some((n) => motsSemblables(m, n))) || [...numerosDuTitre(plage.titre)].some((n) => numeros.has(n));
+          return { plage, partie, proche, comparable: a.length && b.length };
+        });
+        if (lignes.length < 3 || lignes.filter((l) => l.proche).length < 0.6 * lignes.length) continue;
+        for (const { plage, partie, proche, comparable } of lignes) {
+          if (!proche && comparable) types.titres.push({ edition: version.edition, plage, texte: nomDePlage(plage) + " → « " + partie + " »" });
+        }
+      }
+    }
+  }
+  verificationsEnReserve = { editions, types };
+  return types;
+}
+
+/** Bloc replié en bas des statistiques : un sous-bloc replié par type de problème, les plages groupées par disque. */
+function blocVerificationsMusicBrainz() {
+  const types = rattachementsSuspects();
+  const sections = [
+    ["trous", "Plage sans œuvre entre deux plages de la même œuvre"],
+    ["doubles", "Partie reliée deux fois dans la même version"],
+    ["titres", "Titre MusicBrainz très différent du titre Discogs (peut être une fausse alerte)"],
+  ];
+  const total = sections.reduce((n, [cle]) => n + types[cle].length, 0);
+  if (!total) return null;
+  return creer("details", { classe: "carte-stat large verifications-mb" },
+    creer("summary", {}, creer("h2", { texte: "⚠ À vérifier sur MusicBrainz (" + total + ")" })),
+    creer("p", { classe: "note-stat", texte: "Rattachements plage → œuvre qui semblent faux. Une ligne disparaît à la synchro qui suit sa correction sur MusicBrainz." }),
+    ...sections.filter(([cle]) => types[cle].length).map(([cle, titre]) => {
+      const parEdition = new Map();
+      for (const ligne of types[cle]) {
+        if (!parEdition.has(ligne.edition)) parEdition.set(ligne.edition, []);
+        parEdition.get(ligne.edition).push(ligne);
+      }
+      return creer("details", { classe: "verifications-type" },
+        creer("summary", {}, titre, creer("span", { classe: "discret", texte: " (" + types[cle].length + ")" })),
+        ...[...parEdition].map(([edition, lignes]) => creer("div", { classe: "verifications-disque" },
+          creer("p", {},
+            creer("button", { type: "button", classe: "bouton-texte", texte: edition.titre, surclic: () => ouvrirFiche(edition) }),
+            edition.musicbrainz ? creer("a", { href: edition.musicbrainz, target: "_blank", rel: "noopener", texte: " MusicBrainz ↗" }) : null),
+          creer("ul", {}, lignes.map(({ texte }) => creer("li", { texte }))))));
+    })
   );
 }
 
