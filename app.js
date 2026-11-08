@@ -1128,7 +1128,13 @@ function versionsDeLOeuvre(oeuvre, liste) {
     const occurrences = [];
     for (const element of plages) {
       const courante = occurrences[occurrences.length - 1];
-      if (!courante || courante.some((e) => idDe(e) === idDe(element))) {
+      const derniere = courante && courante[courante.length - 1];
+      // Œuvre entière découpée en plages sans mouvements MB (Le Mandarin merveilleux : 11 plages
+      // reliées chacune à l'œuvre) : les plages qui se suivent sur le même disque forment une seule version.
+      const suiteDeLOeuvre = derniere && idDe(element) === "entiere" && idDe(derniere) === "entiere"
+        && derniere.rang === element.rang - 1
+        && disqueDeLaPosition(derniere.plage.position) === disqueDeLaPosition(element.plage.position);
+      if (!courante || (!suiteDeLOeuvre && courante.some((e) => idDe(e) === idDe(element)))) {
         const reprises = [];
         while (courante && courante.length) {
           const derniere = courante[courante.length - 1];
@@ -1232,7 +1238,8 @@ function ligneVersion(version, dureeMax) {
         creer("span", { classe: "version-duree" },
           creer("span", { classe: "version-barre", style: "width:" + Math.round(duree.secondes / dureeMax * 100) + "%" }),
           creer("span", { texte: [texteDureeFine(duree) || "durée inconnue",
-            nbParties ? pluriel(nbParties, "partie") : null].filter(Boolean).join(" · ") })))));
+            nbParties ? pluriel(nbParties, "partie") : version.plages.length > 1 ? pluriel(version.plages.length, "plage") : null]
+            .filter(Boolean).join(" · ") })))));
 }
 
 /**
