@@ -621,10 +621,33 @@ function oeuvresDeLEdition(plages) {
   return oeuvres;
 }
 
+// MusicBrainz a parfois deux fiches pour la même œuvre (« Iberia, B. 47 » : Ciccolini d'un côté,
+// un disque de guitare de l'autre). On les regroupe quand le titre et le compositeur sont identiques :
+// id MusicBrainz -> id retenu (le premier rencontré).
+let idsCanoniques = new Map();
+
+/** Remplit idsCanoniques à partir des plages de tous les disques (à faire avant de regrouper les éditions). */
+function regrouperOeuvresJumelles(disques) {
+  const parCle = new Map();
+  idsCanoniques = new Map();
+  const parcourir = (plages) => {
+    for (const plage of plages || []) {
+      if (plage.oeuvre) {
+        const reference = plage.oeuvre.parente || plage.oeuvre;
+        const cle = normaliser(plage.oeuvre.compositeur) + "|" + normaliser(reference.titre).replace(/\s+/g, " ").trim();
+        if (!parCle.has(cle)) parCle.set(cle, reference.id);
+        else if (parCle.get(cle) !== reference.id) idsCanoniques.set(reference.id, parCle.get(cle));
+      }
+      parcourir(plage.sous_plages);
+    }
+  };
+  for (const disque of disques) parcourir(disque.plages);
+}
+
 /** L'œuvre à afficher pour une plage : l'œuvre parente s'il y en a une (le concerto plutôt que le mouvement). */
 function oeuvreDeReference(oeuvre) {
   const reference = oeuvre.parente || oeuvre;
-  return { id: reference.id, titre: reference.titre, compositeur: oeuvre.compositeur };
+  return { id: idsCanoniques.get(reference.id) || reference.id, titre: reference.titre, compositeur: oeuvre.compositeur };
 }
 
 /** « Le quattro stagioni (Antonio Vivaldi) » */
@@ -641,6 +664,7 @@ async function chargerCollection() {
     const donnees = await reponse.json();
     infosCollection = donnees;
     modifications = modificationsEnAttente(donnees.genere_le);
+    regrouperOeuvresJumelles(donnees.disques || []);
     editions = regrouperParEdition(donnees.disques || []);
   } catch (erreur) {
     afficherMessage(
@@ -1073,6 +1097,14 @@ function plagesAvecHeritage(plages, groupes = []) {
   });
 }
 
+/**
+ * Clé d'une partie : son titre (sans celui de l'œuvre), et non son id MusicBrainz, pour que les
+ * mouvements de deux fiches jumelles (voir regrouperOeuvresJumelles) tombent sur la même ligne.
+ */
+function idDeLaPartie(plage, oeuvre) {
+  return plage.oeuvre.parente ? normaliser(titreDeLaPartie(plage.oeuvre.titre, oeuvre.titre)) : "entiere";
+}
+
 /** Titre d'une partie sans le titre de l'œuvre devant : « Selva morale e spirituale: Gloria » -> « Gloria ». */
 function titreDeLaPartie(titre, titreOeuvre) {
   // « : » ou « : » à la française (espace avant) selon la langue du titre MusicBrainz.
@@ -1092,7 +1124,7 @@ function versionsDeLOeuvre(oeuvre, liste) {
     // Un coffret peut contenir plusieurs enregistrements de la même œuvre (Ciccolini : quatre Suite bergamasque) :
     // une partie déjà vue ouvre une nouvelle version. Celle-ci reprend les plages qui la précèdent
     // sans interruption sur le même disque (Prélude et Menuet avant le 2e Clair de lune).
-    const idDe = ({ plage }) => plage.oeuvre.parente ? plage.oeuvre.id : "entiere";
+    const idDe = ({ plage }) => idDeLaPartie(plage, oeuvre);
     const occurrences = [];
     for (const element of plages) {
       const courante = occurrences[occurrences.length - 1];
@@ -1114,7 +1146,7 @@ function versionsDeLOeuvre(oeuvre, liste) {
     return occurrences.map((plagesVersion) => {
       const parties = new Map();
       for (const { plage } of plagesVersion) {
-        const id = plage.oeuvre.parente ? plage.oeuvre.id : "entiere";
+        const id = idDeLaPartie(plage, oeuvre);
         const titre = plage.oeuvre.parente ? titreDeLaPartie(plage.oeuvre.titre, oeuvre.titre) : "Œuvre entière";
         if (!parties.has(id)) parties.set(id, { titre, secondes: 0 });
         parties.get(id).secondes += secondesDe(plage.duree) || 0;
