@@ -667,3 +667,32 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
   .version-pochette { flex-basis: 52px; width: 52px; height: 52px; }
   .tableau-parties tbody th { min-width: 140px; }
 }
+
+/* ---------- Onglet « Œuvres » : compositeurs repliables, œuvres par catalogue ---------- */
+body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: none; }
+.oeuvres { max-width: 900px; }
+.oeuvres-outils { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 8px; }
+.oeuvres-outils input[type="search"], .oeuvres-outils select {
+  background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 7px 10px;
+}
+.oeuvres-recherche { flex: 1 1 280px; min-width: 0; }
+.oeuvres-outils label { display: inline-flex; align-items: center; gap: 6px; color: var(--texte-2); white-space: nowrap; }
+.oeuvres-compte { margin: 0 0 12px; color: var(--texte-discret); font-size: 13px; }
+.oeuvres-compositeur { border-bottom: 1px solid var(--bordure); }
+.oeuvres-compositeur summary { padding: 9px 0; cursor: pointer; font-weight: 600; }
+.oeuvres-compositeur summary .discret { color: var(--texte-discret); font-weight: 400; }
+.oeuvres-compositeur[open] summary { color: var(--accent); }
+.oeuvres-liste { list-style: none; margin: 0 0 10px; padding: 0 0 0 16px; display: grid; gap: 6px; }
+.oeuvres-liste .index-nom { overflow-wrap: anywhere; }
+.oeuvres-versions { color: var(--accent); font-size: 13px; }
+
+.onglet { white-space: nowrap; }
+@media (max-width: 700px) {
+  .onglets { width: 100%; }
+  .onglet { flex: 1 1 auto; padding: 5px 4px; font-size: 14px; }
+  .oeuvres-recherche { flex-basis: 100%; }
+}
+/* Petits téléphones (iPhone SE) : les cinq onglets tiennent sur une ligne. */
+@media (max-width: 380px) {
+  .onglet { font-size: 12.5px; padding: 5px 1px; }
+}
