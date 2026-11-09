@@ -69,7 +69,9 @@ DISQUES_PAR_SYNCHRO = 200
 #              dont une plage n'a pas de durée sur Discogs sont revues.
 # Version 11 : association par position (numéro de CD + numéro de plage) quand les nombres de plages
 #              diffèrent (voir associer_par_position) ; seules les éditions trouvées sans œuvres sont revues.
-VERSION_RECHERCHE = 11
+# Version 12 : artistes de l'enregistrement de chaque plage (« Academy of Ancient Music, Richard Egarr »),
+#              gardés avec son œuvre ; seules les compilations (« Various ») trouvées avec œuvres sont revues.
+VERSION_RECHERCHE = 12
 
 # Au-delà de ce nombre d'enregistrements, le serveur MusicBrainz ne renvoie plus les relations (œuvres,
 # dates) dans la lecture d'une édition, pour ne pas saturer : on les lit alors par paquets de 100.
@@ -210,7 +212,26 @@ def oeuvre_de_plage(plage_mb):
                 and relation.get("work") and not parente:
             parente = {"id": relation["work"]["id"], "titre": relation["work"].get("title", "")}
     compositeur = ", ".join(noms["composer"] or noms["writer"]) or None
-    return {"id": oeuvre["id"], "titre": oeuvre.get("title", ""), "compositeur": compositeur, "parente": parente}
+    resultat = {"id": oeuvre["id"], "titre": oeuvre.get("title", ""), "compositeur": compositeur, "parente": parente}
+    artistes = artistes_de_plage(plage_mb)
+    if artistes:
+        resultat["artistes"] = artistes
+    return resultat
+
+
+def artistes_de_plage(plage_mb):
+    """
+    Artistes de l'enregistrement d'une plage MusicBrainz (« Artiste de l'enregistrement » sur le site) :
+    ceux de la plage, sinon ceux de l'enregistrement. Liste de noms, vide si MusicBrainz n'en a pas.
+    Le compositeur y figure parfois : la page le retire elle-même.
+    """
+    credits = plage_mb.get("artist-credit") or (plage_mb.get("recording") or {}).get("artist-credit") or []
+    noms = []
+    for credit in credits:
+        nom = (credit.get("artist") or {}).get("name") or credit.get("name")
+        if nom and nom.lower() not in ("various artists", "[unknown]") and nom not in noms:
+            noms.append(nom)
+    return noms
 
 
 # Relations d'un enregistrement dont la date est celle de l'enregistrement : le lieu, l'œuvre
@@ -246,7 +267,8 @@ def lire_relations_par_paquets(identifiant):
     {identifiant d'enregistrement: enregistrement}. Si MusicBrainz refuse les relations des œuvres
     (compositeur, œuvre parente) dans ce type de lecture, on se contente des œuvres elles-mêmes.
     """
-    inclusions = ["work-rels+work-level-rels+artist-rels+place-rels+area-rels", "work-rels+artist-rels+place-rels+area-rels"]
+    inclusions = ["artist-credits+work-rels+work-level-rels+artist-rels+place-rels+area-rels",
+                  "artist-credits+work-rels+artist-rels+place-rels+area-rels"]
     for inc in inclusions:
         enregistrements, decalage = {}, 0
         try:
@@ -272,7 +294,7 @@ def lire_edition_mb(identifiant):
     et la position de chaque plage : (numéro du disque, numéro de la plage sur ce disque).
     """
     edition = appeler("release/%s" % identifiant, {
-        "inc": "recordings+recording-level-rels+work-rels+work-level-rels+artist-rels+place-rels+area-rels",
+        "inc": "recordings+artist-credits+recording-level-rels+work-rels+work-level-rels+artist-rels+place-rels+area-rels",
     })
     if not edition:
         return None, None, None, None, None
@@ -556,8 +578,11 @@ def ecrire_cache(fichier, cache):
     temporaire.replace(fichier)
 
 
-def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_duree=False):
-    """Vrai si ce disque doit être (re)cherché sur MusicBrainz. `sans_annee` : Discogs n'a pas son année."""
+def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_duree=False, compilation=False):
+    """
+    Vrai si ce disque doit être (re)cherché sur MusicBrainz. `sans_annee` : Discogs n'a pas son année.
+    `compilation` : disque crédité à « Various » sur Discogs.
+    """
     if not entree or entree.get("nb_plages") != nb_plages:
         return True  # jamais cherché, ou tracklist Discogs modifiée depuis
     version = entree.get("version", 1)
@@ -582,23 +607,25 @@ def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_du
         return True  # une plage sans durée sur Discogs : on lit les durées de l'édition MusicBrainz
     if version < 11 and entree.get("release") and not entree.get("oeuvres"):
         return True  # trouvé sans œuvres : l'association par position (CD + plage) peut aider
+    if version < 12 and compilation and entree.get("oeuvres"):
+        return True  # compilation : on lit en plus les artistes de l'enregistrement de chaque plage
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
 
-def mettre_a_jour(fichier, disques, tout=False, sans_annee=()):
+def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=()):
     """
     Cherche sur MusicBrainz les disques qui ne sont pas encore dans le cache
     (ou dont la recherche est ancienne), au plus DISQUES_PAR_SYNCHRO, sauf si
     tout est vrai. `disques` : liste de (release_id, master_id, plages Discogs, codes-barres).
-    `sans_annee` : release_id des disques sans année sur Discogs.
+    `sans_annee` : release_id des disques sans année sur Discogs. `compilations` : ceux crédités à « Various ».
     Renvoie le cache : {release_id (texte): {"maj", "version", "nb_plages", "methode", "release", "oeuvres", "images"}}.
     """
     cache = lire_cache(fichier)
     a_faire = [d for d in disques
                if a_chercher(cache.get(str(d[0])), len(plages_a_associer(d[2])), d[0] in sans_annee,
                              a_mouvements_meme_position(d[2]),
-                             any(not p.get("duree") for p in plages_a_associer(d[2])))]
+                             any(not p.get("duree") for p in plages_a_associer(d[2])), d[0] in compilations)]
     # Les disques jamais cherchés d'abord, puis les recherches les plus anciennes.
     a_faire.sort(key=lambda d: (str(d[0]) in cache, (cache.get(str(d[0])) or {}).get("version", 1),
                                 (cache.get(str(d[0])) or {}).get("maj", "")))

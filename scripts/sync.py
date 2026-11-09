@@ -626,8 +626,11 @@ def main():
             a_chercher[e["id"]] = (e["id"], e.get("basic_information", {}).get("master_id"),
                                    details["plages"], details.get("codes_barres") or [])
     sans_annee = {e["id"] for e in elements if not e.get("basic_information", {}).get("year")}
+    compilations = {e["id"] for e in elements
+                    if any((a.get("name") or "").lower() == "various" for a in e.get("basic_information", {}).get("artists", []))}
     oeuvres = musicbrainz.mettre_a_jour(FICHIER_MUSICBRAINZ, list(a_chercher.values()),
-                                        tout="--musicbrainz-tout" in sys.argv, sans_annee=sans_annee)
+                                        tout="--musicbrainz-tout" in sys.argv, sans_annee=sans_annee,
+                                        compilations=compilations)
 
     print("5/5 Écriture de data/collection.json...")
     disques = [

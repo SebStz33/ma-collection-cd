@@ -1212,11 +1212,17 @@ function interpretesDeLaVersion(edition, plages, oeuvre) {
   ]));
   const noms = surLesPlages.filter(pasCompositeur);
   if (noms.length) return [...new Set(noms)];
+  // Discogs ne dit rien sur les plages : artistes de l'enregistrement d'après MusicBrainz
+  // (coffret « Various » : Academy of Ancient Music, Richard Egarr).
+  const selonMusicBrainz = plages.flatMap(({ plage }) => (plage.oeuvre && plage.oeuvre.artistes) || []).filter(pasCompositeur);
+  if (selonMusicBrainz.length) return [...new Set(selonMusicBrainz)];
   // Artistes principaux : on retire aussi les compositeurs des autres plages (John Field sur un disque
   // de nocturnes de Chopin et Field), sauf s'il ne reste personne (Eliane Elias, qui compose et joue).
   const principaux = (edition.artistes_principaux || []).filter(pasCompositeur);
   const sansAutresCompositeurs = principaux.filter((nom) => !(edition.compositeurs || []).some((c) => memePersonne(c, nom)));
-  return [...new Set(sansAutresCompositeurs.length ? sansAutresCompositeurs : principaux)];
+  if (principaux.length) return [...new Set(sansAutresCompositeurs.length ? sansAutresCompositeurs : principaux)];
+  // Toujours personne : l'artiste du disque compose ce qu'il joue (Amy Winehouse, John Coltrane).
+  return [...new Set((edition.artistes_principaux || []).filter((nom) => nom && !/^various$/i.test(nom)))];
 }
 
 /**
