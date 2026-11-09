@@ -2526,7 +2526,8 @@ const ROLES_EN_FRANCAIS = {
   "contralto vocals": "contralto", countertenor: "contre-ténor", "countertenor vocals": "contre-ténor",
   tenor: "ténor", "tenor vocals": "ténor", baritone: "baryton", "baritone vocals": "baryton", bass: "basse",
   "bass vocals": "basse", "bass-baritone": "baryton-basse", "bass-baritone vocals": "baryton-basse",
-  conductor: "direction", "chorus master": "chef de chœur", "choir vocals": "chœur",
+  conductor: "direction", "chorus master": "chef de chœur", "choir vocals": "chœur", "background vocals": "chœurs",
+  archlute: "archiluth", reeds: "anches", "string quartet": "quatuor à cordes", "piano trio": "trio avec piano",
 };
 // Rôles qui ne disent rien de plus que le nom (un orchestre, un ensemble) : on ne les affiche pas.
 const ROLES_SANS_PRECISION = ["orchestra", "ensemble", "choir", "chorus", "performer", "soloist", "featuring", "band", "performing orchestra"];
