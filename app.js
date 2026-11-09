@@ -1311,8 +1311,9 @@ function versionsDeLOeuvre(oeuvre, liste) {
       for (const { plage } of plagesVersion) {
         const id = idDeLaPartie(plage, oeuvre);
         const titre = plage.oeuvre.parente ? titreDeLaPartie(plage.oeuvre.titre, oeuvre.titre) : "Œuvre entière";
-        if (!parties.has(id)) parties.set(id, { titre, secondes: 0 });
+        if (!parties.has(id)) parties.set(id, { titre, secondes: 0, durees: [] });
         parties.get(id).secondes += secondesDe(plage.duree) || 0;
+        parties.get(id).durees.push(secondesDe(plage.duree) || 0);   // 2 plages ou plus : rattachement à vérifier
       }
       return {
         edition, parties, plages: plagesVersion,
@@ -1427,11 +1428,18 @@ function tableauDesParties(versions) {
     creer("thead", {}, creer("tr", {},
       creer("th", { texte: "Partie" }),
       versions.map((v) => creer("th", { title: v.interpretes.join(", ") + " · " + v.edition.titre },
-        nomCourtDeLaVersion(v), creer("span", { classe: "colonne-categorie", texte: v.categorie }))))),
+        nomCourtDeLaVersion(v), creer("span", { classe: "colonne-categorie", texte: v.categorie }),
+        creer("span", { classe: "colonne-duree", texte: texteMinutes(v.duree.secondes) }))))),
     creer("tbody", {}, [...toutes].map(([id, titre]) => creer("tr", {},
       creer("th", { texte: titre }),
       versions.map((v) => {
         const partie = v.parties.get(id);
+        if (partie && partie.durees.length > 1) {
+          // Plusieurs plages reliées à la même partie : souvent une erreur de rattachement sur MusicBrainz.
+          return creer("td", { classe: "doublee", title: "Plusieurs plages reliées à cette partie sur MusicBrainz : à vérifier" },
+            "⚠ " + partie.durees.length + " plages",
+            creer("span", { classe: "durees-doublees", texte: partie.durees.map((d) => texteMinutes(d) || "?").join(" + ") }));
+        }
         return creer("td", { texte: partie ? texteMinutes(partie.secondes) || "✓" : "–",
           classe: partie ? null : "absente" });
       })))));

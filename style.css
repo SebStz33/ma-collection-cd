@@ -655,7 +655,7 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
 .tableau-parties { border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; min-width: 100%; }
 .tableau-parties th, .tableau-parties td { padding: 6px 10px; border-bottom: 1px solid var(--bordure); vertical-align: top; }
 .tableau-parties thead th { position: sticky; top: 0; background: var(--surface-2); text-align: right; font-weight: 600;
-  max-width: 140px; white-space: normal; }
+  max-width: 140px; white-space: normal; vertical-align: bottom; }
 .tableau-parties thead th:first-child, .tableau-parties tbody th { text-align: left; }
 .tableau-parties tbody th { font-weight: 400; color: var(--texte); min-width: 180px; max-width: 360px; }
 .tableau-parties td { text-align: right; white-space: nowrap; color: var(--texte-2); }
@@ -751,4 +751,8 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 /* Page Œuvre : versions regroupées par catégorie ; catégorie sous les interprètes dans le tableau des parties */
 .versions-categorie { margin: 14px 0 6px; font-size: 14px; color: var(--accent); }
 .tableau-parties .colonne-categorie { display: block; font-size: 11px; font-weight: 400; color: var(--texte-discret); }
+/* Durée totale de la version sous la catégorie ; plage en double : alerte et durées de chaque plage */
+.tableau-parties .colonne-duree { display: block; font-size: 11px; font-weight: 400; color: var(--texte-2); }
+.tableau-parties td.doublee { color: var(--accent); }
+.tableau-parties .durees-doublees { display: block; font-size: 11px; color: var(--texte-discret); }
 .oeuvres-explication { margin: 0 0 12px; font-size: 12px; color: var(--texte-discret); }
