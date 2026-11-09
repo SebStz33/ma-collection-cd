@@ -71,7 +71,9 @@ DISQUES_PAR_SYNCHRO = 200
 #              diffèrent (voir associer_par_position) ; seules les éditions trouvées sans œuvres sont revues.
 # Version 12 : artistes de l'enregistrement de chaque plage (« Academy of Ancient Music, Richard Egarr »),
 #              gardés avec son œuvre ; seules les compilations (« Various ») trouvées avec œuvres sont revues.
-VERSION_RECHERCHE = 12
+# Version 13 : ces artistes viennent d'abord de l'enregistrement et de ses interprètes reliés (la plage
+#              d'une compilation classique ne crédite que le compositeur) ; mêmes éditions revues.
+VERSION_RECHERCHE = 13
 
 # Au-delà de ce nombre d'enregistrements, le serveur MusicBrainz ne renvoie plus les relations (œuvres,
 # dates) dans la lecture d'une édition, pour ne pas saturer : on les lit alors par paquets de 100.
@@ -219,18 +221,35 @@ def oeuvre_de_plage(plage_mb):
     return resultat
 
 
+# Relations d'un enregistrement qui désignent ses interprètes, dans l'ordre où on les affiche.
+RELATIONS_INTERPRETES = ("conductor", "performing orchestra", "performer", "instrument", "vocal", "chorus master")
+
+
 def artistes_de_plage(plage_mb):
     """
-    Artistes de l'enregistrement d'une plage MusicBrainz (« Artiste de l'enregistrement » sur le site) :
-    ceux de la plage, sinon ceux de l'enregistrement. Liste de noms, vide si MusicBrainz n'en a pas.
-    Le compositeur y figure parfois : la page le retire elle-même.
+    Interprètes d'une plage MusicBrainz, liste de noms (vide si MusicBrainz n'en a pas) :
+      1. l'« Artiste de l'enregistrement » (« Academy of Ancient Music, Richard Egarr ») ;
+      2. les interprètes reliés à l'enregistrement (chef, orchestre, soliste…) ;
+      3. à défaut, l'artiste de la plage, qui dans une compilation classique est souvent le compositeur.
+    Le compositeur peut y figurer : la page le retire elle-même.
     """
-    credits = plage_mb.get("artist-credit") or (plage_mb.get("recording") or {}).get("artist-credit") or []
+    enregistrement = plage_mb.get("recording") or {}
     noms = []
-    for credit in credits:
-        nom = (credit.get("artist") or {}).get("name") or credit.get("name")
-        if nom and nom.lower() not in ("various artists", "[unknown]") and nom not in noms:
+
+    def ajouter(nom):
+        if nom and nom.lower() not in ("various artists", "[unknown]", "[dialogue]") and nom not in noms:
             noms.append(nom)
+
+    for credit in enregistrement.get("artist-credit") or []:
+        ajouter((credit.get("artist") or {}).get("name") or credit.get("name"))
+    relations = enregistrement.get("relations") or []
+    for type_relation in RELATIONS_INTERPRETES:
+        for relation in relations:
+            if relation.get("type") == type_relation and relation.get("artist"):
+                ajouter(relation["artist"].get("name"))
+    if not noms:
+        for credit in plage_mb.get("artist-credit") or []:
+            ajouter((credit.get("artist") or {}).get("name") or credit.get("name"))
     return noms
 
 
@@ -607,7 +626,7 @@ def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_du
         return True  # une plage sans durée sur Discogs : on lit les durées de l'édition MusicBrainz
     if version < 11 and entree.get("release") and not entree.get("oeuvres"):
         return True  # trouvé sans œuvres : l'association par position (CD + plage) peut aider
-    if version < 12 and compilation and entree.get("oeuvres"):
+    if version < 13 and compilation and entree.get("oeuvres"):
         return True  # compilation : on lit en plus les artistes de l'enregistrement de chaque plage
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
