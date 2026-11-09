@@ -1403,8 +1403,10 @@ function ligneVersion(version, dureeMax) {
   ].filter(Boolean).join(" · ");
   const nbParties = [...parties.keys()].filter((id) => id !== "entiere").length;
   return creer("li", {},
-    creer("button", { type: "button", classe: "version", surclic: () => ouvrirFiche(edition),
-      title: "Ouvrir la fiche du disque" },
+    creer("button", { type: "button", classe: "version",
+      // Coffret : la fiche s'ouvre sur l'œuvre, dans son CD.
+      surclic: () => ouvrirFiche(edition, { position: estCoffret(edition) ? version.plages[0].plage.position : null }),
+      title: "Ouvrir la fiche du disque" + (estCoffret(edition) && version.disque !== null ? ", sur cette œuvre" : "") },
       creer("span", { classe: "version-pochette" },
         image ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
           : creer("span", { classe: "sans-image", texte: "♪" })),
@@ -1986,6 +1988,24 @@ function defilerFicheVers(element) {
   if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+/** Édition en plusieurs disques (positions « 2-5 », « CD3-1 »…). */
+function estCoffret(edition) {
+  return new Set(plagesAvecHeritage(edition.plages || []).map(({ plage }) => disqueDeLaPosition(plage.position)).filter(Boolean)).size > 1;
+}
+
+/**
+ * Fiche ouverte depuis la page d'une œuvre : on descend jusqu'à cette plage (ou jusqu'à l'œuvre en mouvements
+ * qui la contient) et on la surligne un instant.
+ */
+function montrerPlageDansLaFiche(position) {
+  const plage = [...$("fiche").querySelectorAll("li[data-position]")].find((li) => li.dataset.position === position);
+  if (!plage) return;
+  const cible = plage.parentElement.closest("li.plage-oeuvre") || plage;
+  cible.scrollIntoView({ block: "center" });
+  cible.classList.add("plage-montree");
+  setTimeout(() => cible.classList.remove("plage-montree"), 2500);
+}
+
 /** Clic sur un nom dans une fiche : on lance la recherche sur ce nom, dans ce rôle. */
 function chercherNom(nom, role) {
   Object.assign(etat, { recherche: nom, role, vue: "collection" });
@@ -2080,7 +2100,7 @@ function aDeuxSourcesDePhotos(edition) {
   return images.some((i) => i.type === "musicbrainz") && images.some((i) => i.type !== "musicbrainz");
 }
 
-function ouvrirFiche(edition) {
+function ouvrirFiche(edition, { position = null } = {}) {
 
   const informations = [
     ["Catégorie", categoriesChoisies(edition).join(" · ")],
@@ -2223,6 +2243,7 @@ function ouvrirFiche(edition) {
   );
   $("fiche").showModal();
   $("fiche").scrollTop = 0;
+  if (position) montrerPlageDansLaFiche(position);
   document.querySelectorAll("#fiche .vignettes").forEach((bloc) => bloc.ajuster && bloc.ajuster());
   ajusterNoms($("fiche"));
   // Autres crédits dépliés : leurs rubriques se mesurent à ce moment-là.
@@ -2693,7 +2714,7 @@ function lignePlage(plage, suivi, interpretes = null) {
   // Le compositeur est déjà dans la ligne de l'œuvre MusicBrainz : on ne le répète pas dans les crédits.
   const oeuvre = oeuvreDeLaPlage(plage);
   const credits = (plage.credits || []).filter((c) => !(oeuvre && oeuvre.compositeur && estCreditDeCompositeur(c)));
-  return creer("li", { classe: plage.type === "oeuvre" ? "plage plage-oeuvre" : "plage" },
+  return creer("li", { classe: plage.type === "oeuvre" ? "plage plage-oeuvre" : "plage", "data-position": plage.position || null },
     creer("span", { classe: "plage-position", texte: plage.position }),
     creer("div", {},
       creer("div", { classe: "plage-titre", texte: plage.titre }),
