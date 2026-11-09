@@ -303,6 +303,15 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .duree-disque { color: var(--texte-discret); font-weight: 400; font-size: 13px; }
 .plage-artistes { color: var(--texte-2); font-size: 13px; }
 .plage-credits { color: var(--texte-discret); font-size: 12px; }
+/* Interprètes : en-tête d'un disque de coffret (communs à tout le disque) et ligne sous une œuvre */
+.interpretes-disque { color: var(--texte-2); font-weight: 400; font-size: 13px; min-width: 0; }
+.plage-disque > span:first-child, .plage-disque .duree-disque { white-space: nowrap; }
+/* Sur téléphone : les interprètes du disque passent sur une ligne à eux, sous « CD 24 · durée ». */
+@media (max-width: 700px) {
+  .plage-disque { flex-wrap: wrap; row-gap: 2px; }
+  .interpretes-disque { order: 9; flex-basis: 100%; }
+}
+.plage-interpretes { color: var(--texte-discret); font-size: 12px; }
 .plage-intertitre { font-weight: 600; color: var(--accent); padding: 12px 0 4px; border-bottom: 1px solid var(--bordure); }
 .plages > .plage-intertitre:first-child { padding-top: 0; }
 /* Œuvre MusicBrainz sous une plage : cliquable pour voir mes autres versions */

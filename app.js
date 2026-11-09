@@ -2481,25 +2481,131 @@ function disqueDeLaPlage(plage) {
  */
 function listePlagesParDisque(plages, suivi) {
   const disques = [...new Set(plages.map(disqueDeLaPlage).filter(Boolean))];
-  if (disques.length < 2) return { liste: listePlages(plages, suivi), disques: [] };
+  const edition = suivi.edition;
+  // Interprètes affichés en plus de Discogs : seulement dans un coffret ou une compilation (« Various »),
+  // où ils changent d'un disque ou d'une œuvre à l'autre.
+  const compilation = (edition.artistes_principaux || []).some((nom) => /^various$/i.test(nom));
+  const avecInterpretes = disques.length > 1 || compilation;
+  const ligne = (plage, dejaDits) => lignePlage(plage, suivi,
+    avecInterpretes ? ligneInterpretesDeLOeuvre(plage, edition, dejaDits) : null);
+  if (disques.length < 2) return { liste: creer("ol", { classe: "plages" }, plages.map((plage) => ligne(plage, []))), disques: [] };
   const vus = new Set();
+  const enTete = new Map(disques.map((disque) => [disque,
+    interpretesCommuns(plages.filter((p) => disqueDeLaPlage(p) === disque), edition)]));
   const lignes = plages.flatMap((plage) => {
     const disque = disqueDeLaPlage(plage);
     const debut = disque && !vus.has(disque);
     if (debut) vus.add(disque);
     return [
-      debut ? intertitreDisque(disques, disque, texteDuree(dureeTotale(plages.filter((p) => disqueDeLaPlage(p) === disque)))) : null,
-      lignePlage(plage, suivi),
+      debut ? intertitreDisque(disques, disque, texteDuree(dureeTotale(plages.filter((p) => disqueDeLaPlage(p) === disque))),
+        enTete.get(disque)) : null,
+      ligne(plage, (enTete.get(disque) || []).map((i) => i.nom)),
     ];
   });
   return { liste: creer("ol", { classe: "plages" }, lignes), disques };
+}
+
+// Rôles d'interprètes (MusicBrainz et Discogs, en anglais) -> français. Un rôle absent garde son nom anglais.
+const ROLES_EN_FRANCAIS = {
+  piano: "piano", harpsichord: "clavecin", organ: "orgue", "pipe organ": "orgue", fortepiano: "pianoforte",
+  violin: "violon", "baroque violin": "violon", viola: "alto", cello: "violoncelle", violoncello: "violoncelle",
+  "baroque cello": "violoncelle", "double bass": "contrebasse", contrabass: "contrebasse", "viola da gamba": "viole de gambe",
+  "bass viol": "viole de gambe", flute: "flûte", "transverse flute": "flûte", "baroque flute": "flûte", traverso: "flûte",
+  recorder: "flûte à bec", oboe: "hautbois", "oboe d'amore": "hautbois d'amour", clarinet: "clarinette",
+  bassoon: "basson", horn: "cor", "french horn": "cor", "natural horn": "cor naturel", trumpet: "trompette",
+  "natural trumpet": "trompette naturelle", trombone: "trombone", tuba: "tuba", guitar: "guitare",
+  "acoustic guitar": "guitare acoustique", "electric guitar": "guitare électrique", "bass guitar": "basse",
+  "electric bass guitar": "basse", lute: "luth", theorbo: "théorbe", harp: "harpe", mandolin: "mandoline",
+  percussion: "percussions", timpani: "timbales", drums: "batterie", "drums (drum set)": "batterie",
+  vibraphone: "vibraphone", accordion: "accordéon", bandoneon: "bandonéon", keyboard: "claviers", keyboards: "claviers",
+  saxophone: "saxophone", "alto saxophone": "saxophone alto", "tenor saxophone": "saxophone ténor",
+  "soprano saxophone": "saxophone soprano", "baritone saxophone": "saxophone baryton", "basso continuo": "continuo",
+  continuo: "continuo", vocals: "voix", vocal: "voix", voice: "voix", "lead vocals": "chant", "spoken vocals": "récitant",
+  narrator: "récitant", soprano: "soprano", "soprano vocals": "soprano", "mezzo-soprano": "mezzo-soprano",
+  "mezzo-soprano vocals": "mezzo-soprano", alto: "alto", "alto vocals": "alto", contralto: "contralto",
+  "contralto vocals": "contralto", countertenor: "contre-ténor", "countertenor vocals": "contre-ténor",
+  tenor: "ténor", "tenor vocals": "ténor", baritone: "baryton", "baritone vocals": "baryton", bass: "basse",
+  "bass vocals": "basse", "bass-baritone": "baryton-basse", "bass-baritone vocals": "baryton-basse",
+  conductor: "direction", "chorus master": "chef de chœur", "choir vocals": "chœur",
+};
+// Rôles qui ne disent rien de plus que le nom (un orchestre, un ensemble) : on ne les affiche pas.
+const ROLES_SANS_PRECISION = ["orchestra", "ensemble", "choir", "chorus", "performer", "soloist", "featuring", "band", "performing orchestra"];
+
+/** « Soprano Vocals, Piano [Steinway] » -> « soprano, piano » ; null si rien d'utile. */
+function roleEnFrancais(role) {
+  const roles = String(role || "").split(/,\s*/).map((r) => r.replace(/\s*\[.*?\]/g, "").trim().toLowerCase())
+    .filter((r) => r && !ROLES_SANS_PRECISION.includes(r)).map((r) => ROLES_EN_FRANCAIS[r] || r);
+  return [...new Set(roles)].join(", ") || null;
+}
+
+/**
+ * Interprètes d'une plage réelle : [{ nom, role, source }]. D'abord Discogs (artistes de la plage et crédits
+ * d'interprètes, sur elle ou sur son œuvre), sinon MusicBrainz (artistes de l'enregistrement, avec leur rôle).
+ * Jamais le compositeur de l'œuvre.
+ */
+function interpretesDeLaPlage({ plage, groupes }, edition) {
+  const oeuvre = plage.oeuvre || {};
+  const compositeurs = [...String(oeuvre.compositeur || "").split(/,\s*/),
+    ...[plage, ...groupes].flatMap((p) => (p.credits || []).filter(estCreditDeCompositeur).map((c) => c.nom))].filter(Boolean);
+  const retenu = (nom) => nom && !/^various$/i.test(nom) && !compositeurs.some((c) => memePersonne(c, nom));
+  const interpretesConnus = edition.interpretes || [];
+  const selonDiscogs = [plage, ...groupes].flatMap((p) => [
+    ...(p.artistes || []).map((nom) => ({ nom, role: null, source: "discogs" })),
+    ...(p.credits || []).filter((c) => !estCreditDeCompositeur(c) && interpretesConnus.includes(c.nom))
+      .map((c) => ({ nom: c.nom, role: roleEnFrancais(c.role), source: "discogs" })),
+  ]).filter((i) => retenu(i.nom));
+  const liste = selonDiscogs.length ? selonDiscogs
+    : (oeuvre.artistes || []).filter(retenu).map((nom) => ({ nom, role: roleEnFrancais((oeuvre.roles || {})[nom]), source: "musicbrainz" }));
+  const parNom = new Map();
+  for (const i of liste) if (!parNom.has(i.nom) || (!parNom.get(i.nom).role && i.role)) parNom.set(i.nom, i);
+  return [...parNom.values()];
+}
+
+/** Interprètes présents sur toutes les plages de ces lignes (en-tête d'un disque), sauf l'artiste du disque. */
+function interpretesCommuns(plages, edition) {
+  const listes = plagesAvecHeritage(plages).map((p) => interpretesDeLaPlage(p, edition));
+  if (!listes.length) return [];
+  const principaux = edition.artistes_principaux || [];
+  return listes[0].filter((i) => listes.every((l) => l.some((x) => x.nom === i.nom))
+    && !principaux.some((nom) => memePersonne(nom, i.nom)))
+    .map((i) => listes.map((l) => l.find((x) => x.nom === i.nom)).find((x) => x.role) || i);
+}
+
+// Au-delà, une liste d'interprètes est coupée (« … et 6 autres ») : la liste entière est dans l'infobulle.
+const INTERPRETES_AFFICHES = 5;
+
+/** « Alain Planès, piano · Freiburger Barockorchester » */
+function texteInterpretes(interpretes, tous = false) {
+  const textes = interpretes.map((i) => i.nom + (i.role ? ", " + i.role : ""));
+  if (tous || textes.length <= INTERPRETES_AFFICHES + 1) return textes.join(" · ");
+  return textes.slice(0, INTERPRETES_AFFICHES).join(" · ") + " … et " + (textes.length - INTERPRETES_AFFICHES) + " autres";
+}
+
+/**
+ * Ligne grise sous une œuvre (ou une plage) d'un coffret ou d'une compilation : ses interprètes selon
+ * MusicBrainz (ceux de Discogs sont déjà dans ses crédits), sauf ceux déjà dans l'en-tête du disque
+ * et l'artiste du disque.
+ */
+function ligneInterpretesDeLOeuvre(plage, edition, dejaDits) {
+  if (plage.type === "intertitre") return null;
+  const principaux = edition.artistes_principaux || [];
+  const parNom = new Map();
+  for (const reelle of plagesAvecHeritage([plage])) {
+    for (const i of interpretesDeLaPlage(reelle, edition)) {
+      if (i.source !== "musicbrainz" || dejaDits.includes(i.nom) || principaux.some((nom) => memePersonne(nom, i.nom))) continue;
+      if (!parNom.has(i.nom) || (!parNom.get(i.nom).role && i.role)) parNom.set(i.nom, i);
+    }
+  }
+  const liste = [...parNom.values()];
+  return liste.length ? creer("div", { classe: "plage-interpretes", title: "Selon MusicBrainz : " + texteInterpretes(liste, true),
+    texte: texteInterpretes(liste) }) : null;
 }
 
 /**
  * Intertitre « CD 2 » d'un coffret, avec à droite « ↑↑ ↑ Préc. » (sauf au début)
  * et « ↓ Suiv. ↓↓ » (sauf à la fin), pour passer d'un disque à l'autre ou aller au premier / dernier.
  */
-function intertitreDisque(disques, disque, duree = "") {
+function intertitreDisque(disques, disque, duree = "", interpretes = []) {
   const numero = disques.indexOf(disque);
   const aller = (cible) => (evenement) => {
     const liste = evenement.currentTarget.closest(".plages");
@@ -2510,6 +2616,8 @@ function intertitreDisque(disques, disque, duree = "") {
   return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
     creer("span", { texte: disque }),
     duree ? creer("span", { classe: "duree-disque", texte: duree }) : null,
+    interpretes && interpretes.length ? creer("span", { classe: "interpretes-disque", texte: texteInterpretes(interpretes),
+      title: "Sur tout le disque : " + texteInterpretes(interpretes, true) }) : null,
     // ↑↑ (premier disque) et ↓↓ (dernier) seulement s'ils mènent ailleurs que « Préc. » et « Suiv. ».
     creer("span", { classe: "navigation-disques" },
       numero > 1 ? lien("↑↑", disques[0], "Premier disque", "fleche-double") : null,
@@ -2578,7 +2686,7 @@ function creditsParRole(credits) {
   return [...parRole].map(([role, noms]) => role + " – " + noms.join(", ")).join(" · ");
 }
 
-function lignePlage(plage, suivi) {
+function lignePlage(plage, suivi, interpretes = null) {
   if (plage.type === "intertitre") return creer("li", { classe: "plage-intertitre", texte: plage.titre });
   const artistes = plage.artistes || [];
   // Le compositeur est déjà dans la ligne de l'œuvre MusicBrainz : on ne le répète pas dans les crédits.
@@ -2591,6 +2699,7 @@ function lignePlage(plage, suivi) {
       artistes.length ? creer("div", { classe: "plage-artistes", texte: artistes.join(", ") }) : null,
       // Crédits au format Discogs : « Piano – Glenn Gould · Conductor – Herbert von Karajan »
       credits.length ? creer("div", { classe: "plage-credits", texte: creditsParRole(credits) }) : null,
+      interpretes,
       ligneOeuvre(plage, suivi)
     ),
     // Une œuvre en plusieurs mouvements : la durée totale de ses mouvements.

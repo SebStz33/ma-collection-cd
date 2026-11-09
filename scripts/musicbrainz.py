@@ -73,7 +73,8 @@ DISQUES_PAR_SYNCHRO = 200
 #              gardés avec son œuvre ; seules les compilations (« Various ») trouvées avec œuvres sont revues.
 # Version 13 : ces artistes viennent d'abord de l'enregistrement et de ses interprètes reliés (la plage
 #              d'une compilation classique ne crédite que le compositeur) ; mêmes éditions revues.
-VERSION_RECHERCHE = 13
+# Version 14 : rôle de chaque interprète (instrument, voix, direction) ; mêmes éditions revues.
+VERSION_RECHERCHE = 14
 
 # Au-delà de ce nombre d'enregistrements, le serveur MusicBrainz ne renvoie plus les relations (œuvres,
 # dates) dans la lecture d'une édition, pour ne pas saturer : on les lit alors par paquets de 100.
@@ -215,9 +216,11 @@ def oeuvre_de_plage(plage_mb):
             parente = {"id": relation["work"]["id"], "titre": relation["work"].get("title", "")}
     compositeur = ", ".join(noms["composer"] or noms["writer"]) or None
     resultat = {"id": oeuvre["id"], "titre": oeuvre.get("title", ""), "compositeur": compositeur, "parente": parente}
-    artistes = artistes_de_plage(plage_mb)
+    artistes, roles = artistes_de_plage(plage_mb)
     if artistes:
         resultat["artistes"] = artistes
+    if roles:
+        resultat["roles"] = roles
     return resultat
 
 
@@ -225,9 +228,25 @@ def oeuvre_de_plage(plage_mb):
 RELATIONS_INTERPRETES = ("conductor", "performing orchestra", "performer", "instrument", "vocal", "chorus master")
 
 
+def role_de_relation(relation):
+    """
+    Rôle d'un interprète d'après sa relation MusicBrainz, en anglais comme sur MusicBrainz
+    (la page le traduit) : « piano », « soprano vocals », « conductor »… ; None pour un orchestre,
+    un ensemble ou un interprète sans précision.
+    """
+    type_relation = relation.get("type")
+    attributs = [a for a in relation.get("attributes") or [] if a not in ("additional", "guest", "solo")]
+    if type_relation in ("instrument", "vocal"):
+        return ", ".join(attributs) or ("vocals" if type_relation == "vocal" else None)
+    if type_relation in ("conductor", "chorus master"):
+        return type_relation
+    return None
+
+
 def artistes_de_plage(plage_mb):
     """
-    Interprètes d'une plage MusicBrainz, liste de noms (vide si MusicBrainz n'en a pas) :
+    Interprètes d'une plage MusicBrainz : (liste de noms, {nom: rôle}), vides si MusicBrainz n'en a pas.
+    Les noms :
       1. l'« Artiste de l'enregistrement » (« Academy of Ancient Music, Richard Egarr ») ;
       2. les interprètes reliés à l'enregistrement (chef, orchestre, soliste…) ;
       3. à défaut, l'artiste de la plage, qui dans une compilation classique est souvent le compositeur.
@@ -243,14 +262,19 @@ def artistes_de_plage(plage_mb):
     for credit in enregistrement.get("artist-credit") or []:
         ajouter((credit.get("artist") or {}).get("name") or credit.get("name"))
     relations = enregistrement.get("relations") or []
+    roles = {}
     for type_relation in RELATIONS_INTERPRETES:
         for relation in relations:
             if relation.get("type") == type_relation and relation.get("artist"):
-                ajouter(relation["artist"].get("name"))
+                nom = relation["artist"].get("name")
+                ajouter(nom)
+                role = role_de_relation(relation)
+                if nom and role and nom not in roles:
+                    roles[nom] = role
     if not noms:
         for credit in plage_mb.get("artist-credit") or []:
             ajouter((credit.get("artist") or {}).get("name") or credit.get("name"))
-    return noms
+    return noms, {nom: role for nom, role in roles.items() if nom in noms}
 
 
 # Relations d'un enregistrement dont la date est celle de l'enregistrement : le lieu, l'œuvre
@@ -626,7 +650,7 @@ def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_du
         return True  # une plage sans durée sur Discogs : on lit les durées de l'édition MusicBrainz
     if version < 11 and entree.get("release") and not entree.get("oeuvres"):
         return True  # trouvé sans œuvres : l'association par position (CD + plage) peut aider
-    if version < 13 and compilation and entree.get("oeuvres"):
+    if version < 14 and compilation and entree.get("oeuvres"):
         return True  # compilation : on lit en plus les artistes de l'enregistrement de chaque plage
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
