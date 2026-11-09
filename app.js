@@ -1431,7 +1431,7 @@ function tableauDesParties(versions) {
   for (const v of parNombre) for (const [id, partie] of v.parties) if (!toutes.has(id)) toutes.set(id, partie.titre);
   // Dès 2 parties, même pour une seule version : durée de chaque mouvement et plages en double.
   if (!versions.length || [...toutes.keys()].filter((id) => id !== "entiere").length < 2) return null;
-  const tableau = creer("table", { classe: "tableau-parties" },
+  const tableau = creer("table", { classe: "tableau-parties" + (versions.length === 1 ? " une-version" : "") },
     creer("thead", {}, creer("tr", {},
       creer("th", { texte: "Partie" }),
       versions.map((v) => creer("th", { title: v.interpretes.join(", ") + " · " + v.edition.titre },
