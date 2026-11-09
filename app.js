@@ -1429,7 +1429,8 @@ function tableauDesParties(versions) {
   const toutes = new Map();   // id -> titre, dans l'ordre de la version qui en a le plus
   const parNombre = [...versions].sort((a, b) => b.parties.size - a.parties.size);
   for (const v of parNombre) for (const [id, partie] of v.parties) if (!toutes.has(id)) toutes.set(id, partie.titre);
-  if (versions.length < 2 || [...toutes.keys()].filter((id) => id !== "entiere").length < 2) return null;
+  // Dès 2 parties, même pour une seule version : durée de chaque mouvement et plages en double.
+  if (!versions.length || [...toutes.keys()].filter((id) => id !== "entiere").length < 2) return null;
   const tableau = creer("table", { classe: "tableau-parties" },
     creer("thead", {}, creer("tr", {},
       creer("th", { texte: "Partie" }),
@@ -1451,7 +1452,7 @@ function tableauDesParties(versions) {
       })))));
   return creer("section", { classe: "parties" },
     creer("h3", { classe: "oeuvre-intertitre" }, "Parties",
-      creer("span", { classe: "discret", texte: " · « – » : absente de cette version" })),
+      versions.length > 1 ? creer("span", { classe: "discret", texte: " · « – » : absente de cette version" }) : null),
     creer("div", { classe: "tableau-defilant" }, tableau));
 }
 
