@@ -1525,7 +1525,9 @@ function catalogueDe(titre) {
   const m = RE_CATALOGUE.exec(titre);
   if (!m) return null;
   const type = m[1].toUpperCase() === "KV" ? "K" : m[1].toUpperCase();
-  return { type, numero: Number(m[2]), suffixe: m[3].toLowerCase() };
+  // Numéro dans l'opus : « op. 18 no. 4 », « op. 9, Nr. 2 », « op. 10 n° 3 » (0 s'il n'y en a pas).
+  const dans = /^\s*,?\s*(?:no|nr|n°|nº|num)\.?\s*(\d+)/i.exec(titre.slice(m.index + m[0].length));
+  return { type, numero: Number(m[2]), suffixe: m[3].toLowerCase(), dansLOpus: dans ? Number(dans[1]) : 0 };
 }
 
 /**
@@ -1573,7 +1575,8 @@ function calculerOeuvresParCompositeur() {
     const rangs = [...frequence].sort((a, b) => b[1] - a[1]).map(([type]) => type);
     const rang = (c) => c ? rangs.indexOf(c.type) : rangs.length;
     oeuvres.sort((a, b) => rang(a.catalogue) - rang(b.catalogue)
-      || (a.catalogue && b.catalogue ? a.catalogue.numero - b.catalogue.numero || a.catalogue.suffixe.localeCompare(b.catalogue.suffixe) : 0)
+      || (a.catalogue && b.catalogue ? a.catalogue.numero - b.catalogue.numero || a.catalogue.suffixe.localeCompare(b.catalogue.suffixe)
+        || a.catalogue.dansLOpus - b.catalogue.dansLOpus : 0)
       || comparerTextes(a.oeuvre.titre, b.oeuvre.titre));
     return { compositeur, oeuvres };
   }).sort((a, b) => comparerTextes(cleDeTri(a.compositeur.split(",")[0], true), cleDeTri(b.compositeur.split(",")[0], true)));
