@@ -589,20 +589,36 @@ def tracklist_sommaire(plages, positions):
     return bool(positions) and len(positions) > nb_discogs and nb_discogs <= len({d for d, _ in positions})
 
 
-def plages_de_musicbrainz(titres, durees, positions):
+def plages_de_musicbrainz(titres, durees, positions, oeuvres=None):
     """
     Tracklist de l'édition MusicBrainz dans le format de sync.py : « 1-1 », « 1-2 »… (« 1 », « 2 »…
     pour un seul disque), titre et durée. Les œuvres sont ajoutées ensuite par sync.py (ajouter_oeuvres).
+    Comme les « index tracks » de Discogs, les plages consécutives d'une même œuvre parente, sur un même
+    disque, sont regroupées sous une plage « oeuvre » à son titre (« Carnaval, op. 9 » et ses mouvements).
     """
     un_seul_disque = len({d for d, _ in positions}) == 1
-    plages = []
-    for (disque, numero), titre, duree in zip(positions, titres, durees or [None] * len(positions)):
+    oeuvres = oeuvres or [None] * len(positions)
+    plages, groupe_en_cours = [], None
+    for (disque, numero), titre, duree, oeuvre in zip(positions, titres, durees or [None] * len(positions), oeuvres):
         plage = {"position": str(numero) if un_seul_disque else "%s-%s" % (disque, numero), "titre": titre,
                  "duree": texte_duree(duree) if duree else "", "type": "plage", "artistes": [], "credits": []}
         if duree:
             plage["duree_source"] = "musicbrainz"
-        plages.append(plage)
-    return plages
+        parente = (oeuvre or {}).get("parente")
+        cle = (disque, parente["id"]) if parente else None
+        if cle and groupe_en_cours and groupe_en_cours[0] == cle:
+            groupe_en_cours[1].append(plage)
+        else:
+            groupe_en_cours = [cle, [plage], parente]
+            plages.append(groupe_en_cours)
+    resultat = []
+    for cle, groupe, parente in plages:
+        if cle and len(groupe) > 1:
+            resultat.append({"position": "", "titre": parente.get("titre", ""), "duree": "", "type": "oeuvre",
+                             "artistes": [], "credits": [], "sous_plages": groupe})
+        else:
+            resultat.extend(groupe)
+    return resultat
 
 
 def texte_duree(millisecondes):
@@ -726,7 +742,7 @@ def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=(), 
         plages_mb = None
         if oeuvres is not None and methode in METHODES_EXACTES and (
                 tracklist_sommaire(plages, positions) or precedente.get("plages")):
-            plages_mb = plages_de_musicbrainz(titres, durees, positions)
+            plages_mb = plages_de_musicbrainz(titres, durees, positions, oeuvres)
             durees = None  # déjà dans les plages
         elif oeuvres is not None and len(oeuvres) not in nombres_acceptes(plages):
             # Nombre de plages différent, même en groupant les mouvements : on associe par position
