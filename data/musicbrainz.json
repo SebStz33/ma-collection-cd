@@ -42540,38 +42540,48 @@
    {
     "artistes": [],
     "credits": [],
-    "duree": "7:50",
-    "duree_source": "musicbrainz",
-    "position": "1-5",
-    "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: I. Grave",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "7:18",
-    "duree_source": "musicbrainz",
-    "position": "1-6",
-    "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: II. Scherzo",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "10:02",
-    "duree_source": "musicbrainz",
-    "position": "1-7",
-    "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: III. Marche funèbre. Lento",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:54",
-    "duree_source": "musicbrainz",
-    "position": "1-8",
-    "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: IV. Finale. Presto",
-    "type": "plage"
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "7:50",
+      "duree_source": "musicbrainz",
+      "position": "1-5",
+      "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: I. Grave",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "7:18",
+      "duree_source": "musicbrainz",
+      "position": "1-6",
+      "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: II. Scherzo",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "10:02",
+      "duree_source": "musicbrainz",
+      "position": "1-7",
+      "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: III. Marche funèbre. Lento",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:54",
+      "duree_source": "musicbrainz",
+      "position": "1-8",
+      "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: IV. Finale. Presto",
+      "type": "plage"
+     }
+    ],
+    "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35 “Funeral March”",
+    "type": "oeuvre"
    },
    {
     "artistes": [],
@@ -42594,785 +42604,915 @@
    {
     "artistes": [],
     "credits": [],
-    "duree": "2:36",
-    "duree_source": "musicbrainz",
-    "position": "2-1",
-    "titre": "Carnaval, Op. 9: I. Préambule",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:13",
-    "duree_source": "musicbrainz",
-    "position": "2-2",
-    "titre": "Carnaval, Op. 9: II. Pierrot",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:17",
-    "duree_source": "musicbrainz",
-    "position": "2-3",
-    "titre": "Carnaval, Op. 9: III. Arlequin",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:15",
-    "duree_source": "musicbrainz",
-    "position": "2-4",
-    "titre": "Carnaval, Op. 9: IV. Valse noble",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:35",
-    "duree_source": "musicbrainz",
-    "position": "2-5",
-    "titre": "Carnaval, Op. 9: V. Eusebius",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:08",
-    "duree_source": "musicbrainz",
-    "position": "2-6",
-    "titre": "Carnaval, Op. 9: VI. Florestan",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:43",
-    "duree_source": "musicbrainz",
-    "position": "2-7",
-    "titre": "Carnaval, Op. 9: VII. Coquette",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:08",
-    "duree_source": "musicbrainz",
-    "position": "2-8",
-    "titre": "Carnaval, Op. 9: VIII. Réplique",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:44",
-    "duree_source": "musicbrainz",
-    "position": "2-9",
-    "titre": "Carnaval, Op. 9: IX. Papillons",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:54",
-    "duree_source": "musicbrainz",
-    "position": "2-10",
-    "titre": "Carnaval, Op. 9: X. A.S.C.H. - S.C.H.A.: Lettres dansantes",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:42",
-    "duree_source": "musicbrainz",
-    "position": "2-11",
-    "titre": "Carnaval, Op. 9: XI. Chiarina",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:29",
-    "duree_source": "musicbrainz",
-    "position": "2-12",
-    "titre": "Carnaval, Op. 9: XII. Chopin",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:37",
-    "duree_source": "musicbrainz",
-    "position": "2-13",
-    "titre": "Carnaval, Op. 9: XIII. Estrella",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:45",
-    "duree_source": "musicbrainz",
-    "position": "2-14",
-    "titre": "Carnaval, Op. 9: XIV. Reconnaissance",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:04",
-    "duree_source": "musicbrainz",
-    "position": "2-15",
-    "titre": "Carnaval, Op. 9: XV. Pantalon et Colombine",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:52",
-    "duree_source": "musicbrainz",
-    "position": "2-16",
-    "titre": "Carnaval, Op. 9: XVI. Valse allemande",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:44",
-    "duree_source": "musicbrainz",
-    "position": "2-17",
-    "titre": "Carnaval, Op. 9: Intermezzo: Paganini",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:04",
-    "duree_source": "musicbrainz",
-    "position": "2-18",
-    "titre": "Carnaval, Op. 9: XVII. Aveu",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:59",
-    "duree_source": "musicbrainz",
-    "position": "2-19",
-    "titre": "Carnaval, Op. 9: XVIII. Promenade",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:18",
-    "duree_source": "musicbrainz",
-    "position": "2-20",
-    "titre": "Carnaval, Op. 9: XIX. Pause",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:32",
-    "duree_source": "musicbrainz",
-    "position": "2-21",
-    "titre": "Carnaval, Op. 9: XX. Marche des \"Davidsbündler\" contre les Philistins",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "10:50",
-    "duree_source": "musicbrainz",
-    "position": "2-22",
-    "titre": "Faschingsschwank aus Wien, Op. 26: I. Allegro. Sehr lebhaft",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:56",
-    "duree_source": "musicbrainz",
-    "position": "2-23",
-    "titre": "Faschingsschwank aus Wien, Op. 26: II. Romanze. Ziemlich langsam",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:32",
-    "duree_source": "musicbrainz",
-    "position": "2-24",
-    "titre": "Faschingsschwank aus Wien, Op. 26: III. Scherzino",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:13",
-    "duree_source": "musicbrainz",
-    "position": "2-25",
-    "titre": "Faschingsschwank aus Wien, Op. 26: IV. Intermezzo. Mit größter Energie",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "5:35",
-    "duree_source": "musicbrainz",
-    "position": "2-26",
-    "titre": "Faschingsschwank aus Wien, Op. 26: V. Finale. Höchst lebhaft",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "7:35",
-    "duree_source": "musicbrainz",
-    "position": "3-1",
-    "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: I. Allegro con brio",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "8:45",
-    "duree_source": "musicbrainz",
-    "position": "3-2",
-    "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: II. Adagio con molto espressione",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:12",
-    "duree_source": "musicbrainz",
-    "position": "3-3",
-    "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: III. Menuetto",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "6:07",
-    "duree_source": "musicbrainz",
-    "position": "3-4",
-    "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: IV. Rondo. Allegretto",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "7:47",
-    "duree_source": "musicbrainz",
-    "position": "3-5",
-    "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": I. Andante con Variazioni",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:52",
-    "duree_source": "musicbrainz",
-    "position": "3-6",
-    "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": II. Scherzo. Allegro molto",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "6:01",
-    "duree_source": "musicbrainz",
-    "position": "3-7",
-    "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": III. Marcia funebre sulla morte d'un Eroe",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:14",
-    "duree_source": "musicbrainz",
-    "position": "3-8",
-    "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": IV. Allegro",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "9:36",
-    "duree_source": "musicbrainz",
-    "position": "3-9",
-    "titre": "Sonata for Piano No. 32 in C minor, Op. 111: I. Maestoso - Allegro con brio ed appassionato",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "16:55",
-    "duree_source": "musicbrainz",
-    "position": "3-10",
-    "titre": "Sonata for Piano No. 32 in C minor, Op. 111: II. Arietta. Adagio molto semplice e cantabile",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "5:13",
-    "duree_source": "musicbrainz",
-    "position": "4-1",
-    "titre": "4 Ballades, Op. 10: Andante / Allegro / Andante",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "7:35",
-    "duree_source": "musicbrainz",
-    "position": "4-2",
-    "titre": "4 Ballades, Op. 10: Andante / Allegro non troppo / Molto staccato e leggiero / Andante",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:09",
-    "duree_source": "musicbrainz",
-    "position": "4-3",
-    "titre": "4 Ballades, Op. 10: Intermezzo. Allegro",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "11:35",
-    "duree_source": "musicbrainz",
-    "position": "4-4",
-    "titre": "4 Ballades, Op. 10: Andante con moto",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:30",
-    "duree_source": "musicbrainz",
-    "position": "4-5",
-    "titre": "Variations on a Theme by Paganini, Op. 35: Thema. Non troppo presto",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:27",
-    "duree_source": "musicbrainz",
-    "position": "4-6",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 1",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:30",
-    "duree_source": "musicbrainz",
-    "position": "4-7",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 2",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:33",
-    "duree_source": "musicbrainz",
-    "position": "4-8",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 3",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:48",
-    "duree_source": "musicbrainz",
-    "position": "4-9",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 4",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:46",
-    "duree_source": "musicbrainz",
-    "position": "4-10",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 5",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:27",
-    "duree_source": "musicbrainz",
-    "position": "4-11",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 6",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:27",
-    "duree_source": "musicbrainz",
-    "position": "4-12",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 7",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:28",
-    "duree_source": "musicbrainz",
-    "position": "4-13",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 8",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:08",
-    "duree_source": "musicbrainz",
-    "position": "4-14",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 9",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:23",
-    "duree_source": "musicbrainz",
-    "position": "4-15",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 10",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:02",
-    "duree_source": "musicbrainz",
-    "position": "4-16",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 11. Andante",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:58",
-    "duree_source": "musicbrainz",
-    "position": "4-17",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 12",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:44",
-    "duree_source": "musicbrainz",
-    "position": "4-18",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 1",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:29",
-    "duree_source": "musicbrainz",
-    "position": "4-19",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 2. Poco animato",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:23",
-    "duree_source": "musicbrainz",
-    "position": "4-20",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 5",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:23",
-    "duree_source": "musicbrainz",
-    "position": "4-21",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 6. Poco più vivace",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:22",
-    "duree_source": "musicbrainz",
-    "position": "4-22",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 7",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:31",
-    "duree_source": "musicbrainz",
-    "position": "4-23",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 8. Allegro",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:47",
-    "duree_source": "musicbrainz",
-    "position": "4-24",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 10. Feroce, energico",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:11",
-    "duree_source": "musicbrainz",
-    "position": "4-25",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 12. Un poco andante",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:50",
-    "duree_source": "musicbrainz",
-    "position": "4-26",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 13. Un poco più andante",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:33",
-    "duree_source": "musicbrainz",
-    "position": "4-27",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 3",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:07",
-    "duree_source": "musicbrainz",
-    "position": "4-28",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 4. Poco allegretto",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "0:35",
-    "duree_source": "musicbrainz",
-    "position": "4-29",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 13",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "1:02",
-    "duree_source": "musicbrainz",
-    "position": "4-30",
-    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 14. Presto, ma non troppo",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:12",
-    "duree_source": "musicbrainz",
-    "position": "5-1",
-    "titre": "Children's Corner, L. 113: I. Doctor Gradus ad Parnassum",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:45",
-    "duree_source": "musicbrainz",
-    "position": "5-2",
-    "titre": "Children's Corner, L. 113: II. Jimbo's Lullaby",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:31",
-    "duree_source": "musicbrainz",
-    "position": "5-3",
-    "titre": "Children's Corner, L. 113: III. Serenade for the Doll",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:26",
-    "duree_source": "musicbrainz",
-    "position": "5-4",
-    "titre": "Children's Corner, L. 113: IV. The Snow is Dancing",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:30",
-    "duree_source": "musicbrainz",
-    "position": "5-5",
-    "titre": "Children's Corner, L. 113: V. The Little Shepherd",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:05",
-    "duree_source": "musicbrainz",
-    "position": "5-6",
-    "titre": "Children's Corner, L. 113: VI. Golliwogg's Cake-Walk",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:50",
-    "duree_source": "musicbrainz",
-    "position": "5-7",
-    "titre": "Images I, L. 110: I. Reflets dans l'eau",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "6:35",
-    "duree_source": "musicbrainz",
-    "position": "5-8",
-    "titre": "Images I, L. 110: II. Hommage à Rameau",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:44",
-    "duree_source": "musicbrainz",
-    "position": "5-9",
-    "titre": "Images I, L. 110: III. Mouvement",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:21",
-    "duree_source": "musicbrainz",
-    "position": "5-10",
-    "titre": "Images II, L. 111: I. Cloches à travers les feuilles",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:54",
-    "duree_source": "musicbrainz",
-    "position": "5-11",
-    "titre": "Images II, L. 111: II. Et la lune descend sur le temple qui fut",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:05",
-    "duree_source": "musicbrainz",
-    "position": "5-12",
-    "titre": "Images II, L. 111: III. Poissons d'or",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:22",
-    "duree_source": "musicbrainz",
-    "position": "5-13",
-    "titre": "Préludes, Livre I, L. 117: I. Danseuses de Delphes. Lent et grave",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:31",
-    "duree_source": "musicbrainz",
-    "position": "5-14",
-    "titre": "Préludes, Livre I, L. 117: II. Voiles. Modéré",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:37",
-    "duree_source": "musicbrainz",
-    "position": "5-15",
-    "titre": "Préludes, Livre I, L. 117: IV. Les sons et les parfums tournent dans l'air du soir. Modéré",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:28",
-    "duree_source": "musicbrainz",
-    "position": "5-16",
-    "titre": "Préludes, Livre I, L. 117: VII. Ce qu'a vu la vent d'ouest. Animé et tumulteux",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:31",
-    "duree_source": "musicbrainz",
-    "position": "5-17",
-    "titre": "Préludes, Livre I, L. 117: VIII. La fille aux cheveux de lin. Très calme et doucement expressif",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:32",
-    "duree_source": "musicbrainz",
-    "position": "5-18",
-    "titre": "Préludes, Livre I, L. 117: IX. La sérénade interrompue. Modérément animé",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "7:05",
-    "duree_source": "musicbrainz",
-    "position": "5-19",
-    "titre": "Préludes, Livre I, L. 117: X. La cathédrale engloutie. Profondément calme",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:54",
-    "duree_source": "musicbrainz",
-    "position": "5-20",
-    "titre": "Préludes, Livre I, L. 117: XI. La danse de Puck. Capricieux et léger",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:24",
-    "duree_source": "musicbrainz",
-    "position": "5-21",
-    "titre": "Préludes, Livre I, L. 117: XII. Minstrels. Modéré",
-    "type": "plage"
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:36",
+      "duree_source": "musicbrainz",
+      "position": "2-1",
+      "titre": "Carnaval, Op. 9: I. Préambule",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:13",
+      "duree_source": "musicbrainz",
+      "position": "2-2",
+      "titre": "Carnaval, Op. 9: II. Pierrot",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:17",
+      "duree_source": "musicbrainz",
+      "position": "2-3",
+      "titre": "Carnaval, Op. 9: III. Arlequin",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:15",
+      "duree_source": "musicbrainz",
+      "position": "2-4",
+      "titre": "Carnaval, Op. 9: IV. Valse noble",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:35",
+      "duree_source": "musicbrainz",
+      "position": "2-5",
+      "titre": "Carnaval, Op. 9: V. Eusebius",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:08",
+      "duree_source": "musicbrainz",
+      "position": "2-6",
+      "titre": "Carnaval, Op. 9: VI. Florestan",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:43",
+      "duree_source": "musicbrainz",
+      "position": "2-7",
+      "titre": "Carnaval, Op. 9: VII. Coquette",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:08",
+      "duree_source": "musicbrainz",
+      "position": "2-8",
+      "titre": "Carnaval, Op. 9: VIII. Réplique",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:44",
+      "duree_source": "musicbrainz",
+      "position": "2-9",
+      "titre": "Carnaval, Op. 9: IX. Papillons",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:54",
+      "duree_source": "musicbrainz",
+      "position": "2-10",
+      "titre": "Carnaval, Op. 9: X. A.S.C.H. - S.C.H.A.: Lettres dansantes",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:42",
+      "duree_source": "musicbrainz",
+      "position": "2-11",
+      "titre": "Carnaval, Op. 9: XI. Chiarina",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:29",
+      "duree_source": "musicbrainz",
+      "position": "2-12",
+      "titre": "Carnaval, Op. 9: XII. Chopin",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:37",
+      "duree_source": "musicbrainz",
+      "position": "2-13",
+      "titre": "Carnaval, Op. 9: XIII. Estrella",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:45",
+      "duree_source": "musicbrainz",
+      "position": "2-14",
+      "titre": "Carnaval, Op. 9: XIV. Reconnaissance",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:04",
+      "duree_source": "musicbrainz",
+      "position": "2-15",
+      "titre": "Carnaval, Op. 9: XV. Pantalon et Colombine",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:52",
+      "duree_source": "musicbrainz",
+      "position": "2-16",
+      "titre": "Carnaval, Op. 9: XVI. Valse allemande",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:44",
+      "duree_source": "musicbrainz",
+      "position": "2-17",
+      "titre": "Carnaval, Op. 9: Intermezzo: Paganini",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:04",
+      "duree_source": "musicbrainz",
+      "position": "2-18",
+      "titre": "Carnaval, Op. 9: XVII. Aveu",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:59",
+      "duree_source": "musicbrainz",
+      "position": "2-19",
+      "titre": "Carnaval, Op. 9: XVIII. Promenade",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:18",
+      "duree_source": "musicbrainz",
+      "position": "2-20",
+      "titre": "Carnaval, Op. 9: XIX. Pause",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:32",
+      "duree_source": "musicbrainz",
+      "position": "2-21",
+      "titre": "Carnaval, Op. 9: XX. Marche des \"Davidsbündler\" contre les Philistins",
+      "type": "plage"
+     }
+    ],
+    "titre": "Carnaval, op. 9",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "10:50",
+      "duree_source": "musicbrainz",
+      "position": "2-22",
+      "titre": "Faschingsschwank aus Wien, Op. 26: I. Allegro. Sehr lebhaft",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:56",
+      "duree_source": "musicbrainz",
+      "position": "2-23",
+      "titre": "Faschingsschwank aus Wien, Op. 26: II. Romanze. Ziemlich langsam",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:32",
+      "duree_source": "musicbrainz",
+      "position": "2-24",
+      "titre": "Faschingsschwank aus Wien, Op. 26: III. Scherzino",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:13",
+      "duree_source": "musicbrainz",
+      "position": "2-25",
+      "titre": "Faschingsschwank aus Wien, Op. 26: IV. Intermezzo. Mit größter Energie",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "5:35",
+      "duree_source": "musicbrainz",
+      "position": "2-26",
+      "titre": "Faschingsschwank aus Wien, Op. 26: V. Finale. Höchst lebhaft",
+      "type": "plage"
+     }
+    ],
+    "titre": "Faschingsschwank aus Wien, op. 26",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "7:35",
+      "duree_source": "musicbrainz",
+      "position": "3-1",
+      "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: I. Allegro con brio",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "8:45",
+      "duree_source": "musicbrainz",
+      "position": "3-2",
+      "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: II. Adagio con molto espressione",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:12",
+      "duree_source": "musicbrainz",
+      "position": "3-3",
+      "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: III. Menuetto",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "6:07",
+      "duree_source": "musicbrainz",
+      "position": "3-4",
+      "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: IV. Rondo. Allegretto",
+      "type": "plage"
+     }
+    ],
+    "titre": "Sonata for Piano no. 11 in B-flat major, op. 22",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "7:47",
+      "duree_source": "musicbrainz",
+      "position": "3-5",
+      "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": I. Andante con Variazioni",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:52",
+      "duree_source": "musicbrainz",
+      "position": "3-6",
+      "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": II. Scherzo. Allegro molto",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "6:01",
+      "duree_source": "musicbrainz",
+      "position": "3-7",
+      "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": III. Marcia funebre sulla morte d'un Eroe",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:14",
+      "duree_source": "musicbrainz",
+      "position": "3-8",
+      "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": IV. Allegro",
+      "type": "plage"
+     }
+    ],
+    "titre": "Sonata for Piano no. 12 in A-flat major, op. 26 \"Funeral March\"",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "9:36",
+      "duree_source": "musicbrainz",
+      "position": "3-9",
+      "titre": "Sonata for Piano No. 32 in C minor, Op. 111: I. Maestoso - Allegro con brio ed appassionato",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "16:55",
+      "duree_source": "musicbrainz",
+      "position": "3-10",
+      "titre": "Sonata for Piano No. 32 in C minor, Op. 111: II. Arietta. Adagio molto semplice e cantabile",
+      "type": "plage"
+     }
+    ],
+    "titre": "Sonata for Piano no. 32 in C minor, op. 111",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "5:13",
+      "duree_source": "musicbrainz",
+      "position": "4-1",
+      "titre": "4 Ballades, Op. 10: Andante / Allegro / Andante",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "7:35",
+      "duree_source": "musicbrainz",
+      "position": "4-2",
+      "titre": "4 Ballades, Op. 10: Andante / Allegro non troppo / Molto staccato e leggiero / Andante",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:09",
+      "duree_source": "musicbrainz",
+      "position": "4-3",
+      "titre": "4 Ballades, Op. 10: Intermezzo. Allegro",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "11:35",
+      "duree_source": "musicbrainz",
+      "position": "4-4",
+      "titre": "4 Ballades, Op. 10: Andante con moto",
+      "type": "plage"
+     }
+    ],
+    "titre": "Ballades, op. 10",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:30",
+      "duree_source": "musicbrainz",
+      "position": "4-5",
+      "titre": "Variations on a Theme by Paganini, Op. 35: Thema. Non troppo presto",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:27",
+      "duree_source": "musicbrainz",
+      "position": "4-6",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 1",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:30",
+      "duree_source": "musicbrainz",
+      "position": "4-7",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 2",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:33",
+      "duree_source": "musicbrainz",
+      "position": "4-8",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 3",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:48",
+      "duree_source": "musicbrainz",
+      "position": "4-9",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 4",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:46",
+      "duree_source": "musicbrainz",
+      "position": "4-10",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 5",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:27",
+      "duree_source": "musicbrainz",
+      "position": "4-11",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 6",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:27",
+      "duree_source": "musicbrainz",
+      "position": "4-12",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 7",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:28",
+      "duree_source": "musicbrainz",
+      "position": "4-13",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 8",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:08",
+      "duree_source": "musicbrainz",
+      "position": "4-14",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 9",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:23",
+      "duree_source": "musicbrainz",
+      "position": "4-15",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 10",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:02",
+      "duree_source": "musicbrainz",
+      "position": "4-16",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 11. Andante",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:58",
+      "duree_source": "musicbrainz",
+      "position": "4-17",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 12",
+      "type": "plage"
+     }
+    ],
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:44",
+      "duree_source": "musicbrainz",
+      "position": "4-18",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 1",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:29",
+      "duree_source": "musicbrainz",
+      "position": "4-19",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 2. Poco animato",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:23",
+      "duree_source": "musicbrainz",
+      "position": "4-20",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 5",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:23",
+      "duree_source": "musicbrainz",
+      "position": "4-21",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 6. Poco più vivace",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:22",
+      "duree_source": "musicbrainz",
+      "position": "4-22",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 7",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:31",
+      "duree_source": "musicbrainz",
+      "position": "4-23",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 8. Allegro",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:47",
+      "duree_source": "musicbrainz",
+      "position": "4-24",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 10. Feroce, energico",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:11",
+      "duree_source": "musicbrainz",
+      "position": "4-25",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 12. Un poco andante",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:50",
+      "duree_source": "musicbrainz",
+      "position": "4-26",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 13. Un poco più andante",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:33",
+      "duree_source": "musicbrainz",
+      "position": "4-27",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 3",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:07",
+      "duree_source": "musicbrainz",
+      "position": "4-28",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 4. Poco allegretto",
+      "type": "plage"
+     }
+    ],
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "0:35",
+      "duree_source": "musicbrainz",
+      "position": "4-29",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 13",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "1:02",
+      "duree_source": "musicbrainz",
+      "position": "4-30",
+      "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 14. Presto, ma non troppo",
+      "type": "plage"
+     }
+    ],
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:12",
+      "duree_source": "musicbrainz",
+      "position": "5-1",
+      "titre": "Children's Corner, L. 113: I. Doctor Gradus ad Parnassum",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:45",
+      "duree_source": "musicbrainz",
+      "position": "5-2",
+      "titre": "Children's Corner, L. 113: II. Jimbo's Lullaby",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:31",
+      "duree_source": "musicbrainz",
+      "position": "5-3",
+      "titre": "Children's Corner, L. 113: III. Serenade for the Doll",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:26",
+      "duree_source": "musicbrainz",
+      "position": "5-4",
+      "titre": "Children's Corner, L. 113: IV. The Snow is Dancing",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:30",
+      "duree_source": "musicbrainz",
+      "position": "5-5",
+      "titre": "Children's Corner, L. 113: V. The Little Shepherd",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:05",
+      "duree_source": "musicbrainz",
+      "position": "5-6",
+      "titre": "Children's Corner, L. 113: VI. Golliwogg's Cake-Walk",
+      "type": "plage"
+     }
+    ],
+    "titre": "Children’s Corner, L. 113, CD 119",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:50",
+      "duree_source": "musicbrainz",
+      "position": "5-7",
+      "titre": "Images I, L. 110: I. Reflets dans l'eau",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "6:35",
+      "duree_source": "musicbrainz",
+      "position": "5-8",
+      "titre": "Images I, L. 110: II. Hommage à Rameau",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:44",
+      "duree_source": "musicbrainz",
+      "position": "5-9",
+      "titre": "Images I, L. 110: III. Mouvement",
+      "type": "plage"
+     }
+    ],
+    "titre": "Images, Livre 1, L. 110, CD 105",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:21",
+      "duree_source": "musicbrainz",
+      "position": "5-10",
+      "titre": "Images II, L. 111: I. Cloches à travers les feuilles",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:54",
+      "duree_source": "musicbrainz",
+      "position": "5-11",
+      "titre": "Images II, L. 111: II. Et la lune descend sur le temple qui fut",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:05",
+      "duree_source": "musicbrainz",
+      "position": "5-12",
+      "titre": "Images II, L. 111: III. Poissons d'or",
+      "type": "plage"
+     }
+    ],
+    "titre": "Images, Livre 2, L. 111, CD 120",
+    "type": "oeuvre"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:22",
+      "duree_source": "musicbrainz",
+      "position": "5-13",
+      "titre": "Préludes, Livre I, L. 117: I. Danseuses de Delphes. Lent et grave",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:31",
+      "duree_source": "musicbrainz",
+      "position": "5-14",
+      "titre": "Préludes, Livre I, L. 117: II. Voiles. Modéré",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:37",
+      "duree_source": "musicbrainz",
+      "position": "5-15",
+      "titre": "Préludes, Livre I, L. 117: IV. Les sons et les parfums tournent dans l'air du soir. Modéré",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:28",
+      "duree_source": "musicbrainz",
+      "position": "5-16",
+      "titre": "Préludes, Livre I, L. 117: VII. Ce qu'a vu la vent d'ouest. Animé et tumulteux",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:31",
+      "duree_source": "musicbrainz",
+      "position": "5-17",
+      "titre": "Préludes, Livre I, L. 117: VIII. La fille aux cheveux de lin. Très calme et doucement expressif",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:32",
+      "duree_source": "musicbrainz",
+      "position": "5-18",
+      "titre": "Préludes, Livre I, L. 117: IX. La sérénade interrompue. Modérément animé",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "7:05",
+      "duree_source": "musicbrainz",
+      "position": "5-19",
+      "titre": "Préludes, Livre I, L. 117: X. La cathédrale engloutie. Profondément calme",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:54",
+      "duree_source": "musicbrainz",
+      "position": "5-20",
+      "titre": "Préludes, Livre I, L. 117: XI. La danse de Puck. Capricieux et léger",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:24",
+      "duree_source": "musicbrainz",
+      "position": "5-21",
+      "titre": "Préludes, Livre I, L. 117: XII. Minstrels. Modéré",
+      "type": "plage"
+     }
+    ],
+    "titre": "Préludes, Livre I, L. 117, CD 125",
+    "type": "oeuvre"
    },
    {
     "artistes": [],
@@ -43386,29 +43526,39 @@
    {
     "artistes": [],
     "credits": [],
-    "duree": "3:46",
-    "duree_source": "musicbrainz",
-    "position": "6-2",
-    "titre": "Italienisches Konzert in F major, BWV 971: I. Allegro",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:43",
-    "duree_source": "musicbrainz",
-    "position": "6-3",
-    "titre": "Italienisches Konzert in F major, BWV 971: II. Adagio",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:34",
-    "duree_source": "musicbrainz",
-    "position": "6-4",
-    "titre": "Italienisches Konzert in F major, BWV 971: III. Presto",
-    "type": "plage"
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:46",
+      "duree_source": "musicbrainz",
+      "position": "6-2",
+      "titre": "Italienisches Konzert in F major, BWV 971: I. Allegro",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:43",
+      "duree_source": "musicbrainz",
+      "position": "6-3",
+      "titre": "Italienisches Konzert in F major, BWV 971: II. Adagio",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:34",
+      "duree_source": "musicbrainz",
+      "position": "6-4",
+      "titre": "Italienisches Konzert in F major, BWV 971: III. Presto",
+      "type": "plage"
+     }
+    ],
+    "titre": "Italienisches Konzert F-Dur, BWV 971",
+    "type": "oeuvre"
    },
    {
     "artistes": [],
@@ -43422,20 +43572,30 @@
    {
     "artistes": [],
     "credits": [],
-    "duree": "3:44",
-    "duree_source": "musicbrainz",
-    "position": "6-6",
-    "titre": "Seven Sonatas: D major, K. 29 (L. 461)",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:01",
-    "duree_source": "musicbrainz",
-    "position": "6-7",
-    "titre": "Seven Sonatas: C minor, K. 11 (L. 352)",
-    "type": "plage"
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:44",
+      "duree_source": "musicbrainz",
+      "position": "6-6",
+      "titre": "Seven Sonatas: D major, K. 29 (L. 461)",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:01",
+      "duree_source": "musicbrainz",
+      "position": "6-7",
+      "titre": "Seven Sonatas: C minor, K. 11 (L. 352)",
+      "type": "plage"
+     }
+    ],
+    "titre": "Essercizi per gravicembalo",
+    "type": "oeuvre"
    },
    {
     "artistes": [],
@@ -43458,20 +43618,30 @@
    {
     "artistes": [],
     "credits": [],
-    "duree": "3:36",
-    "duree_source": "musicbrainz",
-    "position": "6-10",
-    "titre": "Seven Sonatas: D minor, K. 9 (L. 413)",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:29",
-    "duree_source": "musicbrainz",
-    "position": "6-11",
-    "titre": "Seven Sonatas: B minor, K. 27 (L. 449)",
-    "type": "plage"
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:36",
+      "duree_source": "musicbrainz",
+      "position": "6-10",
+      "titre": "Seven Sonatas: D minor, K. 9 (L. 413)",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:29",
+      "duree_source": "musicbrainz",
+      "position": "6-11",
+      "titre": "Seven Sonatas: B minor, K. 27 (L. 449)",
+      "type": "plage"
+     }
+    ],
+    "titre": "Essercizi per gravicembalo",
+    "type": "oeuvre"
    },
    {
     "artistes": [],
@@ -43485,29 +43655,39 @@
    {
     "artistes": [],
     "credits": [],
-    "duree": "8:17",
-    "duree_source": "musicbrainz",
-    "position": "6-13",
-    "titre": "Sonata V in C major: I. Andante",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "4:26",
-    "duree_source": "musicbrainz",
-    "position": "6-14",
-    "titre": "Sonata V in C major: II. Allegro",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "2:43",
-    "duree_source": "musicbrainz",
-    "position": "6-15",
-    "titre": "Sonata V in C major: III. Allegro assai",
-    "type": "plage"
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "8:17",
+      "duree_source": "musicbrainz",
+      "position": "6-13",
+      "titre": "Sonata V in C major: I. Andante",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "4:26",
+      "duree_source": "musicbrainz",
+      "position": "6-14",
+      "titre": "Sonata V in C major: II. Allegro",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "2:43",
+      "duree_source": "musicbrainz",
+      "position": "6-15",
+      "titre": "Sonata V in C major: III. Allegro assai",
+      "type": "plage"
+     }
+    ],
+    "titre": "Sonata V in C major",
+    "type": "oeuvre"
    },
    {
     "artistes": [],
@@ -43530,20 +43710,30 @@
    {
     "artistes": [],
     "credits": [],
-    "duree": "7:24",
-    "duree_source": "musicbrainz",
-    "position": "7-3",
-    "titre": "Valse in A minor, Op. 34 No. 2",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "5:42",
-    "duree_source": "musicbrainz",
-    "position": "7-4",
-    "titre": "Valse in A-flat major, Op. 34 No. 1",
-    "type": "plage"
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "7:24",
+      "duree_source": "musicbrainz",
+      "position": "7-3",
+      "titre": "Valse in A minor, Op. 34 No. 2",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "5:42",
+      "duree_source": "musicbrainz",
+      "position": "7-4",
+      "titre": "Valse in A-flat major, Op. 34 No. 1",
+      "type": "plage"
+     }
+    ],
+    "titre": "Waltzes, op. 34",
+    "type": "oeuvre"
    },
    {
     "artistes": [],
@@ -43557,20 +43747,30 @@
    {
     "artistes": [],
     "credits": [],
-    "duree": "3:10",
-    "duree_source": "musicbrainz",
-    "position": "7-6",
-    "titre": "Mazurka in A minor, Op. 68 No. 2",
-    "type": "plage"
-   },
-   {
-    "artistes": [],
-    "credits": [],
-    "duree": "3:41",
-    "duree_source": "musicbrainz",
-    "position": "7-7",
-    "titre": "Mazurka in F minor, Op. 68 No. 4",
-    "type": "plage"
+    "duree": "",
+    "position": "",
+    "sous_plages": [
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:10",
+      "duree_source": "musicbrainz",
+      "position": "7-6",
+      "titre": "Mazurka in A minor, Op. 68 No. 2",
+      "type": "plage"
+     },
+     {
+      "artistes": [],
+      "credits": [],
+      "duree": "3:41",
+      "duree_source": "musicbrainz",
+      "position": "7-7",
+      "titre": "Mazurka in F minor, Op. 68 No. 4",
+      "type": "plage"
+     }
+    ],
+    "titre": "Mazurkas, op. 68",
+    "type": "oeuvre"
    },
    {
     "artistes": [],
