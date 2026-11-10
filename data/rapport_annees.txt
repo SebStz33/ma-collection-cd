@@ -1,8 +1,8 @@
-Rapport des années d'enregistrement et des disques live, le 2026-11-09
+Rapport des années d'enregistrement et des disques live, le 2026-11-10
 
-Sources des années d'enregistrement (452 éditions) :
-  saisie manuelle                    25
-  MB sur édition exacte              232
+Sources des années d'enregistrement (455 éditions) :
+  saisie manuelle                    26
+  MB sur édition exacte              234
   MB sur autre édition de l'album    17
   notes Discogs                      71
   titre                              3
@@ -237,7 +237,7 @@ Various — You & The Night & The Music - La Soirée Jazz De L'Année 2012 À L'
     2012
 
 
-3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 » ou « à trouver ») : 1
+3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 », « 2003, 2010 » ou « à trouver ») : 1
 
 Various — Cool 2 (édition 7055920)
     « 1940-1960 (est.) »

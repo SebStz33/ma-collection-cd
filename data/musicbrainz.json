@@ -40651,13 +40651,2975 @@
   "version": 5
  },
  "20144050": {
-  "images": [],
-  "maj": "2026-11-01",
-  "methode": "aucune",
+  "annee_parution": 1999,
+  "annees_enregistrement": [
+   1941,
+   1990
+  ],
+  "durees": null,
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/725d6bc7-8b3b-4e68-bc26-9815cee39cd8/12041315471-250.jpg",
+    "original": "https://coverartarchive.org/release/725d6bc7-8b3b-4e68-bc26-9815cee39cd8/12041315471.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/725d6bc7-8b3b-4e68-bc26-9815cee39cd8/12041315471-500.jpg"
+   }
+  ],
+  "maj": "2026-11-10",
+  "methode": "edition",
   "nb_plages": 7,
-  "oeuvres": null,
-  "release": null,
-  "version": 2
+  "oeuvres": [
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "a8b0ecb3-1d72-3901-b256-4514fcc08ade",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Scherzo no. 2 in B‐flat minor, op. 31"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "f94364c5-b4ca-3555-af9e-86dff67757af",
+    "parente": {
+     "id": "680c7826-6949-4861-9058-99dcec7b819d",
+     "titre": "Ballades"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Ballade no. 1 in G minor, op. 23"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "4c9f3751-a09a-3b1a-8ef4-5a4fc098120a",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Andante spianato et Grande polonaise brillante in E‐flat major, op. 22"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "d8c5d27a-04fc-3fe5-99f3-a3201c0428d8",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Berceuse in D‐flat major, op. 57"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "049ff4b5-07f3-3bad-8cf4-be186092c96e",
+    "parente": {
+     "id": "7f3f7fdf-6a54-3f28-ba5c-765dbe3d689f",
+     "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35 “Funeral March”"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35: I. Grave – Doppio movimento"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "70d36c18-186f-35ed-943c-798e85432db6",
+    "parente": {
+     "id": "7f3f7fdf-6a54-3f28-ba5c-765dbe3d689f",
+     "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35 “Funeral March”"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35: II. Scherzo"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "4c44b1e9-6155-36fa-828a-5b99ae82c0f8",
+    "parente": {
+     "id": "7f3f7fdf-6a54-3f28-ba5c-765dbe3d689f",
+     "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35 “Funeral March”"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35: III. Marche funèbre. Lento"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "2a5ae4c7-34bb-3d2b-8c51-8644bcfe05f6",
+    "parente": {
+     "id": "7f3f7fdf-6a54-3f28-ba5c-765dbe3d689f",
+     "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35 “Funeral March”"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35: IV. Finale. Presto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "5ddd538f-88ca-3477-930b-768f40be9fb6",
+    "parente": {
+     "id": "0de86236-2ade-4305-8184-ea409fd3e9fc",
+     "titre": "Mazurkas, op. 59"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Mazurkas, op. 59: No. 3 in F‐sharp minor. Vivace"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "99f349fb-32fd-34a0-b0ce-03fc39276264",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Valse in E‐flat major, op. posth."
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "521e6d1d-cbe6-3560-88e0-7d88d86a0285",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: I. Préambule"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "5b2efa67-9cae-39b5-80a8-3f6a0a19a0d9",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: II. Pierrot"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "32add338-f218-3a22-a9c0-2c0a4b8435ae",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: III. Arlequin"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "73bba6fd-0923-38d4-b256-3c110018d191",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: IV. Valse noble"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "6c4898a2-1514-3ee7-80f2-013de20108f5",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: V. Eusebius"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "8da41266-ba51-354b-b304-d93181994e77",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: VI. Florestan"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "0972131a-22db-327b-a9dc-e5adae5b74cb",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: VII. Coquette"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "efc30438-4371-328a-930b-8a39dbce729c",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: VIII. Réplique"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "335409d7-3d92-37b9-9f15-ed91dd685fb2",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: IX. Papillons"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "d29107ed-c087-3fec-970d-013c1c49cd80",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: X. A.S.C.H. - S.C.H.A.: Lettres dansantes"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "37b8d32e-6c9c-3f00-93c7-880f2a079500",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XI. Chiarina"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "cea4364b-5e48-3457-a112-29507b422a45",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XII. Chopin"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "c2b90f64-f500-35d0-858b-880b0cba10bf",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XIII. Estrella"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "936e7ee9-f67c-3a69-b388-0116a6cff365",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XIV. Reconnaissance"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "d6126b11-f4fa-333e-b1bd-6925a0ea05ed",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XV. Pantalon et Colombine"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "f3f2a3b3-fd96-31d8-8c8f-290da37eb695",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XVI. Valse allemande"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "48d15db5-f344-3721-9ccf-881d91a0db92",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: Intermezzo: Paganini"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "18b7cff9-7912-38df-8fb4-fa6784645d5e",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XVII. Aveu"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "741af0cf-e42e-3697-9267-ad2541b99f23",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XVIII. Promenade"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "5aff2c24-595d-3419-ac8f-063721f38854",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XIX. Pause"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "bf19cc69-eda3-335c-b465-2fbde7ce27a8",
+    "parente": {
+     "id": "20cb8152-c2ad-3e20-a818-bc32624b1838",
+     "titre": "Carnaval, op. 9"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Carnaval, op. 9: XX. Marche des ''Davidsbündler'' contre les Philistins"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "d15a4412-e2d1-3107-8720-a05d97a4430a",
+    "parente": {
+     "id": "8aa6f584-d39e-4bf5-96de-e342a747d41a",
+     "titre": "Faschingsschwank aus Wien, op. 26"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Faschingsschwank aus Wien, op. 26: I. Allegro. Sehr lebhaft"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "0234a545-70a7-3251-9085-ac0794c85f09",
+    "parente": {
+     "id": "8aa6f584-d39e-4bf5-96de-e342a747d41a",
+     "titre": "Faschingsschwank aus Wien, op. 26"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Faschingsschwank aus Wien, op. 26: II. Romanze. Ziemlich langsam"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "2b8b4366-f19e-3f09-891f-27a5506be376",
+    "parente": {
+     "id": "8aa6f584-d39e-4bf5-96de-e342a747d41a",
+     "titre": "Faschingsschwank aus Wien, op. 26"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Faschingsschwank aus Wien, op. 26: III. Scherzino"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "ad085799-27b5-3508-acda-21571677aa55",
+    "parente": {
+     "id": "8aa6f584-d39e-4bf5-96de-e342a747d41a",
+     "titre": "Faschingsschwank aus Wien, op. 26"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Faschingsschwank aus Wien, op. 26: IV. Intermezzo. Mit größter Energie"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Robert Schumann",
+    "id": "4311bea8-83b0-362e-9681-0f85876300ed",
+    "parente": {
+     "id": "8aa6f584-d39e-4bf5-96de-e342a747d41a",
+     "titre": "Faschingsschwank aus Wien, op. 26"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Faschingsschwank aus Wien, op. 26: V. Finale. Höchst lebhaft"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "ad7807bd-bb3f-3a11-a1ac-fff2d6948453",
+    "parente": {
+     "id": "94bc3c50-ea92-421f-b9a7-c9bc2b0b4695",
+     "titre": "Sonata for Piano no. 11 in B-flat major, op. 22"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 11 in B-flat major, op. 22: I. Allegro con brio"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "9f728d17-47e2-30ff-b6ca-3b99ef5cf8d6",
+    "parente": {
+     "id": "94bc3c50-ea92-421f-b9a7-c9bc2b0b4695",
+     "titre": "Sonata for Piano no. 11 in B-flat major, op. 22"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 11 in B-flat major, op. 22: II. Adagio con molto espressione"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "96686c7f-f45c-3bd6-97c2-ec5bbb0aee0b",
+    "parente": {
+     "id": "94bc3c50-ea92-421f-b9a7-c9bc2b0b4695",
+     "titre": "Sonata for Piano no. 11 in B-flat major, op. 22"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 11 in B-flat major, op. 22: III. Menuetto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "89c83d85-2d06-38fa-8c79-c703e3f5b85e",
+    "parente": {
+     "id": "94bc3c50-ea92-421f-b9a7-c9bc2b0b4695",
+     "titre": "Sonata for Piano no. 11 in B-flat major, op. 22"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 11 in B-flat major, op. 22: IV. Rondo. Allegretto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "4609500c-f6c3-3d31-af7e-9a557e18f933",
+    "parente": {
+     "id": "bff859ad-5e24-4a7f-8717-855dfac72925",
+     "titre": "Sonata for Piano no. 12 in A-flat major, op. 26 \"Funeral March\""
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 12 in A-flat major, op. 26 \"Funeral March\": I. Andante con Variazioni"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "e9ff3daa-a11b-3dfb-a278-5e4c66d8bd96",
+    "parente": {
+     "id": "bff859ad-5e24-4a7f-8717-855dfac72925",
+     "titre": "Sonata for Piano no. 12 in A-flat major, op. 26 \"Funeral March\""
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 12 in A‐flat major, op. 26 “Funeral March”: II. Scherzo. Allegro molto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "5f8833b6-03aa-31d9-98f1-ae754c7067ea",
+    "parente": {
+     "id": "bff859ad-5e24-4a7f-8717-855dfac72925",
+     "titre": "Sonata for Piano no. 12 in A-flat major, op. 26 \"Funeral March\""
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 12 in A-flat major, op. 26 \"Funeral March\": III. Marcia funebre sulla morte d'un Eroe"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "90f2732e-b7f6-33c4-9829-f60e4cb32108",
+    "parente": {
+     "id": "bff859ad-5e24-4a7f-8717-855dfac72925",
+     "titre": "Sonata for Piano no. 12 in A-flat major, op. 26 \"Funeral March\""
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 12 in A-flat major, op. 26 \"Funeral March\": IV. Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "88fb51a0-8dac-365d-8e00-055aa97f4d43",
+    "parente": {
+     "id": "1767f1b8-6374-3ad8-8772-3b5ebd40a53a",
+     "titre": "Sonata for Piano no. 32 in C minor, op. 111"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 32 in C minor, op. 111: I. Maestoso – Allegro con brio ed appassionato"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "607559e1-ac3d-36af-8abc-f9a1756330b6",
+    "parente": {
+     "id": "1767f1b8-6374-3ad8-8772-3b5ebd40a53a",
+     "titre": "Sonata for Piano no. 32 in C minor, op. 111"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata for Piano no. 32 in C minor, op. 111: II. Arietta. Adagio molto semplice e cantabile"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "febc4ba0-4dd0-323d-bac5-961acb00462d",
+    "parente": {
+     "id": "168a76c9-0ef7-4e82-ad3b-8d894cb5d8dd",
+     "titre": "Ballades, op. 10"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Ballades, op. 10: No. 1 in D minor \"Edward\""
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "6bb5f446-974b-368a-b69d-a8de10a0f26a",
+    "parente": {
+     "id": "168a76c9-0ef7-4e82-ad3b-8d894cb5d8dd",
+     "titre": "Ballades, op. 10"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Ballades, op. 10: No. 2 in D major. Andante"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "a09ba645-b470-3439-a0fd-3b9e72b834a9",
+    "parente": {
+     "id": "168a76c9-0ef7-4e82-ad3b-8d894cb5d8dd",
+     "titre": "Ballades, op. 10"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Ballades, op. 10: No. 3 in B minor. Intermezzo. Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "49939c8b-edea-319a-8f68-0bd8e1689171",
+    "parente": {
+     "id": "168a76c9-0ef7-4e82-ad3b-8d894cb5d8dd",
+     "titre": "Ballades, op. 10"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Ballades, op. 10: No. 4 in B major. Andante con moto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "6dec2e04-a2a2-44b0-8ec9-aa39826cbc7b",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Theme: Non troppo presto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "993a3437-5735-445d-9de3-ea0fc6a0bd37",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation I: Lo stesso tempo"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "2e129e8e-7fc6-49d4-8e9d-1c38623a825e",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation II"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "a1812385-8e10-4758-9170-bc4e60bc6f61",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation III"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "5d7efc34-8cca-4bf2-ab25-39fc627ec4e6",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation IV: Tranquillo"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "8cd45460-c086-434a-9ce1-e42c311e5c66",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation V"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "f03d62ac-48ff-4549-897a-f6c7c99af2f2",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation VI: Vivace"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "cbd55c2b-ba2a-4396-abbd-23a13cf36330",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation VII: Con fuoco"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "2a6778ce-9c1d-4cf1-9728-ec1ad4b82dd7",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation VIII: Sempre con fuoco"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "c643cd88-2928-413d-a37e-3bf52edc58cf",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation IX: Meno mosso"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "4631f1ed-0f6b-4bdd-b812-e0c362c82024",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation X: Tranquillo"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "b871205e-e528-441b-a130-ed4a6c78d908",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation XI: Andante"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "82c8b00b-9bf9-456f-9fef-ee3126a0beac",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation XII: Scorrevole"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "6db9c528-f232-476a-b6a9-aebc668d705f",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation I"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "4c0dc8a7-2b36-4f6a-a399-8bf1e9068cac",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation II: Poco animato"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "9d80148f-562a-4dee-bc4a-1eacf246e9cc",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation V: Vivace"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "d9cc445f-0606-4875-851c-a66423740979",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation VI: Poco piu vivace"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "4a87c513-a936-4d8c-bd9c-619afeadd13b",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation VII"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "453d0c6b-4f66-4126-ba81-d8b901896ee9",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation VIII: Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "400995ec-fbc7-4275-b9d6-4fe4280dfd9b",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation X: Feroce, energico"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "34ff5c35-ef57-4241-ada8-3fb24dcf6ae9",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation XII: Un poco andante"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "684604d9-c10b-4e84-abf8-96906816bf5e",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation XIII: Un poco piu andante"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "d698f6d3-384b-4fb6-b1e2-e8f2c1163e54",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation III: Scherzando"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "d0de65d6-a389-4d7a-aac1-61ab189899c5",
+    "parente": {
+     "id": "d3f4e643-22c6-3635-b363-f74efe91524c",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book II"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book II, Variation IV: Poco allegretto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "1dffd2a6-4602-4bbb-8f5e-1b8fbe71c536",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation XIII: Vivace e leggero"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "ed010ba7-6c99-4cd7-9a13-82faf89b23f4",
+    "parente": {
+     "id": "3948ae03-6bb6-3e01-bd14-21962982ef4b",
+     "titre": "Variations on a Theme by Paganini, op. 35: Book I"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Variations on a Theme by Paganini, op. 35: Book I, Variation XIV: Deciso, brillante"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "d2930d02-da88-3706-b0d9-d1157a5e90a8",
+    "parente": {
+     "id": "bd18eb14-b1c5-4804-af2e-c9d3a31d57c1",
+     "titre": "Children’s Corner, L. 113, CD 119"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Children’s Corner, L. 113: I. Doctor Gradus ad Parnassum"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "620bdff9-49b6-3d3b-8d9f-5199a0fa451d",
+    "parente": {
+     "id": "bd18eb14-b1c5-4804-af2e-c9d3a31d57c1",
+     "titre": "Children’s Corner, L. 113, CD 119"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Children’s Corner, L. 113: II. Jimbo’s Lullaby"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "b4f45d55-e97a-3428-86d6-16289be69b54",
+    "parente": {
+     "id": "bd18eb14-b1c5-4804-af2e-c9d3a31d57c1",
+     "titre": "Children’s Corner, L. 113, CD 119"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Children’s Corner, L. 113: III. Serenade for the Doll"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "933fb12e-012e-3af9-b28b-8dfaa5387593",
+    "parente": {
+     "id": "bd18eb14-b1c5-4804-af2e-c9d3a31d57c1",
+     "titre": "Children’s Corner, L. 113, CD 119"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Children’s Corner, L. 113: IV. The Snow is Dancing"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "88ccf215-6387-36cb-8f66-97f4a31aaec8",
+    "parente": {
+     "id": "bd18eb14-b1c5-4804-af2e-c9d3a31d57c1",
+     "titre": "Children’s Corner, L. 113, CD 119"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Children’s Corner, L. 113: V. The Little Shepherd"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "11c9cd37-42ab-3cba-97d1-7c331cd05a41",
+    "parente": {
+     "id": "bd18eb14-b1c5-4804-af2e-c9d3a31d57c1",
+     "titre": "Children’s Corner, L. 113, CD 119"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Children’s Corner, L. 113: VI. Golliwogg’s Cake‐Walk"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "eb7155d9-3bba-34da-bbf6-6ff2584e2d4b",
+    "parente": {
+     "id": "0b5def1a-3892-4716-a7a2-2ee02b10c55f",
+     "titre": "Images, Livre 1, L. 110, CD 105"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Images, Livre 1, L. 110, CD 105 : No. 1. Reflets dans l’eau"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "d650beb5-3a7f-3c61-847d-85b6a418dece",
+    "parente": {
+     "id": "0b5def1a-3892-4716-a7a2-2ee02b10c55f",
+     "titre": "Images, Livre 1, L. 110, CD 105"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Images, Livre 1, L. 110, CD 105 : No. 2. Hommage à Rameau"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "7aef4b74-ea40-3636-a2df-4ebd0c6522ad",
+    "parente": {
+     "id": "0b5def1a-3892-4716-a7a2-2ee02b10c55f",
+     "titre": "Images, Livre 1, L. 110, CD 105"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Images, Livre 1, L. 110, CD 105 : No. 3. Mouvement"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "4ecb3381-bc65-3892-860e-ba240239f18e",
+    "parente": {
+     "id": "732c6498-cc95-43a7-be0a-f2092396bd88",
+     "titre": "Images, Livre 2, L. 111, CD 120"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Images, Livre 2, L. 111, CD 120 : No. 1. Cloches à travers les feuilles"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "125fdf95-8019-31d8-9885-81eb93701e5c",
+    "parente": {
+     "id": "732c6498-cc95-43a7-be0a-f2092396bd88",
+     "titre": "Images, Livre 2, L. 111, CD 120"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Images, Livre 2, L. 111, CD 120 : No. 2. Et la lune descend sur le temple qui fut"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "f2997b31-b1ec-382b-8b9b-679db8be353d",
+    "parente": {
+     "id": "732c6498-cc95-43a7-be0a-f2092396bd88",
+     "titre": "Images, Livre 2, L. 111, CD 120"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Images, Livre 2, L. 111, CD 120 : No. 3. Poissons d’or"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "906fa17d-0eed-30d6-b35b-ac33ca08b0d7",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: I. Danseuses de Delphes. Lent et grave"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "50b37d10-66d0-35d5-ae33-7fc94705f153",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: II. Voiles. Modéré"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "02504605-947c-3491-b945-93198878cf2d",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: IV. «Les sons et les parfums tournent dans l'air du soir». Modéré"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "e747b5b9-11fd-3aea-a733-a23660330d19",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: VII. Ce qu'a vu le vent d'ouest. Animé et tumultueux"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "1fb7717b-431a-363f-a617-047645e3a525",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: VIII. La fille aux cheveux de lin. Très calme et doucement expressif"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "07c99a12-2f8b-37cc-860c-9dd0ce386b92",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: IX. La sérénade interrompue. Modérément animé"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "5d67897e-ddf7-3b05-ad26-2a611a143137",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: X. La cathédrale engloutie. Profondément calme"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "70fd061f-0bd2-3f96-8bd3-05ad011e6532",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: XI. La danse de Puck. Capricieux et léger"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Claude Debussy",
+    "id": "70495469-c5b2-3141-8578-3c5c4b5bb44b",
+    "parente": {
+     "id": "1319ddc3-910a-4c93-afc7-c5e5973f3b78",
+     "titre": "Préludes, Livre I, L. 117, CD 125"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Préludes, Livre I, L. 117, CD 125: XII. Minstrels. Modéré"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johann Sebastian Bach",
+    "id": "c9f2776f-69e4-4f55-9a19-223a0c05ba2a",
+    "parente": {
+     "id": "42419947-4c5a-4623-a4fd-a9cd61611884",
+     "titre": "Violin Partita no. 2 in D minor, BWV 1004"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Violin Partita no. 2 in D minor, BWV 1004: V. Chaconne"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johann Sebastian Bach",
+    "id": "556b2cff-c431-3052-a5c1-91da91162e09",
+    "parente": {
+     "id": "97a2c256-65d3-4da7-a633-6624261a7cf4",
+     "titre": "Italienisches Konzert F-Dur, BWV 971"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Italienisches Konzert F-Dur, BWV 971: I. [Allegro]"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johann Sebastian Bach",
+    "id": "ce540b99-1141-3436-9e95-6db739298497",
+    "parente": {
+     "id": "97a2c256-65d3-4da7-a633-6624261a7cf4",
+     "titre": "Italienisches Konzert F-Dur, BWV 971"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Italienisches Konzert F-Dur, BWV 971: II. Andante"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Johann Sebastian Bach",
+    "id": "82f2d45c-e4fc-3a02-9337-c39a38e7eeab",
+    "parente": {
+     "id": "97a2c256-65d3-4da7-a633-6624261a7cf4",
+     "titre": "Italienisches Konzert F-Dur, BWV 971"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Italienisches Konzert F-Dur, BWV 971: III. Presto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Domenico Scarlatti",
+    "id": "be495691-1719-39ea-9dbb-8cd793f07f0d",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata in D major, K 96, L 465: Allegrissimo"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Domenico Scarlatti",
+    "id": "71358543-b104-4f07-a766-8ea311344dbd",
+    "parente": {
+     "id": "43617b42-e1ae-402c-8ebb-901c9588e73f",
+     "titre": "Essercizi per gravicembalo"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata in D major, K 29, L 461: Presto"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Domenico Scarlatti",
+    "id": "bd777698-f344-3de2-bfa3-fad34d01ecf8",
+    "parente": {
+     "id": "43617b42-e1ae-402c-8ebb-901c9588e73f",
+     "titre": "Essercizi per gravicembalo"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata in C minor, K 11, L 352: Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Domenico Scarlatti",
+    "id": "52b0d1a1-6799-3acb-a2a0-13c6201cdecd",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata in C major, K 159, L 104 \"La caccia\": Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Domenico Scarlatti",
+    "id": "1caf85da-0d65-3e59-9f75-3b26f1eee862",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata in A major, K 322, L 483: Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Domenico Scarlatti",
+    "id": "442d428d-de03-3f45-afd5-fff61685177e",
+    "parente": {
+     "id": "43617b42-e1ae-402c-8ebb-901c9588e73f",
+     "titre": "Essercizi per gravicembalo"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata in D minor, K 9, L 413: Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Domenico Scarlatti",
+    "id": "1de803cd-2b67-38f3-9aae-18f616be4d80",
+    "parente": {
+     "id": "43617b42-e1ae-402c-8ebb-901c9588e73f",
+     "titre": "Essercizi per gravicembalo"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata in B minor, K 27, L 449: Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Baldassare Galuppi",
+    "id": "dad408d1-affd-4e32-8597-76456ac949d3",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Presto in B-flat major"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Baldassare Galuppi",
+    "id": "45bb5c4d-b287-46fa-9e35-b663b8e7153f",
+    "parente": {
+     "id": "6c9fd55a-1d89-4e26-b8af-4a3d31f8a20e",
+     "titre": "Sonata V in C major"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata V in C major: I. Andante"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Baldassare Galuppi",
+    "id": "70ba4be1-8ce2-4ea2-8390-12f6424d7702",
+    "parente": {
+     "id": "6c9fd55a-1d89-4e26-b8af-4a3d31f8a20e",
+     "titre": "Sonata V in C major"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata V in C major: II. Allegro"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Baldassare Galuppi",
+    "id": "bf41fd9f-192c-4c07-8682-96c79f9efbb9",
+    "parente": {
+     "id": "6c9fd55a-1d89-4e26-b8af-4a3d31f8a20e",
+     "titre": "Sonata V in C major"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Sonata V in C major: III. Allegro assai"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "64afd6ef-e9ee-3785-a9a3-ffbf0d935b0f",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Scherzo no. 1 in B minor, op. 20"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "e6a65b61-366e-341b-94b0-d238f2a07b9d",
+    "parente": null,
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Fantaisie in F minor, op. 49"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "721b62bc-3590-34da-a3b3-358c2607c987",
+    "parente": {
+     "id": "91029a84-8965-4b2d-8f1d-c9ff23e15ced",
+     "titre": "Waltzes, op. 34"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Waltz no. 3 in A minor, op. 34 no. 2"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "17f54152-63a6-3b20-b191-6a9045274e1d",
+    "parente": {
+     "id": "91029a84-8965-4b2d-8f1d-c9ff23e15ced",
+     "titre": "Waltzes, op. 34"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Waltz no. 2 in A‐flat major, op. 34 no. 1"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "cf315953-a2bf-32ec-be4b-0d4bfaf05e97",
+    "parente": {
+     "id": "f3013a02-5ebc-45c8-8821-82427f439a90",
+     "titre": "Waltzes, op. 69"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Waltz no. 9 in A‐flat major, op. 69 no. 1"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "f1678460-5a8d-34a5-8818-07c2527baaf2",
+    "parente": {
+     "id": "c0afa6d3-2aaa-4bd7-8dfb-3ddbbec5db86",
+     "titre": "Mazurkas, op. 68"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Mazurka no. 47 in A minor, op. 68 no. 2"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "873125f1-57a9-3427-8d12-11daf2faa55e",
+    "parente": {
+     "id": "c0afa6d3-2aaa-4bd7-8dfb-3ddbbec5db86",
+     "titre": "Mazurkas, op. 68"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Mazurka no. 49 in F minor, op. 68 no. 4"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "22866141-7adc-3b23-a4de-d2dc147de089",
+    "parente": {
+     "id": "54038089-d1c9-4290-b991-9fe77b9ff83f",
+     "titre": "Mazurkas, op. 41"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Mazurka no. 29 in A‐flat major, op. 41 no. 4"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "5065427b-0964-3b0d-af2d-e963bf277690",
+    "parente": {
+     "id": "78ca3d04-e22e-4db6-95c2-bd162a70d8c1",
+     "titre": "Mazurkas, op. 33"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Mazurka no. 22 in G‐sharp minor, op. 33 no. 1"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "6b914d98-6ac7-3247-b640-8d318d8f4c8c",
+    "parente": {
+     "id": "4a277712-246b-4ab1-b7d3-79a0e2bd469b",
+     "titre": "Mazurkas, op. 30"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Mazurka no. 20 in D‐flat major, op. 30 no. 3"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "eb4fbf72-552a-3ce9-93a1-10f8efb33a83",
+    "parente": {
+     "id": "b4e553d9-00f1-4779-a451-ce237ffefa7e",
+     "titre": "Mazurkas, op. 67"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Mazurka no. 43 in G minor, op. 67 no. 2"
+   },
+   {
+    "artistes": [
+     "Arturo Benedetti Michelangeli"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "996ce68b-d60f-3848-bea6-afaa1585fb66",
+    "parente": {
+     "id": "78ca3d04-e22e-4db6-95c2-bd162a70d8c1",
+     "titre": "Mazurkas, op. 33"
+    },
+    "roles": {
+     "Arturo Benedetti Michelangeli": "piano"
+    },
+    "titre": "Mazurka no. 25 in B minor, op. 33 no. 4"
+   }
+  ],
+  "plages": [
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "11:59",
+    "duree_source": "musicbrainz",
+    "position": "1-1",
+    "titre": "Scherzo No. 2 in B-flat minor, Op. 31",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "10:47",
+    "duree_source": "musicbrainz",
+    "position": "1-2",
+    "titre": "Ballade No. 1 in G minor, Op. 23",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "15:35",
+    "duree_source": "musicbrainz",
+    "position": "1-3",
+    "titre": "Andante spianato et Grande Polonaise brillante in E-flat major, Op. 22",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:22",
+    "duree_source": "musicbrainz",
+    "position": "1-4",
+    "titre": "Berceuse in D-flat major, Op. 57",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "7:50",
+    "duree_source": "musicbrainz",
+    "position": "1-5",
+    "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: I. Grave",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "7:18",
+    "duree_source": "musicbrainz",
+    "position": "1-6",
+    "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: II. Scherzo",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "10:02",
+    "duree_source": "musicbrainz",
+    "position": "1-7",
+    "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: III. Marche funèbre. Lento",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:54",
+    "duree_source": "musicbrainz",
+    "position": "1-8",
+    "titre": "Piano Sonata No. 2 in B-flat minor, Op. 35: IV. Finale. Presto",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:07",
+    "duree_source": "musicbrainz",
+    "position": "1-9",
+    "titre": "Mazurka in F-sharp minor, Op. 59 No. 3",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:02",
+    "duree_source": "musicbrainz",
+    "position": "1-10",
+    "titre": "Valse in E-flat major, Op. posth.",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:36",
+    "duree_source": "musicbrainz",
+    "position": "2-1",
+    "titre": "Carnaval, Op. 9: I. Préambule",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:13",
+    "duree_source": "musicbrainz",
+    "position": "2-2",
+    "titre": "Carnaval, Op. 9: II. Pierrot",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:17",
+    "duree_source": "musicbrainz",
+    "position": "2-3",
+    "titre": "Carnaval, Op. 9: III. Arlequin",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:15",
+    "duree_source": "musicbrainz",
+    "position": "2-4",
+    "titre": "Carnaval, Op. 9: IV. Valse noble",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:35",
+    "duree_source": "musicbrainz",
+    "position": "2-5",
+    "titre": "Carnaval, Op. 9: V. Eusebius",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:08",
+    "duree_source": "musicbrainz",
+    "position": "2-6",
+    "titre": "Carnaval, Op. 9: VI. Florestan",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:43",
+    "duree_source": "musicbrainz",
+    "position": "2-7",
+    "titre": "Carnaval, Op. 9: VII. Coquette",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:08",
+    "duree_source": "musicbrainz",
+    "position": "2-8",
+    "titre": "Carnaval, Op. 9: VIII. Réplique",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:44",
+    "duree_source": "musicbrainz",
+    "position": "2-9",
+    "titre": "Carnaval, Op. 9: IX. Papillons",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:54",
+    "duree_source": "musicbrainz",
+    "position": "2-10",
+    "titre": "Carnaval, Op. 9: X. A.S.C.H. - S.C.H.A.: Lettres dansantes",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:42",
+    "duree_source": "musicbrainz",
+    "position": "2-11",
+    "titre": "Carnaval, Op. 9: XI. Chiarina",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:29",
+    "duree_source": "musicbrainz",
+    "position": "2-12",
+    "titre": "Carnaval, Op. 9: XII. Chopin",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:37",
+    "duree_source": "musicbrainz",
+    "position": "2-13",
+    "titre": "Carnaval, Op. 9: XIII. Estrella",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:45",
+    "duree_source": "musicbrainz",
+    "position": "2-14",
+    "titre": "Carnaval, Op. 9: XIV. Reconnaissance",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:04",
+    "duree_source": "musicbrainz",
+    "position": "2-15",
+    "titre": "Carnaval, Op. 9: XV. Pantalon et Colombine",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:52",
+    "duree_source": "musicbrainz",
+    "position": "2-16",
+    "titre": "Carnaval, Op. 9: XVI. Valse allemande",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:44",
+    "duree_source": "musicbrainz",
+    "position": "2-17",
+    "titre": "Carnaval, Op. 9: Intermezzo: Paganini",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:04",
+    "duree_source": "musicbrainz",
+    "position": "2-18",
+    "titre": "Carnaval, Op. 9: XVII. Aveu",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:59",
+    "duree_source": "musicbrainz",
+    "position": "2-19",
+    "titre": "Carnaval, Op. 9: XVIII. Promenade",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:18",
+    "duree_source": "musicbrainz",
+    "position": "2-20",
+    "titre": "Carnaval, Op. 9: XIX. Pause",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:32",
+    "duree_source": "musicbrainz",
+    "position": "2-21",
+    "titre": "Carnaval, Op. 9: XX. Marche des \"Davidsbündler\" contre les Philistins",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "10:50",
+    "duree_source": "musicbrainz",
+    "position": "2-22",
+    "titre": "Faschingsschwank aus Wien, Op. 26: I. Allegro. Sehr lebhaft",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:56",
+    "duree_source": "musicbrainz",
+    "position": "2-23",
+    "titre": "Faschingsschwank aus Wien, Op. 26: II. Romanze. Ziemlich langsam",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:32",
+    "duree_source": "musicbrainz",
+    "position": "2-24",
+    "titre": "Faschingsschwank aus Wien, Op. 26: III. Scherzino",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:13",
+    "duree_source": "musicbrainz",
+    "position": "2-25",
+    "titre": "Faschingsschwank aus Wien, Op. 26: IV. Intermezzo. Mit größter Energie",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "5:35",
+    "duree_source": "musicbrainz",
+    "position": "2-26",
+    "titre": "Faschingsschwank aus Wien, Op. 26: V. Finale. Höchst lebhaft",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "7:35",
+    "duree_source": "musicbrainz",
+    "position": "3-1",
+    "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: I. Allegro con brio",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "8:45",
+    "duree_source": "musicbrainz",
+    "position": "3-2",
+    "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: II. Adagio con molto espressione",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:12",
+    "duree_source": "musicbrainz",
+    "position": "3-3",
+    "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: III. Menuetto",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "6:07",
+    "duree_source": "musicbrainz",
+    "position": "3-4",
+    "titre": "Sonata for Piano No. 11 in B-flat major, Op. 22: IV. Rondo. Allegretto",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "7:47",
+    "duree_source": "musicbrainz",
+    "position": "3-5",
+    "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": I. Andante con Variazioni",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:52",
+    "duree_source": "musicbrainz",
+    "position": "3-6",
+    "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": II. Scherzo. Allegro molto",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "6:01",
+    "duree_source": "musicbrainz",
+    "position": "3-7",
+    "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": III. Marcia funebre sulla morte d'un Eroe",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:14",
+    "duree_source": "musicbrainz",
+    "position": "3-8",
+    "titre": "Sonata for Piano No. 12 in A-flat major, Op. 26 \"Funeral March\": IV. Allegro",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "9:36",
+    "duree_source": "musicbrainz",
+    "position": "3-9",
+    "titre": "Sonata for Piano No. 32 in C minor, Op. 111: I. Maestoso - Allegro con brio ed appassionato",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "16:55",
+    "duree_source": "musicbrainz",
+    "position": "3-10",
+    "titre": "Sonata for Piano No. 32 in C minor, Op. 111: II. Arietta. Adagio molto semplice e cantabile",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "5:13",
+    "duree_source": "musicbrainz",
+    "position": "4-1",
+    "titre": "4 Ballades, Op. 10: Andante / Allegro / Andante",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "7:35",
+    "duree_source": "musicbrainz",
+    "position": "4-2",
+    "titre": "4 Ballades, Op. 10: Andante / Allegro non troppo / Molto staccato e leggiero / Andante",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:09",
+    "duree_source": "musicbrainz",
+    "position": "4-3",
+    "titre": "4 Ballades, Op. 10: Intermezzo. Allegro",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "11:35",
+    "duree_source": "musicbrainz",
+    "position": "4-4",
+    "titre": "4 Ballades, Op. 10: Andante con moto",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:30",
+    "duree_source": "musicbrainz",
+    "position": "4-5",
+    "titre": "Variations on a Theme by Paganini, Op. 35: Thema. Non troppo presto",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:27",
+    "duree_source": "musicbrainz",
+    "position": "4-6",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 1",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:30",
+    "duree_source": "musicbrainz",
+    "position": "4-7",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 2",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:33",
+    "duree_source": "musicbrainz",
+    "position": "4-8",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 3",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:48",
+    "duree_source": "musicbrainz",
+    "position": "4-9",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 4",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:46",
+    "duree_source": "musicbrainz",
+    "position": "4-10",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 5",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:27",
+    "duree_source": "musicbrainz",
+    "position": "4-11",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 6",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:27",
+    "duree_source": "musicbrainz",
+    "position": "4-12",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 7",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:28",
+    "duree_source": "musicbrainz",
+    "position": "4-13",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 8",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:08",
+    "duree_source": "musicbrainz",
+    "position": "4-14",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 9",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:23",
+    "duree_source": "musicbrainz",
+    "position": "4-15",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 10",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:02",
+    "duree_source": "musicbrainz",
+    "position": "4-16",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 11. Andante",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:58",
+    "duree_source": "musicbrainz",
+    "position": "4-17",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 12",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:44",
+    "duree_source": "musicbrainz",
+    "position": "4-18",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 1",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:29",
+    "duree_source": "musicbrainz",
+    "position": "4-19",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 2. Poco animato",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:23",
+    "duree_source": "musicbrainz",
+    "position": "4-20",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 5",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:23",
+    "duree_source": "musicbrainz",
+    "position": "4-21",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 6. Poco più vivace",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:22",
+    "duree_source": "musicbrainz",
+    "position": "4-22",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 7",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:31",
+    "duree_source": "musicbrainz",
+    "position": "4-23",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 8. Allegro",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:47",
+    "duree_source": "musicbrainz",
+    "position": "4-24",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 10. Feroce, energico",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:11",
+    "duree_source": "musicbrainz",
+    "position": "4-25",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 12. Un poco andante",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:50",
+    "duree_source": "musicbrainz",
+    "position": "4-26",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 13. Un poco più andante",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:33",
+    "duree_source": "musicbrainz",
+    "position": "4-27",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 3",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:07",
+    "duree_source": "musicbrainz",
+    "position": "4-28",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book II: Variation 4. Poco allegretto",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "0:35",
+    "duree_source": "musicbrainz",
+    "position": "4-29",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 13",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:02",
+    "duree_source": "musicbrainz",
+    "position": "4-30",
+    "titre": "Variations on a Theme by Paganini, Op. 35, Book I: Variation 14. Presto, ma non troppo",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:12",
+    "duree_source": "musicbrainz",
+    "position": "5-1",
+    "titre": "Children's Corner, L. 113: I. Doctor Gradus ad Parnassum",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:45",
+    "duree_source": "musicbrainz",
+    "position": "5-2",
+    "titre": "Children's Corner, L. 113: II. Jimbo's Lullaby",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:31",
+    "duree_source": "musicbrainz",
+    "position": "5-3",
+    "titre": "Children's Corner, L. 113: III. Serenade for the Doll",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:26",
+    "duree_source": "musicbrainz",
+    "position": "5-4",
+    "titre": "Children's Corner, L. 113: IV. The Snow is Dancing",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:30",
+    "duree_source": "musicbrainz",
+    "position": "5-5",
+    "titre": "Children's Corner, L. 113: V. The Little Shepherd",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:05",
+    "duree_source": "musicbrainz",
+    "position": "5-6",
+    "titre": "Children's Corner, L. 113: VI. Golliwogg's Cake-Walk",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:50",
+    "duree_source": "musicbrainz",
+    "position": "5-7",
+    "titre": "Images I, L. 110: I. Reflets dans l'eau",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "6:35",
+    "duree_source": "musicbrainz",
+    "position": "5-8",
+    "titre": "Images I, L. 110: II. Hommage à Rameau",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:44",
+    "duree_source": "musicbrainz",
+    "position": "5-9",
+    "titre": "Images I, L. 110: III. Mouvement",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:21",
+    "duree_source": "musicbrainz",
+    "position": "5-10",
+    "titre": "Images II, L. 111: I. Cloches à travers les feuilles",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:54",
+    "duree_source": "musicbrainz",
+    "position": "5-11",
+    "titre": "Images II, L. 111: II. Et la lune descend sur le temple qui fut",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:05",
+    "duree_source": "musicbrainz",
+    "position": "5-12",
+    "titre": "Images II, L. 111: III. Poissons d'or",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:22",
+    "duree_source": "musicbrainz",
+    "position": "5-13",
+    "titre": "Préludes, Livre I, L. 117: I. Danseuses de Delphes. Lent et grave",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:31",
+    "duree_source": "musicbrainz",
+    "position": "5-14",
+    "titre": "Préludes, Livre I, L. 117: II. Voiles. Modéré",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:37",
+    "duree_source": "musicbrainz",
+    "position": "5-15",
+    "titre": "Préludes, Livre I, L. 117: IV. Les sons et les parfums tournent dans l'air du soir. Modéré",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:28",
+    "duree_source": "musicbrainz",
+    "position": "5-16",
+    "titre": "Préludes, Livre I, L. 117: VII. Ce qu'a vu la vent d'ouest. Animé et tumulteux",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:31",
+    "duree_source": "musicbrainz",
+    "position": "5-17",
+    "titre": "Préludes, Livre I, L. 117: VIII. La fille aux cheveux de lin. Très calme et doucement expressif",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:32",
+    "duree_source": "musicbrainz",
+    "position": "5-18",
+    "titre": "Préludes, Livre I, L. 117: IX. La sérénade interrompue. Modérément animé",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "7:05",
+    "duree_source": "musicbrainz",
+    "position": "5-19",
+    "titre": "Préludes, Livre I, L. 117: X. La cathédrale engloutie. Profondément calme",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:54",
+    "duree_source": "musicbrainz",
+    "position": "5-20",
+    "titre": "Préludes, Livre I, L. 117: XI. La danse de Puck. Capricieux et léger",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:24",
+    "duree_source": "musicbrainz",
+    "position": "5-21",
+    "titre": "Préludes, Livre I, L. 117: XII. Minstrels. Modéré",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "14:01",
+    "duree_source": "musicbrainz",
+    "position": "6-1",
+    "titre": "Violin Partita No. 2 in D minor, BWV 1004: Chaconne",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:46",
+    "duree_source": "musicbrainz",
+    "position": "6-2",
+    "titre": "Italienisches Konzert in F major, BWV 971: I. Allegro",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:43",
+    "duree_source": "musicbrainz",
+    "position": "6-3",
+    "titre": "Italienisches Konzert in F major, BWV 971: II. Adagio",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:34",
+    "duree_source": "musicbrainz",
+    "position": "6-4",
+    "titre": "Italienisches Konzert in F major, BWV 971: III. Presto",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "5:10",
+    "duree_source": "musicbrainz",
+    "position": "6-5",
+    "titre": "Seven Sonatas: D major, K. 96 (L. 465)",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:44",
+    "duree_source": "musicbrainz",
+    "position": "6-6",
+    "titre": "Seven Sonatas: D major, K. 29 (L. 461)",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:01",
+    "duree_source": "musicbrainz",
+    "position": "6-7",
+    "titre": "Seven Sonatas: C minor, K. 11 (L. 352)",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:45",
+    "duree_source": "musicbrainz",
+    "position": "6-8",
+    "titre": "Seven Sonatas: C major, K. 159 (L. 104)",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:23",
+    "duree_source": "musicbrainz",
+    "position": "6-9",
+    "titre": "Seven Sonatas: A major, K. 322 (L. 483)",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:36",
+    "duree_source": "musicbrainz",
+    "position": "6-10",
+    "titre": "Seven Sonatas: D minor, K. 9 (L. 413)",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:29",
+    "duree_source": "musicbrainz",
+    "position": "6-11",
+    "titre": "Seven Sonatas: B minor, K. 27 (L. 449)",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:15",
+    "duree_source": "musicbrainz",
+    "position": "6-12",
+    "titre": "Presto in B flat major",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "8:17",
+    "duree_source": "musicbrainz",
+    "position": "6-13",
+    "titre": "Sonata V in C major: I. Andante",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:26",
+    "duree_source": "musicbrainz",
+    "position": "6-14",
+    "titre": "Sonata V in C major: II. Allegro",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:43",
+    "duree_source": "musicbrainz",
+    "position": "6-15",
+    "titre": "Sonata V in C major: III. Allegro assai",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "13:15",
+    "duree_source": "musicbrainz",
+    "position": "7-1",
+    "titre": "Scherzo No. 1 in B minor, Op. 20",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "14:34",
+    "duree_source": "musicbrainz",
+    "position": "7-2",
+    "titre": "Fantaisie in F minor, Op. 49",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "7:24",
+    "duree_source": "musicbrainz",
+    "position": "7-3",
+    "titre": "Valse in A minor, Op. 34 No. 2",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "5:42",
+    "duree_source": "musicbrainz",
+    "position": "7-4",
+    "titre": "Valse in A-flat major, Op. 34 No. 1",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "4:22",
+    "duree_source": "musicbrainz",
+    "position": "7-5",
+    "titre": "Valse in A-flat major, Op. 69 No. 1",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:10",
+    "duree_source": "musicbrainz",
+    "position": "7-6",
+    "titre": "Mazurka in A minor, Op. 68 No. 2",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:41",
+    "duree_source": "musicbrainz",
+    "position": "7-7",
+    "titre": "Mazurka in F minor, Op. 68 No. 4",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "1:45",
+    "duree_source": "musicbrainz",
+    "position": "7-8",
+    "titre": "Mazurka in A-flat major, Op. 41 No. 4",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:51",
+    "duree_source": "musicbrainz",
+    "position": "7-9",
+    "titre": "Mazurka in G-sharp minor, Op. 33 No. 1",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "3:02",
+    "duree_source": "musicbrainz",
+    "position": "7-10",
+    "titre": "Mazurka in D-flat major, Op. 30 No. 3",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "2:40",
+    "duree_source": "musicbrainz",
+    "position": "7-11",
+    "titre": "Mazurka in G minor, Op. 67 No. 2",
+    "type": "plage"
+   },
+   {
+    "artistes": [],
+    "credits": [],
+    "duree": "8:06",
+    "duree_source": "musicbrainz",
+    "position": "7-12",
+    "titre": "Mazurka in B minor, Op. 33 No. 4",
+    "type": "plage"
+   }
+  ],
+  "release": "725d6bc7-8b3b-4e68-bc26-9815cee39cd8",
+  "version": 14
  },
  "2015607": {
   "annee_parution": 2007,
@@ -63653,6 +66615,18 @@
   "release": "94fe35ca-4fda-4757-b178-b901bc2faf89",
   "version": 5
  },
+ "26484665": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-10",
+  "methode": "aucune",
+  "nb_plages": 15,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "26513576": {
   "images": [],
   "maj": "2026-11-01",
@@ -63661,6 +66635,272 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "26574995": {
+  "annee_parution": 2023,
+  "annees_enregistrement": [
+   2015,
+   2015
+  ],
+  "durees": [
+   326826,
+   357973,
+   167680,
+   161400,
+   334200,
+   140680,
+   63773,
+   193893,
+   58560,
+   224826,
+   229813,
+   318120,
+   44013,
+   93520
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/ae951fb1-479e-4be9-a795-e7819f4e894d/35341363862-250.jpg",
+    "original": "https://coverartarchive.org/release/ae951fb1-479e-4be9-a795-e7819f4e894d/35341363862.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ae951fb1-479e-4be9-a795-e7819f4e894d/35341363862-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-10",
+  "methode": "edition",
+  "nb_plages": 14,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Aaron Diehl",
+     "Kyle Poole",
+     "Paul Sikivie"
+    ],
+    "compositeur": "Léo Ferré",
+    "id": "0ac507b5-b897-3573-9d9a-b705e0893df4",
+    "parente": null,
+    "roles": {
+     "Aaron Diehl": "piano",
+     "Cécile McLorin Salvant": "vocals",
+     "Kyle Poole": "drums (drum set)",
+     "Paul Sikivie": "double bass"
+    },
+    "titre": "Est-ce ainsi que les hommes vivent ?"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Aaron Diehl",
+     "Lawrence \"Lo\" Leathers",
+     "Kyle Poole",
+     "Paul Sikivie"
+    ],
+    "compositeur": "Charles Trenet",
+    "id": "1bfb87f4-5527-4242-a18b-86a4e8f4b929",
+    "parente": null,
+    "roles": {
+     "Aaron Diehl": "piano",
+     "Cécile McLorin Salvant": "vocals",
+     "Kyle Poole": "drums (drum set)",
+     "Lawrence \"Lo\" Leathers": "drums (drum set)",
+     "Paul Sikivie": "double bass"
+    },
+    "titre": "La Route enchantée"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Weedie Braimah",
+     "Obed Calvaire",
+     "Luques Curtis",
+     "Sullivan Fortner",
+     "Godwin Louis"
+    ],
+    "compositeur": "Pierre Chagnon, Modesto Romero Martínez, Fred Pearly",
+    "id": "7ce1296f-205f-44e4-a104-e000ad38051d",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Godwin Louis": "alto saxophone",
+     "Luques Curtis": "double bass",
+     "Obed Calvaire": "drums (drum set)",
+     "Sullivan Fortner": "piano",
+     "Weedie Braimah": "percussion"
+    },
+    "titre": "Il m’a vue nue"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Weedie Braimah"
+    ],
+    "compositeur": "[anonymous], Eustache Deschamps",
+    "id": "135d4011-5835-4a46-8149-a57c893f8b58",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Weedie Braimah": "djembe"
+    },
+    "titre": "Dites moi que je suis belle"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Weedie Braimah",
+     "Obed Calvaire",
+     "Luques Curtis",
+     "Sullivan Fortner",
+     "Godwin Louis"
+    ],
+    "compositeur": "Cécile McLorin Salvant",
+    "id": "05eb166b-7ce3-42fe-910f-fd510cff11fd",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Godwin Louis": "alto saxophone",
+     "Luques Curtis": "double bass",
+     "Obed Calvaire": "drums (drum set)",
+     "Sullivan Fortner": "piano",
+     "Weedie Braimah": "percussion"
+    },
+    "titre": "Doudou"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Sullivan Fortner"
+    ],
+    "compositeur": "Michel Berger",
+    "id": "23f7bfe0-97c6-30e9-9e1c-bc30db347f05",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Sullivan Fortner": "piano"
+    },
+    "titre": "Petite musique terrienne"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant"
+    ],
+    "compositeur": "Cécile McLorin Salvant",
+    "id": "4f96b4a2-4d07-475a-a384-38afa2d21a3a",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "synthesizer"
+    },
+    "titre": "Aida"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Daniel Swenberg"
+    ],
+    "compositeur": "Cécile McLorin Salvant",
+    "id": "e24d69c8-79a0-48ca-a048-df845a1a3737",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Daniel Swenberg": "classical guitar"
+    },
+    "titre": "Mélusine"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant"
+    ],
+    "compositeur": "Cécile McLorin Salvant",
+    "id": "644b4a92-12bb-424e-b81a-d7f08ceac49f",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "synthesizer"
+    },
+    "titre": "Wedo"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Sullivan Fortner"
+    ],
+    "compositeur": "Michel Lambert",
+    "id": "748118d1-d53c-4a39-8b49-20b8034b9b6a",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Sullivan Fortner": "synthesizer"
+    },
+    "titre": "D’un feu secret"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Sullivan Fortner"
+    ],
+    "compositeur": "Véronique Sanson",
+    "id": "b086c365-d12c-450a-b896-33ee4429fea7",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Sullivan Fortner": "piano"
+    },
+    "titre": "Le temps est assassin"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Weedie Braimah",
+     "Obed Calvaire",
+     "Luques Curtis",
+     "Sullivan Fortner",
+     "Godwin Louis"
+    ],
+    "compositeur": "Cécile McLorin Salvant",
+    "id": "5b460b5a-4718-44b9-a6e5-7d7a09d04a5d",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Godwin Louis": "vocals",
+     "Luques Curtis": "double bass",
+     "Obed Calvaire": "drums (drum set)",
+     "Sullivan Fortner": "mbira",
+     "Weedie Braimah": "percussion"
+    },
+    "titre": "Fenestra"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant"
+    ],
+    "compositeur": "Iseut de Capio",
+    "id": "def70bdf-1c4e-4924-b495-7445d0719719",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "synthesizer"
+    },
+    "titre": "Domna N’Almucs"
+   },
+   {
+    "artistes": [
+     "Cécile McLorin Salvant",
+     "Weedie Braimah",
+     "Luques Curtis",
+     "Sullivan Fortner"
+    ],
+    "compositeur": "Almucs de Castelnou",
+    "id": "4d4942ed-f1a2-4cba-829b-1da157576863",
+    "parente": null,
+    "roles": {
+     "Cécile McLorin Salvant": "vocals",
+     "Luques Curtis": "double bass",
+     "Sullivan Fortner": "celesta",
+     "Weedie Braimah": "percussion"
+    },
+    "titre": "Dame Iseut"
+   }
+  ],
+  "release": "ae951fb1-479e-4be9-a795-e7819f4e894d",
+  "version": 14
  },
  "26619107": {
   "annee_parution": 2004,
@@ -65634,6 +68874,18 @@
   ],
   "release": "0877db8a-8eab-44fd-ba94-51c0722be1ef",
   "version": 8
+ },
+ "30720014": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-10",
+  "methode": "aucune",
+  "nb_plages": 10,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
  },
  "3095801": {
   "annee_parution": 1984,
