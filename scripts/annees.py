@@ -48,13 +48,19 @@ def saisie_manuelle(champs):
         return None
     if simplifier(valeur) == simplifier(A_TROUVER):
         return "a_trouver", None
-    periode = re.fullmatch(r"(\d{4})(?:\s*[-–/]\s*(\d{4}))?", valeur)
-    if periode:
+    # Une ou plusieurs années ou périodes : « 1958 », « 1958-1961 », « 2003 & 2010 », « 1958, 1960-1961 et 1963 ».
+    # Le disque garde [première, dernière] ; la page relit la liste exacte dans le champ.
+    periodes = []
+    for morceau in re.split(r"\s*(?:,|;|&|\bet\b)\s*", valeur):
+        periode = re.fullmatch(r"(\d{4})(?:\s*[-–/]\s*(\d{4}))?", morceau)
+        if not periode:
+            return "illisible", valeur
         debut = int(periode.group(1))
         fin = int(periode.group(2) or debut)
-        if PREMIERE_ANNEE_POSSIBLE <= debut <= fin <= date.today().year:
-            return "annees", [debut, fin]
-    return "illisible", valeur
+        if not PREMIERE_ANNEE_POSSIBLE <= debut <= fin <= date.today().year:
+            return "illisible", valeur
+        periodes.append((debut, fin))
+    return "annees", [min(d for d, _ in periodes), max(f for _, f in periodes)]
 
 
 # Premier enregistrement sonore (phonographe d'Edison) : une année plus ancienne n'est pas
@@ -246,7 +252,7 @@ def ecrire_rapport(fichier, disques):
 
     illisibles = [(d, saisie_manuelle(d.get("champs"))[1]) for d in editions
                   if (saisie_manuelle(d.get("champs")) or ("",))[0] == "illisible"]
-    lignes += ["", "3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 » ou « à trouver ») : %d"
+    lignes += ["", "3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 », « 2003, 2010 » ou « à trouver ») : %d"
                % len(illisibles), ""]
     for disque, valeur in illisibles:
         lignes += [nom(disque), "    « %s »" % valeur, ""]

@@ -25,7 +25,7 @@ const STATUTS_CONNUS = ["À écouter", "Favori", "À chercher"];         // bout
 const REPERES_STATUT = { "a ecouter": "🎧", favori: "★", "a chercher": "🔍" }; // repère par statut (clé sans accents ni majuscules)
 // « À chercher » : disque physique égaré (la Localisation dit où chercher), à distinguer de la localisation « Introuvable ».
 const BLOCS_STATUT = { favori: "Favoris" };                // nom du bloc de l'index, s'il diffère du statut
-const CHAMP_ANNEE_MANUELLE = "Année d’enregistrement (manuelle)";  // champ texte : « 1958 », « 1958-1961 » ou « à trouver »
+const CHAMP_ANNEE_MANUELLE = "Année d’enregistrement (manuelle)";  // champ texte : « 1958 », « 1958-1961 », « 2003 & 2010 » ou « à trouver »
 const A_TROUVER = "à trouver";
 const CHAMP_PHOTO = "Photo principale";        // champ liste Discogs : « Automatique » (MusicBrainz d'abord) ou « Discogs »
 const PHOTO_DISCOGS = "Discogs";
@@ -373,15 +373,25 @@ function anneesEnregistrement(edition) {
   if (edition.annees_enregistrement_source === "a_trouver") return [["Année d'enregistrement", A_TROUVER]];
   const annees = edition.annees_enregistrement;
   if (!annees || !annees.length) return [];
-  const [premiere, derniere] = annees;
-  return premiere === derniere
-    ? [["Année d'enregistrement", String(premiere)]]
-    : [["Années d'enregistrement", premiere + " – " + derniere]];
+  return [[annees[0] === annees[1] ? "Année d'enregistrement" : "Années d'enregistrement", texteAnneesEnregistrement(edition)]];
 }
 
 /** Texte d'une période : « 1958 » ou « 1958 – 1963 ». */
 function textePeriode(annees) {
   return annees[0] === annees[1] ? String(annees[0]) : annees[0] + " – " + annees[1];
+}
+
+/** Périodes d'enregistrement : la liste saisie à la main (« 2003 et 2010 »), sinon [première, dernière]. */
+function periodesEnregistrement(edition) {
+  if (edition.periodes_enregistrement) return edition.periodes_enregistrement;
+  const annees = edition.annees_enregistrement;
+  return annees && annees.length ? [annees] : [];
+}
+
+/** « 1958 », « 1958 – 1963 » ou « 1958, 1960 – 1961 et 1963 ». */
+function texteAnneesEnregistrement(edition) {
+  const textes = periodesEnregistrement(edition).map(textePeriode);
+  return textes.length > 1 ? textes.slice(0, -1).join(", ") + " et " + textes[textes.length - 1] : textes[0] || "";
 }
 
 // Provenance des années d'enregistrement (clé écrite par la synchro, voir scripts/annees.py).
@@ -402,11 +412,19 @@ function saisieAnneesManuelle(edition) {
   const valeur = valeursDuChampSouple(edition, CHAMP_ANNEE_MANUELLE)[0] || "";
   if (!valeur) return null;
   if (memeNom(valeur, A_TROUVER)) return { aTrouver: true };
-  const periode = valeur.match(/^(\d{4})(?:\s*[-–/]\s*(\d{4}))?$/);
-  if (!periode) return null;
-  const debut = Number(periode[1]);
-  const fin = Number(periode[2] || debut);
-  return debut <= fin ? { annees: [debut, fin] } : null;
+  // Une ou plusieurs années ou périodes : « 1958 », « 1958-1961 », « 2003 & 2010 », « 1958, 1960-1961 et 1963 ».
+  const periodes = [];
+  for (const morceau of valeur.split(/\s*(?:,|;|&|\bet\b)\s*/)) {
+    const periode = morceau.match(/^(\d{4})(?:\s*[-–/]\s*(\d{4}))?$/);
+    if (!periode) return null;
+    const debut = Number(periode[1]);
+    const fin = Number(periode[2] || debut);
+    if (debut > fin) return null;
+    periodes.push([debut, fin]);
+  }
+  periodes.sort((a, b) => a[0] - b[0]);
+  const annees = [periodes[0][0], Math.max(...periodes.map((p) => p[1]))];
+  return { annees, periodes: periodes.length > 1 ? periodes : null };
 }
 
 /**
@@ -417,9 +435,12 @@ function appliquerAnneesManuelles(edition) {
   const [anneesAuto, sourceAuto] = edition.annees_enregistrement_auto
     || [edition.annees_enregistrement, edition.annees_enregistrement_source];
   const manuelle = saisieAnneesManuelle(edition);
+  edition.periodes_enregistrement = null;
   if (manuelle && manuelle.annees) {
     edition.annees_enregistrement = manuelle.annees;
+    edition.periodes_enregistrement = manuelle.periodes;
     edition.annees_enregistrement_source = "manuelle";
+    return;
   } else if (manuelle && manuelle.aTrouver) {
     edition.annees_enregistrement = null;
     edition.annees_enregistrement_source = "a_trouver";
@@ -1019,11 +1040,9 @@ function correspond(edition) {
   if (etat.anneeMin && edition.annee < etat.anneeMin) return false;
   if (etat.anneeMax && edition.annee > etat.anneeMax) return false;
   if (etat.enregMin || etat.enregMax) {
-    // L'édition passe si sa période d'enregistrement [première, dernière] touche les années choisies.
-    const annees = edition.annees_enregistrement;
-    if (!annees || !annees.length) return false;
-    if (etat.enregMin && annees[1] < etat.enregMin) return false;
-    if (etat.enregMax && annees[0] > etat.enregMax) return false;
+    // L'édition passe si une de ses périodes d'enregistrement touche les années choisies.
+    const touche = ([debut, fin]) => !(etat.enregMin && fin < etat.enregMin) && !(etat.enregMax && debut > etat.enregMax);
+    if (!periodesEnregistrement(edition).some(touche)) return false;
   }
   if (etat.localisation && !edition.localisations.includes(etat.localisation)) return false;
   if (etat.double && edition.exemplaires.length < 2) return false;
@@ -1048,11 +1067,7 @@ const INFOS_DE_TRI = {
     valeur: (e) => e.compositeurPrincipal || "" },
   annee: { sans: "Sans année de parution", manque: (e) => !e.annee, valeur: (e) => (e.annee ? String(e.annee) : "") },
   enregistrement: { sans: "Sans année d'enregistrement", manque: (e) => !(e.annees_enregistrement || []).length,
-    valeur: (e) => {
-      const annees = e.annees_enregistrement;
-      if (!annees || !annees.length) return "";
-      return annees[0] === annees[1] ? String(annees[0]) : annees[0] + " – " + annees[1];
-    } },
+    valeur: (e) => texteAnneesEnregistrement(e) },
   ajout: { sans: "Sans date d'ajout", manque: (e) => !e.date_ajout,
     valeur: (e) => (e.date_ajout ? new Date(e.date_ajout).toLocaleDateString("fr-FR") : "") },
 };
@@ -1397,7 +1412,8 @@ function ligneVersion(version, dureeMax) {
   const image = edition.miniature || edition.pochette;
   const enPlus = interpretes.length - INTERPRETES_VISIBLES;
   const dates = [
-    annees ? (annees[0] === annees[1] ? "Enregistré en " : "Enregistré de ") + textePeriode(annees).replace(" – ", " à ") : null,
+    annees ? (edition.periodes_enregistrement ? "Enregistré en " + texteAnneesEnregistrement(edition)
+      : (annees[0] === annees[1] ? "Enregistré en " : "Enregistré de ") + textePeriode(annees).replace(" – ", " à ")) : null,
     edition.annee ? "parution " + edition.annee : null,
     (edition.labels || [])[0] ? edition.labels[0].nom : null,
   ].filter(Boolean).join(" · ");
@@ -3218,10 +3234,8 @@ function carteAnneesEnregistrement(liste) {
     titre: "Années d'enregistrement",
     explication: "D'après MusicBrainz, les notes Discogs, le titre ou ta saisie. Un enregistrement sur plusieurs années compte dans chacune. ",
     anneesDe: (e) => {
-      const annees = e.annees_enregistrement;
-      if (!annees || !annees.length) return [];
       const liste = [];
-      for (let annee = annees[0]; annee <= annees[1]; annee++) liste.push(annee);
+      for (const [debut, fin] of periodesEnregistrement(e)) for (let annee = debut; annee <= fin; annee++) liste.push(annee);
       return liste;
     },
     filtrer: (annee) => ({ enregMin: annee, enregMax: annee }),
@@ -3601,7 +3615,7 @@ function ajusterHauteur(zoneTexte) {
 /** Texte grisé du champ manuel : « auto : 1958 (notes Discogs) — ou 1958, 1958-1961, à trouver ». */
 function indicationAnneeAuto(edition) {
   const [annees, source] = edition.annees_enregistrement_auto || [];
-  const formats = "1958, 1958-1961 ou « à trouver »";
+  const formats = "1958, 1958-1961, 2003 & 2010 ou « à trouver »";
   return annees ? "auto : " + textePeriode(annees) + " (" + SOURCES_ANNEES[source] + ") — sinon " + formats
     : "aucune année trouvée automatiquement — " + formats;
 }
