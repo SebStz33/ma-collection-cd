@@ -2636,8 +2636,14 @@ function listePlagesParDisque(plages, suivi) {
   const enTete = new Map(disques.map((disque) => [disque,
     interpretesCommuns(plages.filter((p) => disqueDeLaPlage(p) === disque), edition)]));
   const noms = compositeursDesDisques(plages, disques, edition);
-  const lignes = plages.flatMap((plage) => {
-    const disque = disqueDeLaPlage(plage);
+  // Un intertitre sans position (« Pétrouchka – Scènes burlesques… ») va avec le CD de la plage qui le suit,
+  // pour s'afficher sous l'en-tête « CD 8 » et non au-dessus.
+  const disquesAffiches = plages.map(disqueDeLaPlage);
+  for (let i = disquesAffiches.length - 2; i >= 0; i--) {
+    if (!disquesAffiches[i]) disquesAffiches[i] = disquesAffiches[i + 1];
+  }
+  const lignes = plages.flatMap((plage, rang) => {
+    const disque = disquesAffiches[rang];
     const debut = disque && !vus.has(disque);
     if (debut) vus.add(disque);
     return [

@@ -48580,7 +48580,7 @@
     "url": "https://coverartarchive.org/release/3848dbd0-0aea-4ac6-bd72-4d0c19995c37/17260048885-1200.jpg"
    }
   ],
-  "maj": "2026-11-09",
+  "maj": "2026-11-11",
   "methode": "edition",
   "nb_plages": 774,
   "oeuvres": [
@@ -50276,32 +50276,422 @@
     },
     "titre": "Requiem in D minor, K. 626: VI. Agnus Dei"
    },
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
-   null,
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "7adb9794-836c-4628-93bc-63ece6650609",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau I. Fête populaire de la semaine grasse"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "7adb9794-836c-4628-93bc-63ece6650609",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau I. Fête populaire de la semaine grasse"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "7adb9794-836c-4628-93bc-63ece6650609",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau I. Fête populaire de la semaine grasse"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "6b351a7f-2dff-42f1-b001-52875e74aaf2",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau II. Chez Pétrouchka"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "255ffc19-a74b-4541-b4b0-a188883cddba",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau III. Chez le Maure"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "255ffc19-a74b-4541-b4b0-a188883cddba",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau III. Chez le Maure"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "255ffc19-a74b-4541-b4b0-a188883cddba",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau III. Chez le Maure"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "255ffc19-a74b-4541-b4b0-a188883cddba",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau III. Chez le Maure"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "c763468d-ebed-4049-9d87-846c272ead10",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau IV. Fête populaire de la semaine grasse (vers le soir)"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "c763468d-ebed-4049-9d87-846c272ead10",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau IV. Fête populaire de la semaine grasse (vers le soir)"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "c763468d-ebed-4049-9d87-846c272ead10",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau IV. Fête populaire de la semaine grasse (vers le soir)"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "c763468d-ebed-4049-9d87-846c272ead10",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau IV. Fête populaire de la semaine grasse (vers le soir)"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "c763468d-ebed-4049-9d87-846c272ead10",
+    "parente": {
+     "id": "cb04cba5-603f-4d40-b128-a7ae4a356197",
+     "titre": "Pétrouchka"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Pétrouchka : Tableau IV. Fête populaire de la semaine grasse (vers le soir)"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "56d71673-5103-46b1-8c0f-d81d19eaced8",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: I. L’Adoration de la terre"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "56d71673-5103-46b1-8c0f-d81d19eaced8",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: I. L’Adoration de la terre"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "56d71673-5103-46b1-8c0f-d81d19eaced8",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: I. L’Adoration de la terre"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "56d71673-5103-46b1-8c0f-d81d19eaced8",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: I. L’Adoration de la terre"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "56d71673-5103-46b1-8c0f-d81d19eaced8",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: I. L’Adoration de la terre"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "56d71673-5103-46b1-8c0f-d81d19eaced8",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: I. L’Adoration de la terre"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "56d71673-5103-46b1-8c0f-d81d19eaced8",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: I. L’Adoration de la terre"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "6cfef07d-7152-4c86-8db7-614f73767549",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: II. Le Sacrifice"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "6cfef07d-7152-4c86-8db7-614f73767549",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: II. Le Sacrifice"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "6cfef07d-7152-4c86-8db7-614f73767549",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: II. Le Sacrifice"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "6cfef07d-7152-4c86-8db7-614f73767549",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: II. Le Sacrifice"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "6cfef07d-7152-4c86-8db7-614f73767549",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: II. Le Sacrifice"
+   },
+   {
+    "artistes": [
+     "The Cleveland Orchestra",
+     "Pierre Boulez"
+    ],
+    "compositeur": "Игорь Фёдорович Стравинский",
+    "id": "6cfef07d-7152-4c86-8db7-614f73767549",
+    "parente": {
+     "id": "54dacada-b00c-34b6-bbbb-e89855c7219f",
+     "titre": "Le Sacre du printemps"
+    },
+    "roles": {
+     "Pierre Boulez": "conductor"
+    },
+    "titre": "Le Sacre du printemps: II. Le Sacrifice"
+   },
    {
     "artistes": [
      "Giuliano Carmignola",
@@ -57440,13 +57830,13 @@
     "id": "02dcb335-8feb-476d-a3cf-565c3407c9f7",
     "parente": {
      "id": "bdd35021-13d4-4c38-adcc-6d2caa0cd6b8",
-     "titre": "Faust : Acte III"
+     "titre": "Faust, CG 4 : Acte III"
     },
     "roles": {
      "Gianandrea Noseda": "conductor",
      "Анна Нетребко": "soprano vocals"
     },
-    "titre": "Faust : Acte III. « Un bouquet ! … Ô Dieu ! que de bijoux ! » … No. 14b « Ah ! Je ris ! » (Marguerite)"
+    "titre": "Faust, CG 4 : Acte III. « Un bouquet ! … Ô Dieu ! que de bijoux ! » … No. 14b « Ah ! Je ris ! » (Marguerite)"
    },
    {
     "artistes": [
