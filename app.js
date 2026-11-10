@@ -1521,6 +1521,21 @@ const ongletOeuvres = { recherche: "", plusieurs: false, categorie: "méta:Class
 const SEUIL_CATEGORIES = 12;   // à partir de ce nombre d'œuvres, un compositeur montre d'abord ses catégories, repliées
 
 /** { type: "BWV", numero: 772, suffixe: "" } ou null. « KV » et « K » comptent comme un seul catalogue. */
+// Nombre en tête d'un titre (« Trois Gnossiennes », « 12 petits chorals ») : le tri l'ignore.
+// Pas « un, une, ein, uno, one » (souvent des articles) ni les ordinaux (« Dix-huitième ordre »).
+const RE_NOMBRE_EN_TETE = new RegExp("^(?:\\d+|(?:" + [
+  "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize",
+  "vingt", "trente", "quarante", "cinquante", "soixante", "cent",
+  "two", "three", "four", "five", "seven", "eight", "nine", "ten", "eleven", "twelve", "twenty", "thirty", "forty", "fifty",
+  "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "zwanzig",
+  "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove", "dieci", "dodici",
+  "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "doce",
+].join("|") + ")(?:-(?:et-)?[a-zäöü]+)*)\\s+(?=\\S)", "iu");
+
+function titreDeTri(titre) {
+  return String(titre || "").replace(RE_NOMBRE_EN_TETE, "");
+}
+
 function catalogueDe(titre) {
   const m = RE_CATALOGUE.exec(titre);
   if (!m) return null;
@@ -1577,7 +1592,7 @@ function calculerOeuvresParCompositeur() {
     oeuvres.sort((a, b) => rang(a.catalogue) - rang(b.catalogue)
       || (a.catalogue && b.catalogue ? a.catalogue.numero - b.catalogue.numero || a.catalogue.suffixe.localeCompare(b.catalogue.suffixe)
         || a.catalogue.dansLOpus - b.catalogue.dansLOpus : 0)
-      || comparerTextes(a.oeuvre.titre, b.oeuvre.titre));
+      || comparerTextes(titreDeTri(a.oeuvre.titre), titreDeTri(b.oeuvre.titre)));
     return { compositeur, oeuvres };
   }).sort((a, b) => comparerTextes(cleDeTri(a.compositeur.split(",")[0], true), cleDeTri(b.compositeur.split(",")[0], true)));
 }
