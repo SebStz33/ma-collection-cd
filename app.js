@@ -2337,7 +2337,8 @@ function ouvrirFiche(edition, { position = null } = {}) {
       titrePlages,
       tracklist.disques.length ? creer("p", { classe: "liens-disques" }, tracklist.disques.map((disque, numero) => [
         numero ? creer("span", { classe: "discret", texte: " · " }) : null,
-        creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: disque,
+        creer("button", { type: "button", classe: "bouton-texte lien-fiche",
+          texte: disque + (tracklist.noms && tracklist.noms.get(disque) ? " " + tracklist.noms.get(disque) : ""),
           surclic: () => defilerFicheVers(tracklist.liste.querySelector('[data-disque="' + disque + '"]')) }),
       ])) : null,
       tracklist.liste,
@@ -2634,17 +2635,41 @@ function listePlagesParDisque(plages, suivi) {
   const vus = new Set();
   const enTete = new Map(disques.map((disque) => [disque,
     interpretesCommuns(plages.filter((p) => disqueDeLaPlage(p) === disque), edition)]));
+  const noms = compositeursDesDisques(plages, disques, edition);
   const lignes = plages.flatMap((plage) => {
     const disque = disqueDeLaPlage(plage);
     const debut = disque && !vus.has(disque);
     if (debut) vus.add(disque);
     return [
       debut ? intertitreDisque(disques, disque, texteDuree(dureeTotale(plages.filter((p) => disqueDeLaPlage(p) === disque))),
-        enTete.get(disque)) : null,
+        enTete.get(disque), noms.get(disque)) : null,
       ligne(plage, (enTete.get(disque) || []).map((i) => i.nom)),
     ];
   });
-  return { liste: creer("ol", { classe: "plages" }, lignes), disques };
+  return { liste: creer("ol", { classe: "plages" }, lignes), disques, noms };
+}
+
+/**
+ * Coffret classique : nom court du compositeur des CD consacrés à un seul compositeur (« CD 1 Chopin »).
+ * Si un compositeur occupe au moins la moitié des CD, on ne l'écrit pas (Symphonies de Mozart : rien, sauf
+ * sur un CD d'un autre compositeur). Renvoie Map disque -> nom (« Chopin »).
+ */
+function compositeursDesDisques(plages, disques, edition) {
+  const noms = new Map();
+  if (!estClassique(edition)) return noms;
+  for (const disque of disques) {
+    const reelles = plages.filter((p) => disqueDeLaPlage(p) === disque).flatMap(plagesReelles);
+    const compositeurs = new Set(reelles.map((p) => (p.oeuvre && p.oeuvre.compositeur) || ""));
+    const [seul] = compositeurs;
+    if (compositeurs.size === 1 && seul && !seul.includes(", ")) noms.set(disque, seul);
+  }
+  const compte = new Map();
+  for (const nom of noms.values()) compte.set(nom, (compte.get(nom) || 0) + 1);
+  for (const [nom, n] of compte) {
+    if (n * 2 >= disques.length) for (const [disque, autre] of noms) if (autre === nom) noms.delete(disque);
+  }
+  for (const [disque, nom] of noms) noms.set(disque, nom.trim().split(/\s+/).pop());
+  return noms;
 }
 
 // Rôles d'interprètes (MusicBrainz et Discogs, en anglais) -> français. Un rôle absent garde son nom anglais.
@@ -2748,7 +2773,7 @@ function ligneInterpretesDeLOeuvre(plage, edition, dejaDits) {
  * Intertitre « CD 2 » d'un coffret, avec à droite « ↑↑ ↑ Préc. » (sauf au début)
  * et « ↓ Suiv. ↓↓ » (sauf à la fin), pour passer d'un disque à l'autre ou aller au premier / dernier.
  */
-function intertitreDisque(disques, disque, duree = "", interpretes = []) {
+function intertitreDisque(disques, disque, duree = "", interpretes = [], compositeur = null) {
   const numero = disques.indexOf(disque);
   const aller = (cible) => (evenement) => {
     const liste = evenement.currentTarget.closest(".plages");
@@ -2758,6 +2783,7 @@ function intertitreDisque(disques, disque, duree = "", interpretes = []) {
     texte, title: titre + " : " + cible, surclic: aller(cible) });
   return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
     creer("span", { texte: disque }),
+    compositeur ? creer("span", { classe: "compositeur-disque", texte: compositeur }) : null,
     duree ? creer("span", { classe: "duree-disque", texte: duree }) : null,
     interpretes && interpretes.length ? creer("span", { classe: "interpretes-disque", texte: texteInterpretes(interpretes),
       title: "Sur tout le disque : " + texteInterpretes(interpretes, true) }) : null,
