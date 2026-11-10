@@ -1638,7 +1638,10 @@ function menuCategoriesOeuvres() {
 // « Lieder » (Lieder ohne Worte, pour piano) se tromperaient trop souvent. Titres sans accents, en minuscules.
 // « sauf » : un motif qui écarte la règle (le violoncelle n'est pas le violon ; une fugue sur le Magnificat
 // est pour orgue ; les Études symphoniques sont pour piano seul).
+// La voix d'abord : un air pour soprano, piano et orchestre est une œuvre vocale. Pas « aria », « air » ni
+// « chant » (Aria BWV 587 pour orgue, Airs à faire fuir de Satie, Chant de Linos pour flûte).
 const REGLES_CATEGORIE_PAR_NOM = [
+  { categorie: "Classique Voix", motifs: [/\b(soprano|mezzo|tenor|tenore|baritone?|bariton|voice|voices|voix|singstimme|recitati\w*)\b|airs chantes/] },
   { categorie: "Piano et Orchestre", motifs: [/\bconcert|\bconcierto/, /piano|klavier/] },
   { categorie: "Piano et Orchestre", motifs: [/piano (et|and|&) orchest|klavier und orchester/] },
   { categorie: "Violon", motifs: [/\bconcert|\bconcierto/, /violin|\bviolons?\b/] },
@@ -1737,7 +1740,7 @@ function afficherListeOeuvres() {
           : creer("button", { type: "button", classe: "bouton-texte", texte,
               surclic: () => { ongletOeuvres.alphabetique = alpha; afficherListeOeuvres(); } })])),
     creer("p", { classe: "oeuvres-explication discret",
-      texte: "Une œuvre est placée dans la catégorie de la majorité de ses disques, sauf quand son nom la désigne (concerto pour piano ou pour violon, symphonie, quatuor à cordes, messe, cantate…). Sur sa page, chaque version porte la catégorie de son disque." }),
+      texte: "Une œuvre est placée dans la catégorie de la majorité de ses disques, sauf quand son nom la désigne (voix, concerto pour piano ou pour violon, symphonie, quatuor à cordes, messe, cantate…). Sur sa page, chaque version porte la catégorie de son disque." }),
     ...(nbOeuvres ? [] : [creer("p", { classe: "discret", texte: "Aucune œuvre ne correspond." })]),
     ...visibles.map(({ compositeur, oeuvres }) => {
       // Ouvert si l'on cherche quelque chose, ou si on l'avait ouvert (retour depuis une page Œuvre).
