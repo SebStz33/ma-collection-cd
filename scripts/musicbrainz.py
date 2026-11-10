@@ -534,7 +534,8 @@ def associer_par_position(plages, oeuvres, durees, positions):
       - « 19-3.1 » … « 19-3.13 » : mouvements sur la plage 3 du CD 19, ils en reçoivent tous l'œuvre ;
       - « 10-1 : 15 » : plages 1 à 15 du CD 10, on donne leur œuvre chapeau commune s'il y en a une.
     Sécurité : un disque n'est associé que si ses positions Discogs couvrent exactement toutes les plages
-    de ce disque sur MusicBrainz ; sinon ses plages ne reçoivent rien (les autres disques, si).
+    de ce disque sur MusicBrainz ; sinon on essaie associer_par_intertitre, et à défaut ses plages
+    ne reçoivent rien (les autres disques, si).
     Renvoie (œuvres, durées) alignées sur plages_a_associer(plages), ou (None, None).
     Une durée n'est donnée que pour une plage Discogs qui correspond à une seule plage MusicBrainz entière.
     """
@@ -562,13 +563,17 @@ def associer_par_position(plages, oeuvres, durees, positions):
     for disque, numero in positions:
         attendues.setdefault(disque, set()).add(numero)
     disques_ok = {d for d in attendues if couvertes.get(d) == attendues[d]}
+    rang_par_intertitre = associer_par_intertitre(plages, attendues, disques_ok, index_mb,
+                                                  positions[0][0] if un_seul_disque else None)
     resultat_oeuvres, resultat_durees = [], []
-    for lue in lues:
+    for plage, lue in zip(a_associer, lues):
         oeuvre = duree = None
         disque = None
         if lue:
             disque = lue[0] if lue[0] is not None else (positions[0][0] if un_seul_disque else None)
-        if disque in disques_ok:
+        if id(plage) in rang_par_intertitre:
+            oeuvre = oeuvres[rang_par_intertitre[id(plage)]]
+        elif disque in disques_ok:
             rangs = [index_mb[(disque, n)] for n in range(lue[1], lue[2] + 1)]
             oeuvre = oeuvre_commune([oeuvres[r] for r in rangs])
             if len(rangs) == 1 and lignes_par_plage.get((disque, lue[1])) == 1:
@@ -578,6 +583,46 @@ def associer_par_position(plages, oeuvres, durees, positions):
     if not any(resultat_oeuvres) and not any(resultat_durees):
         return None, None
     return resultat_oeuvres, resultat_durees
+
+
+def associer_par_intertitre(plages, attendues, disques_ok, index_mb, disque_unique):
+    """
+    Dernier essai, pour un disque que associer_par_position n'a pas pu associer : toutes ses plages
+    Discogs sont rangées sous des intertitres, et il y a autant d'intertitres que de plages MusicBrainz
+    sur ce disque (111 DG, CD 8 : 26 plages Discogs sous 6 intertitres, les 4 tableaux de Petrouchka
+    et les 2 parties du Sacre ; 6 plages MusicBrainz). Le 1er intertitre va avec la plage MusicBrainz 1,
+    le 2e avec la 2e, etc. ; ses plages reçoivent l'œuvre de cette plage MusicBrainz.
+    Renvoie {id(plage Discogs): rang de la plage MusicBrainz}.
+    """
+    def disque_de(plage):
+        lue = lire_position(plage.get("position"))
+        if not lue:
+            return None
+        return lue[0] if lue[0] is not None else disque_unique
+
+    groupes, isolees = {}, set()
+    for plage in plages or []:
+        if plage.get("type") == "intertitre":
+            continue
+        if not plage.get("sous_plages"):
+            isolees.add(disque_de(plage))  # plage hors intertitre : ce disque ne convient pas
+            continue
+        reelles = plages_a_associer(plage["sous_plages"])
+        disques = {disque_de(p) for p in reelles}
+        if len(disques) != 1:
+            isolees.update(disques)  # intertitre à cheval sur deux disques, ou position illisible
+            continue
+        groupes.setdefault(disques.pop(), []).append(reelles)
+    resultat = {}
+    for disque, numeros in attendues.items():
+        if disque in disques_ok or disque in isolees or disque not in groupes:
+            continue
+        if len(groupes[disque]) != len(numeros):
+            continue
+        for reelles, numero in zip(groupes[disque], sorted(numeros)):
+            for plage in reelles:
+                resultat[id(plage)] = index_mb[(disque, numero)]
+    return resultat
 
 
 def tracklist_sommaire(plages, positions):
