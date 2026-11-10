@@ -1557,7 +1557,13 @@ function genreDe(titre) {
   return meilleur ? meilleur.genre : titreDeTri(titre);
 }
 
-function catalogueDe(titre) {
+// Catalogue préféré quand le titre en porte deux : chez Schubert, le D. (chronologique) passe avant l'opus (publication).
+const CATALOGUE_PREFERE = [[/schubert/, /\bD\.?\s*(\d+)([a-z]?)/]];
+
+function catalogueDe(titre, compositeur = "") {
+  const prefere = CATALOGUE_PREFERE.find(([qui]) => qui.test(normaliser(compositeur)));
+  const p = prefere && prefere[1].exec(titre);
+  if (p) return { type: "D", numero: Number(p[1]), suffixe: p[2].toLowerCase(), dansLOpus: 0 };
   const m = RE_CATALOGUE.exec(titre);
   if (!m) return null;
   const type = m[1].toUpperCase() === "KV" ? "K" : m[1].toUpperCase();
@@ -1585,6 +1591,25 @@ function oeuvresParCompositeur(classiques) {
     .filter(({ oeuvres }) => oeuvres.length);
 }
 
+/**
+ * Œuvre regroupée sans catalogue (« Ballades », « Années de pèlerinage ») : le plus petit numéro de ses pièces,
+ * pour la ranger à côté d'elles. null si les pièces n'en ont pas non plus.
+ */
+function catalogueDesParties(oeuvre, liste, compositeur) {
+  let plusPetit = null;
+  const parcourir = (plages) => {
+    for (const plage of plages) {
+      if (plage.oeuvre && plage.oeuvre.id !== oeuvre.id && oeuvreDeReference(plage.oeuvre).id === oeuvre.id) {
+        const c = catalogueDe(plage.oeuvre.titre, compositeur);
+        if (c && (!plusPetit || c.numero < plusPetit.numero)) plusPetit = c;
+      }
+      parcourir(plage.sous_plages || []);
+    }
+  };
+  for (const edition of liste) parcourir(edition.plages || []);
+  return plusPetit;
+}
+
 function calculerOeuvresParCompositeur() {
   const cotes = cotesClassiques().oeuvres;
   const parId = new Map();
@@ -1601,7 +1626,7 @@ function calculerOeuvresParCompositeur() {
     const versions = versionsDeLOeuvre(oeuvre, liste);
     // Texte où chercher : titre, compositeur et interprètes de toutes les versions (calculé une fois).
     const interpretes = [...new Set(versions.flatMap((v) => v.interpretes))];
-    parCompositeur.get(nom).push({ oeuvre, editions: liste, versions: versions.length, catalogue: catalogueDe(oeuvre.titre),
+    parCompositeur.get(nom).push({ oeuvre, editions: liste, versions: versions.length, catalogue: catalogueDe(oeuvre.titre, nom) || catalogueDesParties(oeuvre, liste, nom),
       classique: cotes.get(oeuvre.id), categorieParLeNom: cotes.get(oeuvre.id) ? categorieParLeNom(oeuvre.titre) : null,
       texte: normaliser([oeuvre.titre, nom, ...interpretes].join(" ")) });
   }
@@ -1690,6 +1715,8 @@ const REGLES_CATEGORIE_PAR_NOM = [
   { categorie: "String quartet", motifs: [/string quartet|quatuor a cordes|streichquartett|quartetto per archi/] },
   { categorie: "Classique Voix", motifs: [/\bmass\b|\bmesse\b|\bmissa\b|requiem|\bcantat|\bkantate|magnificat|stabat mater|passion\b|oratori/],
     sauf: /\bfuga\b|meditations/ },
+  { categorie: "Classique Voix", motifs: [/\bgesange?\b|schwanengesang|\blieder\b|\blied\b|liederkreis|\bsongs?\b|\bmelodies\b|dichterliebe|winterreise|frauenliebe/],
+    sauf: /ohne worte|sans paroles|folk song/ },
   { categorie: "Piano Classique", motifs: [/(sonat\w* (for|pour) piano|piano sonat\w*|klaviersonate)(?! (and|et|und|e|&) )/] },
 ];
 
