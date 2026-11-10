@@ -1404,9 +1404,9 @@ function ligneVersion(version, dureeMax) {
   const nbParties = [...parties.keys()].filter((id) => id !== "entiere").length;
   return creer("li", {},
     creer("button", { type: "button", classe: "version",
-      // Coffret : la fiche s'ouvre sur l'œuvre, dans son CD.
-      surclic: () => ouvrirFiche(edition, { position: estCoffret(edition) ? version.plages[0].plage.position : null }),
-      title: "Ouvrir la fiche du disque" + (estCoffret(edition) && version.disque !== null ? ", sur cette œuvre" : "") },
+      // La fiche s'ouvre sur l'œuvre (dans son CD pour un coffret), surlignée un instant.
+      surclic: () => ouvrirFiche(edition, { position: version.plages[0].plage.position }),
+      title: "Ouvrir la fiche du disque, sur cette œuvre" },
       creer("span", { classe: "version-pochette" },
         image ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
           : creer("span", { classe: "sans-image", texte: "♪" })),
@@ -1564,7 +1564,7 @@ function calculerOeuvresParCompositeur() {
     // Texte où chercher : titre, compositeur et interprètes de toutes les versions (calculé une fois).
     const interpretes = [...new Set(versions.flatMap((v) => v.interpretes))];
     parCompositeur.get(nom).push({ oeuvre, editions: liste, versions: versions.length, catalogue: catalogueDe(oeuvre.titre),
-      classique: cotes.get(oeuvre.id),
+      classique: cotes.get(oeuvre.id), categorieParLeNom: cotes.get(oeuvre.id) ? categorieParLeNom(oeuvre.titre) : null,
       texte: normaliser([oeuvre.titre, nom, ...interpretes].join(" ")) });
   }
   return [...parCompositeur].map(([compositeur, oeuvres]) => {
@@ -1613,8 +1613,9 @@ function editionDansCategorie(edition, categorie) {
 function menuCategoriesOeuvres() {
   const toutes = oeuvresParCompositeur().flatMap((g) => g.oeuvres);
   const compte = new Map();
-  for (const { editions: liste } of toutes) {
-    for (const cle of new Set(liste.flatMap((e) => [...e.metas.map((m) => PREFIXE_META + m), ...e.categories]))) {
+  for (const { editions: liste, categorieParLeNom: parLeNom } of toutes) {
+    const parLeNomCles = parLeNom ? [PREFIXE_META + metaDeCategorie(parLeNom), parLeNom] : [];
+    for (const cle of new Set([...liste.flatMap((e) => [...e.metas.map((m) => PREFIXE_META + m), ...e.categories]), ...parLeNomCles])) {
       compte.set(cle, (compte.get(cle) || 0) + 1);
     }
   }
@@ -1631,16 +1632,47 @@ function menuCategoriesOeuvres() {
     ]));
 }
 
+// Règles simples sur le nom d'une œuvre classique, prioritaires sur la catégorie de ses disques : un concerto
+// pour piano va dans « Piano et Orchestre » même si tous ses disques sont rangés dans « Piano Classique ».
+// Volontairement étroites : « Sinfonia » (Bach, clavier), « piano » seul (sonate pour flûte et piano) ou
+// « Lieder » (Lieder ohne Worte, pour piano) se tromperaient trop souvent. Titres sans accents, en minuscules.
+// « sauf » : un motif qui écarte la règle (le violoncelle n'est pas le violon ; une fugue sur le Magnificat
+// est pour orgue ; les Études symphoniques sont pour piano seul).
+const REGLES_CATEGORIE_PAR_NOM = [
+  { categorie: "Piano et Orchestre", motifs: [/\bconcert|\bconcierto/, /piano|klavier/] },
+  { categorie: "Piano et Orchestre", motifs: [/piano (et|and|&) orchest|klavier und orchester/] },
+  { categorie: "Violon", motifs: [/\bconcert|\bconcierto/, /violin|\bviolons?\b/] },
+  { categorie: "Classique Orchestre", motifs: [/\bsymphon(y|ie|ies)\b|\bsinfonie\b/] },
+  { categorie: "String quartet", motifs: [/string quartet|quatuor a cordes|streichquartett|quartetto per archi/] },
+  { categorie: "Classique Voix", motifs: [/\bmass\b|\bmesse\b|\bmissa\b|requiem|\bcantat|\bkantate|magnificat|stabat mater|passion\b|oratori/],
+    sauf: /\bfuga\b|meditations/ },
+];
+
+/** Catégorie d'une œuvre d'après son nom (voir REGLES_CATEGORIE_PAR_NOM), ou null. */
+function categorieParLeNom(titre) {
+  const texte = normaliser(titre);
+  const regle = REGLES_CATEGORIE_PAR_NOM.find(({ motifs, sauf }) => motifs.every((motif) => motif.test(texte))
+    && !(sauf && sauf.test(texte)));
+  return regle ? regle.categorie : null;
+}
+
+/** Vrai si une catégorie (dossier) répond au choix du menu (« méta:Classique », un dossier, ou "" pour toutes). */
+function categorieRepondAuChoix(c, categorie) {
+  return editionDansCategorie({ metas: [metaDeCategorie(c)], categories: [c] }, categorie);
+}
+
 /**
- * Catégorie où ranger l'œuvre chez son compositeur : celle de la plupart de ses disques,
- * parmi les catégories qui répondent au choix du menu (à égalité : l'ordre habituel des catégories).
+ * Catégorie où ranger l'œuvre chez son compositeur : celle que donne son nom (voir REGLES_CATEGORIE_PAR_NOM),
+ * sinon celle de la plupart de ses disques, parmi les catégories qui répondent au choix du menu
+ * (à égalité : l'ordre habituel des catégories).
  */
-function categorieDeLOeuvre(liste, categorie) {
+function categorieDeLOeuvre(liste, categorie, parLeNom = null) {
+  if (parLeNom && categorieRepondAuChoix(parLeNom, categorie)) return parLeNom;
   const compte = new Map();
   for (const edition of liste) {
     if (!editionDansCategorie(edition, categorie)) continue;
     for (const c of edition.categories) {
-      if (categorie && !editionDansCategorie({ metas: [metaDeCategorie(c)], categories: [c] }, categorie)) continue;
+      if (categorie && !categorieRepondAuChoix(c, categorie)) continue;
       compte.set(c, (compte.get(c) || 0) + 1);
     }
   }
@@ -1658,7 +1690,7 @@ function listeOeuvresDuCompositeur(oeuvres, compositeur, cherche) {
       versions > 1 ? creer("span", { classe: "oeuvres-versions", texte: " · " + versions + " versions" }) : null));
   const parCategorie = new Map();
   for (const o of oeuvres) {
-    const c = categorieDeLOeuvre(o.editions, ongletOeuvres.categorie);
+    const c = categorieDeLOeuvre(o.editions, ongletOeuvres.categorie, o.categorieParLeNom);
     if (!parCategorie.has(c)) parCategorie.set(c, []);
     parCategorie.get(c).push(o);   // l'ordre du catalogue est gardé dans chaque catégorie
   }
@@ -1686,8 +1718,9 @@ function listeOeuvresDuCompositeur(oeuvres, compositeur, cherche) {
 function afficherListeOeuvres() {
   const groupes = oeuvresParCompositeur();
   const cherche = arbreDe(ongletOeuvres.recherche) !== null;
-  const garde = ({ versions, texte, editions: liste }) => (!ongletOeuvres.plusieurs || versions > 1)
-    && (!ongletOeuvres.categorie || liste.some((e) => editionDansCategorie(e, ongletOeuvres.categorie)))
+  const garde = ({ versions, texte, editions: liste, categorieParLeNom: parLeNom }) => (!ongletOeuvres.plusieurs || versions > 1)
+    && (!ongletOeuvres.categorie || liste.some((e) => editionDansCategorie(e, ongletOeuvres.categorie))
+      || (parLeNom && categorieRepondAuChoix(parLeNom, ongletOeuvres.categorie)))
     && (!cherche || rechercheTrouvee(texte, ongletOeuvres.recherche));
   const visibles = groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter(garde) }))
     .filter(({ oeuvres }) => oeuvres.length);
@@ -1704,7 +1737,7 @@ function afficherListeOeuvres() {
           : creer("button", { type: "button", classe: "bouton-texte", texte,
               surclic: () => { ongletOeuvres.alphabetique = alpha; afficherListeOeuvres(); } })])),
     creer("p", { classe: "oeuvres-explication discret",
-      texte: "Une œuvre est placée dans la catégorie de la majorité de ses disques. Sur sa page, chaque version porte la catégorie de son disque." }),
+      texte: "Une œuvre est placée dans la catégorie de la majorité de ses disques, sauf quand son nom la désigne (concerto pour piano ou pour violon, symphonie, quatuor à cordes, messe, cantate…). Sur sa page, chaque version porte la catégorie de son disque." }),
     ...(nbOeuvres ? [] : [creer("p", { classe: "discret", texte: "Aucune œuvre ne correspond." })]),
     ...visibles.map(({ compositeur, oeuvres }) => {
       // Ouvert si l'on cherche quelque chose, ou si on l'avait ouvert (retour depuis une page Œuvre).
@@ -1986,11 +2019,6 @@ function afficherHasard() {
 /** Fait défiler la fiche jusqu'à cet élément, en douceur. */
 function defilerFicheVers(element) {
   if (element) element.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-/** Édition en plusieurs disques (positions « 2-5 », « CD3-1 »…). */
-function estCoffret(edition) {
-  return new Set(plagesAvecHeritage(edition.plages || []).map(({ plage }) => disqueDeLaPosition(plage.position)).filter(Boolean)).size > 1;
 }
 
 /**

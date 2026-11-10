@@ -769,4 +769,5 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 .oeuvres-explication { margin: 0 0 12px; font-size: 12px; color: var(--texte-discret); }
 
 /* Fiche ouverte depuis la page d'une œuvre : l'œuvre est surlignée un instant */
-.plage-montree { background: color-mix(in srgb, var(--accent) 22%, transparent); transition: background 1.2s ease-out; border-radius: 6px; }
+.plages > li { transition: background 1.2s ease-out; }
+.plage-montree { background: color-mix(in srgb, var(--accent) 22%, transparent); border-radius: 6px; }
