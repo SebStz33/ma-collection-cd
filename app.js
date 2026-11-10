@@ -1536,6 +1536,27 @@ function titreDeTri(titre) {
   return String(titre || "").replace(RE_NOMBRE_EN_TETE, "");
 }
 
+// Compositeurs dont les œuvres se rangent par genre (Ballades, Mazurkas, Nocturnes…), puis par catalogue.
+const COMPOSITEURS_TRIES_PAR_GENRE = [/chopin/];
+const GENRES = [
+  ["Ballade", /\bballade/], ["Barcarolle", /\bbarcarol/], ["Berceuse", /\bberceuse/], ["Concerto", /\bconcert/],
+  ["Écossaise", /\becossaise/], ["Étude", /\betude/], ["Fantaisie", /\bfantais|\bfantasi/], ["Impromptu", /\bimpromptu/],
+  ["Marche", /\bmarche?\b|\bmarch\b/], ["Mazurka", /\bmazurk/], ["Nocturne", /\bnocturne/], ["Polonaise", /\bpolonaise/],
+  ["Prélude", /\bprelud/], ["Rondo", /\brondo/], ["Scherzo", /\bscherz/], ["Sonate", /\bsonat/],
+  ["Valse", /\bvalse|\bwaltz/], ["Variations", /\bvariation/],
+];
+
+/** Genre d'une œuvre : le premier mot de genre qui apparaît dans le titre, sinon le titre lui-même. */
+function genreDe(titre) {
+  const texte = normaliser(titre);
+  let meilleur = null;
+  for (const [genre, motif] of GENRES) {
+    const m = motif.exec(texte);
+    if (m && (!meilleur || m.index < meilleur.index)) meilleur = { genre, index: m.index };
+  }
+  return meilleur ? meilleur.genre : titreDeTri(titre);
+}
+
 function catalogueDe(titre) {
   const m = RE_CATALOGUE.exec(titre);
   if (!m) return null;
@@ -1589,7 +1610,9 @@ function calculerOeuvresParCompositeur() {
     for (const { catalogue } of oeuvres) if (catalogue) frequence.set(catalogue.type, (frequence.get(catalogue.type) || 0) + 1);
     const rangs = [...frequence].sort((a, b) => b[1] - a[1]).map(([type]) => type);
     const rang = (c) => c ? rangs.indexOf(c.type) : rangs.length;
-    oeuvres.sort((a, b) => rang(a.catalogue) - rang(b.catalogue)
+    const parGenre = COMPOSITEURS_TRIES_PAR_GENRE.some((motif) => motif.test(normaliser(compositeur)));
+    oeuvres.sort((a, b) => (parGenre ? comparerTextes(genreDe(a.oeuvre.titre), genreDe(b.oeuvre.titre)) : 0)
+      || rang(a.catalogue) - rang(b.catalogue)
       || (a.catalogue && b.catalogue ? a.catalogue.numero - b.catalogue.numero || a.catalogue.suffixe.localeCompare(b.catalogue.suffixe)
         || a.catalogue.dansLOpus - b.catalogue.dansLOpus : 0)
       || comparerTextes(titreDeTri(a.oeuvre.titre), titreDeTri(b.oeuvre.titre)));
@@ -1667,7 +1690,11 @@ const REGLES_CATEGORIE_PAR_NOM = [
   { categorie: "String quartet", motifs: [/string quartet|quatuor a cordes|streichquartett|quartetto per archi/] },
   { categorie: "Classique Voix", motifs: [/\bmass\b|\bmesse\b|\bmissa\b|requiem|\bcantat|\bkantate|magnificat|stabat mater|passion\b|oratori/],
     sauf: /\bfuga\b|meditations/ },
+  { categorie: "Piano Classique", motifs: [/(sonat\w* (for|pour) piano|piano sonat\w*|klaviersonate)(?! (and|et|und|e|&) )/] },
 ];
+
+// « Classique divers » est le dossier fourre-tout (dont le coffret 111 DG) : il ne compte que si l'œuvre n'est sur aucun autre disque.
+const CATEGORIE_FOURRE_TOUT = "Classique divers";
 
 /** Catégorie d'une œuvre d'après son nom (voir REGLES_CATEGORIE_PAR_NOM), ou null. */
 function categorieParLeNom(titre) {
@@ -1697,6 +1724,7 @@ function categorieDeLOeuvre(liste, categorie, parLeNom = null) {
       compte.set(c, (compte.get(c) || 0) + 1);
     }
   }
+  if (compte.size > 1) compte.delete(CATEGORIE_FOURRE_TOUT);
   return [...compte].sort((a, b) => b[1] - a[1] || comparerCategories(a[0], b[0]))[0]?.[0] || SANS_CATEGORIE;
 }
 
