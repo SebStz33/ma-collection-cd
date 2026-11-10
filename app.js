@@ -2441,6 +2441,7 @@ function blocSources(edition) {
     : null;
   const lignes = [
     ["Correspondance MusicBrainz", methodes[edition.musicbrainz_methode] || "pas encore cherchée"],
+    ["Plages", edition.plages_source === "musicbrainz" ? "MusicBrainz (la tracklist Discogs n'a qu'une plage par disque)" : null],
     ["Œuvres identifiées (MusicBrainz)", edition.musicbrainz_methode && edition.musicbrainz_methode !== "aucune" ? oeuvres : null],
     ["Année d'enregistrement", anneesSource],
     ["Live / Studio", edition.liveAuto ? SOURCES_ANNEES[edition.live_auto_source] : null],

@@ -518,6 +518,13 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     # L'œuvre parente (« 24 Caprices » pour « Caprice n° 5 ») n'est gardée que pour le classique :
     # pour une chanson, MusicBrainz y met plutôt le film ou la comédie musicale d'origine.
     entree_mb = entree_mb or {}
+    # Tracklist Discogs trop sommaire (une plage par disque) : celle de l'édition MusicBrainz la remplace
+    # (voir musicbrainz.tracklist_sommaire) ; celle de Discogs est gardée à part pour la synchro suivante.
+    disque["plages_source"] = "discogs"
+    if entree_mb.get("plages"):
+        disque["plages_discogs"] = disque["plages"]
+        disque["plages"] = json.loads(json.dumps(entree_mb["plages"]))
+        disque["plages_source"] = "musicbrainz"
     disque["plages"] = musicbrainz.ajouter_oeuvres(disque["plages"], entree_mb.get("oeuvres"),
                                                    avec_parente="Classical" in disque["genres"])
     # Durées : celles de Discogs, complétées par MusicBrainz (édition exacte) pour les plages qui n'en ont pas.
@@ -570,6 +577,8 @@ def lire_details_connus():
     for disque in precedent.get("disques", []):
         if disque.get("details_maj"):
             connus[disque["release_id"]] = {cle: disque[cle] for cle in CLES_DETAILS if cle in disque}
+            if "plages_discogs" in disque:  # plages remplacées par celles de MusicBrainz : on reprend celles de Discogs
+                connus[disque["release_id"]]["plages"] = disque["plages_discogs"]
     return connus
 
 
@@ -604,9 +613,17 @@ def main():
     print("3/5 Fiches complètes...")
     details_connus = lire_details_connus()
     relire_tout = "--relire-tout" in sys.argv
+    # --relire 20144050 (ou --relire 20144050,123456) : relit ces disques sur Discogs et MusicBrainz tout de suite.
+    relire = set()
+    if "--relire" in sys.argv[:-1]:
+        texte = sys.argv[sys.argv.index("--relire") + 1]
+        relire = {int(n) for n in texte.replace(" ", "").split(",") if n.isdigit()}
+        inconnus = relire - {e["id"] for e in elements}
+        if inconnus:
+            print("  Pas dans la collection : %s" % ", ".join(str(n) for n in sorted(inconnus)))
     a_lire = sorted({
         e["id"] for e in elements
-        if relire_tout or doit_rafraichir(details_connus.get(e["id"]))
+        if relire_tout or e["id"] in relire or doit_rafraichir(details_connus.get(e["id"]))
     })
     print("  %d fiches à lire (les autres sont déjà connues)" % len(a_lire))
     for numero, release_id in enumerate(a_lire, start=1):
@@ -630,7 +647,7 @@ def main():
                     if any((a.get("name") or "").lower() == "various" for a in e.get("basic_information", {}).get("artists", []))}
     oeuvres = musicbrainz.mettre_a_jour(FICHIER_MUSICBRAINZ, list(a_chercher.values()),
                                         tout="--musicbrainz-tout" in sys.argv, sans_annee=sans_annee,
-                                        compilations=compilations)
+                                        compilations=compilations, forces=relire)
 
     print("5/5 Écriture de data/collection.json...")
     disques = [

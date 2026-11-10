@@ -74,6 +74,8 @@ DISQUES_PAR_SYNCHRO = 200
 # Version 13 : ces artistes viennent d'abord de l'enregistrement et de ses interprètes reliés (la plage
 #              d'une compilation classique ne crédite que le compositeur) ; mêmes éditions revues.
 # Version 14 : rôle de chaque interprète (instrument, voix, direction) ; mêmes éditions revues.
+# (La tracklist MusicBrainz pour une tracklist Discogs trop sommaire, voir tracklist_sommaire, n'a pas
+#  demandé de nouvelle version : un seul disque concerné, relu avec --relire.)
 VERSION_RECHERCHE = 14
 
 # Au-delà de ce nombre d'enregistrements, le serveur MusicBrainz ne renvoie plus les relations (œuvres,
@@ -331,16 +333,16 @@ def lire_relations_par_paquets(identifiant):
 
 def lire_edition_mb(identifiant):
     """
-    Lit une édition MusicBrainz. Renvoie (œuvres, années, année de parution, durées, positions) : la liste
+    Lit une édition MusicBrainz. Renvoie (œuvres, années, année de parution, durées, positions, titres) : la liste
     des œuvres (ou None) de chaque plage, dans l'ordre, [première, dernière] année d'enregistrement (ou None),
     l'année de parution de l'édition (ou None), la durée de chaque plage en millisecondes (ou None)
-    et la position de chaque plage : (numéro du disque, numéro de la plage sur ce disque).
+    et la position de chaque plage : (numéro du disque, numéro de la plage sur ce disque), puis le titre de chaque plage.
     """
     edition = appeler("release/%s" % identifiant, {
         "inc": "recordings+artist-credits+recording-level-rels+work-rels+work-level-rels+artist-rels+place-rels+area-rels",
     })
     if not edition:
-        return None, None, None, None, None
+        return None, None, None, None, None, None
     plages = [plage for support in edition.get("media", []) for plage in support.get("tracks", [])]
     positions = [(support.get("position"), plage.get("position"))
                  for support in edition.get("media", []) for plage in support.get("tracks", [])]
@@ -358,7 +360,7 @@ def lire_edition_mb(identifiant):
     annee_parution = int(date_edition[:4]) if date_edition[:4].isdigit() else None
     durees = [plage.get("length") or (plage.get("recording") or {}).get("length") for plage in plages]
     return ([oeuvre_de_plage(plage) for plage in plages], ([min(annees), max(annees)] if annees else None),
-            annee_parution, durees, positions)
+            annee_parution, durees, positions, [plage.get("title") or "" for plage in plages])
 
 
 def en_https(adresse):
@@ -578,6 +580,31 @@ def associer_par_position(plages, oeuvres, durees, positions):
     return resultat_oeuvres, resultat_durees
 
 
+def tracklist_sommaire(plages, positions):
+    """
+    Vrai si la tracklist Discogs est trop sommaire pour y relier les œuvres : au plus une plage par disque
+    (« 1-1 Chopin », « 2-1 Schumann »…) alors que l'édition MusicBrainz en a davantage.
+    """
+    nb_discogs = len(plages_a_associer(plages))
+    return bool(positions) and len(positions) > nb_discogs and nb_discogs <= len({d for d, _ in positions})
+
+
+def plages_de_musicbrainz(titres, durees, positions):
+    """
+    Tracklist de l'édition MusicBrainz dans le format de sync.py : « 1-1 », « 1-2 »… (« 1 », « 2 »…
+    pour un seul disque), titre et durée. Les œuvres sont ajoutées ensuite par sync.py (ajouter_oeuvres).
+    """
+    un_seul_disque = len({d for d, _ in positions}) == 1
+    plages = []
+    for (disque, numero), titre, duree in zip(positions, titres, durees or [None] * len(positions)):
+        plage = {"position": str(numero) if un_seul_disque else "%s-%s" % (disque, numero), "titre": titre,
+                 "duree": texte_duree(duree) if duree else "", "type": "plage", "artistes": [], "credits": []}
+        if duree:
+            plage["duree_source"] = "musicbrainz"
+        plages.append(plage)
+    return plages
+
+
 def texte_duree(millisecondes):
     """Durée MusicBrainz (millisecondes) écrite comme Discogs : « 4:20 », « 1:02:05 »."""
     secondes = int(round(millisecondes / 1000))
@@ -621,11 +648,14 @@ def ecrire_cache(fichier, cache):
     temporaire.replace(fichier)
 
 
-def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_duree=False, compilation=False):
+def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_duree=False, compilation=False,
+               force=False):
     """
     Vrai si ce disque doit être (re)cherché sur MusicBrainz. `sans_annee` : Discogs n'a pas son année.
-    `compilation` : disque crédité à « Various » sur Discogs.
+    `compilation` : disque crédité à « Various » sur Discogs. `force` : demandé avec --relire.
     """
+    if force:
+        return True
     if not entree or entree.get("nb_plages") != nb_plages:
         return True  # jamais cherché, ou tracklist Discogs modifiée depuis
     version = entree.get("version", 1)
@@ -656,21 +686,24 @@ def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_du
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
 
-def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=()):
+def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=(), forces=()):
     """
     Cherche sur MusicBrainz les disques qui ne sont pas encore dans le cache
     (ou dont la recherche est ancienne), au plus DISQUES_PAR_SYNCHRO, sauf si
     tout est vrai. `disques` : liste de (release_id, master_id, plages Discogs, codes-barres).
     `sans_annee` : release_id des disques sans année sur Discogs. `compilations` : ceux crédités à « Various ».
-    Renvoie le cache : {release_id (texte): {"maj", "version", "nb_plages", "methode", "release", "oeuvres", "images"}}.
+    `forces` : ceux demandés avec --relire, cherchés en premier même s'ils sont à jour.
+    Renvoie le cache : {release_id (texte): {"maj", "version", "nb_plages", "methode", "release", "oeuvres", "images"}},
+    plus « plages » (la tracklist MusicBrainz) quand celle de Discogs est trop sommaire.
     """
     cache = lire_cache(fichier)
     a_faire = [d for d in disques
                if a_chercher(cache.get(str(d[0])), len(plages_a_associer(d[2])), d[0] in sans_annee,
                              a_mouvements_meme_position(d[2]),
-                             any(not p.get("duree") for p in plages_a_associer(d[2])), d[0] in compilations)]
-    # Les disques jamais cherchés d'abord, puis les recherches les plus anciennes.
-    a_faire.sort(key=lambda d: (str(d[0]) in cache, (cache.get(str(d[0])) or {}).get("version", 1),
+                             any(not p.get("duree") for p in plages_a_associer(d[2])), d[0] in compilations,
+                             d[0] in forces)]
+    # Les disques demandés avec --relire d'abord, puis ceux jamais cherchés, puis les recherches les plus anciennes.
+    a_faire.sort(key=lambda d: (d[0] not in forces, str(d[0]) in cache, (cache.get(str(d[0])) or {}).get("version", 1),
                                 (cache.get(str(d[0])) or {}).get("maj", "")))
     if not tout:
         a_faire = a_faire[:DISQUES_PAR_SYNCHRO]
@@ -680,14 +713,22 @@ def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=()):
         nb_plages = len(plages_a_associer(plages))
         try:
             identifiant, methode = trouver_edition(release_id, master_id, nb_plages, codes_barres)
-            oeuvres, annees, annee_parution, durees, positions = (lire_edition_mb(identifiant) if identifiant
-                                                                  else (None, None, None, None, None))
+            oeuvres, annees, annee_parution, durees, positions, titres = (
+                lire_edition_mb(identifiant) if identifiant else (None, None, None, None, None, None))
             images = lire_images(identifiant) if methode in METHODES_EXACTES else []
         except (urllib.error.URLError, ValueError, OSError) as erreur:
             # Un disque en erreur ne doit pas bloquer la synchro : il sera repris la prochaine fois.
             print("  Disque %s ignoré pour MusicBrainz (%s)" % (release_id, erreur))
             continue
-        if oeuvres is not None and len(oeuvres) not in nombres_acceptes(plages):
+        # Tracklist Discogs trop sommaire (une plage par disque) et édition exacte : on prend celle de
+        # MusicBrainz. Une fois choisie, elle reste, même si la tracklist Discogs est complétée ensuite.
+        precedente = cache.get(str(release_id)) or {}
+        plages_mb = None
+        if oeuvres is not None and methode in METHODES_EXACTES and (
+                tracklist_sommaire(plages, positions) or precedente.get("plages")):
+            plages_mb = plages_de_musicbrainz(titres, durees, positions)
+            durees = None  # déjà dans les plages
+        elif oeuvres is not None and len(oeuvres) not in nombres_acceptes(plages):
             # Nombre de plages différent, même en groupant les mouvements : on associe par position
             # (CD + plage) ; les listes gardées sont alors alignées sur les plages Discogs.
             oeuvres, durees = associer_par_position(plages, oeuvres, durees, positions)
@@ -706,6 +747,8 @@ def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=()):
             # Durées des plages : seulement pour l'édition exacte (une réédition peut avoir d'autres durées).
             "durees": durees if methode in METHODES_EXACTES and durees and any(durees) else None,
         }
+        if plages_mb:
+            cache[str(release_id)]["plages"] = plages_mb
         if numero % 25 == 0 or numero == len(a_faire):
             print("  %d/%d" % (numero, len(a_faire)))
             ecrire_cache(fichier, cache)  # enregistré en route : rien de perdu si la synchro s'arrête
