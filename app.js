@@ -2650,25 +2650,42 @@ function listePlagesParDisque(plages, suivi) {
 }
 
 /**
- * Coffret classique : nom court du compositeur des CD consacrés à un seul compositeur (« CD 1 Chopin »).
- * Si un compositeur occupe au moins la moitié des CD, on ne l'écrit pas (Symphonies de Mozart : rien, sauf
+ * Coffret classique : nom court du compositeur des CD consacrés à un seul compositeur (« CD 1 Chopin »),
+ * « Field… » (le plus présent) pour un CD à plusieurs compositeurs. Si un compositeur occupe plus de la moitié des CD, on ne l'écrit pas (Symphonies de Mozart : rien, sauf
  * sur un CD d'un autre compositeur). Renvoie Map disque -> nom (« Chopin »).
  */
 function compositeursDesDisques(plages, disques, edition) {
   const noms = new Map();
   if (!estClassique(edition)) return noms;
+  const melanges = new Map();   // CD dont toutes les plages ont un compositeur, mais pas le même : ses plages
   for (const disque of disques) {
     const reelles = plages.filter((p) => disqueDeLaPlage(p) === disque).flatMap(plagesReelles);
     const compositeurs = new Set(reelles.map((p) => (p.oeuvre && p.oeuvre.compositeur) || ""));
     const [seul] = compositeurs;
     if (compositeurs.size === 1 && seul && !seul.includes(", ")) noms.set(disque, seul);
+    else if (compositeurs.size > 1 && !compositeurs.has("")) melanges.set(disque, reelles);
   }
   const compte = new Map();
   for (const nom of noms.values()) compte.set(nom, (compte.get(nom) || 0) + 1);
   for (const [nom, n] of compte) {
-    if (n * 2 >= disques.length) for (const [disque, autre] of noms) if (autre === nom) noms.delete(disque);
+    if (n * 2 > disques.length) for (const [disque, autre] of noms) if (autre === nom) noms.delete(disque);
   }
-  for (const [disque, nom] of noms) noms.set(disque, nom.trim().split(/\s+/).pop());
+  const court = (nom) => nom.trim().split(/\s+/).pop();
+  for (const [disque, nom] of noms) noms.set(disque, court(nom));
+  // CD à plusieurs compositeurs, seulement si d'autres CD portent un nom : le compositeur le plus présent
+  // (en durée, à défaut en nombre de plages) suivi de « … » ; à égalité, les deux premiers par ordre alphabétique.
+  if (noms.size) {
+    for (const [disque, reelles] of melanges) {
+      const poids = new Map();
+      for (const p of reelles) {
+        const nom = court(p.oeuvre.compositeur.split(", ")[0]);
+        poids.set(nom, (poids.get(nom) || 0) + (secondesDe(p.duree) || 1));
+      }
+      const tries = [...poids].sort((a, b) => b[1] - a[1] || comparerTextes(a[0], b[0]));
+      const premiers = tries.filter(([, n]) => n === tries[0][1]).slice(0, 2).map(([nom]) => nom);
+      noms.set(disque, premiers.join(", ") + "…");
+    }
+  }
   return noms;
 }
 
