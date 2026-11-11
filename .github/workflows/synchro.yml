@@ -1,4 +1,4 @@
-# Synchronisation automatique de ma collection Discogs, chaque nuit.
+# Synchronisation automatique de ma collection Discogs, chaque semaine (dimanche).
 # GitHub lance scripts/sync.py sur une de ses machines, puis enregistre
 # data/collection.json (et data/musicbrainz.json) dans le dépôt : GitHub Pages republie alors le site.
 
@@ -6,7 +6,7 @@ name: Synchro Discogs et MusicBrainz
 
 on:
   schedule:
-    - cron: "30 2 * * *"   # tous les jours à 2 h 30 UTC (3 h 30 ou 4 h 30 à Paris)
+    - cron: "30 2 * * 0"   # le dimanche (0) à 2 h 30 UTC (3 h 30 à Paris en hiver, 4 h 30 en été)
   workflow_dispatch:        # bouton « Run workflow » pour la lancer à la main
 
 # Le robot a le droit d'écrire dans le dépôt (pour enregistrer la collection).
