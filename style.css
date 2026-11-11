@@ -140,10 +140,27 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 /* ---------- Grille de pochettes ---------- */
 
 /* Une grille par catégorie, avec son titre */
+/* Méta-catégories : boutons en haut de la Collection, sommaire à deux niveaux, titre au-dessus des catégories */
+.boutons-metas { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.bouton-meta {
+  background: var(--surface); border: 1px solid var(--bordure); color: var(--texte-2);
+  border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 14px; cursor: pointer;
+}
+.bouton-meta.actif { background: var(--accent); border-color: var(--accent); color: var(--accent-texte); font-weight: 600; }
 .sommaire-categories { font-size: 15px; line-height: 1.9; margin: 0 0 20px; }
 .sommaire-categories .bouton-texte { padding: 0; font-size: 15px; }
-.sommaire-element { white-space: nowrap; }
 .sommaire-categories .discret { color: var(--texte-2); }
+.sommaire-meta { margin: 0 0 6px; }
+.sommaire-categories .sommaire-nom-meta { color: var(--texte); font-weight: 600; }
+.titre-meta {
+  font-size: 20px; font-weight: 600; margin: 28px 0 8px; padding-top: 12px;
+  border-top: 1px solid var(--bordure); color: var(--texte);
+  scroll-margin-top: var(--hauteur-entete, 112px);
+}
+.titre-meta:first-of-type { margin-top: 0; }
+.titre-meta .discret { color: var(--texte-2); font-weight: 400; }
+.sommaire-element { white-space: nowrap; }
+#filtre-categorie .option-meta { font-weight: 600; }
 .titre-categorie {
   position: sticky; top: var(--hauteur-entete, 112px); z-index: 5;
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 6px;
@@ -484,6 +501,8 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .index-lettres .bouton-texte { padding: 2px 5px; font-size: 13px; }
 .index-lettre h3 { margin: 18px 0 6px; font-size: 15px; color: var(--accent); }
 .index-noms { margin: 0; line-height: 1.9; font-size: 14px; }
+.index-lettre .index-meta { font-size: 15px; font-weight: 600; color: var(--accent); }
+.index-lettre .index-meta .discret { color: var(--texte-2); font-weight: 400; }
 .index-nom { background: none; border: 0; padding: 0; color: var(--texte); cursor: pointer; text-align: left; font: inherit; }
 .index-nom:hover { color: var(--accent); }
 .index-nom .discret, .index-separateur { color: var(--texte-discret); }
