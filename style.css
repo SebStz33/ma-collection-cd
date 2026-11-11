@@ -297,6 +297,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .plage > .plages { grid-column: 1 / -1; padding-left: 1.6em; margin-top: 4px; }
 .plage > .plages .plage:last-child { border-bottom: 0; }
 .plage-oeuvre > div .plage-titre { font-weight: 600; }
+.plage-oeuvre.oeuvre-intertitre > div > .plage-titre { color: var(--accent); }
 .plage-position, .plage-duree { color: var(--texte-discret); font-variant-numeric: tabular-nums; }
 .duree-oeuvre { white-space: nowrap; }
 /* Durée d'un disque de coffret, à côté de son nom (« CD 3  74 min »). */
