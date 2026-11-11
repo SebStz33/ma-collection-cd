@@ -745,7 +745,8 @@ def lire_disques_manuels(plages, manuel):
     Lit sur MusicBrainz chaque disque désigné à la main et l'associe au CD du coffret par position
     (même sécurité que associer_par_position : un CD n'est relié que si ses plages Discogs couvrent
     exactement celles du disque MusicBrainz). Renvoie (œuvres, durées, années, détails par CD) ; détails :
-    {"1": {"reference", "release", "titre", "plages_mb", "plages_discogs", "reliees"}}.
+    {"1": {"reference", "release", "titre", "plages_mb", "plages_discogs", "reliees", "image"}} ; « image » :
+    la pochette du disque séparé (Cover Art Archive : {"url", "original", "miniature"}), ou None.
     """
     oeuvres, durees, positions, annees, details = [], [], [], [], {}
     for cd in sorted(manuel, key=lambda n: int(n) if str(n).isdigit() else 0):
@@ -755,6 +756,8 @@ def lire_disques_manuels(plages, manuel):
         if not release or not str(cd).isdigit():
             continue
         oeuvres_mb, annees_mb, _, durees_mb, positions_mb, _ = lire_edition_mb(release)
+        images = lire_images(release)   # la pochette d'abord
+        details[str(cd)]["image"] = {k: v for k, v in images[0].items() if k != "type"} if images else None
         rangs = [i for i, (d, _) in enumerate(positions_mb or []) if d == support]
         details[str(cd)]["plages_mb"] = len(rangs)
         for i in rangs:

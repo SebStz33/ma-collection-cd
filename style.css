@@ -315,7 +315,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 /* Compositeur unique d'un CD de coffret classique (« CD 1 Chopin »). */
 .compositeur-disque { white-space: nowrap; }
 .compositeurs-disque { white-space: normal; min-width: 0; }   /* plusieurs compositeurs : la liste peut passer à la ligne */
-.plage-disque > span:first-child, .plage-disque .duree-disque { white-space: nowrap; }
+.plage-disque > span:first-of-type, .plage-disque .duree-disque { white-space: nowrap; }
 /* Sur téléphone : les interprètes du disque passent sur une ligne à eux, sous « CD 24 · durée ». */
 @media (max-width: 700px) {
   .plage-disque { flex-wrap: wrap; row-gap: 2px; }
@@ -597,6 +597,9 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 .plage-disque { scroll-margin-top: 12px; }
 /* Intertitre d'un disque de coffret : nom à gauche, « ↑ Préc. · ↓ Suiv. » à droite. */
 .plage-disque { display: flex; align-items: baseline; gap: 12px; }
+/* Pochette du disque séparé (coffret rattaché à la main) : petite vignette avant « CD 3 », cliquable. */
+.pochette-disque { padding: 0; border: 0; background: none; cursor: zoom-in; align-self: center; flex: none; }
+.pochette-disque img { display: block; width: 36px; height: 36px; object-fit: cover; border-radius: 4px; border: 1px solid var(--bordure); }
 .navigation-disques { margin-left: auto; display: flex; gap: 14px; font-weight: 400; }
 /* Double flèche faite de deux flèches simples (même police, même taille), resserrées. */
 .fleche-double { letter-spacing: -0.35em; padding-right: 0.35em; }

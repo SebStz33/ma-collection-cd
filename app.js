@@ -2684,6 +2684,8 @@ function listePlagesParDisque(plages, suivi) {
   const enTete = new Map(disques.map((disque) => [disque,
     interpretesCommuns(plages.filter((p) => disqueDeLaPlage(p) === disque), edition)]));
   const noms = compositeursDesDisques(plages, disques, edition);
+  // Coffret rattaché à la main : pochette du disque séparé sur MusicBrainz, dans l'en-tête de chaque CD.
+  const pochettes = disquesMB(edition).filter(([, d]) => d.image).map(([cd, d]) => ({ ...d.image, disque: "CD " + cd }));
   // Un intertitre sans position (« Pétrouchka – Scènes burlesques… ») va avec le CD de la plage qui le suit,
   // pour s'afficher sous l'en-tête « CD 8 » et non au-dessus.
   const disquesAffiches = plages.map(disqueDeLaPlage);
@@ -2696,7 +2698,7 @@ function listePlagesParDisque(plages, suivi) {
     if (debut) vus.add(disque);
     return [
       debut ? intertitreDisque(disques, disque, texteDuree(dureeTotale(plages.filter((p) => disqueDeLaPlage(p) === disque))),
-        enTete.get(disque), (noms.detail && noms.detail.get(disque)) || noms.get(disque)) : null,
+        enTete.get(disque), (noms.detail && noms.detail.get(disque)) || noms.get(disque), pochettes) : null,
       ligne(plage, (enTete.get(disque) || []).map((i) => i.nom)),
     ];
   });
@@ -2724,16 +2726,19 @@ function compositeursDesDisques(plages, disques, edition) {
   for (const [nom, n] of compte) {
     if (n * 2 > disques.length) for (const [disque, autre] of noms) if (autre === nom) noms.delete(disque);
   }
-  const court = (nom) => nom.trim().split(/\s+/).pop();
+  const court = nomCourtCompositeur;
   for (const [disque, nom] of noms) noms.set(disque, court(nom));
   // CD à plusieurs compositeurs, seulement si d'autres CD portent un nom : le compositeur le plus présent
   // (en durée, à défaut en nombre de plages) suivi de « … » ; à égalité, les deux premiers par ordre alphabétique.
   if (noms.size) {
     for (const [disque, reelles] of melanges) {
       const poids = new Map();
+      // Comme l'en-tête du CD : chaque compositeur d'une œuvre écrite à plusieurs reçoit la durée de la plage.
       for (const p of reelles) {
-        const nom = court(p.oeuvre.compositeur.split(", ")[0]);
-        poids.set(nom, (poids.get(nom) || 0) + (secondesDe(p.duree) || 1));
+        for (const complet of p.oeuvre.compositeur.split(", ").filter(Boolean)) {
+          const nom = court(complet);
+          poids.set(nom, (poids.get(nom) || 0) + (secondesDe(p.duree) || 1));
+        }
       }
       const tries = [...poids].sort((a, b) => b[1] - a[1] || comparerTextes(a[0], b[0]));
       const premiers = tries.filter(([, n]) => n === tries[0][1]).slice(0, 2).map(([nom]) => nom);
@@ -2766,7 +2771,19 @@ function compositeursDesDisques(plages, disques, edition) {
   return noms;
 }
 
-const MAX_COMPOSITEURS_DISQUE = 5;   // en-tête d'un CD de coffret : au-delà, « et N autres »
+const MAX_COMPOSITEURS_DISQUE = 5;
+
+/**
+ * Nom court d'un compositeur : son dernier mot (« Chopin »), avec la particule romane qui le précède
+ * (« Philippe de Monte » -> « de Monte », « Tomás Luis de Victoria » -> « de Victoria ») ; pas « van » ni « von »
+ * (« Ludwig van Beethoven » -> « Beethoven »).
+ */
+function nomCourtCompositeur(nom) {
+  const mots = nom.trim().split(/\s+/);
+  let court = mots.pop() || "";
+  if (mots.length && /^(de|di|da|del|della|des|du)$/i.test(mots[mots.length - 1])) court = mots.pop() + " " + court;
+  return court;
+}   // en-tête d'un CD de coffret : au-delà, « et N autres »
 
 // Rôles d'interprètes (MusicBrainz et Discogs, en anglais) -> français. Un rôle absent garde son nom anglais.
 const ROLES_EN_FRANCAIS = {
@@ -2869,7 +2886,8 @@ function ligneInterpretesDeLOeuvre(plage, edition, dejaDits) {
  * Intertitre « CD 2 » d'un coffret, avec à droite « ↑↑ ↑ Préc. » (sauf au début)
  * et « ↓ Suiv. ↓↓ » (sauf à la fin), pour passer d'un disque à l'autre ou aller au premier / dernier.
  */
-function intertitreDisque(disques, disque, duree = "", interpretes = [], compositeur = null) {
+function intertitreDisque(disques, disque, duree = "", interpretes = [], compositeur = null, pochettes = []) {
+  const pochette = pochettes.find((p) => p.disque === disque);
   const numero = disques.indexOf(disque);
   const aller = (cible) => (evenement) => {
     const liste = evenement.currentTarget.closest(".plages");
@@ -2878,6 +2896,10 @@ function intertitreDisque(disques, disque, duree = "", interpretes = [], composi
   const lien = (texte, cible, titre, classe = "") => creer("button", { type: "button", classe: ("bouton-texte lien-fiche " + classe).trim(),
     texte, title: titre + " : " + cible, surclic: aller(cible) });
   return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
+    pochette ? creer("button", { type: "button", classe: "pochette-disque",
+      title: "Pochette du disque séparé (MusicBrainz) : agrandir",
+      surclic: () => ouvrirVisionneuse(pochettes, pochettes.indexOf(pochette)) },
+      creer("img", { src: pochette.miniature, alt: "", loading: "lazy", decoding: "async" })) : null,
     creer("span", { texte: disque }),
     // Un nom (« Chopin ») ou, pour un CD à plusieurs compositeurs, { texte, titre } (« Dobrzyński, Field, Chopin »).
     !compositeur ? null : typeof compositeur === "string" ? creer("span", { classe: "compositeur-disque", texte: compositeur })
