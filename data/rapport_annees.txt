@@ -1,10 +1,10 @@
 Rapport des années d'enregistrement et des disques live, le 2026-11-11
 
-Sources des années d'enregistrement (456 éditions) :
+Sources des années d'enregistrement (457 éditions) :
   saisie manuelle                    27
   MB sur édition exacte              235
   MB sur autre édition de l'album    17
-  notes Discogs                      71
+  notes Discogs                      72
   titre                              3
   « à trouver »                      0
   aucune année                       103
@@ -133,6 +133,9 @@ Louis Couperin, Blandine Verlet — Les Piéces De Clavessin De Mr. Louis Couper
 
 Louis-Nicolas Clérambault, Les Demoiselles De Saint-Cyr, Emmanuel Mandrin — Chants Et Motets Pour La Royale Maison De Saint-Louis (édition 11908366)
     1993   « Recorded 20-24 June 1993. »
+
+Ludwig van Beethoven, Royal Philharmonic Orchestra, Barry Wordsworth — Symphony No. 1 In C Major, Opus 21 / Symphony No. 7 In A Major, Opus 92 (édition 1257160)
+    1994   « recorded in July 1994 at C.T.S. Studios, London. »
 
 Manu Codjia, Daniel Humair, François Moutin — Songlines (édition 7884170)
     2006   « Recorded and mixed at Studio La Buissonne in Pernes-Les-Fontaines in September 2006 »

@@ -1,7 +1,7 @@
 {
   "utilisateur": "SebSteinmetz",
-  "genere_le": "2026-11-11T14:51:20+00:00",
-  "nb_disques": 459,
+  "genere_le": "2026-11-11T21:43:24+00:00",
+  "nb_disques": 460,
   "champs_perso": [
     "Photo principale",
     "Année d’enregistrement (manuelle)",
@@ -1958,7 +1958,10 @@
         "Classical",
         "Impressionist",
         "Baroque",
-        "Romantic"
+        "Romantic",
+        "Piano",
+        "Concerto",
+        "Sonata"
       ],
       "pochette": "https://i.discogs.com/sNlYPcu4Pb9hbkOocfCSta624y94QQOhFPHlw7qg808/rs:fit/g:sm/q:90/h:600/w:585/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzMzY2/MzI2LTE1NTI4NDUw/MDItMjU0OC5qcGVn.jpeg",
       "miniature": "https://i.discogs.com/13_SsjkuOMAQGc0zt_JnEmmwrFGH-0JbWI5RygE64F0/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzMzY2/MzI2LTE1NTI4NDUw/MDItMjU0OC5qcGVn.jpeg",
@@ -67758,23 +67761,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "490c25b4-fd2f-3cf1-af40-f0e072bc797a",
-                "titre": "Concerto for Orchestra, Sz. 116, BB 123: I. Introduzione. Andante non troppo – Allegro vivace",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
-                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "490c25b4-fd2f-3cf1-af40-f0e072bc797a",
+                "parente": {
+                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
+                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Concerto for Orchestra, Sz. 116, BB 123: I. Introduzione. Andante non troppo – Allegro vivace"
+              }
             },
             {
               "position": "1-2",
@@ -67788,23 +67791,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "c7ee9027-6bb2-3a27-b91f-36da7e26808a",
-                "titre": "Concerto for Orchestra, Sz. 116, BB 123: II. Giuoco delle coppie. Allegretto scherzando",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
-                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "c7ee9027-6bb2-3a27-b91f-36da7e26808a",
+                "parente": {
+                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
+                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Concerto for Orchestra, Sz. 116, BB 123: II. Giuoco delle coppie. Allegretto scherzando"
+              }
             },
             {
               "position": "1-3",
@@ -67818,23 +67821,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "162bfe29-7970-3c20-bf55-031c76fa3f7c",
-                "titre": "Concerto for Orchestra, Sz. 116, BB 123: III. Elegia. Andante non troppo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
-                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "162bfe29-7970-3c20-bf55-031c76fa3f7c",
+                "parente": {
+                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
+                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Concerto for Orchestra, Sz. 116, BB 123: III. Elegia. Andante non troppo"
+              }
             },
             {
               "position": "1-4",
@@ -67848,23 +67851,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "8961fa6a-9d99-3bb9-9890-dd1b665d6010",
-                "titre": "Concerto for Orchestra, Sz. 116, BB 123: IV. Intermezzo interrotto. Allegretto",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
-                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "8961fa6a-9d99-3bb9-9890-dd1b665d6010",
+                "parente": {
+                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
+                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Concerto for Orchestra, Sz. 116, BB 123: IV. Intermezzo interrotto. Allegretto"
+              }
             },
             {
               "position": "1-5",
@@ -67878,23 +67881,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "94c914f7-6458-3f70-a697-ab50e4e7f570",
-                "titre": "Concerto for Orchestra, Sz. 116, BB 123: V. Finale. Pesante – Presto",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
-                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "94c914f7-6458-3f70-a697-ab50e4e7f570",
+                "parente": {
+                  "id": "2720522c-d8cb-4d94-b35a-e7773e8e5070",
+                  "titre": "Concerto for Orchestra, Sz. 116, BB 123"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Concerto for Orchestra, Sz. 116, BB 123: V. Finale. Pesante – Presto"
+              }
             }
           ]
         },
@@ -67923,23 +67926,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "257e1603-a7c5-4fe1-96bc-147122caa629",
-                "titre": "Dance Suite, Sz. 77, BB 86a: I. Moderato",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
-                  "titre": "Dance Suite, Sz. 77, BB 86a"
-                },
                 "artistes": [
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "257e1603-a7c5-4fe1-96bc-147122caa629",
+                "parente": {
+                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
+                  "titre": "Dance Suite, Sz. 77, BB 86a"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Dance Suite, Sz. 77, BB 86a: I. Moderato"
+              }
             },
             {
               "position": "1-7",
@@ -67953,23 +67956,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "2b960c3b-18b1-4618-93ef-74320c879868",
-                "titre": "Dance Suite, Sz. 77, BB 86a: II. Allegro molto",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
-                  "titre": "Dance Suite, Sz. 77, BB 86a"
-                },
                 "artistes": [
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "2b960c3b-18b1-4618-93ef-74320c879868",
+                "parente": {
+                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
+                  "titre": "Dance Suite, Sz. 77, BB 86a"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Dance Suite, Sz. 77, BB 86a: II. Allegro molto"
+              }
             },
             {
               "position": "1-8",
@@ -67983,23 +67986,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "6dbefa2e-3fa3-4a2b-8e8c-7dae0603b767",
-                "titre": "Dance Suite, Sz. 77, BB 86a: III. Allegro vivace",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
-                  "titre": "Dance Suite, Sz. 77, BB 86a"
-                },
                 "artistes": [
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "6dbefa2e-3fa3-4a2b-8e8c-7dae0603b767",
+                "parente": {
+                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
+                  "titre": "Dance Suite, Sz. 77, BB 86a"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Dance Suite, Sz. 77, BB 86a: III. Allegro vivace"
+              }
             },
             {
               "position": "1-9",
@@ -68013,23 +68016,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "c312c700-8068-42bd-b359-f35065df932b",
-                "titre": "Dance Suite, Sz. 77, BB 86a: IV. Molto tranquillo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
-                  "titre": "Dance Suite, Sz. 77, BB 86a"
-                },
                 "artistes": [
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "c312c700-8068-42bd-b359-f35065df932b",
+                "parente": {
+                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
+                  "titre": "Dance Suite, Sz. 77, BB 86a"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Dance Suite, Sz. 77, BB 86a: IV. Molto tranquillo"
+              }
             },
             {
               "position": "1-10",
@@ -68043,23 +68046,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "a0d9497c-2523-4a00-b217-d85eacbf5d1e",
-                "titre": "Dance Suite, Sz. 77, BB 86a: V. Comodo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
-                  "titre": "Dance Suite, Sz. 77, BB 86a"
-                },
                 "artistes": [
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "a0d9497c-2523-4a00-b217-d85eacbf5d1e",
+                "parente": {
+                  "id": "2937b339-65be-46e4-aadf-ed26d1421f5d",
+                  "titre": "Dance Suite, Sz. 77, BB 86a"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Dance Suite, Sz. 77, BB 86a: V. Comodo"
+              }
             }
           ]
         },
@@ -68088,24 +68091,24 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "efefc195-3ac5-4536-9728-82547c7f30b1",
-                "titre": "Two Portraits, op. 5: 1. One Ideal. Andante",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "ba92f430-4960-4ce5-bde3-963361fd6e7b",
-                  "titre": "Two Portraits, Sz. 37, BB 48b, op. 5"
-                },
                 "artistes": [
                   "Erwin Ramor",
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "efefc195-3ac5-4536-9728-82547c7f30b1",
+                "parente": {
+                  "id": "ba92f430-4960-4ce5-bde3-963361fd6e7b",
+                  "titre": "Two Portraits, Sz. 37, BB 48b, op. 5"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Two Portraits, op. 5: 1. One Ideal. Andante"
+              }
             },
             {
               "position": "1-12",
@@ -68119,24 +68122,24 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "8e2ff0b2-e031-4524-b7fe-6ef0c1fdeda0",
-                "titre": "Two Portraits, op. 5: 2. One Grotesque",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "ba92f430-4960-4ce5-bde3-963361fd6e7b",
-                  "titre": "Two Portraits, Sz. 37, BB 48b, op. 5"
-                },
                 "artistes": [
                   "Erwin Ramor",
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "8e2ff0b2-e031-4524-b7fe-6ef0c1fdeda0",
+                "parente": {
+                  "id": "ba92f430-4960-4ce5-bde3-963361fd6e7b",
+                  "titre": "Two Portraits, Sz. 37, BB 48b, op. 5"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Two Portraits, op. 5: 2. One Grotesque"
+              }
             }
           ]
         },
@@ -68169,20 +68172,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "73a85973-5fdf-4cb3-ac8f-1e9a8f3a6560",
-                "titre": "Mikrokosmos, Sz. 107, BB 105: Volume IV, No. 117: Bourrée",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "73a85973-5fdf-4cb3-ac8f-1e9a8f3a6560",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Mikrokosmos, Sz. 107, BB 105: Volume IV, No. 117: Bourrée"
+              }
             },
             {
               "position": "1-14",
@@ -68196,20 +68199,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "def5c189-9d91-4def-90bd-647692c9362a",
-                "titre": "Mikrokosmos, Sz. 107, BB 105: Volume VI, No. 142: From the Diary of a Fly",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "Philharmonia Hungarica",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "def5c189-9d91-4def-90bd-647692c9362a",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Mikrokosmos, Sz. 107, BB 105: Volume VI, No. 142: From the Diary of a Fly"
+              }
             }
           ]
         },
@@ -68242,20 +68245,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-2",
@@ -68269,20 +68272,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-3",
@@ -68296,20 +68299,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-4",
@@ -68323,20 +68326,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-5",
@@ -68350,20 +68353,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-6",
@@ -68377,20 +68380,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-7",
@@ -68404,20 +68407,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-8",
@@ -68431,20 +68434,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-9",
@@ -68458,20 +68461,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-10",
@@ -68485,20 +68488,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-11",
@@ -68512,20 +68515,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-12",
@@ -68539,20 +68542,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-13",
@@ -68566,20 +68569,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-14",
@@ -68593,20 +68596,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-15",
@@ -68620,20 +68623,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-16",
@@ -68647,20 +68650,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-17",
@@ -68674,20 +68677,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-18",
@@ -68701,20 +68704,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-19",
@@ -68728,20 +68731,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-20",
@@ -68755,20 +68758,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-21",
@@ -68782,22 +68785,22 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Chorus",
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor",
                   "BBC Symphony Chorus": "choir vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-22",
@@ -68811,20 +68814,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             },
             {
               "position": "2-23",
@@ -68838,20 +68841,20 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
-                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19",
-                "compositeur": "Bartók Béla",
-                "parente": null,
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "7628784b-557a-4fd6-9cbc-f378178f5e12",
+                "parente": null,
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Miraculous Mandarin, BB 82, Sz. 73, op. 19"
+              }
             }
           ]
         },
@@ -68880,23 +68883,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "4ea7a897-5107-3846-9b7f-81b45fc4c563",
-                "titre": "Divertimento for String Orchestra, Sz. 113, BB 118: I. Allegro non troppo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "99e85b2e-6bdb-4219-9b90-e65a7fecaeb3",
-                  "titre": "Divertimento for String Orchestra, Sz. 113, BB 118"
-                },
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "4ea7a897-5107-3846-9b7f-81b45fc4c563",
+                "parente": {
+                  "id": "99e85b2e-6bdb-4219-9b90-e65a7fecaeb3",
+                  "titre": "Divertimento for String Orchestra, Sz. 113, BB 118"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Divertimento for String Orchestra, Sz. 113, BB 118: I. Allegro non troppo"
+              }
             },
             {
               "position": "2-25",
@@ -68910,23 +68913,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "e27e850a-90f6-37ab-9588-6b8a76680516",
-                "titre": "Divertimento for String Orchestra, Sz. 113, BB 118: II. Molto adagio",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "99e85b2e-6bdb-4219-9b90-e65a7fecaeb3",
-                  "titre": "Divertimento for String Orchestra, Sz. 113, BB 118"
-                },
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "e27e850a-90f6-37ab-9588-6b8a76680516",
+                "parente": {
+                  "id": "99e85b2e-6bdb-4219-9b90-e65a7fecaeb3",
+                  "titre": "Divertimento for String Orchestra, Sz. 113, BB 118"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Divertimento for String Orchestra, Sz. 113, BB 118: II. Molto adagio"
+              }
             },
             {
               "position": "2-26",
@@ -68940,23 +68943,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "109fbda0-cf73-3f1d-85f2-096598431a3d",
-                "titre": "Divertimento for String Orchestra, Sz. 113, BB 118: III. Allegro assai",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "99e85b2e-6bdb-4219-9b90-e65a7fecaeb3",
-                  "titre": "Divertimento for String Orchestra, Sz. 113, BB 118"
-                },
                 "artistes": [
                   "BBC Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "109fbda0-cf73-3f1d-85f2-096598431a3d",
+                "parente": {
+                  "id": "99e85b2e-6bdb-4219-9b90-e65a7fecaeb3",
+                  "titre": "Divertimento for String Orchestra, Sz. 113, BB 118"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Divertimento for String Orchestra, Sz. 113, BB 118: III. Allegro assai"
+              }
             }
           ]
         },
@@ -68993,28 +68996,28 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "3bab712a-1cd2-34dd-886f-09223ba58b27",
-                "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115: I. Assai lento",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "c131e7e5-3810-41bb-b92f-992388d34f8d",
-                  "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115"
-                },
                 "artistes": [
                   "Géza Frid",
                   "Luctor Ponse",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "3bab712a-1cd2-34dd-886f-09223ba58b27",
+                "parente": {
+                  "id": "c131e7e5-3810-41bb-b92f-992388d34f8d",
+                  "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Géza Frid": "piano",
                   "London Symphony Orchestra": "percussion",
                   "Luctor Ponse": "piano"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115: I. Assai lento"
+              }
             },
             {
               "position": "2-28",
@@ -69028,28 +69031,28 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "0d37e53a-aaa3-3170-bd78-a86a640457bd",
-                "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115: II. Lento, ma non troppo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "c131e7e5-3810-41bb-b92f-992388d34f8d",
-                  "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115"
-                },
                 "artistes": [
                   "Géza Frid",
                   "Luctor Ponse",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "0d37e53a-aaa3-3170-bd78-a86a640457bd",
+                "parente": {
+                  "id": "c131e7e5-3810-41bb-b92f-992388d34f8d",
+                  "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Géza Frid": "piano",
                   "London Symphony Orchestra": "percussion",
                   "Luctor Ponse": "piano"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115: II. Lento, ma non troppo"
+              }
             },
             {
               "position": "2-29",
@@ -69063,28 +69066,28 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "2152a891-bc39-3fcb-9f8d-936d9241e58f",
-                "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115: III. Allegro non troppo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "c131e7e5-3810-41bb-b92f-992388d34f8d",
-                  "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115"
-                },
                 "artistes": [
                   "Géza Frid",
                   "Luctor Ponse",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "2152a891-bc39-3fcb-9f8d-936d9241e58f",
+                "parente": {
+                  "id": "c131e7e5-3810-41bb-b92f-992388d34f8d",
+                  "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Géza Frid": "piano",
                   "London Symphony Orchestra": "percussion",
                   "Luctor Ponse": "piano"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Sonata for 2 Pianos and Percussion, Sz. 110, BB 115: III. Allegro non troppo"
+              }
             }
           ]
         },
@@ -69113,23 +69116,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "34a76781-817b-453f-b743-a8f70cc371b1",
-                "titre": "The Wooden Prince, Sz. 60: I. Prelude",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
-                  "titre": "The Wooden Prince, op. 13, Sz. 60"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "34a76781-817b-453f-b743-a8f70cc371b1",
+                "parente": {
+                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
+                  "titre": "The Wooden Prince, op. 13, Sz. 60"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Wooden Prince, Sz. 60: I. Prelude"
+              }
             },
             {
               "position": "3-2",
@@ -69143,23 +69146,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "38dae07d-e8bc-4b3a-859e-d72291ddaf1e",
-                "titre": "The Wooden Prince, Sz. 60: II. Dance 1: Dance of the Princess in the Forest",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
-                  "titre": "The Wooden Prince, op. 13, Sz. 60"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "38dae07d-e8bc-4b3a-859e-d72291ddaf1e",
+                "parente": {
+                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
+                  "titre": "The Wooden Prince, op. 13, Sz. 60"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Wooden Prince, Sz. 60: II. Dance 1: Dance of the Princess in the Forest"
+              }
             },
             {
               "position": "3-3",
@@ -69173,23 +69176,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "afa0ea83-c82c-4ed2-9c50-dfe86514dd97",
-                "titre": "The Wooden Prince, Sz. 60: III. Dance 2: Dance of the Trees",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
-                  "titre": "The Wooden Prince, op. 13, Sz. 60"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "afa0ea83-c82c-4ed2-9c50-dfe86514dd97",
+                "parente": {
+                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
+                  "titre": "The Wooden Prince, op. 13, Sz. 60"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Wooden Prince, Sz. 60: III. Dance 2: Dance of the Trees"
+              }
             },
             {
               "position": "3-4",
@@ -69203,23 +69206,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "5d5df35c-a395-47ed-a257-4331ecd31518",
-                "titre": "The Wooden Prince, Sz. 60: IV. Dance 3: Dance of the Waves",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
-                  "titre": "The Wooden Prince, op. 13, Sz. 60"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "5d5df35c-a395-47ed-a257-4331ecd31518",
+                "parente": {
+                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
+                  "titre": "The Wooden Prince, op. 13, Sz. 60"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Wooden Prince, Sz. 60: IV. Dance 3: Dance of the Waves"
+              }
             },
             {
               "position": "3-5",
@@ -69233,23 +69236,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "55240278-a24c-4f92-a349-f2e95f3ddb3c",
-                "titre": "The Wooden Prince, Sz. 60: V. Dance 4: Dance of the Princess With the Wooden Doll",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
-                  "titre": "The Wooden Prince, op. 13, Sz. 60"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "55240278-a24c-4f92-a349-f2e95f3ddb3c",
+                "parente": {
+                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
+                  "titre": "The Wooden Prince, op. 13, Sz. 60"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Wooden Prince, Sz. 60: V. Dance 4: Dance of the Princess With the Wooden Doll"
+              }
             },
             {
               "position": "3-6",
@@ -69263,23 +69266,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "06fe133f-9202-4e91-8c3b-b5895660214a",
-                "titre": "The Wooden Prince, Sz. 60: VI. Dance 5: The Princess Pulls and Pushes Him and Tries to Make Him Dance",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
-                  "titre": "The Wooden Prince, op. 13, Sz. 60"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "06fe133f-9202-4e91-8c3b-b5895660214a",
+                "parente": {
+                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
+                  "titre": "The Wooden Prince, op. 13, Sz. 60"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Wooden Prince, Sz. 60: VI. Dance 5: The Princess Pulls and Pushes Him and Tries to Make Him Dance"
+              }
             },
             {
               "position": "3-7",
@@ -69293,23 +69296,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "8cd8654a-0898-4311-ac97-b41118ef522d",
-                "titre": "The Wooden Prince, Sz. 60: VII. Dance 6: She Tries to Attract Him With a Seductive Dance",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
-                  "titre": "The Wooden Prince, op. 13, Sz. 60"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "8cd8654a-0898-4311-ac97-b41118ef522d",
+                "parente": {
+                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
+                  "titre": "The Wooden Prince, op. 13, Sz. 60"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Wooden Prince, Sz. 60: VII. Dance 6: She Tries to Attract Him With a Seductive Dance"
+              }
             },
             {
               "position": "3-8",
@@ -69323,23 +69326,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "a671992e-680c-4262-8fa4-2f7b5fa44cbb",
-                "titre": "The Wooden Prince, Sz. 60: VIII. Dance 7: Alarmed, the Princess Rushes After Him, but the Forest Stops Her",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
-                  "titre": "The Wooden Prince, op. 13, Sz. 60"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "a671992e-680c-4262-8fa4-2f7b5fa44cbb",
+                "parente": {
+                  "id": "6742b25e-1012-48cd-9b00-ec4353ccee56",
+                  "titre": "The Wooden Prince, op. 13, Sz. 60"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "The Wooden Prince, Sz. 60: VIII. Dance 7: Alarmed, the Princess Rushes After Him, but the Forest Stops Her"
+              }
             }
           ]
         },
@@ -69368,23 +69371,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "85af0498-3d32-3498-8245-8fe44358561c",
-                "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114: I. Andante tranquillo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "0c680f6b-c5cf-4045-a689-df318e794383",
-                  "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "85af0498-3d32-3498-8245-8fe44358561c",
+                "parente": {
+                  "id": "0c680f6b-c5cf-4045-a689-df318e794383",
+                  "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114: I. Andante tranquillo"
+              }
             },
             {
               "position": "3-10",
@@ -69398,23 +69401,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "eea0433d-5d53-3d92-9cbc-a78644d82fc3",
-                "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114: II. Allegro",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "0c680f6b-c5cf-4045-a689-df318e794383",
-                  "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "eea0433d-5d53-3d92-9cbc-a78644d82fc3",
+                "parente": {
+                  "id": "0c680f6b-c5cf-4045-a689-df318e794383",
+                  "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114: II. Allegro"
+              }
             },
             {
               "position": "3-11",
@@ -69428,23 +69431,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "8f68c46d-faa8-3062-80f9-e1be8d4527d5",
-                "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114: III. Adagio",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "0c680f6b-c5cf-4045-a689-df318e794383",
-                  "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "8f68c46d-faa8-3062-80f9-e1be8d4527d5",
+                "parente": {
+                  "id": "0c680f6b-c5cf-4045-a689-df318e794383",
+                  "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114: III. Adagio"
+              }
             },
             {
               "position": "3-12",
@@ -69458,23 +69461,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "44788e71-6f55-389f-a89b-d74363433e9d",
-                "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114: IV. Allegro molto",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "0c680f6b-c5cf-4045-a689-df318e794383",
-                  "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114"
-                },
                 "artistes": [
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "44788e71-6f55-389f-a89b-d74363433e9d",
+                "parente": {
+                  "id": "0c680f6b-c5cf-4045-a689-df318e794383",
+                  "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Music for Strings, Percussion and Celesta, Sz. 106, BB 114: IV. Allegro molto"
+              }
             }
           ]
         },
@@ -69507,25 +69510,25 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "22e51466-4f40-4539-9155-1a9825a32608",
-                "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117: I. Allegro non troppo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "4adad069-a264-4f34-8380-468860901202",
-                  "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117"
-                },
                 "artistes": [
                   "Yehudi Menuhin",
                   "Minnesota Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "22e51466-4f40-4539-9155-1a9825a32608",
+                "parente": {
+                  "id": "4adad069-a264-4f34-8380-468860901202",
+                  "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Yehudi Menuhin": "violin"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117: I. Allegro non troppo"
+              }
             },
             {
               "position": "4-2",
@@ -69539,25 +69542,25 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "74036749-08c5-41b5-95a7-b0665e3d81c3",
-                "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117: II. Andante tranquillo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "4adad069-a264-4f34-8380-468860901202",
-                  "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117"
-                },
                 "artistes": [
                   "Yehudi Menuhin",
                   "Minnesota Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "74036749-08c5-41b5-95a7-b0665e3d81c3",
+                "parente": {
+                  "id": "4adad069-a264-4f34-8380-468860901202",
+                  "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Yehudi Menuhin": "violin"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117: II. Andante tranquillo"
+              }
             },
             {
               "position": "4-3",
@@ -69571,25 +69574,25 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "f24a078f-0778-436c-824d-c285b0d34088",
-                "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117: III. Allegro molto",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "4adad069-a264-4f34-8380-468860901202",
-                  "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117"
-                },
                 "artistes": [
                   "Yehudi Menuhin",
                   "Minnesota Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "f24a078f-0778-436c-824d-c285b0d34088",
+                "parente": {
+                  "id": "4adad069-a264-4f34-8380-468860901202",
+                  "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Yehudi Menuhin": "violin"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Violin Concerto no. 2 in B minor, Sz. 112, BB 117: III. Allegro molto"
+              }
             }
           ]
         },
@@ -69618,23 +69621,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "fee1b5a0-abe2-40fb-b9a7-687ec710a42c",
-                "titre": "Suite no. 2, op. 4, Sz. 34, BB 40: I. Comodo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "e87f3360-e198-4b99-8809-c1319ba86721",
-                  "titre": "Suite no. 2, op. 4, Sz. 34, BB 40"
-                },
                 "artistes": [
                   "Minnesota Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "fee1b5a0-abe2-40fb-b9a7-687ec710a42c",
+                "parente": {
+                  "id": "e87f3360-e198-4b99-8809-c1319ba86721",
+                  "titre": "Suite no. 2, op. 4, Sz. 34, BB 40"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Suite no. 2, op. 4, Sz. 34, BB 40: I. Comodo"
+              }
             },
             {
               "position": "4-5",
@@ -69648,23 +69651,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "786800a7-808d-475d-84f1-a20fe28f8d01",
-                "titre": "Suite no. 2, op. 4, Sz. 34, BB 40: II. Allegro scherzando",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "e87f3360-e198-4b99-8809-c1319ba86721",
-                  "titre": "Suite no. 2, op. 4, Sz. 34, BB 40"
-                },
                 "artistes": [
                   "Minnesota Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "786800a7-808d-475d-84f1-a20fe28f8d01",
+                "parente": {
+                  "id": "e87f3360-e198-4b99-8809-c1319ba86721",
+                  "titre": "Suite no. 2, op. 4, Sz. 34, BB 40"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Suite no. 2, op. 4, Sz. 34, BB 40: II. Allegro scherzando"
+              }
             },
             {
               "position": "4-6",
@@ -69678,23 +69681,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "c72ad76a-e6c2-4e9e-9d27-f801dbf70647",
-                "titre": "Suite no. 2, op. 4, Sz. 34, BB 40: III. Andante",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "e87f3360-e198-4b99-8809-c1319ba86721",
-                  "titre": "Suite no. 2, op. 4, Sz. 34, BB 40"
-                },
                 "artistes": [
                   "Minnesota Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "c72ad76a-e6c2-4e9e-9d27-f801dbf70647",
+                "parente": {
+                  "id": "e87f3360-e198-4b99-8809-c1319ba86721",
+                  "titre": "Suite no. 2, op. 4, Sz. 34, BB 40"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Suite no. 2, op. 4, Sz. 34, BB 40: III. Andante"
+              }
             },
             {
               "position": "4-7",
@@ -69708,23 +69711,23 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "53f3efa4-b9cc-4240-976a-f799e5a8b665",
-                "titre": "Suite no. 2, op. 4, Sz. 34, BB 40: IV. Comodo",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "e87f3360-e198-4b99-8809-c1319ba86721",
-                  "titre": "Suite no. 2, op. 4, Sz. 34, BB 40"
-                },
                 "artistes": [
                   "Minnesota Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "53f3efa4-b9cc-4240-976a-f799e5a8b665",
+                "parente": {
+                  "id": "e87f3360-e198-4b99-8809-c1319ba86721",
+                  "titre": "Suite no. 2, op. 4, Sz. 34, BB 40"
+                },
                 "roles": {
                   "Antal Doráti": "conductor"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Suite no. 2, op. 4, Sz. 34, BB 40: IV. Comodo"
+              }
             }
           ]
         },
@@ -69761,27 +69764,27 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "f5a6abbb-f4df-32a6-8095-32d186770755",
-                "titre": "A Kékszakállú herceg vára: Opening \"Megérkeztünk\"",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
-                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
-                },
                 "artistes": [
                   "Mihály Székely",
                   "Olga Szönyi",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "f5a6abbb-f4df-32a6-8095-32d186770755",
+                "parente": {
+                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
+                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Mihály Székely": "bass vocals",
                   "Olga Szönyi": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "A Kékszakállú herceg vára: Opening \"Megérkeztünk\""
+              }
             },
             {
               "position": "5-2",
@@ -69795,27 +69798,27 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "74130182-8c57-38c7-8404-3014909c5d96",
-                "titre": "A Kékszakállú herceg vára: Door 1 \"'Jaj! Mit látsz? Mit látsz? Láncok, kések\"",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
-                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
-                },
                 "artistes": [
                   "Mihály Székely",
                   "Olga Szönyi",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "74130182-8c57-38c7-8404-3014909c5d96",
+                "parente": {
+                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
+                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Mihály Székely": "bass vocals",
                   "Olga Szönyi": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "A Kékszakállú herceg vára: Door 1 \"'Jaj! Mit látsz? Mit látsz? Láncok, kések\""
+              }
             },
             {
               "position": "5-3",
@@ -69829,27 +69832,27 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "28db179c-030e-3151-89dd-d2a98e3b8e46",
-                "titre": "A Kékszakállú herceg vára: Door 2 \"Mit látsz? Százkegyetlen szörnyü fegyver\"",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
-                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
-                },
                 "artistes": [
                   "Mihály Székely",
                   "Olga Szönyi",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "28db179c-030e-3151-89dd-d2a98e3b8e46",
+                "parente": {
+                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
+                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Mihály Székely": "bass vocals",
                   "Olga Szönyi": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "A Kékszakállú herceg vára: Door 2 \"Mit látsz? Százkegyetlen szörnyü fegyver\""
+              }
             },
             {
               "position": "5-4",
@@ -69863,27 +69866,27 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "dca8a97c-8ca2-384a-83f8-7e05ed506e54",
-                "titre": "A Kékszakállú herceg vára: Door 3 \"Oh, be sok kincs! Oh, be sok kincs!\"",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
-                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
-                },
                 "artistes": [
                   "Mihály Székely",
                   "Olga Szönyi",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "dca8a97c-8ca2-384a-83f8-7e05ed506e54",
+                "parente": {
+                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
+                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Mihály Székely": "bass vocals",
                   "Olga Szönyi": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "A Kékszakállú herceg vára: Door 3 \"Oh, be sok kincs! Oh, be sok kincs!\""
+              }
             },
             {
               "position": "5-5",
@@ -69897,27 +69900,27 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "6736d224-e854-3a44-854f-bad1d4058ad1",
-                "titre": "A Kékszakállú herceg vára: Door 4 \"Oh! virágok! Oh! ilatoskert!\"",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
-                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
-                },
                 "artistes": [
                   "Mihály Székely",
                   "Olga Szönyi",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "6736d224-e854-3a44-854f-bad1d4058ad1",
+                "parente": {
+                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
+                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Mihály Székely": "bass vocals",
                   "Olga Szönyi": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "A Kékszakállú herceg vára: Door 4 \"Oh! virágok! Oh! ilatoskert!\""
+              }
             },
             {
               "position": "5-6",
@@ -69931,27 +69934,27 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "a8c1db69-eb1b-3d57-95d9-06a62245dbe3",
-                "titre": "A Kékszakállú herceg vára: Door 5 \"Ah! Lásdez az én birodalmam\"",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
-                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
-                },
                 "artistes": [
                   "Mihály Székely",
                   "Olga Szönyi",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "a8c1db69-eb1b-3d57-95d9-06a62245dbe3",
+                "parente": {
+                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
+                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Mihály Székely": "bass vocals",
                   "Olga Szönyi": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "A Kékszakállú herceg vára: Door 5 \"Ah! Lásdez az én birodalmam\""
+              }
             },
             {
               "position": "5-7",
@@ -69965,27 +69968,27 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "5c4065a4-7b0b-3737-b761-7eef34eabec2",
-                "titre": "A Kékszakállú herceg vára: Door 6 \"Csendes fehér tavat látok\"",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
-                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
-                },
                 "artistes": [
                   "Mihály Székely",
                   "Olga Szönyi",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "5c4065a4-7b0b-3737-b761-7eef34eabec2",
+                "parente": {
+                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
+                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Mihály Székely": "bass vocals",
                   "Olga Szönyi": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "A Kékszakállú herceg vára: Door 6 \"Csendes fehér tavat látok\""
+              }
             },
             {
               "position": "5-8",
@@ -69999,27 +70002,27 @@
                   "role": "Composed By"
                 }
               ],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "d8428361-2a72-3d70-b414-79847e2c5dac",
-                "titre": "A Kékszakállú herceg vára: Door 7 \"Lásd a régi aszszonyokat\"",
-                "compositeur": "Bartók Béla",
-                "parente": {
-                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
-                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
-                },
                 "artistes": [
                   "Mihály Székely",
                   "Olga Szönyi",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Bartók Béla",
+                "id": "d8428361-2a72-3d70-b414-79847e2c5dac",
+                "parente": {
+                  "id": "b83e28a0-c97e-476a-8473-71c09999c14b",
+                  "titre": "A kékszakállú herceg vára, Sz. 48, BB 62"
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Mihály Székely": "bass vocals",
                   "Olga Szönyi": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "A Kékszakállú herceg vára: Door 7 \"Lásd a régi aszszonyokat\""
+              }
             }
           ]
         },
@@ -70051,25 +70054,25 @@
               "type": "plage",
               "artistes": [],
               "credits": [],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "489aaceb-990d-496c-bf70-1721dd3bd652",
-                "titre": "Three Fragments from \"Wozzeck\": I. (Akt I, Szene 2 & 3)",
-                "compositeur": "Alban Berg",
-                "parente": {
-                  "id": "1fbdc4e0-b918-4c03-9677-556cf9fc3ceb",
-                  "titre": "Three Fragments from \"Wozzeck\""
-                },
                 "artistes": [
                   "Helga Pilarczyk",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Alban Berg",
+                "id": "489aaceb-990d-496c-bf70-1721dd3bd652",
+                "parente": {
+                  "id": "1fbdc4e0-b918-4c03-9677-556cf9fc3ceb",
+                  "titre": "Three Fragments from \"Wozzeck\""
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Helga Pilarczyk": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Three Fragments from \"Wozzeck\": I. (Akt I, Szene 2 & 3)"
+              }
             },
             {
               "position": "5-10",
@@ -70078,25 +70081,25 @@
               "type": "plage",
               "artistes": [],
               "credits": [],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "3fc5dd64-cbe1-4335-ace3-11c6109acf9b",
-                "titre": "Three Fragments from \"Wozzeck\": II. (Akt III, Szene 1)",
-                "compositeur": "Alban Berg",
-                "parente": {
-                  "id": "1fbdc4e0-b918-4c03-9677-556cf9fc3ceb",
-                  "titre": "Three Fragments from \"Wozzeck\""
-                },
                 "artistes": [
                   "Helga Pilarczyk",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Alban Berg",
+                "id": "3fc5dd64-cbe1-4335-ace3-11c6109acf9b",
+                "parente": {
+                  "id": "1fbdc4e0-b918-4c03-9677-556cf9fc3ceb",
+                  "titre": "Three Fragments from \"Wozzeck\""
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Helga Pilarczyk": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Three Fragments from \"Wozzeck\": II. (Akt III, Szene 1)"
+              }
             },
             {
               "position": "5-11",
@@ -70105,25 +70108,25 @@
               "type": "plage",
               "artistes": [],
               "credits": [],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "ed0fa545-e262-40d4-aeab-a5ee4c73cc99",
-                "titre": "Three Fragments from \"Wozzeck\": III. (Akt III, Szene 4 & 5)",
-                "compositeur": "Alban Berg",
-                "parente": {
-                  "id": "1fbdc4e0-b918-4c03-9677-556cf9fc3ceb",
-                  "titre": "Three Fragments from \"Wozzeck\""
-                },
                 "artistes": [
                   "Helga Pilarczyk",
                   "London Symphony Orchestra",
                   "Antal Doráti"
                 ],
+                "compositeur": "Alban Berg",
+                "id": "ed0fa545-e262-40d4-aeab-a5ee4c73cc99",
+                "parente": {
+                  "id": "1fbdc4e0-b918-4c03-9677-556cf9fc3ceb",
+                  "titre": "Three Fragments from \"Wozzeck\""
+                },
                 "roles": {
                   "Antal Doráti": "conductor",
                   "Helga Pilarczyk": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Three Fragments from \"Wozzeck\": III. (Akt III, Szene 4 & 5)"
+              }
             }
           ]
         }
@@ -70149,69 +70152,69 @@
       "musicbrainz_methode": "manuel",
       "musicbrainz_disques": {
         "1": {
-          "reference": "T3DV0ZJ6EcUi83z3suZYSaBfFnQ-",
-          "release": "a6baacee-87a8-4d8d-be68-463edb370ede",
-          "titre": "Concerto for Orchestra / Dance Suite / Two Portraits / Mikrokosmos",
-          "plages_mb": 14,
           "image": {
-            "url": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022-1200.jpg",
+            "miniature": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022-250.jpg",
             "original": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022.jpg",
-            "miniature": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022-250.jpg"
+            "url": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022-1200.jpg"
           },
           "plages_discogs": 14,
-          "reliees": 14
+          "plages_mb": 14,
+          "reference": "T3DV0ZJ6EcUi83z3suZYSaBfFnQ-",
+          "release": "a6baacee-87a8-4d8d-be68-463edb370ede",
+          "reliees": 14,
+          "titre": "Concerto for Orchestra / Dance Suite / Two Portraits / Mikrokosmos"
         },
         "2": {
-          "reference": "JIuEG2m6ydB8hK55wgQ7tn.bu9Q-",
-          "release": "eb58e1d6-0032-4938-8436-26e8881c7edf",
-          "titre": "The Miraculous Mandarin / Sonata for 2 Pianos and Percussion / Divertimento",
-          "plages_mb": 29,
           "image": {
-            "url": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786-1200.jpg",
+            "miniature": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786-250.jpg",
             "original": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786.jpg",
-            "miniature": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786-250.jpg"
+            "url": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786-1200.jpg"
           },
           "plages_discogs": 29,
-          "reliees": 29
+          "plages_mb": 29,
+          "reference": "JIuEG2m6ydB8hK55wgQ7tn.bu9Q-",
+          "release": "eb58e1d6-0032-4938-8436-26e8881c7edf",
+          "reliees": 29,
+          "titre": "The Miraculous Mandarin / Sonata for 2 Pianos and Percussion / Divertimento"
         },
         "3": {
-          "reference": "jWhiBIDCHs1cWO1a9A.SwzlXXG8-",
-          "release": "a38a0ce5-c59c-4d28-a331-12ac966ee77d",
-          "titre": "The Wooden Prince / Music for Strings, Percussion, and Celesta",
-          "plages_mb": 12,
           "image": {
-            "url": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115-1200.jpg",
+            "miniature": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115-250.jpg",
             "original": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115.jpg",
-            "miniature": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115-250.jpg"
+            "url": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115-1200.jpg"
           },
           "plages_discogs": 12,
-          "reliees": 12
+          "plages_mb": 12,
+          "reference": "jWhiBIDCHs1cWO1a9A.SwzlXXG8-",
+          "release": "a38a0ce5-c59c-4d28-a331-12ac966ee77d",
+          "reliees": 12,
+          "titre": "The Wooden Prince / Music for Strings, Percussion, and Celesta"
         },
         "4": {
-          "reference": "MTS4YoCLgMS6BS0R763G1yujGFU-",
-          "release": "471c4385-3d6c-467d-8de2-739ec6d4ef76",
-          "titre": "Violin Concerto no. 2 / Second Suite",
-          "plages_mb": 7,
           "image": {
-            "url": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663-1200.jpg",
+            "miniature": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663-250.jpg",
             "original": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663.jpg",
-            "miniature": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663-250.jpg"
+            "url": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663-1200.jpg"
           },
           "plages_discogs": 7,
-          "reliees": 7
+          "plages_mb": 7,
+          "reference": "MTS4YoCLgMS6BS0R763G1yujGFU-",
+          "release": "471c4385-3d6c-467d-8de2-739ec6d4ef76",
+          "reliees": 7,
+          "titre": "Violin Concerto no. 2 / Second Suite"
         },
         "5": {
-          "reference": "Q8mFXPoTUd21iri2hbgDxgmNeCY-",
-          "release": "7e252ba9-3d46-4bc9-a60d-63861b79d809",
-          "titre": "Bluebeard's Castle / Wozzeck (excerpts)",
-          "plages_mb": 11,
           "image": {
-            "url": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967-1200.jpg",
+            "miniature": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967-250.jpg",
             "original": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967.jpg",
-            "miniature": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967-250.jpg"
+            "url": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967-1200.jpg"
           },
           "plages_discogs": 11,
-          "reliees": 11
+          "plages_mb": 11,
+          "reference": "Q8mFXPoTUd21iri2hbgDxgmNeCY-",
+          "release": "7e252ba9-3d46-4bc9-a60d-63861b79d809",
+          "reliees": 11,
+          "titre": "Bluebeard's Castle / Wozzeck (excerpts)"
         }
       },
       "annees_enregistrement": [
@@ -166478,6 +166481,203 @@
       "annee_source": "discogs"
     },
     {
+      "instance_id": 2203497706,
+      "release_id": 1257160,
+      "master_id": 1816127,
+      "titre": "Symphony No. 1 In C Major, Opus 21 / Symphony No. 7 In A Major, Opus 92",
+      "artistes_principaux": [
+        "Ludwig van Beethoven",
+        "Royal Philharmonic Orchestra",
+        "Barry Wordsworth"
+      ],
+      "annee": null,
+      "labels": [
+        {
+          "nom": "RPO Records",
+          "catno": "204433-201"
+        }
+      ],
+      "formats": [
+        {
+          "nom": "CD",
+          "quantite": 1,
+          "descriptions": [
+            "Stereo"
+          ]
+        }
+      ],
+      "genres": [
+        "Classical"
+      ],
+      "styles": [
+        "Classical",
+        "Romantic"
+      ],
+      "pochette": "https://i.discogs.com/dueS_LmiRqygbm79tuIMiEg8ywrqeDQ2fqH6VhHV1Ks/rs:fit/g:sm/q:90/h:448/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTcx/NjAtMTM1MDE2ODIx/Mi0zNjE3LmpwZWc.jpeg",
+      "miniature": "https://i.discogs.com/os3gPIz04uqJ00QgwKW4TlUaneubajClc6Xw9mq4Tis/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTcx/NjAtMTM1MDE2ODIx/Mi0zNjE3LmpwZWc.jpeg",
+      "note": null,
+      "date_ajout": "2026-11-11T09:16:31-08:00",
+      "champs": {
+        "Source": "O’cd 1€",
+        "Localisation": "Paris",
+        "Description": "Audiophile edition ",
+        "Live / Studio": "Studio",
+        "Statut d'écoute": "À écouter"
+      },
+      "categorie_perso": "Piano et Orchestre",
+      "url_discogs": "https://www.discogs.com/release/1257160",
+      "compositeurs": [
+        "Ludwig Van Beethoven"
+      ],
+      "paroliers": [],
+      "arrangeurs": [],
+      "transcriptions": [],
+      "cadences": [],
+      "interpretes": [
+        "Barry Wordsworth",
+        "Royal Philharmonic Orchestra"
+      ],
+      "remix": [],
+      "producteurs": [
+        "Alan J. Peters",
+        "Matthew Dilley",
+        "Michael Infante"
+      ],
+      "ingenieurs_son": [
+        "Dick Lewzey"
+      ],
+      "photographes": [],
+      "artwork": [],
+      "textes_livret": [],
+      "plages": [
+        {
+          "position": "",
+          "titre": "Symphony No. 1 In C Major, Opus 21",
+          "duree": "",
+          "type": "oeuvre",
+          "artistes": [],
+          "credits": [],
+          "sous_plages": [
+            {
+              "position": "1",
+              "titre": "Adagio Molto - Allegro Con Brio",
+              "duree": "9:16",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "2",
+              "titre": "Andante Cantabile Con Moto",
+              "duree": "8:26",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "3",
+              "titre": "Menuetto: Allegro Molto E Vivace",
+              "duree": "3:21",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "4",
+              "titre": "Adagio - Allegro Molto E Vivace",
+              "duree": "5:50",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            }
+          ]
+        },
+        {
+          "position": "",
+          "titre": "Symphony No. 7 In A Major, Opus 92",
+          "duree": "",
+          "type": "oeuvre",
+          "artistes": [],
+          "credits": [],
+          "sous_plages": [
+            {
+              "position": "5",
+              "titre": "Poco Sostenuto - Vivace",
+              "duree": "12:51",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "6",
+              "titre": "Allegretto",
+              "duree": "9:23",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "7",
+              "titre": "Presto - Assai Meno Presto",
+              "duree": "7:19",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "8",
+              "titre": "Allegro Con Brio",
+              "duree": "7:11",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "type": "primary",
+          "url": "https://i.discogs.com/dueS_LmiRqygbm79tuIMiEg8ywrqeDQ2fqH6VhHV1Ks/rs:fit/g:sm/q:90/h:448/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTcx/NjAtMTM1MDE2ODIx/Mi0zNjE3LmpwZWc.jpeg",
+          "miniature": "https://i.discogs.com/os3gPIz04uqJ00QgwKW4TlUaneubajClc6Xw9mq4Tis/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTcx/NjAtMTM1MDE2ODIx/Mi0zNjE3LmpwZWc.jpeg"
+        },
+        {
+          "type": "secondary",
+          "url": "https://i.discogs.com/ndKk_PSiVfUYuePbdz10zNKrfqRCFZrkZoahl0HgUW4/rs:fit/g:sm/q:90/h:438/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTcx/NjAtMTM1MDE2ODIy/MC05MzYyLmpwZWc.jpeg",
+          "miniature": "https://i.discogs.com/U204-PrSXk_w14DXTMKbLkRDy0SU2kx5xON3wkOCAUE/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTcx/NjAtMTM1MDE2ODIy/MC05MzYyLmpwZWc.jpeg"
+        },
+        {
+          "type": "secondary",
+          "url": "https://i.discogs.com/bKfqT6IfhOuDKBksH4ESkb2Oejmuva7inlx759dPSGg/rs:fit/g:sm/q:90/h:600/w:599/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTcx/NjAtMTYwNjk5MjE0/MS00ODA4LmpwZWc.jpeg",
+          "miniature": "https://i.discogs.com/_BJRpei8gx0ezW_1JyxfcSeosLTzxZZ-7ZJFRuF76Kg/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTcx/NjAtMTYwNjk5MjE0/MS00ODA4LmpwZWc.jpeg"
+        }
+      ],
+      "codes_barres": [
+        "4011222044334"
+      ],
+      "note_communaute": null,
+      "notes_discogs": "DDD / 32 Bit Digital Sound / High Quality Audiofile Edition \nTotal time: 63:55\n\nDigitally recorded in July 1994 at C.T.S. Studios, London.\n20 Bit Digital Recording, Editing and Mastering via 32 Bit Digital Sound Processing (DSP) Sound Recording Technology, England.\n\n℗ 1993 Centurion Music Ltd.\nCDD \nDistributed by TIM The International Music Company AG, Rahlau 4-6, 22045 Hamburg, Germany.",
+      "details_maj": "2026-11-11",
+      "plages_source": "discogs",
+      "musicbrainz": null,
+      "musicbrainz_methode": "aucune",
+      "musicbrainz_disques": null,
+      "annees_enregistrement": [
+        1994,
+        1994
+      ],
+      "annees_enregistrement_source": "notes_discogs",
+      "annees_enregistrement_auto": [
+        [
+          1994,
+          1994
+        ],
+        "notes_discogs"
+      ],
+      "live_auto_source": null,
+      "annee_source": null
+    },
+    {
       "instance_id": 2142507109,
       "release_id": 2343664,
       "master_id": 3618931,
@@ -225995,7 +226195,6 @@
                   "role": "Composed By"
                 }
               ],
-              "duree_source": "musicbrainz",
               "oeuvre": {
                 "artistes": [
                   "Amadeus Quartet",
@@ -226018,7 +226217,8 @@
                   "Siegmund Nissel": "violin"
                 },
                 "titre": "String Quartet no. 14 in C‐sharp minor, op. 131: VII. Allegro"
-              }
+              },
+              "duree_source": "musicbrainz"
             }
           ]
         },
@@ -226763,7 +226963,6 @@
               "role": "Composed By"
             }
           ],
-          "duree_source": "musicbrainz",
           "oeuvre": {
             "artistes": [
               "Martha Argerich"
@@ -226775,7 +226974,8 @@
               "Martha Argerich": "piano"
             },
             "titre": "Prélude in A‐flat major, op. posth.: Presto con leggierezza"
-          }
+          },
+          "duree_source": "musicbrainz"
         },
         {
           "position": "",
@@ -226855,7 +227055,6 @@
                   "role": "Composed By"
                 }
               ],
-              "duree_source": "musicbrainz",
               "oeuvre": {
                 "artistes": [
                   "Martha Argerich"
@@ -226870,7 +227069,8 @@
                   "Martha Argerich": "piano"
                 },
                 "titre": "Sonata for Piano no. 2 in B‐flat minor, op. 35: III. Marche funèbre. Lento"
-              }
+              },
+              "duree_source": "musicbrainz"
             },
             {
               "position": "3-30",
@@ -227511,7 +227711,6 @@
                   "role": "Composed By"
                 }
               ],
-              "duree_source": "musicbrainz",
               "oeuvre": {
                 "artistes": [
                   "Arturo Benedetti Michelangeli"
@@ -227526,7 +227725,8 @@
                   "Arturo Benedetti Michelangeli": "piano"
                 },
                 "titre": "Images, Livre 1, L. 110, CD 105 : No. 2. Hommage à Rameau"
-              }
+              },
+              "duree_source": "musicbrainz"
             },
             {
               "position": "5-15",
@@ -240853,7 +241053,6 @@
               "role": "Composed By"
             }
           ],
-          "duree_source": "musicbrainz",
           "oeuvre": {
             "artistes": [
               "Mischa Maisky",
@@ -240871,7 +241070,8 @@
               "Семён Бычков": "conductor"
             },
             "titre": "Violin Concerto in C major, Hob. VIIa:1: II. Adagio"
-          }
+          },
+          "duree_source": "musicbrainz"
         },
         {
           "position": "",
@@ -241563,7 +241763,6 @@
                   "role": "Composed By"
                 }
               ],
-              "duree_source": "musicbrainz",
               "oeuvre": {
                 "artistes": [
                   "Timothy Roberts"
@@ -241575,7 +241774,8 @@
                   "Timothy Roberts": "organ"
                 },
                 "titre": "Musae Sioniae VII, no. 244: Nun lob mein Seel den Herren"
-              }
+              },
+              "duree_source": "musicbrainz"
             },
             {
               "position": "35-23",
@@ -241589,7 +241789,6 @@
                   "role": "Composed By"
                 }
               ],
-              "duree_source": "musicbrainz",
               "oeuvre": {
                 "artistes": [
                   "Susan Hemington Jones",
@@ -241613,7 +241812,8 @@
                   "Tessa Bonner": "soprano vocals"
                 },
                 "titre": "In dulci jubilo"
-              }
+              },
+              "duree_source": "musicbrainz"
             }
           ]
         },
@@ -242686,7 +242886,6 @@
               "role": "Libretto By"
             }
           ],
-          "duree_source": "musicbrainz",
           "oeuvre": {
             "artistes": [
               "Анна Нетребко",
@@ -242704,7 +242903,8 @@
               "Анна Нетребко": "soprano vocals"
             },
             "titre": "La bohème: Atto II. no. 13. “Quando me’n vo soletta” (Musetta, Marcello, Alcindoro, Mimi, Schaunard, Colline)"
-          }
+          },
+          "duree_source": "musicbrainz"
         },
         {
           "position": "",
@@ -243266,7 +243466,6 @@
               "role": "Positive Organ"
             }
           ],
-          "duree_source": "musicbrainz",
           "oeuvre": {
             "artistes": [
               "Anne Sofie von Otter",
@@ -243282,7 +243481,8 @@
               "Markus Möllenbeck": "cello"
             },
             "titre": "The Queen's Epicedium, Z. 383 \"Incassum Lesbia, incassum rogas\""
-          }
+          },
+          "duree_source": "musicbrainz"
         },
         {
           "position": "40-7",
@@ -243302,7 +243502,6 @@
               "role": "Theorbo"
             }
           ],
-          "duree_source": "musicbrainz",
           "oeuvre": {
             "artistes": [
               "Jakob Lindberg"
@@ -243314,7 +243513,8 @@
               "Jakob Lindberg": "theorbo"
             },
             "titre": "Chiaconna"
-          }
+          },
+          "duree_source": "musicbrainz"
         },
         {
           "position": "40-8",
@@ -243334,7 +243534,6 @@
               "role": "Composed By"
             }
           ],
-          "duree_source": "musicbrainz",
           "oeuvre": {
             "artistes": [
               "Anne Sofie von Otter",
@@ -243348,7 +243547,8 @@
               "Jakob Lindberg": "theorbo"
             },
             "titre": "O Solitude, Z. 406"
-          }
+          },
+          "duree_source": "musicbrainz"
         },
         {
           "position": "",
