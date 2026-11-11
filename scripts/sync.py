@@ -558,7 +558,7 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
     disque["musicbrainz_methode"] = entree_mb.get("methode")
     # Rattachement manuel disque par disque : {"1": {"release", "titre", "plages_mb", "plages_discogs", "reliees"}}.
-    disque["musicbrainz_disques"] = entree_mb.get("disques_mb") if entree_mb.get("methode") == "manuel" else None
+    disque["musicbrainz_disques"] = entree_mb.get("disques_mb") or None
     # Années d'enregistrement [première, dernière] ou None, et leur source (ordre de priorité
     # et liste des sources : voir scripts/annees.py). L'année « automatique » (sans la saisie
     # manuelle) est gardée à part : la page l'applique quand le champ manuel est vidé, sans attendre
