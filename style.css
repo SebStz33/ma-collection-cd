@@ -302,6 +302,8 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .plage-oeuvre > div > .plage-titre { color: var(--accent); }
 .plage-oeuvre > .plage-position:empty { display: none; }
 .plage-oeuvre > .plage-position:empty + div { grid-column: 1 / 3; }
+/* … mais ce qui suit le titre (interprètes, crédits, ligne « Œuvre ») reste dans la colonne des titres. */
+.plage-oeuvre > .plage-position:empty + div > :not(.plage-titre):not(.plages) { margin-left: calc(3.4 * 14px + 10px); }   /* 3.4em de la liste (14 px) + écart */
 .plage-position, .plage-duree { color: var(--texte-discret); font-variant-numeric: tabular-nums; }
 .duree-oeuvre { white-space: nowrap; }
 /* Durée d'un disque de coffret, à côté de son nom (« CD 3  74 min »). */
@@ -579,6 +581,8 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 }
 .plage:hover > .favori, .favori:focus-visible { opacity: .7; }
 .favori.actif { color: var(--accent); opacity: 1; }
+/* Cœur en lecture seule (page Œuvre, onglet Œuvres) : une plage en favori sur la fiche du disque. */
+.coeur-version { color: var(--accent); }
 .favori:disabled { cursor: wait; }
 
 /* Flèches de la fiche : « ↓ Fin » à droite de la recherche, « ↑ Début » tout en bas */

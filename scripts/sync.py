@@ -390,13 +390,16 @@ def rapport_roles():
     return "\n".join(lignes)
 
 
-def afficher_rapport_roles(collection_complete):
+def afficher_rapport_roles(collection_complete, nb_fiches=0):
     """
     Affiche le rapport des rôles. Si toutes les fiches ont été lues pendant
     cette synchro, il est complet : on l'enregistre aussi dans data/rapport_roles.txt.
+    `nb_fiches` : nombre de fiches lues pendant cette synchro.
     """
     if not ROLES_RENCONTRES:
-        print("Rapport des rôles : aucune fiche lue pendant cette synchro.")
+        # Des fiches lues sans aucun crédit (« Seven Wonders ») : le dire, plutôt que « aucune fiche lue ».
+        print("Rapport des rôles : %s." % ("aucune fiche lue pendant cette synchro" if not nb_fiches
+              else "%d fiche%s lue%s, aucun rôle trouvé" % (nb_fiches, "s" if nb_fiches > 1 else "", "s" if nb_fiches > 1 else "")))
         return
     texte = rapport_roles()
     print("Rapport des rôles (fiches lues pendant cette synchro) :")
@@ -695,7 +698,7 @@ def main():
     print("Terminé : %d disques enregistrés." % len(disques))
     print()
     toutes_les_fiches = {e["id"] for e in elements}
-    afficher_rapport_roles(collection_complete=set(a_lire) == toutes_les_fiches)
+    afficher_rapport_roles(collection_complete=set(a_lire) == toutes_les_fiches, nb_fiches=len(a_lire))
 
 
 if __name__ == "__main__":

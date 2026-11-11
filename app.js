@@ -1335,9 +1335,12 @@ function versionsDeLOeuvre(oeuvre, liste) {
         if (!parties.has(id)) parties.set(id, { titre, secondes: 0, durees: [] });
         parties.get(id).secondes += secondesDe(plage.duree) || 0;
         parties.get(id).durees.push(secondesDe(plage.duree) || 0);   // 2 plages ou plus : rattachement à vérifier
+        if (plage.position && edition.favoris.has(plage.position)) parties.get(id).favori = true;
       }
       return {
         edition, parties, plages: plagesVersion,
+        // Plages de la version en favori (cœur sur la fiche du disque).
+        favoris: plagesVersion.filter(({ plage }) => plage.position && edition.favoris.has(plage.position)).length,
         // Plusieurs versions dans la même édition : on dit sur quel disque est chacune (« CD 12 »).
         disque: occurrences.length > 1 ? disqueDeLaPosition(plagesVersion[0].plage.position) : null,
         duree: dureeTotale(plagesVersion.map(({ plage }) => plage)),
@@ -1395,7 +1398,7 @@ function afficherPageOeuvre(liste) {
       creer("span", { classe: "discret", texte: " · par catégorie, puis par année d'enregistrement" })),
     [...parCategorie].map(([categorie, liste]) => [
       creer("p", { classe: "versions-categorie", texte: categorie }),
-      creer("ol", { classe: "versions" }, liste.map((v) => ligneVersion(v, dureeMax))),
+      creer("ol", { classe: "versions" }, liste.map((v) => ligneVersion(v, dureeMax, versions.indexOf(v) + 1))),
     ]),
     tableauDesParties(versions)
   ));
@@ -1406,8 +1409,11 @@ function categorieDeLaVersion(version) {
   return [...version.edition.categories].sort(comparerCategoriesParMeta)[0] || SANS_CATEGORIE;
 }
 
-/** Une version : pochette, interprètes, disque, années, durée (avec une barre pour comparer). */
-function ligneVersion(version, dureeMax) {
+/**
+ * Une version : pochette, interprètes, disque, années, durée (avec une barre pour comparer).
+ * `numero` (1, 2…) est repris en tête de sa colonne dans le tableau des parties.
+ */
+function ligneVersion(version, dureeMax, numero) {
   const { edition, interpretes, annees, duree, parties } = version;
   const image = edition.miniature || edition.pochette;
   const enPlus = interpretes.length - INTERPRETES_VISIBLES;
@@ -1428,15 +1434,24 @@ function ligneVersion(version, dureeMax) {
           : creer("span", { classe: "sans-image", texte: "♪" })),
       creer("span", { classe: "version-texte" },
         creer("span", { classe: "version-interpretes",
-          texte: (interpretes.slice(0, INTERPRETES_VISIBLES).join(", ") || "Interprètes non indiqués")
+          texte: numero + ". " + (interpretes.slice(0, INTERPRETES_VISIBLES).join(", ") || "Interprètes non indiqués")
             + (enPlus > 0 ? " +" + enPlus : "") }),
         creer("span", { classe: "version-disque", texte: edition.titre + (version.disque ? " · " + version.disque : "") }),
         dates ? creer("span", { classe: "version-dates", texte: dates }) : null,
         creer("span", { classe: "version-duree" },
           creer("span", { classe: "version-barre", style: "width:" + Math.round(duree.secondes / dureeMax * 100) + "%" }),
-          creer("span", { texte: [texteDureeFine(duree) || "durée inconnue",
+          creer("span", {}, [texteDureeFine(duree) || "durée inconnue",
             nbParties ? pluriel(nbParties, "partie") : version.plages.length > 1 ? pluriel(version.plages.length, "plage") : null]
-            .filter(Boolean).join(" · ") })))));
+            .filter(Boolean).join(" · "), coeurVersion(version))))));
+}
+
+/** ♥ (affichage seul) quand la version a des plages en favori sur la fiche du disque. */
+function coeurVersion(version) {
+  if (!version.favoris) return null;
+  const toutes = version.favoris === version.plages.length;
+  return creer("span", { classe: "coeur-version", texte: " ♥",
+    title: toutes && version.plages.length > 1 ? "Œuvre entière en favori"
+      : version.favoris > 1 ? version.favoris + " plages en favori" : toutes ? "En favori" : "1 plage en favori" });
 }
 
 /**
@@ -1453,7 +1468,7 @@ function tableauDesParties(versions) {
     creer("thead", {}, creer("tr", {},
       creer("th", { texte: "Partie" }),
       versions.map((v) => creer("th", { title: v.interpretes.join(", ") + " · " + v.edition.titre },
-        nomCourtDeLaVersion(v), creer("span", { classe: "colonne-categorie", texte: v.categorie }),
+        (versions.indexOf(v) + 1) + ". " + nomCourtDeLaVersion(v), creer("span", { classe: "colonne-categorie", texte: v.categorie }),
         creer("span", { classe: "colonne-duree", texte: texteMinutes(v.duree.secondes) }))))),
     creer("tbody", {}, [...toutes].map(([id, titre]) => creer("tr", {},
       creer("th", { texte: titre }),
@@ -1465,8 +1480,9 @@ function tableauDesParties(versions) {
             "⚠ " + partie.durees.length + " plages",
             creer("span", { classe: "durees-doublees", texte: partie.durees.map((d) => texteMinutes(d) || "?").join(" + ") }));
         }
-        return creer("td", { texte: partie ? texteMinutes(partie.secondes) || "✓" : "–",
-          classe: partie ? null : "absente" });
+        return creer("td", { classe: partie ? null : "absente", title: partie && partie.favori ? "En favori" : null },
+          partie ? texteMinutes(partie.secondes) || "✓" : "–",
+          partie && partie.favori ? creer("span", { classe: "coeur-version", texte: " ♥" }) : null);
       })))));
   return creer("section", { classe: "parties" },
     creer("h3", { classe: "oeuvre-intertitre" }, "Parties",
@@ -1771,15 +1787,22 @@ function categorieDeLOeuvre(liste, categorie, parLeNom = null) {
   return [...compte].sort((a, b) => b[1] - a[1] || comparerCategories(a[0], b[0]))[0]?.[0] || SANS_CATEGORIE;
 }
 
+/** Vrai si une plage de l'œuvre est en favori sur l'une de ses éditions (calculé à l'affichage : toujours à jour). */
+function oeuvreEnFavori(oeuvre, editions) {
+  return editions.some((e) => e.favoris.size && plagesAvecHeritage(e.plages).some(({ plage }) =>
+    plage.position && e.favoris.has(plage.position) && plage.oeuvre && oeuvreDeReference(plage.oeuvre).id === oeuvre.id));
+}
+
 /**
  * Œuvres d'un compositeur, sous un intertitre par catégorie. À partir de SEUIL_CATEGORIES œuvres,
  * chaque catégorie est un bloc repliable (déplié pendant une recherche).
  */
 function listeOeuvresDuCompositeur(oeuvres, compositeur, cherche) {
-  const ligne = ({ oeuvre, versions }) => creer("li", {},
+  const ligne = ({ oeuvre, versions, editions }) => creer("li", {},
     creer("button", { type: "button", classe: "index-nom", surclic: () => allerVers({ ...FILTRES_VIDES, oeuvre }) },
       oeuvre.titre,
-      versions > 1 ? creer("span", { classe: "oeuvres-versions", texte: " · " + versions + " versions" }) : null));
+      versions > 1 ? creer("span", { classe: "oeuvres-versions", texte: " · " + versions + " versions" }) : null,
+      oeuvreEnFavori(oeuvre, editions) ? creer("span", { classe: "coeur-version", texte: " ♥", title: "Au moins une plage en favori" }) : null));
   const parCategorie = new Map();
   for (const o of oeuvres) {
     const c = categorieDeLOeuvre(o.editions, ongletOeuvres.categorie, o.categorieParLeNom);
