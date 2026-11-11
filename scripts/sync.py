@@ -53,6 +53,8 @@ RACINE = Path(__file__).resolve().parent.parent
 FICHIER_SORTIE = RACINE / "data" / "collection.json"
 FICHIER_RAPPORT_ROLES = RACINE / "data" / "rapport_roles.txt"
 FICHIER_MUSICBRAINZ = RACINE / "data" / "musicbrainz.json"
+# Coffrets absents de MusicBrainz, rattachés à la main disque par disque (voir musicbrainz.lire_disques_manuels).
+FICHIER_MUSICBRAINZ_MANUEL = RACINE / "data" / "musicbrainz_manuel.json"
 FICHIER_RAPPORT_ANNEES = RACINE / "data" / "rapport_annees.txt"
 
 # Champs personnalisés à ne pas publier sur le site (qui est public).
@@ -388,13 +390,16 @@ def rapport_roles():
     return "\n".join(lignes)
 
 
-def afficher_rapport_roles(collection_complete):
+def afficher_rapport_roles(collection_complete, nb_fiches=0):
     """
     Affiche le rapport des rôles. Si toutes les fiches ont été lues pendant
     cette synchro, il est complet : on l'enregistre aussi dans data/rapport_roles.txt.
+    `nb_fiches` : nombre de fiches lues pendant cette synchro.
     """
     if not ROLES_RENCONTRES:
-        print("Rapport des rôles : aucune fiche lue pendant cette synchro.")
+        # Des fiches lues sans aucun crédit (« Seven Wonders ») : le dire, plutôt que « aucune fiche lue ».
+        print("Rapport des rôles : %s." % ("aucune fiche lue pendant cette synchro" if not nb_fiches
+              else "%d fiche%s lue%s, aucun rôle trouvé" % (nb_fiches, "s" if nb_fiches > 1 else "", "s" if nb_fiches > 1 else "")))
         return
     texte = rapport_roles()
     print("Rapport des rôles (fiches lues pendant cette synchro) :")
@@ -460,6 +465,19 @@ def note_communaute(fiche):
     return {"moyenne": round(float(note.get("average") or 0), 2), "votes": note["count"]}
 
 
+def lire_rattachements_manuels():
+    """data/musicbrainz_manuel.json : {release Discogs: {n° de CD: disque MusicBrainz}}, ou {} s'il n'existe pas."""
+    if not FICHIER_MUSICBRAINZ_MANUEL.exists():
+        return {}
+    try:
+        contenu = json.loads(FICHIER_MUSICBRAINZ_MANUEL.read_text(encoding="utf-8"))
+    except ValueError as erreur:
+        print("  data/musicbrainz_manuel.json illisible, ignoré (%s)" % erreur)
+        return {}
+    return {str(cle): {str(cd): ref for cd, ref in valeur.items()}
+            for cle, valeur in contenu.items() if isinstance(valeur, dict) and not str(cle).startswith("_")}
+
+
 def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     """Construit la fiche d'un disque dans notre format, à partir de la liste Discogs."""
     info = element.get("basic_information", {})
@@ -518,6 +536,13 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     # L'œuvre parente (« 24 Caprices » pour « Caprice n° 5 ») n'est gardée que pour le classique :
     # pour une chanson, MusicBrainz y met plutôt le film ou la comédie musicale d'origine.
     entree_mb = entree_mb or {}
+    # Tracklist Discogs trop sommaire (une plage par disque) : celle de l'édition MusicBrainz la remplace
+    # (voir musicbrainz.tracklist_sommaire) ; celle de Discogs est gardée à part pour la synchro suivante.
+    disque["plages_source"] = "discogs"
+    if entree_mb.get("plages"):
+        disque["plages_discogs"] = disque["plages"]
+        disque["plages"] = json.loads(json.dumps(entree_mb["plages"]))
+        disque["plages_source"] = "musicbrainz"
     disque["plages"] = musicbrainz.ajouter_oeuvres(disque["plages"], entree_mb.get("oeuvres"),
                                                    avec_parente="Classical" in disque["genres"])
     # Durées : celles de Discogs, complétées par MusicBrainz (édition exacte) pour les plages qui n'en ont pas.
@@ -529,11 +554,14 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     )
     # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
     disque["musicbrainz_methode"] = entree_mb.get("methode")
+    # Rattachement manuel disque par disque : {"1": {"release", "titre", "plages_mb", "plages_discogs", "reliees"}}.
+    disque["musicbrainz_disques"] = entree_mb.get("disques_mb") if entree_mb.get("methode") == "manuel" else None
     # Années d'enregistrement [première, dernière] ou None, et leur source (ordre de priorité
     # et liste des sources : voir scripts/annees.py). L'année « automatique » (sans la saisie
     # manuelle) est gardée à part : la page l'applique quand le champ manuel est vidé, sans attendre
     # la synchro, et la montre en grisé dans le formulaire ✎.
-    choix = (disque, entree_mb.get("annees_enregistrement"), entree_mb.get("methode"), musicbrainz.METHODES_EXACTES)
+    choix = (disque, entree_mb.get("annees_enregistrement"), entree_mb.get("methode"),
+             musicbrainz.METHODES_EXACTES + ("manuel",))
     disque["annees_enregistrement"], disque["annees_enregistrement_source"] = annees.choisir_annees(*choix)
     disque["annees_enregistrement_auto"] = list(annees.choisir_annees(*choix, avec_manuelle=False))
     # « Live » automatique d'après le titre ou les notes Discogs ("titre", "notes_discogs" ou None) :
@@ -570,6 +598,8 @@ def lire_details_connus():
     for disque in precedent.get("disques", []):
         if disque.get("details_maj"):
             connus[disque["release_id"]] = {cle: disque[cle] for cle in CLES_DETAILS if cle in disque}
+            if "plages_discogs" in disque:  # plages remplacées par celles de MusicBrainz : on reprend celles de Discogs
+                connus[disque["release_id"]]["plages"] = disque["plages_discogs"]
     return connus
 
 
@@ -604,9 +634,17 @@ def main():
     print("3/5 Fiches complètes...")
     details_connus = lire_details_connus()
     relire_tout = "--relire-tout" in sys.argv
+    # --relire 20144050 (ou --relire 20144050,123456) : relit ces disques sur Discogs et MusicBrainz tout de suite.
+    relire = set()
+    if "--relire" in sys.argv[:-1]:
+        texte = sys.argv[sys.argv.index("--relire") + 1]
+        relire = {int(n) for n in texte.replace(" ", "").split(",") if n.isdigit()}
+        inconnus = relire - {e["id"] for e in elements}
+        if inconnus:
+            print("  Pas dans la collection : %s" % ", ".join(str(n) for n in sorted(inconnus)))
     a_lire = sorted({
         e["id"] for e in elements
-        if relire_tout or doit_rafraichir(details_connus.get(e["id"]))
+        if relire_tout or e["id"] in relire or doit_rafraichir(details_connus.get(e["id"]))
     })
     print("  %d fiches à lire (les autres sont déjà connues)" % len(a_lire))
     for numero, release_id in enumerate(a_lire, start=1):
@@ -626,8 +664,12 @@ def main():
             a_chercher[e["id"]] = (e["id"], e.get("basic_information", {}).get("master_id"),
                                    details["plages"], details.get("codes_barres") or [])
     sans_annee = {e["id"] for e in elements if not e.get("basic_information", {}).get("year")}
+    compilations = {e["id"] for e in elements
+                    if any((a.get("name") or "").lower() == "various" for a in e.get("basic_information", {}).get("artists", []))}
     oeuvres = musicbrainz.mettre_a_jour(FICHIER_MUSICBRAINZ, list(a_chercher.values()),
-                                        tout="--musicbrainz-tout" in sys.argv, sans_annee=sans_annee)
+                                        tout="--musicbrainz-tout" in sys.argv, sans_annee=sans_annee,
+                                        compilations=compilations, forces=relire,
+                                        manuels=lire_rattachements_manuels())
 
     print("5/5 Écriture de data/collection.json...")
     disques = [
@@ -656,7 +698,7 @@ def main():
     print("Terminé : %d disques enregistrés." % len(disques))
     print()
     toutes_les_fiches = {e["id"] for e in elements}
-    afficher_rapport_roles(collection_complete=set(a_lire) == toutes_les_fiches)
+    afficher_rapport_roles(collection_complete=set(a_lire) == toutes_les_fiches, nb_fiches=len(a_lire))
 
 
 if __name__ == "__main__":

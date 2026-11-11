@@ -297,18 +297,38 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .plage > .plages { grid-column: 1 / -1; padding-left: 1.6em; margin-top: 4px; }
 .plage > .plages .plage:last-child { border-bottom: 0; }
 .plage-oeuvre > div .plage-titre { font-weight: 600; }
+/* Titre d'une œuvre groupée (« Préludes, Op.28 ») : en ambre et aligné à gauche, comme un intertitre ;
+   sa colonne de numéro, vide, est rendue au titre. Durée totale et cœur restent à droite. */
+.plage-oeuvre > div > .plage-titre { color: var(--accent); }
+.plage-oeuvre > .plage-position:empty { display: none; }
+.plage-oeuvre > .plage-position:empty + div { grid-column: 1 / 3; }
+/* … mais ce qui suit le titre (interprètes, crédits, ligne « Œuvre ») reste dans la colonne des titres. */
+.plage-oeuvre > .plage-position:empty + div > :not(.plage-titre):not(.plages) { margin-left: calc(3.4 * 14px + 10px); }   /* 3.4em de la liste (14 px) + écart */
 .plage-position, .plage-duree { color: var(--texte-discret); font-variant-numeric: tabular-nums; }
 .duree-oeuvre { white-space: nowrap; }
 /* Durée d'un disque de coffret, à côté de son nom (« CD 3  74 min »). */
 .duree-disque { color: var(--texte-discret); font-weight: 400; font-size: 13px; }
 .plage-artistes { color: var(--texte-2); font-size: 13px; }
 .plage-credits { color: var(--texte-discret); font-size: 12px; }
+/* Interprètes : en-tête d'un disque de coffret (communs à tout le disque) et ligne sous une œuvre */
+.interpretes-disque { color: var(--texte-2); font-weight: 400; font-size: 13px; min-width: 0; }
+/* Compositeur unique d'un CD de coffret classique (« CD 1 Chopin »). */
+.compositeur-disque { white-space: nowrap; }
+.compositeurs-disque { white-space: normal; min-width: 0; }   /* plusieurs compositeurs : la liste peut passer à la ligne */
+.plage-disque > span:first-of-type, .plage-disque .duree-disque { white-space: nowrap; }
+/* Sur téléphone : les interprètes du disque passent sur une ligne à eux, sous « CD 24 · durée ». */
+@media (max-width: 700px) {
+  .plage-disque { flex-wrap: wrap; row-gap: 2px; }
+  .interpretes-disque { order: 9; flex-basis: 100%; }
+}
+.plage-interpretes { color: var(--texte-discret); font-size: 12px; }
 .plage-intertitre { font-weight: 600; color: var(--accent); padding: 12px 0 4px; border-bottom: 1px solid var(--bordure); }
 .plages > .plage-intertitre:first-child { padding-top: 0; }
 /* Œuvre MusicBrainz sous une plage : cliquable pour voir mes autres versions */
 .plage-reference { color: var(--texte-2); font-size: 12px; }
 .plage-reference .bouton-texte { padding: 0; font-size: inherit; text-align: left; }
 .plage-reference .discret { color: var(--texte-discret); }
+.plage-intertitre .plage-reference { font-weight: 400; margin-top: 2px; }
 
 /* Œuvre choisie, au-dessus de la grille */
 .bandeau-oeuvre {
@@ -549,6 +569,7 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 .sources-fiche h3 { font-size: 12px; margin: 0 0 4px; color: var(--texte-2); }
 .sources-fiche dl { margin: 0; }
 .sources-fiche dt, .sources-fiche dd { font-size: 12px; color: var(--texte-2); }
+.liens-bases a, .sources-fiche a { color: var(--accent); }
 
 /* Crédits repliés (« Voir les autres crédits ») */
 .repliable[hidden] { display: none; }
@@ -561,6 +582,8 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 }
 .plage:hover > .favori, .favori:focus-visible { opacity: .7; }
 .favori.actif { color: var(--accent); opacity: 1; }
+/* Cœur en lecture seule (page Œuvre, onglet Œuvres) : une plage en favori sur la fiche du disque. */
+.coeur-version { color: var(--accent); }
 .favori:disabled { cursor: wait; }
 
 /* Flèches de la fiche : « ↓ Fin » à droite de la recherche, « ↑ Début » tout en bas */
@@ -574,6 +597,20 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 .plage-disque { scroll-margin-top: 12px; }
 /* Intertitre d'un disque de coffret : nom à gauche, « ↑ Préc. · ↓ Suiv. » à droite. */
 .plage-disque { display: flex; align-items: baseline; gap: 12px; }
+/* Pochette du disque séparé (coffret rattaché à la main) : petite vignette avant « CD 3 », cliquable. */
+.pochette-disque { padding: 0; border: 0; background: none; cursor: zoom-in; align-self: center; flex: none; }
+.pochette-disque img { display: block; width: 36px; height: 36px; object-fit: cover; border-radius: 4px; border: 1px solid var(--bordure); }
+/* Coffret rattaché à la main : pochette du CD en cours de lecture, sous les photos du coffret,
+   qui reste à l'écran pendant le défilement. Elle remplace alors la vignette de l'en-tête du CD. */
+.pochette-suivie { position: sticky; top: 16px; margin-top: 20px; }
+.pochette-suivie[hidden] { display: none; }
+.pochette-suivie-image { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.pochette-suivie-image img { display: block; width: 100%; border-radius: 8px; border: 1px solid var(--bordure); background: var(--fond); }
+.fiche-gauche:has(.pochette-suivie) ~ * .pochette-disque { display: none; }
+@media (max-width: 700px) {
+  .pochette-suivie { display: none; }
+  .fiche-gauche:has(.pochette-suivie) ~ * .pochette-disque { display: block; }
+}
 .navigation-disques { margin-left: auto; display: flex; gap: 14px; font-weight: 400; }
 /* Double flèche faite de deux flèches simples (même police, même taille), resserrées. */
 .fleche-double { letter-spacing: -0.35em; padding-right: 0.35em; }
@@ -620,3 +657,145 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
 @media (max-width: 700px) {
   .plage-disque { scroll-margin-top: 56px; }
 }
+
+/* ---------- Page Œuvre : mes versions d'une œuvre ---------- */
+.page-oeuvre { max-width: 900px; }
+.oeuvre-surtitre { margin: 0; color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.oeuvre-titre { margin: 2px 0 4px; font-size: 22px; line-height: 1.25; overflow-wrap: anywhere; }
+.oeuvre-compositeur { margin: 0 0 6px; color: var(--texte-2); font-size: 16px; }
+.oeuvre-liens { display: flex; flex-wrap: wrap; gap: 0 18px; margin: 0 0 18px; font-size: 14px; }
+.oeuvre-liens a { color: var(--accent); }
+.oeuvre-liens .discret { color: var(--texte-discret); }
+.oeuvre-intertitre { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+.oeuvre-intertitre .discret { color: var(--texte-2); font-weight: 400; font-size: 13px; }
+
+.versions { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 8px; }
+.version {
+  display: flex; gap: 12px; width: 100%; padding: 8px; text-align: left; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon);
+}
+.version:hover { border-color: var(--texte-discret); }
+.version-pochette { flex: 0 0 64px; width: 64px; height: 64px; border-radius: 4px; overflow: hidden; background: var(--surface-2);
+  display: flex; align-items: center; justify-content: center; }
+.version-pochette img { width: 100%; height: 100%; object-fit: cover; }
+.version-texte { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.version-interpretes { font-weight: 600; overflow-wrap: anywhere; }
+.version-disque { color: var(--texte-2); font-size: 13px; overflow-wrap: anywhere; }
+.version-dates { color: var(--texte-discret); font-size: 13px; }
+.version-duree { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; font-size: 13px; color: var(--texte-2);
+  font-variant-numeric: tabular-nums; }
+.version-barre { display: block; height: 4px; min-width: 2px; border-radius: 2px; background: var(--accent); }
+
+/* Tableau des parties : il défile de côté s'il est plus large que l'écran (la page, elle, ne bouge pas). */
+.parties { margin-bottom: 24px; }
+.tableau-defilant { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--bordure); border-radius: var(--rayon); }
+.tableau-parties { border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; min-width: 100%; }
+.tableau-parties th, .tableau-parties td { padding: 6px 10px; border-bottom: 1px solid var(--bordure); vertical-align: top; }
+.tableau-parties thead th { position: sticky; top: 0; background: var(--surface-2); text-align: right; font-weight: 600;
+  max-width: 140px; white-space: normal; vertical-align: bottom; }
+.tableau-parties thead th:first-child, .tableau-parties tbody th { text-align: left; }
+.tableau-parties tbody th { font-weight: 400; color: var(--texte); min-width: 180px; max-width: 360px; }
+.tableau-parties td { text-align: right; white-space: nowrap; color: var(--texte-2); }
+.tableau-parties td.absente { color: var(--texte-discret); }
+.tableau-parties tbody tr:last-child > * { border-bottom: 0; }
+
+@media (max-width: 700px) {
+  .oeuvre-titre { font-size: 19px; }
+  .version-pochette { flex-basis: 52px; width: 52px; height: 52px; }
+  .tableau-parties tbody th { min-width: 140px; }
+}
+
+/* ---------- Onglet « Œuvres » : compositeurs repliables, œuvres par catalogue ---------- */
+body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: none; }
+.oeuvres { max-width: 900px; }
+.oeuvres-outils { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 8px; }
+.oeuvres-outils input[type="search"], .oeuvres-outils select {
+  background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 7px 10px;
+}
+.oeuvres-recherche { flex: 1 1 280px; min-width: 0; }
+.oeuvres-outils label { display: inline-flex; align-items: center; gap: 6px; color: var(--texte-2); white-space: nowrap; }
+.oeuvres-compte { margin: 0 0 4px; color: var(--texte-discret); font-size: 13px; }
+.oeuvres-compositeur { border-bottom: 1px solid var(--bordure); }
+.oeuvres-compositeur > summary { padding: 9px 0; cursor: pointer; font-weight: 600; }
+.oeuvres-compositeur > summary .discret { color: var(--texte-discret); font-weight: 400; }
+.oeuvres-compositeur[open] > summary { color: var(--accent); }
+.oeuvres-liste { list-style: none; margin: 0 0 10px; padding: 0 0 0 16px; display: grid; gap: 6px; }
+.oeuvres-liste .index-nom { overflow-wrap: anywhere; }
+.oeuvres-versions { color: var(--accent); font-size: 13px; }
+
+.onglet { white-space: nowrap; }
+@media (max-width: 700px) {
+  .onglets { width: 100%; }
+  .onglet { flex: 1 1 auto; padding: 5px 4px; font-size: 14px; }
+  .oeuvres-recherche { flex-basis: 100%; }
+}
+/* Petits téléphones (iPhone SE) : les cinq onglets tiennent sur une ligne. */
+@media (max-width: 380px) {
+  .onglet { font-size: 12.5px; padding: 5px 1px; }
+}
+
+/* ---------- « ? » : aide sur la syntaxe de la recherche ---------- */
+.bouton-aide {
+  flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; padding: 0; cursor: pointer;
+  border: 1px solid var(--bordure); background: var(--surface); color: var(--texte-2); font-size: 14px; line-height: 1;
+}
+.bouton-aide:hover { color: var(--accent); border-color: var(--accent); }
+.recherche { align-items: center; }
+.recherche .bouton-aide { margin: 0 6px; }
+.oeuvres-champ { display: flex; align-items: center; gap: 8px; flex: 1 1 280px; min-width: 0; }
+.oeuvres-champ .oeuvres-recherche, .oeuvres-champ > .case-effacable { flex: 1 1 auto; }
+.aide-recherche { max-width: 460px; }
+.aide-recherche dl { margin: 0 0 12px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; }
+.aide-recherche dt { font-family: ui-monospace, Menlo, monospace; color: var(--accent); white-space: nowrap; }
+.aide-recherche dd { margin: 0; color: var(--texte-2); }
+@media (max-width: 700px) {
+  .oeuvres-champ { flex-basis: 100%; }
+  .aide-recherche dl { grid-template-columns: 1fr; gap: 2px; }
+  .aide-recherche dd { margin-bottom: 8px; }
+}
+
+/* Onglet Œuvres : « Compositeurs : par nombre d'œuvres · alphabétique » (le choix actif en clair, l'autre en lien ambre) */
+.oeuvres-tri { margin: 0 0 4px; font-size: 13px; color: var(--texte-discret); }
+.oeuvres-tri .bouton-texte { padding: 0; font-size: inherit; }
+.oeuvres-tri .tri-actif { color: var(--texte-2); }
+
+/* Au hasard : 10 œuvres classiques et 10 autres, sous les disques (côte à côte sur grand écran) */
+.hasard-oeuvres { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px 32px; margin: 24px 0 0; }
+.hasard-oeuvres h3 { margin: 0 0 10px; padding-bottom: 6px; font-size: 16px; border-bottom: 1px solid var(--bordure); }
+.hasard-oeuvres-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.hasard-oeuvres-liste .index-nom { overflow-wrap: anywhere; text-align: left; }
+.hasard-oeuvres-liste .discret { color: var(--texte-discret); }
+
+/* Onglet Œuvres : intertitre de catégorie chez un compositeur (quand ses œuvres sont dans plusieurs catégories) */
+.oeuvres-categorie { margin: 4px 0 6px 16px; font-size: 13px; color: var(--accent); }
+.oeuvres-bloc-categorie > summary.oeuvres-categorie { cursor: pointer; padding: 4px 0; margin-bottom: 2px; font-size: 14px; }
+.oeuvres-bloc-categorie > summary .discret { color: var(--texte-discret); }
+.oeuvres-bloc-categorie > .oeuvres-liste { padding-left: 32px; }
+
+/* Statistiques : « À vérifier sur MusicBrainz », replié, puis un bloc replié par type de problème */
+.verifications-mb > summary { cursor: pointer; list-style: revert; }
+.verifications-mb > summary h2 { display: inline; }
+.verifications-type { margin: 8px 0 0; }
+.verifications-type > summary { cursor: pointer; color: var(--accent); font-size: 14px; padding: 4px 0; }
+.verifications-type .discret { color: var(--texte-discret); }
+.verifications-disque { margin: 6px 0 10px 16px; }
+.verifications-disque p { margin: 0 0 2px; font-size: 14px; }
+.verifications-disque .bouton-texte { padding: 0; font-size: inherit; text-align: left; }
+.verifications-disque a { color: var(--texte-2); font-size: 13px; margin-left: 6px; }
+.verifications-disque ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--texte-2); display: grid; gap: 3px; }
+.verifications-disque li { overflow-wrap: anywhere; }
+
+/* Page Œuvre : versions regroupées par catégorie ; catégorie sous les interprètes dans le tableau des parties */
+.versions-categorie { margin: 14px 0 6px; font-size: 14px; color: var(--accent); }
+.tableau-parties .colonne-categorie { display: block; font-size: 11px; font-weight: 400; color: var(--texte-discret); }
+/* Durée totale de la version sous la catégorie ; plage en double : alerte et durées de chaque plage */
+.tableau-parties .colonne-duree { display: block; font-size: 11px; font-weight: 400; color: var(--texte-2); }
+.tableau-parties td.doublee { color: var(--accent); }
+/* Une seule version : sa colonne est centrée (rien à comparer) */
+.tableau-parties.une-version thead th:not(:first-child), .tableau-parties.une-version td { text-align: center; }
+.tableau-parties .durees-doublees { display: block; font-size: 11px; color: var(--texte-discret); }
+.oeuvres-explication { margin: 0 0 12px; font-size: 12px; color: var(--texte-discret); }
+
+/* Fiche ouverte depuis la page d'une œuvre : l'œuvre est surlignée un instant */
+.plages > li { transition: background 1.2s ease-out; }
+.plage-montree { background: color-mix(in srgb, var(--accent) 22%, transparent); border-radius: 6px; }

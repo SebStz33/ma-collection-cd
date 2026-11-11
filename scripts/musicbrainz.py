@@ -69,7 +69,14 @@ DISQUES_PAR_SYNCHRO = 200
 #              dont une plage n'a pas de durée sur Discogs sont revues.
 # Version 11 : association par position (numéro de CD + numéro de plage) quand les nombres de plages
 #              diffèrent (voir associer_par_position) ; seules les éditions trouvées sans œuvres sont revues.
-VERSION_RECHERCHE = 11
+# Version 12 : artistes de l'enregistrement de chaque plage (« Academy of Ancient Music, Richard Egarr »),
+#              gardés avec son œuvre ; seules les compilations (« Various ») trouvées avec œuvres sont revues.
+# Version 13 : ces artistes viennent d'abord de l'enregistrement et de ses interprètes reliés (la plage
+#              d'une compilation classique ne crédite que le compositeur) ; mêmes éditions revues.
+# Version 14 : rôle de chaque interprète (instrument, voix, direction) ; mêmes éditions revues.
+# (La tracklist MusicBrainz pour une tracklist Discogs trop sommaire, voir tracklist_sommaire, n'a pas
+#  demandé de nouvelle version : un seul disque concerné, relu avec --relire.)
+VERSION_RECHERCHE = 14
 
 # Au-delà de ce nombre d'enregistrements, le serveur MusicBrainz ne renvoie plus les relations (œuvres,
 # dates) dans la lecture d'une édition, pour ne pas saturer : on les lit alors par paquets de 100.
@@ -210,7 +217,66 @@ def oeuvre_de_plage(plage_mb):
                 and relation.get("work") and not parente:
             parente = {"id": relation["work"]["id"], "titre": relation["work"].get("title", "")}
     compositeur = ", ".join(noms["composer"] or noms["writer"]) or None
-    return {"id": oeuvre["id"], "titre": oeuvre.get("title", ""), "compositeur": compositeur, "parente": parente}
+    resultat = {"id": oeuvre["id"], "titre": oeuvre.get("title", ""), "compositeur": compositeur, "parente": parente}
+    artistes, roles = artistes_de_plage(plage_mb)
+    if artistes:
+        resultat["artistes"] = artistes
+    if roles:
+        resultat["roles"] = roles
+    return resultat
+
+
+# Relations d'un enregistrement qui désignent ses interprètes, dans l'ordre où on les affiche.
+RELATIONS_INTERPRETES = ("conductor", "performing orchestra", "performer", "instrument", "vocal", "chorus master")
+
+
+def role_de_relation(relation):
+    """
+    Rôle d'un interprète d'après sa relation MusicBrainz, en anglais comme sur MusicBrainz
+    (la page le traduit) : « piano », « soprano vocals », « conductor »… ; None pour un orchestre,
+    un ensemble ou un interprète sans précision.
+    """
+    type_relation = relation.get("type")
+    attributs = [a for a in relation.get("attributes") or [] if a not in ("additional", "guest", "solo")]
+    if type_relation in ("instrument", "vocal"):
+        return ", ".join(attributs) or ("vocals" if type_relation == "vocal" else None)
+    if type_relation in ("conductor", "chorus master"):
+        return type_relation
+    return None
+
+
+def artistes_de_plage(plage_mb):
+    """
+    Interprètes d'une plage MusicBrainz : (liste de noms, {nom: rôle}), vides si MusicBrainz n'en a pas.
+    Les noms :
+      1. l'« Artiste de l'enregistrement » (« Academy of Ancient Music, Richard Egarr ») ;
+      2. les interprètes reliés à l'enregistrement (chef, orchestre, soliste…) ;
+      3. à défaut, l'artiste de la plage, qui dans une compilation classique est souvent le compositeur.
+    Le compositeur peut y figurer : la page le retire elle-même.
+    """
+    enregistrement = plage_mb.get("recording") or {}
+    noms = []
+
+    def ajouter(nom):
+        if nom and nom.lower() not in ("various artists", "[unknown]", "[dialogue]") and nom not in noms:
+            noms.append(nom)
+
+    for credit in enregistrement.get("artist-credit") or []:
+        ajouter((credit.get("artist") or {}).get("name") or credit.get("name"))
+    relations = enregistrement.get("relations") or []
+    roles = {}
+    for type_relation in RELATIONS_INTERPRETES:
+        for relation in relations:
+            if relation.get("type") == type_relation and relation.get("artist"):
+                nom = relation["artist"].get("name")
+                ajouter(nom)
+                role = role_de_relation(relation)
+                if nom and role and nom not in roles:
+                    roles[nom] = role
+    if not noms:
+        for credit in plage_mb.get("artist-credit") or []:
+            ajouter((credit.get("artist") or {}).get("name") or credit.get("name"))
+    return noms, {nom: role for nom, role in roles.items() if nom in noms}
 
 
 # Relations d'un enregistrement dont la date est celle de l'enregistrement : le lieu, l'œuvre
@@ -246,7 +312,8 @@ def lire_relations_par_paquets(identifiant):
     {identifiant d'enregistrement: enregistrement}. Si MusicBrainz refuse les relations des œuvres
     (compositeur, œuvre parente) dans ce type de lecture, on se contente des œuvres elles-mêmes.
     """
-    inclusions = ["work-rels+work-level-rels+artist-rels+place-rels+area-rels", "work-rels+artist-rels+place-rels+area-rels"]
+    inclusions = ["artist-credits+work-rels+work-level-rels+artist-rels+place-rels+area-rels",
+                  "artist-credits+work-rels+artist-rels+place-rels+area-rels"]
     for inc in inclusions:
         enregistrements, decalage = {}, 0
         try:
@@ -266,16 +333,16 @@ def lire_relations_par_paquets(identifiant):
 
 def lire_edition_mb(identifiant):
     """
-    Lit une édition MusicBrainz. Renvoie (œuvres, années, année de parution, durées, positions) : la liste
+    Lit une édition MusicBrainz. Renvoie (œuvres, années, année de parution, durées, positions, titres) : la liste
     des œuvres (ou None) de chaque plage, dans l'ordre, [première, dernière] année d'enregistrement (ou None),
     l'année de parution de l'édition (ou None), la durée de chaque plage en millisecondes (ou None)
-    et la position de chaque plage : (numéro du disque, numéro de la plage sur ce disque).
+    et la position de chaque plage : (numéro du disque, numéro de la plage sur ce disque), puis le titre de chaque plage.
     """
     edition = appeler("release/%s" % identifiant, {
-        "inc": "recordings+recording-level-rels+work-rels+work-level-rels+artist-rels+place-rels+area-rels",
+        "inc": "recordings+artist-credits+recording-level-rels+work-rels+work-level-rels+artist-rels+place-rels+area-rels",
     })
     if not edition:
-        return None, None, None, None, None
+        return None, None, None, None, None, None
     plages = [plage for support in edition.get("media", []) for plage in support.get("tracks", [])]
     positions = [(support.get("position"), plage.get("position"))
                  for support in edition.get("media", []) for plage in support.get("tracks", [])]
@@ -293,7 +360,7 @@ def lire_edition_mb(identifiant):
     annee_parution = int(date_edition[:4]) if date_edition[:4].isdigit() else None
     durees = [plage.get("length") or (plage.get("recording") or {}).get("length") for plage in plages]
     return ([oeuvre_de_plage(plage) for plage in plages], ([min(annees), max(annees)] if annees else None),
-            annee_parution, durees, positions)
+            annee_parution, durees, positions, [plage.get("title") or "" for plage in plages])
 
 
 def en_https(adresse):
@@ -467,7 +534,8 @@ def associer_par_position(plages, oeuvres, durees, positions):
       - « 19-3.1 » … « 19-3.13 » : mouvements sur la plage 3 du CD 19, ils en reçoivent tous l'œuvre ;
       - « 10-1 : 15 » : plages 1 à 15 du CD 10, on donne leur œuvre chapeau commune s'il y en a une.
     Sécurité : un disque n'est associé que si ses positions Discogs couvrent exactement toutes les plages
-    de ce disque sur MusicBrainz ; sinon ses plages ne reçoivent rien (les autres disques, si).
+    de ce disque sur MusicBrainz ; sinon on essaie associer_par_intertitre, et à défaut ses plages
+    ne reçoivent rien (les autres disques, si).
     Renvoie (œuvres, durées) alignées sur plages_a_associer(plages), ou (None, None).
     Une durée n'est donnée que pour une plage Discogs qui correspond à une seule plage MusicBrainz entière.
     """
@@ -495,13 +563,17 @@ def associer_par_position(plages, oeuvres, durees, positions):
     for disque, numero in positions:
         attendues.setdefault(disque, set()).add(numero)
     disques_ok = {d for d in attendues if couvertes.get(d) == attendues[d]}
+    rang_par_intertitre = associer_par_intertitre(plages, attendues, disques_ok, index_mb,
+                                                  positions[0][0] if un_seul_disque else None)
     resultat_oeuvres, resultat_durees = [], []
-    for lue in lues:
+    for plage, lue in zip(a_associer, lues):
         oeuvre = duree = None
         disque = None
         if lue:
             disque = lue[0] if lue[0] is not None else (positions[0][0] if un_seul_disque else None)
-        if disque in disques_ok:
+        if id(plage) in rang_par_intertitre:
+            oeuvre = oeuvres[rang_par_intertitre[id(plage)]]
+        elif disque in disques_ok:
             rangs = [index_mb[(disque, n)] for n in range(lue[1], lue[2] + 1)]
             oeuvre = oeuvre_commune([oeuvres[r] for r in rangs])
             if len(rangs) == 1 and lignes_par_plage.get((disque, lue[1])) == 1:
@@ -511,6 +583,87 @@ def associer_par_position(plages, oeuvres, durees, positions):
     if not any(resultat_oeuvres) and not any(resultat_durees):
         return None, None
     return resultat_oeuvres, resultat_durees
+
+
+def associer_par_intertitre(plages, attendues, disques_ok, index_mb, disque_unique):
+    """
+    Dernier essai, pour un disque que associer_par_position n'a pas pu associer : toutes ses plages
+    Discogs sont rangées sous des intertitres, et il y a autant d'intertitres que de plages MusicBrainz
+    sur ce disque (111 DG, CD 8 : 26 plages Discogs sous 6 intertitres, les 4 tableaux de Petrouchka
+    et les 2 parties du Sacre ; 6 plages MusicBrainz). Le 1er intertitre va avec la plage MusicBrainz 1,
+    le 2e avec la 2e, etc. ; ses plages reçoivent l'œuvre de cette plage MusicBrainz.
+    Renvoie {id(plage Discogs): rang de la plage MusicBrainz}.
+    """
+    def disque_de(plage):
+        lue = lire_position(plage.get("position"))
+        if not lue:
+            return None
+        return lue[0] if lue[0] is not None else disque_unique
+
+    groupes, isolees = {}, set()
+    for plage in plages or []:
+        if plage.get("type") == "intertitre":
+            continue
+        if not plage.get("sous_plages"):
+            isolees.add(disque_de(plage))  # plage hors intertitre : ce disque ne convient pas
+            continue
+        reelles = plages_a_associer(plage["sous_plages"])
+        disques = {disque_de(p) for p in reelles}
+        if len(disques) != 1:
+            isolees.update(disques)  # intertitre à cheval sur deux disques, ou position illisible
+            continue
+        groupes.setdefault(disques.pop(), []).append(reelles)
+    resultat = {}
+    for disque, numeros in attendues.items():
+        if disque in disques_ok or disque in isolees or disque not in groupes:
+            continue
+        if len(groupes[disque]) != len(numeros):
+            continue
+        for reelles, numero in zip(groupes[disque], sorted(numeros)):
+            for plage in reelles:
+                resultat[id(plage)] = index_mb[(disque, numero)]
+    return resultat
+
+
+def tracklist_sommaire(plages, positions):
+    """
+    Vrai si la tracklist Discogs est trop sommaire pour y relier les œuvres : au plus une plage par disque
+    (« 1-1 Chopin », « 2-1 Schumann »…) alors que l'édition MusicBrainz en a davantage.
+    """
+    nb_discogs = len(plages_a_associer(plages))
+    return bool(positions) and len(positions) > nb_discogs and nb_discogs <= len({d for d, _ in positions})
+
+
+def plages_de_musicbrainz(titres, durees, positions, oeuvres=None):
+    """
+    Tracklist de l'édition MusicBrainz dans le format de sync.py : « 1-1 », « 1-2 »… (« 1 », « 2 »…
+    pour un seul disque), titre et durée. Les œuvres sont ajoutées ensuite par sync.py (ajouter_oeuvres).
+    Comme les « index tracks » de Discogs, les plages consécutives d'une même œuvre parente, sur un même
+    disque, sont regroupées sous une plage « oeuvre » à son titre (« Carnaval, op. 9 » et ses mouvements).
+    """
+    un_seul_disque = len({d for d, _ in positions}) == 1
+    oeuvres = oeuvres or [None] * len(positions)
+    plages, groupe_en_cours = [], None
+    for (disque, numero), titre, duree, oeuvre in zip(positions, titres, durees or [None] * len(positions), oeuvres):
+        plage = {"position": str(numero) if un_seul_disque else "%s-%s" % (disque, numero), "titre": titre,
+                 "duree": texte_duree(duree) if duree else "", "type": "plage", "artistes": [], "credits": []}
+        if duree:
+            plage["duree_source"] = "musicbrainz"
+        parente = (oeuvre or {}).get("parente")
+        cle = (disque, parente["id"]) if parente else None
+        if cle and groupe_en_cours and groupe_en_cours[0] == cle:
+            groupe_en_cours[1].append(plage)
+        else:
+            groupe_en_cours = [cle, [plage], parente]
+            plages.append(groupe_en_cours)
+    resultat = []
+    for cle, groupe, parente in plages:
+        if cle and len(groupe) > 1:
+            resultat.append({"position": "", "titre": parente.get("titre", ""), "duree": "", "type": "oeuvre",
+                             "artistes": [], "credits": [], "sous_plages": groupe})
+        else:
+            resultat.extend(groupe)
+    return resultat
 
 
 def texte_duree(millisecondes):
@@ -556,8 +709,83 @@ def ecrire_cache(fichier, cache):
     temporaire.replace(fichier)
 
 
-def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_duree=False):
-    """Vrai si ce disque doit être (re)cherché sur MusicBrainz. `sans_annee` : Discogs n'a pas son année."""
+# ---------------------------------------------------------------------------
+# Rattachement manuel : un coffret absent de MusicBrainz, dont les disques y sont séparément
+# (data/musicbrainz_manuel.json : {"13301735": {"1": "T3DV0ZJ6EcUi83z3suZYSaBfFnQ-", "2": …}}).
+# ---------------------------------------------------------------------------
+
+MOTIF_MBID = re.compile(r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:\s*#\s*(\d+))?", re.IGNORECASE)
+
+
+def trouver_disque_manuel(reference):
+    """
+    Disque MusicBrainz désigné à la main : un ID de disque (« T3DV0ZJ6EcUi83z3suZYSaBfFnQ- », l'empreinte
+    du CD, onglet « ID de disque » sur MusicBrainz), ou une parution (lien ou identifiant), suivie de « #2 »
+    pour son 2e CD. Renvoie (identifiant de la parution, numéro du CD dans la parution, titre) ou (None, None, None).
+    """
+    reference = (reference or "").strip()
+    trouve = MOTIF_MBID.search(reference)
+    if trouve:
+        parution = appeler("release/%s" % trouve.group(1).lower(), {})
+        if not parution:
+            return None, None, None
+        return parution["id"], int(trouve.group(2) or 1), parution.get("title", "")
+    if not reference:
+        return None, None, None
+    reponse = appeler("discid/%s" % urllib.parse.quote(reference, safe=".-_"), {"cdstubs": "no"})
+    for parution in (reponse or {}).get("releases", []):
+        for support in parution.get("media", []):
+            if any(d.get("id") == reference for d in support.get("discs", [])):
+                return parution["id"], support.get("position"), parution.get("title", "")
+    return None, None, None
+
+
+def lire_disques_manuels(plages, manuel):
+    """
+    Lit sur MusicBrainz chaque disque désigné à la main et l'associe au CD du coffret par position
+    (même sécurité que associer_par_position : un CD n'est relié que si ses plages Discogs couvrent
+    exactement celles du disque MusicBrainz). Renvoie (œuvres, durées, années, détails par CD) ; détails :
+    {"1": {"reference", "release", "titre", "plages_mb", "plages_discogs", "reliees", "image"}} ; « image » :
+    la pochette du disque séparé (Cover Art Archive : {"url", "original", "miniature"}), ou None.
+    """
+    oeuvres, durees, positions, annees, details = [], [], [], [], {}
+    for cd in sorted(manuel, key=lambda n: int(n) if str(n).isdigit() else 0):
+        reference = manuel[cd]
+        release, support, titre = trouver_disque_manuel(reference)
+        details[str(cd)] = {"reference": reference, "release": release, "titre": titre, "plages_mb": 0}
+        if not release or not str(cd).isdigit():
+            continue
+        oeuvres_mb, annees_mb, _, durees_mb, positions_mb, _ = lire_edition_mb(release)
+        images = lire_images(release)   # la pochette d'abord
+        details[str(cd)]["image"] = {k: v for k, v in images[0].items() if k != "type"} if images else None
+        rangs = [i for i, (d, _) in enumerate(positions_mb or []) if d == support]
+        details[str(cd)]["plages_mb"] = len(rangs)
+        for i in rangs:
+            oeuvres.append(oeuvres_mb[i])
+            durees.append(durees_mb[i] if durees_mb else None)
+            positions.append((int(cd), positions_mb[i][1]))
+        if rangs and annees_mb:
+            annees.extend(annees_mb)
+    a_associer = plages_a_associer(plages)
+    resultat_oeuvres, resultat_durees = associer_par_position(plages, oeuvres, durees, positions)
+    for cd, detail in details.items():
+        rangs = [i for i, p in enumerate(a_associer)
+                 if (lire_position(p.get("position")) or (None,))[0] == (int(cd) if cd.isdigit() else None)]
+        detail["plages_discogs"] = len(rangs)
+        detail["reliees"] = sum(1 for i in rangs if resultat_oeuvres and resultat_oeuvres[i]) if resultat_oeuvres else 0
+    return resultat_oeuvres, resultat_durees, ([min(annees), max(annees)] if annees else None), details
+
+
+def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_duree=False, compilation=False,
+               force=False, manuel=None):
+    """
+    Vrai si ce disque doit être (re)cherché sur MusicBrainz. `sans_annee` : Discogs n'a pas son année.
+    `compilation` : disque crédité à « Various » sur Discogs. `force` : demandé avec --relire.
+    """
+    if force:
+        return True
+    if entree and (entree.get("manuel") or None) != (manuel or None):
+        return True  # rattachement manuel ajouté, modifié ou retiré (data/musicbrainz_manuel.json)
     if not entree or entree.get("nb_plages") != nb_plages:
         return True  # jamais cherché, ou tracklist Discogs modifiée depuis
     version = entree.get("version", 1)
@@ -582,25 +810,32 @@ def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_du
         return True  # une plage sans durée sur Discogs : on lit les durées de l'édition MusicBrainz
     if version < 11 and entree.get("release") and not entree.get("oeuvres"):
         return True  # trouvé sans œuvres : l'association par position (CD + plage) peut aider
+    if version < 14 and compilation and entree.get("oeuvres"):
+        return True  # compilation : on lit en plus les artistes de l'enregistrement de chaque plage
     age = (date.today() - date.fromisoformat(entree["maj"])).days
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
 
-def mettre_a_jour(fichier, disques, tout=False, sans_annee=()):
+def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=(), forces=(), manuels=None):
     """
     Cherche sur MusicBrainz les disques qui ne sont pas encore dans le cache
     (ou dont la recherche est ancienne), au plus DISQUES_PAR_SYNCHRO, sauf si
     tout est vrai. `disques` : liste de (release_id, master_id, plages Discogs, codes-barres).
-    `sans_annee` : release_id des disques sans année sur Discogs.
-    Renvoie le cache : {release_id (texte): {"maj", "version", "nb_plages", "methode", "release", "oeuvres", "images"}}.
+    `sans_annee` : release_id des disques sans année sur Discogs. `compilations` : ceux crédités à « Various ».
+    `forces` : ceux demandés avec --relire, cherchés en premier même s'ils sont à jour.
+    `manuels` : {release_id (texte): {n° de CD: disque MusicBrainz}} (data/musicbrainz_manuel.json).
+    Renvoie le cache : {release_id (texte): {"maj", "version", "nb_plages", "methode", "release", "oeuvres", "images"}},
+    plus « plages » (la tracklist MusicBrainz) quand celle de Discogs est trop sommaire.
     """
     cache = lire_cache(fichier)
+    manuels = manuels or {}
     a_faire = [d for d in disques
                if a_chercher(cache.get(str(d[0])), len(plages_a_associer(d[2])), d[0] in sans_annee,
                              a_mouvements_meme_position(d[2]),
-                             any(not p.get("duree") for p in plages_a_associer(d[2])))]
-    # Les disques jamais cherchés d'abord, puis les recherches les plus anciennes.
-    a_faire.sort(key=lambda d: (str(d[0]) in cache, (cache.get(str(d[0])) or {}).get("version", 1),
+                             any(not p.get("duree") for p in plages_a_associer(d[2])), d[0] in compilations,
+                             d[0] in forces, manuels.get(str(d[0])))]
+    # Les disques demandés avec --relire d'abord, puis ceux jamais cherchés, puis les recherches les plus anciennes.
+    a_faire.sort(key=lambda d: (d[0] not in forces and str(d[0]) not in manuels, str(d[0]) in cache, (cache.get(str(d[0])) or {}).get("version", 1),
                                 (cache.get(str(d[0])) or {}).get("maj", "")))
     if not tout:
         a_faire = a_faire[:DISQUES_PAR_SYNCHRO]
@@ -608,16 +843,43 @@ def mettre_a_jour(fichier, disques, tout=False, sans_annee=()):
 
     for numero, (release_id, master_id, plages, codes_barres) in enumerate(a_faire, start=1):
         nb_plages = len(plages_a_associer(plages))
+        manuel = manuels.get(str(release_id))
+        if manuel:
+            # Coffret rattaché à la main, disque par disque : pas de recherche automatique.
+            try:
+                oeuvres, durees, annees, details = lire_disques_manuels(plages, manuel)
+            except (urllib.error.URLError, ValueError, OSError) as erreur:
+                print("  Disque %s ignoré pour MusicBrainz (%s)" % (release_id, erreur))
+                continue
+            cache[str(release_id)] = {
+                "maj": date.today().isoformat(), "version": VERSION_RECHERCHE, "nb_plages": nb_plages,
+                "methode": "manuel", "release": None, "manuel": manuel, "disques_mb": details,
+                "oeuvres": oeuvres if oeuvres and any(oeuvres) else None, "images": [],
+                "annees_enregistrement": annees if oeuvres and any(oeuvres) else None, "annee_parution": None,
+                "durees": durees if durees and any(durees) else None,
+            }
+            print("  Disque %s rattaché à la main : %s" % (release_id, ", ".join(
+                "CD %s %s" % (cd, "%d/%d plages" % (d["reliees"], d["plages_discogs"]) if d["release"] else "introuvable sur MusicBrainz")
+                for cd, d in details.items())))
+            continue
         try:
             identifiant, methode = trouver_edition(release_id, master_id, nb_plages, codes_barres)
-            oeuvres, annees, annee_parution, durees, positions = (lire_edition_mb(identifiant) if identifiant
-                                                                  else (None, None, None, None, None))
+            oeuvres, annees, annee_parution, durees, positions, titres = (
+                lire_edition_mb(identifiant) if identifiant else (None, None, None, None, None, None))
             images = lire_images(identifiant) if methode in METHODES_EXACTES else []
         except (urllib.error.URLError, ValueError, OSError) as erreur:
             # Un disque en erreur ne doit pas bloquer la synchro : il sera repris la prochaine fois.
             print("  Disque %s ignoré pour MusicBrainz (%s)" % (release_id, erreur))
             continue
-        if oeuvres is not None and len(oeuvres) not in nombres_acceptes(plages):
+        # Tracklist Discogs trop sommaire (une plage par disque) et édition exacte : on prend celle de
+        # MusicBrainz. Une fois choisie, elle reste, même si la tracklist Discogs est complétée ensuite.
+        precedente = cache.get(str(release_id)) or {}
+        plages_mb = None
+        if oeuvres is not None and methode in METHODES_EXACTES and (
+                tracklist_sommaire(plages, positions) or precedente.get("plages")):
+            plages_mb = plages_de_musicbrainz(titres, durees, positions, oeuvres)
+            durees = None  # déjà dans les plages
+        elif oeuvres is not None and len(oeuvres) not in nombres_acceptes(plages):
             # Nombre de plages différent, même en groupant les mouvements : on associe par position
             # (CD + plage) ; les listes gardées sont alors alignées sur les plages Discogs.
             oeuvres, durees = associer_par_position(plages, oeuvres, durees, positions)
@@ -636,6 +898,8 @@ def mettre_a_jour(fichier, disques, tout=False, sans_annee=()):
             # Durées des plages : seulement pour l'édition exacte (une réédition peut avoir d'autres durées).
             "durees": durees if methode in METHODES_EXACTES and durees and any(durees) else None,
         }
+        if plages_mb:
+            cache[str(release_id)]["plages"] = plages_mb
         if numero % 25 == 0 or numero == len(a_faire):
             print("  %d/%d" % (numero, len(a_faire)))
             ecrire_cache(fichier, cache)  # enregistré en route : rien de perdu si la synchro s'arrête

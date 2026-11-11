@@ -26,16 +26,18 @@
       <p class="compteur" id="compteur"></p>
       <nav class="onglets" aria-label="Vue">
         <button type="button" class="onglet actif" data-vue="collection">Collection</button>
-        <button type="button" class="onglet" data-vue="statistiques">Statistiques</button>
-        <button type="button" class="onglet" data-vue="index">Index</button>
+        <button type="button" class="onglet" data-vue="oeuvres">Œuvres</button>
         <button type="button" class="onglet" data-vue="hasard">Au hasard</button>
+        <button type="button" class="onglet" data-vue="index">Index</button>
+        <button type="button" class="onglet" data-vue="statistiques">Statistiques</button>
       </nav>
     </div>
 
     <div class="entete-ligne outils">
       <div class="recherche">
-        <input type="search" id="recherche" placeholder="Rechercher un titre, un nom, un label…"
+        <input type="search" id="recherche" placeholder="Rechercher (ET, OU, SAUF, &quot;…&quot;)"
                autocomplete="off" aria-label="Rechercher">
+        <button type="button" class="bouton-aide" data-aide-recherche aria-label="Syntaxe de la recherche">?</button>
         <select id="role-recherche" aria-label="Chercher dans">
           <option value="partout">Partout</option>
         </select>
@@ -137,6 +139,7 @@
       <section id="vue-statistiques" class="statistiques" hidden aria-label="Statistiques"></section>
       <section id="vue-index" class="index" hidden aria-label="Index"></section>
       <section id="vue-hasard" class="hasard" hidden aria-label="Au hasard"></section>
+      <section id="vue-oeuvres" class="oeuvres" hidden aria-label="Œuvres"></section>
     </main>
   </div>
 
@@ -144,6 +147,24 @@
   <dialog id="fiche" class="fiche" aria-labelledby="fiche-titre">
     <button type="button" class="fermer-fiche" id="fermer-fiche" aria-label="Fermer">✕</button>
     <div id="fiche-contenu"></div>
+  </dialog>
+
+  <!-- Aide : syntaxe de la recherche (les trois champs de recherche) -->
+  <dialog id="aide-recherche" class="petite-boite aide-recherche" aria-labelledby="aide-titre">
+    <h2 id="aide-titre">Chercher</h2>
+    <dl>
+      <dt>bach gould</dt><dd>les deux mots, même séparés</dd>
+      <dt>"glenn gould"</dt><dd>l'expression entière seulement (guillemets “ ” ou « » acceptés)</dd>
+      <dt>bach OU haendel</dt><dd>l'un ou l'autre</dd>
+      <dt>chopin SAUF nocturnes</dt><dd>exclure</dd>
+      <dt>(bach OU haendel) gould</dt><dd>combiner avec des parenthèses</dd>
+      <dt>K. 386 · BWV 1007 · op. 27</dt><dd>un numéro de catalogue d'œuvre est cherché en entier, même sans guillemets (K386 et KV 386 aussi)</dd>
+    </dl>
+    <p>ET, OU et SAUF ne comptent qu'en majuscules&nbsp;: en minuscules, ce sont des mots ordinaires.
+      Accents et majuscules sont ignorés pour le reste.</p>
+    <div class="boutons">
+      <button type="button" class="bouton" id="aide-fermer">Fermer</button>
+    </div>
   </dialog>
 
   <!-- Jeton Discogs de cet appareil : il permet de modifier les disques depuis la page -->
