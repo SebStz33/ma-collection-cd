@@ -224,3 +224,7 @@ __marimo__/
 
 # Fichier temporaire du script de synchro
 data/*.tmp
+
+# Fichiers de vérification du script proposer_rattachements.py (à ne pas enregistrer)
+rattachements-*.csv
+rattachements-*.html
