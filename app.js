@@ -2502,6 +2502,31 @@ function blocSources(edition) {
  * et change de CD en même temps que la lecture. Sur iPhone (une seule colonne), on garde la vignette de l'en-tête.
  * Renvoie { element, mettreAJour } ou null s'il n'y a aucune pochette de CD.
  */
+/** Demande une image au navigateur sans l'afficher : elle sera dans son cache (et dans la réserve de l'outil). */
+function prechargerImage(adresse) {
+  const image = new Image();
+  image.decoding = "async";
+  image.src = adresse;
+  return image;
+}
+
+/**
+ * Affiche d'abord la miniature (vite là), puis la grande pochette dès qu'elle est arrivée,
+ * si `toujoursVoulue()` est encore vrai (on n'a pas changé de CD entre-temps).
+ */
+function afficherMiniaturePuisGrande(img, pochette, toujoursVoulue) {
+  const grande = pochette.url || pochette.miniature;
+  if (!pochette.miniature || pochette.miniature === grande) {
+    img.src = grande;
+    return;
+  }
+  img.src = pochette.miniature;
+  const chargee = prechargerImage(grande);
+  const remplacer = () => { if (toujoursVoulue()) img.src = grande; };
+  if (chargee.complete && chargee.naturalWidth) remplacer();
+  else chargee.addEventListener("load", remplacer, { once: true });
+}
+
 function blocPochetteSuivie(edition, tracklist) {
   const pochettes = disquesMB(edition).filter(([, d]) => d.image).map(([cd, d]) => ({ ...d.image, disque: "CD " + cd }));
   if (!pochettes.length || !tracklist.disques.length) return null;
@@ -2511,7 +2536,12 @@ function blocPochetteSuivie(edition, tracklist) {
   const bouton = creer("button", { type: "button", classe: "pochette-suivie-image", title: "Agrandir",
     surclic: () => affichee && ouvrirVisionneuse(pochettes, pochettes.indexOf(affichee)) }, image);
   const element = creer("div", { classe: "pochette-suivie", hidden: true }, bouton, legende);
+  // Les pochettes viennent de la Cover Art Archive (serveurs d'archive.org, lents) : on charge tout de suite
+  // les miniatures de tous les CD (légères, environ 25 Ko chacune), et les grandes au fil de la lecture.
+  pochettes.forEach((p) => p.miniature && prechargerImage(p.miniature));
   const mettreAJour = () => {
+    // Sur iPhone, ce bloc est masqué (la vignette est dans l'en-tête du CD) : rien à charger en grand.
+    if (window.matchMedia("(max-width: 700px)").matches) return;
     const fiche = $("fiche");
     const haut = fiche.getBoundingClientRect().top + fiche.clientHeight / 3;
     // Le dernier en-tête de CD passé au-dessus du premier tiers de l'écran ; avant le premier, le premier CD.
@@ -2523,8 +2553,11 @@ function blocPochetteSuivie(edition, tracklist) {
     affichee = pochette;
     element.hidden = !pochette;
     if (!pochette) return;
-    image.src = pochette.url || pochette.miniature;
+    afficherMiniaturePuisGrande(image, pochette, () => affichee === pochette);
     legende.textContent = disque + " · pochette du disque séparé (MusicBrainz)";
+    // Les grandes pochettes des 2 CD suivants, pour qu'elles soient prêtes quand on y arrive.
+    const rang = pochettes.indexOf(pochette);
+    pochettes.slice(rang + 1, rang + 3).forEach((p) => p.url && prechargerImage(p.url));
   };
   return { element, mettreAJour };
 }
