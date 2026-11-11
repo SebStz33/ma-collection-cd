@@ -2696,7 +2696,7 @@ function listePlagesParDisque(plages, suivi) {
     if (debut) vus.add(disque);
     return [
       debut ? intertitreDisque(disques, disque, texteDuree(dureeTotale(plages.filter((p) => disqueDeLaPlage(p) === disque))),
-        enTete.get(disque), noms.get(disque)) : null,
+        enTete.get(disque), (noms.detail && noms.detail.get(disque)) || noms.get(disque)) : null,
       ligne(plage, (enTete.get(disque) || []).map((i) => i.nom)),
     ];
   });
@@ -2740,8 +2740,33 @@ function compositeursDesDisques(plages, disques, edition) {
       noms.set(disque, premiers.join(", ") + "…");
     }
   }
+  // En-tête de chaque CD à plusieurs compositeurs : tous, du plus présent au moins présent (en durée),
+  // les 5 premiers puis « et N autres » ; tous les noms complets au survol. Le menu garde « Dobrzyński… ».
+  noms.detail = new Map();
+  for (const disque of disques) {
+    const poids = new Map();
+    for (const p of plages.filter((x) => disqueDeLaPlage(x) === disque).flatMap(plagesReelles)) {
+      for (const nom of String((p.oeuvre && p.oeuvre.compositeur) || "").split(", ").filter(Boolean)) {
+        poids.set(nom, (poids.get(nom) || 0) + (secondesDe(p.duree) || 1));
+      }
+    }
+    if (poids.size < 2) continue;
+    const tries = [...poids].sort((a, b) => b[1] - a[1] || comparerTextes(a[0], b[0])).map(([nom]) => nom);
+    // Deux compositeurs au même nom de famille (Bach père et fils, Leopold et Wolfgang Mozart) :
+    // leurs initiales devant (« J. S. Bach », « C. P. E. Bach »).
+    const initiales = (nom) => nom.trim().split(/\s+/).slice(0, -1).map((m) => m[0] + ".").join(" ");
+    const courts = tries.map((nom) => tries.filter((autre) => court(autre) === court(nom)).length > 1
+      ? (initiales(nom) + " " + court(nom)).trim() : court(nom));
+    noms.detail.set(disque, {
+      texte: courts.slice(0, MAX_COMPOSITEURS_DISQUE).join(", ")
+        + (courts.length > MAX_COMPOSITEURS_DISQUE ? " et " + (courts.length - MAX_COMPOSITEURS_DISQUE) + " autres" : ""),
+      titre: "Compositeurs de ce disque : " + tries.join(", "),
+    });
+  }
   return noms;
 }
+
+const MAX_COMPOSITEURS_DISQUE = 5;   // en-tête d'un CD de coffret : au-delà, « et N autres »
 
 // Rôles d'interprètes (MusicBrainz et Discogs, en anglais) -> français. Un rôle absent garde son nom anglais.
 const ROLES_EN_FRANCAIS = {
@@ -2854,7 +2879,9 @@ function intertitreDisque(disques, disque, duree = "", interpretes = [], composi
     texte, title: titre + " : " + cible, surclic: aller(cible) });
   return creer("li", { classe: "plage-intertitre plage-disque", "data-disque": disque },
     creer("span", { texte: disque }),
-    compositeur ? creer("span", { classe: "compositeur-disque", texte: compositeur }) : null,
+    // Un nom (« Chopin ») ou, pour un CD à plusieurs compositeurs, { texte, titre } (« Dobrzyński, Field, Chopin »).
+    !compositeur ? null : typeof compositeur === "string" ? creer("span", { classe: "compositeur-disque", texte: compositeur })
+      : creer("span", { classe: "compositeur-disque compositeurs-disque", texte: compositeur.texte, title: compositeur.titre }),
     duree ? creer("span", { classe: "duree-disque", texte: duree }) : null,
     interpretes && interpretes.length ? creer("span", { classe: "interpretes-disque", texte: texteInterpretes(interpretes),
       title: "Sur tout le disque : " + texteInterpretes(interpretes, true) }) : null,

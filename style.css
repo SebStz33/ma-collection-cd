@@ -314,6 +314,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .interpretes-disque { color: var(--texte-2); font-weight: 400; font-size: 13px; min-width: 0; }
 /* Compositeur unique d'un CD de coffret classique (« CD 1 Chopin »). */
 .compositeur-disque { white-space: nowrap; }
+.compositeurs-disque { white-space: normal; min-width: 0; }   /* plusieurs compositeurs : la liste peut passer à la ligne */
 .plage-disque > span:first-child, .plage-disque .duree-disque { white-space: nowrap; }
 /* Sur téléphone : les interprètes du disque passent sur une ligne à eux, sous « CD 24 · durée ». */
 @media (max-width: 700px) {
