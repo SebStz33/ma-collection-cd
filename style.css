@@ -600,6 +600,17 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 /* Pochette du disque séparé (coffret rattaché à la main) : petite vignette avant « CD 3 », cliquable. */
 .pochette-disque { padding: 0; border: 0; background: none; cursor: zoom-in; align-self: center; flex: none; }
 .pochette-disque img { display: block; width: 36px; height: 36px; object-fit: cover; border-radius: 4px; border: 1px solid var(--bordure); }
+/* Coffret rattaché à la main : pochette du CD en cours de lecture, sous les photos du coffret,
+   qui reste à l'écran pendant le défilement. Elle remplace alors la vignette de l'en-tête du CD. */
+.pochette-suivie { position: sticky; top: 16px; margin-top: 20px; }
+.pochette-suivie[hidden] { display: none; }
+.pochette-suivie-image { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.pochette-suivie-image img { display: block; width: 100%; border-radius: 8px; border: 1px solid var(--bordure); background: var(--fond); }
+.fiche-gauche:has(.pochette-suivie) ~ * .pochette-disque { display: none; }
+@media (max-width: 700px) {
+  .pochette-suivie { display: none; }
+  .fiche-gauche:has(.pochette-suivie) ~ * .pochette-disque { display: block; }
+}
 .navigation-disques { margin-left: auto; display: flex; gap: 14px; font-weight: 400; }
 /* Double flèche faite de deux flèches simples (même police, même taille), resserrées. */
 .fleche-double { letter-spacing: -0.35em; padding-right: 0.35em; }

@@ -2362,6 +2362,9 @@ function ouvrirFiche(edition, { position = null } = {}) {
         numero ? creer("span", { classe: "discret", texte: " · " }) : null,
         creer("button", { type: "button", classe: "bouton-texte lien-fiche",
           texte: disque + (tracklist.noms && tracklist.noms.get(disque) ? " " + tracklist.noms.get(disque) : ""),
+          // CD à plusieurs compositeurs (« Monteverdi… ») : la liste complète au survol, comme dans son en-tête.
+          title: tracklist.noms && tracklist.noms.detail && tracklist.noms.detail.get(disque)
+            ? tracklist.noms.detail.get(disque).titre : null,
           surclic: () => defilerFicheVers(tracklist.liste.querySelector('[data-disque="' + disque + '"]')) }),
       ])) : null,
       tracklist.liste,
@@ -2383,14 +2386,17 @@ function ouvrirFiche(edition, { position = null } = {}) {
         surclic: () => $("fiche").scrollTo({ top: 0, behavior: "smooth" }) }))
   );
 
+  const pochetteSuivie = blocPochetteSuivie(edition, tracklist);
   $("fiche-contenu").replaceChildren(
     creer("div", { classe: "fiche-corps" },
-      blocPhotos(edition),
+      // Colonne de gauche : les photos, puis (coffret rattaché à la main) la pochette du CD en cours de lecture.
+      creer("div", { classe: "fiche-gauche" }, blocPhotos(edition), pochetteSuivie ? pochetteSuivie.element : null),
       texteFiche
     )
   );
   $("fiche").showModal();
   $("fiche").scrollTop = 0;
+  suivrePochetteDuDisque(pochetteSuivie);
   if (position) montrerPlageDansLaFiche(position);
   document.querySelectorAll("#fiche .vignettes").forEach((bloc) => bloc.ajuster && bloc.ajuster());
   ajusterNoms($("fiche"));
@@ -2490,6 +2496,55 @@ function blocSources(edition) {
 }
 
 /** Disques MusicBrainz d'un coffret rattaché à la main, triés par numéro de CD : [[« 1 », détail], …]. */
+/**
+ * Coffret rattaché à la main, sur Mac et iPad : sous les photos du coffret, la pochette (en grand) du CD
+ * dont l'en-tête est passé en haut de l'écran ; elle reste visible pendant le défilement (position: sticky)
+ * et change de CD en même temps que la lecture. Sur iPhone (une seule colonne), on garde la vignette de l'en-tête.
+ * Renvoie { element, mettreAJour } ou null s'il n'y a aucune pochette de CD.
+ */
+function blocPochetteSuivie(edition, tracklist) {
+  const pochettes = disquesMB(edition).filter(([, d]) => d.image).map(([cd, d]) => ({ ...d.image, disque: "CD " + cd }));
+  if (!pochettes.length || !tracklist.disques.length) return null;
+  let affichee = null;
+  const image = creer("img", { alt: "", decoding: "async" });
+  const legende = creer("p", { classe: "legende-photos" });
+  const bouton = creer("button", { type: "button", classe: "pochette-suivie-image", title: "Agrandir",
+    surclic: () => affichee && ouvrirVisionneuse(pochettes, pochettes.indexOf(affichee)) }, image);
+  const element = creer("div", { classe: "pochette-suivie", hidden: true }, bouton, legende);
+  const mettreAJour = () => {
+    const fiche = $("fiche");
+    const haut = fiche.getBoundingClientRect().top + fiche.clientHeight / 3;
+    // Le dernier en-tête de CD passé au-dessus du premier tiers de l'écran ; avant le premier, le premier CD.
+    const entetes = [...tracklist.liste.querySelectorAll(".plage-disque[data-disque]")];
+    const passes = entetes.filter((li) => li.getBoundingClientRect().top <= haut);
+    const disque = (passes.length ? passes[passes.length - 1] : entetes[0] || {}).dataset?.disque;
+    const pochette = pochettes.find((p) => p.disque === disque) || null;
+    if (pochette === affichee) return;
+    affichee = pochette;
+    element.hidden = !pochette;
+    if (!pochette) return;
+    image.src = pochette.url || pochette.miniature;
+    legende.textContent = disque + " · pochette du disque séparé (MusicBrainz)";
+  };
+  return { element, mettreAJour };
+}
+
+/** Branche la pochette suivie sur le défilement de la fiche (et débranche celle de la fiche précédente). */
+let pochetteSuivieActive = null;
+function suivrePochetteDuDisque(pochetteSuivie) {
+  if (pochetteSuivieActive) $("fiche").removeEventListener("scroll", pochetteSuivieActive);
+  pochetteSuivieActive = null;
+  if (!pochetteSuivie) return;
+  let attente = false;
+  pochetteSuivieActive = () => {
+    if (attente) return;
+    attente = true;
+    requestAnimationFrame(() => { attente = false; pochetteSuivie.mettreAJour(); });
+  };
+  $("fiche").addEventListener("scroll", pochetteSuivieActive, { passive: true });
+  pochetteSuivie.mettreAJour();
+}
+
 function disquesMB(edition) {
   return Object.entries(edition.musicbrainz_disques || {}).sort((a, b) => Number(a[0]) - Number(b[0]));
 }
@@ -2713,10 +2768,12 @@ function listePlagesParDisque(plages, suivi) {
 function compositeursDesDisques(plages, disques, edition) {
   const noms = new Map();
   if (!estClassique(edition)) return noms;
+  // Plages réelles de chaque CD, avec leurs compositeurs (MusicBrainz, à défaut Discogs) et leur poids (durée).
+  const parDisque = new Map(disques.map((disque) => [disque,
+    compositeursDesPlages(plages.filter((p) => disqueDeLaPlage(p) === disque))]));
   const melanges = new Map();   // CD dont toutes les plages ont un compositeur, mais pas le même : ses plages
-  for (const disque of disques) {
-    const reelles = plages.filter((p) => disqueDeLaPlage(p) === disque).flatMap(plagesReelles);
-    const compositeurs = new Set(reelles.map((p) => (p.oeuvre && p.oeuvre.compositeur) || ""));
+  for (const [disque, reelles] of parDisque) {
+    const compositeurs = new Set(reelles.map((r) => r.compositeurs.join(", ")));
     const [seul] = compositeurs;
     if (compositeurs.size === 1 && seul && !seul.includes(", ")) noms.set(disque, seul);
     else if (compositeurs.size > 1 && !compositeurs.has("")) melanges.set(disque, reelles);
@@ -2728,35 +2785,27 @@ function compositeursDesDisques(plages, disques, edition) {
   }
   const court = nomCourtCompositeur;
   for (const [disque, nom] of noms) noms.set(disque, court(nom));
+  // Comme l'en-tête du CD : chaque compositeur d'une œuvre écrite à plusieurs reçoit la durée de la plage.
+  const poidsDe = (reelles, cle) => {
+    const poids = new Map();
+    for (const r of reelles) for (const nom of r.compositeurs) poids.set(cle(nom), (poids.get(cle(nom)) || 0) + r.poids);
+    return [...poids].sort((a, b) => b[1] - a[1] || comparerTextes(a[0], b[0]));
+  };
   // CD à plusieurs compositeurs, seulement si d'autres CD portent un nom : le compositeur le plus présent
   // (en durée, à défaut en nombre de plages) suivi de « … » ; à égalité, les deux premiers par ordre alphabétique.
   if (noms.size) {
     for (const [disque, reelles] of melanges) {
-      const poids = new Map();
-      // Comme l'en-tête du CD : chaque compositeur d'une œuvre écrite à plusieurs reçoit la durée de la plage.
-      for (const p of reelles) {
-        for (const complet of p.oeuvre.compositeur.split(", ").filter(Boolean)) {
-          const nom = court(complet);
-          poids.set(nom, (poids.get(nom) || 0) + (secondesDe(p.duree) || 1));
-        }
-      }
-      const tries = [...poids].sort((a, b) => b[1] - a[1] || comparerTextes(a[0], b[0]));
+      const tries = poidsDe(reelles, court);
       const premiers = tries.filter(([, n]) => n === tries[0][1]).slice(0, 2).map(([nom]) => nom);
       noms.set(disque, premiers.join(", ") + "…");
     }
   }
   // En-tête de chaque CD à plusieurs compositeurs : tous, du plus présent au moins présent (en durée),
-  // les 5 premiers puis « et N autres » ; tous les noms complets au survol. Le menu garde « Dobrzyński… ».
+  // les 5 premiers puis « et N autres » ; tous les noms complets au survol (en-tête et sommaire).
   noms.detail = new Map();
-  for (const disque of disques) {
-    const poids = new Map();
-    for (const p of plages.filter((x) => disqueDeLaPlage(x) === disque).flatMap(plagesReelles)) {
-      for (const nom of String((p.oeuvre && p.oeuvre.compositeur) || "").split(", ").filter(Boolean)) {
-        poids.set(nom, (poids.get(nom) || 0) + (secondesDe(p.duree) || 1));
-      }
-    }
-    if (poids.size < 2) continue;
-    const tries = [...poids].sort((a, b) => b[1] - a[1] || comparerTextes(a[0], b[0])).map(([nom]) => nom);
+  for (const [disque, reelles] of parDisque) {
+    const tries = poidsDe(reelles, (nom) => nom).map(([nom]) => nom);
+    if (tries.length < 2) continue;
     // Deux compositeurs au même nom de famille (Bach père et fils, Leopold et Wolfgang Mozart) :
     // leurs initiales devant (« J. S. Bach », « C. P. E. Bach »).
     const initiales = (nom) => nom.trim().split(/\s+/).slice(0, -1).map((m) => m[0] + ".").join(" ");
@@ -2769,6 +2818,39 @@ function compositeursDesDisques(plages, disques, edition) {
     });
   }
   return noms;
+}
+
+/**
+ * Les plages réelles (sans intertitres) d'une liste de plages, chacune avec { compositeurs, poids }.
+ * Compositeurs : ceux de l'œuvre MusicBrainz ; à défaut, ceux que Discogs crédite (« Composed By ») sur la plage,
+ * ou sinon sur l'œuvre qui la regroupe (« Inventions à 2 voix » chez Ciccolini, sans œuvre MusicBrainz).
+ * Un même nom écrit de deux façons (« Manuel De Falla » sur Discogs, « Manuel de Falla » sur MusicBrainz)
+ * prend une seule forme, celle de MusicBrainz de préférence. Poids : la durée en secondes, à défaut 1.
+ */
+function compositeursDesPlages(plages) {
+  const reelles = [];
+  const parcourir = (plage, parents) => {
+    if (plage.type === "intertitre") return;
+    const sousPlages = plage.sous_plages || [];
+    if (sousPlages.length) { sousPlages.forEach((sous) => parcourir(sous, [plage, ...parents])); return; }
+    const mb = plage.oeuvre && plage.oeuvre.compositeur;
+    let compositeurs = mb ? mb.split(", ").filter(Boolean) : [];
+    if (!compositeurs.length) {
+      for (const source of [plage, ...parents]) {
+        compositeurs = [...new Set((source.credits || []).filter(estCreditDeCompositeur)
+          .map((c) => String(c.nom || "").replace(/\s*\(\d+\)$/, "").trim()).filter(Boolean))];
+        if (compositeurs.length) break;
+      }
+    }
+    reelles.push({ compositeurs, mb: Boolean(mb), poids: secondesDe(plage.duree) || 1 });
+  };
+  plages.forEach((plage) => parcourir(plage, []));
+  const cle = (nom) => nom.normalize("NFKC").replace(/[\u2010\u2011\u2012\u2013]/g, "-").toLowerCase();
+  const formes = new Map();
+  for (const r of [...reelles.filter((x) => x.mb), ...reelles.filter((x) => !x.mb)]) {
+    for (const nom of r.compositeurs) if (!formes.has(cle(nom))) formes.set(cle(nom), nom);
+  }
+  return reelles.map((r) => ({ compositeurs: [...new Set(r.compositeurs.map((nom) => formes.get(cle(nom))))], poids: r.poids }));
 }
 
 const MAX_COMPOSITEURS_DISQUE = 5;

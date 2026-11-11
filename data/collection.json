@@ -1,7 +1,7 @@
 {
   "utilisateur": "SebSteinmetz",
-  "genere_le": "2026-11-11T00:47:24+00:00",
-  "nb_disques": 458,
+  "genere_le": "2026-11-11T14:51:20+00:00",
+  "nb_disques": 459,
   "champs_perso": [
     "Photo principale",
     "Année d’enregistrement (manuelle)",
@@ -70153,6 +70153,11 @@
           "release": "a6baacee-87a8-4d8d-be68-463edb370ede",
           "titre": "Concerto for Orchestra / Dance Suite / Two Portraits / Mikrokosmos",
           "plages_mb": 14,
+          "image": {
+            "url": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022-1200.jpg",
+            "original": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022.jpg",
+            "miniature": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022-250.jpg"
+          },
           "plages_discogs": 14,
           "reliees": 14
         },
@@ -70161,6 +70166,11 @@
           "release": "eb58e1d6-0032-4938-8436-26e8881c7edf",
           "titre": "The Miraculous Mandarin / Sonata for 2 Pianos and Percussion / Divertimento",
           "plages_mb": 29,
+          "image": {
+            "url": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786-1200.jpg",
+            "original": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786.jpg",
+            "miniature": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786-250.jpg"
+          },
           "plages_discogs": 29,
           "reliees": 29
         },
@@ -70169,6 +70179,11 @@
           "release": "a38a0ce5-c59c-4d28-a331-12ac966ee77d",
           "titre": "The Wooden Prince / Music for Strings, Percussion, and Celesta",
           "plages_mb": 12,
+          "image": {
+            "url": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115-1200.jpg",
+            "original": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115.jpg",
+            "miniature": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115-250.jpg"
+          },
           "plages_discogs": 12,
           "reliees": 12
         },
@@ -70177,6 +70192,11 @@
           "release": "471c4385-3d6c-467d-8de2-739ec6d4ef76",
           "titre": "Violin Concerto no. 2 / Second Suite",
           "plages_mb": 7,
+          "image": {
+            "url": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663-1200.jpg",
+            "original": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663.jpg",
+            "miniature": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663-250.jpg"
+          },
           "plages_discogs": 7,
           "reliees": 7
         },
@@ -70185,6 +70205,11 @@
           "release": "7e252ba9-3d46-4bc9-a60d-63861b79d809",
           "titre": "Bluebeard's Castle / Wozzeck (excerpts)",
           "plages_mb": 11,
+          "image": {
+            "url": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967-1200.jpg",
+            "original": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967.jpg",
+            "miniature": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967-250.jpg"
+          },
           "plages_discogs": 11,
           "reliees": 11
         }
@@ -289579,7 +289604,8 @@
       "note": 5,
       "date_ajout": "2026-05-17T13:31:44-07:00",
       "champs": {
-        "Localisation": "Paris"
+        "Localisation": "Paris",
+        "Pistes favorites": "1-1, 1-2, 1-3"
       },
       "categorie_perso": "Piano Classique",
       "url_discogs": "https://www.discogs.com/release/8947604",
@@ -291099,6 +291125,188 @@
       ],
       "live_auto_source": null,
       "annee_source": "musicbrainz"
+    },
+    {
+      "instance_id": 2203373530,
+      "release_id": 24299969,
+      "master_id": 2223361,
+      "titre": "Piano Concerto No. 21 In C Major, K.467 / Piano Concerto No. 23 In A Major, K.488",
+      "artistes_principaux": [
+        "Wolfgang Amadeus Mozart",
+        "Royal Philharmonic Orchestra",
+        "Jonathan Carney",
+        "Ronan O'Hora"
+      ],
+      "annee": 2000,
+      "labels": [
+        {
+          "nom": "Royal Philharmonic Orchestra",
+          "catno": "204443-201"
+        }
+      ],
+      "formats": [
+        {
+          "nom": "CD",
+          "quantite": 1,
+          "descriptions": [
+            "Album",
+            "Reissue"
+          ]
+        }
+      ],
+      "genres": [
+        "Classical"
+      ],
+      "styles": [],
+      "pochette": "https://i.discogs.com/U2rAXSAj-jTszCCxlRYi5oEq8N48DL6_Fju66TrCGkI/rs:fit/g:sm/q:90/h:600/w:596/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0Mjk5/OTY5LTE2NjEzNDk4/NDYtMzI5Ny5qcGVn.jpeg",
+      "miniature": "https://i.discogs.com/RxylF8sZjoR_FlQTWqhW68d-Kv0hbGmPnVcDu48KZI8/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0Mjk5/OTY5LTE2NjEzNDk4/NDYtMzI5Ny5qcGVn.jpeg",
+      "note": null,
+      "date_ajout": "2026-11-11T03:23:16-08:00",
+      "champs": {
+        "Source": "O’cd 1€",
+        "Localisation": "Paris",
+        "Live / Studio": "Studio",
+        "Statut d'écoute": "À écouter",
+        "Année d’enregistrement (manuelle)": "1994"
+      },
+      "categorie_perso": "Piano et Orchestre",
+      "url_discogs": "https://www.discogs.com/release/24299969",
+      "compositeurs": [
+        "Wolfgang Amadeus Mozart"
+      ],
+      "paroliers": [],
+      "arrangeurs": [],
+      "transcriptions": [],
+      "cadences": [],
+      "interpretes": [
+        "Jonathan Carney",
+        "Royal Philharmonic Orchestra",
+        "Ronan O'Hora"
+      ],
+      "remix": [],
+      "producteurs": [
+        "Alan J. Peters",
+        "Matthew Dilley"
+      ],
+      "ingenieurs_son": [
+        "Dick Lewzey"
+      ],
+      "photographes": [],
+      "artwork": [],
+      "textes_livret": [
+        "Brendan Beales"
+      ],
+      "plages": [
+        {
+          "position": "",
+          "titre": "Piano Concerto No. 21 In C Major, K.467",
+          "duree": "",
+          "type": "oeuvre",
+          "artistes": [],
+          "credits": [],
+          "sous_plages": [
+            {
+              "position": "1",
+              "titre": "Allegro Maestoso",
+              "duree": "14:50",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "2",
+              "titre": "Andante",
+              "duree": "7:05",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "3",
+              "titre": "Allegro Vivace Assai",
+              "duree": "6:55",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            }
+          ]
+        },
+        {
+          "position": "",
+          "titre": "Piano Concerto No. 23 In A Major, K.488",
+          "duree": "",
+          "type": "oeuvre",
+          "artistes": [],
+          "credits": [],
+          "sous_plages": [
+            {
+              "position": "4",
+              "titre": "Allegro",
+              "duree": "11:29",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "5",
+              "titre": "Andante",
+              "duree": "7:04",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            },
+            {
+              "position": "6",
+              "titre": "Presto",
+              "duree": "7:52",
+              "type": "plage",
+              "artistes": [],
+              "credits": []
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "type": "secondary",
+          "url": "https://i.discogs.com/U2rAXSAj-jTszCCxlRYi5oEq8N48DL6_Fju66TrCGkI/rs:fit/g:sm/q:90/h:600/w:596/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0Mjk5/OTY5LTE2NjEzNDk4/NDYtMzI5Ny5qcGVn.jpeg",
+          "miniature": "https://i.discogs.com/RxylF8sZjoR_FlQTWqhW68d-Kv0hbGmPnVcDu48KZI8/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0Mjk5/OTY5LTE2NjEzNDk4/NDYtMzI5Ny5qcGVn.jpeg"
+        },
+        {
+          "type": "secondary",
+          "url": "https://i.discogs.com/xc3eMyBb3iOU-MmfDS62o_-6nLBrvKeR_RbqoXWWbZQ/rs:fit/g:sm/q:90/h:515/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0Mjk5/OTY5LTE2NjEzNDk4/NDYtNTQwMC5qcGVn.jpeg",
+          "miniature": "https://i.discogs.com/jVxfFXN9ngCAh7iBV7wKys4WSztrurE3dccBUU6BdtE/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0Mjk5/OTY5LTE2NjEzNDk4/NDYtNTQwMC5qcGVn.jpeg"
+        },
+        {
+          "type": "secondary",
+          "url": "https://i.discogs.com/XDmhgYw1t65Qy6LbYBFcU81ES0t22SgiASFguUgb-vs/rs:fit/g:sm/q:90/h:600/w:565/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0Mjk5/OTY5LTE2NjEzNDk4/NDYtOTAyNy5qcGVn.jpeg",
+          "miniature": "https://i.discogs.com/xgYl812M-DGCzOyiQdzY52ngs8BxinlAHc-X6wjWQu4/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0Mjk5/OTY5LTE2NjEzNDk4/NDYtOTAyNy5qcGVn.jpeg"
+        }
+      ],
+      "codes_barres": [
+        "4011222044433"
+      ],
+      "note_communaute": null,
+      "notes_discogs": "8-page booklet with liner notes in English.\n\nDDD / 32 Bit Digital Sound / High Quality Audiofile Edition\nTotal time: 55:34\n\nDigitally recorded in September 1994 at C.T.S. Studios, London.\n20 Bit Digital Recording, Editing and Mastering via 32 Bit Digital Sound Processing (DSP) Sound Recording Technology, England.\n\nDistributed by TIM The International Music Company AG, Rahlau 4-6, D-22045 Hamburg, Germany\n\n(On disc:)\nMade in Germany",
+      "details_maj": "2026-11-11",
+      "plages_source": "discogs",
+      "musicbrainz": null,
+      "musicbrainz_methode": "aucune",
+      "musicbrainz_disques": null,
+      "annees_enregistrement": [
+        1994,
+        1994
+      ],
+      "annees_enregistrement_source": "manuelle",
+      "annees_enregistrement_auto": [
+        [
+          1994,
+          1994
+        ],
+        "notes_discogs"
+      ],
+      "live_auto_source": null,
+      "annee_source": "discogs"
     },
     {
       "instance_id": 2145631259,

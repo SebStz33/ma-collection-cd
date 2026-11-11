@@ -1,7 +1,7 @@
 Rapport des années d'enregistrement et des disques live, le 2026-11-11
 
-Sources des années d'enregistrement (455 éditions) :
-  saisie manuelle                    26
+Sources des années d'enregistrement (456 éditions) :
+  saisie manuelle                    27
   MB sur édition exacte              235
   MB sur autre édition de l'album    17
   notes Discogs                      71

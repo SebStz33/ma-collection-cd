@@ -21531,6 +21531,11 @@
   ],
   "disques_mb": {
    "1": {
+    "image": {
+     "miniature": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022-250.jpg",
+     "original": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022.jpg",
+     "url": "https://coverartarchive.org/release/a6baacee-87a8-4d8d-be68-463edb370ede/17748731022-1200.jpg"
+    },
     "plages_discogs": 14,
     "plages_mb": 14,
     "reference": "T3DV0ZJ6EcUi83z3suZYSaBfFnQ-",
@@ -21539,6 +21544,11 @@
     "titre": "Concerto for Orchestra / Dance Suite / Two Portraits / Mikrokosmos"
    },
    "2": {
+    "image": {
+     "miniature": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786-250.jpg",
+     "original": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786.jpg",
+     "url": "https://coverartarchive.org/release/eb58e1d6-0032-4938-8436-26e8881c7edf/14537026786-1200.jpg"
+    },
     "plages_discogs": 29,
     "plages_mb": 29,
     "reference": "JIuEG2m6ydB8hK55wgQ7tn.bu9Q-",
@@ -21547,6 +21557,11 @@
     "titre": "The Miraculous Mandarin / Sonata for 2 Pianos and Percussion / Divertimento"
    },
    "3": {
+    "image": {
+     "miniature": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115-250.jpg",
+     "original": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115.jpg",
+     "url": "https://coverartarchive.org/release/a38a0ce5-c59c-4d28-a331-12ac966ee77d/36769083115-1200.jpg"
+    },
     "plages_discogs": 12,
     "plages_mb": 12,
     "reference": "jWhiBIDCHs1cWO1a9A.SwzlXXG8-",
@@ -21555,6 +21570,11 @@
     "titre": "The Wooden Prince / Music for Strings, Percussion, and Celesta"
    },
    "4": {
+    "image": {
+     "miniature": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663-250.jpg",
+     "original": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663.jpg",
+     "url": "https://coverartarchive.org/release/471c4385-3d6c-467d-8de2-739ec6d4ef76/36769151663-1200.jpg"
+    },
     "plages_discogs": 7,
     "plages_mb": 7,
     "reference": "MTS4YoCLgMS6BS0R763G1yujGFU-",
@@ -21563,6 +21583,11 @@
     "titre": "Violin Concerto no. 2 / Second Suite"
    },
    "5": {
+    "image": {
+     "miniature": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967-250.jpg",
+     "original": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967.jpg",
+     "url": "https://coverartarchive.org/release/7e252ba9-3d46-4bc9-a60d-63861b79d809/6360909967-1200.jpg"
+    },
     "plages_discogs": 11,
     "plages_mb": 11,
     "reference": "Q8mFXPoTUd21iri2hbgDxgmNeCY-",
@@ -66307,6 +66332,18 @@
   ],
   "release": "c6db26ce-91e1-346a-a2da-d15c2953e725",
   "version": 4
+ },
+ "24299969": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-11",
+  "methode": "aucune",
+  "nb_plages": 6,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
  },
  "2433283": {
   "annee_parution": 2005,
