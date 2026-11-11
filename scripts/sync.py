@@ -53,6 +53,8 @@ RACINE = Path(__file__).resolve().parent.parent
 FICHIER_SORTIE = RACINE / "data" / "collection.json"
 FICHIER_RAPPORT_ROLES = RACINE / "data" / "rapport_roles.txt"
 FICHIER_MUSICBRAINZ = RACINE / "data" / "musicbrainz.json"
+# Coffrets absents de MusicBrainz, rattachés à la main disque par disque (voir musicbrainz.lire_disques_manuels).
+FICHIER_MUSICBRAINZ_MANUEL = RACINE / "data" / "musicbrainz_manuel.json"
 FICHIER_RAPPORT_ANNEES = RACINE / "data" / "rapport_annees.txt"
 
 # Champs personnalisés à ne pas publier sur le site (qui est public).
@@ -460,6 +462,19 @@ def note_communaute(fiche):
     return {"moyenne": round(float(note.get("average") or 0), 2), "votes": note["count"]}
 
 
+def lire_rattachements_manuels():
+    """data/musicbrainz_manuel.json : {release Discogs: {n° de CD: disque MusicBrainz}}, ou {} s'il n'existe pas."""
+    if not FICHIER_MUSICBRAINZ_MANUEL.exists():
+        return {}
+    try:
+        contenu = json.loads(FICHIER_MUSICBRAINZ_MANUEL.read_text(encoding="utf-8"))
+    except ValueError as erreur:
+        print("  data/musicbrainz_manuel.json illisible, ignoré (%s)" % erreur)
+        return {}
+    return {str(cle): {str(cd): ref for cd, ref in valeur.items()}
+            for cle, valeur in contenu.items() if isinstance(valeur, dict) and not str(cle).startswith("_")}
+
+
 def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     """Construit la fiche d'un disque dans notre format, à partir de la liste Discogs."""
     info = element.get("basic_information", {})
@@ -536,11 +551,14 @@ def construire_disque(element, champs_perso, dossiers, details, entree_mb):
     )
     # Comment l'édition a été trouvée : "edition", "code_barre", "album", "aucune" (None : pas encore cherché).
     disque["musicbrainz_methode"] = entree_mb.get("methode")
+    # Rattachement manuel disque par disque : {"1": {"release", "titre", "plages_mb", "plages_discogs", "reliees"}}.
+    disque["musicbrainz_disques"] = entree_mb.get("disques_mb") if entree_mb.get("methode") == "manuel" else None
     # Années d'enregistrement [première, dernière] ou None, et leur source (ordre de priorité
     # et liste des sources : voir scripts/annees.py). L'année « automatique » (sans la saisie
     # manuelle) est gardée à part : la page l'applique quand le champ manuel est vidé, sans attendre
     # la synchro, et la montre en grisé dans le formulaire ✎.
-    choix = (disque, entree_mb.get("annees_enregistrement"), entree_mb.get("methode"), musicbrainz.METHODES_EXACTES)
+    choix = (disque, entree_mb.get("annees_enregistrement"), entree_mb.get("methode"),
+             musicbrainz.METHODES_EXACTES + ("manuel",))
     disque["annees_enregistrement"], disque["annees_enregistrement_source"] = annees.choisir_annees(*choix)
     disque["annees_enregistrement_auto"] = list(annees.choisir_annees(*choix, avec_manuelle=False))
     # « Live » automatique d'après le titre ou les notes Discogs ("titre", "notes_discogs" ou None) :
@@ -647,7 +665,8 @@ def main():
                     if any((a.get("name") or "").lower() == "various" for a in e.get("basic_information", {}).get("artists", []))}
     oeuvres = musicbrainz.mettre_a_jour(FICHIER_MUSICBRAINZ, list(a_chercher.values()),
                                         tout="--musicbrainz-tout" in sys.argv, sans_annee=sans_annee,
-                                        compilations=compilations, forces=relire)
+                                        compilations=compilations, forces=relire,
+                                        manuels=lire_rattachements_manuels())
 
     print("5/5 Écriture de data/collection.json...")
     disques = [

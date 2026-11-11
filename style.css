@@ -561,6 +561,7 @@ input.recherche-fiche { font-size: 13px; padding: 4px 8px; }
 .sources-fiche h3 { font-size: 12px; margin: 0 0 4px; color: var(--texte-2); }
 .sources-fiche dl { margin: 0; }
 .sources-fiche dt, .sources-fiche dd { font-size: 12px; color: var(--texte-2); }
+.liens-bases a, .sources-fiche a { color: var(--accent); }
 
 /* Crédits repliés (« Voir les autres crédits ») */
 .repliable[hidden] { display: none; }

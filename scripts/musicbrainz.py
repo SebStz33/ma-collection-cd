@@ -709,14 +709,80 @@ def ecrire_cache(fichier, cache):
     temporaire.replace(fichier)
 
 
+# ---------------------------------------------------------------------------
+# Rattachement manuel : un coffret absent de MusicBrainz, dont les disques y sont séparément
+# (data/musicbrainz_manuel.json : {"13301735": {"1": "T3DV0ZJ6EcUi83z3suZYSaBfFnQ-", "2": …}}).
+# ---------------------------------------------------------------------------
+
+MOTIF_MBID = re.compile(r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:\s*#\s*(\d+))?", re.IGNORECASE)
+
+
+def trouver_disque_manuel(reference):
+    """
+    Disque MusicBrainz désigné à la main : un ID de disque (« T3DV0ZJ6EcUi83z3suZYSaBfFnQ- », l'empreinte
+    du CD, onglet « ID de disque » sur MusicBrainz), ou une parution (lien ou identifiant), suivie de « #2 »
+    pour son 2e CD. Renvoie (identifiant de la parution, numéro du CD dans la parution, titre) ou (None, None, None).
+    """
+    reference = (reference or "").strip()
+    trouve = MOTIF_MBID.search(reference)
+    if trouve:
+        parution = appeler("release/%s" % trouve.group(1).lower(), {})
+        if not parution:
+            return None, None, None
+        return parution["id"], int(trouve.group(2) or 1), parution.get("title", "")
+    if not reference:
+        return None, None, None
+    reponse = appeler("discid/%s" % urllib.parse.quote(reference, safe=".-_"), {"cdstubs": "no"})
+    for parution in (reponse or {}).get("releases", []):
+        for support in parution.get("media", []):
+            if any(d.get("id") == reference for d in support.get("discs", [])):
+                return parution["id"], support.get("position"), parution.get("title", "")
+    return None, None, None
+
+
+def lire_disques_manuels(plages, manuel):
+    """
+    Lit sur MusicBrainz chaque disque désigné à la main et l'associe au CD du coffret par position
+    (même sécurité que associer_par_position : un CD n'est relié que si ses plages Discogs couvrent
+    exactement celles du disque MusicBrainz). Renvoie (œuvres, durées, années, détails par CD) ; détails :
+    {"1": {"reference", "release", "titre", "plages_mb", "plages_discogs", "reliees"}}.
+    """
+    oeuvres, durees, positions, annees, details = [], [], [], [], {}
+    for cd in sorted(manuel, key=lambda n: int(n) if str(n).isdigit() else 0):
+        reference = manuel[cd]
+        release, support, titre = trouver_disque_manuel(reference)
+        details[str(cd)] = {"reference": reference, "release": release, "titre": titre, "plages_mb": 0}
+        if not release or not str(cd).isdigit():
+            continue
+        oeuvres_mb, annees_mb, _, durees_mb, positions_mb, _ = lire_edition_mb(release)
+        rangs = [i for i, (d, _) in enumerate(positions_mb or []) if d == support]
+        details[str(cd)]["plages_mb"] = len(rangs)
+        for i in rangs:
+            oeuvres.append(oeuvres_mb[i])
+            durees.append(durees_mb[i] if durees_mb else None)
+            positions.append((int(cd), positions_mb[i][1]))
+        if rangs and annees_mb:
+            annees.extend(annees_mb)
+    a_associer = plages_a_associer(plages)
+    resultat_oeuvres, resultat_durees = associer_par_position(plages, oeuvres, durees, positions)
+    for cd, detail in details.items():
+        rangs = [i for i, p in enumerate(a_associer)
+                 if (lire_position(p.get("position")) or (None,))[0] == (int(cd) if cd.isdigit() else None)]
+        detail["plages_discogs"] = len(rangs)
+        detail["reliees"] = sum(1 for i in rangs if resultat_oeuvres and resultat_oeuvres[i]) if resultat_oeuvres else 0
+    return resultat_oeuvres, resultat_durees, ([min(annees), max(annees)] if annees else None), details
+
+
 def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_duree=False, compilation=False,
-               force=False):
+               force=False, manuel=None):
     """
     Vrai si ce disque doit être (re)cherché sur MusicBrainz. `sans_annee` : Discogs n'a pas son année.
     `compilation` : disque crédité à « Various » sur Discogs. `force` : demandé avec --relire.
     """
     if force:
         return True
+    if entree and (entree.get("manuel") or None) != (manuel or None):
+        return True  # rattachement manuel ajouté, modifié ou retiré (data/musicbrainz_manuel.json)
     if not entree or entree.get("nb_plages") != nb_plages:
         return True  # jamais cherché, ou tracklist Discogs modifiée depuis
     version = entree.get("version", 1)
@@ -747,24 +813,26 @@ def a_chercher(entree, nb_plages, sans_annee=False, meme_position=False, sans_du
     return age >= JOURS_AVANT_RAFRAICHISSEMENT
 
 
-def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=(), forces=()):
+def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=(), forces=(), manuels=None):
     """
     Cherche sur MusicBrainz les disques qui ne sont pas encore dans le cache
     (ou dont la recherche est ancienne), au plus DISQUES_PAR_SYNCHRO, sauf si
     tout est vrai. `disques` : liste de (release_id, master_id, plages Discogs, codes-barres).
     `sans_annee` : release_id des disques sans année sur Discogs. `compilations` : ceux crédités à « Various ».
     `forces` : ceux demandés avec --relire, cherchés en premier même s'ils sont à jour.
+    `manuels` : {release_id (texte): {n° de CD: disque MusicBrainz}} (data/musicbrainz_manuel.json).
     Renvoie le cache : {release_id (texte): {"maj", "version", "nb_plages", "methode", "release", "oeuvres", "images"}},
     plus « plages » (la tracklist MusicBrainz) quand celle de Discogs est trop sommaire.
     """
     cache = lire_cache(fichier)
+    manuels = manuels or {}
     a_faire = [d for d in disques
                if a_chercher(cache.get(str(d[0])), len(plages_a_associer(d[2])), d[0] in sans_annee,
                              a_mouvements_meme_position(d[2]),
                              any(not p.get("duree") for p in plages_a_associer(d[2])), d[0] in compilations,
-                             d[0] in forces)]
+                             d[0] in forces, manuels.get(str(d[0])))]
     # Les disques demandés avec --relire d'abord, puis ceux jamais cherchés, puis les recherches les plus anciennes.
-    a_faire.sort(key=lambda d: (d[0] not in forces, str(d[0]) in cache, (cache.get(str(d[0])) or {}).get("version", 1),
+    a_faire.sort(key=lambda d: (d[0] not in forces and str(d[0]) not in manuels, str(d[0]) in cache, (cache.get(str(d[0])) or {}).get("version", 1),
                                 (cache.get(str(d[0])) or {}).get("maj", "")))
     if not tout:
         a_faire = a_faire[:DISQUES_PAR_SYNCHRO]
@@ -772,6 +840,25 @@ def mettre_a_jour(fichier, disques, tout=False, sans_annee=(), compilations=(), 
 
     for numero, (release_id, master_id, plages, codes_barres) in enumerate(a_faire, start=1):
         nb_plages = len(plages_a_associer(plages))
+        manuel = manuels.get(str(release_id))
+        if manuel:
+            # Coffret rattaché à la main, disque par disque : pas de recherche automatique.
+            try:
+                oeuvres, durees, annees, details = lire_disques_manuels(plages, manuel)
+            except (urllib.error.URLError, ValueError, OSError) as erreur:
+                print("  Disque %s ignoré pour MusicBrainz (%s)" % (release_id, erreur))
+                continue
+            cache[str(release_id)] = {
+                "maj": date.today().isoformat(), "version": VERSION_RECHERCHE, "nb_plages": nb_plages,
+                "methode": "manuel", "release": None, "manuel": manuel, "disques_mb": details,
+                "oeuvres": oeuvres if oeuvres and any(oeuvres) else None, "images": [],
+                "annees_enregistrement": annees if oeuvres and any(oeuvres) else None, "annee_parution": None,
+                "durees": durees if durees and any(durees) else None,
+            }
+            print("  Disque %s rattaché à la main : %s" % (release_id, ", ".join(
+                "CD %s %s" % (cd, "%d/%d plages" % (d["reliees"], d["plages_discogs"]) if d["release"] else "introuvable sur MusicBrainz")
+                for cd, d in details.items())))
+            continue
         try:
             identifiant, methode = trouver_edition(release_id, master_id, nb_plages, codes_barres)
             oeuvres, annees, annee_parution, durees, positions, titres = (

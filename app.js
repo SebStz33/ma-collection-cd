@@ -884,7 +884,7 @@ function nombreDeFiltresActifs() {
  */
 function correspondanceMB(edition) {
   const methode = edition.musicbrainz_methode;
-  if (methode === "edition" || methode === "code_barre") return "exacte";
+  if (methode === "edition" || methode === "code_barre" || methode === "manuel") return "exacte";
   return methode || "";
 }
 
@@ -2347,7 +2347,11 @@ function ouvrirFiche(edition, { position = null } = {}) {
     creer("p", { classe: "liens-bases" },
       creer("a", { classe: "lien-discogs", href: edition.url_discogs, target: "_blank", rel: "noopener", texte: "Voir sur Discogs ↗" }),
       edition.musicbrainz ? creer("a", { classe: "lien-discogs", href: edition.musicbrainz, target: "_blank", rel: "noopener",
-        texte: "Voir sur MusicBrainz ↗" }) : null
+        texte: "Voir sur MusicBrainz ↗" }) : null,
+      // Coffret rattaché à la main : un lien par disque MusicBrainz.
+      disquesMB(edition).some(([, d]) => d.release) ? creer("span", { classe: "lien-discogs" }, "MusicBrainz : ",
+        disquesMB(edition).filter(([, d]) => d.release).map(([cd, d], i) => [i ? " · " : "",
+          creer("a", { href: "https://musicbrainz.org/release/" + d.release, target: "_blank", rel: "noopener", texte: "CD " + cd + " ↗" })])) : null
     ),
     blocSources(edition),
     jeton() && aDeuxSourcesDePhotos(edition) ? creer("p", { classe: "boutons-fiche" }, interrupteurPhoto(edition)) : null,
@@ -2424,6 +2428,7 @@ function blocSources(edition) {
     edition: "édition exacte (lien Discogs sur MusicBrainz)",
     code_barre: "édition exacte (code-barre)",
     album: "par le master Discogs de l'album",
+    manuel: "disque par disque (rattachement manuel)",
     aucune: "aucune",
   };
   const { total, avecOeuvre } = compterOeuvres(edition);
@@ -2442,6 +2447,7 @@ function blocSources(edition) {
     : null;
   const lignes = [
     ["Correspondance MusicBrainz", methodes[edition.musicbrainz_methode] || "pas encore cherchée"],
+    ...lignesDisquesMB(edition),
     ["Plages", edition.plages_source === "musicbrainz" ? "MusicBrainz (la tracklist Discogs n'a qu'une plage par disque)" : null],
     ["Œuvres identifiées (MusicBrainz)", edition.musicbrainz_methode && edition.musicbrainz_methode !== "aucune" ? oeuvres : null],
     ["Année d'enregistrement", anneesSource],
@@ -2457,7 +2463,24 @@ function blocSources(edition) {
   ].filter(([, valeur]) => valeur);
   return creer("div", { classe: "sources-fiche" },
     creer("h3", { texte: "Sources" }),
-    creer("dl", {}, lignes.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])));
+    creer("dl", {}, lignes.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", {}, valeur)])));
+}
+
+/** Disques MusicBrainz d'un coffret rattaché à la main, triés par numéro de CD : [[« 1 », détail], …]. */
+function disquesMB(edition) {
+  return Object.entries(edition.musicbrainz_disques || {}).sort((a, b) => Number(a[0]) - Number(b[0]));
+}
+
+/**
+ * Bloc Sources d'un coffret rattaché à la main : une ligne par CD, « CD 1 → Bartók: … ↗ (14 plages reliées) »,
+ * ou pourquoi il ne l'est pas (introuvable, nombres de plages différents).
+ */
+function lignesDisquesMB(edition) {
+  return disquesMB(edition).map(([cd, d]) => ["CD " + cd, !d.release
+    ? "introuvable sur MusicBrainz (" + d.reference + ")"
+    : [creerLien("https://musicbrainz.org/release/" + d.release, (d.titre || "parution MusicBrainz") + " ↗"),
+      d.reliees ? " (" + d.reliees + " plage" + (d.reliees > 1 ? "s" : "") + " reliée" + (d.reliees > 1 ? "s" : "") + ")"
+        : " : non relié (" + d.plages_discogs + " plages sur Discogs, " + d.plages_mb + " sur MusicBrainz)"]]);
 }
 
 /**
