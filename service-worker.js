@@ -5,7 +5,7 @@
    ========================================================================== */
 
 // Changer ce numéro force le navigateur à recharger les fichiers de la page.
-const VERSION = "v96";
+const VERSION = "v97";
 const RESERVE_PAGE = "page-" + VERSION;
 const RESERVE_POCHETTES = "pochettes";
 
@@ -58,11 +58,16 @@ self.addEventListener("fetch", (evenement) => {
 
   // 2. Les pochettes (servies par Discogs) : on garde celles déjà vues.
   //    Jamais les réponses de l'API : la modification doit lire les valeurs du moment.
-  if (url.hostname.endsWith("discogs.com") && url.hostname !== "api.discogs.com") {
+  //    Aussi celles de MusicBrainz (Cover Art Archive, servies par archive.org, lent) : demandées une
+  //    seule fois par appareil et par taille, puis lues dans la réserve, même hors connexion.
+  const pochetteMusicBrainz = url.hostname === "coverartarchive.org" || url.hostname === "archive.org"
+    || url.hostname.endsWith(".archive.org");
+  if (pochetteMusicBrainz || (url.hostname.endsWith("discogs.com") && url.hostname !== "api.discogs.com")) {
     evenement.respondWith(
       caches.open(RESERVE_POCHETTES).then((reserve) =>
         reserve.match(requete).then((enReserve) => enReserve || fetch(requete).then((reponse) => {
-          reserve.put(requete, reponse.clone());
+          // Une erreur passagère (serveur surchargé) n'est pas gardée : on réessaiera la fois suivante.
+          if (reponse.ok || reponse.type === "opaque") reserve.put(requete, reponse.clone());
           return reponse;
         }))
       )
