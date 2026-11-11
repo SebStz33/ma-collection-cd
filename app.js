@@ -2653,14 +2653,8 @@ function listePlagesParDisque(plages, suivi) {
   // où ils changent d'un disque ou d'une œuvre à l'autre.
   const compilation = (edition.artistes_principaux || []).some((nom) => /^various$/i.test(nom));
   const avecInterpretes = disques.length > 1 || compilation;
-  // Tracklist avec des intertitres Discogs (« Nocturnes », « Ballade ») : une œuvre groupée (« Préludes, Op.28 »)
-  // prend leur style (titre en couleur), en gardant sa durée totale et son cœur.
-  const avecIntertitres = plages.some((p) => p.type === "intertitre");
-  const ligne = (plage, dejaDits) => {
-    const li = lignePlage(plage, suivi, avecInterpretes ? ligneInterpretesDeLOeuvre(plage, edition, dejaDits) : null);
-    if (avecIntertitres && (plage.sous_plages || []).length) li.classList.add("oeuvre-intertitre");
-    return li;
-  };
+  const ligne = (plage, dejaDits) => lignePlage(plage, suivi,
+    avecInterpretes ? ligneInterpretesDeLOeuvre(plage, edition, dejaDits) : null);
   if (disques.length < 2) return { liste: creer("ol", { classe: "plages" }, plages.map((plage) => ligne(plage, []))), disques: [] };
   reperesIntertitres(plages, suivi);
   const vus = new Set();
