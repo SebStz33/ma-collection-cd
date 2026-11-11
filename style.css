@@ -320,6 +320,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .plage-reference { color: var(--texte-2); font-size: 12px; }
 .plage-reference .bouton-texte { padding: 0; font-size: inherit; text-align: left; }
 .plage-reference .discret { color: var(--texte-discret); }
+.plage-intertitre .plage-reference { font-weight: 400; margin-top: 2px; }
 
 /* Œuvre choisie, au-dessus de la grille */
 .bandeau-oeuvre {

@@ -2598,6 +2598,7 @@ function texteDuree({ secondes, complete }) {
 }
 
 function listePlages(plages, suivi) {
+  reperesIntertitres(plages, suivi);
   return creer("ol", { classe: "plages" }, plages.map((plage) => lignePlage(plage, suivi)));
 }
 
@@ -2632,6 +2633,7 @@ function listePlagesParDisque(plages, suivi) {
   const ligne = (plage, dejaDits) => lignePlage(plage, suivi,
     avecInterpretes ? ligneInterpretesDeLOeuvre(plage, edition, dejaDits) : null);
   if (disques.length < 2) return { liste: creer("ol", { classe: "plages" }, plages.map((plage) => ligne(plage, []))), disques: [] };
+  reperesIntertitres(plages, suivi);
   const vus = new Set();
   const enTete = new Map(disques.map((disque) => [disque,
     interpretesCommuns(plages.filter((p) => disqueDeLaPlage(p) === disque), edition)]));
@@ -2845,6 +2847,38 @@ function estCreditDeCompositeur(credit) {
   return roles.length > 0 && roles.every((r) => ROLES_COMPOSITEUR.includes(r));
 }
 
+/**
+ * Intertitre Discogs suivi d'une suite de plages de la même œuvre (« The Art Of Fugue BWV 1080 »,
+ * puis Contrapunctus I, II…) : la ligne « Œuvre : … » va sous l'intertitre plutôt que sous la première plage.
+ * Il faut que la suite, prise juste après l'intertitre, compte au moins 2 lignes (une œuvre Discogs groupée
+ * a déjà sa propre ligne « Œuvre »), et qu'aucune autre œuvre
+ * en plusieurs plages ne suive avant l'intertitre suivant (« Schumann 4 / Haydn 88 » : rien ne change ;
+ * L'Art de la fugue suivie d'un choral d'une plage : oui).
+ * Remplit suivi.intertitres : Map intertitre -> œuvre.
+ */
+function reperesIntertitres(plages, suivi) {
+  suivi.intertitres = suivi.intertitres || new Map();
+  plages.forEach((plage, rang) => {
+    if (plage.type !== "intertitre") return;
+    let fin = rang + 1;
+    while (fin < plages.length && plages[fin].type !== "intertitre") fin++;
+    const section = plages.slice(rang + 1, fin);
+    const premiere = section.length ? oeuvreDeLaPlage(section[0]) : null;
+    if (!premiere) return;
+    let suite = 0;
+    while (suite < section.length && (oeuvreDeLaPlage(section[suite]) || {}).id === premiere.id) suite++;
+    // Le reste de la section ne doit pas contenir une autre œuvre en plusieurs plages (« Quartette Op. 59
+    // Nr. 1, Op. 131 » : deux œuvres sous un même intertitre, on n'en met aucune dessous).
+    const compte = new Map();
+    for (const p of section.slice(suite).flatMap(plagesReelles)) {
+      const o = p.oeuvre && oeuvreDeReference(p.oeuvre);
+      if (o) compte.set(o.id, (compte.get(o.id) || 0) + 1);
+    }
+    const autreOeuvre = [...compte.values()].some((n) => n > 1);
+    if (suite >= 2 && !autreOeuvre) suivi.intertitres.set(plage, premiere);
+  });
+}
+
 /** Ligne « Œuvre : … » sous une plage, ou rien si c'est la même œuvre qu'à la plage précédente. */
 function ligneOeuvre(plage, suivi) {
   if (plage.type === "intertitre") return null;
@@ -2855,6 +2889,11 @@ function ligneOeuvre(plage, suivi) {
   }
   if (oeuvre.id === suivi.precedente) return null;
   suivi.precedente = oeuvre.id;
+  return ligneReference(oeuvre, suivi);
+}
+
+/** La ligne « Œuvre : … · N éditions dans ma cédéthèque ». */
+function ligneReference(oeuvre, suivi) {
   const versions = editions.filter((e) => e.oeuvres.has(oeuvre.id)).length;
   return creer("div", { classe: "plage-reference" },
     "Œuvre : ",
@@ -2879,7 +2918,12 @@ function creditsParRole(credits) {
 }
 
 function lignePlage(plage, suivi, interpretes = null) {
-  if (plage.type === "intertitre") return creer("li", { classe: "plage-intertitre", texte: plage.titre });
+  if (plage.type === "intertitre") {
+    const oeuvre = suivi.intertitres && suivi.intertitres.get(plage);
+    if (!oeuvre) return creer("li", { classe: "plage-intertitre", texte: plage.titre });
+    suivi.precedente = oeuvre.id;   // la première plage de la suite ne la répète pas
+    return creer("li", { classe: "plage-intertitre" }, creer("div", { texte: plage.titre }), ligneReference(oeuvre, suivi));
+  }
   const artistes = plage.artistes || [];
   // Le compositeur est déjà dans la ligne de l'œuvre MusicBrainz : on ne le répète pas dans les crédits.
   const oeuvre = oeuvreDeLaPlage(plage);
