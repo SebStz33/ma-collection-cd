@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: "30 2 * * 0"   # le dimanche (0) à 2 h 30 UTC (3 h 30 à Paris en hiver, 4 h 30 en été)
   workflow_dispatch:        # bouton « Run workflow » pour la lancer à la main
+    inputs:
+      relire:
+        description: "Éditions à relire tout de suite (n° Discogs, séparés par des virgules). Laisser vide pour une synchro normale."
+        required: false
+        type: string
 
 # Le robot a le droit d'écrire dans le dépôt (pour enregistrer la collection).
 permissions:
@@ -28,7 +33,14 @@ jobs:
       - name: Lancer la synchro
         env:
           DISCOGS_TOKEN: ${{ secrets.DISCOGS_TOKEN }}   # le secret, jamais écrit en clair
-        run: python3 scripts/sync.py
+          RELIRE: ${{ inputs.relire }}                  # vide pour la synchro du dimanche
+        run: |
+          # Avec des n° d'éditions : ces éditions sont relues sur Discogs et MusicBrainz en plus de la synchro habituelle.
+          if [ -n "$RELIRE" ]; then
+            python3 scripts/sync.py --relire "$RELIRE"
+          else
+            python3 scripts/sync.py
+          fi
 
       - name: Enregistrer le résultat s'il a changé
         run: |

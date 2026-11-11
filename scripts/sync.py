@@ -16,6 +16,9 @@ Utilisation (depuis le dossier du projet) :
                                              utile après un changement des règles de classement)
     python3 scripts/sync.py --musicbrainz-tout   (cherche sur MusicBrainz tous les disques
                                                   à faire, sans limite par synchro)
+    python3 scripts/sync.py --relire 20144050,123456   (relit ces éditions tout de suite
+                                                         sur Discogs et MusicBrainz ;
+                                                         aussi possible depuis « Run workflow »)
 
 Le token Discogs est lu dans la variable d'environnement DISCOGS_TOKEN,
 ou à défaut dans un fichier .env à la racine du projet (jamais publié).
