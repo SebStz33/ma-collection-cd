@@ -2311,8 +2311,12 @@ function ouvrirFiche(edition, { position = null } = {}) {
   });
 
   // Plages, avec un intertitre et un lien par disque pour un coffret.
-  const titrePlages = creer("h3", { texte: "Plages" });
   const tracklist = listePlagesParDisque(edition.plages || [], { precedente: null, edition });
+  // Disque simple (pas d'en-tête de CD) : « ↑ Début » à droite du titre, pour remonter en haut de la fiche.
+  const titrePlages = tracklist.disques.length ? creer("h3", { texte: "Plages" })
+    : creer("div", { classe: "titre-plages" }, creer("h3", { texte: "Plages" }),
+      creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↑ Début", title: "Haut de la fiche",
+        surclic: () => $("fiche").scrollTo({ top: 0, behavior: "smooth" }) }));
 
   // Recherche dans la fiche : pré-remplie avec la recherche de la collection.
   const champRecherche = creer("input", { type: "search", classe: "recherche-fiche", placeholder: "Chercher (ET, OU, SAUF…)",
@@ -3025,7 +3029,9 @@ function intertitreDisque(disques, disque, duree = "", interpretes = [], composi
     // ↑↑ (premier disque) et ↓↓ (dernier) seulement s'ils mènent ailleurs que « Préc. » et « Suiv. ».
     creer("span", { classe: "navigation-disques" },
       numero > 1 ? lien("↑↑", disques[0], "Premier disque", "fleche-double") : null,
-      numero > 0 ? lien("↑ Préc.", disques[numero - 1], "Disque précédent") : null,
+      numero > 0 ? lien("↑ Préc.", disques[numero - 1], "Disque précédent")
+        : creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↑ Début", title: "Haut de la fiche",
+          surclic: () => $("fiche").scrollTo({ top: 0, behavior: "smooth" }) }),
       numero < disques.length - 1 ? lien("↓ Suiv.", disques[numero + 1], "Disque suivant") : null,
       numero < disques.length - 2 ? lien("↓↓", disques[disques.length - 1], "Dernier disque", "fleche-double") : null));
 }
@@ -4367,7 +4373,9 @@ function brancherEvenements() {
 
   // Panneau des filtres sur téléphone
   $("ouvrir-filtres").addEventListener("click", () => $("filtres").classList.add("ouvert"));
-  $("fermer-filtres").addEventListener("click", () => $("filtres").classList.remove("ouvert"));
+  for (const id of ["fermer-filtres", "fermer-filtres-bas"]) {
+    $(id).addEventListener("click", () => $("filtres").classList.remove("ouvert"));
+  }
   document.querySelector(".contenu").addEventListener("click", () => $("filtres").classList.remove("ouvert"));
 
   // Fiche : bouton de fermeture, et clic sur le fond sombre autour
