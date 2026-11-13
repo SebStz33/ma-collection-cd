@@ -681,6 +681,7 @@ async function chargerCollection() {
   afficherMessage("Chargement de la collection…");
   try {
     // « no-cache » : le navigateur vérifie toujours s'il existe une version plus récente.
+    const commentairesLus = chargerCommentaires();   // en même temps que la collection
     const reponse = await fetch(FICHIER_COLLECTION, { cache: "no-cache" });
     if (!reponse.ok) throw new Error("code " + reponse.status);
     const donnees = await reponse.json();
@@ -688,6 +689,7 @@ async function chargerCollection() {
     modifications = modificationsEnAttente(donnees.genere_le);
     regrouperOeuvresJumelles(donnees.disques || []);
     editions = regrouperParEdition(donnees.disques || []);
+    await commentairesLus;
   } catch (erreur) {
     afficherMessage(
       "Impossible de lire " + FICHIER_COLLECTION + " (" + erreur.message + "). " +
@@ -1394,11 +1396,13 @@ function afficherPageOeuvre(liste) {
     creer("h2", { classe: "oeuvre-titre", texte: oeuvre.titre }),
     oeuvre.compositeur ? creer("p", { classe: "oeuvre-compositeur", texte: oeuvre.compositeur }) : null,
     liens,
+    blocCommentaire(() => commentaires.oeuvres[oeuvre.id], (texte) => enregistrerCommentaire("oeuvres", oeuvre.id, texte,
+      oeuvre.titre), "Commenter cette œuvre", "commentaire-oeuvre"),
     creer("h3", { classe: "oeuvre-intertitre" }, pluriel(versions.length, "version") + " dans ma cédéthèque",
       creer("span", { classe: "discret", texte: " · par catégorie, puis par année d'enregistrement" })),
     [...parCategorie].map(([categorie, liste]) => [
       creer("p", { classe: "versions-categorie", texte: categorie }),
-      creer("ol", { classe: "versions" }, liste.map((v) => ligneVersion(v, dureeMax, versions.indexOf(v) + 1))),
+      creer("ol", { classe: "versions" }, liste.map((v) => ligneVersion(v, dureeMax, versions.indexOf(v) + 1, oeuvre))),
     ]),
     tableauDesParties(versions)
   ));
@@ -1413,7 +1417,7 @@ function categorieDeLaVersion(version) {
  * Une version : pochette, interprètes, disque, années, durée (avec une barre pour comparer).
  * `numero` (1, 2…) est repris en tête de sa colonne dans le tableau des parties.
  */
-function ligneVersion(version, dureeMax, numero) {
+function ligneVersion(version, dureeMax, numero, oeuvre) {
   const { edition, interpretes, annees, duree, parties } = version;
   const image = edition.miniature || edition.pochette;
   const enPlus = interpretes.length - INTERPRETES_VISIBLES;
@@ -1442,7 +1446,11 @@ function ligneVersion(version, dureeMax, numero) {
           creer("span", { classe: "version-barre", style: "width:" + Math.round(duree.secondes / dureeMax * 100) + "%" }),
           creer("span", {}, [texteDureeFine(duree) || "durée inconnue",
             nbParties ? pluriel(nbParties, "partie") : version.plages.length > 1 ? pluriel(version.plages.length, "plage") : null]
-            .filter(Boolean).join(" · "), coeurVersion(version))))));
+            .filter(Boolean).join(" · "), coeurVersion(version))))),
+    // Commentaire sur cette version (sous sa case), à côté de celui de l'œuvre.
+    oeuvre ? blocCommentaire(() => commentaires.versions[cleVersion(oeuvre.id, version)],
+      (texte) => enregistrerCommentaire("versions", cleVersion(oeuvre.id, version), texte,
+        oeuvre.titre + " · " + (interpretes[0] || edition.titre)), "Commenter cette version", "commentaire-version") : null);
 }
 
 /** ♥ (affichage seul) quand la version a des plages en favori sur la fiche du disque. */
@@ -1802,7 +1810,9 @@ function listeOeuvresDuCompositeur(oeuvres, compositeur, cherche) {
     creer("button", { type: "button", classe: "index-nom", surclic: () => allerVers({ ...FILTRES_VIDES, oeuvre }) },
       oeuvre.titre,
       versions > 1 ? creer("span", { classe: "oeuvres-versions", texte: " · " + versions + " versions" }) : null,
-      oeuvreEnFavori(oeuvre, editions) ? creer("span", { classe: "coeur-version", texte: " ♥", title: "Au moins une plage en favori" }) : null));
+      oeuvreEnFavori(oeuvre, editions) ? creer("span", { classe: "coeur-version", texte: " ♥", title: "Au moins une plage en favori" }) : null,
+      commentairesDeLOeuvre(oeuvre.id).length ? creer("span", { classe: "marque-commentaire", texte: " 💬",
+        title: commentairesDeLOeuvre(oeuvre.id).join("\n\n") }) : null));
   const parCategorie = new Map();
   for (const o of oeuvres) {
     const c = categorieDeLOeuvre(o.editions, ongletOeuvres.categorie, o.categorieParLeNom);
@@ -3116,7 +3126,11 @@ function ligneReference(oeuvre, suivi) {
     creer("button", { type: "button", classe: "bouton-texte", texte: nomOeuvre(oeuvre),
       title: versions > 1 ? "Mes " + versions + " éditions avec cette œuvre" : "Seule édition de ma cédéthèque avec cette œuvre",
       surclic: () => choisirOeuvre(oeuvre, suivi.edition) }),
-    versions > 1 ? creer("span", { classe: "discret", texte: " · " + versions + " éditions dans ma cédéthèque" }) : null
+    versions > 1 ? creer("span", { classe: "discret", texte: " · " + versions + " éditions dans ma cédéthèque" }) : null,
+    // Un commentaire (sur l'œuvre ou sur sa version de ce disque) : 💬, qui mène à la page Œuvre où on le lit.
+    commentairesDeLOeuvre(oeuvre.id, suivi.edition).length ? creer("button", { type: "button", classe: "bouton-texte marque-commentaire",
+      texte: " 💬", title: commentairesDeLOeuvre(oeuvre.id, suivi.edition).join("\n\n"),
+      "aria-label": "Lire le commentaire", surclic: () => choisirOeuvre(oeuvre, suivi.edition) }) : null
   );
 }
 
@@ -3802,6 +3816,207 @@ function chercherNomSansFiche(nom, role) {
 }
 
 // ---------------------------------------------------------------------------
+// Commentaires sur les œuvres : data/commentaires_oeuvres.json, dans le dépôt GitHub (public)
+//   { "oeuvres":  { "<id MusicBrainz de l'œuvre>": "texte" },
+//     "versions": { "<id de l'œuvre>|<n° Discogs du disque>[|CD n]": "texte" } }
+// Lu au démarrage : sur GitHub directement s'il y a un jeton GitHub (toujours à jour),
+// sinon sur le site publié. Écrit sur GitHub depuis la page Œuvre, avec le jeton GitHub de l'appareil :
+// chaque enregistrement est un commit sur main, visible sur le site publié une minute plus tard.
+// ---------------------------------------------------------------------------
+
+const FICHIER_COMMENTAIRES = "data/commentaires_oeuvres.json";
+const DEPOT_GITHUB = "SebStz33/ma-collection-cd";
+const CLE_JETON_GITHUB = "jeton-github";
+let commentaires = { oeuvres: {}, versions: {} };
+const jetonGithub = () => lireStockage(CLE_JETON_GITHUB, null);
+
+/** Clé d'une version : l'œuvre, le disque Discogs, et le CD si le disque a plusieurs versions de l'œuvre. */
+function cleVersion(oeuvreId, version) {
+  return oeuvreId + "|" + version.edition.release_id + (version.disque ? "|" + version.disque : "");
+}
+
+/** Les commentaires d'une œuvre : le sien, puis ceux de ses versions (de cette édition seulement, si on la donne). */
+function commentairesDeLOeuvre(oeuvreId, edition = null) {
+  const debut = oeuvreId + "|" + (edition ? edition.release_id + "|" : "");
+  const exact = edition ? oeuvreId + "|" + edition.release_id : null;
+  return [
+    commentaires.oeuvres[oeuvreId],
+    ...Object.entries(commentaires.versions)
+      .filter(([cle]) => cle.startsWith(debut) || cle === exact).map(([, texte]) => texte),
+  ].filter(Boolean);
+}
+
+function normaliserCommentaires(donnees) {
+  return { oeuvres: { ...((donnees && donnees.oeuvres) || {}) }, versions: { ...((donnees && donnees.versions) || {}) } };
+}
+
+/** Texte (avec accents) <-> base64, le format des fichiers dans l'API GitHub. */
+function texteEnBase64(texte) {
+  let binaire = "";
+  for (const octet of new TextEncoder().encode(texte)) binaire += String.fromCharCode(octet);
+  return btoa(binaire);
+}
+function base64EnTexte(base64) {
+  const binaire = atob(base64.replace(/\s/g, ""));
+  return new TextDecoder().decode(Uint8Array.from(binaire, (c) => c.charCodeAt(0)));
+}
+
+async function appelerGithub(chemin, options = {}, jetonAEssayer = jetonGithub()) {
+  const entetes = { Authorization: "Bearer " + jetonAEssayer, Accept: "application/vnd.github+json" };
+  if (options.body) entetes["Content-Type"] = "application/json";
+  let reponse;
+  try {
+    reponse = await fetch("https://api.github.com" + chemin, { ...options, headers: entetes, cache: "no-store" });
+  } catch (erreur) {
+    throw new Error("GitHub ne répond pas (pas de connexion ?).");
+  }
+  if (reponse.status === 401) throw new Error("GitHub refuse le jeton (code 401) : il a peut-être expiré.");
+  if (reponse.status === 403) throw new Error("GitHub refuse (code 403) : le jeton n'a pas le droit de modifier le dépôt "
+    + DEPOT_GITHUB + " (droit « Contents : Read and write »).");
+  return reponse;
+}
+
+/** Le fichier des commentaires tel qu'il est sur GitHub : { donnees, sha } (sha null s'il n'existe pas encore). */
+async function lireCommentairesSurGithub() {
+  const reponse = await appelerGithub("/repos/" + DEPOT_GITHUB + "/contents/" + FICHIER_COMMENTAIRES + "?ref=main");
+  if (reponse.status === 404) return { donnees: normaliserCommentaires(null), sha: null };
+  if (!reponse.ok) throw new Error("GitHub n'a pas donné les commentaires (code " + reponse.status + ").");
+  const corps = await reponse.json();
+  return { donnees: normaliserCommentaires(JSON.parse(base64EnTexte(corps.content))), sha: corps.sha };
+}
+
+/** Au démarrage. Sans fichier (aucun commentaire encore) ou sans connexion : aucun commentaire, sans erreur. */
+async function chargerCommentaires() {
+  if (jetonGithub()) {
+    try {
+      commentaires = (await lireCommentairesSurGithub()).donnees;
+      return;
+    } catch (erreur) { /* on se rabat sur le fichier du site */ }
+  }
+  try {
+    const reponse = await fetch(FICHIER_COMMENTAIRES, { cache: "no-cache" });
+    if (reponse.ok) commentaires = normaliserCommentaires(await reponse.json());
+  } catch (erreur) { /* pas de commentaires */ }
+}
+
+/**
+ * Enregistre (texte vide : retire) un commentaire sur GitHub. Le fichier est relu juste avant d'écrire,
+ * pour ne pas écraser un commentaire écrit entre-temps sur un autre appareil ; si GitHub signale
+ * qu'il a changé pendant l'écriture, on recommence une fois.
+ */
+async function enregistrerCommentaire(sorte, cle, texte, description) {
+  for (let essai = 1; essai <= 2; essai++) {
+    const { donnees, sha } = await lireCommentairesSurGithub();
+    if (texte) donnees[sorte][cle] = texte;
+    else delete donnees[sorte][cle];
+    // Clés triées : le fichier reste lisible et chaque modification ne change que sa ligne.
+    const trie = (objet) => Object.fromEntries(Object.entries(objet).sort(([a], [b]) => a.localeCompare(b)));
+    const contenu = JSON.stringify({ oeuvres: trie(donnees.oeuvres), versions: trie(donnees.versions) }, null, 2) + "\n";
+    const reponse = await appelerGithub("/repos/" + DEPOT_GITHUB + "/contents/" + FICHIER_COMMENTAIRES, {
+      method: "PUT",
+      body: JSON.stringify({
+        message: (texte ? "Commentaire : " : "Commentaire retiré : ") + description,
+        content: texteEnBase64(contenu), branch: "main", ...(sha ? { sha } : {}),
+      }),
+    });
+    if (reponse.ok) {
+      commentaires = donnees;
+      return;
+    }
+    if (!(reponse.status === 409 || reponse.status === 422) || essai === 2) {
+      throw new Error("GitHub a refusé l'enregistrement (code " + reponse.status + ").");
+    }
+  }
+}
+
+/**
+ * Bloc d'un commentaire : son texte, et avec un jeton GitHub, « ✎ Commenter » ou « ✎ Modifier »
+ * qui ouvre une zone de saisie (vider la zone retire le commentaire). Rien du tout sans texte ni jeton.
+ */
+function blocCommentaire(lire, enregistrer, libelle, classe) {
+  const bloc = creer("div", { classe: "commentaire " + classe });
+  const montrer = (confirmation = "") => {
+    const texte = lire();
+    bloc.replaceChildren(...[
+      texte ? creer("p", { classe: "commentaire-texte", texte }) : null,
+      jetonGithub() ? creer("button", { type: "button", classe: "bouton-texte commentaire-modifier",
+        texte: texte ? "✎ Modifier" : "✎ " + libelle, surclic: saisir }) : null,
+      confirmation ? creer("span", { classe: "commentaire-confirmation", texte: confirmation }) : null,
+    ].filter(Boolean));
+    bloc.hidden = !bloc.childNodes.length;
+  };
+  const saisir = () => {
+    const zone = creer("textarea", { rows: 4, "aria-label": libelle, placeholder: "Mon commentaire (vide : le retirer)" });
+    zone.value = lire() || "";
+    const message = creer("p", { classe: "message-edition", "aria-live": "polite" });
+    const valider = creer("button", { type: "submit", classe: "bouton bouton-principal", texte: "Enregistrer" });
+    const formulaire = creer("form", { classe: "commentaire-saisie" }, zone,
+      creer("div", { classe: "boutons" },
+        creer("button", { type: "button", classe: "bouton", texte: "Annuler", surclic: () => montrer() }), valider),
+      message);
+    formulaire.addEventListener("submit", async (evenement) => {
+      evenement.preventDefault();
+      valider.disabled = true;
+      message.textContent = "Enregistrement sur GitHub…";
+      try {
+        await enregistrer(zone.value.trim());
+        montrer("Enregistré · sur le site publié dans une minute environ");
+      } catch (erreur) {
+        message.textContent = erreur.message;
+        valider.disabled = false;
+      }
+    });
+    bloc.replaceChildren(formulaire);
+    bloc.hidden = false;
+    zone.focus();
+  };
+  montrer();
+  return bloc;
+}
+
+/** Réglage du jeton GitHub (même boîte que le jeton Discogs) : vérifié auprès de GitHub avant d'être gardé. */
+function brancherReglageJetonGithub() {
+  const saisie = $("jeton-github-saisie");
+  const etatJeton = $("jeton-github-etat");
+  const decrire = () => {
+    etatJeton.textContent = jetonGithub()
+      ? "Un jeton GitHub est enregistré sur cet appareil : « ✎ Commenter » apparaît sur les pages Œuvre."
+      : "Aucun jeton GitHub sur cet appareil : les commentaires sont en lecture seule.";
+  };
+  $("ouvrir-jeton").addEventListener("click", () => { saisie.value = ""; decrire(); });
+  $("jeton-github-effacer").addEventListener("click", () => {
+    ecrireStockage(CLE_JETON_GITHUB, null);
+    decrire();
+  });
+  $("formulaire-jeton-github").addEventListener("submit", async (evenement) => {
+    evenement.preventDefault();
+    const essai = saisie.value.trim();
+    if (!essai) return;
+    etatJeton.textContent = "Vérification auprès de GitHub…";
+    try {
+      const reponse = await appelerGithub("/user", {}, essai);
+      if (!reponse.ok) throw new Error("GitHub a refusé (code " + reponse.status + ").");
+      const proprietaire = DEPOT_GITHUB.split("/")[0];
+      const identite = await reponse.json();
+      if (String(identite.login).toLowerCase() !== proprietaire.toLowerCase()) {
+        etatJeton.textContent = "Ce jeton est celui de « " + identite.login + " », pas de " + proprietaire + ".";
+        return;
+      }
+    } catch (erreur) {
+      etatJeton.textContent = erreur.message;
+      return;
+    }
+    if (!ecrireStockage(CLE_JETON_GITHUB, essai)) {
+      etatJeton.textContent = "Ce navigateur refuse de garder le jeton (navigation privée ?).";
+      return;
+    }
+    saisie.value = "";
+    decrire();
+    await chargerCommentaires();   // relus sur GitHub : à jour tout de suite
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Modification sur Discogs
 // La page écrit directement chez Discogs avec le jeton Discogs, rangé dans le
 // navigateur de chaque appareil : jamais dans le dépôt ni sur le site publié.
@@ -4394,6 +4609,7 @@ brancherVisionneuse();
 // L'en-tête change de hauteur selon la largeur de l'écran (une ou deux lignes).
 new ResizeObserver(noterHauteurEntete).observe(document.querySelector(".entete"));
 brancherReglageJeton();
+brancherReglageJetonGithub();
 for (const id of ["recherche", "filtre-label"]) ajouterCroix($(id));
 $("rappel-discogs").hidden = !jeton();   // rappel visible seulement avec un jeton
 chargerCollection();
