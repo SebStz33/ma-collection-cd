@@ -5,7 +5,7 @@
    ========================================================================== */
 
 // Changer ce numéro force le navigateur à recharger les fichiers de la page.
-const VERSION = "v98";
+const VERSION = "v99";
 const RESERVE_PAGE = "page-" + VERSION;
 const RESERVE_POCHETTES = "pochettes";
 
@@ -41,9 +41,9 @@ self.addEventListener("fetch", (evenement) => {
   if (requete.method !== "GET") return;
   const url = new URL(requete.url);
 
-  // 1. La collection : on essaie d'abord le réseau (données à jour),
+  // 1. La collection et les commentaires : on essaie d'abord le réseau (données à jour),
   //    et on retombe sur la copie en réserve hors connexion.
-  if (url.pathname.endsWith("/data/collection.json")) {
+  if (url.pathname.endsWith("/data/collection.json") || url.pathname.endsWith("/data/commentaires_oeuvres.json")) {
     evenement.respondWith(
       fetch(requete)
         .then((reponse) => {

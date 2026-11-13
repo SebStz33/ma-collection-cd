@@ -474,6 +474,8 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 @media (max-width: 700px) {
   .edition { padding: 16px; padding-top: calc(16px + env(safe-area-inset-top)); }
   .edition textarea, .edition select, .petite-boite input { font-size: 16px; }  /* évite le zoom automatique de l'iPhone */
+  .commentaire-saisie textarea { font-size: 16px; }
+  .commentaire-version { margin-left: 8px; }
   .entete { padding-left: 12px; padding-right: 12px; }
   .compteur { flex-basis: 100%; order: 3; }
   .effacer-entete:not([hidden]) { display: inline-block; }
@@ -675,6 +677,21 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
 .oeuvre-intertitre { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
 .oeuvre-intertitre .discret { color: var(--texte-2); font-weight: 400; font-size: 13px; }
 
+/* Commentaires (data/commentaires_oeuvres.json) : en bleu, comme les notes de l'album */
+.commentaire { margin: 0 0 18px; font-size: 14px; }
+.commentaire[hidden] { display: none; }
+.commentaire-texte { margin: 0 0 2px; color: var(--bleu); white-space: pre-wrap; overflow-wrap: anywhere; }
+.commentaire-modifier { font-size: 13px; }
+.commentaire-confirmation { margin-left: 10px; font-size: 12px; color: var(--texte-discret); }
+.commentaire-saisie textarea {
+  width: 100%; min-height: 6em; padding: 8px; font: inherit; font-size: 15px; color: var(--texte);
+  background: var(--fond); border: 1px solid var(--bordure); border-radius: var(--rayon); resize: vertical;
+}
+.commentaire-saisie .boutons { margin-top: 8px; }
+/* Sous la case d'une version : aligné sur son texte (après la pochette) */
+.commentaire-version { margin: 4px 0 4px calc(8px + 64px + 12px); }
+.marque-commentaire { font-size: 12px; }
+.formulaire-jeton-github { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--bordure); }
 .versions { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 8px; }
 .version {
   display: flex; gap: 12px; width: 100%; padding: 8px; text-align: left; cursor: pointer;

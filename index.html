@@ -130,7 +130,7 @@
         <button type="button" class="bouton-texte effacer-bas" id="effacer-filtres">✕ Effacer les filtres</button>
         <button type="button" class="bouton-texte" id="fermer-filtres-bas">Fermer</button>
       </div>
-      <button type="button" class="bouton-texte bouton-jeton" id="ouvrir-jeton">⚙︎ Jeton Discogs</button>
+      <button type="button" class="bouton-texte bouton-jeton" id="ouvrir-jeton">⚙︎ Jetons Discogs et GitHub</button>
       <p class="rappel-discogs" id="rappel-discogs" hidden>Ne pas changer sur Discogs : noms des champs Custom Fields (Description,
         Notes personnelles, Localisation, Liens externes, Pistes favorites, Statut d’écoute et son option « Aucun », Live / Studio, Année d’enregistrement (manuelle), Photo principale et ses options « Automatique » et « Discogs »...), nom du dossier « À Vendre » (sauf casse et accents) et nom d’utilisateur SebSteinmetz. Nouveau jeton : mettre à jour le secret GitHub et sur chaque appareil avec droits de modification.</p>
     </aside>
@@ -181,6 +181,19 @@
       <div class="boutons">
         <button type="button" class="bouton" id="jeton-effacer">Retirer de cet appareil</button>
         <button type="button" class="bouton" id="jeton-fermer">Fermer</button>
+        <button type="submit" class="bouton bouton-principal">Enregistrer</button>
+      </div>
+    </form>
+    <!-- Jeton GitHub de cet appareil : il permet d'écrire les commentaires sur les œuvres -->
+    <form id="formulaire-jeton-github" class="formulaire-jeton-github">
+      <h2>Commentaires sur les œuvres</h2>
+      <p>Colle ton jeton GitHub (github.com &gt; Settings &gt; Developer settings &gt; Fine-grained tokens, limité au dépôt
+        ma-collection-cd, droit « Contents : Read and write »). Il reste sur cet appareil : il n'est envoyé qu'à GitHub.
+        Les commentaires sont publics, comme le site.</p>
+      <input type="password" id="jeton-github-saisie" autocomplete="off" placeholder="Jeton GitHub" aria-label="Jeton GitHub">
+      <p class="discret" id="jeton-github-etat" aria-live="polite"></p>
+      <div class="boutons">
+        <button type="button" class="bouton" id="jeton-github-effacer">Retirer de cet appareil</button>
         <button type="submit" class="bouton bouton-principal">Enregistrer</button>
       </div>
     </form>
