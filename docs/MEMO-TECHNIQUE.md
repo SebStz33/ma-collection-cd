@@ -60,8 +60,13 @@ Discogs (ma collection, mes champs perso)        MusicBrainz (œuvres, pochettes
 Sur github.com : onglet **Actions** › **Synchro Discogs et MusicBrainz** › **Run workflow**.
 
 - Laisser la case « Éditions à relire » **vide** pour une synchro normale.
-- Y mettre des n° Discogs d'éditions (`20144050` ou `20144050,123456`) pour **relire tout de suite** ces
-  éditions sur Discogs et MusicBrainz, en plus de la synchro normale.
+- Y mettre des n° Discogs d'éditions (`20144050` ou `20144050,123456`) pour **forcer** la relecture de ces
+  éditions. La synchro reste complète : toute la collection est traitée comme d'habitude, et ces éditions-là
+  sont **en plus** relues entièrement, comme si elles étaient nouvelles :
+  - leur fiche Discogs est relue même si elle a moins de 30 jours ;
+  - leur recherche MusicBrainz est refaite (en premier) même si elle était déjà faite.
+  Sans cela, une correction faite sur Discogs (plages, crédits) ou sur MusicBrainz ne serait vue qu'au bout
+  de 30 jours, ou jamais pour MusicBrainz. Les champs perso et les dossiers, eux, sont relus à chaque synchro.
 - Une synchro dure de 2 à 20 minutes. Deux synchros ne tournent jamais en même temps.
 
 ### Quand la lancer à la main
