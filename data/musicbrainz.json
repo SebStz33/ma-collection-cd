@@ -40836,6 +40836,152 @@
   "release": "d42453f6-aebf-4e88-8c45-41e907db9f81",
   "version": 5
  },
+ "18627088": {
+  "annee_parution": 2021,
+  "annees_enregistrement": [
+   2020,
+   2020
+  ],
+  "durees": [
+   588000,
+   447000,
+   448000,
+   698000,
+   275000,
+   352000,
+   309000,
+   322013
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/71290369-f4a3-4a5b-beb0-a949937a38a6/28312810961-250.jpg",
+    "original": "https://coverartarchive.org/release/71290369-f4a3-4a5b-beb0-a949937a38a6/28312810961.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/71290369-f4a3-4a5b-beb0-a949937a38a6/28312810961-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/71290369-f4a3-4a5b-beb0-a949937a38a6/37653509164-250.jpg",
+    "original": "https://coverartarchive.org/release/71290369-f4a3-4a5b-beb0-a949937a38a6/37653509164.pdf",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/71290369-f4a3-4a5b-beb0-a949937a38a6/37653509164-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-14",
+  "methode": "code_barre",
+  "nb_plages": 8,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Анна Винницкая"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "f94364c5-b4ca-3555-af9e-86dff67757af",
+    "parente": {
+     "id": "680c7826-6949-4861-9058-99dcec7b819d",
+     "titre": "Ballades"
+    },
+    "roles": {
+     "Анна Винницкая": "piano"
+    },
+    "titre": "Ballade no. 1 in G minor, op. 23"
+   },
+   {
+    "artistes": [
+     "Анна Винницкая"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "30775d65-4977-3836-ad29-c5f2acab2c39",
+    "parente": {
+     "id": "680c7826-6949-4861-9058-99dcec7b819d",
+     "titre": "Ballades"
+    },
+    "roles": {
+     "Анна Винницкая": "piano"
+    },
+    "titre": "Ballade no. 2 in F major, op. 38"
+   },
+   {
+    "artistes": [
+     "Анна Винницкая"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "8133796b-6eb1-3e5b-a797-5906630b57a1",
+    "parente": {
+     "id": "680c7826-6949-4861-9058-99dcec7b819d",
+     "titre": "Ballades"
+    },
+    "roles": {
+     "Анна Винницкая": "piano"
+    },
+    "titre": "Ballade no. 3 in A‐flat major, op. 47"
+   },
+   {
+    "artistes": [
+     "Анна Винницкая"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "43ad4521-d89a-3eb0-b474-ece7a28dd242",
+    "parente": {
+     "id": "680c7826-6949-4861-9058-99dcec7b819d",
+     "titre": "Ballades"
+    },
+    "roles": {
+     "Анна Винницкая": "piano"
+    },
+    "titre": "Ballade no. 4 in F minor, op. 52"
+   },
+   {
+    "artistes": [
+     "Анна Винницкая"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "108abf05-3efb-313c-8fa8-3c3e5d8493e7",
+    "parente": null,
+    "roles": {
+     "Анна Винницкая": "piano"
+    },
+    "titre": "Impromptu no. 1 in A‐flat major, op. 29: Allegro assai"
+   },
+   {
+    "artistes": [
+     "Анна Винницкая"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "82f36f6a-d851-3ab0-b482-cafdd1990198",
+    "parente": null,
+    "roles": {
+     "Анна Винницкая": "piano"
+    },
+    "titre": "Impromptu no. 2 in F‐sharp major, op. 36: Andantino"
+   },
+   {
+    "artistes": [
+     "Анна Винницкая"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "e64a4256-32f3-383c-8cc5-a1d669ac3c76",
+    "parente": null,
+    "roles": {
+     "Анна Винницкая": "piano"
+    },
+    "titre": "Impromptu no. 3 in G‐flat major, op. 51: Vivace"
+   },
+   {
+    "artistes": [
+     "Анна Винницкая"
+    ],
+    "compositeur": "Fryderyk Chopin",
+    "id": "3fdac4f1-9077-3e58-a704-994e6ce3562a",
+    "parente": null,
+    "roles": {
+     "Анна Винницкая": "piano"
+    },
+    "titre": "Fantaisie‐impromptu in C‐sharp minor, op. 66"
+   }
+  ],
+  "release": "71290369-f4a3-4a5b-beb0-a949937a38a6",
+  "version": 14
+ },
  "18629341": {
   "images": [],
   "maj": "2026-11-02",
@@ -68020,6 +68166,214 @@
   "release": "89e30bb9-e9a9-41b0-86dd-719e599ed961",
   "version": 11
  },
+ "2500586": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1986,
+   1987
+  ],
+  "durees": [
+   451906,
+   446493,
+   368600,
+   395066,
+   426800,
+   383640
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675103789-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675103789.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675103789-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675104776-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675104776.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675104776-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675105796-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675105796.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675105796-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675106442-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675106442.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675106442-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675107291-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675107291.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675107291-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675107907-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675107907.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36675107907-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674894165-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674894165.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674894165-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674894712-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674894712.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674894712-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674895291-250.jpg",
+    "original": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674895291.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d8d0a26-14a6-4b21-bc9d-e672da121ab9/36674895291-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-14",
+  "methode": "edition",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Carla Bley",
+     "Don Alias",
+     "Hiram Bullock",
+     "Victor Lewis",
+     "Steve Swallow",
+     "Larry Willis"
+    ],
+    "compositeur": "Carla Bley",
+    "id": "a4ad161a-82af-4838-be9e-f409efb6f59d",
+    "parente": null,
+    "roles": {
+     "Carla Bley": "synthesizer",
+     "Don Alias": "percussion",
+     "Hiram Bullock": "guitar",
+     "Larry Willis": "piano",
+     "Steve Swallow": "double bass",
+     "Victor Lewis": "drums (drum set)"
+    },
+    "titre": "More Brahms"
+   },
+   {
+    "artistes": [
+     "Carla Bley",
+     "Don Alias",
+     "Hiram Bullock",
+     "Victor Lewis",
+     "Steve Swallow",
+     "Larry Willis"
+    ],
+    "compositeur": "Carla Bley",
+    "id": "4ecc6876-bec4-4435-af40-55d80a93abf7",
+    "parente": null,
+    "roles": {
+     "Carla Bley": "organ",
+     "Don Alias": "percussion",
+     "Hiram Bullock": "guitar",
+     "Larry Willis": "piano",
+     "Steve Swallow": "double bass",
+     "Victor Lewis": "drums (drum set)"
+    },
+    "titre": "Houses and People"
+   },
+   {
+    "artistes": [
+     "Carla Bley",
+     "Don Alias",
+     "Hiram Bullock",
+     "Victor Lewis",
+     "Steve Swallow",
+     "Larry Willis"
+    ],
+    "compositeur": "Carla Bley",
+    "id": "40c76733-7fcc-4946-abec-315bda743299",
+    "parente": null,
+    "roles": {
+     "Carla Bley": "organ",
+     "Don Alias": "percussion",
+     "Hiram Bullock": "guitar",
+     "Larry Willis": "piano",
+     "Steve Swallow": "double bass",
+     "Victor Lewis": "drums (drum set)"
+    },
+    "titre": "The Girl Who Cried Champagne"
+   },
+   {
+    "artistes": [
+     "Carla Bley",
+     "Don Alias",
+     "Hiram Bullock",
+     "Victor Lewis",
+     "Steve Swallow",
+     "Larry Willis"
+    ],
+    "compositeur": "Carla Bley",
+    "id": "090c3483-5453-4757-a2f1-c13f5f69c7a5",
+    "parente": null,
+    "roles": {
+     "Carla Bley": "organ",
+     "Don Alias": "percussion",
+     "Hiram Bullock": "double bass",
+     "Larry Willis": "piano",
+     "Steve Swallow": "bass",
+     "Victor Lewis": "drums (drum set)"
+    },
+    "titre": "Brooklyn Bridge"
+   },
+   {
+    "artistes": [
+     "Carla Bley",
+     "Hiram Bullock",
+     "Victor Lewis",
+     "Steve Swallow",
+     "Larry Willis"
+    ],
+    "compositeur": "Carla Bley",
+    "id": "c8d6aa2d-ca03-45ab-ae90-ac6445a71565",
+    "parente": null,
+    "roles": {
+     "Carla Bley": "organ",
+     "Hiram Bullock": "guitar",
+     "Larry Willis": "piano",
+     "Steve Swallow": "double bass",
+     "Victor Lewis": "drums (drum set)"
+    },
+    "titre": "Lawns"
+   },
+   {
+    "artistes": [
+     "Carla Bley",
+     "Don Alias",
+     "Hiram Bullock",
+     "Victor Lewis",
+     "Steve Swallow",
+     "Larry Willis"
+    ],
+    "compositeur": "Carla Bley",
+    "id": "e4c19248-12ee-4fc7-a6b7-3d9bb9ef1531",
+    "parente": null,
+    "roles": {
+     "Carla Bley": "organ",
+     "Don Alias": "percussion",
+     "Hiram Bullock": "guitar",
+     "Larry Willis": "piano",
+     "Steve Swallow": "double bass",
+     "Victor Lewis": "drums (drum set)"
+    },
+    "titre": "Healing Power"
+   }
+  ],
+  "release": "7d8d0a26-14a6-4b21-bc9d-e672da121ab9",
+  "version": 14
+ },
  "2514215": {
   "images": [],
   "maj": "2026-11-01",
@@ -71714,6 +72068,172 @@
   ],
   "release": "68a0be78-7170-4f02-82c5-5602caa669a0",
   "version": 5
+ },
+ "3107065": {
+  "annee_parution": 2011,
+  "annees_enregistrement": null,
+  "durees": [
+   364573,
+   213960,
+   445053,
+   172720,
+   279480,
+   463533,
+   242186,
+   562706
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304734882-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304734882.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304734882-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304735969-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304735969.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304735969-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304736581-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304736581.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304736581-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304736946-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304736946.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304736946-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304737585-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304737585.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304737585-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304738205-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304738205.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304738205-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304738536-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304738536.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304738536-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739045-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739045.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739045-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739495-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739495.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739495-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739946-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739946.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304739946-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304740544-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304740544.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304740544-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304741133-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304741133.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304741133-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304741495-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304741495.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304741495-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742062-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742062.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742062-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742434-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742434.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742434-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742791-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742791.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304742791-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304743413-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304743413.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304743413-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304743781-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304743781.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304743781-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304744436-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304744436.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304744436-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304744991-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304744991.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304744991-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304745607-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304745607.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304745607-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746130-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746130.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746130-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746467-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746467.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746467-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746802-250.jpg",
+    "original": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746802.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/dc2e95b8-569a-46aa-b4c8-6f23babf2dfa/35304746802-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-14",
+  "methode": "edition",
+  "nb_plages": 8,
+  "oeuvres": null,
+  "release": "dc2e95b8-569a-46aa-b4c8-6f23babf2dfa",
+  "version": 14
  },
  "31144115": {
   "annees_enregistrement": null,
@@ -76379,6 +76899,30 @@
   "release": "58c5d63f-3097-47e0-9676-1071a4f586c8",
   "version": 5
  },
+ "39013667": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-14",
+  "methode": "aucune",
+  "nb_plages": 9,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
+ "39023516": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-14",
+  "methode": "aucune",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "4084530": {
   "annee_parution": 1996,
   "annees_enregistrement": [
@@ -79480,6 +80024,65 @@
   ],
   "release": "cb36979b-5829-4ced-857d-6e8423402a93",
   "version": 5
+ },
+ "500047": {
+  "annee_parution": 1996,
+  "annees_enregistrement": null,
+  "durees": [
+   371000,
+   283000,
+   133000,
+   136000,
+   224000,
+   562000,
+   128000,
+   212000,
+   379000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185415581-250.jpg",
+    "original": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185415581.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185415581-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185416272-250.jpg",
+    "original": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185416272.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185416272-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185416773-250.jpg",
+    "original": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185416773.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/5cc94c82-a3f5-4cd1-89d6-866e2865db6d/33185416773-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-14",
+  "methode": "edition",
+  "nb_plages": 13,
+  "oeuvres": [
+   null,
+   {
+    "artistes": [
+     "Herbie Hancock"
+    ],
+    "compositeur": "Herbie Hancock",
+    "id": "c326db53-22a3-4e47-8147-35cd191593e2",
+    "parente": null,
+    "titre": "Joanna's Theme"
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "release": "5cc94c82-a3f5-4cd1-89d6-866e2865db6d",
+  "version": 14
  },
  "50304": {
   "annee_parution": null,
@@ -83655,18 +84258,6 @@
    }
   ],
   "release": "0083d3da-7cb0-4ee2-bd28-7cfb514a1259",
-  "version": 12
- },
- "6036995": {
-  "annee_parution": null,
-  "annees_enregistrement": null,
-  "durees": null,
-  "images": [],
-  "maj": "2026-11-09",
-  "methode": "aucune",
-  "nb_plages": 2,
-  "oeuvres": null,
-  "release": null,
   "version": 12
  },
  "6053212": {
@@ -91042,6 +91633,18 @@
   ],
   "release": "c06e6fd5-ebad-44e1-b1ef-908aa9a5ce89",
   "version": 8
+ },
+ "6544703": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-14",
+  "methode": "aucune",
+  "nb_plages": 6,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
  },
  "6627715": {
   "annee_parution": 1988,
