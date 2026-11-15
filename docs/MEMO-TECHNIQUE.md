@@ -1,6 +1,6 @@
 # Mémo technique : ma collection de CD
 
-> À jour au 13/11/2026 (Service Worker v99, après la PR n°46).
+> À jour au 15/11/2026 (Service Worker v100, lot « Ergonomie » : Stats & Index, Au hasard).
 > Si ces numéros ne correspondent plus au code, le mémo est en retard : le mettre à jour dans la même PR.
 
 Ce mémo explique le fonctionnement de l'outil et les gestes à faire. Il ne décrit pas l'utilisation
@@ -152,7 +152,7 @@ renommer la constante dans le code, sinon la page ne le trouve plus.
 
 | Champ Discogs | Type | Contenu attendu |
 |---|---|---|
-| Localisation | liste | Où est le disque (« Introuvable » = perdu pour de bon) |
+| Localisation | liste | Où est le disque (« Introuvable » = perdu pour de bon). Les valeurs **Paris, Montpellier, Numérique, Streaming** sont aussi écrites en dur (`LIEUX_HASARD`, boutons de « Au hasard ») |
 | Description | texte | Texte libre, retours à la ligne gardés |
 | Notes personnelles | texte | Texte libre |
 | Liens externes | texte | Une adresse par ligne, nom facultatif devant : `Diapason \| https://…` |
@@ -209,7 +209,7 @@ navigateur de l'appareil, il n'est ni dans le dépôt ni sur le site. Sans jeton
 `service-worker.js` garde une copie de la page sur l'appareil, pour qu'elle s'ouvre vite et sans réseau.
 
 - **Règle** : après toute modification de `index.html`, `style.css`, `app.js` ou `manifest.json`, augmenter
-  `VERSION` en tête de `service-worker.js` (`"v99"` → `"v100"`). Sans cela, l'iPhone garde l'ancienne page.
+  `VERSION` en tête de `service-worker.js` (`"v100"` → `"v101"`). Sans cela, l'iPhone garde l'ancienne page.
 - L'application se recharge d'elle-même au retour dans l'app (après fermeture de la fiche si une fiche est ouverte).
 - Les **données** (`collection.json`, `commentaires_oeuvres.json`) ne demandent pas de changer la version : elles sont lues d'abord sur le réseau, la copie gardée ne sert que hors connexion.
 - Le Service Worker ne marche qu'en https, donc pas en test local sur `localhost` : là, seul Cmd+Option+R compte.
