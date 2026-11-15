@@ -1,6 +1,6 @@
 {
   "utilisateur": "SebSteinmetz",
-  "genere_le": "2026-11-14T22:46:51+00:00",
+  "genere_le": "2026-11-15T03:12:47+00:00",
   "nb_disques": 477,
   "champs_perso": [
     "Photo principale",
@@ -55335,16 +55335,16 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "25c094f2-a01b-4a10-8aa9-845fd8dbcd32",
-                "titre": "Sonata for Violin and Continuo in C major, RV 2: I.",
+                "artistes": [
+                  "The Boston Museum Trio"
+                ],
                 "compositeur": "Antonio Vivaldi",
+                "id": "25c094f2-a01b-4a10-8aa9-845fd8dbcd32",
                 "parente": {
                   "id": "7f7e8c0e-9b18-4cd0-b432-499faff1f89c",
                   "titre": "Sonata for Violin and Continuo in C major, RV 2"
                 },
-                "artistes": [
-                  "The Boston Museum Trio"
-                ]
+                "titre": "Sonata for Violin and Continuo in C major, RV 2: I."
               }
             },
             {
@@ -55355,16 +55355,16 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "6d574733-7c6e-41ac-8285-38ab49dd5338",
-                "titre": "Sonata for Violin and Continuo in C major, RV 2: II.",
+                "artistes": [
+                  "The Boston Museum Trio"
+                ],
                 "compositeur": "Antonio Vivaldi",
+                "id": "6d574733-7c6e-41ac-8285-38ab49dd5338",
                 "parente": {
                   "id": "7f7e8c0e-9b18-4cd0-b432-499faff1f89c",
                   "titre": "Sonata for Violin and Continuo in C major, RV 2"
                 },
-                "artistes": [
-                  "The Boston Museum Trio"
-                ]
+                "titre": "Sonata for Violin and Continuo in C major, RV 2: II."
               }
             },
             {
@@ -55375,16 +55375,16 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "a53ce255-2adb-487b-96c6-e097e66bfad1",
-                "titre": "Sonata for Violin and Continuo in C major, RV 2: III.",
+                "artistes": [
+                  "The Boston Museum Trio"
+                ],
                 "compositeur": "Antonio Vivaldi",
+                "id": "a53ce255-2adb-487b-96c6-e097e66bfad1",
                 "parente": {
                   "id": "7f7e8c0e-9b18-4cd0-b432-499faff1f89c",
                   "titre": "Sonata for Violin and Continuo in C major, RV 2"
                 },
-                "artistes": [
-                  "The Boston Museum Trio"
-                ]
+                "titre": "Sonata for Violin and Continuo in C major, RV 2: III."
               }
             },
             {
@@ -55395,16 +55395,16 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "85ae731f-8163-42cb-a45f-25ee0099584c",
-                "titre": "Sonata for Violin and Continuo in C major, RV 2: IV.",
+                "artistes": [
+                  "The Boston Museum Trio"
+                ],
                 "compositeur": "Antonio Vivaldi",
+                "id": "85ae731f-8163-42cb-a45f-25ee0099584c",
                 "parente": {
                   "id": "7f7e8c0e-9b18-4cd0-b432-499faff1f89c",
                   "titre": "Sonata for Violin and Continuo in C major, RV 2"
                 },
-                "artistes": [
-                  "The Boston Museum Trio"
-                ]
+                "titre": "Sonata for Violin and Continuo in C major, RV 2: IV."
               }
             }
           ]
@@ -55428,20 +55428,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "e0b0f3fa-c450-33d8-942d-1de9b019d67f",
-                "titre": "Concerto in G minor, RV 152: I. Allegro molto",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "eacbd080-9280-44dd-9674-342871dff6ac",
-                  "titre": "Concerto in G minor, RV 152"
-                },
                 "artistes": [
                   "Filarmonica del Teatro Comunale di Bologna",
                   "Angelo Ephrikian"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "e0b0f3fa-c450-33d8-942d-1de9b019d67f",
+                "parente": {
+                  "id": "eacbd080-9280-44dd-9674-342871dff6ac",
+                  "titre": "Concerto in G minor, RV 152"
+                },
                 "roles": {
                   "Angelo Ephrikian": "conductor"
-                }
+                },
+                "titre": "Concerto in G minor, RV 152: I. Allegro molto"
               }
             },
             {
@@ -55452,20 +55452,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "08a9675b-1c86-3999-8ad5-daf15b8d1975",
-                "titre": "Concerto in G minor, RV 152: II. Andante molto",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "eacbd080-9280-44dd-9674-342871dff6ac",
-                  "titre": "Concerto in G minor, RV 152"
-                },
                 "artistes": [
                   "Filarmonica del Teatro Comunale di Bologna",
                   "Angelo Ephrikian"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "08a9675b-1c86-3999-8ad5-daf15b8d1975",
+                "parente": {
+                  "id": "eacbd080-9280-44dd-9674-342871dff6ac",
+                  "titre": "Concerto in G minor, RV 152"
+                },
                 "roles": {
                   "Angelo Ephrikian": "conductor"
-                }
+                },
+                "titre": "Concerto in G minor, RV 152: II. Andante molto"
               }
             },
             {
@@ -55476,20 +55476,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "ba02218b-eb26-3fa1-90a9-1b8f5cc76f0b",
-                "titre": "Concerto in G minor, RV 152: III. Allegro molto",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "eacbd080-9280-44dd-9674-342871dff6ac",
-                  "titre": "Concerto in G minor, RV 152"
-                },
                 "artistes": [
                   "Filarmonica del Teatro Comunale di Bologna",
                   "Angelo Ephrikian"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "ba02218b-eb26-3fa1-90a9-1b8f5cc76f0b",
+                "parente": {
+                  "id": "eacbd080-9280-44dd-9674-342871dff6ac",
+                  "titre": "Concerto in G minor, RV 152"
+                },
                 "roles": {
                   "Angelo Ephrikian": "conductor"
-                }
+                },
+                "titre": "Concerto in G minor, RV 152: III. Allegro molto"
               }
             }
           ]
@@ -55513,20 +55513,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "6e52ab5a-dfa6-4dad-af6e-e5a96c556d39",
-                "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\": I. Adagio – Allegro",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "fe910fb8-2f7f-49d2-b676-d9c93f5875d7",
-                  "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\""
-                },
                 "artistes": [
                   "Filarmonica del Teatro Comunale di Bologna",
                   "Angelo Ephrikian"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "6e52ab5a-dfa6-4dad-af6e-e5a96c556d39",
+                "parente": {
+                  "id": "fe910fb8-2f7f-49d2-b676-d9c93f5875d7",
+                  "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\""
+                },
                 "roles": {
                   "Angelo Ephrikian": "conductor"
-                }
+                },
+                "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\": I. Adagio – Allegro"
               }
             },
             {
@@ -55537,20 +55537,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "6e52ab5a-dfa6-4dad-af6e-e5a96c556d39",
-                "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\": I. Adagio – Allegro",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "fe910fb8-2f7f-49d2-b676-d9c93f5875d7",
-                  "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\""
-                },
                 "artistes": [
                   "Filarmonica del Teatro Comunale di Bologna",
                   "Angelo Ephrikian"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "6e52ab5a-dfa6-4dad-af6e-e5a96c556d39",
+                "parente": {
+                  "id": "fe910fb8-2f7f-49d2-b676-d9c93f5875d7",
+                  "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\""
+                },
                 "roles": {
                   "Angelo Ephrikian": "conductor"
-                }
+                },
+                "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\": I. Adagio – Allegro"
               }
             },
             {
@@ -55561,20 +55561,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "dc17ca9d-336c-4e30-87a6-7b85d61eb93a",
-                "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\": II. Adagio",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "fe910fb8-2f7f-49d2-b676-d9c93f5875d7",
-                  "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\""
-                },
                 "artistes": [
                   "Filarmonica del Teatro Comunale di Bologna",
                   "Angelo Ephrikian"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "dc17ca9d-336c-4e30-87a6-7b85d61eb93a",
+                "parente": {
+                  "id": "fe910fb8-2f7f-49d2-b676-d9c93f5875d7",
+                  "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\""
+                },
                 "roles": {
                   "Angelo Ephrikian": "conductor"
-                }
+                },
+                "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\": II. Adagio"
               }
             },
             {
@@ -55585,20 +55585,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "7ac4bf7c-4e30-4ff0-93ef-5541291ef53d",
-                "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\": III.",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "fe910fb8-2f7f-49d2-b676-d9c93f5875d7",
-                  "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\""
-                },
                 "artistes": [
                   "Filarmonica del Teatro Comunale di Bologna",
                   "Angelo Ephrikian"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "7ac4bf7c-4e30-4ff0-93ef-5541291ef53d",
+                "parente": {
+                  "id": "fe910fb8-2f7f-49d2-b676-d9c93f5875d7",
+                  "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\""
+                },
                 "roles": {
                   "Angelo Ephrikian": "conductor"
-                }
+                },
+                "titre": "Concerto for Strings in D minor, RV 129 \"madrigalesco\": III."
               }
             }
           ]
@@ -55623,22 +55623,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "9910787a-f595-4c0c-94c1-a23af0a50032",
-                "titre": "Concerto for Traverso, RV 440: I. Allegro non molto",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "a6bede33-a5c6-41cd-80ca-5492c2c2e919",
-                  "titre": "Concerto for Flute, Strings, and Continuo in A minor, RV 440"
-                },
                 "artistes": [
                   "Janet See",
                   "Philharmonia Baroque Orchestra",
                   "Nicholas McGegan"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "9910787a-f595-4c0c-94c1-a23af0a50032",
+                "parente": {
+                  "id": "a6bede33-a5c6-41cd-80ca-5492c2c2e919",
+                  "titre": "Concerto for Flute, Strings, and Continuo in A minor, RV 440"
+                },
                 "roles": {
-                  "Nicholas McGegan": "conductor",
-                  "Janet See": "flute"
-                }
+                  "Janet See": "flute",
+                  "Nicholas McGegan": "conductor"
+                },
+                "titre": "Concerto for Traverso, RV 440: I. Allegro non molto"
               }
             },
             {
@@ -55649,22 +55649,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "9524b9fc-2400-43ac-afcc-7b43f1fdb87f",
-                "titre": "Concerto for Traverso, RV 440: II. Larghetto",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "a6bede33-a5c6-41cd-80ca-5492c2c2e919",
-                  "titre": "Concerto for Flute, Strings, and Continuo in A minor, RV 440"
-                },
                 "artistes": [
                   "Janet See",
                   "Philharmonia Baroque Orchestra",
                   "Nicholas McGegan"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "9524b9fc-2400-43ac-afcc-7b43f1fdb87f",
+                "parente": {
+                  "id": "a6bede33-a5c6-41cd-80ca-5492c2c2e919",
+                  "titre": "Concerto for Flute, Strings, and Continuo in A minor, RV 440"
+                },
                 "roles": {
-                  "Nicholas McGegan": "conductor",
-                  "Janet See": "flute"
-                }
+                  "Janet See": "flute",
+                  "Nicholas McGegan": "conductor"
+                },
+                "titre": "Concerto for Traverso, RV 440: II. Larghetto"
               }
             },
             {
@@ -55675,22 +55675,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "54d81864-58b3-42df-b73d-627df2995ca9",
-                "titre": "Concerto for Traverso, RV 440: III. Allegro",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "a6bede33-a5c6-41cd-80ca-5492c2c2e919",
-                  "titre": "Concerto for Flute, Strings, and Continuo in A minor, RV 440"
-                },
                 "artistes": [
                   "Janet See",
                   "Philharmonia Baroque Orchestra",
                   "Nicholas McGegan"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "54d81864-58b3-42df-b73d-627df2995ca9",
+                "parente": {
+                  "id": "a6bede33-a5c6-41cd-80ca-5492c2c2e919",
+                  "titre": "Concerto for Flute, Strings, and Continuo in A minor, RV 440"
+                },
                 "roles": {
-                  "Nicholas McGegan": "conductor",
-                  "Janet See": "flute"
-                }
+                  "Janet See": "flute",
+                  "Nicholas McGegan": "conductor"
+                },
+                "titre": "Concerto for Traverso, RV 440: III. Allegro"
               }
             }
           ]
@@ -55715,22 +55715,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "78529c25-ac91-4f7e-8078-969c2605a0aa",
-                "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427: I. Allegro",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "2035baf2-7a2f-4678-8f77-f20741573795",
-                  "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427"
-                },
                 "artistes": [
                   "Janet See",
                   "Philharmonia Baroque Orchestra",
                   "Nicholas McGegan"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "78529c25-ac91-4f7e-8078-969c2605a0aa",
+                "parente": {
+                  "id": "2035baf2-7a2f-4678-8f77-f20741573795",
+                  "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427"
+                },
                 "roles": {
-                  "Nicholas McGegan": "conductor",
-                  "Janet See": "flute"
-                }
+                  "Janet See": "flute",
+                  "Nicholas McGegan": "conductor"
+                },
+                "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427: I. Allegro"
               }
             },
             {
@@ -55741,22 +55741,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "29a56e5f-39de-4c8b-9aea-2d7bf10ff5eb",
-                "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427: II. Largo",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "2035baf2-7a2f-4678-8f77-f20741573795",
-                  "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427"
-                },
                 "artistes": [
                   "Janet See",
                   "Philharmonia Baroque Orchestra",
                   "Nicholas McGegan"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "29a56e5f-39de-4c8b-9aea-2d7bf10ff5eb",
+                "parente": {
+                  "id": "2035baf2-7a2f-4678-8f77-f20741573795",
+                  "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427"
+                },
                 "roles": {
-                  "Nicholas McGegan": "conductor",
-                  "Janet See": "flute"
-                }
+                  "Janet See": "flute",
+                  "Nicholas McGegan": "conductor"
+                },
+                "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427: II. Largo"
               }
             },
             {
@@ -55767,22 +55767,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "bd6012f9-281a-4ee7-85b6-1e6d984f18b0",
-                "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427: III. Allegro",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "2035baf2-7a2f-4678-8f77-f20741573795",
-                  "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427"
-                },
                 "artistes": [
                   "Janet See",
                   "Philharmonia Baroque Orchestra",
                   "Nicholas McGegan"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "bd6012f9-281a-4ee7-85b6-1e6d984f18b0",
+                "parente": {
+                  "id": "2035baf2-7a2f-4678-8f77-f20741573795",
+                  "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427"
+                },
                 "roles": {
-                  "Nicholas McGegan": "conductor",
-                  "Janet See": "flute"
-                }
+                  "Janet See": "flute",
+                  "Nicholas McGegan": "conductor"
+                },
+                "titre": "Concerto for Flute, Strings and Continuo in D major, RV 427: III. Allegro"
               }
             }
           ]
@@ -55806,20 +55806,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "af966894-954a-3211-b497-45e347d77d9a",
-                "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”: I. Allegro",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "251339db-5788-3b6f-a080-770873826cf1",
-                  "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”"
-                },
                 "artistes": [
                   "Jaap Schröder",
                   "Concerto Amsterdam"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "af966894-954a-3211-b497-45e347d77d9a",
+                "parente": {
+                  "id": "251339db-5788-3b6f-a080-770873826cf1",
+                  "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”"
+                },
                 "roles": {
                   "Jaap Schröder": "violin"
-                }
+                },
+                "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”: I. Allegro"
               }
             },
             {
@@ -55830,20 +55830,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "26903402-df64-3871-9d72-04aabcbb8a50",
-                "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”: II. Adagio molto",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "251339db-5788-3b6f-a080-770873826cf1",
-                  "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”"
-                },
                 "artistes": [
                   "Jaap Schröder",
                   "Concerto Amsterdam"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "26903402-df64-3871-9d72-04aabcbb8a50",
+                "parente": {
+                  "id": "251339db-5788-3b6f-a080-770873826cf1",
+                  "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”"
+                },
                 "roles": {
                   "Jaap Schröder": "violin"
-                }
+                },
+                "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”: II. Adagio molto"
               }
             },
             {
@@ -55854,20 +55854,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "46174896-bbb0-3cf8-b1b1-4ff6b5c9aaad",
-                "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”: III. Allegro",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "251339db-5788-3b6f-a080-770873826cf1",
-                  "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”"
-                },
                 "artistes": [
                   "Jaap Schröder",
                   "Concerto Amsterdam"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "46174896-bbb0-3cf8-b1b1-4ff6b5c9aaad",
+                "parente": {
+                  "id": "251339db-5788-3b6f-a080-770873826cf1",
+                  "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”"
+                },
                 "roles": {
                   "Jaap Schröder": "violin"
-                }
+                },
+                "titre": "Concerto in F major, op. 8 no. 3, RV 293 “L’autunno”: III. Allegro"
               }
             }
           ]
@@ -55894,21 +55894,21 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "a7c5879a-d2ca-4f0c-aa7a-c7479269d81c",
-                "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I: I. Aria. Largo \"Mio Cor, Povero Cor\"",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "1f5927fb-3ab2-4fb7-8db5-33f3dbc6fbe0",
-                  "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I"
-                },
                 "artistes": [
                   "Petya Grigorova",
                   "Erwin Zak"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "a7c5879a-d2ca-4f0c-aa7a-c7479269d81c",
+                "parente": {
+                  "id": "1f5927fb-3ab2-4fb7-8db5-33f3dbc6fbe0",
+                  "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I"
+                },
                 "roles": {
                   "Erwin Zak": "harpsichord",
                   "Petya Grigorova": "soprano vocals"
-                }
+                },
+                "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I: I. Aria. Largo \"Mio Cor, Povero Cor\""
               }
             },
             {
@@ -55919,23 +55919,23 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "e1de5a0b-cd7b-46a4-8703-ef7122e56c5f",
-                "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I: IV. Recitativo \"Eccolo\"",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "1f5927fb-3ab2-4fb7-8db5-33f3dbc6fbe0",
-                  "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I"
-                },
                 "artistes": [
                   "Petya Grigorova",
                   "Marjorie Vance",
                   "René Clemencic"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "e1de5a0b-cd7b-46a4-8703-ef7122e56c5f",
+                "parente": {
+                  "id": "1f5927fb-3ab2-4fb7-8db5-33f3dbc6fbe0",
+                  "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I"
+                },
                 "roles": {
-                  "René Clemencic": "harpsichord",
+                  "Marjorie Vance": "soprano vocals",
                   "Petya Grigorova": "soprano vocals",
-                  "Marjorie Vance": "soprano vocals"
-                }
+                  "René Clemencic": "harpsichord"
+                },
+                "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I: IV. Recitativo \"Eccolo\""
               }
             },
             {
@@ -55946,21 +55946,21 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "acbea55a-0ad8-49e7-977e-2f80a27b9926",
-                "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I: V. Aria \"Digli, che miri almeno\"",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "1f5927fb-3ab2-4fb7-8db5-33f3dbc6fbe0",
-                  "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I"
-                },
                 "artistes": [
                   "Marjorie Vance",
                   "Erwin Zak"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "acbea55a-0ad8-49e7-977e-2f80a27b9926",
+                "parente": {
+                  "id": "1f5927fb-3ab2-4fb7-8db5-33f3dbc6fbe0",
+                  "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I"
+                },
                 "roles": {
                   "Erwin Zak": "harpsichord",
                   "Marjorie Vance": "soprano vocals"
-                }
+                },
+                "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I: V. Aria \"Digli, che miri almeno\""
               }
             },
             {
@@ -55971,21 +55971,21 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "3468a8ab-2b6a-4e73-8bc0-2434d7a48c99",
-                "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I: X. Aria. Allegro \"Ne'l suo carcere ristretto\"",
-                "compositeur": "Antonio Vivaldi",
-                "parente": {
-                  "id": "1f5927fb-3ab2-4fb7-8db5-33f3dbc6fbe0",
-                  "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I"
-                },
                 "artistes": [
                   "Kurt Spanier",
                   "Erwin Zak"
                 ],
+                "compositeur": "Antonio Vivaldi",
+                "id": "3468a8ab-2b6a-4e73-8bc0-2434d7a48c99",
+                "parente": {
+                  "id": "1f5927fb-3ab2-4fb7-8db5-33f3dbc6fbe0",
+                  "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I"
+                },
                 "roles": {
                   "Erwin Zak": "harpsichord",
                   "Kurt Spanier": "tenor vocals"
-                }
+                },
+                "titre": "Serenata a tre \"Mio cor, povero cor\", RV 690, Part I: X. Aria. Allegro \"Ne'l suo carcere ristretto\""
               }
             }
           ]
@@ -55993,16 +55993,16 @@
       ],
       "images": [
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921966638-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921966638-250.jpg",
           "original": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921966638.jpg",
-          "miniature": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921966638-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921966638-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921964258-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921964258-250.jpg",
           "original": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921964258.jpg",
-          "miniature": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921964258-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/82b5701b-2ccf-4bc1-8346-7377e8614a40/20921964258-1200.jpg"
         },
         {
           "type": "primary",
@@ -91043,18 +91043,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "384308d1-8732-414a-aebd-097594b3a486",
-            "titre": "Les Grelots",
-            "compositeur": "Eddy Louiss",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Eddy Louiss",
+            "id": "384308d1-8732-414a-aebd-097594b3a486",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Les Grelots"
           }
         },
         {
@@ -91065,18 +91065,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "0cb33af5-6950-4626-b876-15c93a405397",
-            "titre": "Jean-Philippe Herbien",
-            "compositeur": "Eddy Louiss, Michel Petrucciani",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Eddy Louiss, Michel Petrucciani",
+            "id": "0cb33af5-6950-4626-b876-15c93a405397",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Jean-Philippe Herbien"
           }
         },
         {
@@ -91087,18 +91087,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "6c0ae4fc-2893-363a-a3e9-f04324e0f525",
-            "titre": "All the Things You Are",
-            "compositeur": "Jerome Kern",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Jerome Kern",
+            "id": "6c0ae4fc-2893-363a-a3e9-f04324e0f525",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "All the Things You Are"
           }
         },
         {
@@ -91109,18 +91109,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "dc6985b3-cf74-466c-a0aa-d87034c441c4",
-            "titre": "I Wrote You a Song",
-            "compositeur": "Michel Petrucciani",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Michel Petrucciani",
+            "id": "dc6985b3-cf74-466c-a0aa-d87034c441c4",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "I Wrote You a Song"
           }
         },
         {
@@ -91131,18 +91131,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "2fafd730-423f-342e-b6c7-3a7d6599a72e",
-            "titre": "So What",
-            "compositeur": "Miles Davis",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Miles Davis",
+            "id": "2fafd730-423f-342e-b6c7-3a7d6599a72e",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "So What"
           }
         },
         {
@@ -91153,18 +91153,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "6261d6d4-caa9-31f0-8ab4-f977bcd57451",
-            "titre": "These Foolish Things (Remind Me of You)",
-            "compositeur": "Jack Strachey, Harry Link",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Jack Strachey, Harry Link",
+            "id": "6261d6d4-caa9-31f0-8ab4-f977bcd57451",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "These Foolish Things (Remind Me of You)"
           }
         },
         {
@@ -91175,18 +91175,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "8d67c4c4-965b-427d-9446-3b96ecaa1bbf",
-            "titre": "Amesha",
-            "compositeur": "Eddy Louiss",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Eddy Louiss",
+            "id": "8d67c4c4-965b-427d-9446-3b96ecaa1bbf",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Amesha"
           }
         },
         {
@@ -91197,18 +91197,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "58b44fd2-3747-44c4-bb06-9a80df8ddfc4",
-            "titre": "Simply Bop",
-            "compositeur": "Michel Petrucciani",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Michel Petrucciani",
+            "id": "58b44fd2-3747-44c4-bb06-9a80df8ddfc4",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Simply Bop"
           }
         },
         {
@@ -91219,18 +91219,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "048b4b7a-07c4-3e33-959f-268199324401",
-            "titre": "Autumn Leaves",
-            "compositeur": "Joseph Kosma",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Joseph Kosma",
+            "id": "048b4b7a-07c4-3e33-959f-268199324401",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Autumn Leaves"
           }
         },
         {
@@ -91241,18 +91241,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "9e7b079e-7fc8-4bc7-9d76-64f6190ea110",
-            "titre": "Hub Art",
-            "compositeur": "Michel Petrucciani",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Michel Petrucciani",
+            "id": "9e7b079e-7fc8-4bc7-9d76-64f6190ea110",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Hub Art"
           }
         },
         {
@@ -91263,18 +91263,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "b9bcd99f-02df-352a-a749-c4805efb7335",
-            "titre": "Caravan",
-            "compositeur": "Duke Ellington, Juan Tizol",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Duke Ellington, Juan Tizol",
+            "id": "b9bcd99f-02df-352a-a749-c4805efb7335",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Caravan"
           }
         },
         {
@@ -91285,18 +91285,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "69edef2d-ae42-4883-81b6-7afb0975f524",
-            "titre": "Naissance",
-            "compositeur": "Eddy Louiss",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Eddy Louiss",
+            "id": "69edef2d-ae42-4883-81b6-7afb0975f524",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Naissance"
           }
         },
         {
@@ -91307,18 +91307,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "73903da3-7077-4ee4-98c3-e97e2758eecf",
-            "titre": "Rachid",
-            "compositeur": "Michel Petrucciani",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Michel Petrucciani",
+            "id": "73903da3-7077-4ee4-98c3-e97e2758eecf",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Rachid"
           }
         },
         {
@@ -91329,18 +91329,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "4f10a54e-8bf4-42f5-940b-72c744c8ac6e",
-            "titre": "Caraibes",
-            "compositeur": "Eddy Louiss",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Eddy Louiss",
+            "id": "4f10a54e-8bf4-42f5-940b-72c744c8ac6e",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Caraibes"
           }
         },
         {
@@ -91351,18 +91351,18 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "9d92a197-8ee7-4641-b35e-1974d3cba293",
-            "titre": "Au p'tit jour",
-            "compositeur": "Eddy Louiss",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "Eddy Louiss",
+            "id": "9d92a197-8ee7-4641-b35e-1974d3cba293",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Au p'tit jour"
           }
         },
         {
@@ -91373,27 +91373,27 @@
           "artistes": [],
           "credits": [],
           "oeuvre": {
-            "id": "986359d8-34ff-3fe2-84fe-155b5f167975",
-            "titre": "Summertime",
-            "compositeur": "George Gershwin",
-            "parente": null,
             "artistes": [
               "Eddy Louiss",
               "Michel Petrucciani"
             ],
+            "compositeur": "George Gershwin",
+            "id": "986359d8-34ff-3fe2-84fe-155b5f167975",
+            "parente": null,
             "roles": {
               "Eddy Louiss": "Hammond organ",
               "Michel Petrucciani": "grand piano"
-            }
+            },
+            "titre": "Summertime"
           }
         }
       ],
       "images": [
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/9e2e6f8f-790c-47ab-98b8-789e90d4958b/40474770007-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/9e2e6f8f-790c-47ab-98b8-789e90d4958b/40474770007-250.jpg",
           "original": "https://coverartarchive.org/release/9e2e6f8f-790c-47ab-98b8-789e90d4958b/40474770007.jpg",
-          "miniature": "https://coverartarchive.org/release/9e2e6f8f-790c-47ab-98b8-789e90d4958b/40474770007-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/9e2e6f8f-790c-47ab-98b8-789e90d4958b/40474770007-1200.jpg"
         },
         {
           "type": "primary",
@@ -123489,13 +123489,13 @@
             }
           ],
           "oeuvre": {
-            "id": "87e616a4-8013-42aa-b322-7ba3de9aa697",
-            "titre": "It’s Too Funky in Here",
-            "compositeur": "George Jackson, Robert Alton Miller, Brad Shapiro, Walter N. Shaw",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "George Jackson, Robert Alton Miller, Brad Shapiro, Walter N. Shaw",
+            "id": "87e616a4-8013-42aa-b322-7ba3de9aa697",
+            "parente": null,
+            "titre": "It’s Too Funky in Here"
           }
         },
         {
@@ -123511,13 +123511,13 @@
             }
           ],
           "oeuvre": {
-            "id": "c7a791e8-c17d-4480-9a1e-833032320f74",
-            "titre": "Doing It to Death",
-            "compositeur": "James Brown",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "James Brown",
+            "id": "c7a791e8-c17d-4480-9a1e-833032320f74",
+            "parente": null,
+            "titre": "Doing It to Death"
           }
         },
         {
@@ -123537,13 +123537,13 @@
             }
           ],
           "oeuvre": {
-            "id": "d4cddc96-8696-472f-ab8a-cdc824e8ffc1",
-            "titre": "Get Up Offa That Thing",
-            "compositeur": "Deanna Brown, Deidre Brown, Yamma Brown",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "Deanna Brown, Deidre Brown, Yamma Brown",
+            "id": "d4cddc96-8696-472f-ab8a-cdc824e8ffc1",
+            "parente": null,
+            "titre": "Get Up Offa That Thing"
           }
         },
         {
@@ -123563,13 +123563,13 @@
             }
           ],
           "oeuvre": {
-            "id": "521df203-3c99-49f1-9d52-28e4002cbab2",
-            "titre": "Bodyheat",
-            "compositeur": "Deanna Brown, Deidre Brown, Yamma Brown",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "Deanna Brown, Deidre Brown, Yamma Brown",
+            "id": "521df203-3c99-49f1-9d52-28e4002cbab2",
+            "parente": null,
+            "titre": "Bodyheat"
           }
         },
         {
@@ -123585,13 +123585,13 @@
             }
           ],
           "oeuvre": {
-            "id": "d3a9d245-407d-4a4a-8e63-f01067dafd09",
-            "titre": "I Got the Feelin’",
-            "compositeur": "James Brown",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "James Brown",
+            "id": "d3a9d245-407d-4a4a-8e63-f01067dafd09",
+            "parente": null,
+            "titre": "I Got the Feelin’"
           }
         },
         {
@@ -123607,13 +123607,13 @@
             }
           ],
           "oeuvre": {
-            "id": "2834e868-d7a1-46a9-bb81-280fd7702c9a",
-            "titre": "Try Me",
-            "compositeur": "James Brown",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "James Brown",
+            "id": "2834e868-d7a1-46a9-bb81-280fd7702c9a",
+            "parente": null,
+            "titre": "Try Me"
           }
         },
         {
@@ -123637,13 +123637,13 @@
             }
           ],
           "oeuvre": {
-            "id": "c1799562-29b9-3105-adaf-aac56cdd56ad",
-            "titre": "Get Up (I Feel Like Being Like a) Sex Machine",
-            "compositeur": "James Brown, Bobby Byrd, Ron Lenhoff",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "James Brown, Bobby Byrd, Ron Lenhoff",
+            "id": "c1799562-29b9-3105-adaf-aac56cdd56ad",
+            "parente": null,
+            "titre": "Get Up (I Feel Like Being Like a) Sex Machine"
           }
         },
         {
@@ -123659,13 +123659,13 @@
             }
           ],
           "oeuvre": {
-            "id": "d9ef15d1-37e8-3096-9260-95b08b3a08da",
-            "titre": "It’s a Man’s Man’s Man’s World",
-            "compositeur": "James Brown, Betty Jean Newsome",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "James Brown, Betty Jean Newsome",
+            "id": "d9ef15d1-37e8-3096-9260-95b08b3a08da",
+            "parente": null,
+            "titre": "It’s a Man’s Man’s Man’s World"
           }
         },
         {
@@ -123689,13 +123689,13 @@
             }
           ],
           "oeuvre": {
-            "id": "371db979-9930-4ec6-965e-bf3ba7466c79",
-            "titre": "Get on the Good Foot",
-            "compositeur": "James Brown, Joseph Mims, Fred Wesley",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "James Brown, Joseph Mims, Fred Wesley",
+            "id": "371db979-9930-4ec6-965e-bf3ba7466c79",
+            "parente": null,
+            "titre": "Get on the Good Foot"
           }
         },
         {
@@ -123711,13 +123711,13 @@
             }
           ],
           "oeuvre": {
-            "id": "7af5ea64-5d05-3f68-b1bb-2c1c46938550",
-            "titre": "Papa’s Got a Brand New Bag",
-            "compositeur": "James Brown",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "James Brown",
+            "id": "7af5ea64-5d05-3f68-b1bb-2c1c46938550",
+            "parente": null,
+            "titre": "Papa’s Got a Brand New Bag"
           }
         },
         {
@@ -123737,13 +123737,13 @@
             }
           ],
           "oeuvre": {
-            "id": "8d10e4df-522b-3a9b-9896-9a062e6ef247",
-            "titre": "Please, Please, Please",
-            "compositeur": "James Brown, Johnny Terry",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "James Brown, Johnny Terry",
+            "id": "8d10e4df-522b-3a9b-9896-9a062e6ef247",
+            "parente": null,
+            "titre": "Please, Please, Please"
           }
         },
         {
@@ -123763,22 +123763,22 @@
             }
           ],
           "oeuvre": {
-            "id": "efa11ad3-fef3-4740-bf84-d12061976d65",
-            "titre": "Jam",
-            "compositeur": "Deidre Brown, James Brown",
-            "parente": null,
             "artistes": [
               "James Brown"
-            ]
+            ],
+            "compositeur": "Deidre Brown, James Brown",
+            "id": "efa11ad3-fef3-4740-bf84-d12061976d65",
+            "parente": null,
+            "titre": "Jam"
           }
         }
       ],
       "images": [
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/f99c24f8-0486-4a8e-8579-a8472ed2d4f8/38048997205-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/f99c24f8-0486-4a8e-8579-a8472ed2d4f8/38048997205-250.jpg",
           "original": "https://coverartarchive.org/release/f99c24f8-0486-4a8e-8579-a8472ed2d4f8/38048997205.jpg",
-          "miniature": "https://coverartarchive.org/release/f99c24f8-0486-4a8e-8579-a8472ed2d4f8/38048997205-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/f99c24f8-0486-4a8e-8579-a8472ed2d4f8/38048997205-1200.jpg"
         },
         {
           "type": "primary",
@@ -164445,18 +164445,18 @@
             }
           ],
           "oeuvre": {
-            "id": "c0ce9cef-361c-3209-95ce-a66a15766175",
-            "titre": "Écoutez la chanson bien douce",
-            "compositeur": "Léo Ferré",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Léo Ferré",
+            "id": "c0ce9cef-361c-3209-95ce-a66a15766175",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Écoutez la chanson bien douce"
           }
         },
         {
@@ -164476,18 +164476,18 @@
             }
           ],
           "oeuvre": {
-            "id": "cee5df1e-9730-348d-ad36-f0e1a00c900b",
-            "titre": "Il patinait merveilleusement",
-            "compositeur": "Léo Ferré",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Léo Ferré",
+            "id": "cee5df1e-9730-348d-ad36-f0e1a00c900b",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Il patinait merveilleusement"
           }
         },
         {
@@ -164507,18 +164507,18 @@
             }
           ],
           "oeuvre": {
-            "id": "3a70c96c-29bb-33d8-bcd1-0c1e82e29e7e",
-            "titre": "Ô triste, triste était mon âme",
-            "compositeur": "Léo Ferré",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Léo Ferré",
+            "id": "3a70c96c-29bb-33d8-bcd1-0c1e82e29e7e",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Ô triste, triste était mon âme"
           }
         },
         {
@@ -164546,18 +164546,18 @@
             }
           ],
           "oeuvre": {
-            "id": "ddb8967b-29a5-3e88-a03a-d4b6e17e2d0b",
-            "titre": "Triton",
-            "compositeur": "Fred Chichin, Ismaila \"Iso\" Diop, Catherine Ringer",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Fred Chichin, Ismaila \"Iso\" Diop, Catherine Ringer",
+            "id": "ddb8967b-29a5-3e88-a03a-d4b6e17e2d0b",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Triton"
           }
         },
         {
@@ -164577,18 +164577,18 @@
             }
           ],
           "oeuvre": {
-            "id": "5e9564f1-e79e-387e-8077-74034c301855",
-            "titre": "La Fille venue du froid",
-            "compositeur": "Fred Chichin, Catherine Ringer",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Fred Chichin, Catherine Ringer",
+            "id": "5e9564f1-e79e-387e-8077-74034c301855",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "La Fille venue du froid"
           }
         },
         {
@@ -164612,18 +164612,18 @@
             }
           ],
           "oeuvre": {
-            "id": "45b28897-6ea6-490d-a40c-17ee843d403a",
-            "titre": "Les guerriers",
-            "compositeur": "Marc Anciaux, Fred Chichin, Catherine Ringer",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Marc Anciaux, Fred Chichin, Catherine Ringer",
+            "id": "45b28897-6ea6-490d-a40c-17ee843d403a",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Les guerriers"
           }
         },
         {
@@ -164639,18 +164639,18 @@
             }
           ],
           "oeuvre": {
-            "id": "8ba48a20-d865-3858-b7fd-ee6c8f4d066d",
-            "titre": "A Man Needs a Maid",
-            "compositeur": "Neil Young",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Neil Young",
+            "id": "8ba48a20-d865-3858-b7fd-ee6c8f4d066d",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "A Man Needs a Maid"
           }
         },
         {
@@ -164666,18 +164666,18 @@
             }
           ],
           "oeuvre": {
-            "id": "dab2b054-185a-3a54-a868-594f9efba55e",
-            "titre": "Mad Rush",
-            "compositeur": "Philip Glass",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Philip Glass",
+            "id": "dab2b054-185a-3a54-a868-594f9efba55e",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Mad Rush"
           }
         },
         {
@@ -164693,18 +164693,18 @@
             }
           ],
           "oeuvre": {
-            "id": "05087fe1-233a-4276-8094-1960e7974f51",
-            "titre": "Le Velours des vierges",
-            "compositeur": "Serge Gainsbourg",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Serge Gainsbourg",
+            "id": "05087fe1-233a-4276-8094-1960e7974f51",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Le Velours des vierges"
           }
         },
         {
@@ -164724,18 +164724,18 @@
             }
           ],
           "oeuvre": {
-            "id": "c94a4517-572d-4f96-ab09-e3cff173409c",
-            "titre": "Où sont-ils donc",
-            "compositeur": "Charles Trenet, Albert Lasry",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Charles Trenet, Albert Lasry",
+            "id": "c94a4517-572d-4f96-ab09-e3cff173409c",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Où sont-ils donc"
           }
         },
         {
@@ -164763,18 +164763,18 @@
             }
           ],
           "oeuvre": {
-            "id": "968bc74d-c510-38c2-b8cc-da77ab52d629",
-            "titre": "Trop bonne",
-            "compositeur": "Fred Chichin, Ismaila \"Iso\" Diop, Catherine Ringer",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Fred Chichin, Ismaila \"Iso\" Diop, Catherine Ringer",
+            "id": "968bc74d-c510-38c2-b8cc-da77ab52d629",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Trop bonne"
           }
         },
         {
@@ -164794,18 +164794,18 @@
             }
           ],
           "oeuvre": {
-            "id": "c4d3b085-1693-41f0-8272-7e9b5f970130",
-            "titre": "La Sorcière et l'Inquisiteur",
-            "compositeur": "Fred Chichin, Catherine Ringer",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Fred Chichin, Catherine Ringer",
+            "id": "c4d3b085-1693-41f0-8272-7e9b5f970130",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "La Sorcière et l'Inquisiteur"
           }
         },
         {
@@ -164825,69 +164825,69 @@
             }
           ],
           "oeuvre": {
-            "id": "64aacea4-577c-309c-9837-a7bb1d0ae35d",
-            "titre": "Andy",
-            "compositeur": "Fred Chichin, Catherine Ringer",
-            "parente": null,
             "artistes": [
               "Les Rita Mitsouko",
               "Orchestre Lamoureux",
               "Bruno Fontaine"
             ],
+            "compositeur": "Fred Chichin, Catherine Ringer",
+            "id": "64aacea4-577c-309c-9837-a7bb1d0ae35d",
+            "parente": null,
             "roles": {
               "Bruno Fontaine": "conductor"
-            }
+            },
+            "titre": "Andy"
           }
         }
       ],
       "images": [
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/12697324305-500.jpg",
+          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/12697324305-250.jpg",
           "original": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/12697324305.jpg",
-          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/12697324305-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/12697324305-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149495971-500.jpg",
+          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149495971-250.jpg",
           "original": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149495971.jpg",
-          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149495971-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149495971-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149497581-500.jpg",
+          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149497581-250.jpg",
           "original": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149497581.jpg",
-          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149497581-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149497581-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149499228-500.jpg",
+          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149499228-250.jpg",
           "original": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149499228.jpg",
-          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149499228-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149499228-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149500813-500.jpg",
+          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149500813-250.jpg",
           "original": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149500813.jpg",
-          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149500813-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149500813-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149502449-500.jpg",
+          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149502449-250.jpg",
           "original": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149502449.jpg",
-          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149502449-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149502449-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149504021-500.jpg",
+          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149504021-250.jpg",
           "original": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149504021.jpg",
-          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149504021-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149504021-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149505524-500.jpg",
+          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149505524-250.jpg",
           "original": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149505524.jpg",
-          "miniature": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149505524-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/72362ff4-b635-462c-b21e-3da4e9f7ad76/1149505524-500.jpg"
         },
         {
           "type": "primary",
@@ -209048,22 +209048,22 @@
           "type": "plage",
           "artistes": [],
           "credits": [],
+          "duree_source": "musicbrainz",
           "oeuvre": {
-            "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-            "titre": "Also sprach Zarathustra, op. 30",
-            "compositeur": "Richard Strauss",
-            "parente": null,
             "artistes": [
               "Paul Crépel",
               "Orchestre philharmonique de Strasbourg",
               "Alain Lombard"
             ],
+            "compositeur": "Richard Strauss",
+            "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+            "parente": null,
             "roles": {
               "Alain Lombard": "conductor",
               "Paul Crépel": "violin"
-            }
-          },
-          "duree_source": "musicbrainz"
+            },
+            "titre": "Also sprach Zarathustra, op. 30"
+          }
         },
         {
           "position": "2",
@@ -209072,20 +209072,20 @@
           "type": "plage",
           "artistes": [],
           "credits": [],
+          "duree_source": "musicbrainz",
           "oeuvre": {
-            "id": "a4c3bb91-929f-3daf-9b6b-171678700358",
-            "titre": "Till Eulenspiegels lustige Streiche",
-            "compositeur": "Richard Strauss",
-            "parente": null,
             "artistes": [
               "Berliner Philharmoniker",
               "Joseph Keilberth"
             ],
+            "compositeur": "Richard Strauss",
+            "id": "a4c3bb91-929f-3daf-9b6b-171678700358",
+            "parente": null,
             "roles": {
               "Joseph Keilberth": "conductor"
-            }
-          },
-          "duree_source": "musicbrainz"
+            },
+            "titre": "Till Eulenspiegels lustige Streiche"
+          }
         },
         {
           "position": "",
@@ -209102,25 +209102,25 @@
               "type": "plage",
               "artistes": [],
               "credits": [],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "35145aa9-c8f1-33fd-adda-12b23dc1d9d9",
-                "titre": "Vier letzte Lieder, AV 150: I. „Frühling“",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "07393065-1123-4d65-b5e7-26e78f0ad0a6",
-                  "titre": "Vier letzte Lieder, AV 150"
-                },
                 "artistes": [
                   "Montserrat Caballé",
                   "Orchestre philharmonique de Strasbourg",
                   "Alain Lombard"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "35145aa9-c8f1-33fd-adda-12b23dc1d9d9",
+                "parente": {
+                  "id": "07393065-1123-4d65-b5e7-26e78f0ad0a6",
+                  "titre": "Vier letzte Lieder, AV 150"
+                },
                 "roles": {
                   "Alain Lombard": "conductor",
                   "Montserrat Caballé": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Vier letzte Lieder, AV 150: I. „Frühling“"
+              }
             },
             {
               "position": "4",
@@ -209129,25 +209129,25 @@
               "type": "plage",
               "artistes": [],
               "credits": [],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "cd82ce57-ce32-330c-a6fe-595aacf32dfb",
-                "titre": "Vier letzte Lieder, AV 150: II. „September“",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "07393065-1123-4d65-b5e7-26e78f0ad0a6",
-                  "titre": "Vier letzte Lieder, AV 150"
-                },
                 "artistes": [
                   "Montserrat Caballé",
                   "Orchestre philharmonique de Strasbourg",
                   "Alain Lombard"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "cd82ce57-ce32-330c-a6fe-595aacf32dfb",
+                "parente": {
+                  "id": "07393065-1123-4d65-b5e7-26e78f0ad0a6",
+                  "titre": "Vier letzte Lieder, AV 150"
+                },
                 "roles": {
                   "Alain Lombard": "conductor",
                   "Montserrat Caballé": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Vier letzte Lieder, AV 150: II. „September“"
+              }
             },
             {
               "position": "5",
@@ -209156,25 +209156,25 @@
               "type": "plage",
               "artistes": [],
               "credits": [],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "f5e3e01f-8621-3a48-84e5-1439efb3547d",
-                "titre": "Vier letzte Lieder, AV 150: III. „Beim Schlafengehen“",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "07393065-1123-4d65-b5e7-26e78f0ad0a6",
-                  "titre": "Vier letzte Lieder, AV 150"
-                },
                 "artistes": [
                   "Montserrat Caballé",
                   "Orchestre philharmonique de Strasbourg",
                   "Alain Lombard"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "f5e3e01f-8621-3a48-84e5-1439efb3547d",
+                "parente": {
+                  "id": "07393065-1123-4d65-b5e7-26e78f0ad0a6",
+                  "titre": "Vier letzte Lieder, AV 150"
+                },
                 "roles": {
                   "Alain Lombard": "conductor",
                   "Montserrat Caballé": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Vier letzte Lieder, AV 150: III. „Beim Schlafengehen“"
+              }
             },
             {
               "position": "6",
@@ -209183,25 +209183,25 @@
               "type": "plage",
               "artistes": [],
               "credits": [],
+              "duree_source": "musicbrainz",
               "oeuvre": {
-                "id": "d4faff8e-eb5f-38eb-9a9e-f0d834e657c9",
-                "titre": "Vier letzte Lieder, AV 150: IV. „Im Abendrot“",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "07393065-1123-4d65-b5e7-26e78f0ad0a6",
-                  "titre": "Vier letzte Lieder, AV 150"
-                },
                 "artistes": [
                   "Montserrat Caballé",
                   "Orchestre philharmonique de Strasbourg",
                   "Alain Lombard"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "d4faff8e-eb5f-38eb-9a9e-f0d834e657c9",
+                "parente": {
+                  "id": "07393065-1123-4d65-b5e7-26e78f0ad0a6",
+                  "titre": "Vier letzte Lieder, AV 150"
+                },
                 "roles": {
                   "Alain Lombard": "conductor",
                   "Montserrat Caballé": "soprano vocals"
-                }
-              },
-              "duree_source": "musicbrainz"
+                },
+                "titre": "Vier letzte Lieder, AV 150: IV. „Im Abendrot“"
+              }
             }
           ]
         }
@@ -209296,10 +209296,11 @@
       "champs": {
         "Source": "O’cd. 1990’s",
         "Localisation": "Paris",
-        "Description": "Mercury Living Stereo",
+        "Description": "Mercury Living Stereo\nLe livret contient une page d’explication dessus\n1er Reiner Chicago de la collection Living Stereo ",
         "Live / Studio": "Studio",
         "Statut d'écoute": "À écouter",
-        "Année d’enregistrement (manuelle)": "1954"
+        "Année d’enregistrement (manuelle)": "1954",
+        "Photo principale": "Discogs"
       },
       "categorie_perso": "Classique Orchestre",
       "url_discogs": "https://www.discogs.com/release/8096317",
@@ -209352,20 +209353,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "e6fa06fd-e6e7-363b-adf8-5d45fe99eaa8",
-                "titre": "Also sprach Zarathustra, op. 30: I. Einleitung",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "e6fa06fd-e6e7-363b-adf8-5d45fe99eaa8",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: I. Einleitung"
               }
             },
             {
@@ -209376,20 +209377,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "7e7c0142-5fa7-3c27-8daf-474a4e1f25c4",
-                "titre": "Also sprach Zarathustra, op. 30: II. Von den Hinterweltlern",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "7e7c0142-5fa7-3c27-8daf-474a4e1f25c4",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: II. Von den Hinterweltlern"
               }
             },
             {
@@ -209400,20 +209401,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "d0c5869d-effb-3420-91b9-19e06b4ff0e5",
-                "titre": "Also sprach Zarathustra, op. 30: III. Von der großen Sehnsucht",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "d0c5869d-effb-3420-91b9-19e06b4ff0e5",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: III. Von der großen Sehnsucht"
               }
             },
             {
@@ -209424,20 +209425,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "a73e1d23-c5e7-319b-9655-304ff0ecdd4f",
-                "titre": "Also sprach Zarathustra, op. 30: IV. Von den Freuden und Leidenschaften",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "a73e1d23-c5e7-319b-9655-304ff0ecdd4f",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: IV. Von den Freuden und Leidenschaften"
               }
             },
             {
@@ -209448,20 +209449,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "6c19c48a-4388-37e7-b1b8-188bf938b51a",
-                "titre": "Also sprach Zarathustra, op. 30: V. Das Grablied",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "6c19c48a-4388-37e7-b1b8-188bf938b51a",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: V. Das Grablied"
               }
             },
             {
@@ -209472,20 +209473,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "f5e0f78e-979a-3cd5-ba08-9b9551820497",
-                "titre": "Also sprach Zarathustra, op. 30: VI. Von der Wissenschaft",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "f5e0f78e-979a-3cd5-ba08-9b9551820497",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: VI. Von der Wissenschaft"
               }
             },
             {
@@ -209496,20 +209497,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "385b5618-3882-3057-87ff-4ccdfe727c6b",
-                "titre": "Also sprach Zarathustra, op. 30: VII. Der Genesende",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "385b5618-3882-3057-87ff-4ccdfe727c6b",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: VII. Der Genesende"
               }
             },
             {
@@ -209520,20 +209521,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "92926182-6499-390e-a97c-aa2b713958c0",
-                "titre": "Also sprach Zarathustra, op. 30: VIII. Das Tanzlied",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "92926182-6499-390e-a97c-aa2b713958c0",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: VIII. Das Tanzlied"
               }
             },
             {
@@ -209544,20 +209545,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "302ca58e-cc69-3532-ba2a-853aec4a9e46",
-                "titre": "Also sprach Zarathustra, op. 30: IX. Nachtwandlerlied",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
-                  "titre": "Also sprach Zarathustra, op. 30"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "302ca58e-cc69-3532-ba2a-853aec4a9e46",
+                "parente": {
+                  "id": "fec1c6a5-ece2-393b-89ed-00cdf5cf2afa",
+                  "titre": "Also sprach Zarathustra, op. 30"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Also sprach Zarathustra, op. 30: IX. Nachtwandlerlied"
               }
             }
           ]
@@ -209578,20 +209579,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "dd29b0db-5e98-3ee9-961c-66117b32c488",
-                "titre": "Ein Heldenleben, op. 40: I. Der Held",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
-                  "titre": "Ein Heldenleben"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "dd29b0db-5e98-3ee9-961c-66117b32c488",
+                "parente": {
+                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
+                  "titre": "Ein Heldenleben"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Ein Heldenleben, op. 40: I. Der Held"
               }
             },
             {
@@ -209602,20 +209603,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "5323cc1b-6b77-341f-8db4-b2b274fb3c26",
-                "titre": "Ein Heldenleben, op. 40: II. Des Helden Widersacher",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
-                  "titre": "Ein Heldenleben"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "5323cc1b-6b77-341f-8db4-b2b274fb3c26",
+                "parente": {
+                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
+                  "titre": "Ein Heldenleben"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Ein Heldenleben, op. 40: II. Des Helden Widersacher"
               }
             },
             {
@@ -209626,22 +209627,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "5ebb72f9-8996-32b6-bd80-eb8ac1547bf1",
-                "titre": "Ein Heldenleben, op. 40: III. Des Helden Gefährtin",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
-                  "titre": "Ein Heldenleben"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner",
                   "John Weicher"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "5ebb72f9-8996-32b6-bd80-eb8ac1547bf1",
+                "parente": {
+                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
+                  "titre": "Ein Heldenleben"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor",
                   "John Weicher": "violin"
-                }
+                },
+                "titre": "Ein Heldenleben, op. 40: III. Des Helden Gefährtin"
               }
             },
             {
@@ -209652,20 +209653,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "4e149f6b-aa7c-3b1f-b086-5e6d8d2a6a9b",
-                "titre": "Ein Heldenleben, op. 40: IV. Des Helden Walstatt",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
-                  "titre": "Ein Heldenleben"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "4e149f6b-aa7c-3b1f-b086-5e6d8d2a6a9b",
+                "parente": {
+                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
+                  "titre": "Ein Heldenleben"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Ein Heldenleben, op. 40: IV. Des Helden Walstatt"
               }
             },
             {
@@ -209676,20 +209677,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "174ca133-b974-3a00-aa44-8721bed2458e",
-                "titre": "Ein Heldenleben, op. 40: V. Des Helden Friedenswerke",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
-                  "titre": "Ein Heldenleben"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "174ca133-b974-3a00-aa44-8721bed2458e",
+                "parente": {
+                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
+                  "titre": "Ein Heldenleben"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Ein Heldenleben, op. 40: V. Des Helden Friedenswerke"
               }
             },
             {
@@ -209700,20 +209701,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "641f68f3-f1f5-36fb-88f1-613c5ae8fc95",
-                "titre": "Ein Heldenleben, op. 40: VI. Des Helden Weltflucht und Vollendung",
-                "compositeur": "Richard Strauss",
-                "parente": {
-                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
-                  "titre": "Ein Heldenleben"
-                },
                 "artistes": [
                   "Chicago Symphony Orchestra",
                   "Fritz Reiner"
                 ],
+                "compositeur": "Richard Strauss",
+                "id": "641f68f3-f1f5-36fb-88f1-613c5ae8fc95",
+                "parente": {
+                  "id": "e0ee1792-12e0-33de-9c44-7b31eacfa867",
+                  "titre": "Ein Heldenleben"
+                },
                 "roles": {
                   "Fritz Reiner": "conductor"
-                }
+                },
+                "titre": "Ein Heldenleben, op. 40: VI. Des Helden Weltflucht und Vollendung"
               }
             }
           ]
@@ -209721,70 +209722,70 @@
       ],
       "images": [
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223122479-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223122479-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223122479.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223122479-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223122479-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223123227-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223123227-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223123227.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223123227-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223123227-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223124137-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223124137-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223124137.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223124137-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223124137-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223125620-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223125620-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223125620.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223125620-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223125620-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223126511-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223126511-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223126511.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223126511-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223126511-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127153-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127153-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127153.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127153-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127153-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127732-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127732-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127732.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127732-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223127732-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223128827-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223128827-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223128827.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223128827-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223128827-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223129584-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223129584-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223129584.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223129584-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223129584-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130211-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130211-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130211.jpg",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130211-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130211-1200.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130516-1200.jpg",
+          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130516-250.jpg",
           "original": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130516.pdf",
-          "miniature": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130516-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/62e816c6-7954-41f6-96b7-03ca4ddeee7b/39223130516-1200.jpg"
         },
         {
           "type": "primary",
@@ -209959,13 +209960,6 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "241b4f94-0a82-48ab-bb20-07b6ab0bdd24",
-                "titre": "Das Rheingold: Scene IV",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "45798fca-2c83-41a6-8ca8-031e208c63cc",
-                  "titre": "Das Rheingold, WWV 86A"
-                },
                 "artistes": [
                   "Richard Wagner",
                   "Herbert von Karajan",
@@ -209978,16 +209972,23 @@
                   "Gerhard Stolze",
                   "Josephine Veasey"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "241b4f94-0a82-48ab-bb20-07b6ab0bdd24",
+                "parente": {
+                  "id": "45798fca-2c83-41a6-8ca8-031e208c63cc",
+                  "titre": "Das Rheingold, WWV 86A"
+                },
                 "roles": {
-                  "Herbert von Karajan": "conductor",
-                  "Helen Donath": "soprano vocals",
+                  "Anna Reynolds": "mezzo-soprano vocals",
                   "Dietrich Fischer‐Dieskau": "baritone vocals",
                   "Donald Grobe": "tenor vocals",
                   "Edda Moser": "soprano vocals",
-                  "Anna Reynolds": "mezzo-soprano vocals",
                   "Gerhard Stolze": "tenor vocals",
+                  "Helen Donath": "soprano vocals",
+                  "Herbert von Karajan": "conductor",
                   "Josephine Veasey": "mezzo-soprano vocals"
-                }
+                },
+                "titre": "Das Rheingold: Scene IV"
               }
             },
             {
@@ -209998,13 +209999,6 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "241b4f94-0a82-48ab-bb20-07b6ab0bdd24",
-                "titre": "Das Rheingold: Scene IV",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "45798fca-2c83-41a6-8ca8-031e208c63cc",
-                  "titre": "Das Rheingold, WWV 86A"
-                },
                 "artistes": [
                   "Richard Wagner",
                   "Herbert von Karajan",
@@ -210017,16 +210011,23 @@
                   "Gerhard Stolze",
                   "Josephine Veasey"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "241b4f94-0a82-48ab-bb20-07b6ab0bdd24",
+                "parente": {
+                  "id": "45798fca-2c83-41a6-8ca8-031e208c63cc",
+                  "titre": "Das Rheingold, WWV 86A"
+                },
                 "roles": {
-                  "Herbert von Karajan": "conductor",
-                  "Helen Donath": "soprano vocals",
+                  "Anna Reynolds": "mezzo-soprano vocals",
                   "Dietrich Fischer‐Dieskau": "baritone vocals",
                   "Donald Grobe": "tenor vocals",
                   "Edda Moser": "soprano vocals",
-                  "Anna Reynolds": "mezzo-soprano vocals",
                   "Gerhard Stolze": "tenor vocals",
+                  "Helen Donath": "soprano vocals",
+                  "Herbert von Karajan": "conductor",
                   "Josephine Veasey": "mezzo-soprano vocals"
-                }
+                },
+                "titre": "Das Rheingold: Scene IV"
               }
             },
             {
@@ -210037,13 +210038,6 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "241b4f94-0a82-48ab-bb20-07b6ab0bdd24",
-                "titre": "Das Rheingold: Scene IV",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "45798fca-2c83-41a6-8ca8-031e208c63cc",
-                  "titre": "Das Rheingold, WWV 86A"
-                },
                 "artistes": [
                   "Richard Wagner",
                   "Herbert von Karajan",
@@ -210056,16 +210050,23 @@
                   "Gerhard Stolze",
                   "Josephine Veasey"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "241b4f94-0a82-48ab-bb20-07b6ab0bdd24",
+                "parente": {
+                  "id": "45798fca-2c83-41a6-8ca8-031e208c63cc",
+                  "titre": "Das Rheingold, WWV 86A"
+                },
                 "roles": {
-                  "Herbert von Karajan": "conductor",
-                  "Helen Donath": "soprano vocals",
+                  "Anna Reynolds": "mezzo-soprano vocals",
                   "Dietrich Fischer‐Dieskau": "baritone vocals",
                   "Donald Grobe": "tenor vocals",
                   "Edda Moser": "soprano vocals",
-                  "Anna Reynolds": "mezzo-soprano vocals",
                   "Gerhard Stolze": "tenor vocals",
+                  "Helen Donath": "soprano vocals",
+                  "Herbert von Karajan": "conductor",
                   "Josephine Veasey": "mezzo-soprano vocals"
-                }
+                },
+                "titre": "Das Rheingold: Scene IV"
               }
             },
             {
@@ -210076,13 +210077,6 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "241b4f94-0a82-48ab-bb20-07b6ab0bdd24",
-                "titre": "Das Rheingold: Scene IV",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "45798fca-2c83-41a6-8ca8-031e208c63cc",
-                  "titre": "Das Rheingold, WWV 86A"
-                },
                 "artistes": [
                   "Richard Wagner",
                   "Herbert von Karajan",
@@ -210095,16 +210089,23 @@
                   "Gerhard Stolze",
                   "Josephine Veasey"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "241b4f94-0a82-48ab-bb20-07b6ab0bdd24",
+                "parente": {
+                  "id": "45798fca-2c83-41a6-8ca8-031e208c63cc",
+                  "titre": "Das Rheingold, WWV 86A"
+                },
                 "roles": {
-                  "Herbert von Karajan": "conductor",
-                  "Helen Donath": "soprano vocals",
+                  "Anna Reynolds": "mezzo-soprano vocals",
                   "Dietrich Fischer‐Dieskau": "baritone vocals",
                   "Donald Grobe": "tenor vocals",
                   "Edda Moser": "soprano vocals",
-                  "Anna Reynolds": "mezzo-soprano vocals",
                   "Gerhard Stolze": "tenor vocals",
+                  "Helen Donath": "soprano vocals",
+                  "Herbert von Karajan": "conductor",
                   "Josephine Veasey": "mezzo-soprano vocals"
-                }
+                },
+                "titre": "Das Rheingold: Scene IV"
               }
             }
           ]
@@ -210125,22 +210126,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "3102c132-5011-4bec-b144-3409b2015234",
-                "titre": "Die Walküre, WWV 86B: Akt I, Scene III. “Ein Schwert verhieß mir der Vater“",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "c3869a71-dcd4-4ed2-94d7-3e92420b2ec7",
-                  "titre": "Die Walküre, WWV 86B: Akt I"
-                },
                 "artistes": [
                   "Jon Vickers",
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "3102c132-5011-4bec-b144-3409b2015234",
+                "parente": {
+                  "id": "c3869a71-dcd4-4ed2-94d7-3e92420b2ec7",
+                  "titre": "Die Walküre, WWV 86B: Akt I"
+                },
                 "roles": {
                   "Herbert von Karajan": "conductor",
                   "Jon Vickers": "tenor vocals"
-                }
+                },
+                "titre": "Die Walküre, WWV 86B: Akt I, Scene III. “Ein Schwert verhieß mir der Vater“"
               }
             },
             {
@@ -210151,20 +210152,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "6996fc77-b5dc-48ca-a7d5-3434f541f87a",
-                "titre": "Excerpt from Die Walküre, WWV 86B: Akt III, Scene I, Walkürenritt",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "5fdf0bb8-dfd0-40e9-af4f-93277315bca9",
-                  "titre": "Die Walküre, WWV 86B: Akt III, Scene I \"Hojotoho! Hojotoho!\""
-                },
                 "artistes": [
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "6996fc77-b5dc-48ca-a7d5-3434f541f87a",
+                "parente": {
+                  "id": "5fdf0bb8-dfd0-40e9-af4f-93277315bca9",
+                  "titre": "Die Walküre, WWV 86B: Akt III, Scene I \"Hojotoho! Hojotoho!\""
+                },
                 "roles": {
                   "Herbert von Karajan": "conductor"
-                }
+                },
+                "titre": "Excerpt from Die Walküre, WWV 86B: Akt III, Scene I, Walkürenritt"
               }
             },
             {
@@ -210175,22 +210176,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "e44a57c7-d646-40b2-93a8-8db882b739db",
-                "titre": "Der fliegende Holländer, WWV 63: Akt III",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "561be908-2cf7-445e-a4aa-5eaed98cfc86",
-                  "titre": "Der fliegende Holländer, WWV 63"
-                },
                 "artistes": [
                   "Thomas Stewart",
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "e44a57c7-d646-40b2-93a8-8db882b739db",
+                "parente": {
+                  "id": "561be908-2cf7-445e-a4aa-5eaed98cfc86",
+                  "titre": "Der fliegende Holländer, WWV 63"
+                },
                 "roles": {
                   "Herbert von Karajan": "conductor",
                   "Thomas Stewart": "baritone vocals"
-                }
+                },
+                "titre": "Der fliegende Holländer, WWV 63: Akt III"
               }
             },
             {
@@ -210201,22 +210202,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "e44a57c7-d646-40b2-93a8-8db882b739db",
-                "titre": "Der fliegende Holländer, WWV 63: Akt III",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "561be908-2cf7-445e-a4aa-5eaed98cfc86",
-                  "titre": "Der fliegende Holländer, WWV 63"
-                },
                 "artistes": [
                   "Thomas Stewart",
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "e44a57c7-d646-40b2-93a8-8db882b739db",
+                "parente": {
+                  "id": "561be908-2cf7-445e-a4aa-5eaed98cfc86",
+                  "titre": "Der fliegende Holländer, WWV 63"
+                },
                 "roles": {
                   "Herbert von Karajan": "conductor",
                   "Thomas Stewart": "baritone vocals"
-                }
+                },
+                "titre": "Der fliegende Holländer, WWV 63: Akt III"
               }
             },
             {
@@ -210227,22 +210228,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "e44a57c7-d646-40b2-93a8-8db882b739db",
-                "titre": "Der fliegende Holländer, WWV 63: Akt III",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "561be908-2cf7-445e-a4aa-5eaed98cfc86",
-                  "titre": "Der fliegende Holländer, WWV 63"
-                },
                 "artistes": [
                   "Thomas Stewart",
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "e44a57c7-d646-40b2-93a8-8db882b739db",
+                "parente": {
+                  "id": "561be908-2cf7-445e-a4aa-5eaed98cfc86",
+                  "titre": "Der fliegende Holländer, WWV 63"
+                },
                 "roles": {
                   "Herbert von Karajan": "conductor",
                   "Thomas Stewart": "baritone vocals"
-                }
+                },
+                "titre": "Der fliegende Holländer, WWV 63: Akt III"
               }
             },
             {
@@ -210253,22 +210254,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "e44a57c7-d646-40b2-93a8-8db882b739db",
-                "titre": "Der fliegende Holländer, WWV 63: Akt III",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "561be908-2cf7-445e-a4aa-5eaed98cfc86",
-                  "titre": "Der fliegende Holländer, WWV 63"
-                },
                 "artistes": [
                   "Thomas Stewart",
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "e44a57c7-d646-40b2-93a8-8db882b739db",
+                "parente": {
+                  "id": "561be908-2cf7-445e-a4aa-5eaed98cfc86",
+                  "titre": "Der fliegende Holländer, WWV 63"
+                },
                 "roles": {
                   "Herbert von Karajan": "conductor",
                   "Thomas Stewart": "baritone vocals"
-                }
+                },
+                "titre": "Der fliegende Holländer, WWV 63: Akt III"
               }
             },
             {
@@ -210279,22 +210280,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "08057572-05ec-3c9b-91b0-bc8b9683e0df",
-                "titre": "Excerpt from Die Walküre, WWV 86B: Akt III, Scene III, Wotans Abschied und Feuerzauber",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "11009b65-f1bd-4ce2-a0b0-575e18b2d439",
-                  "titre": "Die Walküre, WWV 86B: Akt III, Scene III \"War es so schmählich, was ich verbrach\""
-                },
                 "artistes": [
                   "Thomas Stewart",
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "08057572-05ec-3c9b-91b0-bc8b9683e0df",
+                "parente": {
+                  "id": "11009b65-f1bd-4ce2-a0b0-575e18b2d439",
+                  "titre": "Die Walküre, WWV 86B: Akt III, Scene III \"War es so schmählich, was ich verbrach\""
+                },
                 "roles": {
                   "Herbert von Karajan": "conductor",
                   "Thomas Stewart": "bass-baritone vocals"
-                }
+                },
+                "titre": "Excerpt from Die Walküre, WWV 86B: Akt III, Scene III, Wotans Abschied und Feuerzauber"
               }
             }
           ]
@@ -210357,22 +210358,22 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "2304132a-d28d-408c-b443-94a3822fef72",
-                "titre": "Götterdämmerung, WWV 86D: Akt III, Scene II \"Hoiho?\" - \"Hoiho!\"",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "1269c42c-dd30-42d9-99b7-d20ae4128774",
-                  "titre": "Götterdämmerung, WWV 86D: Akt III"
-                },
                 "artistes": [
                   "Helge Brilioth",
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "2304132a-d28d-408c-b443-94a3822fef72",
+                "parente": {
+                  "id": "1269c42c-dd30-42d9-99b7-d20ae4128774",
+                  "titre": "Götterdämmerung, WWV 86D: Akt III"
+                },
                 "roles": {
-                  "Herbert von Karajan": "conductor",
-                  "Helge Brilioth": "tenor vocals"
-                }
+                  "Helge Brilioth": "tenor vocals",
+                  "Herbert von Karajan": "conductor"
+                },
+                "titre": "Götterdämmerung, WWV 86D: Akt III, Scene II \"Hoiho?\" - \"Hoiho!\""
               }
             },
             {
@@ -210383,20 +210384,20 @@
               "artistes": [],
               "credits": [],
               "oeuvre": {
-                "id": "b4d7c421-e730-3a74-8e28-be58b35e51ba",
-                "titre": "Excerpt from Götterdämmerung, WWV 86D: Akt III, Scene II. Trauermusik beim Tode Siegfrieds",
-                "compositeur": "Richard Wagner",
-                "parente": {
-                  "id": "2304132a-d28d-408c-b443-94a3822fef72",
-                  "titre": "Götterdämmerung, WWV 86D: Akt III, Scene II \"Hoiho?\" - \"Hoiho!\""
-                },
                 "artistes": [
                   "Berliner Philharmoniker",
                   "Herbert von Karajan"
                 ],
+                "compositeur": "Richard Wagner",
+                "id": "b4d7c421-e730-3a74-8e28-be58b35e51ba",
+                "parente": {
+                  "id": "2304132a-d28d-408c-b443-94a3822fef72",
+                  "titre": "Götterdämmerung, WWV 86D: Akt III, Scene II \"Hoiho?\" - \"Hoiho!\""
+                },
                 "roles": {
                   "Herbert von Karajan": "conductor"
-                }
+                },
+                "titre": "Excerpt from Götterdämmerung, WWV 86D: Akt III, Scene II. Trauermusik beim Tode Siegfrieds"
               }
             }
           ]
@@ -210404,28 +210405,28 @@
       ],
       "images": [
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672357175-500.jpg",
+          "miniature": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672357175-250.jpg",
           "original": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672357175.jpg",
-          "miniature": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672357175-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672357175-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672358687-500.jpg",
+          "miniature": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672358687-250.jpg",
           "original": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672358687.jpg",
-          "miniature": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672358687-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672358687-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672359719-500.jpg",
+          "miniature": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672359719-250.jpg",
           "original": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672359719.jpg",
-          "miniature": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672359719-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672359719-500.jpg"
         },
         {
-          "type": "musicbrainz",
-          "url": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672360459-500.jpg",
+          "miniature": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672360459-250.jpg",
           "original": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672360459.jpg",
-          "miniature": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672360459-250.jpg"
+          "type": "musicbrainz",
+          "url": "https://coverartarchive.org/release/12317ae2-516e-45b8-9ba7-ba272488608a/15672360459-500.jpg"
         },
         {
           "type": "primary",
