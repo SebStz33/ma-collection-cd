@@ -14,6 +14,7 @@
 
 const FICHIER_COLLECTION = "data/collection.json";
 const CHAMP_LOCALISATION = "Localisation";   // noms des champs personnalisés Discogs
+const SANS_LOCALISATION = "Localisation non remplie";   // option du filtre : un exemplaire au moins sans Localisation
 const CHAMP_NOTES_PERSO = "Notes personnelles";
 const CHAMP_LIENS = "Liens externes";
 const CHAMP_DESCRIPTION = "Description";
@@ -110,7 +111,7 @@ let infosCollection = {}; // en-tête du fichier : utilisateur, date de généra
 let modifications = {};   // modifications faites ici, en attente de la synchro (par instance_id)
 
 const etat = {
-  vue: "collection",
+  vue: "hasard",            // page d'ouverture : « Au hasard »
   recherche: "",
   role: "partout",
   tri: "artiste",
@@ -132,6 +133,7 @@ const etat = {
   avecFavoris: false,
   statut: "",               // "" (tous), "À écouter", "Favori"…, ou SANS_STATUT
   enregistrement: "",       // "" (tous), "Live", "Live et Studio", "Studio"…
+  ajoutJours: null,         // 7 ou 30 : éditions ajoutées ces derniers jours (clic dans les statistiques)
   oeuvre: null,             // œuvre MusicBrainz choisie : { id, titre, compositeur }
   blocIndex: "compositeurs_classiques", // bloc affiché dans l'onglet Index
 };
@@ -142,7 +144,7 @@ const FILTRES_SEULS_VIDES = {
   enregMin: null, enregMax: null,
   localisation: "", double: false, avecNotes: false, correspondanceMB: "", avecOeuvres: false, oeuvresIncompletes: false,
   avecFavoris: false,
-  statut: "", enregistrement: "", oeuvre: null,
+  statut: "", enregistrement: "", ajoutJours: null, oeuvre: null,
 };
 // Recherche et filtres remis à zéro (clic dans l'index).
 const FILTRES_VIDES = { ...FILTRES_SEULS_VIDES, recherche: "", role: "partout" };
@@ -316,6 +318,16 @@ function nomDuSite(adresse) {
 /** Vrai si l'édition a une Description ou des Notes personnelles (repère ✎ et filtre). */
 function aDesTextes(edition) {
   return edition.descriptions.length > 0 || edition.notesPerso.length > 0;
+}
+
+/** Vrai si un exemplaire au moins de l'édition n'a pas de Localisation (oubli de saisie). */
+function sansLocalisation(edition) {
+  return edition.exemplaires.some((e) => !(e.champs[CHAMP_LOCALISATION] || "").trim());
+}
+
+/** Vrai si l'édition a été ajoutée à la collection Discogs dans les `jours` derniers jours (date d'ajout du 1er exemplaire). */
+function ajouteeDepuis(edition, jours) {
+  return Boolean(edition.date_ajout) && Date.now() - new Date(edition.date_ajout).getTime() < jours * 864e5;
 }
 
 /** Vrai si deux noms de champ sont les mêmes, sans tenir compte de la casse ni des accents (« A ecouter » = « À écouter »). */
@@ -785,6 +797,10 @@ function remplirFiltres() {
   remplirListe($("filtre-style"), compter(editions, EXTRACTEURS.style), "Tous");
   remplirListe($("filtre-format"), compter(editions, EXTRACTEURS.format), "Tous");
   remplirListe($("filtre-localisation"), compter(editions, EXTRACTEURS.localisation), "Toutes");
+  // En bas de la liste : les oublis de saisie (un exemplaire au moins sans Localisation).
+  const nbSansLocalisation = editions.filter(sansLocalisation).length;
+  if (nbSansLocalisation) $("filtre-localisation").append(
+    creer("option", { value: SANS_LOCALISATION, texte: SANS_LOCALISATION + " (" + nbSansLocalisation + ")" }));
   remplirListe($("filtre-enregistrement"), compter(editions, EXTRACTEURS.enregistrement), "Tous", comparerEnregistrements);
   remplirListe($("filtre-statut"), compter(editions, EXTRACTEURS.statut), "Tous", comparerStatuts);
 
@@ -877,7 +893,7 @@ function ecrireControles() {
 function nombreDeFiltresActifs() {
   return [etat.categorie, etat.genre, etat.style, etat.format, etat.label, etat.anneeMin, etat.anneeMax,
           etat.enregMin, etat.enregMax, etat.localisation, etat.double, etat.avecNotes, etat.correspondanceMB, etat.avecOeuvres, etat.oeuvresIncompletes,
-          etat.avecFavoris, etat.statut, etat.enregistrement, etat.oeuvre].filter(Boolean).length;
+          etat.avecFavoris, etat.statut, etat.enregistrement, etat.ajoutJours, etat.oeuvre].filter(Boolean).length;
 }
 
 /**
@@ -1046,7 +1062,9 @@ function correspond(edition) {
     const touche = ([debut, fin]) => !(etat.enregMin && fin < etat.enregMin) && !(etat.enregMax && debut > etat.enregMax);
     if (!periodesEnregistrement(edition).some(touche)) return false;
   }
-  if (etat.localisation && !edition.localisations.includes(etat.localisation)) return false;
+  if (etat.localisation && !(etat.localisation === SANS_LOCALISATION ? sansLocalisation(edition)
+    : edition.localisations.includes(etat.localisation))) return false;
+  if (etat.ajoutJours && !ajouteeDepuis(edition, etat.ajoutJours)) return false;
   if (etat.double && edition.exemplaires.length < 2) return false;
   if (etat.avecNotes && !aDesTextes(edition)) return false;
   if (etat.correspondanceMB && correspondanceMB(edition) !== etat.correspondanceMB) return false;
@@ -1129,7 +1147,9 @@ function afficher() {
   // La feuille de style masque ce qui n'agit pas sur la vue : tout l'outillage dans l'index
   // et dans « Au hasard », le tri dans les statistiques.
   document.body.dataset.vue = etat.vue;
-  document.querySelectorAll(".onglet").forEach((b) => b.classList.toggle("actif", b.dataset.vue === etat.vue));
+  // L'onglet « Stats & Index » reste allumé dans l'index.
+  const ongletAllume = etat.vue === "index" ? "statistiques" : etat.vue;
+  document.querySelectorAll(".onglet").forEach((b) => b.classList.toggle("actif", b.dataset.vue === ongletAllume));
 
   if (etat.vue === "collection") (etat.oeuvre ? afficherPageOeuvre : afficherGrille)(resultats);
   else if (etat.vue === "statistiques") afficherStatistiques(resultats);
@@ -1557,7 +1577,9 @@ const RE_CATALOGUE = /\b(BuxWV|BWV|HWV|TWV|RV|KV|K|Hob|WoO|op|D|S|L|SV|Sz|BB|FP|
 // Réglages de l'onglet, gardés pendant la visite (retour depuis une page Œuvre).
 // `categorie` : comme le filtre Catégorie de la Collection (« méta:Classique », un dossier, ou "" pour toutes).
 const ongletOeuvres = { recherche: "", plusieurs: false, categorie: "méta:Classique", alphabetique: false, ouverts: new Set(),
-  categoriesOuvertes: new Set() };   // « compositeur|catégorie » dépliés chez les compositeurs d'au moins SEUIL_CATEGORIES œuvres
+  categoriesOuvertes: new Set(),   // « compositeur|catégorie » dépliés chez les compositeurs d'au moins SEUIL_CATEGORIES œuvres
+  compositeur: null,               // nom du compositeur choisi dans les statistiques : lui seul est montré
+  retourStats: 0 };                // défilement des statistiques, pour y revenir
 const SEUIL_CATEGORIES = 12;   // à partir de ce nombre d'œuvres, un compositeur montre d'abord ses catégories, repliées
 
 /** { type: "BWV", numero: 772, suffixe: "" } ou null. « KV » et « K » comptent comme un seul catalogue. */
@@ -1702,7 +1724,15 @@ function afficherOeuvres() {
   $("vue-oeuvres").replaceChildren(
     creer("div", { classe: "oeuvres-outils" },
       creer("span", { classe: "oeuvres-champ" }, ajouterCroix(recherche), boutonAide()), genre,
-      creer("label", { classe: "case" }, plusieurs, " Au moins 2 versions")),
+      creer("label", { classe: "case" }, plusieurs, " Au moins 2 versions"),
+      pictoDePage("♫\uFE0E", "Œuvres")),
+    // Arrivée depuis les statistiques (clic sur un compositeur) : seulement lui, et de quoi revenir.
+    ongletOeuvres.compositeur ? creer("p", { classe: "boutons-retour" },
+      creer("button", { type: "button", classe: "bouton bouton-revenir", texte: "← Revenir aux statistiques",
+        surclic: () => { const y = ongletOeuvres.retourStats; ongletOeuvres.compositeur = null; etat.vue = "statistiques"; afficher();
+          window.scrollTo({ top: y || 0 }); } }),
+      creer("button", { type: "button", classe: "bouton", texte: "Tous les compositeurs",
+        surclic: () => { ongletOeuvres.compositeur = null; afficher(); window.scrollTo({ top: 0 }); } })) : "",
     creer("div", { id: "oeuvres-resultats" })
   );
   afficherListeOeuvres();
@@ -1847,7 +1877,8 @@ function afficherListeOeuvres() {
     && (!ongletOeuvres.categorie || liste.some((e) => editionDansCategorie(e, ongletOeuvres.categorie))
       || (parLeNom && categorieRepondAuChoix(parLeNom, ongletOeuvres.categorie)))
     && (!cherche || rechercheTrouvee(texte, ongletOeuvres.recherche));
-  const visibles = groupes.map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter(garde) }))
+  const visibles = groupes.filter(({ compositeur }) => !ongletOeuvres.compositeur || compositeur === ongletOeuvres.compositeur)
+    .map(({ compositeur, oeuvres }) => ({ compositeur, oeuvres: oeuvres.filter(garde) }))
     .filter(({ oeuvres }) => oeuvres.length);
   // Par défaut, les compositeurs les plus représentés d'abord (à égalité : ordre alphabétique, celui des groupes).
   if (!ongletOeuvres.alphabetique) visibles.sort((a, b) => b.oeuvres.length - a.oeuvres.length);
@@ -1866,7 +1897,8 @@ function afficherListeOeuvres() {
     ...(nbOeuvres ? [] : [creer("p", { classe: "discret", texte: "Aucune œuvre ne correspond." })]),
     ...visibles.map(({ compositeur, oeuvres }) => {
       // Ouvert si l'on cherche quelque chose, ou si on l'avait ouvert (retour depuis une page Œuvre).
-      const bloc = creer("details", { classe: "oeuvres-compositeur", open: cherche || ongletOeuvres.ouverts.has(compositeur) },
+      const bloc = creer("details", { classe: "oeuvres-compositeur",
+        open: cherche || ongletOeuvres.compositeur === compositeur || ongletOeuvres.ouverts.has(compositeur) },
         creer("summary", {}, compositeur, creer("span", { classe: "discret", texte: " (" + oeuvres.length + ")" })),
         ...listeOeuvresDuCompositeur(oeuvres, compositeur, cherche));
       bloc.addEventListener("toggle", () => {
@@ -1906,7 +1938,8 @@ function boutonsMetas() {
       surclic: () => choisir("") }),
     metas.map((meta) => creer("button", { type: "button",
       classe: "bouton-meta" + (etat.categorie === PREFIXE_META + meta ? " actif" : ""), texte: meta,
-      surclic: () => choisir(PREFIXE_META + meta) })));
+      surclic: () => choisir(PREFIXE_META + meta) })),
+    pictoDePage("💿", "Collection"));
 }
 
 /**
@@ -2065,6 +2098,37 @@ const NOMBRE_PREPARE = 40;       // vignettes préparées (plus qu'une rangée s
 const LIEN_FISHER_YATES = "https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates";
 
 let tirage = null;   // éditions mélangées ; null = à tirer de nouveau (à chaque clic sur l'onglet)
+// Boutons du tirage : « Tout » (toute la collection) ou un lieu. Un lieu prend aussi ce qui s'écoute partout.
+const LIEUX_HASARD = { Paris: ["Paris", "Numérique", "Streaming"], Montpellier: ["Montpellier", "Numérique", "Streaming"] };
+let lieuHasard = "";   // "" = Tout (à l'ouverture de l'application), sinon "Paris" ou "Montpellier"
+
+/** Vrai si l'édition entre dans le tirage du lieu choisi (Localisation de l'un de ses exemplaires). */
+function dansLeLieu(edition) {
+  return !lieuHasard || edition.localisations.some((l) => LIEUX_HASARD[lieuHasard].some((v) => memeNom(v, l)));
+}
+
+/**
+ * Picto en bout de la première ligne d'une page, à droite : il illustre la page (on ne clique pas dessus).
+ * `texte` : la note ♫ est un caractère de texte (\uFE0E), pour qu'elle prenne la couleur blanche du texte.
+ */
+function pictoDePage(picto, nom) {
+  return creer("span", { classe: "picto-page", texte: picto, title: nom, "aria-hidden": "true" });
+}
+
+/** Picto dessiné (SVG, en blanc comme la note ♫) : pour remplacer un emoji à fond coloré (📊, 🔤). */
+function pictoDessine(svg, nom) {
+  const picto = creer("span", { classe: "picto-page", title: nom, "aria-hidden": "true" });
+  picto.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor">' + svg + "</svg>";
+  return picto;
+}
+// Statistiques : trois barres.
+const pictoStatistiques = () => pictoDessine('<rect x="3" y="13" width="4.5" height="8" rx="1"/>'
+  + '<rect x="9.75" y="4" width="4.5" height="17" rx="1"/><rect x="16.5" y="9" width="4.5" height="12" rx="1"/>', "Statistiques");
+// Index : « A » en haut, « Z » en bas, et des lignes de noms à côté.
+const pictoIndex = () => pictoDessine('<text x="5" y="10.5" text-anchor="middle" font-size="10" font-weight="700" font-family="system-ui, sans-serif">A</text>'
+  + '<text x="5" y="22" text-anchor="middle" font-size="10" font-weight="700" font-family="system-ui, sans-serif">Z</text>'
+  + '<rect x="11" y="3.5" width="11" height="2" rx="1"/><rect x="11" y="8" width="8" height="2" rx="1"/>'
+  + '<rect x="11" y="13.5" width="11" height="2" rx="1"/><rect x="11" y="18" width="7" height="2" rx="1"/>', "Index");
 let tirageOeuvres = null;   // { classiques, autres } : NOMBRE_OEUVRES œuvres de chaque sorte, tirées en même temps
 const NOMBRE_OEUVRES = 10;
 
@@ -2108,10 +2172,11 @@ function ajusterHasard() {
 
 function afficherHasard() {
   if (!tirage) {
-    tirage = melanger(editions.filter((e) => !estAVendre(e))).slice(0, NOMBRE_PREPARE);
-    // Œuvres présentes sur au moins un disque qui n'est pas à vendre.
+    const tirables = (e) => !estAVendre(e) && dansLeLieu(e);
+    tirage = melanger(editions.filter(tirables)).slice(0, NOMBRE_PREPARE);
+    // Œuvres présentes sur au moins un disque qui n'est pas à vendre (et qui est dans le lieu choisi).
     const tirer = (classiques) => melanger(oeuvresParCompositeur(classiques).flatMap((g) => g.oeuvres)
-      .filter((o) => !o.editions.every(estAVendre))).slice(0, NOMBRE_OEUVRES);
+      .filter((o) => o.editions.some(tirables))).slice(0, NOMBRE_OEUVRES);
     tirageOeuvres = { classiques: tirer(true), autres: tirer(false) };
   }
   const listeOeuvres = (titre, oeuvres) => creer("section", { classe: "hasard-oeuvres-bloc" },
@@ -2122,9 +2187,13 @@ function afficherHasard() {
         creer("span", { classe: "discret", texte: " · " + (oeuvre.compositeur || "Compositeur inconnu") }),
         versions > 1 ? creer("span", { classe: "oeuvres-versions", texte: " · " + versions + " versions" }) : null)))));
   $("vue-hasard").replaceChildren(
-    creer("p", { classe: "hasard-haut" },
-      creer("button", { type: "button", classe: "bouton", texte: "Nouveau tirage",
-        surclic: () => { tirage = null; afficher(); } })),
+    // Chaque bouton fait un nouveau tirage, dans son périmètre ; le bouton du tirage affiché est en ambre.
+    creer("nav", { classe: "boutons-metas hasard-haut", "aria-label": "Tirage" },
+      [["", "Tout"], ...Object.keys(LIEUX_HASARD).map((lieu) => [lieu, lieu])].map(([lieu, texte]) =>
+        creer("button", { type: "button", classe: "bouton-meta" + (lieuHasard === lieu ? " actif" : ""), texte,
+          title: lieu ? "Nouveau tirage : " + LIEUX_HASARD[lieu].join(", ") : "Nouveau tirage dans toute la collection",
+          surclic: () => { lieuHasard = lieu; tirage = null; afficher(); } })),
+      pictoDePage("🎲", "Au hasard")),
     creer("div", { classe: "grille" }, cartesDesEditions(tirage)),
     creer("div", { classe: "hasard-oeuvres" },
       listeOeuvres(NOMBRE_OEUVRES + " œuvres classiques", tirageOeuvres.classiques),
@@ -3479,6 +3548,11 @@ function afficherIndex() {
   );
 
   $("vue-index").replaceChildren(
+    // Première ligne : retour aux statistiques (même onglet « Stats & Index »), et le picto de la page.
+    creer("p", { classe: "ligne-page" },
+      creer("button", { type: "button", classe: "bouton-texte lien-page", texte: "← Statistiques",
+        surclic: () => { etat.vue = "statistiques"; afficher(); window.scrollTo({ top: 0 }); } }),
+      pictoIndex()),
     enteteIndex,
     ...lettres.map((lettre) => creer("section", { classe: "index-lettre" },
       titreGroupe(lettre),
@@ -3636,16 +3710,30 @@ function afficherStatistiques(liste) {
   // Nombre d'œuvres différentes (toutes, pas seulement celles en plusieurs versions), de chaque côté.
   const idsOeuvres = new Set(liste.flatMap((e) => [...e.oeuvres.keys()]));
   const nbOeuvresClassiques = [...idsOeuvres].filter((id) => cotes.oeuvres.get(id)).length;
-  const carteCompositeurs = (titre, compte) => compte.size ? carteBarres(titre, "Les 15 premiers", compte, 15,
-    (nom) => chercherNomSansFiche(nom, "compositeurs"),
+  // Compositeurs classiques : un clic ouvre l'onglet Œuvres sur ce compositeur ; les autres : la Collection.
+  const carteCompositeurs = (titre, compte, classiques) => compte.size ? carteBarres(titre, "Les 15 premiers", compte, 15,
+    (nom) => (classiques ? ouvrirCompositeurDansOeuvres(nom) : chercherNomSansFiche(nom, "compositeurs")),
     (n) => "Voir les " + n + " compositeurs présents sur au moins 2 éditions") : "";
   const carteOeuvres = (titre, compte) => compte.size ? carteBarres(titre, "Les 15 premières, d'après MusicBrainz", compte, 15,
     (nom) => choisirOeuvre(oeuvresParNom.get(nom)),
     (n) => "Voir les " + n + " œuvres présentes sur au moins 2 éditions") : "";
 
-  const chiffre = (valeur, libelle) => creer("div", { classe: "chiffre" },
-    creer("div", { classe: "valeur", texte: valeur.toLocaleString("fr-FR") }),
-    creer("div", { classe: "libelle", texte: libelle }));
+  // Un chiffre est cliquable quand il a une suite : son graphique plus bas (`cible`), ou une action (`auClic`).
+  const chiffre = (valeur, libelle, { cible = null, auClic = null } = {}) => {
+    const action = auClic || (cible && (() => {
+      const carte = document.querySelector('#vue-statistiques [data-carte="' + cible + '"]');
+      if (carte) window.scrollTo({ behavior: "smooth", top: carte.getBoundingClientRect().top + window.scrollY - document.querySelector(".entete").offsetHeight - 8 });
+    }));
+    const contenu = [creer("div", { classe: "valeur", texte: valeur.toLocaleString("fr-FR") }),
+      creer("div", { classe: "libelle", texte: libelle })];
+    return action && valeur ? creer("button", { type: "button", classe: "chiffre chiffre-lien", surclic: action }, contenu)
+      : creer("div", { classe: "chiffre" }, contenu);
+  };
+  // Nouveaux disques : éditions ajoutées à la collection Discogs ces 7 et 30 derniers jours (glissants).
+  const ajouts = (jours) => chiffre(liste.filter((e) => ajouteeDepuis(e, jours)).length, "ajouts · derniers " + jours + " jours",
+    { auClic: () => allerVers({ ...FILTRES_VIDES, ajoutJours: jours, tri: "ajout" }, null, "Ajoutées ces " + jours + " derniers jours") });
+  // Marque une carte pour que son chiffre du haut y mène.
+  const marquer = (carte, nom) => { if (carte) carte.dataset.carte = nom; return carte; };
 
   const appliquer = (cle) => (valeur) => {
     Object.assign(etat, { [cle]: valeur, vue: "collection" });
@@ -3656,16 +3744,23 @@ function afficherStatistiques(liste) {
   const synchro = infosCollection.genere_le ? "Synchronisé avec Discogs le " + formaterDate(infosCollection.genere_le) + "." : "";
 
   $("vue-statistiques").replaceChildren(
+    // Première ligne : le lien vers l'index (même onglet), et le picto de la page.
+    creer("p", { classe: "ligne-page large" },
+      creer("button", { type: "button", classe: "bouton-texte lien-page", texte: "Index →",
+        surclic: () => { etat.vue = "index"; afficher(); window.scrollTo({ top: 0 }); } }),
+      pictoStatistiques()),
     creer("section", { classe: "carte-stat large" },
       creer("div", { classe: "chiffres" },
         chiffre(liste.length, "éditions"),
         chiffre(nbExemplaires, "exemplaires"),
         chiffre(nbDisques, "disques physiques"),
-        chiffre(compositeursClassiques.size, "compositeurs classiques"),
-        chiffre(nbOeuvresClassiques, "œuvres classiques"),
-        chiffre(autresCompositeurs.size, "autres compositeurs"),
-        chiffre(idsOeuvres.size - nbOeuvresClassiques, "autres œuvres"),
-        chiffre(interpretes.size, "interprètes")
+        ajouts(7),
+        ajouts(30),
+        chiffre(compositeursClassiques.size, "compositeurs classiques", { cible: "compositeurs-classiques" }),
+        chiffre(nbOeuvresClassiques, "œuvres classiques", { cible: "oeuvres-classiques" }),
+        chiffre(autresCompositeurs.size, "autres compositeurs", { cible: "autres-compositeurs" }),
+        chiffre(idsOeuvres.size - nbOeuvresClassiques, "autres œuvres", { cible: "autres-oeuvres" }),
+        chiffre(interpretes.size, "interprètes", { cible: "interpretes" })
       ),
       creer("p", { classe: "note-stat note-synchro", texte: synchro + " Les statistiques portent sur les disques affichés (filtres et recherche compris)." })
     ),
@@ -3680,12 +3775,12 @@ function afficherStatistiques(liste) {
     carteBarres("Statut d’écoute", "Custom Field Discogs « " + CHAMP_STATUT + " »", compter(liste, EXTRACTEURS.statut), 10, appliquer("statut")),
     carteBarres("Live / Studio", "Custom Field Discogs « " + CHAMP_LIVE + " », sinon « Live » d’après le titre ou les notes Discogs", compter(liste, EXTRACTEURS.enregistrement), 10,
       appliquer("enregistrement")),
-    carteCompositeurs("Compositeurs classiques les plus présents", compositeursClassiques),
-    carteCompositeurs("Autres compositeurs les plus présents", autresCompositeurs),
-    carteBarres("Interprètes les plus présents", "Les 15 premiers", interpretes, 15, (nom) => chercherNomSansFiche(nom, "interpretes"),
-      (n) => "Voir les " + n + " interprètes présents sur au moins 2 éditions"),
-    carteOeuvres("Œuvres classiques en plusieurs versions", oeuvresClassiques),
-    carteOeuvres("Autres œuvres en plusieurs versions", autresOeuvres),
+    marquer(carteCompositeurs("Compositeurs classiques les plus présents", compositeursClassiques, true), "compositeurs-classiques"),
+    marquer(carteCompositeurs("Autres compositeurs les plus présents", autresCompositeurs, false), "autres-compositeurs"),
+    marquer(carteBarres("Interprètes les plus présents", "Les 15 premiers", interpretes, 15, (nom) => chercherNomSansFiche(nom, "interpretes"),
+      (n) => "Voir les " + n + " interprètes présents sur au moins 2 éditions"), "interpretes"),
+    marquer(carteOeuvres("Œuvres classiques en plusieurs versions", oeuvresClassiques), "oeuvres-classiques"),
+    marquer(carteOeuvres("Autres œuvres en plusieurs versions", autresOeuvres), "autres-oeuvres"),
     carteBarres("Labels", "Les 15 premiers", compter(liste, EXTRACTEURS.label), 15, appliquer("label"),
       (n) => "Voir les " + n + " labels ayant au moins 2 éditions"),
     blocVerificationsMusicBrainz()
@@ -3806,6 +3901,20 @@ function blocVerificationsMusicBrainz() {
           creer("ul", {}, lignes.map(({ texte }) => creer("li", { texte }))))));
     })
   );
+}
+
+/**
+ * Clic sur un compositeur classique dans les statistiques : l'onglet Œuvres, avec ce seul compositeur, déplié.
+ * Le nom des statistiques (crédit Discogs) est cherché parmi les compositeurs des œuvres (MusicBrainz),
+ * sans tenir compte des accents ni des majuscules ; s'il n'y est pas, on montre ses disques dans la Collection.
+ */
+function ouvrirCompositeurDansOeuvres(nom) {
+  const groupe = oeuvresParCompositeur().find(({ compositeur }) => memeNom(compositeur, nom));
+  if (!groupe) { chercherNomSansFiche(nom, "compositeurs"); return; }
+  Object.assign(ongletOeuvres, { compositeur: groupe.compositeur, retourStats: window.scrollY, recherche: "", plusieurs: false });
+  etat.vue = "oeuvres";
+  afficher();
+  window.scrollTo({ top: 0 });
 }
 
 function chercherNomSansFiche(nom, role) {
@@ -4579,9 +4688,11 @@ function brancherEvenements() {
   }
 
   document.querySelectorAll(".onglet").forEach((bouton) => bouton.addEventListener("click", () => {
-    etat.vue = bouton.dataset.vue;
+    etat.vue = bouton.dataset.vue;   // « Stats & Index » : toujours les statistiques d'abord
     if (etat.vue === "hasard") tirage = null;   // chaque ouverture de l'onglet = un nouveau tirage
+    if (etat.vue === "oeuvres") ongletOeuvres.compositeur = null;   // l'onglet montre de nouveau tous les compositeurs
     afficher();
+    window.scrollTo({ top: 0 });
   }));
   // Fenêtre redimensionnée : même tirage, seul le nombre de disques montrés s'adapte.
   window.addEventListener("resize", ajusterHasard);

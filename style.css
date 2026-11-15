@@ -144,7 +144,7 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 
 /* Une grille par catégorie, avec son titre */
 /* Méta-catégories : boutons en haut de la Collection, sommaire à deux niveaux, titre au-dessus des catégories */
-.boutons-metas { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.boutons-metas { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 14px; }
 .bouton-meta {
   background: var(--surface); border: 1px solid var(--bordure); color: var(--texte-2);
   border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 14px; cursor: pointer;
@@ -426,6 +426,10 @@ input:focus-visible, select:focus-visible, button:focus-visible {
 .chiffres { display: flex; flex-wrap: wrap; gap: 28px; }
 .chiffre .valeur { font-size: 34px; font-weight: 600; line-height: 1.1; }
 .chiffre .libelle { font-size: 13px; color: var(--texte-2); }
+/* Chiffre qui mène quelque part (son graphique plus bas, ou les disques ajoutés) : libellé souligné en pointillé */
+.chiffre-lien { background: none; border: 0; padding: 0; margin: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.chiffre-lien .libelle { text-decoration: underline dotted; text-underline-offset: 3px; }
+.chiffre-lien:hover .valeur, .chiffre-lien:hover .libelle { color: var(--accent); }
 
 /* Barres horizontales : libellé, barre, valeur au bout */
 .barres { display: grid; gap: 4px; }
@@ -730,7 +734,8 @@ input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; a
 
 /* ---------- Onglet « Œuvres » : compositeurs repliables, œuvres par catalogue ---------- */
 body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: none; }
-.oeuvres { max-width: 900px; }
+/* La ligne des outils prend toute la largeur (le picto ♫ va à droite, comme sur les autres pages) ; le reste garde 900 px. */
+.oeuvres > :not(.oeuvres-outils) { max-width: 900px; }
 .oeuvres-outils { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 8px; }
 .oeuvres-outils input[type="search"], .oeuvres-outils select {
   background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 7px 10px;
@@ -765,7 +770,7 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 .bouton-aide:hover { color: var(--accent); border-color: var(--accent); }
 .recherche { align-items: center; }
 .recherche .bouton-aide { margin: 0 6px; }
-.oeuvres-champ { display: flex; align-items: center; gap: 8px; flex: 1 1 280px; min-width: 0; }
+.oeuvres-champ { display: flex; align-items: center; gap: 8px; flex: 1 1 280px; min-width: 0; max-width: 460px; }
 .oeuvres-champ .oeuvres-recherche, .oeuvres-champ > .case-effacable { flex: 1 1 auto; }
 .aide-recherche { max-width: 460px; }
 .aide-recherche dl { margin: 0 0 12px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; }
@@ -822,3 +827,18 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 /* Fiche ouverte depuis la page d'une œuvre : l'œuvre est surlignée un instant */
 .plages > li { transition: background 1.2s ease-out; }
 .plage-montree { background: color-mix(in srgb, var(--accent) 22%, transparent); border-radius: 6px; }
+
+/* Picto de la page, au bout de la première ligne, à droite (il illustre la page, on ne clique pas dessus).
+   La note ♫ de l'onglet Œuvres est un caractère de texte : elle prend la couleur blanche du texte. */
+.picto-page { margin-left: auto; padding-left: 8px; font-size: 40px; line-height: 1; color: var(--texte); user-select: none; -webkit-user-select: none; }
+/* Première ligne des statistiques et de l'index : le lien vers l'autre page de l'onglet « Stats & Index », puis le picto */
+.ligne-page { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; }
+.statistiques .ligne-page { grid-column: 1 / -1; margin: 0; }
+.lien-page { font-size: 15px; padding: 2px 0; }
+/* Onglet Œuvres ouvert sur un compositeur depuis les statistiques */
+.boutons-retour { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+/* Picto des statistiques : trois barres dessinées, blanches comme la note ♫ (l'emoji 📊 a un fond blanc) */
+.picto-page svg { display: block; width: 1em; height: 1em; }
+/* Texte d'aide de la recherche (« Rechercher (ET, OU, SAUF…) ») en petit. Seul le texte d'aide rétrécit :
+   ce qu'on tape garde sa taille (16 px au moins sur iPhone, sinon Safari zoome). */
+#recherche::placeholder { font-size: 11px; }
