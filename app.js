@@ -2053,7 +2053,7 @@ let tourDAffichage = 0;                 // une vignette déjà placée dans ce t
 
 function cartesDesEditions(liste, valeurDeTri) {
   return liste.map((edition) => {
-    const cle = [valeurDeTri ? valeurDeTri(edition) : "", edition.statut || "", aDesTextes(edition),
+    const cle = [valeurDeTri ? valeurDeTri(edition) : "", edition.statut || "", edition.favoris.size, aDesTextes(edition),
       edition.exemplaires.length, categoriesChoisies(edition).join("|"), edition.pochette || edition.miniature || ""].join("\u0001");
     if (!cartesEnReserve.has(edition)) cartesEnReserve.set(edition, new Map());
     const reserve = cartesEnReserve.get(edition);
@@ -2079,12 +2079,18 @@ function carteDeLEdition(edition, valeurDeTri) {
         ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
         : creer("span", { classe: "sans-image", texte: "♪" }),
       nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null,
+      // Pistes favorites (cœurs de la fiche) : ♥ et leur nombre, en haut à gauche.
+      edition.favoris.size ? creer("span", { classe: "repere-coeur", texte: "♥ " + edition.favoris.size,
+        title: pluriel(edition.favoris.size, "piste favorite", "pistes favorites") }) : null,
       aDesTextes(edition) ? creer("span", { classe: "repere-notes", texte: "✎", title: "Description ou notes personnelles" }) : null,
       edition.statut ? creer("span", { classe: "repere-statut", texte: repereStatut(edition.statut) || edition.statut,
         title: edition.statut }) : null
     ),
     creer("p", { classe: "carte-titre", texte: edition.titre }),
     creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") }),
+    // Le statut en toutes lettres sous l'artiste : « ★ Favori », « 🎧 À écouter ».
+    edition.statut ? creer("p", { classe: "carte-statut",
+      texte: (repereStatut(edition.statut) ? repereStatut(edition.statut) + " " : "") + edition.statut }) : null,
     categories.length ? creer("p", { classe: "carte-categorie", texte: categories.join(" · ") }) : null
   );
 }
@@ -4084,6 +4090,16 @@ function blocCommentaire(lire, enregistrer, libelle, classe) {
 }
 
 /** Réglage du jeton GitHub (même boîte que le jeton Discogs) : vérifié auprès de GitHub avant d'être gardé. */
+/**
+ * Boîte des jetons : avec un jeton enregistré, ni case de saisie ni « Enregistrer », seulement « Retirer de cet appareil » ;
+ * sans jeton, la case et « Enregistrer », sans « Retirer ». Pour changer de jeton : le retirer, puis coller le nouveau.
+ */
+function montrerSaisieJeton(formulaire, enregistre) {
+  formulaire.querySelector('input[type="password"]').hidden = enregistre;
+  formulaire.querySelector('button[type="submit"]').hidden = enregistre;
+  formulaire.querySelector('[id$="effacer"]').hidden = !enregistre;
+}
+
 function brancherReglageJetonGithub() {
   const saisie = $("jeton-github-saisie");
   const etatJeton = $("jeton-github-etat");
@@ -4091,6 +4107,7 @@ function brancherReglageJetonGithub() {
     etatJeton.textContent = jetonGithub()
       ? "Un jeton GitHub est enregistré sur cet appareil : « ✎ Commenter » apparaît sur les pages Œuvre."
       : "Aucun jeton GitHub sur cet appareil : les commentaires sont en lecture seule.";
+    montrerSaisieJeton($("formulaire-jeton-github"), Boolean(jetonGithub()));
   };
   $("ouvrir-jeton").addEventListener("click", () => { saisie.value = ""; decrire(); });
   $("jeton-github-effacer").addEventListener("click", () => {
@@ -4614,6 +4631,7 @@ function brancherReglageJeton() {
     etatJeton.textContent = jeton()
       ? "Un jeton est enregistré sur cet appareil : le bouton « Modifier mes Custom Fields Discogs » apparaît dans les fiches."
       : "Aucun jeton sur cet appareil : la page est en lecture seule.";
+    montrerSaisieJeton($("formulaire-jeton"), Boolean(jeton()));
   };
 
   $("ouvrir-jeton").addEventListener("click", () => {
