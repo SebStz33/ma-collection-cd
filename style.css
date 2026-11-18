@@ -201,32 +201,17 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   position: absolute; inset: 0; display: grid; place-items: center;
   color: var(--texte-discret); font-size: 34px;
 }
-.badge {
-  position: absolute; top: 6px; right: 6px;
-  background: var(--accent); color: var(--accent-texte);
-  font-size: 12px; font-weight: 700; padding: 1px 7px; border-radius: 10px;
+/* Repères sur la photo : signe blanc, petite pastille noire un peu transparente, la plus discrète possible */
+.badge, .repere-notes, .repere-statut {
+  position: absolute; background: rgba(0, 0, 0, 0.55); color: #fff;
+  line-height: 1; padding: 2px 3px; border-radius: 6px;
 }
-/* Repère des disques qui ont des notes personnelles */
-.repere-notes {
-  position: absolute; bottom: 6px; left: 6px;
-  background: rgba(0, 0, 0, 0.7); color: var(--accent);
-  font-size: 13px; line-height: 1; padding: 4px 6px; border-radius: 10px;
-}
-/* Repère du statut (🎧 À écouter, ★ Favori…) */
-.repere-statut {
-  color: var(--accent);
-  position: absolute; bottom: 6px; right: 6px;
-  background: rgba(0, 0, 0, 0.7);
-  font-size: 18px; line-height: 1; padding: 4px 6px; border-radius: 12px;
-}
-/* Pistes favorites : « ♥ 3 » en haut à gauche */
-.repere-coeur {
-  position: absolute; top: 6px; left: 6px;
-  background: rgba(0, 0, 0, 0.7); color: var(--accent);
-  font-size: 13px; font-weight: 600; line-height: 1; padding: 4px 7px; border-radius: 10px;
-}
-/* Statut en toutes lettres sous l'artiste */
-.carte-statut { margin: 2px 0 0; font-size: 12px; color: var(--accent); }
+/* Plusieurs exemplaires : « ×2 » en haut à droite */
+.badge { top: 5px; right: 5px; font-size: 11px; font-weight: 700; }
+/* Disques qui ont une description ou des notes personnelles : ✎ en bas à gauche */
+.repere-notes { bottom: 5px; left: 5px; font-size: 12px; }
+/* Statut d'écoute : ★ Favori (blanc) ; 🎧 et 🔍 gardent leurs couleurs d'emoji */
+.repere-statut { bottom: 5px; right: 5px; font-size: 14px; }
 .carte-titre {
   margin: 7px 0 0; font-size: 13px; font-weight: 600;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
@@ -235,6 +220,12 @@ input:focus-visible, select:focus-visible, button:focus-visible {
   margin: 2px 0 0; font-size: 12px; color: var(--texte-2);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+/* Localisation à gauche, cœurs (ambre, cliquables) à droite */
+.carte-localisation { display: flex; align-items: baseline; gap: 6px; margin: 2px 0 0; font-size: 12px; color: var(--texte-2); }
+.carte-lieu { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-size: 11px; font-style: italic; color: var(--texte-discret); }   /* plus petit et plus pâle que l'artiste */
+.carte-coeurs { color: var(--accent); white-space: nowrap; cursor: pointer; }
+.carte-coeurs:hover { text-decoration: underline; }
 .carte-categorie { font-size: 11px; color: var(--accent); opacity: .75; }
 /* Valeur du tri choisi, au-dessus de la photo (non cliquable : petite, sans soulignement) */
 .carte-tri {
@@ -564,6 +555,8 @@ body[data-vue="statistiques"] .tri { display: none; }
 .recherche-fiche { width: 100%; min-width: 0; color: var(--texte); }
 .ligne-recherche-fiche > .case-effacable { flex: 0 1 260px; }
 .resultats-fiche { font-size: 15px; white-space: nowrap; }
+.fleches-resultats { display: inline-flex; gap: 2px; }
+.fleches-resultats .bouton-texte { font-size: 18px; padding: 2px 8px; }   /* assez grand pour le doigt */
 .resultats-fiche.avec-resultats { background: rgba(226, 170, 82, 0.35); color: var(--texte); border-radius: 2px; padding: 0 4px; }
 mark.trouve { background: rgba(226, 170, 82, 0.35); color: inherit; border-radius: 2px; }
 mark.trouve.actuel { background: var(--accent); color: var(--accent-texte); }
@@ -572,6 +565,8 @@ mark.trouve.actuel { background: var(--accent); color: var(--accent-texte); }
 .bouton-petit { font-size: 13px; padding: 4px 10px; }
 /* Fiche : boutons du statut à côté de « Modifier mes Custom Fields » */
 .boutons-fiche { display: flex; flex-wrap: wrap; gap: 8px; }
+/* Cœurs « ♥ N » de la fiche : ambre, à droite de la ligne du statut */
+.coeurs-fiche { margin-left: auto; color: var(--accent); font-size: 15px; white-space: nowrap; }
 .bouton-statut.actif { background: var(--accent); color: var(--accent-texte); border-color: var(--accent); }
 .etiquette-statut {
   display: inline-block; font-size: 13px; padding: 3px 10px; border-radius: 10px;

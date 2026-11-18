@@ -1,6 +1,6 @@
 # Mémo technique : ma collection de CD
 
-> À jour au 16/11/2026 (Service Worker v101, après la PR n°47 et le lot « vignettes : statut et cœurs »).
+> À jour au 19/11/2026 (Service Worker v102, lot « vignettes : Localisation et repères discrets »).
 > Si ces numéros ne correspondent plus au code, le mémo est en retard : le mettre à jour dans la même PR.
 
 Ce mémo explique le fonctionnement de l'outil et les gestes à faire. Il ne décrit pas l'utilisation
@@ -209,7 +209,7 @@ navigateur de l'appareil, il n'est ni dans le dépôt ni sur le site. Sans jeton
 `service-worker.js` garde une copie de la page sur l'appareil, pour qu'elle s'ouvre vite et sans réseau.
 
 - **Règle** : après toute modification de `index.html`, `style.css`, `app.js` ou `manifest.json`, augmenter
-  `VERSION` en tête de `service-worker.js` (`"v101"` → `"v102"`). Sans cela, l'iPhone garde l'ancienne page.
+  `VERSION` en tête de `service-worker.js` (`"v102"` → `"v103"`). Sans cela, l'iPhone garde l'ancienne page.
 - L'application se recharge d'elle-même au retour dans l'app (après fermeture de la fiche si une fiche est ouverte).
 - Les **données** (`collection.json`, `commentaires_oeuvres.json`) ne demandent pas de changer la version : elles sont lues d'abord sur le réseau, la copie gardée ne sert que hors connexion.
 - Le Service Worker ne marche qu'en https, donc pas en test local sur `localhost` : là, seul Cmd+Option+R compte.
