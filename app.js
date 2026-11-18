@@ -2053,7 +2053,7 @@ let tourDAffichage = 0;                 // une vignette déjà placée dans ce t
 
 function cartesDesEditions(liste, valeurDeTri) {
   return liste.map((edition) => {
-    const cle = [valeurDeTri ? valeurDeTri(edition) : "", edition.statut || "", edition.favoris.size, aDesTextes(edition),
+    const cle = [valeurDeTri ? valeurDeTri(edition) : "", edition.statut || "", edition.favoris.size, edition.localisations.join("|"), aDesTextes(edition),
       edition.exemplaires.length, categoriesChoisies(edition).join("|"), edition.pochette || edition.miniature || ""].join("\u0001");
     if (!cartesEnReserve.has(edition)) cartesEnReserve.set(edition, new Map());
     const reserve = cartesEnReserve.get(edition);
@@ -2064,6 +2064,46 @@ function cartesDesEditions(liste, valeurDeTri) {
     if (!carte) reserve.set(cle, nouvelle);
     return nouvelle;
   });
+}
+
+/** Positions des pistes favorites dans l'ordre du disque (puis celles que la tracklist ne connaît pas). */
+function favoritesDansLOrdre(edition) {
+  const dansLOrdre = toutesLesPlages(edition.plages || []).map(({ plage }) => plage.position)
+    .filter((p) => p && edition.favoris.has(p));
+  return [...new Set([...dansLOrdre, ...edition.favoris])];
+}
+/** Position de la première piste favorite dans l'ordre du disque. */
+function premiereFavorite(edition) {
+  return favoritesDansLOrdre(edition)[0];
+}
+
+/**
+ * Fiche : « ♥ N » en ambre, à droite de la ligne du statut ; un clic descend à la première piste favorite.
+ * Mis à jour quand on coche ou décoche un cœur dans la fiche (voir mettreAJourCoeursDeLaFiche).
+ */
+function coeursDeLaFiche(edition) {
+  // Chaque clic descend à la piste favorite suivante (dans l'ordre du disque), puis revient à la première.
+  let rang = -1;
+  const bouton = creer("button", { type: "button", classe: "bouton-texte coeurs-fiche",
+    surclic: () => {
+      const positions = favoritesDansLOrdre(edition);
+      if (!positions.length) return;
+      rang = (rang + 1) % positions.length;
+      montrerPlageDansLaFiche(positions[rang]);
+      bouton.mettreAJour();
+    } });
+  bouton.mettreAJour = () => {
+    const total = edition.favoris.size;
+    if (rang >= total) rang = -1;
+    bouton.textContent = "♥ " + (rang >= 0 && total > 1 ? (rang + 1) + "/" : "") + total;
+    bouton.title = pluriel(total, "piste favorite", "pistes favorites") + " : chaque clic va à la suivante";
+    bouton.hidden = !total;
+  };
+  bouton.mettreAJour();
+  return bouton;
+}
+function mettreAJourCoeursDeLaFiche() {
+  document.querySelectorAll("#fiche .coeurs-fiche").forEach((b) => b.mettreAJour());
 }
 
 /** Une vignette : pochette, repères, titre, artistes, catégories. */
@@ -2079,18 +2119,19 @@ function carteDeLEdition(edition, valeurDeTri) {
         ? creer("img", { src: image, alt: "", loading: "lazy", decoding: "async" })
         : creer("span", { classe: "sans-image", texte: "♪" }),
       nb > 1 ? creer("span", { classe: "badge", texte: "×" + nb, title: nb + " exemplaires" }) : null,
-      // Pistes favorites (cœurs de la fiche) : ♥ et leur nombre, en haut à gauche.
-      edition.favoris.size ? creer("span", { classe: "repere-coeur", texte: "♥ " + edition.favoris.size,
-        title: pluriel(edition.favoris.size, "piste favorite", "pistes favorites") }) : null,
       aDesTextes(edition) ? creer("span", { classe: "repere-notes", texte: "✎", title: "Description ou notes personnelles" }) : null,
       edition.statut ? creer("span", { classe: "repere-statut", texte: repereStatut(edition.statut) || edition.statut,
         title: edition.statut }) : null
     ),
     creer("p", { classe: "carte-titre", texte: edition.titre }),
     creer("p", { classe: "carte-artiste", texte: (edition.artistes_principaux || []).join(", ") }),
-    // Le statut en toutes lettres sous l'artiste : « ★ Favori », « 🎧 À écouter ».
-    edition.statut ? creer("p", { classe: "carte-statut",
-      texte: (repereStatut(edition.statut) ? repereStatut(edition.statut) + " " : "") + edition.statut }) : null,
+    // Sous l'artiste : la Localisation à gauche, les pistes favorites (cœurs de la fiche) à droite : « Paris      ♥ 3 ».
+    // Un clic sur les cœurs ouvre la fiche directement sur la première piste favorite.
+    edition.localisations.length || edition.favoris.size ? creer("p", { classe: "carte-localisation" },
+      creer("span", { classe: "carte-lieu", texte: edition.localisations.join(", ") }),
+      edition.favoris.size ? creer("span", { classe: "carte-coeurs", texte: "♥ " + edition.favoris.size,
+        title: pluriel(edition.favoris.size, "piste favorite", "pistes favorites") + " : voir la première",
+        surclic: (evenement) => { evenement.stopPropagation(); ouvrirFiche(edition, { position: premiereFavorite(edition) }); } }) : null) : null,
     categories.length ? creer("p", { classe: "carte-categorie", texte: categories.join(" · ") }) : null
   );
 }
@@ -2408,6 +2449,12 @@ function ouvrirFiche(edition, { position = null } = {}) {
     "aria-label": "Chercher dans la fiche", value: etat.recherche, autocomplete: "off" });
   const caseRecherche = ajouterCroix(champRecherche);
   const resultats = creer("span", { classe: "discret resultats-fiche" });
+  // « ↑ ↓ » à côté du nombre de résultats : occurrence précédente / suivante (comme Entrée dans la case).
+  const flechesResultats = creer("span", { classe: "fleches-resultats", hidden: true },
+    creer("button", { type: "button", classe: "bouton-texte", texte: "↑", title: "Résultat précédent", "aria-label": "Résultat précédent",
+      surclic: () => changerDeResultat(-1) }),
+    creer("button", { type: "button", classe: "bouton-texte", texte: "↓", title: "Résultat suivant", "aria-label": "Résultat suivant",
+      surclic: () => changerDeResultat(1) }));
 
   const texteFiche = creer("div", {},
     creer("h2", { id: "fiche-titre", texte: edition.titre }),
@@ -2417,17 +2464,20 @@ function ouvrirFiche(edition, { position = null } = {}) {
         creer("button", { type: "button", classe: "bouton-texte", texte: nom, surclic: () => chercherNom(nom, "artistes_principaux") }),
       ])
     ),
-    creer("p", { classe: "ligne-recherche-fiche" }, caseRecherche, boutonAide(), resultats,
+    creer("p", { classe: "ligne-recherche-fiche" }, caseRecherche, boutonAide(), resultats, flechesResultats,
       (edition.plages || []).length ? creer("button", { type: "button", classe: "bouton-texte lien-fiche lien-plages",
         texte: "↓ Plages", surclic: () => defilerFicheVers(titrePlages) }) : null,
       creer("button", { type: "button", classe: "bouton-texte lien-fiche", texte: "↓ Fin",
         surclic: () => $("fiche").scrollTo({ top: $("fiche").scrollHeight, behavior: "smooth" }) })),
     notes.length ? creer("p", { classe: "notes-album", texte: notes.join("  ·  ") }) : null,
     // Boutons visibles seulement sur un appareil où le jeton Discogs est enregistré.
+    // À droite de la ligne du statut : « ♥ N » (pistes favorites), un clic descend à la première.
     jeton() ? creer("p", { classe: "boutons-fiche" }, boutonsStatut(edition),
       creer("button", { type: "button", classe: "bouton-texte lien-fiche lien-modifier", texte: "✎ Modifier mes Custom Fields Discogs",
-        surclic: () => ouvrirEdition(edition) }))
-      : edition.statut ? creer("p", {}, creer("span", { classe: "etiquette-statut", texte: libelleStatut(edition.statut) })) : null,
+        surclic: () => ouvrirEdition(edition) }), coeursDeLaFiche(edition))
+      : edition.statut || edition.favoris.size ? creer("p", { classe: "boutons-fiche" },
+        edition.statut ? creer("span", { classe: "etiquette-statut", texte: libelleStatut(edition.statut) }) : null,
+        coeursDeLaFiche(edition)) : null,
     creer("dl", {}, informations.map(([terme, valeur]) => [creer("dt", { texte: terme }), creer("dd", { texte: valeur })])),
     edition.descriptions.length ? [
       creer("h3", { texte: "Description" }),
@@ -2494,6 +2544,19 @@ function ouvrirFiche(edition, { position = null } = {}) {
 
   let minuterie = null;
   let numeroResultat = 0;
+  let nombreResultats = 0;
+  const afficherNumero = () => {
+    resultats.textContent = !champRecherche.value.trim() ? ""
+      : !nombreResultats ? "Aucun résultat"
+      : nombreResultats === 1 ? "1 résultat" : (numeroResultat + 1) + "/" + nombreResultats + " résultats";
+    flechesResultats.hidden = nombreResultats < 2;
+  };
+  // Pas de -1 ou +1, en boucle : après le dernier, le premier ; avant le premier, le dernier.
+  const changerDeResultat = (pas) => {
+    if (!nombreResultats) return;
+    numeroResultat = allerAuResultat(texteFiche, (numeroResultat + pas + nombreResultats) % nombreResultats);
+    afficherNumero();
+  };
   const chercher = () => {
     const nombre = surligner(texteFiche, champRecherche.value);
     // Un nom trouvé dans les crédits repliés : on les ouvre pour le montrer.
@@ -2507,8 +2570,8 @@ function ouvrirFiche(edition, { position = null } = {}) {
     });
     if (notesDiscogs && notesDiscogs.contenu.querySelector("mark.trouve")) notesDiscogs.ouvrir();
     numeroResultat = 0;
-    resultats.textContent = !champRecherche.value.trim() ? ""
-      : nombre ? nombre + (nombre > 1 ? " résultats" : " résultat") : "Aucun résultat";
+    nombreResultats = nombre;
+    afficherNumero();
     resultats.classList.toggle("avec-resultats", nombre > 0);
     allerAuResultat(texteFiche, 0);
   };
@@ -2517,8 +2580,7 @@ function ouvrirFiche(edition, { position = null } = {}) {
   champRecherche.addEventListener("keydown", (evenement) => {
     if (evenement.key !== "Enter") return;
     evenement.preventDefault();
-    numeroResultat += 1;
-    numeroResultat = allerAuResultat(texteFiche, numeroResultat);
+    changerDeResultat(1);
   });
   if (champRecherche.value) chercher();
 }
@@ -4480,6 +4542,7 @@ async function basculerFavori(edition, aChanger, ajouter) {
   await ecrireChampDiscogs(edition, champ, instance, valeur);
   // La fiche ouverte garde son objet : on met à jour ses favoris pour les cœurs suivants.
   edition.favoris = new Set(lirePositions(valeur));
+  mettreAJourCoeursDeLaFiche();
   return edition.favoris;
 }
 
