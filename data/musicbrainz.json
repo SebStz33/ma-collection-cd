@@ -1353,6 +1353,39 @@
   "release": "df2c7f05-b9a7-4a93-a5ac-ae1b7d14df94",
   "version": 5
  },
+ "1015286": {
+  "annee_parution": 1998,
+  "annees_enregistrement": null,
+  "durees": [
+   577000,
+   247000,
+   810000,
+   424000,
+   511000,
+   538000,
+   304000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/b2526308-7930-47e1-8bcc-8017115097b9/45266197800-250.jpg",
+    "original": "https://coverartarchive.org/release/b2526308-7930-47e1-8bcc-8017115097b9/45266197800.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/b2526308-7930-47e1-8bcc-8017115097b9/45266197800-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/b2526308-7930-47e1-8bcc-8017115097b9/45618070766-250.jpg",
+    "original": "https://coverartarchive.org/release/b2526308-7930-47e1-8bcc-8017115097b9/45618070766.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/b2526308-7930-47e1-8bcc-8017115097b9/45618070766-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "code_barre",
+  "nb_plages": 7,
+  "oeuvres": null,
+  "release": "b2526308-7930-47e1-8bcc-8017115097b9",
+  "version": 14
+ },
  "10165463": {
   "images": [],
   "maj": "2026-11-01",
@@ -7291,6 +7324,131 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "12178459": {
+  "annee_parution": 1984,
+  "annees_enregistrement": null,
+  "durees": [
+   316066,
+   166026,
+   305733,
+   244000,
+   256506,
+   214493,
+   327000,
+   172866
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/34165182631-250.jpg",
+    "original": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/34165182631.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/34165182631-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16744104893-250.jpg",
+    "original": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16744104893.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16744104893-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16743883781-250.jpg",
+    "original": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16743883781.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16743883781-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16743885658-250.jpg",
+    "original": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16743885658.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/673a155b-9d95-4dd2-81f7-1b947d2182ce/16743885658-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "code_barre",
+  "nb_plages": 8,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Stan Getz",
+     "João Gilberto",
+     "Antônio Carlos Jobim"
+    ],
+    "compositeur": "Antônio Carlos Jobim",
+    "id": "69f81329-a815-3ec2-aaee-1f781a1e026d",
+    "parente": null,
+    "titre": "The Girl From Ipanema"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "João Gilberto",
+     "Antônio Carlos Jobim"
+    ],
+    "compositeur": "Antonio de Almeida, Dorival Caymmi",
+    "id": "8b8f2e48-bb1d-385a-943e-09a4854656ea",
+    "parente": null,
+    "titre": "Doralice"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "João Gilberto",
+     "Antônio Carlos Jobim"
+    ],
+    "compositeur": "Ary Barroso",
+    "id": "d9fc0415-edc9-328a-8749-fd52ebf94be4",
+    "parente": null,
+    "titre": "Pra machucar meu coração"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "João Gilberto",
+     "Antônio Carlos Jobim"
+    ],
+    "compositeur": "Antônio Carlos Jobim",
+    "id": "807b8169-cb39-30c7-a9e2-d8491fc97651",
+    "parente": null,
+    "titre": "Desafinado"
+   },
+   null,
+   {
+    "artistes": [
+     "Stan Getz",
+     "João Gilberto",
+     "Antônio Carlos Jobim"
+    ],
+    "compositeur": "Antônio Carlos Jobim",
+    "id": "0b102419-df08-3fde-9e1b-f82f5158aa62",
+    "parente": null,
+    "titre": "Só danço samba"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "João Gilberto",
+     "Antônio Carlos Jobim"
+    ],
+    "compositeur": "Antônio Carlos Jobim",
+    "id": "c61c36cd-b941-304b-8077-48bf1ec69844",
+    "parente": null,
+    "titre": "O grande amor"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "João Gilberto",
+     "Antônio Carlos Jobim"
+    ],
+    "compositeur": "Antônio Carlos Jobim",
+    "id": "6505ce53-f8a2-3b61-bde4-03f5222f3d21",
+    "parente": null,
+    "titre": "Vivo sonhando"
+   }
+  ],
+  "release": "673a155b-9d95-4dd2-81f7-1b947d2182ce",
+  "version": 14
  },
  "1224379": {
   "annee_parution": 2000,
@@ -21796,6 +21954,248 @@
   "release": "de1e0e32-fd67-4602-8ce3-22e933c94836",
   "version": 12
  },
+ "13145465": {
+  "annee_parution": 1997,
+  "annees_enregistrement": [
+   1960,
+   1961
+  ],
+  "durees": [
+   235933,
+   348626,
+   341733,
+   542573,
+   348560,
+   352066,
+   315066,
+   357800,
+   351306,
+   304333,
+   340360
+  ],
+  "images": [],
+  "maj": "2026-11-18",
+  "methode": "edition",
+  "nb_plages": 11,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Booker Little",
+     "Jaki Byard",
+     "Ron Carter",
+     "Roy Haynes"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "a6f10e30-15e6-4d4b-996a-2da36d12171a",
+    "parente": null,
+    "roles": {
+     "Booker Little": "trumpet",
+     "Eric Dolphy": "alto saxophone",
+     "Jaki Byard": "piano",
+     "Ron Carter": "double bass",
+     "Roy Haynes": "drums (drum set)"
+    },
+    "titre": "Far Cry"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "93bfb56a-5da1-4680-b418-69aaac4d84c0",
+    "parente": null,
+    "titre": "Les"
+   },
+   {
+    "artistes": [
+     "Mal Waldron",
+     "Eric Dolphy",
+     "Booker Ervin",
+     "Joe Benjamin",
+     "Ron Carter",
+     "Charlie Persip"
+    ],
+    "compositeur": "Mal Waldron",
+    "id": "577835a7-8b43-4797-9e79-451f7ccc74f6",
+    "parente": null,
+    "roles": {
+     "Charlie Persip": "drums (drum set)",
+     "Eric Dolphy": "clarinet",
+     "Joe Benjamin": "double bass",
+     "Mal Waldron": "piano",
+     "Ron Carter": "cello"
+    },
+    "titre": "Warm Canto"
+   },
+   {
+    "artistes": [
+     "John Coltrane",
+     "Art Davis",
+     "Eric Dolphy",
+     "Freddie Hubbard",
+     "Elvin Jones",
+     "McCoy Tyner"
+    ],
+    "compositeur": "Bill Frazier",
+    "id": "086ef632-74a1-4759-a605-d94ee034656a",
+    "parente": null,
+    "roles": {
+     "Art Davis": "double bass",
+     "Elvin Jones": "drums (drum set)",
+     "Eric Dolphy": "flute",
+     "Freddie Hubbard": "trumpet",
+     "John Coltrane": "alto saxophone, soprano saxophone",
+     "McCoy Tyner": "piano"
+    },
+    "titre": "To Her Ladyship"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Freddie Hubbard",
+     "Jaki Byard",
+     "Roy Haynes",
+     "George Tucker"
+    ],
+    "compositeur": "Bronisław Kaper",
+    "id": "39d87891-d664-3db0-a4a3-e5e3eabb72ba",
+    "parente": null,
+    "roles": {
+     "Eric Dolphy": "bass clarinet",
+     "Freddie Hubbard": "trumpet",
+     "George Tucker": "double bass",
+     "Jaki Byard": "piano",
+     "Roy Haynes": "drums (drum set)"
+    },
+    "titre": "On Green Dolphin Street"
+   },
+   {
+    "artistes": [
+     "Oliver Nelson",
+     "Eric Dolphy",
+     "George Duvivier",
+     "Roy Haynes",
+     "Richard Williams",
+     "Richard Wyands"
+    ],
+    "compositeur": "Oliver Nelson",
+    "id": "c2a6551a-201e-41cc-b4aa-c07272019319",
+    "parente": null,
+    "roles": {
+     "Eric Dolphy": "alto saxophone",
+     "George Duvivier": "double bass",
+     "Oliver Nelson": "tenor saxophone",
+     "Richard Williams": "trumpet",
+     "Richard Wyands": "piano",
+     "Roy Haynes": "drums (drum set)"
+    },
+    "titre": "The Drive"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Freddie Hubbard",
+     "Jaki Byard",
+     "Roy Haynes",
+     "George Tucker"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "93bfb56a-5da1-4680-b418-69aaac4d84c0",
+    "parente": null,
+    "roles": {
+     "Eric Dolphy": "alto saxophone",
+     "Freddie Hubbard": "trumpet",
+     "George Tucker": "double bass",
+     "Jaki Byard": "piano",
+     "Roy Haynes": "drums (drum set)"
+    },
+    "titre": "Les"
+   },
+   {
+    "artistes": [
+     "Ken McIntyre",
+     "Eric Dolphy",
+     "Walter Bishop, Jr.",
+     "Sam Jones",
+     "Art Taylor"
+    ],
+    "compositeur": "Ken McIntyre",
+    "id": "b6b1533c-57a0-49a3-8eea-1199d929ee2b",
+    "parente": null,
+    "roles": {
+     "Art Taylor": "drums (drum set)",
+     "Eric Dolphy": "alto saxophone",
+     "Ken McIntyre": "alto saxophone",
+     "Sam Jones": "double bass",
+     "Walter Bishop, Jr.": "piano"
+    },
+    "titre": "Curtsy"
+   },
+   {
+    "artistes": [
+     "Ron Carter",
+     "Eric Dolphy",
+     "Mal Waldron",
+     "George Duvivier",
+     "Charlie Persip"
+    ],
+    "compositeur": "Sy Oliver",
+    "id": "53532938-3651-4c4f-8988-65d407848d8f",
+    "parente": null,
+    "roles": {
+     "Charlie Persip": "drums (drum set)",
+     "Eric Dolphy": "flute",
+     "George Duvivier": "bass",
+     "Mal Waldron": "piano",
+     "Ron Carter": "cello"
+    },
+    "titre": "Yes Indeed"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Ron Carter",
+     "George Duvivier",
+     "Roy Haynes"
+    ],
+    "compositeur": "Hale Smith",
+    "id": "ba88772b-1da5-48cf-a7f3-fb3a2acdc59d",
+    "parente": null,
+    "roles": {
+     "Eric Dolphy": "alto saxophone",
+     "George Duvivier": "double bass",
+     "Ron Carter": "cello",
+     "Roy Haynes": "drums (drum set)"
+    },
+    "titre": "Feather"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Booker Little",
+     "Jaki Byard",
+     "Ron Carter",
+     "Roy Haynes"
+    ],
+    "compositeur": "Jule Styne",
+    "id": "f1512348-3c71-4e33-bee2-baab596c65a2",
+    "parente": {
+     "id": "d4c5b3a4-285f-45c8-8e86-6b0fa6a39abc",
+     "titre": "Romance on the High Seas"
+    },
+    "roles": {
+     "Eric Dolphy": "bass clarinet",
+     "Jaki Byard": "piano",
+     "Ron Carter": "double bass",
+     "Roy Haynes": "drums (drum set)"
+    },
+    "titre": "It’s Magic"
+   }
+  ],
+  "release": "cdfaacce-4d36-4143-ac00-916342649e56",
+  "version": 14
+ },
  "13301735": {
   "annee_parution": null,
   "annees_enregistrement": [
@@ -23317,6 +23717,63 @@
    }
   ],
   "release": "b9c71fc4-4f13-4770-b4ba-7674b55216cb",
+  "version": 14
+ },
+ "1336427": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1961,
+   1961
+  ],
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-18",
+  "methode": "album",
+  "nb_plages": 3,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Booker Little",
+     "Ed Blackwell",
+     "Richard Davis",
+     "Mal Waldron"
+    ],
+    "compositeur": "Mal Waldron",
+    "id": "f812ea33-5358-41fa-bce1-763aa41c6067",
+    "parente": null,
+    "roles": {
+     "Booker Little": "trumpet",
+     "Ed Blackwell": "drums (drum set)",
+     "Eric Dolphy": "alto saxophone",
+     "Mal Waldron": "piano",
+     "Richard Davis": "double bass"
+    },
+    "titre": "Fire Waltz"
+   },
+   null,
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Ed Blackwell",
+     "Richard Davis",
+     "Booker Little",
+     "Mal Waldron"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "2ad5f267-04ba-4d37-94ff-8be6ab1f1d24",
+    "parente": null,
+    "roles": {
+     "Booker Little": "trumpet",
+     "Ed Blackwell": "drums (drum set)",
+     "Eric Dolphy": "alto saxophone",
+     "Mal Waldron": "piano",
+     "Richard Davis": "double bass"
+    },
+    "titre": "The Prophet"
+   }
+  ],
+  "release": "09226f61-a74d-499d-adc4-f84c05691bd6",
   "version": 14
  },
  "13366326": {
@@ -35659,6 +36116,129 @@
   "release": null,
   "version": 14
  },
+ "14456354": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1966,
+   1966
+  ],
+  "durees": [
+   205426,
+   407573,
+   458133,
+   398466,
+   191600,
+   289360
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/866591b9-22c5-3d29-81f2-772af41db9d3/8659916426-250.jpg",
+    "original": "https://coverartarchive.org/release/866591b9-22c5-3d29-81f2-772af41db9d3/8659916426.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/866591b9-22c5-3d29-81f2-772af41db9d3/8659916426-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/866591b9-22c5-3d29-81f2-772af41db9d3/8659918206-250.jpg",
+    "original": "https://coverartarchive.org/release/866591b9-22c5-3d29-81f2-772af41db9d3/8659918206.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/866591b9-22c5-3d29-81f2-772af41db9d3/8659918206-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "code_barre",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Bill Evans",
+     "Jim Hall"
+    ],
+    "compositeur": "Cole Porter",
+    "id": "1f69a658-acd8-32ca-9d6d-5c9cfcd50e62",
+    "parente": {
+     "id": "e2118b1c-ec60-4c93-b862-25166b93fe5b",
+     "titre": "Born to Dance"
+    },
+    "roles": {
+     "Bill Evans": "piano",
+     "Jim Hall": "guitar"
+    },
+    "titre": "I’ve Got You Under My Skin"
+   },
+   {
+    "artistes": [
+     "Bill Evans",
+     "Jim Hall"
+    ],
+    "compositeur": "George Gershwin",
+    "id": "9b1feb10-1ca2-37e9-965b-dd03d5e2cb2e",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Jim Hall": "guitar"
+    },
+    "titre": "My Man’s Gone Now"
+   },
+   {
+    "artistes": [
+     "Bill Evans",
+     "Jim Hall"
+    ],
+    "compositeur": "Bill Evans",
+    "id": "94129263-c392-3a5c-98bd-5e457b3aafed",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Jim Hall": "guitar"
+    },
+    "titre": "Turn Out the Stars"
+   },
+   {
+    "artistes": [
+     "Bill Evans",
+     "Jim Hall"
+    ],
+    "compositeur": "Joe Zawinul",
+    "id": "61edb446-61b0-406b-bbe9-6098854fa989",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Jim Hall": "guitar"
+    },
+    "titre": "Angel Face"
+   },
+   {
+    "artistes": [
+     "Bill Evans",
+     "Jim Hall"
+    ],
+    "compositeur": "Claus Ogerman",
+    "id": "69572dd5-bce3-42aa-b5dc-c9b7522e86aa",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Jim Hall": "guitar"
+    },
+    "titre": "Jazz Samba"
+   },
+   {
+    "artistes": [
+     "Bill Evans",
+     "Jim Hall"
+    ],
+    "compositeur": "Jim Hall",
+    "id": "914d2b81-eb7a-3f81-a5f2-5bea6def6ce6",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Jim Hall": "guitar"
+    },
+    "titre": "All Across the City"
+   }
+  ],
+  "release": "866591b9-22c5-3d29-81f2-772af41db9d3",
+  "version": 14
+ },
  "14462014": {
   "images": [],
   "maj": "2026-11-01",
@@ -37937,6 +38517,18 @@
   "release": "0d4aa90e-02d9-3003-a77f-a9706c1ac77e",
   "version": 5
  },
+ "1571053": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-18",
+  "methode": "aucune",
+  "nb_plages": 10,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "15746498": {
   "annees_enregistrement": [
    1982,
@@ -38253,6 +38845,198 @@
   "release": null,
   "version": 14
  },
+ "15927700": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1961,
+   1961
+  ],
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-18",
+  "methode": "album",
+  "nb_plages": 10,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "Victor Young",
+    "id": "60483e0d-2bda-308c-a882-ccdbca204d04",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "bass"
+    },
+    "titre": "My Foolish Heart"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "Richard Rodgers",
+    "id": "0681f37f-31c9-3743-aeec-68349a6f9ad3",
+    "parente": {
+     "id": "2bf42fd6-eba2-40a5-a596-52ea14b15c97",
+     "titre": "Jumbo"
+    },
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "bass"
+    },
+    "titre": "My Romance"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "Miles Davis",
+    "id": "d73f8e96-325d-3211-89ba-b3ebd3df6199",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "double bass"
+    },
+    "titre": "Solar"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "Scott LaFaro",
+    "id": "8ab097b6-0129-46bc-ac04-17431367605f",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "double bass"
+    },
+    "titre": "Gloria’s Step"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Scott LaFaro",
+     "Bill Evans",
+     "Paul Motian"
+    ],
+    "compositeur": "George Gershwin",
+    "id": "9b1feb10-1ca2-37e9-965b-dd03d5e2cb2e",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "double bass"
+    },
+    "titre": "My Man’s Gone Now"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "Cole Porter",
+    "id": "c9a51eb1-c80a-33e9-b015-370654cda985",
+    "parente": {
+     "id": "a846a13a-62b8-4123-95ef-85581c7f4cac",
+     "titre": "Silk Stockings"
+    },
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "double bass"
+    },
+    "titre": "All of You"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "George Gershwin",
+    "id": "e91712f5-51ba-31f3-a04c-3749f0f5e454",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "double bass"
+    },
+    "titre": "I Loves You, Porgy"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "Miles Davis",
+    "id": "8e897f2c-285a-327b-bb74-6dff23096b62",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "bass"
+    },
+    "titre": "Milestones"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "Bill Evans",
+    "id": "30a33711-0db8-3fc7-a3c8-f42426bdf43b",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "bass"
+    },
+    "titre": "Waltz for Debby"
+   },
+   {
+    "artistes": [
+     "Bill Evans Trio",
+     "Bill Evans",
+     "Scott LaFaro",
+     "Paul Motian"
+    ],
+    "compositeur": "Scott LaFaro",
+    "id": "285e7f63-9aab-4c2b-85ba-5d7cf95d7c9d",
+    "parente": null,
+    "roles": {
+     "Bill Evans": "piano",
+     "Paul Motian": "drums (drum set)",
+     "Scott LaFaro": "double bass"
+    },
+    "titre": "Jade Visions"
+   }
+  ],
+  "release": "3f9ef891-5be8-4fcb-83f5-fea574304070",
+  "version": 14
+ },
  "15968732": {
   "annee_parution": 1997,
   "annees_enregistrement": null,
@@ -38399,175 +39183,303 @@
   "version": 2
  },
  "16234070": {
+  "annee_parution": 1997,
   "annees_enregistrement": [
    1962,
    1981
   ],
+  "durees": [
+   165133,
+   163733,
+   140466,
+   201826,
+   173533,
+   297733,
+   228400,
+   295440,
+   188666,
+   290733,
+   136600,
+   173533,
+   152600,
+   350226,
+   150106,
+   746293,
+   319974
+  ],
   "images": [
    {
-    "miniature": "https://coverartarchive.org/release/f8ac8bf2-4d89-479a-86ed-a5a85ccc6c78/31959416373-250.jpg",
-    "original": "https://coverartarchive.org/release/f8ac8bf2-4d89-479a-86ed-a5a85ccc6c78/31959416373.jpg",
+    "miniature": "https://coverartarchive.org/release/204146ec-cc36-4a9f-b11e-d74174c3c7b1/2148453308-250.jpg",
+    "original": "https://coverartarchive.org/release/204146ec-cc36-4a9f-b11e-d74174c3c7b1/2148453308.jpg",
     "type": "musicbrainz",
-    "url": "https://coverartarchive.org/release/f8ac8bf2-4d89-479a-86ed-a5a85ccc6c78/31959416373-1200.jpg"
+    "url": "https://coverartarchive.org/release/204146ec-cc36-4a9f-b11e-d74174c3c7b1/2148453308-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/204146ec-cc36-4a9f-b11e-d74174c3c7b1/2148458050-250.jpg",
+    "original": "https://coverartarchive.org/release/204146ec-cc36-4a9f-b11e-d74174c3c7b1/2148458050.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/204146ec-cc36-4a9f-b11e-d74174c3c7b1/2148458050-500.jpg"
    }
   ],
-  "maj": "2026-11-03",
+  "maj": "2026-11-18",
   "methode": "code_barre",
   "nb_plages": 17,
   "oeuvres": [
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "2aa0c9bf-1a04-3929-a470-ba9f97d5f765",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: I. Contrapunctus 1"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "97be078d-8c22-333c-b05c-aed79d4f3554",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: II. Contrapunctus 2"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "0e135e6c-a2bc-332a-9158-329d1987e7f5",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: III. Contrapunctus 3"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "057dc676-e173-3951-a621-9790ea3cb3da",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: IV. Contrapunctus 4"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "3b69ca74-fe97-3055-880c-d565d6a39654",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: V. Contrapunctus 5"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "345800f6-a046-303b-8334-c701cd2470d2",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: VI. Contrapunctus 6 a 4 in Stylo Francese"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "d23f18e6-59e6-35b0-83f9-408901037c32",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: VII. Contrapunctus 7 a 4 per Augmentationem et Diminutionem"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "07df2b8b-4edf-3643-9839-e4cbc2d39031",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: VIII. Contrapunctus 8 a 3"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "eba29eca-65c8-3773-8d03-5633a49228f4",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "organ"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: IX. Contrapunctus 9 a 4 alla Duodecima"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "2aa0c9bf-1a04-3929-a470-ba9f97d5f765",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "piano"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: I. Contrapunctus 1"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "97be078d-8c22-333c-b05c-aed79d4f3554",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "piano"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: II. Contrapunctus 2"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "057dc676-e173-3951-a621-9790ea3cb3da",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "piano"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: IV. Contrapunctus 4"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "eba29eca-65c8-3773-8d03-5633a49228f4",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "piano"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: IX. Contrapunctus 9 a 4 alla Duodecima"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "51174ec8-0b46-3fb8-a0ca-3fb7aafdc5fd",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "piano"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: XI. Contrapunctus 11 a 4"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "5465e820-d04f-3e2d-b843-0ccda2802a62",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "piano"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: XIII, 2. Contrapunctus inversus a 3 (Forma inversa)"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "d3db5430-ebff-3151-bab1-c3c286174d82",
     "parente": {
      "id": "e562bb8c-5981-4665-8d07-6bbbb0429a8d",
      "titre": "Die Kunst der Fuge, BWV 1080"
     },
+    "roles": {
+     "Glenn Gould": "piano"
+    },
     "titre": "Die Kunst der Fuge, BWV 1080: XIV. Canon per Augmentationem in Contrario Motu"
    },
    {
+    "artistes": [
+     "Glenn Gould"
+    ],
     "compositeur": "Johann Sebastian Bach",
     "id": "1f015bfb-f671-4bea-8827-493abebb11ff",
     "parente": null,
+    "roles": {
+     "Glenn Gould": "piano"
+    },
     "titre": "Prelude and Fugue on 'B-A-C-H', BWV 898"
    }
   ],
-  "release": "f8ac8bf2-4d89-479a-86ed-a5a85ccc6c78",
-  "version": 4
+  "release": "204146ec-cc36-4a9f-b11e-d74174c3c7b1",
+  "version": 14
  },
  "1626340": {
   "annees_enregistrement": null,
@@ -67431,6 +68343,18 @@
   "release": "c100f843-ddce-3450-9c9b-553a7f4c35d1",
   "version": 8
  },
+ "23090570": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-18",
+  "methode": "aucune",
+  "nb_plages": 5,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "2343664": {
   "annees_enregistrement": [
    1990,
@@ -73785,6 +74709,202 @@
   "release": "a06f43f7-6b5f-4a46-b486-6dde9777160a",
   "version": 10
  },
+ "3201774": {
+  "annee_parution": 1993,
+  "annees_enregistrement": [
+   1972,
+   1972
+  ],
+  "durees": [
+   344333,
+   221000,
+   200466,
+   176973,
+   354533,
+   210960,
+   186640,
+   239200,
+   470066,
+   742360,
+   130306,
+   314466,
+   378266,
+   247427
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260917281-250.jpg",
+    "original": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260917281.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260917281-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260908894-250.jpg",
+    "original": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260908894.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260908894-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260913478-250.jpg",
+    "original": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260913478.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/b04797d8-7d54-4263-a741-0e550fae82e6/11260913478-500.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "edition",
+  "nb_plages": 14,
+  "oeuvres": [
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "James Brown, Joseph Mims, Fred Wesley",
+    "id": "371db979-9930-4ec6-965e-bf3ba7466c79",
+    "parente": null,
+    "titre": "Get on the Good Foot"
+   },
+   {
+    "artistes": [
+     "James Brown",
+     "Bobby Byrd"
+    ],
+    "compositeur": "James Brown, Bobby Byrd",
+    "id": "6b5d73e3-5bdb-49f5-a9a9-6fdec4695b85",
+    "parente": null,
+    "roles": {
+     "Bobby Byrd": "background vocals"
+    },
+    "titre": "The Whole World Needs Liberation"
+   },
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "J.J. Barnes, Walter Whisenhunt",
+    "id": "ff438e02-9e1d-4c5a-acc2-0519b4dcd87c",
+    "parente": null,
+    "titre": "Your Love Was Good for Me"
+   },
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "James Brown, Pee Wee Ellis",
+    "id": "be81408c-6e68-39db-ad9c-6890dfaf7f73",
+    "parente": null,
+    "titre": "Cold Sweat"
+   },
+   {
+    "artistes": [
+     "James Brown",
+     "Hank Ballard"
+    ],
+    "compositeur": "James Brown",
+    "id": "c5e0a5fa-c4c0-430f-a552-4ea4959a75ba",
+    "parente": null,
+    "roles": {
+     "Hank Ballard": "spoken vocals"
+    },
+    "titre": "Recitation by Hank Ballard"
+   },
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "James Brown",
+    "id": "8f60ba2d-e0a5-4a78-8c13-2e1ee8465cb2",
+    "parente": null,
+    "titre": "I Got a Bag of My Own"
+   },
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "James Brown",
+    "id": "8308d01e-19c5-432e-8fd8-b01f52320c33",
+    "parente": null,
+    "titre": "Nothing Beats a Try but a Fail"
+   },
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "James Brown, Bobby Byrd, Lloyd Stallworth",
+    "id": "c2b2989b-7289-346e-b17f-48ebb6f7f3eb",
+    "parente": null,
+    "titre": "Lost Someone"
+   },
+   {
+    "artistes": [
+     "James Brown",
+     "Bobby Byrd"
+    ],
+    "compositeur": "Hank Ballard, James Brown",
+    "id": "4d29efe9-554e-4c96-9662-2addad5f71ab",
+    "parente": null,
+    "roles": {
+     "Bobby Byrd": "vocals"
+    },
+    "titre": "Funky Side of Town"
+   },
+   {
+    "artistes": [
+     "James Brown",
+     "Bobby Byrd"
+    ],
+    "compositeur": "James Brown, Johnny Terry",
+    "id": "8d10e4df-522b-3a9b-9896-9a062e6ef247",
+    "parente": null,
+    "roles": {
+     "Bobby Byrd": "organ"
+    },
+    "titre": "Please, Please, Please"
+   },
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "James Brown, Nat Jones",
+    "id": "90120737-f253-3508-8780-019b877595df",
+    "parente": null,
+    "titre": "Ain’t That a Groove"
+   },
+   {
+    "artistes": [
+     "James Brown",
+     "Bobby Byrd"
+    ],
+    "compositeur": "Charles Bobbit, James Brown",
+    "id": "87486e3c-dae0-4f42-a5d5-238b94bdf01b",
+    "parente": null,
+    "roles": {
+     "Bobby Byrd": "background vocals"
+    },
+    "titre": "Make It Funky"
+   },
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "James Brown",
+    "id": "d75a53d4-1bf0-45d9-a8c6-6efad67f9c25",
+    "parente": null,
+    "titre": "Dirty Harri"
+   },
+   {
+    "artistes": [
+     "James Brown"
+    ],
+    "compositeur": "James Brown",
+    "id": "876d20af-128e-4745-82fa-7465b5fcecd6",
+    "parente": null,
+    "titre": "I Know It’s True"
+   }
+  ],
+  "release": "b04797d8-7d54-4263-a741-0e550fae82e6",
+  "version": 14
+ },
  "3226630": {
   "annees_enregistrement": [
    1959,
@@ -75514,6 +76634,141 @@
   ],
   "release": "de8bb779-3da4-4195-81a1-4962d0fa3d9e",
   "version": 8
+ },
+ "32929836": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1964,
+   1964
+  ],
+  "durees": [
+   508266,
+   366093,
+   445133,
+   730106,
+   501693
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/06a37d5c-0275-4d86-8217-23f29ca485c2/9330994345-250.jpg",
+    "original": "https://coverartarchive.org/release/06a37d5c-0275-4d86-8217-23f29ca485c2/9330994345.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/06a37d5c-0275-4d86-8217-23f29ca485c2/9330994345-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/06a37d5c-0275-4d86-8217-23f29ca485c2/9330996752-250.jpg",
+    "original": "https://coverartarchive.org/release/06a37d5c-0275-4d86-8217-23f29ca485c2/9330996752.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/06a37d5c-0275-4d86-8217-23f29ca485c2/9330996752-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "code_barre",
+  "nb_plages": 5,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Richard Davis",
+     "Freddie Hubbard",
+     "Bobby Hutcherson",
+     "Tony Williams"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "117c28ef-c53a-3917-a512-425d8973a302",
+    "parente": null,
+    "roles": {
+     "Bobby Hutcherson": "vibraphone",
+     "Eric Dolphy": "bass clarinet",
+     "Freddie Hubbard": "trumpet",
+     "Richard Davis": "double bass",
+     "Tony Williams": "drums (drum set)"
+    },
+    "titre": "Hat and Beard"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Richard Davis",
+     "Freddie Hubbard",
+     "Bobby Hutcherson",
+     "Tony Williams"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "836baf75-fa99-3b98-bce9-a51650e7ed00",
+    "parente": null,
+    "roles": {
+     "Bobby Hutcherson": "vibraphone",
+     "Eric Dolphy": "bass clarinet",
+     "Freddie Hubbard": "trumpet",
+     "Richard Davis": "double bass",
+     "Tony Williams": "drums (drum set)"
+    },
+    "titre": "Something Sweet, Something Tender"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Richard Davis",
+     "Freddie Hubbard",
+     "Bobby Hutcherson",
+     "Tony Williams"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "22242bc7-342c-3b87-87e0-9ece595a33b0",
+    "parente": null,
+    "roles": {
+     "Bobby Hutcherson": "vibraphone",
+     "Eric Dolphy": "flute",
+     "Freddie Hubbard": "trumpet",
+     "Richard Davis": "double bass",
+     "Tony Williams": "drums (drum set)"
+    },
+    "titre": "Gazzelloni"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Richard Davis",
+     "Freddie Hubbard",
+     "Bobby Hutcherson",
+     "Tony Williams"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "e197f2b1-f85a-3d46-847d-2245ace5735e",
+    "parente": null,
+    "roles": {
+     "Bobby Hutcherson": "vibraphone",
+     "Eric Dolphy": "alto saxophone",
+     "Freddie Hubbard": "trumpet",
+     "Richard Davis": "double bass",
+     "Tony Williams": "drums (drum set)"
+    },
+    "titre": "Out to Lunch"
+   },
+   {
+    "artistes": [
+     "Eric Dolphy",
+     "Richard Davis",
+     "Freddie Hubbard",
+     "Bobby Hutcherson",
+     "Tony Williams"
+    ],
+    "compositeur": "Eric Dolphy",
+    "id": "0a3ddad3-c788-33ec-95e0-160bb86f8bc3",
+    "parente": null,
+    "roles": {
+     "Bobby Hutcherson": "vibraphone",
+     "Eric Dolphy": "alto saxophone",
+     "Freddie Hubbard": "trumpet",
+     "Richard Davis": "double bass",
+     "Tony Williams": "drums (drum set)"
+    },
+    "titre": "Straight Up and Down"
+   }
+  ],
+  "release": "06a37d5c-0275-4d86-8217-23f29ca485c2",
+  "version": 14
  },
  "3303964": {
   "annee_parution": 2000,
@@ -81231,6 +82486,30 @@
   "release": "cb36979b-5829-4ced-857d-6e8423402a93",
   "version": 5
  },
+ "4996992": {
+  "annee_parution": 2000,
+  "annees_enregistrement": null,
+  "durees": [
+   226000,
+   444000,
+   103000,
+   211000,
+   377000,
+   339000,
+   226000,
+   279000,
+   263000,
+   212000,
+   153000
+  ],
+  "images": [],
+  "maj": "2026-11-18",
+  "methode": "edition",
+  "nb_plages": 11,
+  "oeuvres": null,
+  "release": "96b1282e-ba91-4673-b41f-17375f760ae9",
+  "version": 14
+ },
  "500047": {
   "annee_parution": 1996,
   "annees_enregistrement": null,
@@ -85502,6 +86781,349 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "6143092": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1952,
+   1954
+  ],
+  "durees": [
+   165240,
+   179360,
+   195506,
+   185466,
+   178200,
+   197733,
+   204933,
+   179160,
+   201306,
+   176666,
+   203666,
+   172200,
+   216600,
+   184360,
+   174840,
+   226426
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/05a3dfa7-234a-4bcc-981b-74e2163214fb/39604111430-250.jpg",
+    "original": "https://coverartarchive.org/release/05a3dfa7-234a-4bcc-981b-74e2163214fb/39604111430.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/05a3dfa7-234a-4bcc-981b-74e2163214fb/39604111430-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "code_barre",
+  "nb_plages": 16,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Victor Young",
+    "id": "cddc1524-251c-30a7-9cf0-8e1e602deada",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "Stella by Starlight"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Vincent Youmans",
+    "id": "fa454a29-a5ad-3262-8fb5-07f5557e2406",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "Time on My Hands"
+   },
+   {
+    "artistes": [
+     "Stan Getz Quintet",
+     "Bill Crow",
+     "Stan Getz",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Henry Nemo",
+    "id": "c52df4f9-a2bf-42ba-8049-d3029b81513f",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "’Tis Autumn"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Jerome Kern",
+    "id": "ab45a3c2-23c3-3c31-918b-861ef42c79d6",
+    "parente": {
+     "id": "0de268f8-05d8-46a9-8776-3ea3e4f72fb8",
+     "titre": "Swing Time"
+    },
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "The Way You Look Tonight"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Sigmund Romberg",
+    "id": "2b10cff9-a483-306f-9bfa-096f8295111c",
+    "parente": {
+     "id": "481ea385-57bb-41f4-8605-a614e3b531cd",
+     "titre": "The New Moon: Act II"
+    },
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "Lover, Come Back to Me"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Johnny Green, Edward Heyman, Robert Sour",
+    "id": "98fb7d1f-12f5-3878-9fad-73266fedbec8",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "Body and Soul"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Frank Perkins",
+    "id": "45063ef2-f51d-37af-b404-c23854c4ad51",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "Stars Fell on Alabama"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Louis Alter",
+    "id": "3761b492-7b95-48e4-8de4-91ca4e9554bc",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "You Turned the Tables on Me"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Ralph Rainger",
+    "id": "37b27e98-26a4-3411-abf2-1a76a8a20304",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "Thanks for the Memory"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Gigi Gryce",
+    "id": "c7046341-15ad-4e9f-8178-04978905c481",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "Hymn of the Orient"
+   },
+   {
+    "artistes": [
+     "Stan Getz Quintet",
+     "Bill Crow",
+     "Stan Getz",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Jack Strachey, Harry Link",
+    "id": "6261d6d4-caa9-31f0-8ab4-f977bcd57451",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "These Foolish Things (Remind Me of You)"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Bill Crow",
+     "Frank Isola",
+     "Duke Jordan",
+     "Jimmy Raney"
+    ],
+    "compositeur": "Irving Berlin",
+    "id": "5757fff7-068f-3328-8eb0-cb427891e0cd",
+    "parente": null,
+    "roles": {
+     "Bill Crow": "double bass",
+     "Duke Jordan": "piano",
+     "Frank Isola": "drums (drum set)",
+     "Jimmy Raney": "guitar",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "How Deep Is the Ocean?"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Max Roach",
+     "Jimmy Rowles",
+     "Bob Whitlock"
+    ],
+    "compositeur": "Jerome Kern",
+    "id": "f94a1fea-0659-3b11-99d8-6d06af8da386",
+    "parente": null,
+    "roles": {
+     "Bob Whitlock": "double bass",
+     "Jimmy Rowles": "piano",
+     "Max Roach": "drums (drum set)",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "Nobody Else but Me"
+   },
+   null,
+   {
+    "artistes": [
+     "Stan Getz",
+     "Max Roach",
+     "Jimmy Rowles",
+     "Bob Whitlock"
+    ],
+    "compositeur": "Ray Noble",
+    "id": "7288b8b7-74f7-4e73-b623-eb66b54c3a15",
+    "parente": null,
+    "roles": {
+     "Bob Whitlock": "double bass",
+     "Jimmy Rowles": "piano",
+     "Max Roach": "drums (drum set)",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "I Hadn’t Anyone Till You"
+   },
+   {
+    "artistes": [
+     "Stan Getz",
+     "Max Roach",
+     "Jimmy Rowles",
+     "Bob Whitlock"
+    ],
+    "compositeur": "Clara Edwards, Jack Lawrence",
+    "id": "9d3e7a9d-21cb-4cd0-a95d-c583b992f097",
+    "parente": null,
+    "roles": {
+     "Bob Whitlock": "double bass",
+     "Jimmy Rowles": "piano",
+     "Max Roach": "drums (drum set)",
+     "Stan Getz": "tenor saxophone"
+    },
+    "titre": "With the Wind and the Rain in Your Hair"
+   }
+  ],
+  "release": "05a3dfa7-234a-4bcc-981b-74e2163214fb",
+  "version": 14
  },
  "6149422": {
   "annees_enregistrement": null,
@@ -96220,6 +97842,66 @@
   "release": null,
   "version": 2
  },
+ "7095518": {
+  "annee_parution": 1998,
+  "annees_enregistrement": null,
+  "durees": [
+   176960,
+   250040,
+   420226,
+   354933,
+   196733,
+   399600,
+   333373,
+   215560,
+   446440,
+   242466,
+   331266,
+   197533
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/1eaa4e09-cec6-4e99-8a7b-bbcae5169b34/9236002502-250.jpg",
+    "original": "https://coverartarchive.org/release/1eaa4e09-cec6-4e99-8a7b-bbcae5169b34/9236002502.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/1eaa4e09-cec6-4e99-8a7b-bbcae5169b34/9236002502-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "edition",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": "1eaa4e09-cec6-4e99-8a7b-bbcae5169b34",
+  "version": 14
+ },
+ "714354": {
+  "annee_parution": 2003,
+  "annees_enregistrement": [
+   2002,
+   2002
+  ],
+  "durees": [
+   226000,
+   438000,
+   294000,
+   133000,
+   335000,
+   367000,
+   334000,
+   273000,
+   179000,
+   412000,
+   592000,
+   322226
+  ],
+  "images": [],
+  "maj": "2026-11-18",
+  "methode": "code_barre",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": "f11d2bf7-8c56-49ec-9f8f-5992c962ff99",
+  "version": 14
+ },
  "7155380": {
   "images": [],
   "maj": "2026-11-01",
@@ -97316,6 +98998,74 @@
   ],
   "release": "879a8b7b-7777-4f5b-a1f4-47d65947f4f4",
   "version": 10
+ },
+ "7401429": {
+  "annee_parution": 2003,
+  "annees_enregistrement": [
+   1987,
+   1987
+  ],
+  "durees": [
+   817653,
+   724480,
+   545200,
+   608546,
+   658266
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/3a60c39a-de2f-48f0-978f-48729f3c5691/34460608442-250.jpg",
+    "original": "https://coverartarchive.org/release/3a60c39a-de2f-48f0-978f-48729f3c5691/34460608442.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3a60c39a-de2f-48f0-978f-48729f3c5691/34460608442-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "code_barre",
+  "nb_plages": 5,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Stan Getz",
+     "Kenny Barron",
+     "Victor Lewis",
+     "Rufus Reid"
+    ],
+    "compositeur": "Bronisław Kaper",
+    "id": "39d87891-d664-3db0-a4a3-e5e3eabb72ba",
+    "parente": null,
+    "roles": {
+     "Kenny Barron": "piano",
+     "Rufus Reid": "double bass",
+     "Stan Getz": "tenor saxophone",
+     "Victor Lewis": "drums (drum set)"
+    },
+    "titre": "On Green Dolphin Street"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Stan Getz",
+     "Kenny Barron",
+     "Victor Lewis",
+     "Rufus Reid"
+    ],
+    "compositeur": "Victor Schertzinger",
+    "id": "c636345c-8717-3ccb-ba88-f154c430cdda",
+    "parente": null,
+    "roles": {
+     "Kenny Barron": "piano",
+     "Rufus Reid": "double bass",
+     "Stan Getz": "tenor saxophone",
+     "Victor Lewis": "drums (drum set)"
+    },
+    "titre": "I Remember You"
+   },
+   null
+  ],
+  "release": "3a60c39a-de2f-48f0-978f-48729f3c5691",
+  "version": 14
  },
  "7414475": {
   "annee_parution": 2006,
@@ -103160,6 +104910,189 @@
   ],
   "release": "8a8614d0-73b3-4443-8b05-549e6eb57966",
   "version": 5
+ },
+ "9146957": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1963,
+   1963
+  ],
+  "durees": [
+   443626,
+   530000,
+   406000,
+   418533,
+   497973,
+   341160,
+   377906
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387140551-250.jpg",
+    "original": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387140551.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387140551-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141143-250.jpg",
+    "original": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141143.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141143-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387213796-250.jpg",
+    "original": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387213796.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387213796-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141513-250.jpg",
+    "original": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141513.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141513-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141994-250.jpg",
+    "original": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141994.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb/38387141994-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-18",
+  "methode": "edition",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Dexter Gordon",
+     "Kenny Clarke",
+     "Pierre Michelot",
+     "Bud Powell"
+    ],
+    "compositeur": "Charlie Parker",
+    "id": "858ebb4b-edd7-39ee-9120-a364c904a125",
+    "parente": null,
+    "roles": {
+     "Bud Powell": "piano",
+     "Dexter Gordon": "tenor saxophone",
+     "Kenny Clarke": "drums (drum set)",
+     "Pierre Michelot": "double bass"
+    },
+    "titre": "Scrapple From the Apple"
+   },
+   {
+    "artistes": [
+     "Dexter Gordon",
+     "Kenny Clarke",
+     "Pierre Michelot",
+     "Bud Powell"
+    ],
+    "compositeur": "Ann Ronell",
+    "id": "219d7e1d-64fa-3e0d-bb07-d184b59d742f",
+    "parente": null,
+    "roles": {
+     "Bud Powell": "piano",
+     "Dexter Gordon": "tenor saxophone",
+     "Kenny Clarke": "drums (drum set)",
+     "Pierre Michelot": "double bass"
+    },
+    "titre": "Willow Weep for Me"
+   },
+   {
+    "artistes": [
+     "Dexter Gordon",
+     "Kenny Clarke",
+     "Pierre Michelot",
+     "Bud Powell"
+    ],
+    "compositeur": "Bill Bird, Teddy McRae, William Henri Woode",
+    "id": "3db7cffb-a377-44e5-97a6-a2f07ccf8863",
+    "parente": null,
+    "roles": {
+     "Bud Powell": "piano",
+     "Dexter Gordon": "tenor saxophone",
+     "Kenny Clarke": "drums (drum set)",
+     "Pierre Michelot": "double bass"
+    },
+    "titre": "Broadway"
+   },
+   {
+    "artistes": [
+     "Dexter Gordon",
+     "Kenny Clarke",
+     "Pierre Michelot",
+     "Bud Powell"
+    ],
+    "compositeur": "Matty Malneck, Frank Signorelli",
+    "id": "126023cf-516c-35f6-9f24-26bd3508b213",
+    "parente": null,
+    "roles": {
+     "Bud Powell": "piano",
+     "Dexter Gordon": "tenor saxophone",
+     "Kenny Clarke": "drums (drum set)",
+     "Pierre Michelot": "double bass"
+    },
+    "titre": "Stairway to the Stars"
+   },
+   {
+    "artistes": [
+     "Dexter Gordon",
+     "Kenny Clarke",
+     "Pierre Michelot",
+     "Bud Powell"
+    ],
+    "compositeur": "Dizzy Gillespie, Frank Paparelli",
+    "id": "aa7d6c10-c7a8-3eb5-b4b7-4de6a05d904e",
+    "parente": null,
+    "roles": {
+     "Bud Powell": "piano",
+     "Dexter Gordon": "tenor saxophone",
+     "Kenny Clarke": "drums (drum set)",
+     "Pierre Michelot": "double bass"
+    },
+    "titre": "Night in Tunisia"
+   },
+   {
+    "artistes": [
+     "Dexter Gordon",
+     "Kenny Clarke",
+     "Pierre Michelot",
+     "Bud Powell"
+    ],
+    "compositeur": "George Gershwin",
+    "id": "32cf91d5-8d8b-35da-b162-1838a8942d3a",
+    "parente": {
+     "id": "50133af8-34a3-4648-88ed-512cc0950649",
+     "titre": "The Goldwyn Follies"
+    },
+    "roles": {
+     "Bud Powell": "piano",
+     "Dexter Gordon": "tenor saxophone",
+     "Kenny Clarke": "drums (drum set)",
+     "Pierre Michelot": "double bass"
+    },
+    "titre": "Love Is Here to Stay"
+   },
+   {
+    "artistes": [
+     "Dexter Gordon",
+     "Kenny Clarke",
+     "Pierre Michelot",
+     "Bud Powell"
+    ],
+    "compositeur": "Jimmy Van Heusen",
+    "id": "5894be54-19fa-3668-bb08-ad4a192fd542",
+    "parente": null,
+    "roles": {
+     "Bud Powell": "piano",
+     "Kenny Clarke": "drums (drum set)",
+     "Pierre Michelot": "double bass"
+    },
+    "titre": "Like Someone in Love"
+   }
+  ],
+  "release": "3aef61bd-63b8-4f20-bbcb-1bfc5080d7fb",
+  "version": 14
  },
  "915811": {
   "annee_parution": null,
