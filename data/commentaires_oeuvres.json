@@ -1,5 +1,7 @@
 {
-  "oeuvres": {},
+  "oeuvres": {
+    "ac626a48-4a2c-3e77-9577-e7bdaf94f56e": "Version de James Blake"
+  },
   "versions": {
     "1f015bfb-f671-4bea-8827-493abebb11ff|16234070": "Version de Gould (commentaire test)"
   }
