@@ -44,7 +44,7 @@ const META_CATEGORIES = {
   Classique: ["Classique divers", "Classique Orchestre", "Classique Voix", "Clavecin et Orgue", "Guitare classique",
               "Opéra - Lyrique", "Piano Classique", "Piano et Orchestre", "String quartet", "Violon"],
   Divers: ["Electronic", "Pop Rock Folk", "Soull Funk R&B GBM", "Soundtrack B.O.", SANS_CATEGORIE, CATEGORIE_A_VENDRE],
-  Jazz: ["Blues", "Jazz", "Jazz Big Band", "Jazz Guitar", "Jazz piano trio", "Jazz vocal", "Latin Jazz", "Piano solo"],
+  Jazz: ["Blues", "Experimental Jazz", "Jazz", "Jazz Big Band", "Jazz Fusion", "Jazz Guitar", "Jazz piano trio", "Jazz vocal", "Latin Jazz", "Piano solo"],
   World: ["Brazil", "Flamenco", "India", "World"],
 };
 const META_PAR_DEFAUT = "Divers";             // méta-catégorie d'un nouveau dossier, tant qu'il n'est pas dans la table
