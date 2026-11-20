@@ -1,18 +1,21 @@
-Rapport des années d'enregistrement et des disques live, le 2026-11-18
+Rapport des années d'enregistrement et des disques live, le 2026-11-20
 
-Sources des années d'enregistrement (490 éditions) :
-  saisie manuelle                    52
-  MB sur édition exacte              242
-  MB sur autre édition de l'album    16
-  notes Discogs                      72
+Sources des années d'enregistrement (531 éditions) :
+  saisie manuelle                    83
+  MB sur édition exacte              248
+  MB sur autre édition de l'album    17
+  notes Discogs                      73
   titre                              3
   « à trouver »                      0
-  aucune année                       105
+  aucune année                       107
 
 1. Années tirées des notes Discogs (affichées ; à corriger dans le champ manuel si besoin)
 
 Anne Ducros — Purple Songs (édition 3703299)
     1999   « Recorded February 1999 »
+
+Antoine Hervé, Markus Stockhausen, François Moutin, Louis Moutin, Arnaud Frank — Invention Is You (édition 5377656)
+    1997   « Recorded live in November 1997 at Duc des Lombards, Paris, France »
 
 Arturo Benedetti Michelangeli, Frédéric Chopin — Arturo Benedetti Michelangeli Plays Chopin (édition 5805270)
     1985   « Recorded live in Bregenz, March 3, 1985 »
@@ -240,13 +243,19 @@ Various — You & The Night & The Music - La Soirée Jazz De L'Année 2012 À L'
     2012
 
 
-3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 », « 2003, 2010 » ou « à trouver ») : 1
+3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 », « 2003, 2010 » ou « à trouver ») : 3
+
+Ahmad Jamal — Volume 2 The Ahmad Jamal Trio (édition 10863087)
+    « 1956 - 1955 »
+
+Keith Jarrett, Gary Peacock, Paul Motian — At The Deer Head Inn (édition 503726)
+    « 1 »
 
 Various — Cool 2 (édition 7055920)
     « 1940-1960 (est.) »
 
 
-4. « Live » automatique (notes ou titre, champ « Live / Studio » vide) : 19
+4. « Live » automatique (notes ou titre, champ « Live / Studio » vide) : 20
    Affiché « Live » dans la page. Une erreur : choisir « Studio » ou « Live et Studio » dans Discogs.
 
 András Schiff — Encores After Beethoven (édition 9423778)
@@ -278,6 +287,9 @@ Joseph Phibbs, Wolfgang Amadeus Mozart, Mark Van De Wiel, Philharmonia Orchestra
 
 Kathleen Battle, Wiener Philharmoniker, Herbert von Karajan — Neujahrskonzert In Wien / New Year's Concert / Concert Du Nouvel An (édition 10655586)
     notes : « Live recording. »
+
+Keith Jarrett — La Scala (édition 27857883)
+    notes : « includes an 8-page booklet. Recorded live at Teatro alla Scala, Milano, on February 13, 199 »
 
 Ludwig van Beethoven, Rudolf Serkin — Klaviersonaten = Piano Sonatas Op. 109 • Op. 110 • Op. 111 (édition 8534769)
     notes : « é en RFA par Neef, Wittingen Konzertmitschnitt/Live recording/Enregistrement public/Registrazion »

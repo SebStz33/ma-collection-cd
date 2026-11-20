@@ -1907,6 +1907,71 @@
   "release": "564a0a09-837f-4657-bd17-845eb825e340",
   "version": 5
  },
+ "1020923": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1985,
+   1987
+  ],
+  "durees": [
+   350160,
+   336906,
+   215066,
+   204866,
+   243226,
+   169173,
+   380493,
+   359066,
+   102600,
+   233600,
+   289266,
+   202573
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758474990-250.jpg",
+    "original": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758474990.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758474990-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758477496-250.jpg",
+    "original": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758477496.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758477496-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758480032-250.jpg",
+    "original": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758480032.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758480032-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758480830-250.jpg",
+    "original": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758480830.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758480830-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758482980-250.jpg",
+    "original": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758482980.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758482980-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758484416-250.jpg",
+    "original": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758484416.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8/41758484416-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": "3dd352d3-4fcc-40a4-a95c-5a96ad85ecb8",
+  "version": 14
+ },
  "10215386": {
   "annees_enregistrement": [
    1997,
@@ -4314,6 +4379,83 @@
   ],
   "release": "07d6595c-90f3-4bba-be5a-e419274ac138",
   "version": 5
+ },
+ "10863087": {
+  "annee_parution": 1989,
+  "annees_enregistrement": [
+   1955,
+   1955
+  ],
+  "durees": [
+   163000,
+   298000,
+   180000,
+   177000,
+   233000,
+   171000,
+   275000,
+   202000,
+   513000,
+   264000
+  ],
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 10,
+  "oeuvres": [
+   {
+    "artistes": [
+     "The Ahmad Jamal Trio",
+     "Ray Crawford",
+     "Israel Crosby",
+     "Ahmad Jamal"
+    ],
+    "compositeur": "Joseph Kosma",
+    "id": "048b4b7a-07c4-3e33-959f-268199324401",
+    "parente": null,
+    "roles": {
+     "Ahmad Jamal": "piano",
+     "Israel Crosby": "double bass",
+     "Ray Crawford": "guitar"
+    },
+    "titre": "Autumn Leaves"
+   },
+   {
+    "artistes": [
+     "Ahmad Jamal"
+    ],
+    "compositeur": "Carl Sigman",
+    "id": "eda26f41-f2bc-4aff-abfc-ea41405f032e",
+    "parente": null,
+    "titre": "Crazy He Calls Me"
+   },
+   null,
+   {
+    "artistes": [
+     "Ahmad Jamal"
+    ],
+    "compositeur": "Richard Rodgers",
+    "id": "fe055727-d9c6-353d-a6c2-4144ea6dd50c",
+    "parente": null,
+    "titre": "It’s Easy to Remember (and So Hard to Forget)"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Ahmad Jamal"
+    ],
+    "compositeur": "Nat Simon",
+    "id": "06f1bf25-cf7f-3039-9aa4-7594fec0821a",
+    "parente": null,
+    "titre": "Poinciana (Song of the Tree)"
+   },
+   null,
+   null,
+   null
+  ],
+  "release": "29a45e9d-c813-47de-9059-48ccb7ae0546",
+  "version": 14
  },
  "1088316": {
   "annee_parution": 1992,
@@ -7142,6 +7284,174 @@
   "release": null,
   "version": 2
  },
+ "1207358": {
+  "annee_parution": 1998,
+  "annees_enregistrement": [
+   1973,
+   1973
+  ],
+  "durees": [
+   559733,
+   614626,
+   1175466
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612031939-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612031939.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612031939-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612034135-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612034135.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612034135-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612035530-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612035530.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612035530-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612036976-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612036976.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612036976-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612038331-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612038331.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612038331-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612039304-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612039304.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612039304-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612040241-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612040241.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612040241-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612041617-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612041617.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612041617-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612043003-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612043003.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612043003-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612044788-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612044788.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612044788-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612045272-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612045272.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612045272-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612046840-250.jpg",
+    "original": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612046840.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9aa38b48-7160-30a6-877c-2da7f53f3d3f/15612046840-500.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 3,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Billy Bonner",
+     "Buck Clarke",
+     "Patrick Gleeson",
+     "Billy Hart",
+     "Eddie Henderson",
+     "Bennie Maupin",
+     "Julian Priester",
+     "Buster Williams"
+    ],
+    "compositeur": "Herbie Hancock",
+    "id": "84bac9e5-03c8-3ab5-8377-9d90745ab8bd",
+    "parente": null,
+    "roles": {
+     "Bennie Maupin": "bass clarinet, cabasa, kazoo, piccolo, soprano saxophone",
+     "Billy Hart": "drums (drum set)",
+     "Buck Clarke": "bongos, congas",
+     "Buster Williams": "double bass, electric bass guitar",
+     "Eddie Henderson": "flugelhorn, trumpet",
+     "Herbie Hancock": "clavinet, handclaps, mellotron, piano, Rhodes piano",
+     "Julian Priester": "bass trombone, cowbell, trombone",
+     "Patrick Gleeson": "synthesizer"
+    },
+    "titre": "Rain Dance"
+   },
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Buck Clarke",
+     "Billy Hart",
+     "Eddie Henderson",
+     "Bennie Maupin",
+     "Julian Priester",
+     "Buster Williams"
+    ],
+    "compositeur": "Herbie Hancock",
+    "id": "80edb059-557d-3b51-88c4-c08dea4bf94e",
+    "parente": null,
+    "roles": {
+     "Bennie Maupin": "bass clarinet, cabasa, kazoo, piccolo, soprano saxophone",
+     "Billy Hart": "drums (drum set)",
+     "Buck Clarke": "bongos, congas",
+     "Buster Williams": "double bass, electric bass guitar",
+     "Eddie Henderson": "flugelhorn, trumpet",
+     "Herbie Hancock": "clavinet, handclaps, mellotron, piano, Rhodes piano",
+     "Julian Priester": "bass trombone, cowbell, trombone"
+    },
+    "titre": "Hidden Shadows"
+   },
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Buck Clarke",
+     "Billy Hart",
+     "Eddie Henderson",
+     "Bennie Maupin",
+     "Julian Priester",
+     "Buster Williams"
+    ],
+    "compositeur": "Herbie Hancock",
+    "id": "227e713a-2c31-3775-9139-c00fe2f147f8",
+    "parente": null,
+    "roles": {
+     "Bennie Maupin": "bass clarinet, cabasa, kazoo, piccolo, soprano saxophone",
+     "Billy Hart": "drums (drum set)",
+     "Buck Clarke": "bongos, congas",
+     "Buster Williams": "double bass, electric bass guitar",
+     "Eddie Henderson": "flugelhorn, trumpet",
+     "Herbie Hancock": "clavinet, handclaps, mellotron, piano, Rhodes piano",
+     "Julian Priester": "bass trombone, cowbell, trombone"
+    },
+    "titre": "Hornets"
+   }
+  ],
+  "release": "9aa38b48-7160-30a6-877c-2da7f53f3d3f",
+  "version": 14
+ },
  "12092523": {
   "images": [],
   "maj": "2026-11-02",
@@ -7315,6 +7625,177 @@
   ],
   "release": "27a3e4c3-c23b-4bc6-af1a-b4da84853129",
   "version": 5
+ },
+ "1216174": {
+  "annee_parution": 2002,
+  "annees_enregistrement": [
+   1965,
+   1965
+  ],
+  "durees": [
+   439106,
+   397413,
+   401306,
+   599853,
+   376226,
+   509453
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221885832-250.jpg",
+    "original": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221885832.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221885832-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221887431-250.jpg",
+    "original": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221887431.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221887431-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221888746-250.jpg",
+    "original": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221888746.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221888746-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221890203-250.jpg",
+    "original": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221890203.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221890203-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221892005-250.jpg",
+    "original": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221892005.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221892005-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221893835-250.jpg",
+    "original": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221893835.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5/12221893835-500.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Bobby Hutcherson",
+     "Joe Chambers",
+     "Richard Davis",
+     "Andrew Hill",
+     "Freddie Hubbard",
+     "Sam Rivers"
+    ],
+    "compositeur": "Andrew Hill",
+    "id": "d0fb1e8e-4b69-4856-b9d8-d1b6c200d6a9",
+    "parente": null,
+    "roles": {
+     "Andrew Hill": "piano",
+     "Bobby Hutcherson": "vibraphone",
+     "Freddie Hubbard": "trumpet",
+     "Joe Chambers": "drums (drum set)",
+     "Richard Davis": "bass",
+     "Sam Rivers": "tenor saxophone"
+    },
+    "titre": "Catta"
+   },
+   {
+    "artistes": [
+     "Bobby Hutcherson",
+     "Joe Chambers",
+     "Richard Davis",
+     "Andrew Hill",
+     "Freddie Hubbard",
+     "Sam Rivers"
+    ],
+    "compositeur": "Joe Chambers",
+    "id": "5bb6fdd7-5d3f-45c1-85e6-d69028b8fbf7",
+    "parente": null,
+    "roles": {
+     "Andrew Hill": "piano",
+     "Bobby Hutcherson": "vibraphone",
+     "Freddie Hubbard": "trumpet",
+     "Joe Chambers": "drums (drum set)",
+     "Richard Davis": "bass",
+     "Sam Rivers": "flute"
+    },
+    "titre": "Idle While"
+   },
+   {
+    "artistes": [
+     "Bobby Hutcherson",
+     "Joe Chambers",
+     "Richard Davis",
+     "Andrew Hill",
+     "Freddie Hubbard",
+     "Sam Rivers"
+    ],
+    "compositeur": "Andrew Hill",
+    "id": "012bbd64-d569-4ea9-bbfe-7d4c95218944",
+    "parente": null,
+    "roles": {
+     "Andrew Hill": "piano",
+     "Bobby Hutcherson": "vibraphone",
+     "Freddie Hubbard": "trumpet",
+     "Joe Chambers": "drums (drum set)",
+     "Richard Davis": "bass",
+     "Sam Rivers": "flute"
+    },
+    "titre": "Les Noirs Marchant"
+   },
+   {
+    "artistes": [
+     "Bobby Hutcherson",
+     "Joe Chambers",
+     "Richard Davis",
+     "Andrew Hill",
+     "Freddie Hubbard",
+     "Sam Rivers"
+    ],
+    "compositeur": "Joe Chambers",
+    "id": "c6259057-91c8-4f67-8f7e-2b25c6953936",
+    "parente": null,
+    "roles": {
+     "Andrew Hill": "piano",
+     "Bobby Hutcherson": "vibraphone",
+     "Freddie Hubbard": "trumpet",
+     "Joe Chambers": "drums (drum set)",
+     "Richard Davis": "bass",
+     "Sam Rivers": "bass clarinet"
+    },
+    "titre": "Dialogue"
+   },
+   {
+    "artistes": [
+     "Bobby Hutcherson",
+     "Joe Chambers",
+     "Richard Davis",
+     "Andrew Hill",
+     "Freddie Hubbard",
+     "Sam Rivers"
+    ],
+    "compositeur": "Andrew Hill",
+    "id": "94732a33-9383-4703-a79f-ab69444cac55",
+    "parente": null,
+    "roles": {
+     "Andrew Hill": "piano",
+     "Bobby Hutcherson": "vibraphone",
+     "Freddie Hubbard": "trumpet",
+     "Joe Chambers": "drums (drum set)",
+     "Richard Davis": "bass",
+     "Sam Rivers": "soprano saxophone"
+    },
+    "titre": "Ghetto Lights"
+   },
+   null
+  ],
+  "release": "248e4e5b-ce3d-4347-a6c5-06cf5f1a15e5",
+  "version": 14
  },
  "12168439": {
   "images": [],
@@ -37411,6 +37892,18 @@
   "release": "55aad1a0-1eb8-4839-9cdd-09124d440047",
   "version": 4
  },
+ "14802895": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "aucune",
+  "nb_plages": 6,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "14838021": {
   "annee_parution": null,
   "annees_enregistrement": null,
@@ -37567,6 +38060,18 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "15087615": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "aucune",
+  "nb_plages": 8,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
  },
  "15150572": {
   "annee_parution": 2005,
@@ -41439,6 +41944,117 @@
   "release": "f5858c59-2dea-4c52-9e39-1a805ba25c28",
   "version": 10
  },
+ "1810221": {
+  "annee_parution": 1999,
+  "annees_enregistrement": null,
+  "durees": [
+   466293,
+   812840,
+   385400,
+   681266,
+   409360,
+   494973,
+   291400,
+   835093,
+   228773
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/f2bc541f-f7b8-4cb5-afd7-e5a816712581/34386641991-250.jpg",
+    "original": "https://coverartarchive.org/release/f2bc541f-f7b8-4cb5-afd7-e5a816712581/34386641991.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/f2bc541f-f7b8-4cb5-afd7-e5a816712581/34386641991-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 9,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "0ec6d945-36eb-3700-8fdc-d19ba63a0e87",
+    "parente": null,
+    "titre": "Prime Directive"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "73eafff0-08bb-33f5-b78f-11753e084c2c",
+    "parente": null,
+    "titre": "Looking Up"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "9877efcf-4c00-3fbc-a67c-ac814aefae91",
+    "parente": null,
+    "titre": "Make Believe"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Robin Eubanks",
+    "id": "5aaef67a-b399-3c40-8a4c-2d2e9abd6033",
+    "parente": null,
+    "titre": "A Searching Spirit"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Chris Potter",
+    "id": "c119c7b9-7811-3543-b9af-ec862638af46",
+    "parente": null,
+    "titre": "High Wire"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "808c2997-af2d-3c51-8854-cbfd5eec9ac3",
+    "parente": null,
+    "titre": "Jugglers Parade"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Steve Nelson",
+    "id": "9c1f475a-3ac8-371d-9025-3c5c424b1e4e",
+    "parente": null,
+    "titre": "Candlelight Vigil"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Billy Kilson",
+    "id": "f07e6926-2367-3893-b563-d50fcfb1f54b",
+    "parente": null,
+    "titre": "Wonders Never Cease"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "45c53c1f-10ee-3cc5-a45c-96f2d5d13766",
+    "parente": null,
+    "titre": "Down Time"
+   }
+  ],
+  "release": "f2bc541f-f7b8-4cb5-afd7-e5a816712581",
+  "version": 14
+ },
  "18193504": {
   "annee_parution": null,
   "annees_enregistrement": null,
@@ -41449,6 +42065,98 @@
   "nb_plages": 19,
   "oeuvres": null,
   "release": null,
+  "version": 14
+ },
+ "18193519": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "aucune",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
+ "18194020": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1958,
+   1960
+  ],
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "album",
+  "nb_plages": 4,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "d4b8437e-5ee6-33b2-9462-3bb0d51ec0a0",
+    "parente": {
+     "id": "60e1dcf6-e728-35be-8948-ba74500b6c6e",
+     "titre": "Symphony no. 6 in F major, op. 68 “Pastorale”"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 6 in F major, op. 68 “Pastorale”: I. Allegro ma non troppo “Awakening of cheerful feelings upon arrival in the country”"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "a954237b-a56f-38e3-8d0b-739570dbcd6a",
+    "parente": {
+     "id": "60e1dcf6-e728-35be-8948-ba74500b6c6e",
+     "titre": "Symphony no. 6 in F major, op. 68 “Pastorale”"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 6 in F major, op. 68 “Pastorale”: II. Andante molto mosso “Scene at the brook”"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "cc77216a-d316-3e92-8ee8-9b1cf3027ba9",
+    "parente": {
+     "id": "60e1dcf6-e728-35be-8948-ba74500b6c6e",
+     "titre": "Symphony no. 6 in F major, op. 68 “Pastorale”"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 6 in F major, op. 68 “Pastorale”: III. Allegro “Happy gathering of country folk”"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "68c28f5b-e2bc-3359-be6a-5e3d37f9736e",
+    "parente": {
+     "id": "2ee77f37-41d0-4063-92bd-6d6f3f488dbf",
+     "titre": "Leonore, Hess 109"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Overture “Leonore” no. 2 in C major, op. 72a"
+   }
+  ],
+  "release": "232e2d0e-a5ee-4f49-b2f0-88de74baa41a",
   "version": 14
  },
  "1820430": {
@@ -66317,6 +67025,192 @@
   "release": null,
   "version": 2
  },
+ "2084614": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1987,
+   1987
+  ],
+  "durees": [
+   1565960,
+   226773,
+   301800,
+   193133,
+   270800,
+   201466,
+   249466,
+   220733,
+   301426
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/8309595213-250.jpg",
+    "original": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/8309595213.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/8309595213-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/8309725316-250.jpg",
+    "original": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/8309725316.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/8309725316-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/21898193408-250.jpg",
+    "original": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/21898193408.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/084b8616-4d92-3f48-afef-9fd90b2a8ff2/21898193408-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 9,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "3a43c86a-b3e5-30ac-ba5c-9776badafe1c",
+    "parente": {
+     "id": "5070b13b-397f-433e-82f8-ec583e026e09",
+     "titre": "Musikalische Exequien, op. 7, SWV 279-281"
+    },
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Musikalische Exequien, op. 7, SWV 279-281: I. Concert in Form einer teutschen Begräbnis-Messe"
+   },
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "b1ac79e3-5246-3e23-abeb-9aecdfe826ea",
+    "parente": {
+     "id": "5070b13b-397f-433e-82f8-ec583e026e09",
+     "titre": "Musikalische Exequien, op. 7, SWV 279-281"
+    },
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Musikalische Exequien, op. 7, SWV 279-281: II. Motette \"Herr, wenn ich nur dich habe\""
+   },
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "316d6f11-554f-3ce4-b2e6-6a4120df44cc",
+    "parente": {
+     "id": "5070b13b-397f-433e-82f8-ec583e026e09",
+     "titre": "Musikalische Exequien, op. 7, SWV 279-281"
+    },
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Musikalische Exequien, op. 7, SWV 279-281: III. Canticum B. Simeonis \"Herr, nun lässest du deinen Diener in Friede fahren\""
+   },
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "b3a62b28-d2bc-360e-af14-9f238bd3bf8f",
+    "parente": {
+     "id": "e72b22be-b70f-45e0-ac62-85df5d899dfc",
+     "titre": "Geistliche Chor-Music, Op.11, SWV 369-397"
+    },
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Motet \"Also hat Gott die Welt geliebt\", SWV 380"
+   },
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "1528ffa4-b986-35fb-ab43-bed962ded50e",
+    "parente": {
+     "id": "e72b22be-b70f-45e0-ac62-85df5d899dfc",
+     "titre": "Geistliche Chor-Music, Op.11, SWV 369-397"
+    },
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Motet \"Selig sind die Toten\", SWV 391"
+   },
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "0931c94b-af26-3151-b2ae-a615e7a52ace",
+    "parente": {
+     "id": "e72b22be-b70f-45e0-ac62-85df5d899dfc",
+     "titre": "Geistliche Chor-Music, Op.11, SWV 369-397"
+    },
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Motet \"So fahr Ich hin zu Jesu Christ\", SWV 379"
+   },
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "91bfcb6c-ab4f-34c9-b80e-b54b4cbdb0fc",
+    "parente": {
+     "id": "51e13ca5-dfdc-405e-8e8b-425dc3104f54",
+     "titre": "Kleine geistliche Konzerte II, op. 9"
+    },
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Motet \"Ich bin die Auferstehung\", SWV 324 (Petits concerts spirituels II)"
+   },
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "1964bab5-1009-3e2a-ba03-ced749eb92b2",
+    "parente": null,
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Motet \"O lieber Herre Gott\", SWV 287 (Petits concerts spirituels I)"
+   },
+   {
+    "artistes": [
+     "Philippe Herreweghe",
+     "La Chapelle Royale"
+    ],
+    "compositeur": "Heinrich Schütz",
+    "id": "15612fc2-6b18-481e-9328-1562a2562104",
+    "parente": {
+     "id": "e72b22be-b70f-45e0-ac62-85df5d899dfc",
+     "titre": "Geistliche Chor-Music, Op.11, SWV 369-397"
+    },
+    "roles": {
+     "Philippe Herreweghe": "conductor"
+    },
+    "titre": "Die Himmel erzählen die Ehre Gottes, SWV 386"
+   }
+  ],
+  "release": "084b8616-4d92-3f48-afef-9fd90b2a8ff2",
+  "version": 14
+ },
  "20867728": {
   "images": [],
   "maj": "2026-11-02",
@@ -68157,6 +69051,182 @@
   "release": "b1214263-1d92-4e77-b24c-18fe260d7a2d",
   "version": 4
  },
+ "2264373": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1962,
+   1962
+  ],
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "album",
+  "nb_plages": 8,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Herbie Hancock",
+     "Clifford Jarvis",
+     "James Spaulding",
+     "Reggie Workman"
+    ],
+    "compositeur": "Harry Warren",
+    "id": "492492fc-e659-3215-b775-7a6c986f0473",
+    "parente": null,
+    "roles": {
+     "Clifford Jarvis": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "James Spaulding": "alto saxophone, flute",
+     "Reggie Workman": "double bass"
+    },
+    "titre": "You’re My Everything"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Herbie Hancock",
+     "Clifford Jarvis",
+     "James Spaulding",
+     "Reggie Workman"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "a673742e-fe34-4a45-81d0-8b789cd15c06",
+    "parente": null,
+    "roles": {
+     "Clifford Jarvis": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "James Spaulding": "alto saxophone, flute",
+     "Reggie Workman": "double bass"
+    },
+    "titre": "Prophet Jennings"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Herbie Hancock",
+     "Clifford Jarvis",
+     "James Spaulding",
+     "Reggie Workman"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "6f3c27e1-f3ac-4daa-98eb-c0e1188b27b1",
+    "parente": null,
+    "roles": {
+     "Clifford Jarvis": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "James Spaulding": "alto saxophone, flute",
+     "Reggie Workman": "double bass"
+    },
+    "titre": "Hub-Tones"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Herbie Hancock",
+     "Clifford Jarvis",
+     "James Spaulding",
+     "Reggie Workman"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "c5ed7d41-f701-4eba-b614-b25699179513",
+    "parente": null,
+    "roles": {
+     "Clifford Jarvis": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "James Spaulding": "alto saxophone, flute",
+     "Reggie Workman": "double bass"
+    },
+    "titre": "Lament for Booker"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Herbie Hancock",
+     "Clifford Jarvis",
+     "James Spaulding",
+     "Reggie Workman"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "5fb74107-36d0-4ee2-b0ea-7d8bf286c002",
+    "parente": null,
+    "roles": {
+     "Clifford Jarvis": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "James Spaulding": "alto saxophone, flute",
+     "Reggie Workman": "double bass"
+    },
+    "titre": "For Spee's Sake"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Herbie Hancock",
+     "Clifford Jarvis",
+     "James Spaulding",
+     "Reggie Workman"
+    ],
+    "compositeur": "Harry Warren",
+    "id": "492492fc-e659-3215-b775-7a6c986f0473",
+    "parente": null,
+    "roles": {
+     "Clifford Jarvis": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "James Spaulding": "alto saxophone, flute",
+     "Reggie Workman": "double bass"
+    },
+    "titre": "You’re My Everything"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Herbie Hancock",
+     "Clifford Jarvis",
+     "James Spaulding",
+     "Reggie Workman"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "6f3c27e1-f3ac-4daa-98eb-c0e1188b27b1",
+    "parente": null,
+    "roles": {
+     "Clifford Jarvis": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "James Spaulding": "alto saxophone, flute",
+     "Reggie Workman": "double bass"
+    },
+    "titre": "Hub-Tones"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Herbie Hancock",
+     "Clifford Jarvis",
+     "James Spaulding",
+     "Reggie Workman"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "5fb74107-36d0-4ee2-b0ea-7d8bf286c002",
+    "parente": null,
+    "roles": {
+     "Clifford Jarvis": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "James Spaulding": "alto saxophone, flute",
+     "Reggie Workman": "double bass"
+    },
+    "titre": "For Spee's Sake"
+   }
+  ],
+  "release": "1aac9588-6790-446b-b211-d45971a4f5e5",
+  "version": 14
+ },
  "2276282": {
   "annee_parution": 2005,
   "annees_enregistrement": [
@@ -68353,6 +69423,168 @@
   "nb_plages": 5,
   "oeuvres": null,
   "release": null,
+  "version": 14
+ },
+ "23410151": {
+  "annee_parution": 1989,
+  "annees_enregistrement": [
+   1987,
+   1987
+  ],
+  "durees": [
+   540893,
+   932106,
+   691866,
+   779560
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392670030-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392670030.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392670030-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392673748-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392673748.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392673748-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392674328-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392674328.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392674328-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392675388-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392675388.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392675388-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392676582-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392676582.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/19392676582-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735405165-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735405165.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735405165-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735404350-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735404350.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735404350-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735402470-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735402470.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735402470-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735407391-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735407391.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735407391-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735409673-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735409673.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735409673-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735406297-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735406297.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/21735406297-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/26229183253-250.jpg",
+    "original": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/26229183253.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/ab222a5f-323f-4bfe-8a61-b179fd8e0872/26229183253-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 4,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Keith Jarrett, Gary Peacock, Jack DeJohnette",
+     "Jack DeJohnette",
+     "Keith Jarrett",
+     "Gary Peacock"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "43ab9713-4ccf-47c3-b293-101e5c048c25",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "bass",
+     "Jack DeJohnette": "drums (drum set)",
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Dancing"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett, Gary Peacock, Jack DeJohnette",
+     "Jack DeJohnette",
+     "Keith Jarrett",
+     "Gary Peacock"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "323db07c-7f90-4e80-9e91-3142315f933a",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "bass",
+     "Jack DeJohnette": "drums (drum set)",
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Endless"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett, Gary Peacock, Jack DeJohnette",
+     "Jack DeJohnette",
+     "Keith Jarrett",
+     "Gary Peacock"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "13d6ace6-f231-4c2e-bac4-7940888b2618",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "bass",
+     "Jack DeJohnette": "drums (drum set)",
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Lifeline"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett, Gary Peacock, Jack DeJohnette",
+     "Jack DeJohnette",
+     "Keith Jarrett",
+     "Gary Peacock"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "98700c9b-609a-404e-b980-5df3185ee2fe",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "bass",
+     "Jack DeJohnette": "drums (drum set)",
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Ecstacy"
+   }
+  ],
+  "release": "ab222a5f-323f-4bfe-8a61-b179fd8e0872",
   "version": 14
  },
  "2343664": {
@@ -69055,6 +70287,134 @@
   "release": "6ba17100-ab5e-4fe4-98c1-8acb35a015ef",
   "version": 12
  },
+ "24511304": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1958,
+   1958
+  ],
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "album",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "424a3448-2afe-3d24-ad8d-22539100bf05",
+    "parente": {
+     "id": "273fea50-59bf-4711-81c8-035502b40c24",
+     "titre": "Symphony no. 4 in B-flat major, op. 60"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 4 in B-flat major, op. 60: I. Adagio - Allegro vivace"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "19ed94d7-978e-34e7-9c35-ac9b7ef26c2e",
+    "parente": {
+     "id": "273fea50-59bf-4711-81c8-035502b40c24",
+     "titre": "Symphony no. 4 in B-flat major, op. 60"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 4 in B-flat major, op. 60: II. Adagio"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "328d0a2b-f38c-3bb6-835b-b8cdcd9130e3",
+    "parente": {
+     "id": "273fea50-59bf-4711-81c8-035502b40c24",
+     "titre": "Symphony no. 4 in B-flat major, op. 60"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 4 in B-flat major, op. 60: III. Allegro vivace"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "894f3107-9db4-33ba-bc47-e7c52f4468ed",
+    "parente": {
+     "id": "273fea50-59bf-4711-81c8-035502b40c24",
+     "titre": "Symphony no. 4 in B-flat major, op. 60"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 4 in B-flat major, op. 60: IV. Allegro ma non troppo"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "b6f9ecc3-24d1-38ed-b8a0-091f7cd0c6b2",
+    "parente": {
+     "id": "d03bff61-26fc-301b-98ac-4d8e85771cbc",
+     "titre": "Symphony no. 5 in C minor, op. 67"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 5 in C minor, op. 67: I. Allegro con brio"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "3bc742da-f67b-36c9-b31e-6ed09fdbdadd",
+    "parente": {
+     "id": "d03bff61-26fc-301b-98ac-4d8e85771cbc",
+     "titre": "Symphony no. 5 in C minor, op. 67"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 5 in C minor, op. 67: II. Andante con moto"
+   },
+   {
+    "artistes": [
+     "Columbia Symphony Orchestra",
+     "Bruno Walter"
+    ],
+    "compositeur": "Ludwig van Beethoven",
+    "id": "5831439d-e776-3b0e-ad34-c1a112d96e6d",
+    "parente": {
+     "id": "d03bff61-26fc-301b-98ac-4d8e85771cbc",
+     "titre": "Symphony no. 5 in C minor, op. 67"
+    },
+    "roles": {
+     "Bruno Walter": "conductor"
+    },
+    "titre": "Symphony no. 5 in C minor, op. 67: III. Scherzo. Allegro"
+   }
+  ],
+  "release": "e18bd16f-dbb5-4e15-95ad-65f2aaa1ca3b",
+  "version": 14
+ },
  "2453355": {
   "annee_parution": 1990,
   "annees_enregistrement": null,
@@ -69091,6 +70451,78 @@
   ],
   "release": "f429ed2e-1dbc-4a1b-bd72-f8fffd063a3e",
   "version": 5
+ },
+ "2486907": {
+  "annee_parution": 1990,
+  "annees_enregistrement": [
+   1989,
+   1989
+  ],
+  "durees": [
+   695826,
+   441933,
+   615333,
+   877973,
+   296000,
+   611533
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/69a292e1-df6a-47da-8a52-60e0dff6124f/46577491244-250.jpg",
+    "original": "https://coverartarchive.org/release/69a292e1-df6a-47da-8a52-60e0dff6124f/46577491244.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/69a292e1-df6a-47da-8a52-60e0dff6124f/46577491244-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 6,
+  "oeuvres": [
+   null,
+   {
+    "artistes": [
+     "Dave Holland Quartet",
+     "Steve Coleman",
+     "Kevin Eubanks",
+     "Dave Holland",
+     "Marvin “Smitty” Smith"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "0a1d8eff-2975-325a-b418-2a2cce0d81fd",
+    "parente": null,
+    "roles": {
+     "Dave Holland": "bass",
+     "Kevin Eubanks": "guitar",
+     "Marvin “Smitty” Smith": "drums (drum set)",
+     "Steve Coleman": "alto saxophone"
+    },
+    "titre": "Processional"
+   },
+   null,
+   {
+    "artistes": [
+     "Dave Holland Quartet",
+     "Steve Coleman",
+     "Kevin Eubanks",
+     "Dave Holland",
+     "Marvin “Smitty” Smith"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "2edb65d7-e0c0-3e3f-a84d-ac71d611807b",
+    "parente": null,
+    "roles": {
+     "Dave Holland": "bass",
+     "Kevin Eubanks": "guitar",
+     "Marvin “Smitty” Smith": "drums (drum set)",
+     "Steve Coleman": "alto saxophone"
+    },
+    "titre": "The Oracle"
+   },
+   null,
+   null
+  ],
+  "release": "69a292e1-df6a-47da-8a52-60e0dff6124f",
+  "version": 14
  },
  "24871277": {
   "annee_parution": null,
@@ -71981,6 +73413,72 @@
   "release": "6c00a736-c49e-4a26-967d-dbcbdb2008e0",
   "version": 4
  },
+ "27857883": {
+  "annee_parution": 1997,
+  "annees_enregistrement": [
+   1995,
+   1995
+  ],
+  "durees": [
+   2694360,
+   1662866,
+   361773
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/1de21fdd-f253-4626-9636-a32447aea0d1/24711276980-250.jpg",
+    "original": "https://coverartarchive.org/release/1de21fdd-f253-4626-9636-a32447aea0d1/24711276980.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/1de21fdd-f253-4626-9636-a32447aea0d1/24711276980-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 3,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Keith Jarrett"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "4e7550a7-0bb3-4f20-8888-0ac39fa75257",
+    "parente": null,
+    "roles": {
+     "Keith Jarrett": "piano"
+    },
+    "titre": "La Scala, Part I"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "d984212d-7a54-4c21-9460-85262b027aa7",
+    "parente": null,
+    "roles": {
+     "Keith Jarrett": "piano"
+    },
+    "titre": "La Scala, Part II"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett"
+    ],
+    "compositeur": "Harold Arlen",
+    "id": "f8217125-b460-3902-8903-82979e3785ee",
+    "parente": {
+     "id": "6f08aa22-4670-3a0e-a642-0e866f7baf5a",
+     "titre": "The Wizard of Oz"
+    },
+    "roles": {
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Over the Rainbow"
+   }
+  ],
+  "release": "1de21fdd-f253-4626-9636-a32447aea0d1",
+  "version": 14
+ },
  "2811320": {
   "annee_parution": 1994,
   "annees_enregistrement": null,
@@ -73001,6 +74499,166 @@
   "release": "8a233c07-585b-4800-9b11-b84aa4eefd79",
   "version": 11
  },
+ "29514802": {
+  "annee_parution": 1994,
+  "annees_enregistrement": [
+   1975,
+   1975
+  ],
+  "durees": [
+   1561533,
+   894266,
+   1093066,
+   416693
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260343818-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260343818.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260343818-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/19392133704-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/19392133704.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/19392133704-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344088-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344088.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344088-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344358-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344358.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344358-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344596-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344596.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344596-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344840-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344840.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260344840-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345107-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345107.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345107-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345360-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345360.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345360-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345606-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345606.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260345606-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346020-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346020.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346020-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346273-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346273.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346273-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/19392132954-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/19392132954.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/19392132954-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346531-250.jpg",
+    "original": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346531.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/535c8f04-be8f-4565-bd3d-25b8cedcae1e/22260346531-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 4,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Keith Jarrett"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "f50a2b51-8c3d-4693-8e26-4a97622bd345",
+    "parente": {
+     "id": "434d0c88-7372-467b-8556-58b23fa52638",
+     "titre": "Köln, January 24, 1975"
+    },
+    "roles": {
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Köln, January 24, 1975, Part I"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "77bd8bd3-c84f-41a9-80bc-b8da3b100eb1",
+    "parente": {
+     "id": "434d0c88-7372-467b-8556-58b23fa52638",
+     "titre": "Köln, January 24, 1975"
+    },
+    "roles": {
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Köln, January 24, 1975, Part IIa"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "d51ab13f-e2ef-4436-bbb8-a8de4bf0361d",
+    "parente": {
+     "id": "434d0c88-7372-467b-8556-58b23fa52638",
+     "titre": "Köln, January 24, 1975"
+    },
+    "roles": {
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Köln, January 24, 1975, Part IIb"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "bc936bd4-9c33-4811-b15c-6ae5a9364a49",
+    "parente": {
+     "id": "434d0c88-7372-467b-8556-58b23fa52638",
+     "titre": "Köln, January 24, 1975"
+    },
+    "roles": {
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Köln, January 24, 1975, Part IIc"
+   }
+  ],
+  "release": "535c8f04-be8f-4565-bd3d-25b8cedcae1e",
+  "version": 14
+ },
  "29644312": {
   "annee_parution": null,
   "annees_enregistrement": null,
@@ -73030,6 +74688,18 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "30045247": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "aucune",
+  "nb_plages": 10,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
  },
  "3019977": {
   "annees_enregistrement": null,
@@ -73378,6 +75048,105 @@
   "oeuvres": null,
   "release": "c6a85f3b-706f-4949-b889-94d22c8af97f",
   "version": 11
+ },
+ "30338384": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1979,
+   1979
+  ],
+  "durees": [
+   1251000,
+   807000,
+   710000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/18749062353-250.jpg",
+    "original": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/18749062353.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/18749062353-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/18749065382-250.jpg",
+    "original": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/18749065382.pdf",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/18749065382-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/13207054865-250.jpg",
+    "original": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/13207054865.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/13207054865-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/13207056168-250.jpg",
+    "original": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/13207056168.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/04eea0e4-ee25-4be1-8e69-64731d7bb3a7/13207056168-500.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 3,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Maurizio Pollini",
+     "Wiener Philharmoniker",
+     "Karl Böhm"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "fc3f2e7d-e90e-3897-bc3f-43726b5fcf35",
+    "parente": {
+     "id": "b078677e-f408-4c95-9d48-62cbb3f6f6e1",
+     "titre": "Concerto for Piano and Orchestra no. 1 in D minor, op. 15"
+    },
+    "roles": {
+     "Karl Böhm": "conductor",
+     "Maurizio Pollini": "piano"
+    },
+    "titre": "Concerto for Piano and Orchestra no. 1 in D minor, op. 15: I. Maestoso"
+   },
+   {
+    "artistes": [
+     "Maurizio Pollini",
+     "Wiener Philharmoniker",
+     "Karl Böhm"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "74be1e9c-d879-3cc3-8d3b-a8a0436ebbc8",
+    "parente": {
+     "id": "b078677e-f408-4c95-9d48-62cbb3f6f6e1",
+     "titre": "Concerto for Piano and Orchestra no. 1 in D minor, op. 15"
+    },
+    "roles": {
+     "Karl Böhm": "conductor",
+     "Maurizio Pollini": "piano"
+    },
+    "titre": "Concerto for Piano and Orchestra no. 1 in D minor, op. 15: II. Adagio"
+   },
+   {
+    "artistes": [
+     "Maurizio Pollini",
+     "Wiener Philharmoniker",
+     "Karl Böhm"
+    ],
+    "compositeur": "Johannes Brahms",
+    "id": "44e246ce-3b61-30db-982c-b4f16d749ed6",
+    "parente": {
+     "id": "b078677e-f408-4c95-9d48-62cbb3f6f6e1",
+     "titre": "Concerto for Piano and Orchestra no. 1 in D minor, op. 15"
+    },
+    "roles": {
+     "Karl Böhm": "conductor",
+     "Maurizio Pollini": "piano"
+    },
+    "titre": "Concerto for Piano and Orchestra no. 1 in D minor, op. 15: III. Rondo. Allegro non troppo"
+   }
+  ],
+  "release": "04eea0e4-ee25-4be1-8e69-64731d7bb3a7",
+  "version": 14
  },
  "30485759": {
   "annee_parution": null,
@@ -74098,6 +75867,148 @@
   "release": "dc2e95b8-569a-46aa-b4c8-6f23babf2dfa",
   "version": 14
  },
+ "31116893": {
+  "annee_parution": 1991,
+  "annees_enregistrement": [
+   1963,
+   1985
+  ],
+  "durees": [
+   482066,
+   362360,
+   337040,
+   550400,
+   377560,
+   436906,
+   483426,
+   346773,
+   362933
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439735832-250.jpg",
+    "original": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439735832.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439735832-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736170-250.jpg",
+    "original": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736170.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736170-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736466-250.jpg",
+    "original": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736466.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736466-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736779-250.jpg",
+    "original": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736779.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439736779-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439737182-250.jpg",
+    "original": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439737182.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/9be2bd75-1ee9-48f0-8740-96e28443d6b8/34439737182-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 9,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Kenny Dorham",
+     "Pete La Roca",
+     "McCoy Tyner",
+     "Butch Warren"
+    ],
+    "compositeur": "Kenny Dorham",
+    "id": "58039a99-14fa-3705-bbef-d098e14b219b",
+    "parente": null,
+    "roles": {
+     "Butch Warren": "double bass",
+     "Joe Henderson": "tenor saxophone",
+     "Kenny Dorham": "trumpet",
+     "McCoy Tyner": "piano",
+     "Pete La Roca": "drums (drum set)"
+    },
+    "titre": "Blue Bossa"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Richard Davis",
+     "Kenny Dorham",
+     "Elvin Jones",
+     "McCoy Tyner"
+    ],
+    "compositeur": "Joe Henderson",
+    "id": "8960cd84-1249-4f1a-b037-b63f73ccd53c",
+    "parente": null,
+    "roles": {
+     "Elvin Jones": "drums (drum set)",
+     "Joe Henderson": "tenor saxophone",
+     "Kenny Dorham": "trumpet",
+     "McCoy Tyner": "piano",
+     "Richard Davis": "double bass"
+    },
+    "titre": "Punjab"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Ron Carter",
+     "Joe Chambers",
+     "Curtis Fuller",
+     "Bobby Hutcherson",
+     "Lee Morgan",
+     "Cedar Walton"
+    ],
+    "compositeur": "Cedar Walton",
+    "id": "5a26a7f1-657e-4dce-8338-d98e00524ec2",
+    "parente": null,
+    "roles": {
+     "Bobby Hutcherson": "vibraphone",
+     "Cedar Walton": "piano",
+     "Curtis Fuller": "trombone",
+     "Joe Chambers": "drums (drum set)",
+     "Joe Henderson": "tenor saxophone",
+     "Lee Morgan": "trumpet",
+     "Ron Carter": "double bass"
+    },
+    "titre": "Mode for Joe"
+   },
+   null,
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Ron Carter",
+     "Al Foster"
+    ],
+    "compositeur": "Thelonious Monk",
+    "id": "46944964-7458-3a35-acdd-f60732ce3c13",
+    "parente": null,
+    "roles": {
+     "Al Foster": "drums (drum set)",
+     "Joe Henderson": "tenor saxophone",
+     "Ron Carter": "double bass"
+    },
+    "titre": "Ask Me Now"
+   }
+  ],
+  "release": "9be2bd75-1ee9-48f0-8740-96e28443d6b8",
+  "version": 14
+ },
  "31144115": {
   "annees_enregistrement": null,
   "images": [],
@@ -74283,6 +76194,18 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "31546186": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "aucune",
+  "nb_plages": 14,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
  },
  "31731725": {
   "images": [],
@@ -74560,6 +76483,206 @@
   ],
   "release": "dd824a40-72b4-40ec-a384-16a09473d75a",
   "version": 5
+ },
+ "31898653": {
+  "annee_parution": 1987,
+  "annees_enregistrement": null,
+  "durees": [
+   275826,
+   334200,
+   267400,
+   298840,
+   436226,
+   236466,
+   295506,
+   234826,
+   268666,
+   226906,
+   311226,
+   124106
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724994940-250.jpg",
+    "original": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724994940.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724994940-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724996702-250.jpg",
+    "original": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724996702.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724996702-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724997496-250.jpg",
+    "original": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724997496.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/9724997496-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/3076279031-250.jpg",
+    "original": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/3076279031.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/20979597-8503-33d4-8fca-764ca3ae339f/3076279031-500.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 12,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Sting",
+     "Andy Summers"
+    ],
+    "compositeur": "Sting",
+    "id": "25233f72-eafb-3792-b360-89f451b3c5d5",
+    "parente": null,
+    "roles": {
+     "Andy Summers": "guitar"
+    },
+    "titre": "The Lazarus Heart"
+   },
+   {
+    "artistes": [
+     "Sting",
+     "Andy Summers"
+    ],
+    "compositeur": "Sting",
+    "id": "831eff95-560b-3333-b995-43406d0a591a",
+    "parente": null,
+    "roles": {
+     "Andy Summers": "guitar"
+    },
+    "titre": "Be Still My Beating Heart"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "f14b557c-01d3-3efd-9315-bfab100f588f",
+    "parente": null,
+    "roles": {
+     "Sting": "lead vocals"
+    },
+    "titre": "Englishman in New York"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "b76a971d-d76f-352d-bc35-2491d66eefec",
+    "parente": null,
+    "roles": {
+     "Sting": "guitar"
+    },
+    "titre": "History Will Teach Us Nothing"
+   },
+   {
+    "artistes": [
+     "Sting",
+     "Eric Clapton",
+     "Fareed Haque",
+     "Mark Knopfler",
+     "Rubén Blades"
+    ],
+    "compositeur": "Sting",
+    "id": "bf3204b9-e92b-3f05-9e0a-502f50d8228a",
+    "parente": null,
+    "roles": {
+     "Eric Clapton": "guitar",
+     "Fareed Haque": "guitar",
+     "Mark Knopfler": "guitar",
+     "Rubén Blades": "spoken vocals",
+     "Sting": "lead vocals"
+    },
+    "titre": "They Dance Alone (Cueca solo)"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "a15af465-6dd4-383c-a4c8-aa7c294e89f2",
+    "parente": null,
+    "roles": {
+     "Sting": "guitar"
+    },
+    "titre": "Fragile"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "815eda1f-0405-345a-8957-35ebbbaf0595",
+    "parente": null,
+    "titre": "We’ll Be Together"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "80e81266-6378-3eb2-88da-3517e3aaaf3a",
+    "parente": null,
+    "titre": "Straight to My Heart"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "428b0daf-9359-3adc-9e33-e3a78b5b0829",
+    "parente": null,
+    "titre": "Rock Steady"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "5a9d65de-97c0-3af7-a7d1-bcba5c38b746",
+    "parente": null,
+    "titre": "Sister Moon"
+   },
+   {
+    "artistes": [
+     "Sting",
+     "The Gil Evans Orchestra",
+     "Hiram Bullock",
+     "Kenwood Dennard",
+     "Mark Egan"
+    ],
+    "compositeur": "Jimi Hendrix",
+    "id": "7beb0f9d-1a5a-3bba-83a2-f527c3aaa5f4",
+    "parente": null,
+    "roles": {
+     "Hiram Bullock": "guitar",
+     "Kenwood Dennard": "drums (drum set)",
+     "Mark Egan": "bass guitar"
+    },
+    "titre": "Little Wing"
+   },
+   {
+    "artistes": [
+     "Sting",
+     "Ken Helman"
+    ],
+    "compositeur": "Hanns Eisler",
+    "id": "25561b24-630e-3211-b566-21b43a722c1a",
+    "parente": null,
+    "roles": {
+     "Ken Helman": "piano"
+    },
+    "titre": "The Secret Marriage"
+   }
+  ],
+  "release": "20979597-8503-33d4-8fca-764ca3ae339f",
+  "version": 14
  },
  "3193631": {
   "annee_parution": 1990,
@@ -76912,6 +79035,18 @@
   "release": null,
   "version": 2
  },
+ "33349076": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "aucune",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "33367019": {
   "images": [],
   "maj": "2026-11-01",
@@ -77427,6 +79562,119 @@
   "release": null,
   "version": 2
  },
+ "3493036": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "album",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "artistes": [
+     "London Chamber Orchestra",
+     "Christopher Warren‐Green"
+    ],
+    "compositeur": "Edward Elgar",
+    "id": "fe9c08b1-c147-4a97-91a4-f07d8e0ca230",
+    "parente": null,
+    "roles": {
+     "Christopher Warren‐Green": "conductor"
+    },
+    "titre": "Introduction and Allegro for Strings, op. 47"
+   },
+   {
+    "artistes": [
+     "London Chamber Orchestra",
+     "Christopher Warren‐Green"
+    ],
+    "compositeur": "Ralph Vaughan Williams",
+    "id": "561b8302-1b1a-3b7e-b4dd-ea3f8e0b3258",
+    "parente": null,
+    "roles": {
+     "Christopher Warren‐Green": "conductor"
+    },
+    "titre": "The Lark Ascending"
+   },
+   {
+    "artistes": [
+     "London Chamber Orchestra",
+     "Christopher Warren‐Green"
+    ],
+    "compositeur": "Edward Elgar",
+    "id": "969bcbec-c041-3eda-8fea-cec6d47850ed",
+    "parente": {
+     "id": "af19cd3d-d69d-46bd-80e4-a298f1a7c09e",
+     "titre": "Serenade for Strings in E minor, op. 20"
+    },
+    "roles": {
+     "Christopher Warren‐Green": "conductor"
+    },
+    "titre": "Serenade for Strings in E minor, op. 20: I. Allegro piacevole"
+   },
+   {
+    "artistes": [
+     "London Chamber Orchestra",
+     "Christopher Warren‐Green"
+    ],
+    "compositeur": "Edward Elgar",
+    "id": "c8baf54c-92cf-369b-9c90-2d41c3c1e95d",
+    "parente": {
+     "id": "af19cd3d-d69d-46bd-80e4-a298f1a7c09e",
+     "titre": "Serenade for Strings in E minor, op. 20"
+    },
+    "roles": {
+     "Christopher Warren‐Green": "conductor"
+    },
+    "titre": "Serenade for Strings in E minor, op. 20: II. Larghetto"
+   },
+   {
+    "artistes": [
+     "London Chamber Orchestra",
+     "Christopher Warren‐Green"
+    ],
+    "compositeur": "Edward Elgar",
+    "id": "097a008e-4ddc-39ab-8c35-0f906d7d028d",
+    "parente": {
+     "id": "af19cd3d-d69d-46bd-80e4-a298f1a7c09e",
+     "titre": "Serenade for Strings in E minor, op. 20"
+    },
+    "roles": {
+     "Christopher Warren‐Green": "conductor"
+    },
+    "titre": "Serenade for Strings in E minor, op. 20: III. Allegretto"
+   },
+   {
+    "artistes": [
+     "London Chamber Orchestra",
+     "Christopher Warren‐Green"
+    ],
+    "compositeur": "Ralph Vaughan Williams",
+    "id": "06b34416-5576-3260-9391-b407019290e2",
+    "parente": null,
+    "roles": {
+     "Christopher Warren‐Green": "conductor"
+    },
+    "titre": "Fantasia on “Greensleeves”"
+   },
+   {
+    "artistes": [
+     "London Chamber Orchestra",
+     "Christopher Warren‐Green"
+    ],
+    "compositeur": "Ralph Vaughan Williams",
+    "id": "b4ebdd9b-361c-3642-a1bb-8398f432bf51",
+    "parente": null,
+    "roles": {
+     "Christopher Warren‐Green": "conductor"
+    },
+    "titre": "Fantasia on a Theme by Thomas Tallis"
+   }
+  ],
+  "release": "3f943aa2-330d-49c6-a08d-cb2e950843c0",
+  "version": 14
+ },
  "3521630": {
   "annee_parution": null,
   "annees_enregistrement": [
@@ -77624,6 +79872,98 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "3571061": {
+  "annee_parution": 2002,
+  "annees_enregistrement": [
+   1975,
+   1975
+  ],
+  "durees": [
+   427360,
+   231533,
+   459600,
+   1158773,
+   372893,
+   158800,
+   449400,
+   336506,
+   363093
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/3240306a-b08e-3e3c-a0fb-f43adfe9fbaa/37877318815-250.jpg",
+    "original": "https://coverartarchive.org/release/3240306a-b08e-3e3c-a0fb-f43adfe9fbaa/37877318815.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3240306a-b08e-3e3c-a0fb-f43adfe9fbaa/37877318815-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/3240306a-b08e-3e3c-a0fb-f43adfe9fbaa/37877319560-250.jpg",
+    "original": "https://coverartarchive.org/release/3240306a-b08e-3e3c-a0fb-f43adfe9fbaa/37877319560.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/3240306a-b08e-3e3c-a0fb-f43adfe9fbaa/37877319560-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 9,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Jim Hall",
+     "Don Sebesky",
+     "Chet Baker",
+     "Ron Carter",
+     "Paul Desmond",
+     "Steve Gadd",
+     "“Sir” Roland Hanna"
+    ],
+    "compositeur": "Cole Porter",
+    "id": "dca3d1eb-0365-37fd-97de-6126d682fab2",
+    "parente": null,
+    "roles": {
+     "Chet Baker": "trumpet",
+     "Don Sebesky": "conductor",
+     "Jim Hall": "guitar",
+     "Paul Desmond": "alto saxophone",
+     "Ron Carter": "bass",
+     "Steve Gadd": "drums (drum set)",
+     "“Sir” Roland Hanna": "piano"
+    },
+    "titre": "You’d Be So Nice to Come Home To"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Jim Hall",
+     "Chet Baker",
+     "Ron Carter",
+     "Paul Desmond",
+     "Steve Gadd",
+     "“Sir” Roland Hanna"
+    ],
+    "compositeur": "Joaquín Rodrigo",
+    "id": "79479b38-42d2-4f4d-ab00-1c407d95c90b",
+    "parente": null,
+    "roles": {
+     "Chet Baker": "trumpet",
+     "Jim Hall": "guitar",
+     "Paul Desmond": "alto saxophone",
+     "Ron Carter": "bass",
+     "Steve Gadd": "drums (drum set)",
+     "“Sir” Roland Hanna": "piano"
+    },
+    "titre": "Concierto de Aranjuez: II. Adagio"
+   },
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "release": "3240306a-b08e-3e3c-a0fb-f43adfe9fbaa",
+  "version": 14
  },
  "35744971": {
   "annee_parution": 2025,
@@ -78290,6 +80630,249 @@
   ],
   "release": "274027d8-5b51-4772-a021-00090885ab41",
   "version": 4
+ },
+ "369239": {
+  "annee_parution": 2001,
+  "annees_enregistrement": [
+   1989,
+   1989
+  ],
+  "durees": [
+   537000,
+   481000,
+   388000,
+   559000,
+   589000,
+   603000,
+   452000,
+   403000,
+   729000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468379420-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468379420.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468379420-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468380237-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468380237.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468380237-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468380838-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468380838.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468380838-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468382435-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468382435.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468382435-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468382761-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468382761.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468382761-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468383187-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468383187.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468383187-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468383727-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468383727.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468383727-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468384146-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468384146.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468384146-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468384604-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468384604.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468384604-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468385074-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468385074.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468385074-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468385629-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468385629.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468385629-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386093-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386093.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386093-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386370-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386370.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386370-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386686-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386686.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/37468386686-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/9279295293-250.jpg",
+    "original": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/9279295293.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139/9279295293-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 9,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Egberto Gismonti",
+    "id": "46fee530-aec0-4ecf-8493-c7149f64503f",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "Salvador"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Egberto Gismonti",
+    "id": "e5cc51de-adad-4e13-8c56-da0bbf49e5a0",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "Maracatú"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Charlie Haden",
+    "id": "7d2c0786-e802-3e6f-a4da-440abde87eb5",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "First Song"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Egberto Gismonti",
+    "id": "0f544108-9d61-4fc6-8bca-fb3f8dd64ebc",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "Palhaço"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Charlie Haden",
+    "id": "6334ff55-d32e-36d3-bfd6-27ebb39921b5",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "Silence"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Egberto Gismonti",
+    "id": "48e25dbc-4812-43e7-9360-c17be4c9aa56",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "Em Família"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Egberto Gismonti",
+    "id": "670cdf52-0cb4-4d42-aa72-ef9f5b487924",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "Lôro"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Egberto Gismonti",
+    "id": "929d625b-68b7-3da6-9aba-ccfa8a6a9309",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "Frevo"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Egberto Gismonti"
+    ],
+    "compositeur": "Geraldo E. Carneiro, Egberto Gismonti",
+    "id": "7aff06c0-18e1-4e6b-be30-ec61b890bb94",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Egberto Gismonti": "guitar"
+    },
+    "titre": "Don Quixote"
+   }
+  ],
+  "release": "7f9f9e04-4fbe-4ec6-8ef5-0c76942e8139",
+  "version": 14
  },
  "3703299": {
   "annee_parution": 2001,
@@ -79014,6 +81597,170 @@
   "release": "82af81c4-0cfa-4382-abc6-2ec08a79b431",
   "version": 5
  },
+ "38984399": {
+  "annee_parution": 2001,
+  "annees_enregistrement": [
+   1970,
+   1971
+  ],
+  "durees": [
+   731800,
+   443133,
+   518533,
+   645360,
+   627173,
+   1125000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/d1179427-c128-4022-82f4-275aed35b89e/38118177834-250.jpg",
+    "original": "https://coverartarchive.org/release/d1179427-c128-4022-82f4-275aed35b89e/38118177834.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/d1179427-c128-4022-82f4-275aed35b89e/38118177834-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/d1179427-c128-4022-82f4-275aed35b89e/38118178526-250.jpg",
+    "original": "https://coverartarchive.org/release/d1179427-c128-4022-82f4-275aed35b89e/38118178526.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/d1179427-c128-4022-82f4-275aed35b89e/38118178526-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Ron Carter",
+     "Herbie Hancock",
+     "Joe Henderson",
+     "Lenny White",
+     "Bob Bushnell",
+     "Ed Shaughnessy"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "33f3d73c-2835-400c-9273-a417a8c39c77",
+    "parente": null,
+    "roles": {
+     "Bob Bushnell": "bass",
+     "Ed Shaughnessy": "percussion",
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "Joe Henderson": "saxophone",
+     "Lenny White": "drums (drum set)",
+     "Ron Carter": "double bass"
+    },
+    "titre": "Red Clay"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Ron Carter",
+     "Herbie Hancock",
+     "Joe Henderson",
+     "Lenny White"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "e4ed133f-2110-4039-8c5e-489ce4aeca96",
+    "parente": null,
+    "roles": {
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "Joe Henderson": "saxophone",
+     "Lenny White": "drums (drum set)",
+     "Ron Carter": "double bass"
+    },
+    "titre": "Delphia"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Ron Carter",
+     "Herbie Hancock",
+     "Joe Henderson",
+     "Lenny White"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "33906df7-3ef6-44a7-8f4c-95f922669137",
+    "parente": null,
+    "roles": {
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "Joe Henderson": "saxophone",
+     "Lenny White": "drums (drum set)",
+     "Ron Carter": "double bass"
+    },
+    "titre": "Suite Sioux"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Ron Carter",
+     "Herbie Hancock",
+     "Joe Henderson",
+     "Lenny White"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "435aae56-9a42-4e19-a794-31aad66ebea6",
+    "parente": null,
+    "roles": {
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "Joe Henderson": "saxophone",
+     "Lenny White": "drums (drum set)",
+     "Ron Carter": "double bass"
+    },
+    "titre": "The Intrepid Fox"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "Ron Carter",
+     "Herbie Hancock",
+     "Joe Henderson",
+     "Lenny White"
+    ],
+    "compositeur": "John Lennon",
+    "id": "80bf1eae-961d-3fd8-8374-6847a0c602e4",
+    "parente": null,
+    "roles": {
+     "Freddie Hubbard": "trumpet",
+     "Herbie Hancock": "piano",
+     "Joe Henderson": "saxophone",
+     "Lenny White": "drums (drum set)",
+     "Ron Carter": "double bass"
+    },
+    "titre": "Cold Turkey"
+   },
+   {
+    "artistes": [
+     "Freddie Hubbard",
+     "George Benson",
+     "Ron Carter",
+     "Billy Cobham",
+     "Airto Moreira",
+     "Johnny “Hammond” Smith",
+     "Stanley Turrentine"
+    ],
+    "compositeur": "Freddie Hubbard",
+    "id": "33f3d73c-2835-400c-9273-a417a8c39c77",
+    "parente": null,
+    "roles": {
+     "Airto Moreira": "percussion",
+     "Billy Cobham": "drums (drum set)",
+     "Freddie Hubbard": "trumpet",
+     "George Benson": "tenor saxophone",
+     "Johnny “Hammond” Smith": "electric piano, organ",
+     "Ron Carter": "double bass",
+     "Stanley Turrentine": "tenor saxophone"
+    },
+    "titre": "Red Clay"
+   }
+  ],
+  "release": "d1179427-c128-4022-82f4-275aed35b89e",
+  "version": 14
+ },
  "3899039": {
   "annee_parution": 1988,
   "annees_enregistrement": [
@@ -79584,6 +82331,296 @@
   ],
   "release": "d605cb38-597b-4541-9fe9-b8ec36f43623",
   "version": 5
+ },
+ "4165440": {
+  "annee_parution": 2002,
+  "annees_enregistrement": [
+   2001,
+   2001
+  ],
+  "durees": [
+   592466,
+   544866,
+   378400,
+   1044226,
+   415800,
+   713973,
+   883560
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/e00d2cba-4cf9-496a-9134-f487254accbd/24709163570-250.jpg",
+    "original": "https://coverartarchive.org/release/e00d2cba-4cf9-496a-9134-f487254accbd/24709163570.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/e00d2cba-4cf9-496a-9134-f487254accbd/24709163570-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Dave Holland Big Band",
+     "Duane Eubanks",
+     "Robin Eubanks",
+     "Earl Gardner",
+     "Mark Gross",
+     "Antonio Hart",
+     "Andre Hayward",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Chris Potter",
+     "Josh Roseman",
+     "Alex Sipiagin",
+     "Gary Smulyan"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "5b0e4df6-bae0-4145-a7bf-046091f19c1a",
+    "parente": null,
+    "roles": {
+     "Alex Sipiagin": "brass",
+     "Andre Hayward": "trombone",
+     "Antonio Hart": "woodwind",
+     "Billy Kilson": "drums (drum set)",
+     "Chris Potter": "tenor saxophone",
+     "Dave Holland": "double bass",
+     "Duane Eubanks": "brass",
+     "Earl Gardner": "brass",
+     "Gary Smulyan": "baritone saxophone",
+     "Josh Roseman": "trombone",
+     "Mark Gross": "alto saxophone",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "vibraphone"
+    },
+    "titre": "Triple Dance"
+   },
+   {
+    "artistes": [
+     "Dave Holland Big Band",
+     "Duane Eubanks",
+     "Robin Eubanks",
+     "Earl Gardner",
+     "Mark Gross",
+     "Antonio Hart",
+     "Andre Hayward",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Chris Potter",
+     "Josh Roseman",
+     "Alex Sipiagin",
+     "Gary Smulyan"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "bf3db6ac-019a-4ebd-8465-6de105804fb1",
+    "parente": null,
+    "roles": {
+     "Alex Sipiagin": "brass",
+     "Andre Hayward": "trombone",
+     "Antonio Hart": "woodwind",
+     "Billy Kilson": "drums (drum set)",
+     "Chris Potter": "tenor saxophone",
+     "Dave Holland": "double bass",
+     "Duane Eubanks": "brass",
+     "Earl Gardner": "brass",
+     "Gary Smulyan": "baritone saxophone",
+     "Josh Roseman": "trombone",
+     "Mark Gross": "alto saxophone",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "vibraphone"
+    },
+    "titre": "Blues for C.M."
+   },
+   {
+    "artistes": [
+     "Dave Holland Big Band",
+     "Duane Eubanks",
+     "Robin Eubanks",
+     "Earl Gardner",
+     "Mark Gross",
+     "Antonio Hart",
+     "Andre Hayward",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Chris Potter",
+     "Josh Roseman",
+     "Alex Sipiagin",
+     "Gary Smulyan"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "0c865be1-7457-4fab-bc92-0a29329e3731",
+    "parente": null,
+    "roles": {
+     "Alex Sipiagin": "brass",
+     "Andre Hayward": "trombone",
+     "Antonio Hart": "woodwind",
+     "Billy Kilson": "drums (drum set)",
+     "Chris Potter": "tenor saxophone",
+     "Dave Holland": "double bass",
+     "Duane Eubanks": "brass",
+     "Earl Gardner": "brass",
+     "Gary Smulyan": "baritone saxophone",
+     "Josh Roseman": "trombone",
+     "Mark Gross": "alto saxophone",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "vibraphone"
+    },
+    "titre": "The Razor's Edge"
+   },
+   {
+    "artistes": [
+     "Dave Holland Big Band",
+     "Duane Eubanks",
+     "Robin Eubanks",
+     "Earl Gardner",
+     "Mark Gross",
+     "Antonio Hart",
+     "Andre Hayward",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Chris Potter",
+     "Josh Roseman",
+     "Alex Sipiagin",
+     "Gary Smulyan"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "9c631652-9d60-35a1-8a6c-f404252ca910",
+    "parente": null,
+    "roles": {
+     "Alex Sipiagin": "brass",
+     "Andre Hayward": "trombone",
+     "Antonio Hart": "woodwind",
+     "Billy Kilson": "drums (drum set)",
+     "Chris Potter": "tenor saxophone",
+     "Dave Holland": "double bass",
+     "Duane Eubanks": "brass",
+     "Earl Gardner": "brass",
+     "Gary Smulyan": "baritone saxophone",
+     "Josh Roseman": "trombone",
+     "Mark Gross": "alto saxophone",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "vibraphone"
+    },
+    "titre": "What Goes Around"
+   },
+   {
+    "artistes": [
+     "Dave Holland Big Band",
+     "Duane Eubanks",
+     "Robin Eubanks",
+     "Earl Gardner",
+     "Mark Gross",
+     "Antonio Hart",
+     "Andre Hayward",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Chris Potter",
+     "Josh Roseman",
+     "Alex Sipiagin",
+     "Gary Smulyan"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "386d7784-6355-4488-8c43-d5bc3418b84e",
+    "parente": null,
+    "roles": {
+     "Alex Sipiagin": "brass",
+     "Andre Hayward": "trombone",
+     "Antonio Hart": "woodwind",
+     "Billy Kilson": "drums (drum set)",
+     "Chris Potter": "tenor saxophone",
+     "Dave Holland": "double bass",
+     "Duane Eubanks": "brass",
+     "Earl Gardner": "brass",
+     "Gary Smulyan": "baritone saxophone",
+     "Josh Roseman": "trombone",
+     "Mark Gross": "alto saxophone",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "vibraphone"
+    },
+    "titre": "Upswing"
+   },
+   {
+    "artistes": [
+     "Dave Holland Big Band",
+     "Duane Eubanks",
+     "Robin Eubanks",
+     "Earl Gardner",
+     "Mark Gross",
+     "Antonio Hart",
+     "Andre Hayward",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Chris Potter",
+     "Josh Roseman",
+     "Alex Sipiagin",
+     "Gary Smulyan"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "fca2fef1-c36e-4ed4-abad-38a3e6ed5d6f",
+    "parente": null,
+    "roles": {
+     "Alex Sipiagin": "brass",
+     "Andre Hayward": "trombone",
+     "Antonio Hart": "woodwind",
+     "Billy Kilson": "drums (drum set)",
+     "Chris Potter": "tenor saxophone",
+     "Dave Holland": "double bass",
+     "Duane Eubanks": "brass",
+     "Earl Gardner": "brass",
+     "Gary Smulyan": "baritone saxophone",
+     "Josh Roseman": "trombone",
+     "Mark Gross": "alto saxophone",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "vibraphone"
+    },
+    "titre": "First Snow"
+   },
+   {
+    "artistes": [
+     "Dave Holland Big Band",
+     "Duane Eubanks",
+     "Robin Eubanks",
+     "Earl Gardner",
+     "Mark Gross",
+     "Antonio Hart",
+     "Andre Hayward",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Chris Potter",
+     "Josh Roseman",
+     "Alex Sipiagin",
+     "Gary Smulyan"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "edb58584-a5d2-4a44-9f0b-0ec20f6fbec1",
+    "parente": null,
+    "roles": {
+     "Alex Sipiagin": "brass",
+     "Andre Hayward": "trombone",
+     "Antonio Hart": "woodwind",
+     "Billy Kilson": "drums (drum set)",
+     "Chris Potter": "tenor saxophone",
+     "Dave Holland": "double bass",
+     "Duane Eubanks": "brass",
+     "Earl Gardner": "brass",
+     "Gary Smulyan": "baritone saxophone",
+     "Josh Roseman": "trombone",
+     "Mark Gross": "alto saxophone",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "vibraphone"
+    },
+    "titre": "Shadow Dance"
+   }
+  ],
+  "release": "e00d2cba-4cf9-496a-9134-f487254accbd",
+  "version": 14
  },
  "4224187": {
   "images": [],
@@ -81735,6 +84772,141 @@
   "release": null,
   "version": 2
  },
+ "4780740": {
+  "annee_parution": 1988,
+  "annees_enregistrement": [
+   1986,
+   1986
+  ],
+  "durees": [
+   650560,
+   624333,
+   502733,
+   1053373,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365230778-250.jpg",
+    "original": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365230778.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365230778-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365232619-250.jpg",
+    "original": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365232619.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365232619-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365233559-250.jpg",
+    "original": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365233559.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365233559-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365234334-250.jpg",
+    "original": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365234334.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2760c336-eae9-4937-8ab7-4effe158b025/21365234334-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 13,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Keith Jarrett, Gary Peacock, Jack DeJohnette",
+     "Jack DeJohnette",
+     "Keith Jarrett",
+     "Gary Peacock"
+    ],
+    "compositeur": "Richard Rodgers",
+    "id": "24370021-5f38-39cf-9494-001b10a66181",
+    "parente": {
+     "id": "ffd56e80-c879-4f79-828a-3f8d43cc36d3",
+     "titre": "Babes in Arms"
+    },
+    "roles": {
+     "Gary Peacock": "bass",
+     "Jack DeJohnette": "drums (drum set)",
+     "Keith Jarrett": "piano"
+    },
+    "titre": "My Funny Valentine"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett, Gary Peacock, Jack DeJohnette",
+     "Jack DeJohnette",
+     "Keith Jarrett",
+     "Gary Peacock"
+    ],
+    "compositeur": "Joseph Kosma",
+    "id": "048b4b7a-07c4-3e33-959f-268199324401",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "bass",
+     "Jack DeJohnette": "drums (drum set)",
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Autumn Leaves"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett, Gary Peacock, Jack DeJohnette",
+     "Jack DeJohnette",
+     "Keith Jarrett",
+     "Gary Peacock"
+    ],
+    "compositeur": "Victor Young",
+    "id": "d896ff41-9dc0-3e9c-9312-75e76a4b12c5",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "bass",
+     "Jack DeJohnette": "drums (drum set)",
+     "Keith Jarrett": "piano"
+    },
+    "titre": "When I Fall in Love"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett, Gary Peacock, Jack DeJohnette",
+     "Jack DeJohnette",
+     "Keith Jarrett",
+     "Gary Peacock"
+    ],
+    "compositeur": "Jerome Kern",
+    "id": "41d1133b-22a4-3511-b1ad-46de455831c5",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "bass",
+     "Jack DeJohnette": "drums (drum set)",
+     "Keith Jarrett": "piano"
+    },
+    "titre": "The Song Is You"
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "release": "2760c336-eae9-4937-8ab7-4effe158b025",
+  "version": 14
+ },
  "4793229": {
   "annee_parution": 2012,
   "annees_enregistrement": null,
@@ -81818,6 +84990,72 @@
   ],
   "release": "7d6f4363-ef90-469d-bcc8-b8995d7d55c1",
   "version": 10
+ },
+ "479496": {
+  "annee_parution": 1985,
+  "annees_enregistrement": [
+   1976,
+   1977
+  ],
+  "durees": [
+   307000,
+   355000,
+   639000,
+   477000,
+   308000,
+   309000,
+   228000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/64a6d851-fe2c-4771-84b2-513e828f3ca2/6408636002-250.jpg",
+    "original": "https://coverartarchive.org/release/64a6d851-fe2c-4771-84b2-513e828f3ca2/6408636002.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/64a6d851-fe2c-4771-84b2-513e828f3ca2/6408636002-500.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Jon Christensen",
+     "Palle Danielsson",
+     "Jan Garbarek"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "5531a2c8-c365-4e86-ac04-c657398efb1b",
+    "parente": null,
+    "roles": {
+     "Jan Garbarek": "saxophone",
+     "Jon Christensen": "drums (drum set)",
+     "Keith Jarrett": "piano",
+     "Palle Danielsson": "double bass"
+    },
+    "titre": "Country"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Keith Jarrett"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "99770468-b8bb-3e9b-b8cb-5c27b823cde3",
+    "parente": null,
+    "roles": {
+     "Keith Jarrett": "piano"
+    },
+    "titre": "Staircase, Part II"
+   },
+   null,
+   null,
+   null
+  ],
+  "release": "64a6d851-fe2c-4771-84b2-513e828f3ca2",
+  "version": 14
  },
  "4808990": {
   "annee_parution": 1991,
@@ -82615,6 +85853,158 @@
   ],
   "release": "a5e5ed89-9265-4caa-be26-f896e763f6c7",
   "version": 4
+ },
+ "503726": {
+  "annee_parution": 1994,
+  "annees_enregistrement": [
+   1992,
+   1992
+  ],
+  "durees": [
+   681733,
+   549373,
+   561826,
+   775266,
+   341973,
+   613666,
+   466667
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/d482ea29-99a8-4e0a-ae70-839d2b8d1fe0/32838875075-250.jpg",
+    "original": "https://coverartarchive.org/release/d482ea29-99a8-4e0a-ae70-839d2b8d1fe0/32838875075.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/d482ea29-99a8-4e0a-ae70-839d2b8d1fe0/32838875075-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/d482ea29-99a8-4e0a-ae70-839d2b8d1fe0/32838875952-250.jpg",
+    "original": "https://coverartarchive.org/release/d482ea29-99a8-4e0a-ae70-839d2b8d1fe0/32838875952.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/d482ea29-99a8-4e0a-ae70-839d2b8d1fe0/32838875952-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Gary Peacock",
+     "Paul Motian"
+    ],
+    "compositeur": "Miles Davis",
+    "id": "d73f8e96-325d-3211-89ba-b3ebd3df6199",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "double bass",
+     "Keith Jarrett": "piano",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Solar"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Gary Peacock",
+     "Paul Motian"
+    ],
+    "compositeur": "Spencer Williams",
+    "id": "fc53ad7a-6f85-38ce-8b4f-d19231b68aaa",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "double bass",
+     "Keith Jarrett": "piano",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Basin Street Blues"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Gary Peacock",
+     "Paul Motian"
+    ],
+    "compositeur": "Jaki Byard",
+    "id": "24d1d4c1-a093-4825-8ee9-37400ba30d5c",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "double bass",
+     "Keith Jarrett": "piano",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Chandra"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Gary Peacock",
+     "Paul Motian"
+    ],
+    "compositeur": "Gene de Paul",
+    "id": "1e4f4f3d-6bfe-3a99-9c46-d2eb1c83e09c",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "double bass",
+     "Keith Jarrett": "piano",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "You Don’t Know What Love Is"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Gary Peacock",
+     "Paul Motian"
+    ],
+    "compositeur": "Arthur Schwartz",
+    "id": "2a0e97bc-56d4-3685-bc70-0daab985619d",
+    "parente": {
+     "id": "8e73d810-e34b-4a04-b591-4e1a31cc8094",
+     "titre": "The Band Wagon"
+    },
+    "roles": {
+     "Gary Peacock": "double bass",
+     "Keith Jarrett": "piano",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "You and the Night and the Music"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Gary Peacock",
+     "Paul Motian"
+    ],
+    "compositeur": "Ray Henderson",
+    "id": "a9afcd74-b1d0-30b6-b63c-5a09a45f5bcf",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "double bass",
+     "Keith Jarrett": "piano",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Bye Bye Blackbird"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Gary Peacock",
+     "Paul Motian"
+    ],
+    "compositeur": "Richard Rodgers",
+    "id": "fe055727-d9c6-353d-a6c2-4144ea6dd50c",
+    "parente": null,
+    "roles": {
+     "Gary Peacock": "double bass",
+     "Keith Jarrett": "piano",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "It’s Easy to Remember (and So Hard to Forget)"
+   }
+  ],
+  "release": "d482ea29-99a8-4e0a-ae70-839d2b8d1fe0",
+  "version": 14
  },
  "5039412": {
   "annee_parution": 1988,
@@ -83709,6 +87099,60 @@
   "release": "5481bd0f-6de0-4938-a449-a043c15e3c51",
   "version": 4
  },
+ "5135251": {
+  "annee_parution": 2000,
+  "annees_enregistrement": null,
+  "durees": [
+   168000,
+   188000,
+   165000,
+   174000,
+   166000,
+   175000,
+   159000,
+   167000,
+   158000,
+   168000,
+   170000,
+   151000,
+   166000,
+   169000,
+   156000,
+   175000
+  ],
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 16,
+  "oeuvres": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   {
+    "artistes": [
+     "John Kirby"
+    ],
+    "compositeur": "Charlie Shavers",
+    "id": "a7554e06-3866-32ba-b73d-9f341da5eeda",
+    "parente": null,
+    "titre": "Undecided"
+   }
+  ],
+  "release": "bc68bbb5-d9a8-4b59-8185-da2b11fa0c61",
+  "version": 14
+ },
  "5136763": {
   "annee_parution": 1990,
   "annees_enregistrement": [
@@ -84486,6 +87930,372 @@
   "release": "0341efc7-7b51-414c-b2eb-392f8af630f4",
   "version": 5
  },
+ "5328979": {
+  "annee_parution": 2002,
+  "annees_enregistrement": [
+   2002,
+   2002
+  ],
+  "durees": [
+   289866,
+   215066,
+   205226,
+   254306,
+   223426,
+   209706,
+   311533,
+   207466,
+   272000,
+   332000,
+   192893,
+   227106,
+   270400,
+   162466,
+   279160,
+   250000,
+   216973,
+   188333
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/e5e751f2-aa49-38e6-90fc-8f90a9c1c022/37956864539-250.jpg",
+    "original": "https://coverartarchive.org/release/e5e751f2-aa49-38e6-90fc-8f90a9c1c022/37956864539.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/e5e751f2-aa49-38e6-90fc-8f90a9c1c022/37956864539-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 18,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "a2e80d26-ba0c-3d78-90bb-68211e555096",
+    "parente": {
+     "id": "cc8ce8df-9113-4c73-a0c3-5b5cee71ae98",
+     "titre": "Violin Concerto in B minor, RV 386"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in B minor, RV 386: I. Allegro ma poco"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "a381f87a-834d-30b5-a2a6-4ccfa6756eec",
+    "parente": {
+     "id": "cc8ce8df-9113-4c73-a0c3-5b5cee71ae98",
+     "titre": "Violin Concerto in B minor, RV 386"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in B minor, RV 386: II. Larghetto"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "28a4b260-6c5d-3602-86e2-4ebda4f70ba1",
+    "parente": {
+     "id": "cc8ce8df-9113-4c73-a0c3-5b5cee71ae98",
+     "titre": "Violin Concerto in B minor, RV 386"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in B minor, RV 386: III. Allegro"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "a7673f8e-a16f-30b0-b39e-d4561d200836",
+    "parente": {
+     "id": "2d5f7db1-523d-47d3-8ef0-782d806c9974",
+     "titre": "Violin Concerto in D minor, RV 235"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in D minor, RV 235: I. Allegro non molto"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "1d81a677-8188-3f94-aa46-cf27c7a22722",
+    "parente": {
+     "id": "2d5f7db1-523d-47d3-8ef0-782d806c9974",
+     "titre": "Violin Concerto in D minor, RV 235"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in D minor, RV 235: II. Adagio"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "cb122c92-ad88-32ec-976e-913f433db5a1",
+    "parente": {
+     "id": "2d5f7db1-523d-47d3-8ef0-782d806c9974",
+     "titre": "Violin Concerto in D minor, RV 235"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in D minor, RV 235: III. Allegro"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "9d3bb620-5cda-3815-853d-50938dc4ca12",
+    "parente": {
+     "id": "74993615-0813-498a-b393-ae2668139141",
+     "titre": "Violin Concerto in F major, RV 296"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in F major, RV 296: I. Allegro ma poco"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "025cbfb0-10af-3864-aba3-2ffc289ba80a",
+    "parente": {
+     "id": "74993615-0813-498a-b393-ae2668139141",
+     "titre": "Violin Concerto in F major, RV 296"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in F major, RV 296: II. Largo"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "735eb72a-c786-3db7-8894-e69b9f6da0aa",
+    "parente": {
+     "id": "74993615-0813-498a-b393-ae2668139141",
+     "titre": "Violin Concerto in F major, RV 296"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in F major, RV 296: III. Allegro"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "86126b48-3135-3d09-91d3-ec0fc0d6520c",
+    "parente": {
+     "id": "370cea10-69e1-45b5-9f2c-9dd5ab4260d8",
+     "titre": "Violin Concerto in E-flat major, RV 258"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in E-flat major, RV 258: I. Largo - Andante molto"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "232ea3ed-54f6-3c5a-baf3-783282c91824",
+    "parente": {
+     "id": "370cea10-69e1-45b5-9f2c-9dd5ab4260d8",
+     "titre": "Violin Concerto in E-flat major, RV 258"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in E-flat major, RV 258: II. Largo"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "920930bd-52f9-3646-b851-bb52694b231d",
+    "parente": {
+     "id": "370cea10-69e1-45b5-9f2c-9dd5ab4260d8",
+     "titre": "Violin Concerto in E-flat major, RV 258"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in E-flat major, RV 258: III. Allegro"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "f3d9b1f4-4683-3a56-8738-0e94980495e1",
+    "parente": {
+     "id": "100247e4-bed2-4da6-b509-fe7449e35bb8",
+     "titre": "Violin Concerto in B minor, RV 389"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in B minor, RV 389: I. Allegro poco"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "1125ce60-f425-3b08-967d-2ea7da8c5ef6",
+    "parente": {
+     "id": "100247e4-bed2-4da6-b509-fe7449e35bb8",
+     "titre": "Violin Concerto in B minor, RV 389"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in B minor, RV 389: II. Largo"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "635a2f98-2dfd-34b8-96e2-23219f0d8aca",
+    "parente": {
+     "id": "100247e4-bed2-4da6-b509-fe7449e35bb8",
+     "titre": "Violin Concerto in B minor, RV 389"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in B minor, RV 389: III. Allegro"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "7f89444f-6ed4-32bc-9942-91f47b26b617",
+    "parente": {
+     "id": "bd752989-9343-4503-87a5-821991fb98ca",
+     "titre": "Violin Concerto in E-flat major, RV 251"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in E-flat major, RV 251: I. Allegro ma poco"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "c4d8718d-dd3e-38b3-bba2-43ca3aec1325",
+    "parente": {
+     "id": "bd752989-9343-4503-87a5-821991fb98ca",
+     "titre": "Violin Concerto in E-flat major, RV 251"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in E-flat major, RV 251: II. Largo"
+   },
+   {
+    "artistes": [
+     "Giuliano Carmignola",
+     "Venice Baroque Orchestra",
+     "Andrea Marcon"
+    ],
+    "compositeur": "Antonio Vivaldi",
+    "id": "20678cb6-48e7-3c62-b4c1-15aed35fe129",
+    "parente": {
+     "id": "bd752989-9343-4503-87a5-821991fb98ca",
+     "titre": "Violin Concerto in E-flat major, RV 251"
+    },
+    "roles": {
+     "Andrea Marcon": "conductor",
+     "Giuliano Carmignola": "violin"
+    },
+    "titre": "Violin Concerto in E-flat major, RV 251: III. Allegro"
+   }
+  ],
+  "release": "e5e751f2-aa49-38e6-90fc-8f90a9c1c022",
+  "version": 14
+ },
  "5347857": {
   "annee_parution": 1989,
   "annees_enregistrement": null,
@@ -84782,6 +88592,193 @@
    }
   ],
   "release": "2d38329b-21f1-365e-bd02-18f2b0bcc9ce",
+  "version": 14
+ },
+ "5349561": {
+  "annee_parution": 2012,
+  "annees_enregistrement": [
+   1971,
+   1971
+  ],
+  "durees": [
+   498760,
+   344480,
+   163986,
+   155493,
+   622786,
+   556653,
+   13600
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412441332-250.jpg",
+    "original": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412441332.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412441332-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412442217-250.jpg",
+    "original": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412442217.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412442217-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412442740-250.jpg",
+    "original": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412442740.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412442740-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412443932-250.jpg",
+    "original": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412443932.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412443932-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412445053-250.jpg",
+    "original": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412445053.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412445053-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412445909-250.jpg",
+    "original": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412445909.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412445909-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412446366-250.jpg",
+    "original": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412446366.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/850b4ef2-21c0-43b0-8fec-1c1dc2ef2512/39412446366-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 7,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Charlie Haden",
+     "Paul Motian"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "913e795d-00a6-4222-94c6-398568bf0df9",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Gypsy Moth"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Charlie Haden",
+     "Paul Motian"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "d33a79e6-662a-40b3-bc4a-262307de5d53",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Toll Road"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Charlie Haden",
+     "Paul Motian"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "b14ae6c7-7335-445d-820f-677b94beb98d",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Pardon My Rags"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Charlie Haden",
+     "Paul Motian",
+     "Dewey Redman"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "a3e696c4-8d30-4111-b632-55bc33cc879b",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "percussion, steelpan",
+     "Dewey Redman": "percussion",
+     "Keith Jarrett": "percussion",
+     "Paul Motian": "percussion"
+    },
+    "titre": "Pre-Judgement Atmosphere"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Charlie Haden",
+     "Paul Motian"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "6549397b-0b17-4c76-a4c4-752a5a497ed8",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "bass",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "El Juicio"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Charlie Haden",
+     "Paul Motian"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "ba37630a-0a76-49c8-a2bd-4a18079f5d83",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Piece for Ornette (long version)"
+   },
+   {
+    "artistes": [
+     "Keith Jarrett",
+     "Charlie Haden",
+     "Paul Motian"
+    ],
+    "compositeur": "Keith Jarrett",
+    "id": "60fb59c2-a9bf-4e4d-9ef5-9fc1f6dd7143",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Paul Motian": "drums (drum set)"
+    },
+    "titre": "Piece for Ornette (short version)"
+   }
+  ],
+  "release": "850b4ef2-21c0-43b0-8fec-1c1dc2ef2512",
+  "version": 14
+ },
+ "5377656": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-20",
+  "methode": "aucune",
+  "nb_plages": 10,
+  "oeuvres": null,
+  "release": null,
   "version": 14
  },
  "5378824": {
@@ -87401,6 +91398,129 @@
   ],
   "release": "7165388f-c955-4eb6-8831-2aac698f1c93",
   "version": 5
+ },
+ "6293750": {
+  "annee_parution": 2001,
+  "annees_enregistrement": [
+   1971,
+   1971
+  ],
+  "durees": [
+   790160,
+   622040,
+   1286800
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714832229-250.jpg",
+    "original": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714832229.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714832229-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714833958-250.jpg",
+    "original": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714833958.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714833958-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714834808-250.jpg",
+    "original": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714834808.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714834808-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714835806-250.jpg",
+    "original": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714835806.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714835806-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714837122-250.jpg",
+    "original": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714837122.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714837122-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714838108-250.jpg",
+    "original": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714838108.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/0489425c-d71b-32fa-ba62-19b492fb7f8a/8714838108-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 3,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Leon Ndugu Chancler",
+     "Billy Hart",
+     "Eddie Henderson",
+     "Bennie Maupin",
+     "Julian Priester",
+     "Buster Williams"
+    ],
+    "compositeur": "Herbie Hancock",
+    "id": "e019a54a-fac8-4ca4-851f-25f2bb725dab",
+    "parente": null,
+    "roles": {
+     "Bennie Maupin": "alto flute, bass clarinet",
+     "Buster Williams": "bass",
+     "Eddie Henderson": "flugelhorn, trumpet",
+     "Herbie Hancock": "electric piano",
+     "Julian Priester": "trombone"
+    },
+    "titre": "Ostinato (Suite for Angela)"
+   },
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Leon Ndugu Chancler",
+     "Billy Hart",
+     "Eddie Henderson",
+     "Bennie Maupin",
+     "Julian Priester",
+     "Buster Williams"
+    ],
+    "compositeur": "Herbie Hancock",
+    "id": "60c404ee-6e90-4946-af5c-680fbbab7b71",
+    "parente": null,
+    "roles": {
+     "Bennie Maupin": "alto flute, bass clarinet",
+     "Buster Williams": "bass",
+     "Eddie Henderson": "flugelhorn, trumpet",
+     "Herbie Hancock": "electric piano",
+     "Julian Priester": "trombone"
+    },
+    "titre": "You'll Know When You Get There"
+   },
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Leon Ndugu Chancler",
+     "Billy Hart",
+     "Eddie Henderson",
+     "Bennie Maupin",
+     "Julian Priester",
+     "Buster Williams"
+    ],
+    "compositeur": "Julian Priester",
+    "id": "8fc711d6-cf54-430b-a27b-2165a9dde57d",
+    "parente": null,
+    "roles": {
+     "Bennie Maupin": "alto flute, bass clarinet",
+     "Buster Williams": "bass",
+     "Eddie Henderson": "flugelhorn, trumpet",
+     "Herbie Hancock": "electric piano",
+     "Julian Priester": "trombone"
+    },
+    "titre": "Wandering Spirit Song"
+   }
+  ],
+  "release": "0489425c-d71b-32fa-ba62-19b492fb7f8a",
+  "version": 14
  },
  "6297564": {
   "annee_parution": 1999,
@@ -100145,6 +104265,206 @@
   "release": "87298594-ea2e-4610-883b-1b148d0d35db",
   "version": 5
  },
+ "776100": {
+  "annee_parution": 1998,
+  "annees_enregistrement": [
+   1997,
+   1997
+  ],
+  "durees": [
+   564666,
+   661466,
+   535533,
+   509626,
+   624600,
+   587266,
+   425706,
+   411560
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/cdf0ee62-92a9-473f-8949-7969a71917d8/46576390033-250.jpg",
+    "original": "https://coverartarchive.org/release/cdf0ee62-92a9-473f-8949-7969a71917d8/46576390033.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/cdf0ee62-92a9-473f-8949-7969a71917d8/46576390033-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 8,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Dave Holland Quintet",
+     "Robin Eubanks",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Steve Wilson"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "21d03da5-9c8f-35a7-af07-e25e18c64153",
+    "parente": null,
+    "roles": {
+     "Billy Kilson": "drums (drum set)",
+     "Dave Holland": "double bass",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "marimba",
+     "Steve Wilson": "alto saxophone"
+    },
+    "titre": "The Balance"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet",
+     "Robin Eubanks",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Steve Wilson"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "d2be5b29-d830-372c-b3d7-7d0362298016",
+    "parente": null,
+    "roles": {
+     "Billy Kilson": "drums (drum set)",
+     "Dave Holland": "double bass",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "marimba",
+     "Steve Wilson": "alto saxophone"
+    },
+    "titre": "Mr. B."
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet",
+     "Robin Eubanks",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Steve Wilson"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "f19b0b10-99b4-3ac5-8063-9f4a214aeb75",
+    "parente": null,
+    "roles": {
+     "Billy Kilson": "drums (drum set)",
+     "Dave Holland": "double bass",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "marimba",
+     "Steve Wilson": "alto saxophone"
+    },
+    "titre": "Bedouin Trail"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet",
+     "Robin Eubanks",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Steve Wilson"
+    ],
+    "compositeur": "Robin Eubanks",
+    "id": "c28b4e6b-6f77-35b7-bb86-81ddc1a404e5",
+    "parente": null,
+    "roles": {
+     "Billy Kilson": "drums (drum set)",
+     "Dave Holland": "double bass",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "marimba",
+     "Steve Wilson": "alto saxophone"
+    },
+    "titre": "Metamorphos"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet",
+     "Robin Eubanks",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Steve Wilson"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "d023a675-bf89-3a09-bceb-1367b1df81a9",
+    "parente": null,
+    "roles": {
+     "Billy Kilson": "drums (drum set)",
+     "Dave Holland": "double bass",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "marimba",
+     "Steve Wilson": "alto saxophone"
+    },
+    "titre": "Ario"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet",
+     "Robin Eubanks",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Steve Wilson"
+    ],
+    "compositeur": "Dave Holland",
+    "id": "390b6443-7d2a-33db-b36a-68e7d6156517",
+    "parente": null,
+    "roles": {
+     "Billy Kilson": "drums (drum set)",
+     "Dave Holland": "double bass",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "marimba",
+     "Steve Wilson": "alto saxophone"
+    },
+    "titre": "Herbaceous"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet",
+     "Robin Eubanks",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Steve Wilson"
+    ],
+    "compositeur": "Steve Wilson",
+    "id": "49366888-ecae-32bf-a289-d1cb7ffe2184",
+    "parente": null,
+    "roles": {
+     "Billy Kilson": "drums (drum set)",
+     "Dave Holland": "double bass",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "marimba",
+     "Steve Wilson": "alto saxophone"
+    },
+    "titre": "The Benevolent One"
+   },
+   {
+    "artistes": [
+     "Dave Holland Quintet",
+     "Robin Eubanks",
+     "Dave Holland",
+     "Billy Kilson",
+     "Steve Nelson",
+     "Steve Wilson"
+    ],
+    "compositeur": "Steve Nelson",
+    "id": "2657c568-1bed-38de-a982-af80df26ceef",
+    "parente": null,
+    "roles": {
+     "Billy Kilson": "drums (drum set)",
+     "Dave Holland": "double bass",
+     "Robin Eubanks": "trombone",
+     "Steve Nelson": "marimba",
+     "Steve Wilson": "alto saxophone"
+    },
+    "titre": "Serenade"
+   }
+  ],
+  "release": "cdf0ee62-92a9-473f-8949-7969a71917d8",
+  "version": 14
+ },
  "7809501": {
   "images": [],
   "maj": "2026-11-01",
@@ -101007,6 +105327,85 @@
   "release": "f86f595d-0211-4ac7-9e1f-a99634215fe0",
   "version": 14
  },
+ "8075212": {
+  "annee_parution": 2008,
+  "annees_enregistrement": null,
+  "durees": [
+   355000,
+   237000,
+   157000,
+   354000,
+   388000,
+   197000,
+   503000,
+   385000,
+   270000,
+   302000,
+   298000,
+   254000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/54c68283-67ee-4f04-8e3d-baf7c96bfb7e/18223431455-250.jpg",
+    "original": "https://coverartarchive.org/release/54c68283-67ee-4f04-8e3d-baf7c96bfb7e/18223431455.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/54c68283-67ee-4f04-8e3d-baf7c96bfb7e/18223431455-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/54c68283-67ee-4f04-8e3d-baf7c96bfb7e/18223434609-250.jpg",
+    "original": "https://coverartarchive.org/release/54c68283-67ee-4f04-8e3d-baf7c96bfb7e/18223434609.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/54c68283-67ee-4f04-8e3d-baf7c96bfb7e/18223434609-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 12,
+  "oeuvres": [
+   null,
+   {
+    "artistes": [
+     "Geoffrey Gurrumul Yunupingu",
+     "Makuma Yunupingu",
+     "Johnno Yunupingu",
+     "Nigel Yunupingu"
+    ],
+    "compositeur": "Michael Hohnen, Erkki Veltheim, Geoffrey Gurrumul Yunupingu",
+    "id": "015c3755-983f-4a40-8215-11c99caa7998",
+    "parente": null,
+    "roles": {
+     "Geoffrey Gurrumul Yunupingu": "acoustic guitar",
+     "Johnno Yunupingu": "background vocals",
+     "Makuma Yunupingu": "background vocals",
+     "Nigel Yunupingu": "background vocals"
+    },
+    "titre": "Djarimirri (Child Of The Rainbow)"
+   },
+   null,
+   {
+    "artistes": [
+     "Geoffrey Gurrumul Yunupingu"
+    ],
+    "compositeur": "Geoffrey Gurrumul Yunupingu",
+    "id": "1957a316-7e7c-411e-8ed1-46dae49d5e35",
+    "parente": null,
+    "roles": {
+     "Geoffrey Gurrumul Yunupingu": "acoustic guitar"
+    },
+    "titre": "Gurrumul History (I Was Born Blind)"
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "release": "54c68283-67ee-4f04-8e3d-baf7c96bfb7e",
+  "version": 14
+ },
  "8096317": {
   "annee_parution": 1993,
   "annees_enregistrement": [
@@ -101701,6 +106100,568 @@
   ],
   "release": "1c16f604-d5bf-43e4-a5a7-46b8d3260847",
   "version": 4
+ },
+ "827201": {
+  "annee_parution": 2006,
+  "annees_enregistrement": [
+   2005,
+   2005
+  ],
+  "durees": [
+   596666,
+   212773,
+   284466,
+   319160,
+   594893,
+   410960,
+   515346,
+   319746,
+   505973,
+   586560,
+   407026,
+   510933,
+   484840,
+   420960,
+   450066
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/15845846719-250.jpg",
+    "original": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/15845846719.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/15845846719-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/12913658763-250.jpg",
+    "original": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/12913658763.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/12913658763-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/12913665996-250.jpg",
+    "original": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/12913665996.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46/12913665996-500.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "edition",
+  "nb_plages": 15,
+  "oeuvres": null,
+  "release": "7ee4efc3-f5c3-4ff0-b4d0-6ee030a60c46",
+  "version": 14
+ },
+ "827227": {
+  "annee_parution": 1996,
+  "annees_enregistrement": [
+   1992,
+   1996
+  ],
+  "durees": [
+   324200,
+   320893,
+   541173,
+   413226,
+   502506,
+   439533,
+   352293,
+   270240,
+   445133
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342507436-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342507436.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342507436-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342509735-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342509735.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342509735-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342512474-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342512474.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342512474-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342515075-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342515075.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342515075-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342516776-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342516776.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342516776-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342519627-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342519627.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342519627-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342522277-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342522277.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342522277-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342525528-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342525528.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342525528-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342528602-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342528602.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342528602-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342531134-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342531134.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342531134-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342532870-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342532870.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342532870-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342534234-250.jpg",
+    "original": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342534234.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be117769-7661-4e69-a1ca-3279809d417b/16342534234-500.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 9,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Don Sickler",
+     "Marcus Belgrave",
+     "Joe Chambers",
+     "Robin Eubanks",
+     "Jon Faddis",
+     "Craig Handy",
+     "Virgil Jones",
+     "Jimmy Knepper",
+     "Ronnie Mathews",
+     "Christian McBride",
+     "Jimmy Owens",
+     "Rich Perry",
+     "Bobby Porcelli",
+     "Lew Soloff",
+     "Idrees Sulieman",
+     "Joe Temperley",
+     "Pete Yellin"
+    ],
+    "compositeur": "Vincent Youmans",
+    "id": "b38082b8-0f3b-4f54-bb89-8aada088ae0c",
+    "parente": {
+     "id": "70c55339-ea78-40cb-bfcf-b5717326d974",
+     "titre": "Great Day!"
+    },
+    "roles": {
+     "Bobby Porcelli": "alto saxophone",
+     "Christian McBride": "bass",
+     "Craig Handy": "tenor saxophone",
+     "Don Sickler": "conductor",
+     "Idrees Sulieman": "trumpet",
+     "Jimmy Knepper": "trombone",
+     "Jimmy Owens": "trumpet",
+     "Joe Chambers": "drums (drum set)",
+     "Joe Henderson": "tenor saxophone",
+     "Joe Temperley": "baritone saxophone",
+     "Jon Faddis": "trumpet",
+     "Lew Soloff": "trumpet",
+     "Marcus Belgrave": "trumpet",
+     "Pete Yellin": "alto saxophone",
+     "Rich Perry": "tenor saxophone",
+     "Robin Eubanks": "trombone",
+     "Ronnie Mathews": "piano",
+     "Virgil Jones": "trumpet"
+    },
+    "titre": "Without a Song"
+   },
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Chick Corea",
+     "Jon Faddis",
+     "Larry Farrell",
+     "Conrad Herwig",
+     "Christian McBride",
+     "Lewis Nash",
+     "Keith O’Quinn",
+     "Dick Oatts",
+     "Charles Pillow",
+     "Tim Ries",
+     "Gary Smulyan",
+     "Byron Stripling",
+     "Dave Taylor",
+     "Steve Wilson",
+     "Michael Philip Mossman",
+     "Ray Vega"
+    ],
+    "compositeur": "Joe Henderson",
+    "id": "d5a87131-7f9a-3deb-a8ca-77f7d0e983a2",
+    "parente": null,
+    "roles": {
+     "Byron Stripling": "trumpet",
+     "Charles Pillow": "tenor saxophone",
+     "Chick Corea": "piano",
+     "Christian McBride": "bass",
+     "Conrad Herwig": "trombone",
+     "Dave Taylor": "bass trombone",
+     "Dick Oatts": "alto saxophone",
+     "Gary Smulyan": "baritone saxophone",
+     "Joe Henderson": "tenor saxophone",
+     "Jon Faddis": "trumpet",
+     "Keith O’Quinn": "trombone",
+     "Larry Farrell": "trombone",
+     "Lewis Nash": "drums (drum set)",
+     "Michael Philip Mossman": "trumpet",
+     "Ray Vega": "trumpet",
+     "Steve Wilson": "alto saxophone",
+     "Tim Ries": "tenor saxophone"
+    },
+    "titre": "Isotope"
+   },
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Chick Corea",
+     "Jon Faddis",
+     "Larry Farrell",
+     "Earl Gardner",
+     "Conrad Herwig",
+     "Christian McBride",
+     "Lewis Nash",
+     "Keith O’Quinn",
+     "Dick Oatts",
+     "Charles Pillow",
+     "Tim Ries",
+     "Gary Smulyan",
+     "Byron Stripling",
+     "Dave Taylor",
+     "Steve Wilson",
+     "Tony Kadleck"
+    ],
+    "compositeur": "Joe Henderson",
+    "id": "80c3b9e2-1db7-3aea-b99b-0ffd3097a545",
+    "parente": null,
+    "roles": {
+     "Byron Stripling": "trumpet",
+     "Charles Pillow": "tenor saxophone",
+     "Chick Corea": "piano",
+     "Christian McBride": "bass",
+     "Conrad Herwig": "trombone",
+     "Dave Taylor": "bass trombone",
+     "Dick Oatts": "alto saxophone",
+     "Earl Gardner": "trumpet",
+     "Gary Smulyan": "baritone saxophone",
+     "Joe Henderson": "tenor saxophone",
+     "Jon Faddis": "trumpet",
+     "Keith O’Quinn": "trombone",
+     "Larry Farrell": "trombone",
+     "Lewis Nash": "drums (drum set)",
+     "Steve Wilson": "alto saxophone",
+     "Tim Ries": "tenor saxophone",
+     "Tony Kadleck": "trumpet"
+    },
+    "titre": "Inner Urge"
+   },
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Chick Corea",
+     "Jon Faddis",
+     "Larry Farrell",
+     "Al Foster",
+     "Conrad Herwig",
+     "Freddie Hubbard",
+     "Christian McBride",
+     "Keith O’Quinn",
+     "Dick Oatts",
+     "Charles Pillow",
+     "Tim Ries",
+     "Gary Smulyan",
+     "Byron Stripling",
+     "Dave Taylor",
+     "Steve Wilson",
+     "Michael Philip Mossman"
+    ],
+    "compositeur": "Joe Henderson",
+    "id": "7942276a-17d8-4001-a4ca-dde6432cdcbf",
+    "parente": null,
+    "roles": {
+     "Al Foster": "drums (drum set)",
+     "Byron Stripling": "trumpet",
+     "Charles Pillow": "tenor saxophone",
+     "Chick Corea": "piano",
+     "Christian McBride": "bass",
+     "Conrad Herwig": "trombone",
+     "Dave Taylor": "bass trombone",
+     "Dick Oatts": "alto saxophone",
+     "Freddie Hubbard": "trumpet",
+     "Gary Smulyan": "baritone saxophone",
+     "Joe Henderson": "tenor saxophone",
+     "Jon Faddis": "trumpet",
+     "Keith O’Quinn": "trombone",
+     "Larry Farrell": "trombone",
+     "Michael Philip Mossman": "trumpet",
+     "Steve Wilson": "alto saxophone",
+     "Tim Ries": "tenor saxophone"
+    },
+    "titre": "Black Narcissus"
+   },
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Don Sickler",
+     "Marcus Belgrave",
+     "Joe Chambers",
+     "Robin Eubanks",
+     "Jon Faddis",
+     "Craig Handy",
+     "Freddie Hubbard",
+     "Virgil Jones",
+     "Jimmy Knepper",
+     "Ronnie Mathews",
+     "Christian McBride",
+     "Jimmy Owens",
+     "Rich Perry",
+     "Bobby Porcelli",
+     "Lew Soloff",
+     "Idrees Sulieman",
+     "Joe Temperley",
+     "Pete Yellin"
+    ],
+    "compositeur": "Joe Henderson",
+    "id": "ca36e254-04a4-44ee-be08-bcf6e5258bec",
+    "parente": null,
+    "roles": {
+     "Bobby Porcelli": "alto saxophone",
+     "Christian McBride": "bass",
+     "Craig Handy": "tenor saxophone",
+     "Don Sickler": "conductor",
+     "Freddie Hubbard": "trumpet",
+     "Idrees Sulieman": "trumpet",
+     "Jimmy Knepper": "trombone",
+     "Jimmy Owens": "trumpet",
+     "Joe Chambers": "drums (drum set)",
+     "Joe Henderson": "tenor saxophone",
+     "Joe Temperley": "baritone saxophone",
+     "Jon Faddis": "trumpet",
+     "Lew Soloff": "trumpet",
+     "Marcus Belgrave": "trumpet",
+     "Pete Yellin": "alto saxophone",
+     "Rich Perry": "tenor saxophone",
+     "Robin Eubanks": "trombone",
+     "Ronnie Mathews": "piano",
+     "Virgil Jones": "trumpet"
+    },
+    "titre": "A Shade Of Jade"
+   },
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Chick Corea",
+     "Jon Faddis",
+     "Larry Farrell",
+     "Al Foster",
+     "Earl Gardner",
+     "Conrad Herwig",
+     "Christian McBride",
+     "Keith O’Quinn",
+     "Dick Oatts",
+     "Nicholas Payton",
+     "Charles Pillow",
+     "Tim Ries",
+     "Gary Smulyan",
+     "Lew Soloff",
+     "Byron Stripling",
+     "Dave Taylor",
+     "Steve Wilson"
+    ],
+    "compositeur": "Joe Henderson",
+    "id": "b2e9a48b-7e2e-4f1b-9592-366361798bcc",
+    "parente": null,
+    "roles": {
+     "Al Foster": "drums (drum set)",
+     "Byron Stripling": "trumpet",
+     "Charles Pillow": "tenor saxophone",
+     "Chick Corea": "piano",
+     "Christian McBride": "bass",
+     "Conrad Herwig": "trombone",
+     "Dave Taylor": "bass trombone",
+     "Dick Oatts": "alto saxophone",
+     "Earl Gardner": "trumpet",
+     "Gary Smulyan": "baritone saxophone",
+     "Joe Henderson": "tenor saxophone",
+     "Jon Faddis": "trumpet",
+     "Keith O’Quinn": "trombone",
+     "Larry Farrell": "trombone",
+     "Lew Soloff": "trumpet",
+     "Nicholas Payton": "trumpet",
+     "Steve Wilson": "alto saxophone",
+     "Tim Ries": "tenor saxophone"
+    },
+    "titre": "Step Lightly"
+   },
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Slide Hampton",
+     "Chick Corea",
+     "Jon Faddis",
+     "Larry Farrell",
+     "Conrad Herwig",
+     "Christian McBride",
+     "Lewis Nash",
+     "Keith O’Quinn",
+     "Dick Oatts",
+     "Charles Pillow",
+     "Tim Ries",
+     "Gary Smulyan",
+     "Lew Soloff",
+     "Byron Stripling",
+     "Dave Taylor",
+     "Steve Wilson"
+    ],
+    "compositeur": "Joe Henderson",
+    "id": "e29f9a71-2155-4729-af73-c3a1c5f4fd52",
+    "parente": null,
+    "roles": {
+     "Byron Stripling": "trumpet",
+     "Charles Pillow": "tenor saxophone",
+     "Chick Corea": "piano",
+     "Christian McBride": "bass",
+     "Conrad Herwig": "trombone",
+     "Dave Taylor": "bass trombone",
+     "Dick Oatts": "soprano saxophone",
+     "Gary Smulyan": "baritone saxophone",
+     "Joe Henderson": "tenor saxophone",
+     "Jon Faddis": "trumpet",
+     "Keith O’Quinn": "trombone",
+     "Larry Farrell": "trombone",
+     "Lew Soloff": "trumpet",
+     "Lewis Nash": "drums (drum set)",
+     "Slide Hampton": "conductor",
+     "Steve Wilson": "alto saxophone",
+     "Tim Ries": "tenor saxophone"
+    },
+    "titre": "Serenity"
+   },
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Don Sickler",
+     "Marcus Belgrave",
+     "Joe Chambers",
+     "Robin Eubanks",
+     "Jon Faddis",
+     "Craig Handy",
+     "Virgil Jones",
+     "Jimmy Knepper",
+     "Ronnie Mathews",
+     "Christian McBride",
+     "Jimmy Owens",
+     "Rich Perry",
+     "Bobby Porcelli",
+     "Lew Soloff",
+     "Idrees Sulieman",
+     "Joe Temperley",
+     "Pete Yellin"
+    ],
+    "compositeur": "Billy Strayhorn",
+    "id": "9b1f1cf7-f39f-3e97-9241-4d94dd15e21d",
+    "parente": null,
+    "roles": {
+     "Bobby Porcelli": "alto saxophone",
+     "Christian McBride": "bass",
+     "Craig Handy": "tenor saxophone",
+     "Don Sickler": "conductor",
+     "Idrees Sulieman": "trumpet",
+     "Jimmy Knepper": "trombone",
+     "Jimmy Owens": "trumpet",
+     "Joe Chambers": "drums (drum set)",
+     "Joe Henderson": "tenor saxophone",
+     "Joe Temperley": "baritone saxophone",
+     "Jon Faddis": "trumpet",
+     "Lew Soloff": "trumpet",
+     "Marcus Belgrave": "trumpet",
+     "Pete Yellin": "alto saxophone",
+     "Rich Perry": "tenor saxophone",
+     "Robin Eubanks": "trombone",
+     "Ronnie Mathews": "piano",
+     "Virgil Jones": "trumpet"
+    },
+    "titre": "Chelsea Bridge"
+   },
+   {
+    "artistes": [
+     "Joe Henderson",
+     "Michael Philip Mossman",
+     "Nicholas Payton",
+     "Helio Alves",
+     "Jon Faddis",
+     "Larry Farrell",
+     "Earl Gardner",
+     "Conrad Herwig",
+     "Keith O’Quinn",
+     "Dick Oatts",
+     "Charles Pillow",
+     "Tim Ries",
+     "Gary Smulyan",
+     "Byron Stripling",
+     "Dave Taylor",
+     "Steve Wilson",
+     "Paulo Braga",
+     "Nilson Matta",
+     "Ray Vega"
+    ],
+    "compositeur": "Joe Henderson",
+    "id": "82643c6f-1297-4d13-b2a6-f55b56512451",
+    "parente": null,
+    "roles": {
+     "Byron Stripling": "trumpet",
+     "Charles Pillow": "tenor saxophone",
+     "Conrad Herwig": "trombone",
+     "Dave Taylor": "bass trombone",
+     "Dick Oatts": "alto saxophone",
+     "Earl Gardner": "trumpet",
+     "Gary Smulyan": "baritone saxophone",
+     "Helio Alves": "piano",
+     "Joe Henderson": "tenor saxophone",
+     "Jon Faddis": "trumpet",
+     "Keith O’Quinn": "trombone",
+     "Larry Farrell": "trombone",
+     "Michael Philip Mossman": "conductor",
+     "Nicholas Payton": "trumpet",
+     "Nilson Matta": "bass",
+     "Paulo Braga": "drums (drum set)",
+     "Ray Vega": "trumpet",
+     "Steve Wilson": "alto saxophone",
+     "Tim Ries": "tenor saxophone"
+    },
+    "titre": "Recorda Me"
+   }
+  ],
+  "release": "be117769-7661-4e69-a1ca-3279809d417b",
+  "version": 14
  },
  "8276761": {
   "annees_enregistrement": [
@@ -103039,6 +108000,255 @@
   "release": "e1bd9034-bfdd-44b3-a24c-c91d6ac6b81a",
   "version": 4
  },
+ "8562800": {
+  "annee_parution": 2007,
+  "annees_enregistrement": [
+   2005,
+   2007
+  ],
+  "durees": [
+   455000,
+   392000,
+   458000,
+   325000,
+   495000,
+   394000,
+   342000,
+   446000,
+   450000,
+   301000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269566331-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269566331.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269566331-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269567168-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269567168.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269567168-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269567938-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269567938.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269567938-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269568612-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269568612.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269568612-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269569240-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269569240.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269569240-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269570121-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269570121.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269570121-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269570855-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269570855.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269570855-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269571541-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269571541.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269571541-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269572041-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269572041.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269572041-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269572474-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269572474.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269572474-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269573227-250.jpg",
+    "original": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269573227.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/382365d3-118e-4bff-b18c-05bd3c404bb7/38269573227-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 10,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Norah Jones",
+     "Vinnie Colaiuta",
+     "Dave Holland",
+     "Lionel Loueke",
+     "Wayne Shorter"
+    ],
+    "compositeur": "Joni Mitchell",
+    "id": "8e8a7f7e-748d-39f8-8df6-885d594abff4",
+    "parente": null,
+    "roles": {
+     "Dave Holland": "bass guitar",
+     "Herbie Hancock": "piano",
+     "Lionel Loueke": "guitar",
+     "Norah Jones": "vocals",
+     "Vinnie Colaiuta": "drums (drum set)",
+     "Wayne Shorter": "saxophone"
+    },
+    "titre": "Court and Spark"
+   },
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Tina Turner",
+     "Vinnie Colaiuta",
+     "Dave Holland",
+     "Lionel Loueke",
+     "Wayne Shorter",
+     "Prince"
+    ],
+    "compositeur": "Joni Mitchell",
+    "id": "c905645a-2f6d-392b-b40d-eb9a37d8e6a0",
+    "parente": null,
+    "roles": {
+     "Dave Holland": "bass guitar",
+     "Herbie Hancock": "piano",
+     "Lionel Loueke": "guitar",
+     "Prince": "guitar",
+     "Tina Turner": "vocals",
+     "Vinnie Colaiuta": "drums (drum set)",
+     "Wayne Shorter": "saxophone"
+    },
+    "titre": "Edith and the Kingpin"
+   },
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Vinnie Colaiuta",
+     "Dave Holland",
+     "Lionel Loueke",
+     "Wayne Shorter"
+    ],
+    "compositeur": "Joni Mitchell",
+    "id": "1b62aa01-53df-38c7-8967-0b73c17b3b12",
+    "parente": null,
+    "roles": {
+     "Dave Holland": "bass guitar",
+     "Herbie Hancock": "piano",
+     "Lionel Loueke": "guitar",
+     "Vinnie Colaiuta": "drums (drum set)",
+     "Wayne Shorter": "saxophone"
+    },
+    "titre": "Both Sides Now"
+   },
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Corinne Bailey Rae",
+     "Vinnie Colaiuta",
+     "Dave Holland",
+     "Lionel Loueke",
+     "Wayne Shorter"
+    ],
+    "compositeur": "Joni Mitchell",
+    "id": "23086b1a-3b60-3d75-b5ba-81370642cfb8",
+    "parente": null,
+    "roles": {
+     "Corinne Bailey Rae": "lead vocals",
+     "Dave Holland": "bass guitar",
+     "Herbie Hancock": "piano",
+     "Lionel Loueke": "guitar",
+     "Vinnie Colaiuta": "drums (drum set)",
+     "Wayne Shorter": "saxophone"
+    },
+    "titre": "River"
+   },
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Vinnie Colaiuta",
+     "Dave Holland",
+     "Lionel Loueke",
+     "Wayne Shorter"
+    ],
+    "compositeur": "Joni Mitchell",
+    "id": "bee860b7-3e60-3dbb-8a00-730908561270",
+    "parente": null,
+    "roles": {
+     "Dave Holland": "bass guitar",
+     "Herbie Hancock": "piano",
+     "Lionel Loueke": "guitar",
+     "Vinnie Colaiuta": "drums (drum set)",
+     "Wayne Shorter": "saxophone"
+    },
+    "titre": "Sweet Bird"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Luciana Souza",
+     "Vinnie Colaiuta",
+     "Dave Holland",
+     "Lionel Loueke",
+     "Wayne Shorter"
+    ],
+    "compositeur": "Joni Mitchell",
+    "id": "c4a1c5fc-e70e-321a-8150-f80599561ff9",
+    "parente": null,
+    "roles": {
+     "Dave Holland": "bass guitar",
+     "Herbie Hancock": "piano",
+     "Lionel Loueke": "guitar",
+     "Luciana Souza": "vocals",
+     "Vinnie Colaiuta": "drums (drum set)",
+     "Wayne Shorter": "saxophone"
+    },
+    "titre": "Amelia"
+   },
+   null,
+   {
+    "artistes": [
+     "Herbie Hancock",
+     "Leonard Cohen",
+     "Vinnie Colaiuta",
+     "Dave Holland",
+     "Lionel Loueke",
+     "Wayne Shorter"
+    ],
+    "compositeur": "Joni Mitchell",
+    "id": "a44ef67f-6229-3367-9989-36bd79be3795",
+    "parente": null,
+    "roles": {
+     "Dave Holland": "bass guitar",
+     "Herbie Hancock": "piano",
+     "Leonard Cohen": "vocals",
+     "Lionel Loueke": "guitar",
+     "Vinnie Colaiuta": "drums (drum set)",
+     "Wayne Shorter": "saxophone"
+    },
+    "titre": "The Jungle Line"
+   }
+  ],
+  "release": "382365d3-118e-4bff-b18c-05bd3c404bb7",
+  "version": 14
+ },
  "8607718": {
   "images": [],
   "maj": "2026-11-02",
@@ -103163,6 +108373,233 @@
    null
   ],
   "release": "b5be342f-d4cb-4212-8af5-374c55236f1d",
+  "version": 14
+ },
+ "8612149": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   2000,
+   2000
+  ],
+  "durees": [
+   311346,
+   340893,
+   412133,
+   333800,
+   359146,
+   326106,
+   368946,
+   353573,
+   396120,
+   374666,
+   392373
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/5d0e750f-5e67-4c29-8b77-cd796081dc40/37531773596-250.jpg",
+    "original": "https://coverartarchive.org/release/5d0e750f-5e67-4c29-8b77-cd796081dc40/37531773596.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/5d0e750f-5e67-4c29-8b77-cd796081dc40/37531773596-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-20",
+  "methode": "code_barre",
+  "nb_plages": 11,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Federico Britos",
+     "Joe Lovano",
+     "Gonzalo Rubalcaba"
+    ],
+    "compositeur": "Martín Rojas",
+    "id": "2c6ac79f-cf07-4379-8756-b091c073a35f",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Federico Britos": "violin",
+     "Gonzalo Rubalcaba": "piano",
+     "Joe Lovano": "tenor saxophone"
+    },
+    "titre": "En la orilla del mundo"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa",
+     "Pat Metheny"
+    ],
+    "compositeur": "María Teresa Lara",
+    "id": "c3cf49ee-cced-4ef6-9d78-feeb6d61b373",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "membranophone",
+     "Pat Metheny": "acoustic guitar"
+    },
+    "titre": "Noche de ronda"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa"
+    ],
+    "compositeur": "José Sabre Marroquín, José Mojica",
+    "id": "87dda690-9963-4f41-8c71-9c7df075ef52",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "bongos, maracas, membranophone"
+    },
+    "titre": "Nocturnal"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa",
+     "Joe Lovano"
+    ],
+    "compositeur": "Charlie Haden",
+    "id": "1224e731-0404-415b-8e6f-43f952fd8858",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "bongos, membranophone",
+     "Joe Lovano": "tenor saxophone"
+    },
+    "titre": "Moonlight (Claro de Luna)"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa",
+     "Federico Britos"
+    ],
+    "compositeur": "Arturo Castro",
+    "id": "38ad1978-6efd-418f-8316-98b38dd1700a",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Federico Britos": "violin",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "bongos, maracas, membranophone"
+    },
+    "titre": "Yo sin ti"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa",
+     "David Sánchez"
+    ],
+    "compositeur": "Marta Valdés",
+    "id": "240248c3-5730-4788-b79c-1bc8d4b1eedf",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "David Sánchez": "tenor saxophone",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "bongos, membranophone"
+    },
+    "titre": "No te empeñes mas"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Joe Lovano"
+    ],
+    "compositeur": "Gonzalo Rubalcaba",
+    "id": "a4c6144e-f366-4c4c-ab93-37f50d6d3f1b",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Gonzalo Rubalcaba": "piano",
+     "Joe Lovano": "tenor saxophone"
+    },
+    "titre": "Transparence"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa",
+     "Federico Britos"
+    ],
+    "compositeur": "Armando Manzanero",
+    "id": "84eb3a1c-aa32-4c43-b1c9-54d1180e69c0",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Federico Britos": "violin",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "bongos, maracas, membranophone"
+    },
+    "titre": "El ciego"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa"
+    ],
+    "compositeur": "Charlie Haden",
+    "id": "3a3e5822-f152-3330-bf31-b18afa2a4eba",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "membranophone"
+    },
+    "titre": "Nightfall"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa",
+     "David Sánchez"
+    ],
+    "compositeur": "Osvaldo Farrés",
+    "id": "66eee87c-3240-3c68-8785-983e7f0ea007",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "David Sánchez": "tenor saxophone",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "bongos, membranophone"
+    },
+    "titre": "Tres palabras"
+   },
+   {
+    "artistes": [
+     "Charlie Haden",
+     "Gonzalo Rubalcaba",
+     "Ignacio Berroa",
+     "Joe Lovano"
+    ],
+    "compositeur": "César Portillo de la Luz",
+    "id": "006847f6-dbe5-4883-87ab-e421c50cb094",
+    "parente": null,
+    "roles": {
+     "Charlie Haden": "double bass",
+     "Gonzalo Rubalcaba": "piano",
+     "Ignacio Berroa": "bongos, membranophone",
+     "Joe Lovano": "tenor saxophone"
+    },
+    "titre": "Contigo en la distancia"
+   }
+  ],
+  "release": "5d0e750f-5e67-4c29-8b77-cd796081dc40",
   "version": 14
  },
  "8662372": {
