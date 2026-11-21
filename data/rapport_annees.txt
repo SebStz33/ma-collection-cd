@@ -1,13 +1,13 @@
-Rapport des années d'enregistrement et des disques live, le 2026-11-20
+Rapport des années d'enregistrement et des disques live, le 2026-11-21
 
-Sources des années d'enregistrement (531 éditions) :
-  saisie manuelle                    83
-  MB sur édition exacte              248
+Sources des années d'enregistrement (545 éditions) :
+  saisie manuelle                    96
+  MB sur édition exacte              249
   MB sur autre édition de l'album    17
-  notes Discogs                      73
+  notes Discogs                      74
   titre                              3
   « à trouver »                      0
-  aucune année                       107
+  aucune année                       106
 
 1. Années tirées des notes Discogs (affichées ; à corriger dans le champ manuel si besoin)
 
@@ -112,6 +112,9 @@ Johann Sebastian Bach, Jan Kobow, Stephan Macleod, Francis Jacob, Katharine Fuge
 
 John Adams, London Sinfonietta, Kronos Quartet — Gnarly Buttons & John's Book Of Alleged Dances (édition 23866520)
     1995 – 1997   « recorded at Skywalker Sound, Nicasio, CA in August 1996. / recorded at Skywalker Sound in August 1995. / recorded at Air Studios, London, England in July 1997; edited and mixed at Galaxy Classics, Mol, Belgium. »
+
+John Zorn, Masada String Trio — Azazel (Book Of Angels Volume 2) (édition 825017)
+    2005   « Recorded June 14, 2005 at Pilot Recording, NYC »
 
 Joseph Haydn, Quatuor Mosaïques — Les Sept Dernières Paroles De Notre Rédempteur Sur La Croix (édition 5585885)
     1992   « Recorded live on April 17 (Good Friday), 1992 in the Abbey of Fontevraud. »

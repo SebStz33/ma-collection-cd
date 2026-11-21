@@ -5974,6 +5974,320 @@
   "release": "84f5c81e-1ad5-432f-9541-3b3b8708f670",
   "version": 10
  },
+ "1121240": {
+  "annee_parution": 1992,
+  "annees_enregistrement": null,
+  "durees": [
+   210960,
+   148133,
+   280733,
+   196240,
+   197866,
+   139266,
+   185693,
+   175640,
+   203800,
+   114826,
+   207200,
+   208240,
+   116866
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/15809697932-250.jpg",
+    "original": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/15809697932.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/15809697932-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367457856-250.jpg",
+    "original": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367457856.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367457856-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367459423-250.jpg",
+    "original": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367459423.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367459423-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367462356-250.jpg",
+    "original": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367462356.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367462356-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367463269-250.jpg",
+    "original": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367463269.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367463269-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367464225-250.jpg",
+    "original": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367464225.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/8ef4a0b9-8f0b-3a53-8426-46af4c10a12f/29367464225-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 13,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Mitchell Froom",
+     "David Hidalgo",
+     "Jerry Marotta",
+     "Richard Pleasance",
+     "Bruce Thomas"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "eef350cd-fba2-3a5a-83aa-5c4ed8cefe81",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "David Hidalgo": "electric guitar",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Richard Pleasance": "electric guitar",
+     "Suzanne Vega": "acoustic guitar"
+    },
+    "titre": "Rock in This Pocket (Song of David)"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Mitchell Froom",
+     "David Hidalgo",
+     "Jerry Marotta",
+     "Bruce Thomas"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "4e90451f-cd93-33a2-97aa-10181c6a076c",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "David Hidalgo": "electric guitar",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Suzanne Vega": "vocals"
+    },
+    "titre": "Blood Makes Noise"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Tchad Blake",
+     "Mitchell Froom",
+     "David Hidalgo",
+     "Jerry Marotta",
+     "Richard Pleasance",
+     "Bruce Thomas"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "27bd8e09-5bd4-3a53-824e-a71f88f89b5d",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "David Hidalgo": "electric guitar",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Richard Pleasance": "electric guitar",
+     "Suzanne Vega": "acoustic guitar",
+     "Tchad Blake": "electric guitar"
+    },
+    "titre": "In Liverpool"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Tchad Blake",
+     "Mitchell Froom",
+     "David Hidalgo",
+     "Jerry Marotta",
+     "Bruce Thomas"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "ba5cc14c-9955-337a-8e98-b9c4cee49c5d",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "David Hidalgo": "electric guitar",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Suzanne Vega": "acoustic guitar",
+     "Tchad Blake": "electric guitar"
+    },
+    "titre": "99.9 F°"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Mitchell Froom",
+     "Marc Shulman",
+     "Michael Visceglia"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "0c5df72c-08d6-3d22-af7f-7f4e40abc5f1",
+    "parente": null,
+    "roles": {
+     "Marc Shulman": "bouzouki",
+     "Michael Visceglia": "bass",
+     "Mitchell Froom": "keyboard",
+     "Suzanne Vega": "acoustic guitar"
+    },
+    "titre": "Blood Sings"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Tchad Blake",
+     "Mitchell Froom",
+     "Jerry Marotta",
+     "Jerry Scheff"
+    ],
+    "compositeur": "Mitchell Froom, Suzanne Vega",
+    "id": "e73c239f-7157-3868-b626-ffa11da9e336",
+    "parente": null,
+    "roles": {
+     "Jerry Marotta": "percussion",
+     "Jerry Scheff": "bass",
+     "Mitchell Froom": "keyboard",
+     "Suzanne Vega": "vocals",
+     "Tchad Blake": "electric guitar"
+    },
+    "titre": "Fat Man & Dancing Girl"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Mitchell Froom",
+     "David Hidalgo",
+     "Jerry Marotta",
+     "Bruce Thomas"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "a82c0c7c-1e21-3ce5-98f6-080d817e492e",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "David Hidalgo": "electric guitar",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Suzanne Vega": "acoustic guitar"
+    },
+    "titre": "(If You Were) In My Movie"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Mitchell Froom",
+     "David Hidalgo",
+     "Jerry Marotta",
+     "Greg Smith",
+     "Bruce Thomas"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "e8798076-9fcb-39b5-843f-e9e47ac6860f",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "David Hidalgo": "electric guitar",
+     "Greg Smith": "baritone saxophone",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Suzanne Vega": "acoustic guitar"
+    },
+    "titre": "As a Child"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Mitchell Froom",
+     "Jerry Marotta",
+     "Bruce Thomas"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "9ab102b0-ecf2-3da7-825d-d54961c884d4",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Suzanne Vega": "acoustic guitar"
+    },
+    "titre": "Bad Wisdom"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Tchad Blake",
+     "Mitchell Froom",
+     "Jerry Marotta",
+     "Richard Pleasance",
+     "Bruce Thomas"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "4d2a93af-2a36-490a-92b8-8a0f70988fd2",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Richard Pleasance": "electric guitar",
+     "Suzanne Vega": "acoustic guitar",
+     "Tchad Blake": "electric guitar"
+    },
+    "titre": "When Heroes Go Down"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega",
+     "Mitchell Froom",
+     "David Hidalgo",
+     "Jerry Marotta",
+     "Greg Smith",
+     "Bruce Thomas",
+     "Richard Thompson"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "3e7ccc24-c44f-3faa-a789-f55aefb969fc",
+    "parente": null,
+    "roles": {
+     "Bruce Thomas": "bass",
+     "David Hidalgo": "electric guitar",
+     "Greg Smith": "baritone saxophone",
+     "Jerry Marotta": "drums (drum set)",
+     "Mitchell Froom": "keyboard",
+     "Richard Thompson": "guitar",
+     "Suzanne Vega": "acoustic guitar"
+    },
+    "titre": "As Girls Go"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega"
+    ],
+    "compositeur": "Suzanne Vega",
+    "id": "03620ff4-a687-3e02-9457-94bb242db2e9",
+    "parente": null,
+    "titre": "Song of Sand"
+   },
+   {
+    "artistes": [
+     "Suzanne Vega"
+    ],
+    "compositeur": null,
+    "id": "190b22b8-9e93-4ec2-bb5a-30815a14e63a",
+    "parente": null,
+    "titre": "Private Goes Public"
+   }
+  ],
+  "release": "8ef4a0b9-8f0b-3a53-8426-46af4c10a12f",
+  "version": 14
+ },
  "11246852": {
   "annees_enregistrement": [
    1962,
@@ -6576,6 +6890,272 @@
   ],
   "release": "770fdf1d-90c3-466a-8584-62fefb499371",
   "version": 11
+ },
+ "1150115": {
+  "annee_parution": 1987,
+  "annees_enregistrement": [
+   1986,
+   1987
+  ],
+  "durees": [
+   1517133,
+   811933,
+   290426,
+   619773
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098810133-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098810133.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098810133-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098816558-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098816558.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098816558-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098823264-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098823264.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098823264-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098830736-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098830736.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098830736-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098833044-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098833044.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098833044-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098840820-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098840820.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098840820-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098846659-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098846659.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098846659-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098852546-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098852546.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098852546-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098857120-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098857120.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098857120-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098865303-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098865303.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098865303-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098871530-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098871530.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098871530-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098877183-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098877183.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098877183-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098881125-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098881125.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098881125-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098888857-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098888857.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098888857-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098893796-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098893796.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098893796-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098901655-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098901655.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098901655-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098913372-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098913372.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098913372-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098919033-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098919033.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098919033-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098921922-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098921922.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098921922-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098927845-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098927845.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098927845-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098929830-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098929830.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098929830-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098932596-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098932596.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098932596-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098933813-250.jpg",
+    "original": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098933813.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be4a87cf-d5be-4af7-a510-7eccc5d2a5d6/44098933813-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "code_barre",
+  "nb_plages": 4,
+  "oeuvres": [
+   {
+    "artistes": [
+     "John Zorn",
+     "Anthony Coleman",
+     "Carol Emanuel",
+     "Bill Frisell",
+     "Dave Hofstra",
+     "Bob James",
+     "Bobby Previte",
+     "Jim Staley",
+     "David Weinstein",
+     "John Lurie",
+     "Robert Quine"
+    ],
+    "compositeur": "John Zorn",
+    "id": "25e1406c-6363-3c42-b8b9-aee7eb701466",
+    "parente": null,
+    "roles": {
+     "Anthony Coleman": "celesta",
+     "Bill Frisell": "guitar",
+     "Bob James": "other instruments",
+     "Bobby Previte": "percussion",
+     "Carol Emanuel": "harp",
+     "Dave Hofstra": "tuba",
+     "David Weinstein": "sampler",
+     "Jim Staley": "trombone",
+     "John Lurie": "spoken vocals",
+     "John Zorn": "clarinet",
+     "Robert Quine": "spoken vocals"
+    },
+    "titre": "Spillane"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Albert Collins",
+     "Melvin Gibbs",
+     "Wayne Horvitz",
+     "Ronald Shannon Jackson",
+     "John Patton",
+     "Bobby Previte",
+     "Robert Quine"
+    ],
+    "compositeur": "John Zorn",
+    "id": "0cc24e54-2542-4ae0-bc46-c9e836cabe8e",
+    "parente": null,
+    "roles": {
+     "Albert Collins": "guitar",
+     "Bobby Previte": "percussion",
+     "John Patton": "organ",
+     "Melvin Gibbs": "bass",
+     "Robert Quine": "guitar",
+     "Ronald Shannon Jackson": "drums (drum set)",
+     "Wayne Horvitz": "piano"
+    },
+    "titre": "Two-Lane Highway"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Albert Collins",
+     "Melvin Gibbs",
+     "Wayne Horvitz",
+     "Ronald Shannon Jackson",
+     "John Patton",
+     "Bobby Previte",
+     "Robert Quine"
+    ],
+    "compositeur": "John Zorn",
+    "id": "0cc24e54-2542-4ae0-bc46-c9e836cabe8e",
+    "parente": null,
+    "roles": {
+     "Albert Collins": "guitar",
+     "Bobby Previte": "percussion",
+     "John Patton": "organ",
+     "Melvin Gibbs": "bass",
+     "Robert Quine": "guitar",
+     "Ronald Shannon Jackson": "drums (drum set)",
+     "Wayne Horvitz": "piano"
+    },
+    "titre": "Two-Lane Highway"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Hank Dutt",
+     "David Harrington",
+     "Joan Jeanrenaud",
+     "Kronos Quartet",
+     "Christian Marclay",
+     "John Sherba",
+     "太田裕美"
+    ],
+    "compositeur": "John Zorn",
+    "id": "09cd3125-5b11-474d-aba1-100bb42c9a3b",
+    "parente": null,
+    "roles": {
+     "Christian Marclay": "turntable",
+     "David Harrington": "violin",
+     "Hank Dutt": "viola",
+     "Joan Jeanrenaud": "cello",
+     "John Sherba": "violin",
+     "太田裕美": "vocals"
+    },
+    "titre": "Forbidden Fruit"
+   }
+  ],
+  "release": "be4a87cf-d5be-4af7-a510-7eccc5d2a5d6",
+  "version": 14
  },
  "11528736": {
   "annee_parution": 1999,
@@ -8512,6 +9092,244 @@
   ],
   "release": "8620cbe3-cd6e-4e10-ac6b-8a73d36c0ce4",
   "version": 5
+ },
+ "1242957": {
+  "annee_parution": 1986,
+  "annees_enregistrement": [
+   1985,
+   1985
+  ],
+  "durees": [
+   704666,
+   290693,
+   248173,
+   420826,
+   421440,
+   355533,
+   672466,
+   265093,
+   326400,
+   284400,
+   330600,
+   276640,
+   385560
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146352583-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146352583.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146352583-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146354525-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146354525.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146354525-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146475426-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146475426.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146475426-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146476022-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146476022.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146476022-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146430080-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146430080.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146430080-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146431054-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146431054.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/11146431054-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915541579-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915541579.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915541579-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915542126-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915542126.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915542126-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915543234-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915543234.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915543234-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915544397-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915544397.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915544397-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915545450-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915545450.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915545450-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915546519-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915546519.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915546519-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915547670-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915547670.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915547670-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915548855-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915548855.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915548855-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915549758-250.jpg",
+    "original": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915549758.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/bcc2a858-0253-4ac3-bb8e-05b56c60ae12/13915549758-500.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "code_barre",
+  "nb_plages": 13,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "f581b3a8-1d26-32d3-a8bb-27e77f6d6057",
+    "parente": null,
+    "titre": "Bring On the Night"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "c68e7a70-063c-33db-ae82-168f1d49c0b2",
+    "parente": null,
+    "titre": "Consider Me Gone"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "e605aef6-707f-4f7c-9df1-470123db3710",
+    "parente": null,
+    "titre": "Low Life"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "0d8de236-4ce6-36cd-835a-8cb6f97bb75b",
+    "parente": null,
+    "titre": "We Work the Black Seam"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "d7c50a9a-6938-36cf-99af-549de7585eaf",
+    "parente": null,
+    "titre": "Driven to Tears"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "d00830aa-202b-3d1e-96d9-3ac02169013b",
+    "parente": null,
+    "titre": "Demolition Man"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "fd435f38-6272-3c19-930c-4e231629b285",
+    "parente": null,
+    "titre": "Love Is the Seventh Wave"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "37eff99c-7a77-3738-8b9d-0fda9c0dd913",
+    "parente": null,
+    "titre": "Moon Over Bourbon Street"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "ac3008fc-36c5-4475-93ce-a74f7170ab45",
+    "parente": null,
+    "titre": "I Burn for You"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "4c260d0c-d437-4b4a-8eab-a720a5d5c70e",
+    "parente": null,
+    "titre": "Another Day"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "abeb3cac-abb9-340c-9f67-f237aa8d0d36",
+    "parente": null,
+    "titre": "Children's Crusade"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Alex Atkins, J.B. Lenoir",
+    "id": "5dbcd1ba-18de-4e7c-84b3-87cc4e656d38",
+    "parente": null,
+    "titre": "Been Down So Long"
+   },
+   {
+    "artistes": [
+     "Sting"
+    ],
+    "compositeur": "Sting",
+    "id": "8db63e31-c9aa-3948-a615-45a12b96764c",
+    "parente": null,
+    "titre": "Tea in the Sahara"
+   }
+  ],
+  "release": "bcc2a858-0253-4ac3-bb8e-05b56c60ae12",
+  "version": 14
  },
  "1248416": {
   "annees_enregistrement": [
@@ -22677,6 +23495,163 @@
   "release": "cdfaacce-4d36-4143-ac00-916342649e56",
   "version": 14
  },
+ "1328155": {
+  "annee_parution": 2008,
+  "annees_enregistrement": null,
+  "durees": [
+   358826,
+   367880,
+   202360,
+   372573,
+   229346,
+   474586,
+   182120,
+   593986,
+   299320,
+   204920
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/42748557037-250.jpg",
+    "original": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/42748557037.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/42748557037-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/42748557991-250.jpg",
+    "original": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/42748557991.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/42748557991-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590151225-250.jpg",
+    "original": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590151225.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590151225-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590151616-250.jpg",
+    "original": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590151616.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590151616-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590152124-250.jpg",
+    "original": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590152124.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590152124-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590153072-250.jpg",
+    "original": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590153072.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590153072-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590153573-250.jpg",
+    "original": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590153573.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/758ff988-2f2a-408e-8c83-f328308bdb7f/30590153573-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 10,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "cfe014c3-a4b6-4f57-ba29-9aaf0595317c",
+    "parente": null,
+    "titre": "Sother"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "6de0220c-e13d-4dc8-a2da-c5253ca8dadd",
+    "parente": null,
+    "titre": "Dalquiel"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "58584389-a5c2-4637-ac6a-167e783c114d",
+    "parente": null,
+    "titre": "Zazel"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "dead06e8-2e67-4cb2-b0ba-4bc2f09387dd",
+    "parente": null,
+    "titre": "Gediel"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "d225a214-0edb-4ef8-af3f-4e766ff9dd6f",
+    "parente": null,
+    "titre": "Rahal"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "2126bb25-d60f-4e76-8188-ff540222e0a1",
+    "parente": null,
+    "titre": "Zechriel"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "fa555972-1683-4278-8d56-5889b0e835e3",
+    "parente": null,
+    "titre": "Azbugah"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "ecf45a14-30d3-4ba4-8a5c-383b916a17b1",
+    "parente": null,
+    "titre": "Mehalalel"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "a67e59d1-5fca-477a-aad8-5e6728f5799b",
+    "parente": null,
+    "titre": "Quelamia"
+   },
+   {
+    "artistes": [
+     "Bar Kokhba Sextet"
+    ],
+    "compositeur": "John Zorn",
+    "id": "c7395c52-a47c-4e41-b36d-757a3e0aae67",
+    "parente": null,
+    "titre": "Abdiel"
+   }
+  ],
+  "release": "758ff988-2f2a-408e-8c83-f328308bdb7f",
+  "version": 14
+ },
  "13301735": {
   "annee_parution": null,
   "annees_enregistrement": [
@@ -35786,6 +36761,171 @@
   "release": null,
   "version": 2
  },
+ "1387027": {
+  "annee_parution": 2007,
+  "annees_enregistrement": null,
+  "durees": [
+   277000,
+   160000,
+   100000,
+   205000,
+   79000,
+   277000,
+   233000,
+   345000,
+   98000,
+   259000,
+   184000,
+   278000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590115854-250.jpg",
+    "original": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590115854.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590115854-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116419-250.jpg",
+    "original": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116419.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116419-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116683-250.jpg",
+    "original": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116683.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116683-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116968-250.jpg",
+    "original": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116968.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590116968-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590117297-250.jpg",
+    "original": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590117297.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/fd3f532e-0aee-420d-b111-05e1ec76f614/30590117297-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 12,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "f0cad293-014f-4ca5-a08f-78233253f167",
+    "parente": null,
+    "titre": "Harhazial"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "2208d52a-8f1e-4e73-83d9-bd5086bd8e76",
+    "parente": null,
+    "titre": "Rachsiel"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "e54b047d-88e2-4cfd-ab25-045f02c358e1",
+    "parente": null,
+    "titre": "Zumiel"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "30d66991-df88-49f3-bcd0-97ea863d1b3c",
+    "parente": null,
+    "titre": "Yeruel"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "37ad589b-f0aa-4fa9-95f3-15dc702db494",
+    "parente": null,
+    "titre": "Sannul"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "07bb2a21-0079-45a1-87df-9af5782c7c7f",
+    "parente": null,
+    "titre": "Haseha"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "79b02a6e-8b6d-4e95-a184-13a1cd95a650",
+    "parente": null,
+    "titre": "Kadal"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "c6e0f257-57c4-437b-9416-e40088c05b5d",
+    "parente": null,
+    "titre": "Ahaniel"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "6d57fe46-3c44-430b-859d-0de93ed66c52",
+    "parente": null,
+    "titre": "Ylrng"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "0e385b5c-8b17-4b9a-8584-2c4be2a8017a",
+    "parente": null,
+    "titre": "Anahel"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "6621e659-b06e-4bdc-8f24-d7eb186651b1",
+    "parente": null,
+    "titre": "Sidriel"
+   },
+   {
+    "artistes": [
+     "Erik Friedlander"
+    ],
+    "compositeur": "John Zorn",
+    "id": "f64efdbf-7a37-453c-bde6-4e320fc92495",
+    "parente": null,
+    "titre": "Zawar"
+   }
+  ],
+  "release": "fd3f532e-0aee-420d-b111-05e1ec76f614",
+  "version": 14
+ },
  "1387247": {
   "annees_enregistrement": [
    1962,
@@ -36595,6 +37735,29 @@
   "nb_plages": 53,
   "oeuvres": null,
   "release": null,
+  "version": 14
+ },
+ "1440653": {
+  "annee_parution": 2008,
+  "annees_enregistrement": null,
+  "durees": [
+   258000,
+   626000,
+   398000,
+   355000,
+   507000,
+   294000,
+   401000,
+   236000,
+   523000,
+   201000
+  ],
+  "images": [],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 10,
+  "oeuvres": null,
+  "release": "b7a7238c-6cbb-44f2-a069-6817883d16a5",
   "version": 14
  },
  "14456354": {
@@ -39156,6 +40319,488 @@
   "oeuvres": null,
   "release": null,
   "version": 2
+ },
+ "15839565": {
+  "annee_parution": 1993,
+  "annees_enregistrement": [
+   1993,
+   1993
+  ],
+  "durees": [
+   160733,
+   251093,
+   41840,
+   351493,
+   292040,
+   240400,
+   280733,
+   270960,
+   68306,
+   172693,
+   65640,
+   363866,
+   160426,
+   240133,
+   375266,
+   104573,
+   209533,
+   127626,
+   284533,
+   262533,
+   298266
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717597890-250.jpg",
+    "original": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717597890.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717597890-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717598694-250.jpg",
+    "original": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717598694.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717598694-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717599079-250.jpg",
+    "original": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717599079.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717599079-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717599636-250.jpg",
+    "original": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717599636.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717599636-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717600348-250.jpg",
+    "original": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717600348.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717600348-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717600869-250.jpg",
+    "original": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717600869.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/33717600869-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/25209573465-250.jpg",
+    "original": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/25209573465.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/17daef5c-ac7f-4d65-a609-bee80d7734a8/25209573465-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "code_barre",
+  "nb_plages": 21,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "64968d8a-7b69-49b5-9c51-807dcd5a8a63",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Nectar"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "3295738c-7670-4575-a1d2-cd14402a3142",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Tyed"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "cff24e74-4a5d-4dc3-b012-2bd3d1ea84a9",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "A Sweet Sweet Man, Pt. 1"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "8c886022-4064-4884-bdde-80efd804d720",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Whiskey & Water"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "5aea28ce-4dd6-4518-ae7c-d8d409b12404",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Blood"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "2b6be243-f5f9-493d-9378-a33fb2d7173b",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "City Sickness"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "e894aef6-3cb2-4b30-86c7-7c2aa819dcb1",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Patchwork"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "d8ed493c-1af4-4b61-87bc-a6a14f185a0f",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Marbles"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "55cc6ffb-e2bc-46d0-ae1d-a5dd910a5d28",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Walt Blues"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "15051e46-6f84-468d-af62-37271b2549c7",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Milky Teeth"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "b8b32d74-5725-4f4d-b99e-e5393c4940b3",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "A Sweet Sweet Man, Pt. 2"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "4ddc1488-6154-4eff-8cce-bff60df6ade3",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Jism"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "eae55da2-6986-4047-bd35-92e6d5ee6d8f",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Piano Song"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "6d5c4548-3e89-4126-9469-809212b774d7",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Tye-Die"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "789abddb-c87f-4061-a3da-f5e4aaa34431",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Raindrops"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "6432ed10-c529-4910-bab2-9942e4c67660",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "A Sweet Sweet Man, Pt. 3"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "4cae633f-f3ee-48f1-b7a7-26a2916a2da1",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Her"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "4b35b3ad-d79a-424a-b9ba-e6d7cc55fdc5",
+    "parente": null,
+    "roles": {
+     "David Boulter": "keyboard",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Tea Stain"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "b0785afd-227c-49b3-b1ce-0c25a21a442f",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Drunk Tank"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Terry Edwards",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "4e2bc8be-85fb-4fc1-afd4-e64459afdf55",
+    "parente": null,
+    "roles": {
+     "Stuart A. Staples": "vocals",
+     "Terry Edwards": "soprano saxophone"
+    },
+    "titre": "Paco de Renaldo's Dream"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Ian Bishop",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Martin Harman",
+     "Rosie Lidsell",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "0f650fbf-4d89-4ce5-93d4-f3b66739349c",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Ian Bishop": "clarinet",
+     "Mark Colwill": "bass",
+     "Martin Harman": "oboe",
+     "Neil Fraser": "guitar",
+     "Rosie Lidsell": "bassoon",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "The Not Knowing"
+   }
+  ],
+  "release": "17daef5c-ac7f-4d65-a609-bee80d7734a8",
+  "version": 14
  },
  "1591136": {
   "annees_enregistrement": null,
@@ -68006,6 +69651,195 @@
   "release": null,
   "version": 2
  },
+ "21852037": {
+  "annee_parution": 2021,
+  "annees_enregistrement": [
+   1967,
+   1969
+  ],
+  "durees": [
+   308386,
+   183480,
+   381813,
+   431653,
+   254720,
+   147826,
+   280186,
+   445013,
+   175213,
+   1142173,
+   339546,
+   417173,
+   175520,
+   246253,
+   313386,
+   356053
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/caae32c4-ea73-4626-af0d-593839c43e64/32540468789-250.jpg",
+    "original": "https://coverartarchive.org/release/caae32c4-ea73-4626-af0d-593839c43e64/32540468789.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/caae32c4-ea73-4626-af0d-593839c43e64/32540468789-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/caae32c4-ea73-4626-af0d-593839c43e64/30824542046-250.jpg",
+    "original": "https://coverartarchive.org/release/caae32c4-ea73-4626-af0d-593839c43e64/30824542046.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/caae32c4-ea73-4626-af0d-593839c43e64/30824542046-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 16,
+  "oeuvres": [
+   {
+    "artistes": [
+     "The Velvet Underground",
+     "Nico"
+    ],
+    "compositeur": "Lou Reed",
+    "id": "a50bb9f8-2652-3a28-a3ce-74ffeca8b413",
+    "parente": null,
+    "titre": "Venus in Furs"
+   },
+   {
+    "artistes": [
+     "Nolan Strong and The Diablos"
+    ],
+    "compositeur": "Bob \"Chico\" Edwards, Quentin Eubanks, Juan Guitierrez, Willie Hunter, Nolan Strong",
+    "id": "169cb9cc-fb6f-4ba0-b90f-1aa91e6e6c32",
+    "parente": null,
+    "titre": "The Wind"
+   },
+   null,
+   {
+    "artistes": [
+     "The Velvet Underground",
+     "Nico"
+    ],
+    "compositeur": "Lou Reed",
+    "id": "263200b3-6965-3651-b53c-2a18b8f8c1b4",
+    "parente": null,
+    "titre": "Heroin"
+   },
+   {
+    "artistes": [
+     "Bo Diddley"
+    ],
+    "compositeur": "Bo Diddley",
+    "id": "614d97b3-89a4-3c13-9507-aaa6184bd6a3",
+    "parente": null,
+    "titre": "Road Runner"
+   },
+   null,
+   {
+    "artistes": [
+     "The Velvet Underground"
+    ],
+    "compositeur": "Lou Reed",
+    "id": "89e6e8cc-2e4c-345b-abef-65910ce79ab5",
+    "parente": null,
+    "titre": "I’m Waiting for the Man"
+   },
+   {
+    "artistes": [
+     "Nico",
+     "Larry Fallon"
+    ],
+    "compositeur": "Sterling Morrison, Lou Reed",
+    "id": "3b2a5418-e2ca-3462-91bc-332af6b3e88a",
+    "parente": null,
+    "roles": {
+     "Larry Fallon": "conductor",
+     "Nico": "vocals"
+    },
+    "titre": "Chelsea Girls"
+   },
+   {
+    "artistes": [
+     "The Velvet Underground",
+     "Nico"
+    ],
+    "compositeur": "John Cale, Lou Reed",
+    "id": "4059bded-c0ed-3613-9364-bf18f2cd575c",
+    "parente": null,
+    "roles": {
+     "Nico": "background vocals"
+    },
+    "titre": "Sunday Morning"
+   },
+   {
+    "artistes": [
+     "The Velvet Underground"
+    ],
+    "compositeur": "John Cale, Sterling Morrison, Lou Reed, Moe Tucker",
+    "id": "b150cbdc-a647-3db7-95c9-eaa55b07e604",
+    "parente": null,
+    "titre": "Sister Ray"
+   },
+   {
+    "artistes": [
+     "The Velvet Underground"
+    ],
+    "compositeur": "Lou Reed",
+    "id": "9b3cb1e3-01f0-3777-958d-441ed9bafca5",
+    "parente": null,
+    "roles": {
+     "The Velvet Underground": "conductor"
+    },
+    "titre": "Pale Blue Eyes"
+   },
+   {
+    "artistes": [
+     "The Velvet Underground"
+    ],
+    "compositeur": "John Cale, Sterling Morrison, Lou Reed, Moe Tucker",
+    "id": "d6650586-f9fd-3259-81a7-b5e2e9673a64",
+    "parente": null,
+    "titre": "Foggy Notion"
+   },
+   {
+    "artistes": [
+     "The Velvet Underground"
+    ],
+    "compositeur": "Lou Reed",
+    "id": "90b747e9-4b1d-3452-a875-cc9facb6639e",
+    "parente": null,
+    "titre": "Afterhours"
+   },
+   {
+    "artistes": [
+     "The Velvet Underground"
+    ],
+    "compositeur": "Lou Reed",
+    "id": "82db47f4-f013-3e1d-8e33-4df6c32a26d5",
+    "parente": null,
+    "titre": "Sweet Jane"
+   },
+   {
+    "artistes": [
+     "The Velvet Underground"
+    ],
+    "compositeur": "Lou Reed",
+    "id": "54643611-a955-4b97-96cf-d1226613b813",
+    "parente": null,
+    "titre": "Ocean"
+   },
+   {
+    "artistes": [
+     "The Velvet Underground",
+     "Nico"
+    ],
+    "compositeur": "Lou Reed",
+    "id": "e44fbe32-1823-395d-aec9-4235d784079a",
+    "parente": null,
+    "titre": "All Tomorrow’s Parties"
+   }
+  ],
+  "release": "caae32c4-ea73-4626-af0d-593839c43e64",
+  "version": 14
+ },
  "22144207": {
   "images": [],
   "maj": "2026-11-01",
@@ -79025,6 +80859,93 @@
   ],
   "release": "0cfa9e94-3360-30b3-acc8-d3d1db979756",
   "version": 5
+ },
+ "331962": {
+  "annee_parution": 1997,
+  "annees_enregistrement": null,
+  "durees": [
+   208933,
+   160893,
+   308066,
+   330173,
+   256626,
+   169000,
+   124706,
+   164266,
+   198266,
+   250093,
+   305173,
+   228000,
+   224333,
+   187400,
+   226760,
+   140240,
+   260800,
+   211093,
+   118973,
+   299666,
+   225066
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/effe6488-76e8-45bd-9b27-1f2bc1601584/27176714519-250.jpg",
+    "original": "https://coverartarchive.org/release/effe6488-76e8-45bd-9b27-1f2bc1601584/27176714519.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/effe6488-76e8-45bd-9b27-1f2bc1601584/27176714519-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 21,
+  "oeuvres": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   {
+    "artistes": [
+     "Fred Frith"
+    ],
+    "compositeur": "Serge Gainsbourg, Jean-Claude Vannier",
+    "id": "44cac38d-60dc-3a3a-8351-9b45ac16cc67",
+    "parente": null,
+    "titre": "Ballade de Melody Nelson"
+   },
+   {
+    "artistes": [
+     "JON"
+    ],
+    "compositeur": "Serge Gainsbourg",
+    "id": "089861a6-71e8-338d-bbe0-34a5036cbda8",
+    "parente": null,
+    "titre": "Les Sucettes"
+   },
+   null,
+   {
+    "artistes": [
+     "Anthony Coleman"
+    ],
+    "compositeur": "Serge Gainsbourg",
+    "id": "eb86debd-fd35-44ae-b2eb-17cb620e897b",
+    "parente": null,
+    "titre": "Ce mortel ennui"
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "release": "effe6488-76e8-45bd-9b27-1f2bc1601584",
+  "version": 14
  },
  "3323799": {
   "images": [],
@@ -90258,6 +92179,323 @@
   "release": null,
   "version": 2
  },
+ "573716": {
+  "annee_parution": 1998,
+  "annees_enregistrement": null,
+  "durees": [
+   151733,
+   201026,
+   81000,
+   336040,
+   231200,
+   167293,
+   276106,
+   111560,
+   494400,
+   117240,
+   229133,
+   201493,
+   294706,
+   298333,
+   90360,
+   272800,
+   178773,
+   306760,
+   418493,
+   285400,
+   443373,
+   294493,
+   177106,
+   254026,
+   267173,
+   122026,
+   158773,
+   461226,
+   411933
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/be871ab4-7256-45a7-9c85-a7301c374cd9/30033803640-250.jpg",
+    "original": "https://coverartarchive.org/release/be871ab4-7256-45a7-9c85-a7301c374cd9/30033803640.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be871ab4-7256-45a7-9c85-a7301c374cd9/30033803640-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/be871ab4-7256-45a7-9c85-a7301c374cd9/30033803156-250.jpg",
+    "original": "https://coverartarchive.org/release/be871ab4-7256-45a7-9c85-a7301c374cd9/30033803156.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/be871ab4-7256-45a7-9c85-a7301c374cd9/30033803156-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 29,
+  "oeuvres": [
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "1dc26462-adc5-4a7b-a22e-33844db82ee7",
+    "parente": null,
+    "titre": "Tahah"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "4a0c018c-e0aa-45d3-bca5-31d2021f70ad",
+    "parente": null,
+    "titre": "Sippur"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "3ddf6f00-1994-456e-bfbd-297a12a1149a",
+    "parente": null,
+    "titre": "Karet"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "074d5407-1435-41a0-81ee-9b12fe6f724b",
+    "parente": null,
+    "titre": "Hadasha"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "1017b9b9-b691-4042-a003-d8f78f806c11",
+    "parente": null,
+    "titre": "Taharah"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "b7ce8515-91b1-4ca7-8888-29989fde0729",
+    "parente": null,
+    "titre": "Mispar"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "4b72076d-ec70-4aef-b380-a3266bda3b17",
+    "parente": null,
+    "titre": "Ratzah"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "cdc747ab-df4d-4a33-8d50-cb3d46a27c4c",
+    "parente": null,
+    "titre": "Zebdi"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "d2e9bd2a-148b-49ae-bcc8-e0c89f9b51c4",
+    "parente": null,
+    "titre": "Yatzar"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "cfc4f5cd-0d9e-4b7a-a0a7-1451359c75b1",
+    "parente": null,
+    "titre": "Malkhut"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "c87d4206-21a0-4cff-a783-2756fb53ac3c",
+    "parente": null,
+    "titre": "Hodaah"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "fd1819da-56be-4613-9796-1c65ddced516",
+    "parente": null,
+    "titre": "Elilah"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "366659ae-77d5-3813-9630-cecec275f31f",
+    "parente": null,
+    "titre": "Meholalot"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "3e1cd307-e787-49fe-9ff0-935955843201",
+    "parente": null,
+    "titre": "Kochot"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "41864a78-eaff-49a1-8009-732539e2e40d",
+    "parente": null,
+    "titre": "Lachish"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "67c3667b-d42d-4257-bf22-b5b157d214e4",
+    "parente": null,
+    "titre": "Shidim"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "6cdf680f-e111-4ccf-8261-205ba0a93854",
+    "parente": null,
+    "titre": "Aravot"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "2d4d9e95-4872-44ae-9724-ccae7c02c394",
+    "parente": null,
+    "titre": "Moshav"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "fdf96882-63b8-4da6-96ed-5b9249ebe2bc",
+    "parente": null,
+    "titre": "Lilin"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "ac3380f5-49be-4af9-9315-12744d43a6dc",
+    "parente": null,
+    "titre": "Hazor"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "8b6b271c-4584-418c-bb17-245d3bd4c381",
+    "parente": null,
+    "titre": "Kisofim"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "28036a94-923b-4974-8615-0e6b9cb4bb27",
+    "parente": null,
+    "titre": "Khebar"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "295fcb9f-3333-4834-9c7c-2cbdd91b86e3",
+    "parente": null,
+    "titre": "Laylah"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "acc160ba-52af-46b9-af54-fbdca7832257",
+    "parente": null,
+    "titre": "Teli"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "bb37a427-97dc-4a2c-ae32-388e2ce159ff",
+    "parente": null,
+    "titre": "Tevel"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "9448e94b-2274-4015-8435-a3bbfe7057e9",
+    "parente": null,
+    "titre": "Eitan"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "7078544c-e491-4994-99f6-b4cbde63cf28",
+    "parente": null,
+    "titre": "Ner Tamid"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "3ce663ca-ab8c-4fbe-bf12-c4c3ed5d203c",
+    "parente": null,
+    "titre": "Idalah-abal"
+   },
+   {
+    "artistes": [
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "5d02668b-6e1b-41a0-92f9-5f1694586cf1",
+    "parente": null,
+    "titre": "Gevurah"
+   }
+  ],
+  "release": "be871ab4-7256-45a7-9c85-a7301c374cd9",
+  "version": 14
+ },
  "5767256": {
   "annees_enregistrement": [
    1966,
@@ -90661,6 +92899,18 @@
   "oeuvres": null,
   "release": "ee9fd41e-1f20-406a-8ef1-35e7c5e41be2",
   "version": 11
+ },
+ "5945023": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-21",
+  "methode": "aucune",
+  "nb_plages": 8,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
  },
  "5965929": {
   "annee_parution": 1995,
@@ -104474,6 +106724,609 @@
   "release": null,
   "version": 2
  },
+ "7881553": {
+  "annee_parution": 1990,
+  "annees_enregistrement": [
+   1989,
+   1989
+  ],
+  "durees": [
+   124733,
+   213066,
+   91506,
+   251866,
+   193533,
+   102693,
+   140466,
+   132040,
+   165560,
+   23933,
+   17000,
+   11200,
+   41906,
+   20426,
+   30600,
+   14240,
+   43866,
+   268266,
+   186066,
+   45600,
+   290600,
+   186266,
+   74133,
+   173826,
+   211906,
+   257026
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2390343039-250.jpg",
+    "original": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2390343039.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2390343039-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934411987-250.jpg",
+    "original": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934411987.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934411987-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934496247-250.jpg",
+    "original": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934496247.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934496247-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934501590-250.jpg",
+    "original": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934501590.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934501590-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934515702-250.jpg",
+    "original": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934515702.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/54d4e470-8954-3bf1-99ea-da5f34171031/2934515702-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "code_barre",
+  "nb_plages": 26,
+  "oeuvres": [
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "0f4f1967-b306-42a0-a32d-85b40eb6e0da",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Batman"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "Ennio Morricone",
+    "id": "b2478891-13b4-3d67-b4a5-740cc0d93843",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Il clan dei siciliani"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "44db7efe-4c44-4a81-aad9-7c92d52891c4",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "You Will Be Shot"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "8e49a7a1-f409-4985-a3f8-2cb3bb032af4",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Latin Quarter"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "Henry Mancini",
+    "id": "5d4a3261-02e2-320c-a076-0f4463cdc669",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "A Shot in the Dark"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "9c480f53-2b93-43e1-9312-25d5be2c22be",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Reanimator"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "3f35aea4-cdcf-4d6f-bf6a-5900463958b6",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Snagglepuss"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "Johnny Mandel",
+    "id": "168ef881-b058-47fc-a253-0920c28aacb4",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "I Want to Live"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "Ornette Coleman",
+    "id": "4e085ba5-592a-37a4-98af-5ba8d5e1bccc",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Lonely Woman"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "730ef18c-8a57-492f-9a04-9aebb5e1248e",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Igneous Ejaculation"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "4c745b08-1148-4162-a693-357d112843c3",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Blood Duster"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "eeb82ca8-39a8-4606-8c0c-b05857d3c942",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Hammerhead"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "4e56e057-6719-4274-9b73-a452fdc5e3fe",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Demon Sanctuary"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "06807f76-a92e-4094-b507-264f70ac9614",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Obeah Man"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "76730db3-7bc3-4867-9bb8-7db35a81b2dd",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Ujaku"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "83929ee7-1751-44d5-8d12-74e7e52e1d00",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Fuck the Facts"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "0e8aa94f-9e5c-43a8-8c98-ddb7f11c410c",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Speedball"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "Jerry Goldsmith",
+    "id": "fb8396c7-6c44-3bee-bc53-a366c32d8d5a",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Chinatown"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "8427ffc2-6141-41cd-8978-c650a766eab5",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Punk China Doll"
+   },
+   {
+    "artistes": [
+     "Naked City",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz",
+     "John Zorn"
+    ],
+    "compositeur": "John Zorn",
+    "id": "aa583794-2443-4fd5-a43e-b8acb458e25b",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "N.Y. Flat Top Box"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "809a2541-021a-46d7-958f-77707214bbed",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Saigon Pickup"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "Monty Norman",
+    "id": "f41a276e-10be-3822-be66-f81eef9a1494",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "James Bond Theme"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "9c4e3d67-e885-4b4f-91a7-3b219f1d7178",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Den of Sins"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "Georges Delerue",
+    "id": "09e526d0-f092-4975-be8e-a128d045ffde",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Contempt"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "d5698f0d-80a1-425a-840c-88fa7c75ac1a",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Graveyard Shift"
+   },
+   {
+    "artistes": [
+     "John Zorn",
+     "Joey Baron",
+     "Bill Frisell",
+     "Fred Frith",
+     "Wayne Horvitz"
+    ],
+    "compositeur": "John Zorn",
+    "id": "75486b76-f7d1-4de0-a3d9-5c7ed32a8a35",
+    "parente": null,
+    "roles": {
+     "Bill Frisell": "guitar",
+     "Fred Frith": "bass guitar",
+     "Joey Baron": "drums (drum set)",
+     "John Zorn": "alto saxophone",
+     "Wayne Horvitz": "keyboard"
+    },
+    "titre": "Inside Straight"
+   }
+  ],
+  "release": "54d4e470-8954-3bf1-99ea-da5f34171031",
+  "version": 14
+ },
  "7884170": {
   "annee_parution": 2007,
   "annees_enregistrement": null,
@@ -106100,6 +108953,199 @@
   ],
   "release": "1c16f604-d5bf-43e4-a5a7-46b8d3260847",
   "version": 4
+ },
+ "825017": {
+  "annee_parution": 2005,
+  "annees_enregistrement": null,
+  "durees": [
+   382000,
+   113000,
+   406000,
+   323000,
+   399000,
+   325000,
+   277000,
+   112000,
+   244000,
+   326000,
+   158000,
+   321000,
+   226000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748617798-250.jpg",
+    "original": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748617798.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748617798-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748618446-250.jpg",
+    "original": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748618446.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748618446-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748619162-250.jpg",
+    "original": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748619162.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/42748619162-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585421969-250.jpg",
+    "original": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585421969.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585421969-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585422296-250.jpg",
+    "original": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585422296.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585422296-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585422816-250.jpg",
+    "original": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585422816.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585422816-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585423061-250.jpg",
+    "original": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585423061.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585423061-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585423329-250.jpg",
+    "original": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585423329.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2e405b35-5483-4573-838b-f38ab72e6d5e/30585423329-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 13,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "9a2000ea-4c51-41b3-825e-2ecfc1e0abca",
+    "parente": null,
+    "titre": "Tufiel"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "81959e5f-c921-4001-8f40-2ae49c4d82ab",
+    "parente": null,
+    "titre": "Mibi"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "88e29884-f232-4c08-a446-01447987eb61",
+    "parente": null,
+    "titre": "Tabaet"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "4cc0adf0-c995-49ef-9f46-e71a561e42fd",
+    "parente": null,
+    "titre": "Symnay"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "79c4d8d3-b451-4853-bdc4-747b9a584487",
+    "parente": null,
+    "titre": "Mastema"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "729775d4-dd4c-43df-8a2e-746700c1172b",
+    "parente": null,
+    "titre": "Bethor"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "6e40f9c6-6b93-4e41-b884-30ffa68ed899",
+    "parente": null,
+    "titre": "Uriel"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "b8692769-20bf-4c6a-84cc-c6d479501843",
+    "parente": null,
+    "titre": "Gurid"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "d36adb10-5d11-4b2e-9caa-a070d68e1c82",
+    "parente": null,
+    "titre": "Gazriel"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "2e052840-c88c-4cd4-adc9-bcb21e28ad8c",
+    "parente": null,
+    "titre": "Azazel"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "b8c05db5-9482-473a-82aa-b85ecf21535f",
+    "parente": null,
+    "titre": "Rssasiel"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "1d5c71a8-0524-419f-a208-7b2dc29f60f0",
+    "parente": null,
+    "titre": "Garzanal"
+   },
+   {
+    "artistes": [
+     "Masada String Trio"
+    ],
+    "compositeur": "John Zorn",
+    "id": "6b8ea03d-3d23-4314-bd68-af4c4f28f622",
+    "parente": null,
+    "titre": "Ahiel"
+   }
+  ],
+  "release": "2e405b35-5483-4573-838b-f38ab72e6d5e",
+  "version": 14
  },
  "827201": {
   "annee_parution": 2006,
@@ -110978,6 +114024,854 @@
   ],
   "release": "a64a5a6c-05ce-44b5-b40e-599c1117664c",
   "version": 4
+ },
+ "917838": {
+  "annee_parution": 1995,
+  "annees_enregistrement": [
+   1994,
+   1995
+  ],
+  "durees": [
+   212026,
+   385040,
+   491200,
+   345800,
+   148360,
+   314333,
+   199400,
+   300866,
+   229933,
+   57706,
+   291826,
+   259973,
+   209226,
+   344533,
+   140800,
+   276974,
+   218626,
+   402040,
+   305026,
+   227600,
+   242906,
+   238200,
+   183733,
+   267626,
+   373840,
+   274200,
+   334293,
+   354706,
+   417133,
+   307226
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/2f113845-26e6-3a21-b1fb-8134678128be/25211525087-250.jpg",
+    "original": "https://coverartarchive.org/release/2f113845-26e6-3a21-b1fb-8134678128be/25211525087.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/2f113845-26e6-3a21-b1fb-8134678128be/25211525087-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-21",
+  "methode": "edition",
+  "nb_plages": 30,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "ecdd8439-8170-4ee6-8b0f-4d6cff42d753",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "El Diablo En El Ojo"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Rosie Lidsell",
+     "David Boulter",
+     "Ann Child",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Caroline Luckhurst",
+     "Al Macaulay",
+     "Suzannah Marsden",
+     "Jeff Moore",
+     "Lucy Wilkins",
+     "Sarah Wilson",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "8bc89fc6-b2da-42e8-8c84-c80b4f6f5213",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Ann Child": "viola",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Jeff Moore": "violin",
+     "Lucy Wilkins": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Rosie Lidsell": "conductor",
+     "Sarah Wilson": "cello",
+     "Stuart A. Staples": "vocals",
+     "Suzannah Marsden": "violin"
+    },
+    "titre": "A Night In"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Mike Kearsey",
+     "Al Macaulay",
+     "Isabel Monteiro",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "81aafcaf-e168-4494-9978-afe9d20a5b07",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Isabel Monteiro": "vocals",
+     "Mark Colwill": "bass",
+     "Mike Kearsey": "trombone",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "My Sister"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Rosie Lidsell",
+     "David Boulter",
+     "Ann Child",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Caroline Luckhurst",
+     "Al Macaulay",
+     "Suzannah Marsden",
+     "Jeff Moore",
+     "Lucy Wilkins",
+     "Sarah Wilson",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "a3742e59-b0ab-44a1-8cc0-6f471a25496b",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Ann Child": "viola",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Jeff Moore": "violin",
+     "Lucy Wilkins": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Rosie Lidsell": "conductor",
+     "Sarah Wilson": "cello",
+     "Stuart A. Staples": "vocals",
+     "Suzannah Marsden": "violin"
+    },
+    "titre": "Tiny Tears"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "1a95f472-473d-4861-9631-2e0fb060fecf",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Snowy in F♯ Minor"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "d2c90693-0b04-4e2b-b5a3-a36efc4480da",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Seaweed"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "824902cd-041a-4377-8955-437cb1096c95",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Vertrauen II"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Rosie Lidsell",
+     "David Boulter",
+     "Ann Child",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Caroline Luckhurst",
+     "Al Macaulay",
+     "Suzannah Marsden",
+     "Jeff Moore",
+     "Lucy Wilkins",
+     "Sarah Wilson",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "4d46a486-0c9a-4948-89f9-ee8d026531ba",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Ann Child": "viola",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Jeff Moore": "violin",
+     "Lucy Wilkins": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Rosie Lidsell": "conductor",
+     "Sarah Wilson": "cello",
+     "Stuart A. Staples": "vocals",
+     "Suzannah Marsden": "violin"
+    },
+    "titre": "Talk to Me"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "a4e0de84-9feb-4a6a-a29d-4585056f6b26",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "No More Affairs"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "35b4fe5a-e9fc-406c-ad65-36bd0de27f03",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Singing"
+   },
+   null,
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "a5a18802-2402-4cf0-9fb2-745f5e8620aa",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Cherry Blossoms"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "edc1b062-3667-4642-ab96-92bf72f3f8fa",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "She’s Gone"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Rosie Lidsell",
+     "David Boulter",
+     "Ann Child",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Caroline Luckhurst",
+     "Al Macaulay",
+     "Suzannah Marsden",
+     "Jeff Moore",
+     "Lucy Wilkins",
+     "Sarah Wilson",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "ffd9a9d8-8ec9-4d56-b50a-98d1e915933e",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Ann Child": "viola",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Jeff Moore": "violin",
+     "Lucy Wilkins": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Rosie Lidsell": "conductor",
+     "Sarah Wilson": "cello",
+     "Stuart A. Staples": "vocals",
+     "Suzannah Marsden": "violin"
+    },
+    "titre": "Mistakes"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "dcb504f9-c086-48a9-bd0a-d88c0028714b",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Vertrauen III"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "fe645718-19cd-4853-8917-d24ef5114873",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "organ",
+     "Dickon Hinchliffe": "guitar",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "vocals"
+    },
+    "titre": "Sleepy Song"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Rosie Lidsell",
+     "Nia Bevan",
+     "Natalia Bonner",
+     "David Boulter",
+     "Will Burrows",
+     "Ben Chappell",
+     "Ann Child",
+     "Mark Colwill",
+     "Beki Doe",
+     "Terry Edwards",
+     "Neil Fraser",
+     "Emily Frith",
+     "Fiona Griffith",
+     "Dickon Hinchliffe",
+     "Mike Kearsey",
+     "Al Macaulay",
+     "Calina De La Mare",
+     "Suzannah Marsden",
+     "Charles Nancarrow",
+     "Rob Spriggs",
+     "Stuart A. Staples",
+     "Helen Thomas",
+     "Dmitri van Zwanenberg",
+     "Sarah Wilson"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "ecdd8439-8170-4ee6-8b0f-4d6cff42d753",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Ann Child": "viola",
+     "Beki Doe": "violin",
+     "Ben Chappell": "cello",
+     "Calina De La Mare": "violin",
+     "Charles Nancarrow": "violin",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Dmitri van Zwanenberg": "violin",
+     "Fiona Griffith": "viola",
+     "Helen Thomas": "cello",
+     "Mark Colwill": "bass",
+     "Mike Kearsey": "French horn",
+     "Natalia Bonner": "violin",
+     "Neil Fraser": "guitar",
+     "Nia Bevan": "violin",
+     "Rob Spriggs": "viola",
+     "Rosie Lidsell": "conductor",
+     "Sarah Wilson": "cello",
+     "Stuart A. Staples": "guitar",
+     "Suzannah Marsden": "violin",
+     "Terry Edwards": "baritone saxophone",
+     "Will Burrows": "cello"
+    },
+    "titre": "El Diablo En El Ojo"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "8bc89fc6-b2da-42e8-8c84-c80b4f6f5213",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "A Night In"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "4d46a486-0c9a-4948-89f9-ee8d026531ba",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "Talk to Me"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "edc1b062-3667-4642-ab96-92bf72f3f8fa",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "She’s Gone"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "a4e0de84-9feb-4a6a-a29d-4585056f6b26",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "No More Affairs"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "2b6be243-f5f9-493d-9378-a33fb2d7173b",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "City Sickness"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "824902cd-041a-4377-8955-437cb1096c95",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "Vertrauen II"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "fe645718-19cd-4853-8917-d24ef5114873",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "Sleepy Song"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "4ddc1488-6154-4eff-8cce-bff60df6ade3",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "Jism"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "b0785afd-227c-49b3-b1ce-0c25a21a442f",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "Drunk Tank"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "ffd9a9d8-8ec9-4d56-b50a-98d1e915933e",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "Mistakes"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "a3742e59-b0ab-44a1-8cc0-6f471a25496b",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "Tiny Tears"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "David Boulter",
+     "Mark Colwill",
+     "Neil Fraser",
+     "Dickon Hinchliffe",
+     "Al Macaulay",
+     "Stuart A. Staples"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "789abddb-c87f-4061-a3da-f5e4aaa34431",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Mark Colwill": "bass",
+     "Neil Fraser": "guitar",
+     "Stuart A. Staples": "guitar"
+    },
+    "titre": "Raindrops"
+   },
+   {
+    "artistes": [
+     "Tindersticks",
+     "Rosie Lidsell",
+     "Nia Bevan",
+     "Natalia Bonner",
+     "David Boulter",
+     "Will Burrows",
+     "Ben Chappell",
+     "Ann Child",
+     "Mark Colwill",
+     "Beki Doe",
+     "Terry Edwards",
+     "Neil Fraser",
+     "Emily Frith",
+     "Fiona Griffith",
+     "Dickon Hinchliffe",
+     "Mike Kearsey",
+     "Al Macaulay",
+     "Calina De La Mare",
+     "Suzannah Marsden",
+     "Charles Nancarrow",
+     "Rob Spriggs",
+     "Stuart A. Staples",
+     "Helen Thomas",
+     "Dmitri van Zwanenberg",
+     "Sarah Wilson"
+    ],
+    "compositeur": "David Boulter, Mark Colwill, Neil Fraser, Dickon Hinchliffe, Al Macaulay, Stuart A. Staples",
+    "id": "b07ded21-5fd1-4904-871d-e581ca3f8e40",
+    "parente": null,
+    "roles": {
+     "Al Macaulay": "drums (drum set)",
+     "Ann Child": "viola",
+     "Beki Doe": "violin",
+     "Ben Chappell": "cello",
+     "Calina De La Mare": "violin",
+     "Charles Nancarrow": "violin",
+     "David Boulter": "keyboard",
+     "Dickon Hinchliffe": "violin",
+     "Dmitri van Zwanenberg": "violin",
+     "Fiona Griffith": "viola",
+     "Helen Thomas": "cello",
+     "Mark Colwill": "bass",
+     "Mike Kearsey": "French horn",
+     "Natalia Bonner": "violin",
+     "Neil Fraser": "guitar",
+     "Nia Bevan": "violin",
+     "Rob Spriggs": "viola",
+     "Rosie Lidsell": "conductor",
+     "Sarah Wilson": "cello",
+     "Stuart A. Staples": "guitar",
+     "Suzannah Marsden": "violin",
+     "Terry Edwards": "baritone saxophone",
+     "Will Burrows": "cello"
+    },
+    "titre": "For Those…"
+   }
+  ],
+  "release": "2f113845-26e6-3a21-b1fb-8134678128be",
+  "version": 14
  },
  "9210647": {
   "annee_parution": 2004,
