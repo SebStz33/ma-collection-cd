@@ -1136,7 +1136,7 @@ function afficher() {
   $("effacer-filtres-entete").hidden = nbFiltres === 0 || etat.vue !== "collection";
 
   // Le tirage au hasard porte sur toute la collection : le message des filtres n'y a pas de sens.
-  afficherMessage(resultats.length || etat.vue === "hasard" ? "" : "Aucun disque ne correspond à ces critères.");
+  afficherMessage(resultats.length || etat.vue === "hasard" || etat.vue === "codebarre" ? "" : "Aucun disque ne correspond à ces critères.");
   afficherBandeau(resultats.length);
 
   $("vue-collection").hidden = etat.vue !== "collection";
@@ -1144,6 +1144,8 @@ function afficher() {
   $("vue-index").hidden = etat.vue !== "index";
   $("vue-hasard").hidden = etat.vue !== "hasard";
   $("vue-oeuvres").hidden = etat.vue !== "oeuvres";
+  $("vue-codebarre").hidden = etat.vue !== "codebarre";
+  if (etat.vue !== "codebarre") arreterCamera();   // la caméra s'éteint dès qu'on quitte l'onglet
   // La feuille de style masque ce qui n'agit pas sur la vue : tout l'outillage dans l'index
   // et dans « Au hasard », le tri dans les statistiques.
   document.body.dataset.vue = etat.vue;
@@ -1155,6 +1157,7 @@ function afficher() {
   else if (etat.vue === "statistiques") afficherStatistiques(resultats);
   else if (etat.vue === "index") afficherIndex();
   else if (etat.vue === "oeuvres") afficherOeuvres();
+  else if (etat.vue === "codebarre") { if (!$("codebarre-resultat")) afficherCodeBarre(); }
   else afficherHasard();
 }
 
@@ -2251,6 +2254,244 @@ function afficherHasard() {
       creer("a", { href: LIEN_FISHER_YATES, target: "_blank", rel: "noopener", texte: "Fisher-Yates" }))
   );
   ajusterHasard();
+}
+
+// ---------------------------------------------------------------------------
+// Code-barre : scanner un disque pour le retrouver dans la collection
+// ---------------------------------------------------------------------------
+// Safari (iPhone, iPad, Mac) ne sait pas lire un code-barre tout seul : on utilise ZXing, une
+// bibliothèque libre compilée en WebAssembly (bibliotheques/zxing/). Elle n'est chargée qu'au premier
+// toucher sur « Scanner un disque » ; le Service Worker la garde ensuite sur l'appareil (hors ligne).
+
+const DOSSIER_ZXING = "bibliotheques/zxing/";
+// Les codes des disques : EAN-13 (Europe), UPC-A (États-Unis, 12 chiffres) et leurs versions courtes.
+const FORMATS_DISQUES = ["EAN13", "EAN8", "UPCA", "UPCE"];
+const LIEN_RECHERCHE_DISCOGS = "https://www.discogs.com/search/?type=release&q=";
+const PAUSE_ENTRE_LECTURES = 120;   // millisecondes entre deux images analysées
+
+let zxingPret = null;      // promesse du chargement de la bibliothèque (une seule fois)
+let camera = null;         // { flux, video, actif } quand la caméra est allumée
+let codeLu = null;         // { code, source: "camera" | "saisie" } : le dernier code cherché
+let listeSansCodeOuverte = false;
+
+/**
+ * Clé de comparaison d'un code : les chiffres seuls, sans les zéros du début.
+ * Discogs écrit « 0 28947 7… » avec des espaces ; un UPC à 12 chiffres vaut l'EAN-13 précédé d'un 0.
+ */
+function cleDeCode(texte) {
+  return String(texte || "").replace(/\D/g, "").replace(/^0+/, "");
+}
+
+/**
+ * Éditions dont un code-barre correspond au code lu. Trois cas, du plus courant au plus rare :
+ * - le même code (aux zéros du début près) ;
+ * - Discogs a noté le code sans son dernier chiffre (le chiffre de contrôle) : « 07464420112 » ;
+ * - Discogs a noté des chiffres en plus à la fin (petit code ajouté à côté) : « 02521863912597 ».
+ */
+function editionsDuCode(code) {
+  const cle = cleDeCode(code);
+  if (cle.length < 6) return [];
+  const sansControle = cle.slice(0, -1);
+  return editions.filter((edition) => (edition.codes_barres || []).some((texte) => {
+    const sienne = cleDeCode(texte);
+    return sienne && (sienne === cle || sienne === sansControle || (sienne.length > cle.length && sienne.startsWith(cle)));
+  }));
+}
+
+/** Éditions dont un code-barre contient ces chiffres (saisie à la main d'un bout de code). */
+function editionsQuiContiennent(chiffres) {
+  if (chiffres.length < 5) return [];
+  return editions.filter((edition) => (edition.codes_barres || [])
+    .some((texte) => String(texte).replace(/\D/g, "").includes(chiffres)));
+}
+
+/** Charge ZXing (le script, puis le fichier WebAssembly, servi depuis notre propre dossier). */
+function chargerZxing() {
+  if (!zxingPret) {
+    zxingPret = new Promise((resolu, echec) => {
+      const script = creer("script", { src: DOSSIER_ZXING + "zxing-reader.js" });
+      script.onload = () => {
+        window.ZXingWASM.prepareZXingModule({
+          overrides: { locateFile: (chemin, prefixe) => chemin.endsWith(".wasm") ? DOSSIER_ZXING + chemin : prefixe + chemin },
+          fireImmediately: true,
+        }).then(() => resolu(window.ZXingWASM), echec);
+      };
+      script.onerror = () => echec(new Error("bibliothèque introuvable"));
+      document.head.append(script);
+    }).catch((erreur) => { zxingPret = null; throw erreur; });   // on pourra réessayer
+  }
+  return zxingPret;
+}
+
+/** Éteint la caméra (en quittant l'onglet, après une lecture ou sur « Arrêter »). */
+function arreterCamera() {
+  if (camera) {
+    camera.actif = false;
+    camera.flux.getTracks().forEach((piste) => piste.stop());
+    camera = null;
+  }
+  if ($("codebarre-camera")) {   // on remet le bouton « Scanner un disque » à la place de l'image
+    $("codebarre-camera").hidden = true;
+    $("codebarre-scanner").hidden = false;
+  }
+}
+
+/** Message d'erreur de la caméra, en clair. */
+function messageErreurCamera(erreur) {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia)
+    return "La caméra n'est pas disponible ici : elle demande une page sécurisée (https). Tape le code à la main.";
+  if (erreur && erreur.name === "NotAllowedError")
+    return "L'accès à la caméra est refusé. Sur iPhone : Réglages › Safari › Caméra › Autoriser (ou Demander), puis réessaie.";
+  if (erreur && erreur.name === "NotFoundError") return "Aucune caméra trouvée sur cet appareil.";
+  if (erreur && erreur.message === "bibliothèque introuvable")
+    return "Le lecteur de code-barre n'a pas pu être chargé (pas de réseau ?). Tape le code à la main.";
+  return "La caméra n'a pas pu démarrer (" + ((erreur && (erreur.name || erreur.message)) || "erreur inconnue") + ").";
+}
+
+/** Allume la caméra arrière et lit les images en boucle jusqu'à trouver un code. */
+async function demarrerCamera() {
+  const zone = $("codebarre-camera");
+  const etatLecture = $("codebarre-etat");
+  codeLu = null;
+  afficherResultatCode();
+  $("codebarre-saisie").value = "";   // l'ancien code tapé ne doit pas laisser croire qu'il est lu
+  zone.hidden = false;
+  etatLecture.textContent = "Ouverture de la caméra…";
+  $("codebarre-scanner").hidden = true;
+  try {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error("pas de caméra");
+    // Les deux en même temps : la bibliothèque se charge pendant que l'iPhone demande l'autorisation.
+    const [zxing, flux] = await Promise.all([chargerZxing(), navigator.mediaDevices.getUserMedia({
+      audio: false, video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 }, height: { ideal: 720 } } })]);
+    if (etat.vue !== "codebarre") { flux.getTracks().forEach((p) => p.stop()); return; }   // onglet quitté entre-temps
+    const video = $("codebarre-video");
+    video.srcObject = flux;
+    await video.play();
+    camera = { flux, video, actif: true };
+    etatLecture.textContent = "Place le code-barre dans le cadre.";
+    lireEnBoucle(zxing, camera);
+  } catch (erreur) {
+    arreterCamera();
+    $("codebarre-erreur").textContent = messageErreurCamera(erreur);
+    $("codebarre-erreur").hidden = false;
+  }
+}
+
+/**
+ * Une image toutes les PAUSE_ENTRE_LECTURES ms : on n'analyse que la bande du milieu (le cadre),
+ * plus vite lue et moins de risques de lire un autre code sur la pochette.
+ */
+async function lireEnBoucle(zxing, session) {
+  const toile = document.createElement("canvas");
+  const contexte = toile.getContext("2d", { willReadFrequently: true });
+  while (session.actif) {
+    const { video } = session;
+    const largeur = video.videoWidth, hauteur = video.videoHeight;
+    if (largeur && hauteur) {
+      const bande = { x: Math.round(largeur * 0.05), y: Math.round(hauteur * 0.25), l: Math.round(largeur * 0.9), h: Math.round(hauteur * 0.5) };
+      toile.width = bande.l;
+      toile.height = bande.h;
+      contexte.drawImage(video, bande.x, bande.y, bande.l, bande.h, 0, 0, bande.l, bande.h);
+      try {
+        const resultats = await zxing.readBarcodes(contexte.getImageData(0, 0, bande.l, bande.h),
+          { formats: FORMATS_DISQUES, tryHarder: true, maxNumberOfSymbols: 1 });
+        const bon = resultats.find((r) => r.isValid && r.text);
+        if (bon && session.actif) {
+          arreterCamera();
+          codeLu = { code: bon.text, source: "camera" };
+          afficherResultatCode();
+          return;
+        }
+      } catch (erreur) { /* image illisible : on passe à la suivante */ }
+    }
+    await new Promise((suite) => setTimeout(suite, PAUSE_ENTRE_LECTURES));
+  }
+}
+
+/** Le résultat sous le scanner : les vignettes trouvées, ou « Pas dans ta collection ». */
+function afficherResultatCode() {
+  const zone = $("codebarre-resultat");
+  if (!zone) return;
+  $("codebarre-erreur").hidden = true;
+  if (!codeLu) { zone.replaceChildren(); return; }
+  const chiffres = codeLu.code.replace(/\D/g, "");
+  let trouvees = editionsDuCode(chiffres);
+  let approche = false;
+  if (!trouvees.length && codeLu.source === "saisie") { trouvees = editionsQuiContiennent(chiffres); approche = trouvees.length > 0; }
+  trouvees = trier(trouvees);
+  const lu = creer("p", { classe: "codebarre-lu" }, (codeLu.source === "camera" ? "Code lu : " : "Code cherché : "),
+    creer("strong", { texte: chiffres }));
+  const suivant = codeLu.source === "camera"
+    ? creer("button", { type: "button", classe: "bouton codebarre-suivant", texte: "Scanner le suivant", surclic: demarrerCamera })
+    : null;
+  if (trouvees.length) {
+    zone.replaceChildren(lu,
+      creer("h3", { classe: "codebarre-verdict trouve", texte: approche
+        ? pluriel(trouvees.length, "code contient", "codes contiennent") + " ces chiffres"
+        : trouvees.length > 1 ? "Dans ta collection : " + trouvees.length + " éditions" : "Dans ta collection" }),
+      creer("div", { classe: "grille codebarre-grille" }, cartesDesEditions(trouvees)),
+      suivant || "");
+  } else {
+    zone.replaceChildren(lu,
+      creer("h3", { classe: "codebarre-verdict absent", texte: "Pas dans ta collection" }),
+      creer("p", { classe: "codebarre-discogs" },
+        creerLien(LIEN_RECHERCHE_DISCOGS + encodeURIComponent(chiffres), "Chercher sur Discogs")),
+      suivant || "");
+  }
+}
+
+/** Picto de la page : des barres verticales d'épaisseurs différentes. */
+const pictoCodeBarre = () => pictoDessine([[2, 2], [5, 1], [7.5, 2.5], [11, 1], [13.5, 1], [16, 2.5], [19.5, 1], [21, 1.5]]
+  .map(([x, l]) => '<rect x="' + x + '" y="4" width="' + l + '" height="16"/>').join(""), "Code-barre");
+
+function afficherCodeBarre() {
+  // Liste du bas : les disques sans code-barre sur Discogs (hors « À Vendre »), triés comme dans Collection.
+  const sansCode = trier(editions.filter((e) => !(e.codes_barres || []).length && !estAVendre(e)));
+  const champ = creer("input", { type: "text", id: "codebarre-saisie", inputmode: "numeric", autocomplete: "off",
+    enterkeyhint: "search", placeholder: "Taper le code (chiffres)", "aria-label": "Code-barre à taper" });
+  const formulaire = creer("form", { classe: "codebarre-formulaire" }, champ,
+    creer("button", { type: "submit", classe: "bouton", texte: "Chercher" }));
+  formulaire.addEventListener("submit", (evenement) => {
+    evenement.preventDefault();
+    const chiffres = champ.value.replace(/\D/g, "");
+    if (!chiffres) return;
+    arreterCamera();
+    codeLu = { code: chiffres, source: "saisie" };
+    champ.blur();   // referme le clavier de l'iPhone
+    afficherResultatCode();
+  });
+  const details = creer("details", { classe: "codebarre-sans-code" },
+    creer("summary", { texte: pluriel(sansCode.length, "disque sans code-barre", "disques sans code-barre") }),
+    creer("p", { classe: "discret", texte: "Pas de code-barre sur Discogs : à retrouver avec la recherche habituelle." }),
+    creer("ul", {}, sansCode.map((edition) => creer("li", {},
+      creer("button", { type: "button", classe: "index-nom", surclic: () => ouvrirFiche(edition) },
+        (edition.artistes_principaux || []).join(", ") || "Artiste inconnu",
+        " — ", edition.titre,
+        edition.localisations.length ? creer("span", { classe: "discret", texte: " · " + edition.localisations.join(", ") }) : null)))));
+  if (listeSansCodeOuverte) details.open = true;
+  details.addEventListener("toggle", () => { listeSansCodeOuverte = details.open; });
+
+  $("vue-codebarre").replaceChildren(
+    creer("div", { classe: "codebarre-haut" },
+      creer("button", { type: "button", id: "codebarre-scanner", classe: "bouton bouton-scanner", texte: "Scanner un disque",
+        surclic: demarrerCamera }),
+      pictoCodeBarre()),
+    creer("div", { id: "codebarre-camera", classe: "codebarre-camera", hidden: true },
+      creer("div", { classe: "codebarre-cadre-video" },
+        creer("video", { id: "codebarre-video", playsinline: true, muted: true, autoplay: true }),
+        creer("div", { classe: "codebarre-cadre", "aria-hidden": "true" })),
+      creer("p", { id: "codebarre-etat", classe: "discret" }),
+      creer("button", { type: "button", classe: "bouton-texte", texte: "Arrêter",
+        surclic: arreterCamera })),
+    creer("p", { id: "codebarre-erreur", classe: "codebarre-erreur", hidden: true }),
+    formulaire,
+    creer("div", { id: "codebarre-resultat", classe: "codebarre-resultat" }),
+    details);
+  // iOS ne lance la vidéo en ligne (pas en plein écran) qu'avec ces propriétés posées sur l'élément.
+  const video = $("codebarre-video");
+  video.muted = true;
+  video.playsInline = true;
+  afficherResultatCode();
 }
 
 // ---------------------------------------------------------------------------

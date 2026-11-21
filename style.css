@@ -760,9 +760,15 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
   .onglet { flex: 1 1 auto; padding: 5px 4px; font-size: 14px; }
   .oeuvres-recherche { flex-basis: 100%; }
 }
-/* Petits téléphones (iPhone SE) : les cinq onglets tiennent sur une ligne. */
+/* iPhone : les cinq onglets tiennent sur une ligne (texte un peu plus petit selon la largeur). */
+@media (max-width: 420px) {
+  .onglet { font-size: 13px; padding: 5px 2px; }
+}
 @media (max-width: 380px) {
-  .onglet { font-size: 12.5px; padding: 5px 1px; }
+  .onglet { font-size: 12px; padding: 5px 1px; }
+}
+@media (max-width: 340px) {
+  .onglet { font-size: 11px; padding: 5px 0; }
 }
 
 /* ---------- « ? » : aide sur la syntaxe de la recherche ---------- */
@@ -845,3 +851,40 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 /* Texte d'aide de la recherche (« Rechercher (ET, OU, SAUF…) ») en petit. Seul le texte d'aide rétrécit :
    ce qu'on tape garde sa taille (16 px au moins sur iPhone, sinon Safari zoome). */
 #recherche::placeholder { font-size: 11px; }
+
+/* ==========================================================================
+   Onglet « Code-barre » : scanner un disque pour le retrouver dans la collection
+   ========================================================================== */
+body[data-vue="codebarre"] .outils, body[data-vue="codebarre"] .filtres { display: none; }
+.codebarre { max-width: 720px; }
+.codebarre-haut { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; }
+.bouton-scanner { font-size: 17px; padding: 12px 20px; background: var(--accent); color: var(--accent-texte); border-color: var(--accent); font-weight: 600; }
+.bouton-scanner:hover { border-color: var(--texte); }
+/* L'image de la caméra, avec un cadre ambre au milieu : la bande lue par le lecteur. */
+.codebarre-camera { margin: 0 0 14px; }
+.codebarre-cadre-video { position: relative; max-width: 520px; border-radius: var(--rayon); overflow: hidden; background: #000; }
+.codebarre-cadre-video video { display: block; width: 100%; height: auto; }
+.codebarre-cadre { position: absolute; left: 5%; right: 5%; top: 25%; bottom: 25%; border: 2px solid var(--accent); border-radius: 6px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.35); pointer-events: none; }
+.codebarre-camera .discret { margin: 6px 0 0; }
+.codebarre-erreur { color: var(--accent); margin: 0 0 14px; }
+/* Saisie à la main : 16 px au moins, sinon Safari sur iPhone zoome sur la case. */
+.codebarre-formulaire { display: flex; gap: 8px; margin: 0 0 18px; max-width: 420px; }
+.codebarre-formulaire input { flex: 1 1 auto; min-width: 0; font-size: 16px; padding: 8px 10px; letter-spacing: 0.5px;
+  background: var(--surface); color: var(--texte); border: 1px solid var(--bordure); border-radius: var(--rayon); }
+.codebarre-formulaire input::placeholder { letter-spacing: 0; }
+.codebarre-lu { margin: 0 0 4px; color: var(--texte-2); }
+.codebarre-lu strong { color: var(--texte); letter-spacing: 0.5px; }
+.codebarre-verdict { margin: 0 0 12px; font-size: 20px; }
+.codebarre-verdict.trouve { color: var(--texte); }
+.codebarre-verdict.absent { color: var(--accent); }
+.codebarre-discogs { margin: 0 0 14px; }
+.codebarre-discogs a { color: var(--accent); }
+.codebarre-grille { margin: 0 0 14px; }
+.codebarre-suivant { margin: 0 0 8px; }
+/* En bas : la liste repliable des disques sans code-barre. */
+.codebarre-sans-code { margin: 28px 0 0; border-top: 1px solid var(--bordure); padding-top: 14px; }
+.codebarre-sans-code summary { cursor: pointer; font-size: 16px; color: var(--texte); }
+.codebarre-sans-code p { margin: 8px 0; font-size: 13px; }
+.codebarre-sans-code ul { margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.4; }
+.codebarre-sans-code li { margin: 0 0 8px; }

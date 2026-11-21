@@ -1,6 +1,6 @@
 # Mémo technique : ma collection de CD
 
-> À jour au 19/11/2026 (Service Worker v102, lot « vignettes : Localisation et repères discrets »).
+> À jour au 21/11/2026 (Service Worker v104, lot « onglet Code-barre »).
 > Si ces numéros ne correspondent plus au code, le mémo est en retard : le mettre à jour dans la même PR.
 
 Ce mémo explique le fonctionnement de l'outil et les gestes à faire. Il ne décrit pas l'utilisation
@@ -41,6 +41,7 @@ Discogs (ma collection, mes champs perso)        MusicBrainz (œuvres, pochettes
 | `data/rapport_annees.txt`, `data/rapport_roles.txt` | Rapports de contrôle | la synchro |
 | `index.html`, `style.css`, `app.js` | La page | Claude (code) |
 | `service-worker.js`, `manifest.json`, `icones/` | L'application installée sur l'iPhone (PWA) | Claude (code) |
+| `bibliotheques/zxing/` | Le lecteur de code-barre (ZXing, licence MIT, version 3.1.6) : un script et un fichier WebAssembly d'environ 1 Mo | copié tel quel du paquet `zxing-wasm` |
 | `.github/workflows/synchro.yml` | La synchro automatique chez GitHub | Claude (code) |
 | `.env` (sur le Mac seulement) | Mon jeton Discogs pour une synchro locale. Ignoré par Git, jamais publié | moi |
 
@@ -214,6 +215,21 @@ navigateur de l'appareil, il n'est ni dans le dépôt ni sur le site. Sans jeton
 - Les **données** (`collection.json`, `commentaires_oeuvres.json`) ne demandent pas de changer la version : elles sont lues d'abord sur le réseau, la copie gardée ne sert que hors connexion.
 - Le Service Worker ne marche qu'en https, donc pas en test local sur `localhost` : là, seul Cmd+Option+R compte.
 - Les pochettes sont gardées à part (réserve « pochettes ») : elles ne se rechargent pas à chaque version.
+- Le lecteur de code-barre est gardé à part lui aussi (réserve « bibliotheque-zxing-3.1.6 »), mis en réserve dès
+  l'installation pour scanner en boutique sans réseau. Il n'est téléchargé qu'une fois par appareil. Pour passer
+  à une autre version de ZXing : remplacer les fichiers de `bibliotheques/zxing/` et changer le numéro dans
+  `RESERVE_ZXING` (l'ancienne réserve est alors effacée).
+
+### L'onglet Code-barre
+
+- Safari ne sait pas lire un code-barre seul : `app.js` charge ZXing au premier toucher sur « Scanner un disque ».
+- La caméra ne marche qu'en https (le site) ou sur `localhost` (le Mac). Depuis l'iPhone vers le serveur du Mac
+  (adresse en http), elle est refusée : sur iPhone, on teste sur le site, après fusion.
+- La comparaison ne garde que les chiffres, sans les zéros du début (un UPC à 12 chiffres = l'EAN-13 précédé
+  d'un 0). Elle accepte aussi un code noté sur Discogs sans son dernier chiffre (le chiffre de contrôle), ou
+  avec des chiffres en plus à la fin.
+- Un code tapé à la main qui ne correspond à rien cherche ensuite les codes qui contiennent ces chiffres (5 au moins).
+- En bas de l'onglet : les disques sans code-barre sur Discogs (hors « À Vendre »).
 
 ---
 

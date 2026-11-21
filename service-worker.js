@@ -5,9 +5,13 @@
    ========================================================================== */
 
 // Changer ce numéro force le navigateur à recharger les fichiers de la page.
-const VERSION = "v103";
+const VERSION = "v104";
 const RESERVE_PAGE = "page-" + VERSION;
 const RESERVE_POCHETTES = "pochettes";
+// Le lecteur de code-barre (ZXing, environ 1 Mo) : réserve à part, gardée d'une version de la page à l'autre.
+// Son nom change seulement quand on change de version de ZXing : il n'est donc téléchargé qu'une fois.
+const RESERVE_ZXING = "bibliotheque-zxing-3.1.6";
+const FICHIERS_ZXING = ["bibliotheques/zxing/zxing-reader.js", "bibliotheques/zxing/zxing_reader.wasm"];
 
 // Les fichiers de la page, mis en réserve dès l'installation.
 const FICHIERS_PAGE = [
@@ -22,7 +26,13 @@ const FICHIERS_PAGE = [
 ];
 
 self.addEventListener("install", (evenement) => {
-  evenement.waitUntil(caches.open(RESERVE_PAGE).then((reserve) => reserve.addAll(FICHIERS_PAGE)));
+  evenement.waitUntil(Promise.all([
+    caches.open(RESERVE_PAGE).then((reserve) => reserve.addAll(FICHIERS_PAGE)),
+    // Mis en réserve dès l'installation, pour scanner en boutique même sans réseau.
+    // Déjà là (version précédente) : rien à retélécharger. Un échec ne bloque pas la page.
+    caches.open(RESERVE_ZXING).then((reserve) => reserve.match(FICHIERS_ZXING[1])
+      .then((present) => present || reserve.addAll(FICHIERS_ZXING))).catch(() => null),
+  ]));
   self.skipWaiting();
 });
 
@@ -30,7 +40,8 @@ self.addEventListener("install", (evenement) => {
 self.addEventListener("activate", (evenement) => {
   evenement.waitUntil(
     caches.keys().then((noms) => Promise.all(
-      noms.filter((nom) => nom.startsWith("page-") && nom !== RESERVE_PAGE).map((nom) => caches.delete(nom))
+      noms.filter((nom) => (nom.startsWith("page-") && nom !== RESERVE_PAGE)
+        || (nom.startsWith("bibliotheque-zxing-") && nom !== RESERVE_ZXING)).map((nom) => caches.delete(nom))
     ))
   );
   self.clients.claim();
@@ -75,7 +86,20 @@ self.addEventListener("fetch", (evenement) => {
     return;
   }
 
-  // 3. Les fichiers de la page : la réserve d'abord, le réseau sinon.
+  // 3. Le lecteur de code-barre : la réserve d'abord ; s'il manque (installation ratée), on l'y range.
+  if (url.origin === self.location.origin && url.pathname.includes("/bibliotheques/zxing/")) {
+    evenement.respondWith(
+      caches.open(RESERVE_ZXING).then((reserve) =>
+        reserve.match(requete).then((enReserve) => enReserve || fetch(requete).then((reponse) => {
+          if (reponse.ok) reserve.put(requete, reponse.clone());
+          return reponse;
+        }))
+      )
+    );
+    return;
+  }
+
+  // 4. Les fichiers de la page : la réserve d'abord, le réseau sinon.
   if (url.origin === self.location.origin) {
     evenement.respondWith(caches.match(requete).then((enReserve) => enReserve || fetch(requete)));
   }
