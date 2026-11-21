@@ -2273,6 +2273,7 @@ let zxingPret = null;      // promesse du chargement de la bibliothèque (une se
 let camera = null;         // { flux, video, actif } quand la caméra est allumée
 let codeLu = null;         // { code, source: "camera" | "saisie" } : le dernier code cherché
 let listeSansCodeOuverte = false;
+const metasSansCodeOuvertes = new Set();   // méta-catégories dépliées dans la liste du bas
 
 /**
  * Clé de comparaison d'un code : les chiffres seuls, sans les zéros du début.
@@ -2448,7 +2449,7 @@ function afficherCodeBarre() {
   // Liste du bas : les disques sans code-barre sur Discogs (hors « À Vendre »), triés comme dans Collection.
   const sansCode = trier(editions.filter((e) => !(e.codes_barres || []).length && !estAVendre(e)));
   const champ = creer("input", { type: "text", id: "codebarre-saisie", inputmode: "numeric", autocomplete: "off",
-    enterkeyhint: "search", placeholder: "Taper le code (chiffres)", "aria-label": "Code-barre à taper" });
+    enterkeyhint: "search", placeholder: "Taper le code-barre", "aria-label": "Code-barre à taper" });
   const formulaire = creer("form", { classe: "codebarre-formulaire" }, champ,
     creer("button", { type: "submit", classe: "bouton", texte: "Chercher" }));
   formulaire.addEventListener("submit", (evenement) => {
@@ -2465,14 +2466,19 @@ function afficherCodeBarre() {
     // Rangés par méta-catégorie (Chanson, Classique…), puis comme dans Collection à l'intérieur de chacune.
     [...new Set(sansCode.flatMap((e) => e.metas))].sort(comparerTextes).map((meta) => {
       const disques = sansCode.filter((e) => e.metas.includes(meta));
-      return [
-        creer("h4", { texte: meta + " (" + disques.length + ")" }),
+      // Chaque méta-catégorie est repliée au départ ; on se souvient de celles ouvertes tant que l'app reste ouverte.
+      const bloc = creer("details", { classe: "codebarre-meta" },
+        creer("summary", { texte: meta + " (" + disques.length + ")" }),
         creer("ul", {}, disques.map((edition) => creer("li", {},
           creer("button", { type: "button", classe: "index-nom", surclic: () => ouvrirFiche(edition) },
-            (edition.artistes_principaux || []).join(", ") || "Artiste inconnu",
-            " — ", edition.titre,
-            edition.localisations.length ? creer("span", { classe: "discret", texte: " · " + edition.localisations.join(", ") }) : null)))),
-      ];
+            edition.titre,
+            // Les interprètes après le titre, en gris clair et en italique pour les distinguer.
+            (edition.artistes_principaux || []).length
+              ? creer("span", { classe: "codebarre-interpretes", texte: " — " + edition.artistes_principaux.join(", ") }) : null,
+            edition.localisations.length ? creer("span", { classe: "discret", texte: " · " + edition.localisations.join(", ") }) : null)))));
+      if (metasSansCodeOuvertes.has(meta)) bloc.open = true;
+      bloc.addEventListener("toggle", () => { metasSansCodeOuvertes[bloc.open ? "add" : "delete"](meta); });
+      return bloc;
     }));
   if (listeSansCodeOuverte) details.open = true;
   details.addEventListener("toggle", () => { listeSansCodeOuverte = details.open; });

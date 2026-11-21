@@ -885,6 +885,9 @@ body[data-vue="codebarre"] .outils, body[data-vue="codebarre"] .filtres { displa
 /* En bas : la liste repliable des disques sans code-barre. */
 .codebarre-sans-code { margin: 28px 0 0; border-top: 1px solid var(--bordure); padding-top: 14px; }
 .codebarre-sans-code summary { cursor: pointer; font-size: 16px; color: var(--accent); }
-.codebarre-sans-code h4 { margin: 14px 0 6px; font-size: 15px; color: var(--texte); }
+.codebarre-meta { margin: 12px 0 0 2px; }
+.codebarre-meta summary { font-size: 15px; font-weight: 600; color: var(--accent); }
+.codebarre-meta ul { margin-top: 8px; }
+.codebarre-interpretes { color: var(--texte-2); font-style: italic; }
 .codebarre-sans-code ul { margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.4; }
 .codebarre-sans-code li { margin: 0 0 8px; }
