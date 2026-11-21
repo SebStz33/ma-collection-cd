@@ -853,7 +853,7 @@ body[data-vue="oeuvres"] .outils, body[data-vue="oeuvres"] .filtres { display: n
 #recherche::placeholder { font-size: 11px; }
 
 /* ==========================================================================
-   Onglet « Code-barre » : scanner un disque pour le retrouver dans la collection
+   Onglet « Scanner » : lire le code-barre d'un disque pour le retrouver dans la collection
    ========================================================================== */
 body[data-vue="codebarre"] .outils, body[data-vue="codebarre"] .filtres { display: none; }
 .codebarre { max-width: 720px; }
@@ -884,7 +884,7 @@ body[data-vue="codebarre"] .outils, body[data-vue="codebarre"] .filtres { displa
 .codebarre-suivant { margin: 0 0 8px; }
 /* En bas : la liste repliable des disques sans code-barre. */
 .codebarre-sans-code { margin: 28px 0 0; border-top: 1px solid var(--bordure); padding-top: 14px; }
-.codebarre-sans-code summary { cursor: pointer; font-size: 16px; color: var(--texte); }
-.codebarre-sans-code p { margin: 8px 0; font-size: 13px; }
+.codebarre-sans-code summary { cursor: pointer; font-size: 16px; color: var(--accent); }
+.codebarre-sans-code h4 { margin: 14px 0 6px; font-size: 15px; color: var(--texte); }
 .codebarre-sans-code ul { margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.4; }
 .codebarre-sans-code li { margin: 0 0 8px; }

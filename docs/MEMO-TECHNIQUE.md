@@ -1,6 +1,6 @@
 # Mémo technique : ma collection de CD
 
-> À jour au 21/11/2026 (Service Worker v104, lot « onglet Code-barre »).
+> À jour au 21/11/2026 (Service Worker v104, lot « onglet Scanner »).
 > Si ces numéros ne correspondent plus au code, le mémo est en retard : le mettre à jour dans la même PR.
 
 Ce mémo explique le fonctionnement de l'outil et les gestes à faire. Il ne décrit pas l'utilisation
@@ -220,7 +220,7 @@ navigateur de l'appareil, il n'est ni dans le dépôt ni sur le site. Sans jeton
   à une autre version de ZXing : remplacer les fichiers de `bibliotheques/zxing/` et changer le numéro dans
   `RESERVE_ZXING` (l'ancienne réserve est alors effacée).
 
-### L'onglet Code-barre
+### L'onglet Scanner (code-barre)
 
 - Safari ne sait pas lire un code-barre seul : `app.js` charge ZXing au premier toucher sur « Scanner un disque ».
 - La caméra ne marche qu'en https (le site) ou sur `localhost` (le Mac). Depuis l'iPhone vers le serveur du Mac
@@ -229,7 +229,7 @@ navigateur de l'appareil, il n'est ni dans le dépôt ni sur le site. Sans jeton
   d'un 0). Elle accepte aussi un code noté sur Discogs sans son dernier chiffre (le chiffre de contrôle), ou
   avec des chiffres en plus à la fin.
 - Un code tapé à la main qui ne correspond à rien cherche ensuite les codes qui contiennent ces chiffres (5 au moins).
-- En bas de l'onglet : les disques sans code-barre sur Discogs (hors « À Vendre »).
+- En bas de l'onglet : les disques sans code-barre sur Discogs (hors « À Vendre »), rangés par méta-catégorie.
 
 ---
 

@@ -2257,7 +2257,7 @@ function afficherHasard() {
 }
 
 // ---------------------------------------------------------------------------
-// Code-barre : scanner un disque pour le retrouver dans la collection
+// Scanner : lire le code-barre d'un disque pour le retrouver dans la collection
 // ---------------------------------------------------------------------------
 // Safari (iPhone, iPad, Mac) ne sait pas lire un code-barre tout seul : on utilise ZXing, une
 // bibliothèque libre compilée en WebAssembly (bibliotheques/zxing/). Elle n'est chargée qu'au premier
@@ -2442,7 +2442,7 @@ function afficherResultatCode() {
 
 /** Picto de la page : des barres verticales d'épaisseurs différentes. */
 const pictoCodeBarre = () => pictoDessine([[2, 2], [5, 1], [7.5, 2.5], [11, 1], [13.5, 1], [16, 2.5], [19.5, 1], [21, 1.5]]
-  .map(([x, l]) => '<rect x="' + x + '" y="4" width="' + l + '" height="16"/>').join(""), "Code-barre");
+  .map(([x, l]) => '<rect x="' + x + '" y="4" width="' + l + '" height="16"/>').join(""), "Scanner");
 
 function afficherCodeBarre() {
   // Liste du bas : les disques sans code-barre sur Discogs (hors « À Vendre »), triés comme dans Collection.
@@ -2462,12 +2462,18 @@ function afficherCodeBarre() {
   });
   const details = creer("details", { classe: "codebarre-sans-code" },
     creer("summary", { texte: pluriel(sansCode.length, "disque sans code-barre", "disques sans code-barre") }),
-    creer("p", { classe: "discret", texte: "Pas de code-barre sur Discogs : à retrouver avec la recherche habituelle." }),
-    creer("ul", {}, sansCode.map((edition) => creer("li", {},
-      creer("button", { type: "button", classe: "index-nom", surclic: () => ouvrirFiche(edition) },
-        (edition.artistes_principaux || []).join(", ") || "Artiste inconnu",
-        " — ", edition.titre,
-        edition.localisations.length ? creer("span", { classe: "discret", texte: " · " + edition.localisations.join(", ") }) : null)))));
+    // Rangés par méta-catégorie (Chanson, Classique…), puis comme dans Collection à l'intérieur de chacune.
+    [...new Set(sansCode.flatMap((e) => e.metas))].sort(comparerTextes).map((meta) => {
+      const disques = sansCode.filter((e) => e.metas.includes(meta));
+      return [
+        creer("h4", { texte: meta + " (" + disques.length + ")" }),
+        creer("ul", {}, disques.map((edition) => creer("li", {},
+          creer("button", { type: "button", classe: "index-nom", surclic: () => ouvrirFiche(edition) },
+            (edition.artistes_principaux || []).join(", ") || "Artiste inconnu",
+            " — ", edition.titre,
+            edition.localisations.length ? creer("span", { classe: "discret", texte: " · " + edition.localisations.join(", ") }) : null)))),
+      ];
+    }));
   if (listeSansCodeOuverte) details.open = true;
   details.addEventListener("toggle", () => { listeSansCodeOuverte = details.open; });
 
