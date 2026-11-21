@@ -2449,7 +2449,7 @@ function afficherCodeBarre() {
   // Liste du bas : les disques sans code-barre sur Discogs (hors « À Vendre »), triés comme dans Collection.
   const sansCode = trier(editions.filter((e) => !(e.codes_barres || []).length && !estAVendre(e)));
   const champ = creer("input", { type: "text", id: "codebarre-saisie", inputmode: "numeric", autocomplete: "off",
-    enterkeyhint: "search", placeholder: "Taper le code-barre", "aria-label": "Code-barre à taper" });
+    enterkeyhint: "search", placeholder: "ou Taper le code-barre", "aria-label": "Code-barre à taper" });
   const formulaire = creer("form", { classe: "codebarre-formulaire" }, champ,
     creer("button", { type: "submit", classe: "bouton", texte: "Chercher" }));
   formulaire.addEventListener("submit", (evenement) => {
