@@ -2535,6 +2535,356 @@
   "release": "2383f79e-c356-4b52-81bf-fd7f4eaccba1",
   "version": 4
  },
+ "10386007": {
+  "annee_parution": 1998,
+  "annees_enregistrement": [
+   1975,
+   1977
+  ],
+  "durees": [
+   584000,
+   285000,
+   368000,
+   288000,
+   380000,
+   308000,
+   375000,
+   217000,
+   329000,
+   207000,
+   26000,
+   402000,
+   216000,
+   135000,
+   23000,
+   250000,
+   251000,
+   297000,
+   465000,
+   533000,
+   112000,
+   436000,
+   308000,
+   375000,
+   100000,
+   432000,
+   396000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618286606-250.jpg",
+    "original": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618286606.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618286606-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618287143-250.jpg",
+    "original": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618287143.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618287143-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618287607-250.jpg",
+    "original": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618287607.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618287607-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618288373-250.jpg",
+    "original": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618288373.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/74365d01-09eb-4ef0-99d1-c7a54d524b51/30618288373-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 27,
+  "oeuvres": [
+   null,
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Wilton Eaton",
+     "Milt Hinton",
+     "Hank Jones",
+     "Freddie Moore"
+    ],
+    "compositeur": "Ben Bernie, Maceo Pinkard",
+    "id": "b1616f36-48b2-3259-ad45-e4530e3c9383",
+    "parente": null,
+    "roles": {
+     "Freddie Moore": "washboard",
+     "Hank Jones": "piano",
+     "Milt Hinton": "bass",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Wilton Eaton": "whistle"
+    },
+    "titre": "Sweet Georgia Brown"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "William Butler",
+     "Bill Carney",
+     "Trudy Pitts"
+    ],
+    "compositeur": "Sammy Fain",
+    "id": "a69e713c-5aac-331c-8669-934714f45fd1",
+    "parente": null,
+    "roles": {
+     "Bill Carney": "drums (drum set)",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Trudy Pitts": "organ",
+     "William Butler": "guitar"
+    },
+    "titre": "I’ll Be Seeing You"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "William Butler",
+     "Bill Carney",
+     "Jerry Griffin",
+     "Arthur Jenkins",
+     "Mattathias Pearson",
+     "Hilton Ruiz",
+     "Warren Smith",
+     "Joe Texidor"
+    ],
+    "compositeur": "Minnie Riperton, Richard Rudolph",
+    "id": "bdaa0837-258e-3f82-892f-a49f54280e8d",
+    "parente": null,
+    "roles": {
+     "Arthur Jenkins": "keyboard",
+     "Bill Carney": "drums (drum set)",
+     "Hilton Ruiz": "celesta",
+     "Jerry Griffin": "drums (drum set)",
+     "Joe Texidor": "percussion",
+     "Mattathias Pearson": "bass",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Warren Smith": "percussion",
+     "William Butler": "guitar"
+    },
+    "titre": "Lovin’ You"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "William Butler",
+     "Bill Carney",
+     "Jerry Griffin",
+     "Arthur Jenkins",
+     "Mattathias Pearson",
+     "Hilton Ruiz",
+     "Warren Smith",
+     "Joe Texidor"
+    ],
+    "compositeur": "Charles Mingus",
+    "id": "32dc00a2-9424-427d-a81a-c09acf09d6cd",
+    "parente": null,
+    "roles": {
+     "Arthur Jenkins": "keyboard",
+     "Bill Carney": "drums (drum set)",
+     "Hilton Ruiz": "celesta",
+     "Jerry Griffin": "drums (drum set)",
+     "Joe Texidor": "percussion",
+     "Mattathias Pearson": "bass",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Warren Smith": "percussion",
+     "William Butler": "guitar"
+    },
+    "titre": "Goodbye Pork Pie Hat"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Howard Johnson",
+     "Romeo Penque",
+     "Charlie Persip",
+     "Hilton Ruiz",
+     "Joe Texidor",
+     "Buster Williams"
+    ],
+    "compositeur": "Harry Warren",
+    "id": "b6be4fd3-1259-376b-8228-2fad04eee47d",
+    "parente": null,
+    "roles": {
+     "Buster Williams": "bass",
+     "Charlie Persip": "drums (drum set)",
+     "Hilton Ruiz": "celesta",
+     "Howard Johnson": "tuba",
+     "Joe Texidor": "percussion",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Romeo Penque": "woodwind"
+    },
+    "titre": "There Will Never Be Another You"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Howard Johnson",
+     "Romeo Penque",
+     "Charlie Persip",
+     "Hilton Ruiz",
+     "Joe Texidor",
+     "Buster Williams"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "685c221c-cf05-4b81-9bd8-e6d859376e06",
+    "parente": null,
+    "roles": {
+     "Buster Williams": "bass",
+     "Charlie Persip": "drums (drum set)",
+     "Hilton Ruiz": "celesta",
+     "Howard Johnson": "tuba",
+     "Joe Texidor": "percussion",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Romeo Penque": "woodwind"
+    },
+    "titre": "Giant Steps"
+   },
+   null,
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Leon Russell",
+    "id": "f64f75cd-2e96-3b74-8be4-ee1c30cfb36e",
+    "parente": null,
+    "titre": "This Masquerade"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Stanley Turrentine",
+    "id": "7d283c4a-8258-45d5-acdc-5bc776b356b3",
+    "parente": null,
+    "titre": "Sugar"
+   },
+   null,
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "1526a783-f0b8-48e9-96c3-9ca580a80371",
+    "parente": null,
+    "titre": "Steppin' Into Beauty"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Mel Tormé",
+    "id": "00324746-fc24-337b-a9fb-edb8a317be5b",
+    "parente": null,
+    "titre": "The Christmas Song"
+   },
+   null,
+   null,
+   null,
+   null,
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Dizzy Gillespie, Frank Paparelli",
+    "id": "aa7d6c10-c7a8-3eb5-b4b7-4de6a05d904e",
+    "parente": null,
+    "titre": "Night in Tunisia"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Tiny Grimes",
+     "Gifford McDonald",
+     "Sammy Price",
+     "Arvell Shaw"
+    ],
+    "compositeur": "George Gershwin",
+    "id": "e91712f5-51ba-31f3-a04c-3749f0f5e454",
+    "parente": null,
+    "roles": {
+     "Arvell Shaw": "bass",
+     "Gifford McDonald": "drums (drum set)",
+     "Rahsaan Roland Kirk": "tenor saxophone",
+     "Sammy Price": "piano",
+     "Tiny Grimes": "guitar"
+    },
+    "titre": "I Loves You, Porgy"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Tiny Grimes",
+     "Gifford McDonald",
+     "Sammy Price",
+     "Arvell Shaw"
+    ],
+    "compositeur": "Duke Ellington",
+    "id": "50c2c0d9-a1c3-3fa5-8738-65d3b35a1994",
+    "parente": null,
+    "roles": {
+     "Arvell Shaw": "bass",
+     "Gifford McDonald": "drums (drum set)",
+     "Rahsaan Roland Kirk": "tenor saxophone",
+     "Sammy Price": "piano",
+     "Tiny Grimes": "guitar"
+    },
+    "titre": "In a Mellow Tone"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Tiny Grimes",
+     "Gifford McDonald",
+     "Sammy Price",
+     "Arvell Shaw"
+    ],
+    "compositeur": "George Gershwin",
+    "id": "986359d8-34ff-3fe2-84fe-155b5f167975",
+    "parente": null,
+    "roles": {
+     "Arvell Shaw": "bass",
+     "Gifford McDonald": "drums (drum set)",
+     "Rahsaan Roland Kirk": "harmonica",
+     "Sammy Price": "piano",
+     "Tiny Grimes": "guitar"
+    },
+    "titre": "Summertime"
+   },
+   null,
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Phil Bowler",
+     "Sonny Brown",
+     "Percy Heath",
+     "Hilton Ruiz",
+     "Steve Turre"
+    ],
+    "compositeur": "Percy Heath",
+    "id": "f2979be3-9a4e-458f-a744-3a886f913d00",
+    "parente": null,
+    "roles": {
+     "Hilton Ruiz": "keyboard",
+     "Percy Heath": "cello",
+     "Phil Bowler": "bass",
+     "Rahsaan Roland Kirk": "flute, harmonica, tenor saxophone",
+     "Sonny Brown": "drums (drum set)",
+     "Steve Turre": "trombone"
+    },
+    "titre": "The Watergate Blues"
+   }
+  ],
+  "release": "74365d01-09eb-4ef0-99d1-c7a54d524b51",
+  "version": 14
+ },
  "10414040": {
   "annee_parution": 1991,
   "annees_enregistrement": [
@@ -6664,6 +7014,162 @@
   "release": "77d03097-06b8-4403-bc60-bcbb1bc939e0",
   "version": 4
  },
+ "11381935": {
+  "annee_parution": 2015,
+  "annees_enregistrement": [
+   1985,
+   1985
+  ],
+  "durees": [
+   429000,
+   548000,
+   398000,
+   424000,
+   null,
+   null,
+   null,
+   221000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318406043-250.jpg",
+    "original": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318406043.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318406043-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318406837-250.jpg",
+    "original": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318406837.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318406837-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318407490-250.jpg",
+    "original": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318407490.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/4d8c7144-1d4e-4e90-be5f-5b4155b37eeb/36318407490-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 8,
+  "oeuvres": [
+   {
+    "artistes": [
+     "David Liebman",
+     "Richie Beirach"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "a3010c0f-c851-3a2a-ab3e-3d3f5bf3abce",
+    "parente": null,
+    "roles": {
+     "David Liebman": "saxophone",
+     "Richie Beirach": "piano"
+    },
+    "titre": "Naima"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Richie Beirach"
+    ],
+    "compositeur": "Thelonious Monk, Cootie Williams",
+    "id": "f99aa87a-d665-3d56-8df6-1fb072ab2042",
+    "parente": null,
+    "roles": {
+     "David Liebman": "saxophone",
+     "Richie Beirach": "piano"
+    },
+    "titre": "’Round Midnight"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Richie Beirach"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "6a663b21-34c9-3ac3-81e3-9197caf67d84",
+    "parente": null,
+    "roles": {
+     "David Liebman": "saxophone",
+     "Richie Beirach": "piano"
+    },
+    "titre": "India"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Richie Beirach"
+    ],
+    "compositeur": "Bronisław Kaper",
+    "id": "39d87891-d664-3db0-a4a3-e5e3eabb72ba",
+    "parente": null,
+    "roles": {
+     "David Liebman": "saxophone",
+     "Richie Beirach": "piano"
+    },
+    "titre": "On Green Dolphin Street"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Richie Beirach"
+    ],
+    "compositeur": "Jimmy Davis, Jimmy Sherman, Roger “Ram” Ramirez",
+    "id": "e0dc7948-f188-3346-adee-db5cfb6361a9",
+    "parente": null,
+    "roles": {
+     "David Liebman": "saxophone",
+     "Richie Beirach": "piano"
+    },
+    "titre": "Lover Man"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Richie Beirach"
+    ],
+    "compositeur": "Jimmy Davis, Jimmy Sherman, Roger “Ram” Ramirez",
+    "id": "e0dc7948-f188-3346-adee-db5cfb6361a9",
+    "parente": null,
+    "roles": {
+     "David Liebman": "saxophone",
+     "Richie Beirach": "piano"
+    },
+    "titre": "Lover Man"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Richie Beirach"
+    ],
+    "compositeur": "Jimmy Davis, Jimmy Sherman, Roger “Ram” Ramirez",
+    "id": "e0dc7948-f188-3346-adee-db5cfb6361a9",
+    "parente": null,
+    "roles": {
+     "David Liebman": "saxophone",
+     "Richie Beirach": "piano"
+    },
+    "titre": "Lover Man"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Richie Beirach"
+    ],
+    "compositeur": "Sonny Rollins",
+    "id": "9bd0305e-0636-3624-972e-ec5b55631ea8",
+    "parente": null,
+    "roles": {
+     "David Liebman": "saxophone",
+     "Richie Beirach": "piano"
+    },
+    "titre": "Oleo"
+   }
+  ],
+  "release": "4d8c7144-1d4e-4e90-be5f-5b4155b37eeb",
+  "version": 14
+ },
  "11408358": {
   "annees_enregistrement": [
    1994,
@@ -9841,6 +10347,18 @@
   ],
   "release": "4175b5f4-5008-4a0d-9868-889d92321995",
   "version": 5
+ },
+ "1274495": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "aucune",
+  "nb_plages": 9,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
  },
  "12758282": {
   "annee_parution": 2016,
@@ -25017,6 +25535,67 @@
   "release": "007efea2-e763-4d04-97e1-95d096fd36b8",
   "version": 8
  },
+ "13330447": {
+  "annee_parution": 1993,
+  "annees_enregistrement": null,
+  "durees": [
+   175000,
+   191000,
+   310000,
+   181000,
+   183000,
+   199000,
+   184000,
+   179000,
+   1039000,
+   326000,
+   200000,
+   414000,
+   987000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/41b51ec6-dff5-4a65-99c4-8081245f246e/31328133456-250.jpg",
+    "original": "https://coverartarchive.org/release/41b51ec6-dff5-4a65-99c4-8081245f246e/31328133456.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/41b51ec6-dff5-4a65-99c4-8081245f246e/31328133456-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/41b51ec6-dff5-4a65-99c4-8081245f246e/31328133918-250.jpg",
+    "original": "https://coverartarchive.org/release/41b51ec6-dff5-4a65-99c4-8081245f246e/31328133918.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/41b51ec6-dff5-4a65-99c4-8081245f246e/31328133918-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 20,
+  "oeuvres": [
+   null,
+   null,
+   {
+    "artistes": [
+     "Machito and His Orchestra"
+    ],
+    "compositeur": "Mario Bauzá",
+    "id": "d2846b4b-6818-4313-8996-6b5b7a9a89dc",
+    "parente": null,
+    "titre": "Tanga"
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "release": "41b51ec6-dff5-4a65-99c4-8081245f246e",
+  "version": 14
+ },
  "13340754": {
   "annee_parution": 2002,
   "annees_enregistrement": null,
@@ -37501,6 +38080,18 @@
   "release": "607ef674-142c-4a59-ba2b-9cdbc2b77264",
   "version": 12
  },
+ "13926536": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "aucune",
+  "nb_plages": 9,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "14092159": {
   "images": [],
   "maj": "2026-11-01",
@@ -38683,6 +39274,144 @@
   ],
   "release": "6673c5ec-7508-3773-ab86-7a98307721a9",
   "version": 5
+ },
+ "1457492": {
+  "annee_parution": 1997,
+  "annees_enregistrement": [
+   1996,
+   1996
+  ],
+  "durees": [
+   825266,
+   775893,
+   659666,
+   692706,
+   769093,
+   696066
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/7d426ee2-ef36-4796-b09c-d4ace48cf370/8190022889-250.jpg",
+    "original": "https://coverartarchive.org/release/7d426ee2-ef36-4796-b09c-d4ace48cf370/8190022889.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d426ee2-ef36-4796-b09c-d4ace48cf370/8190022889-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7d426ee2-ef36-4796-b09c-d4ace48cf370/13981588679-250.jpg",
+    "original": "https://coverartarchive.org/release/7d426ee2-ef36-4796-b09c-d4ace48cf370/13981588679.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7d426ee2-ef36-4796-b09c-d4ace48cf370/13981588679-500.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 6,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Lee Konitz",
+     "Brad Mehldau",
+     "Charlie Haden"
+    ],
+    "compositeur": "Arthur Schwartz",
+    "id": "2eeec569-6ada-3f76-8d65-4241b57b56e0",
+    "parente": null,
+    "roles": {
+     "Brad Mehldau": "piano",
+     "Charlie Haden": "bass",
+     "Lee Konitz": "saxophone"
+    },
+    "titre": "Alone Together"
+   },
+   {
+    "artistes": [
+     "Lee Konitz",
+     "Brad Mehldau",
+     "Charlie Haden"
+    ],
+    "compositeur": "Jerome Kern",
+    "id": "41d1133b-22a4-3511-b1ad-46de455831c5",
+    "parente": null,
+    "roles": {
+     "Brad Mehldau": "piano",
+     "Charlie Haden": "bass",
+     "Lee Konitz": "saxophone"
+    },
+    "titre": "The Song Is You"
+   },
+   {
+    "artistes": [
+     "Lee Konitz",
+     "Brad Mehldau",
+     "Charlie Haden"
+    ],
+    "compositeur": "Ray Noble",
+    "id": "945070ce-3f47-3c6c-9d2c-deed2cb0ceaa",
+    "parente": null,
+    "roles": {
+     "Brad Mehldau": "piano",
+     "Charlie Haden": "bass",
+     "Lee Konitz": "saxophone"
+    },
+    "titre": "Cherokee"
+   },
+   {
+    "artistes": [
+     "Lee Konitz",
+     "Brad Mehldau",
+     "Charlie Haden"
+    ],
+    "compositeur": "Cole Porter",
+    "id": "70eb376f-0fbb-324c-9dcb-d30ab24f9f3e",
+    "parente": {
+     "id": "418c7b4b-15d3-42bf-b299-eb8f52e0e3e9",
+     "titre": "Wake Up and Dream"
+    },
+    "roles": {
+     "Brad Mehldau": "piano",
+     "Charlie Haden": "bass",
+     "Lee Konitz": "saxophone"
+    },
+    "titre": "What Is This Thing Called Love?"
+   },
+   {
+    "artistes": [
+     "Lee Konitz",
+     "Brad Mehldau",
+     "Charlie Haden"
+    ],
+    "compositeur": "Thelonious Monk, Cootie Williams",
+    "id": "f99aa87a-d665-3d56-8df6-1fb072ab2042",
+    "parente": null,
+    "roles": {
+     "Brad Mehldau": "piano",
+     "Charlie Haden": "bass",
+     "Lee Konitz": "saxophone"
+    },
+    "titre": "’Round Midnight"
+   },
+   {
+    "artistes": [
+     "Lee Konitz",
+     "Brad Mehldau",
+     "Charlie Haden"
+    ],
+    "compositeur": "Nacio Herb Brown",
+    "id": "67166767-6b81-3118-8d0e-5d5a04578306",
+    "parente": {
+     "id": "091e26fc-5b9f-493f-977a-edc559ac080b",
+     "titre": "Ziegfeld Girl"
+    },
+    "roles": {
+     "Brad Mehldau": "piano",
+     "Charlie Haden": "bass",
+     "Lee Konitz": "saxophone"
+    },
+    "titre": "You Stepped Out of a Dream"
+   }
+  ],
+  "release": "7d426ee2-ef36-4796-b09c-d4ace48cf370",
+  "version": 14
  },
  "1459131": {
   "annee_parution": 2000,
@@ -69651,6 +70380,36 @@
   "release": null,
   "version": 2
  },
+ "2184329": {
+  "annee_parution": 1995,
+  "annees_enregistrement": null,
+  "durees": [
+   505000,
+   263000,
+   403000,
+   245000,
+   349000,
+   405000,
+   324000,
+   378000,
+   490000,
+   541000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/b673894d-d1ef-4ed9-aa41-c1642dba7b5a/30929597801-250.jpg",
+    "original": "https://coverartarchive.org/release/b673894d-d1ef-4ed9-aa41-c1642dba7b5a/30929597801.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/b673894d-d1ef-4ed9-aa41-c1642dba7b5a/30929597801-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 10,
+  "oeuvres": null,
+  "release": "b673894d-d1ef-4ed9-aa41-c1642dba7b5a",
+  "version": 14
+ },
  "21852037": {
   "annee_parution": 2021,
   "annees_enregistrement": [
@@ -72121,6 +72880,59 @@
   "release": "6ba17100-ab5e-4fe4-98c1-8acb35a015ef",
   "version": 12
  },
+ "2440273": {
+  "annee_parution": 1999,
+  "annees_enregistrement": null,
+  "durees": [
+   359066,
+   427266,
+   339560,
+   437800,
+   232533,
+   292266,
+   274373,
+   279360,
+   248266,
+   430400,
+   247440,
+   322333,
+   335226
+  ],
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 13,
+  "oeuvres": null,
+  "release": "16af6107-fedf-42df-b5a6-677f66f524cf",
+  "version": 14
+ },
+ "2446676": {
+  "annee_parution": 1997,
+  "annees_enregistrement": [
+   1997,
+   1997
+  ],
+  "durees": [
+   392866,
+   430400,
+   267226,
+   129040,
+   426160,
+   536066,
+   79440,
+   253560,
+   358666,
+   74866,
+   532706
+  ],
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 11,
+  "oeuvres": null,
+  "release": "6f3bc5d9-4d95-4b11-b4b1-1fb122cb0acb",
+  "version": 14
+ },
  "24511304": {
   "annee_parution": null,
   "annees_enregistrement": [
@@ -73624,6 +74436,44 @@
   ],
   "release": "af847878-97d1-455f-969f-6192225c7fbc",
   "version": 4
+ },
+ "2589961": {
+  "annee_parution": 1999,
+  "annees_enregistrement": null,
+  "durees": [
+   202573,
+   188640,
+   391466,
+   213333,
+   244226,
+   231200,
+   321706,
+   259800,
+   145333,
+   189293,
+   264133,
+   205533
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/e071a7ae-198c-42ae-a20f-2d9dcc93096f/3160995414-250.jpg",
+    "original": "https://coverartarchive.org/release/e071a7ae-198c-42ae-a20f-2d9dcc93096f/3160995414.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/e071a7ae-198c-42ae-a20f-2d9dcc93096f/3160995414-500.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/e071a7ae-198c-42ae-a20f-2d9dcc93096f/3161002942-250.jpg",
+    "original": "https://coverartarchive.org/release/e071a7ae-198c-42ae-a20f-2d9dcc93096f/3161002942.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/e071a7ae-198c-42ae-a20f-2d9dcc93096f/3161002942-500.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "code_barre",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": "e071a7ae-198c-42ae-a20f-2d9dcc93096f",
+  "version": 14
  },
  "2629224": {
   "annee_parution": 1991,
@@ -76188,6 +77038,222 @@
   "release": "5e80a604-10c9-4c94-984d-9cfe5b45245c",
   "version": 10
  },
+ "2827749": {
+  "annee_parution": null,
+  "annees_enregistrement": [
+   1987,
+   1987
+  ],
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "album",
+  "nb_plages": 10,
+  "oeuvres": [
+   {
+    "artistes": [
+     "David Liebman",
+     "Eddie Gomez",
+     "Jim McNeely",
+     "Adam Nussbaum",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "5d4bc65d-76d7-3e6d-84a2-c11b2ed549bf",
+    "parente": null,
+    "roles": {
+     "Adam Nussbaum": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Eddie Gomez": "double bass",
+     "Jim McNeely": "piano"
+    },
+    "titre": "Brazilia"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Eddie Gomez",
+     "Jim McNeely",
+     "Adam Nussbaum",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "657710e4-a513-306a-bdd2-f80c8e835576",
+    "parente": null,
+    "roles": {
+     "Adam Nussbaum": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Eddie Gomez": "double bass",
+     "Jim McNeely": "piano"
+    },
+    "titre": "Crescent"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Eddie Gomez",
+     "Jim McNeely",
+     "Adam Nussbaum",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "446135b4-b0e1-36a2-85d7-b45d51f5b81e",
+    "parente": null,
+    "roles": {
+     "Adam Nussbaum": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Eddie Gomez": "double bass",
+     "Jim McNeely": "piano"
+    },
+    "titre": "Love"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Eddie Gomez",
+     "Jim McNeely",
+     "Adam Nussbaum",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "75e48b65-2a22-34a9-9efe-1c1ca9d85494",
+    "parente": null,
+    "roles": {
+     "Adam Nussbaum": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Eddie Gomez": "double bass",
+     "Jim McNeely": "piano"
+    },
+    "titre": "Joy"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Eddie Gomez",
+     "Jim McNeely",
+     "Adam Nussbaum",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "469120aa-8a5b-30bf-8608-45b938686d41",
+    "parente": null,
+    "roles": {
+     "Adam Nussbaum": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Eddie Gomez": "double bass",
+     "Jim McNeely": "piano"
+    },
+    "titre": "After the Rain"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Jim Beard",
+     "Mark Egan",
+     "Bob Moses",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "6a663b21-34c9-3ac3-81e3-9197caf67d84",
+    "parente": null,
+    "roles": {
+     "Bob Moses": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Jim Beard": "synthesizer",
+     "Mark Egan": "electric bass guitar"
+    },
+    "titre": "India"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Jim Beard",
+     "Mark Egan",
+     "Bob Moses",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "45c0def1-8616-3f27-9368-f5f9e13acd11",
+    "parente": null,
+    "roles": {
+     "Bob Moses": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Jim Beard": "synthesizer",
+     "Mark Egan": "electric bass guitar"
+    },
+    "titre": "Welcome"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Jim Beard",
+     "Mark Egan",
+     "Bob Moses",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "c2aca56e-de47-3523-bc78-e69f3eb656fa",
+    "parente": null,
+    "roles": {
+     "Bob Moses": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Jim Beard": "synthesizer",
+     "Mark Egan": "electric bass guitar"
+    },
+    "titre": "Mr. Day"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Jim Beard",
+     "Mark Egan",
+     "Bob Moses",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "7691eb8b-7a8b-335e-9421-b1286766ae1b",
+    "parente": null,
+    "roles": {
+     "Bob Moses": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Jim Beard": "synthesizer",
+     "Mark Egan": "electric bass guitar"
+    },
+    "titre": "Dear Lord"
+   },
+   {
+    "artistes": [
+     "David Liebman",
+     "Jim Beard",
+     "Mark Egan",
+     "Bob Moses",
+     "Caris Visentin"
+    ],
+    "compositeur": "John Coltrane",
+    "id": "b062e297-6da7-309a-970b-9a9132995e0f",
+    "parente": null,
+    "roles": {
+     "Bob Moses": "percussion",
+     "Caris Visentin": "oboe",
+     "David Liebman": "soprano saxophone",
+     "Jim Beard": "synthesizer",
+     "Mark Egan": "electric bass guitar"
+    },
+    "titre": "Dahomey Dance"
+   }
+  ],
+  "release": "5761957b-93ae-4ad6-9fbe-c2eb32909491",
+  "version": 14
+ },
  "28328062": {
   "images": [],
   "maj": "2026-11-02",
@@ -78037,6 +79103,18 @@
   "maj": "2026-11-20",
   "methode": "aucune",
   "nb_plages": 14,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
+ "31706591": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "aucune",
+  "nb_plages": 9,
   "oeuvres": null,
   "release": null,
   "version": 14
@@ -80968,6 +82046,216 @@
   "release": null,
   "version": 14
  },
+ "3336470": {
+  "annee_parution": 1995,
+  "annees_enregistrement": [
+   1994,
+   1994
+  ],
+  "durees": [
+   428000,
+   286000,
+   177000,
+   321000,
+   392000,
+   367000,
+   410000,
+   312000,
+   237000,
+   262000,
+   150000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/29ced102-94d2-4058-a62d-6163943e5c1f/17953295960-250.jpg",
+    "original": "https://coverartarchive.org/release/29ced102-94d2-4058-a62d-6163943e5c1f/17953295960.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/29ced102-94d2-4058-a62d-6163943e5c1f/17953295960-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 11,
+  "oeuvres": [
+   null,
+   null,
+   {
+    "artistes": [
+     "David Liebman Group",
+     "Jamey Haddad",
+     "Vic Juris",
+     "David Liebman",
+     "Tony Marino",
+     "Phil Markowitz"
+    ],
+    "compositeur": "Joe Zawinul",
+    "id": "8c8b4470-f5c8-3867-addb-8fc2279ed047",
+    "parente": null,
+    "roles": {
+     "David Liebman": "soprano saxophone",
+     "Jamey Haddad": "percussion",
+     "Phil Markowitz": "keyboard",
+     "Tony Marino": "bass",
+     "Vic Juris": "guitar"
+    },
+    "titre": "In a Silent Way"
+   },
+   null,
+   {
+    "artistes": [
+     "David Liebman Group",
+     "Jamey Haddad",
+     "Vic Juris",
+     "David Liebman",
+     "Tony Marino",
+     "Phil Markowitz"
+    ],
+    "compositeur": "Wayne Shorter",
+    "id": "83dbbd94-3a93-3eb5-af5f-5f1217801ed7",
+    "parente": null,
+    "roles": {
+     "David Liebman": "soprano saxophone",
+     "Jamey Haddad": "percussion",
+     "Phil Markowitz": "keyboard",
+     "Tony Marino": "bass",
+     "Vic Juris": "guitar"
+    },
+    "titre": "Fall"
+   },
+   {
+    "artistes": [
+     "David Liebman Group",
+     "Jamey Haddad",
+     "Vic Juris",
+     "David Liebman",
+     "Tony Marino",
+     "Phil Markowitz"
+    ],
+    "compositeur": "Miles Davis",
+    "id": "46e6bfc3-5f37-3e6e-a2be-1938072b1375",
+    "parente": null,
+    "roles": {
+     "David Liebman": "soprano saxophone",
+     "Jamey Haddad": "percussion",
+     "Phil Markowitz": "keyboard",
+     "Tony Marino": "bass",
+     "Vic Juris": "guitar"
+    },
+    "titre": "All Blues"
+   },
+   {
+    "artistes": [
+     "David Liebman Group",
+     "Scott Cutshall",
+     "Jamey Haddad",
+     "Vic Juris",
+     "David Liebman",
+     "Tony Marino",
+     "Phil Markowitz",
+     "Caris Visentin"
+    ],
+    "compositeur": "Gil Evans",
+    "id": "b88f114a-f21e-4c25-a3c7-aa56736746fd",
+    "parente": null,
+    "roles": {
+     "Caris Visentin": "cor anglais",
+     "David Liebman": "soprano saxophone",
+     "Jamey Haddad": "percussion",
+     "Phil Markowitz": "keyboard",
+     "Scott Cutshall": "handclaps",
+     "Tony Marino": "bass",
+     "Vic Juris": "guitar"
+    },
+    "titre": "The Pan Piper"
+   },
+   {
+    "artistes": [
+     "David Liebman Group",
+     "Jamey Haddad",
+     "Vic Juris",
+     "David Liebman",
+     "Tony Marino",
+     "Phil Markowitz"
+    ],
+    "compositeur": "Miles Davis",
+    "id": "8e897f2c-285a-327b-bb74-6dff23096b62",
+    "parente": null,
+    "roles": {
+     "David Liebman": "soprano saxophone",
+     "Jamey Haddad": "percussion",
+     "Phil Markowitz": "keyboard",
+     "Tony Marino": "bass",
+     "Vic Juris": "guitar"
+    },
+    "titre": "Milestones"
+   },
+   {
+    "artistes": [
+     "David Liebman Group",
+     "Jamey Haddad",
+     "Vic Juris",
+     "David Liebman",
+     "Tony Marino",
+     "Phil Markowitz"
+    ],
+    "compositeur": "Miles Davis, Charles Mingus",
+    "id": "22834b43-7226-432c-b69a-858e33b5ec3d",
+    "parente": null,
+    "roles": {
+     "David Liebman": "soprano saxophone",
+     "Jamey Haddad": "percussion",
+     "Phil Markowitz": "keyboard",
+     "Tony Marino": "bass",
+     "Vic Juris": "guitar"
+    },
+    "titre": "Smooch"
+   },
+   {
+    "artistes": [
+     "David Liebman Group",
+     "Jamey Haddad",
+     "Vic Juris",
+     "David Liebman",
+     "Tony Marino",
+     "Phil Markowitz"
+    ],
+    "compositeur": "Miles Davis",
+    "id": "d73f8e96-325d-3211-89ba-b3ebd3df6199",
+    "parente": null,
+    "roles": {
+     "David Liebman": "soprano saxophone",
+     "Jamey Haddad": "percussion",
+     "Phil Markowitz": "keyboard",
+     "Tony Marino": "bass",
+     "Vic Juris": "guitar"
+    },
+    "titre": "Solar"
+   },
+   {
+    "artistes": [
+     "David Liebman Group",
+     "Jamey Haddad",
+     "Vic Juris",
+     "David Liebman",
+     "Tony Marino",
+     "Phil Markowitz"
+    ],
+    "compositeur": "Gil Evans, Cleo Henry",
+    "id": "09a5aad2-2c02-4315-8bfb-29351cdde2e3",
+    "parente": null,
+    "roles": {
+     "David Liebman": "soprano saxophone",
+     "Jamey Haddad": "percussion",
+     "Phil Markowitz": "keyboard",
+     "Tony Marino": "bass",
+     "Vic Juris": "guitar"
+    },
+    "titre": "Boplicity"
+   }
+  ],
+  "release": "29ced102-94d2-4058-a62d-6163943e5c1f",
+  "version": 14
+ },
  "33367019": {
   "images": [],
   "maj": "2026-11-01",
@@ -83153,6 +84441,18 @@
   "release": "2fcf12f4-986c-439c-a258-9dd14d9419ab",
   "version": 5
  },
+ "3892072": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "aucune",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "38928": {
   "annees_enregistrement": null,
   "images": [],
@@ -84543,6 +85843,248 @@
   "release": "e00d2cba-4cf9-496a-9134-f487254accbd",
   "version": 14
  },
+ "4184432": {
+  "annee_parution": 1992,
+  "annees_enregistrement": null,
+  "durees": [
+   401333,
+   339200,
+   320040,
+   360226,
+   356640,
+   295360,
+   360346,
+   301706,
+   437333,
+   264093,
+   430000,
+   265720
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/15905511061-250.jpg",
+    "original": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/15905511061.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/15905511061-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/15905516044-250.jpg",
+    "original": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/15905516044.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/15905516044-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/35068130135-250.jpg",
+    "original": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/35068130135.png",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/706a372b-c978-4c0c-8df9-e6837a9344ff/35068130135-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "code_barre",
+  "nb_plages": 12,
+  "oeuvres": [
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Henri Betti",
+    "id": "c92b4a0b-15ee-420f-8242-e5b390f69f4e",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "C’est si bon"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Sigmund Romberg",
+    "id": "234ab69e-e3d7-3165-92f3-f6791caca12f",
+    "parente": {
+     "id": "51c68efc-9c94-4626-acd6-abf05ce7be60",
+     "titre": "The New Moon: Act I"
+    },
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Softly, as in a Morning Sunrise"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Henry Mancini",
+    "id": "477cdbb7-f809-351b-918f-e59b224b5c36",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Days of Wine and Roses"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Victor Young",
+    "id": "cddc1524-251c-30a7-9cf0-8e1e602deada",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Stella by Starlight"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Charlie Chaplin",
+    "id": "e6ea7c34-b691-4314-adb5-78de97b4b24c",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Smile"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Joseph Kosma",
+    "id": "048b4b7a-07c4-3e33-959f-268199324401",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Autumn Leaves"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Gene de Paul",
+    "id": "385ad09b-45dd-3a33-9c01-9a6b7e307b28",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Teach Me Tonight"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Miles Davis, Charlie Parker",
+    "id": "6b3e823f-070a-3a30-ba79-668f416ac56d",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Donna Lee"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Johnny Green, Edward Heyman, Robert Sour",
+    "id": "98fb7d1f-12f5-3878-9fad-73266fedbec8",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Body and Soul"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Benny Harris, Charlie Parker",
+    "id": "6c3b2860-0c5f-38fc-9e92-bc5765ec131f",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Ornithology"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Antônio Carlos Jobim",
+    "id": "6e65fbbd-ad64-3732-9ad3-a512ca3005d2",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "How Insensitive"
+   },
+   {
+    "artistes": [
+     "Biréli Lagrène",
+     "André Ceccarelli",
+     "Dominique Di Piazza",
+     "Niels‐Henning Ørsted Pedersen"
+    ],
+    "compositeur": "Django Reinhardt",
+    "id": "0857a15e-c2ea-3763-a253-a9264b38a2c8",
+    "parente": null,
+    "roles": {
+     "André Ceccarelli": "percussion",
+     "Biréli Lagrène": "guitar",
+     "Dominique Di Piazza": "bass guitar",
+     "Niels‐Henning Ørsted Pedersen": "acoustic bass guitar"
+    },
+    "titre": "Nuages"
+   }
+  ],
+  "release": "706a372b-c978-4c0c-8df9-e6837a9344ff",
+  "version": 14
+ },
  "4224187": {
   "images": [],
   "maj": "2026-11-01",
@@ -84812,6 +86354,47 @@
   ],
   "release": "e5d564c5-eeb7-3cb9-a2c4-53d9b3a4d4be",
   "version": 4
+ },
+ "427609": {
+  "annee_parution": 2003,
+  "annees_enregistrement": [
+   1998,
+   1998
+  ],
+  "durees": [
+   253000,
+   286000,
+   277000,
+   348000,
+   280000,
+   295000,
+   220000,
+   236000,
+   219000,
+   283000,
+   194000,
+   204000
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/d6d00ac6-1b35-4f20-bdbf-9c890c41576b/24449744982-250.jpg",
+    "original": "https://coverartarchive.org/release/d6d00ac6-1b35-4f20-bdbf-9c890c41576b/24449744982.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/d6d00ac6-1b35-4f20-bdbf-9c890c41576b/24449744982-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/d6d00ac6-1b35-4f20-bdbf-9c890c41576b/24449746867-250.jpg",
+    "original": "https://coverartarchive.org/release/d6d00ac6-1b35-4f20-bdbf-9c890c41576b/24449746867.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/d6d00ac6-1b35-4f20-bdbf-9c890c41576b/24449746867-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 12,
+  "oeuvres": null,
+  "release": "d6d00ac6-1b35-4f20-bdbf-9c890c41576b",
+  "version": 14
  },
  "4281460": {
   "annee_parution": 1999,
@@ -87726,6 +89309,18 @@
    null
   ],
   "release": "5cc94c82-a3f5-4cd1-89d6-866e2865db6d",
+  "version": 14
+ },
+ "5029280": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "aucune",
+  "nb_plages": 9,
+  "oeuvres": null,
+  "release": null,
   "version": 14
  },
  "50304": {
@@ -92900,6 +94495,18 @@
   "release": "ee9fd41e-1f20-406a-8ef1-35e7c5e41be2",
   "version": 11
  },
+ "5926576": {
+  "annee_parution": null,
+  "annees_enregistrement": null,
+  "durees": null,
+  "images": [],
+  "maj": "2026-11-23",
+  "methode": "aucune",
+  "nb_plages": 36,
+  "oeuvres": null,
+  "release": null,
+  "version": 14
+ },
  "5945023": {
   "annee_parution": null,
   "annees_enregistrement": null,
@@ -93986,6 +95593,307 @@
   "oeuvres": null,
   "release": "0e4b21e2-d735-476c-9b32-6eea27ba401b",
   "version": 11
+ },
+ "6312494": {
+  "annee_parution": 1990,
+  "annees_enregistrement": [
+   1965,
+   1967
+  ],
+  "durees": [
+   273333,
+   239826,
+   389666,
+   158840,
+   418000,
+   322493,
+   297506,
+   371666,
+   174666,
+   176826,
+   300666,
+   184000,
+   265840,
+   289333,
+   190493
+  ],
+  "images": [
+   {
+    "miniature": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646086735-250.jpg",
+    "original": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646086735.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646086735-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646087221-250.jpg",
+    "original": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646087221.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646087221-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646088169-250.jpg",
+    "original": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646088169.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646088169-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646089244-250.jpg",
+    "original": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646089244.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646089244-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646090071-250.jpg",
+    "original": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646090071.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646090071-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646091049-250.jpg",
+    "original": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646091049.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/30646091049-1200.jpg"
+   },
+   {
+    "miniature": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/24459561608-250.jpg",
+    "original": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/24459561608.jpg",
+    "type": "musicbrainz",
+    "url": "https://coverartarchive.org/release/7da561a3-b16c-4b09-b9ed-7f04958be5fa/24459561608-1200.jpg"
+   }
+  ],
+  "maj": "2026-11-23",
+  "methode": "edition",
+  "nb_plages": 15,
+  "oeuvres": [
+   {
+    "artistes": [
+     "The Roland Kirk Quartet",
+     "Elvin Jones",
+     "Jaki Byard",
+     "Richard Davis",
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "f392e2e0-2101-4dfb-9a7c-26e21b184050",
+    "parente": null,
+    "roles": {
+     "Elvin Jones": "drums (drum set)",
+     "Jaki Byard": "piano",
+     "Rahsaan Roland Kirk": "castanets, saxophone",
+     "Richard Davis": "double bass"
+    },
+    "titre": "No Tonic Pres"
+   },
+   {
+    "artistes": [
+     "The Roland Kirk Quartet",
+     "Elvin Jones",
+     "Jaki Byard",
+     "Richard Davis",
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Michael Edwards",
+    "id": "cf919275-effe-324f-8531-0fcc2624c44b",
+    "parente": {
+     "id": "ad4f73f6-6bcf-442b-bf8a-97c2bac83f6d",
+     "titre": "New York, New York"
+    },
+    "roles": {
+     "Elvin Jones": "drums (drum set)",
+     "Jaki Byard": "piano",
+     "Rahsaan Roland Kirk": "castanets, saxophone",
+     "Richard Davis": "double bass"
+    },
+    "titre": "Once in a While"
+   },
+   null,
+   null,
+   {
+    "artistes": [
+     "The Roland Kirk Quartet",
+     "Elvin Jones",
+     "Jaki Byard",
+     "Richard Davis",
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "d64e3750-7629-4212-aead-7b3008a58dad",
+    "parente": null,
+    "roles": {
+     "Elvin Jones": "drums (drum set)",
+     "Jaki Byard": "piano",
+     "Rahsaan Roland Kirk": "castanets, saxophone",
+     "Richard Davis": "bass"
+    },
+    "titre": "Rip, Rig & Panic"
+   },
+   {
+    "artistes": [
+     "The Roland Kirk Quartet",
+     "Elvin Jones",
+     "Jaki Byard",
+     "Richard Davis",
+     "Rahsaan Roland Kirk"
+    ],
+    "compositeur": "Milton Sealey",
+    "id": "fd089fa9-3f50-48bc-b88c-da233b516e8b",
+    "parente": null,
+    "roles": {
+     "Elvin Jones": "drums (drum set)",
+     "Jaki Byard": "piano",
+     "Rahsaan Roland Kirk": "castanets, saxophone",
+     "Richard Davis": "double bass"
+    },
+    "titre": "Black Diamond"
+   },
+   null,
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Ronnie Boykins",
+     "Lonnie Liston Smith",
+     "Grady Tate"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "4b7b14f0-df20-4215-a158-50d0b0b70a19",
+    "parente": null,
+    "roles": {
+     "Grady Tate": "drums (drum set)",
+     "Lonnie Liston Smith": "piano",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Ronnie Boykins": "bass"
+    },
+    "titre": "Blue Rol"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Ronnie Boykins",
+     "Lonnie Liston Smith",
+     "Grady Tate"
+    ],
+    "compositeur": "Burt Bacharach",
+    "id": "df8579f1-38ec-3790-8fee-efcf91c8a54e",
+    "parente": null,
+    "roles": {
+     "Grady Tate": "drums (drum set)",
+     "Lonnie Liston Smith": "piano",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Ronnie Boykins": "bass"
+    },
+    "titre": "Alfie"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Ronnie Boykins",
+     "Lonnie Liston Smith",
+     "Grady Tate"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "e6704502-d5bf-4a26-bd7a-57d8d9db6f0f",
+    "parente": null,
+    "roles": {
+     "Grady Tate": "drums (drum set)",
+     "Lonnie Liston Smith": "piano",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Ronnie Boykins": "bass"
+    },
+    "titre": "Why Don’t They Know"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Ronnie Boykins",
+     "Lonnie Liston Smith",
+     "Grady Tate"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "f95d6f9c-631e-40db-818c-65eed052c332",
+    "parente": null,
+    "roles": {
+     "Grady Tate": "drums (drum set)",
+     "Lonnie Liston Smith": "piano",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Ronnie Boykins": "bass"
+    },
+    "titre": "Silverlization"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Ronnie Boykins",
+     "Lonnie Liston Smith",
+     "Grady Tate"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "c76efdb1-e746-4bab-99f0-29e90e576982",
+    "parente": null,
+    "roles": {
+     "Grady Tate": "drums (drum set)",
+     "Lonnie Liston Smith": "piano",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Ronnie Boykins": "bass"
+    },
+    "titre": "Fallout"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Ronnie Boykins",
+     "Lonnie Liston Smith",
+     "Grady Tate"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "9dac1d1e-a463-4bd1-8f00-d0b02cb13677",
+    "parente": null,
+    "roles": {
+     "Grady Tate": "drums (drum set)",
+     "Lonnie Liston Smith": "piano",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Ronnie Boykins": "bass"
+    },
+    "titre": "Now Please Don't You Cry, Beautiful Edith"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Ronnie Boykins",
+     "Lonnie Liston Smith",
+     "Grady Tate"
+    ],
+    "compositeur": "Rahsaan Roland Kirk",
+    "id": "81b0b644-ef51-42bb-a4a2-029f9b3788e0",
+    "parente": null,
+    "roles": {
+     "Grady Tate": "drums (drum set)",
+     "Lonnie Liston Smith": "piano",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Ronnie Boykins": "bass"
+    },
+    "titre": "Stompin’ Grounds"
+   },
+   {
+    "artistes": [
+     "Rahsaan Roland Kirk",
+     "Ronnie Boykins",
+     "Lonnie Liston Smith",
+     "Grady Tate"
+    ],
+    "compositeur": "Billy Taylor",
+    "id": "865dc43e-8ef4-4cba-83a4-7c82047610f3",
+    "parente": null,
+    "roles": {
+     "Grady Tate": "drums (drum set)",
+     "Lonnie Liston Smith": "piano",
+     "Rahsaan Roland Kirk": "woodwind",
+     "Ronnie Boykins": "bass"
+    },
+    "titre": "It’s a Grand Night for Swinging"
+   }
+  ],
+  "release": "7da561a3-b16c-4b09-b9ed-7f04958be5fa",
+  "version": 14
  },
  "6369520": {
   "annee_parution": 2011,

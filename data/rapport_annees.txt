@@ -1,10 +1,10 @@
-Rapport des années d'enregistrement et des disques live, le 2026-11-22
+Rapport des années d'enregistrement et des disques live, le 2026-11-23
 
-Sources des années d'enregistrement (545 éditions) :
-  saisie manuelle                    97
+Sources des années d'enregistrement (564 éditions) :
+  saisie manuelle                    115
   MB sur édition exacte              249
   MB sur autre édition de l'album    17
-  notes Discogs                      74
+  notes Discogs                      75
   titre                              3
   « à trouver »                      0
   aucune année                       105
@@ -55,6 +55,9 @@ Denis Levaillant — Blue Songs (édition 30200936)
 
 Denis Matsuev, Ludwig van Beethoven, Pyotr Ilyich Tchaikovsky, Franz Liszt, Sergei Prokofiev — Denis Matsouev, Piano (édition 7557380)
     2000   « Recorded live on May, 27th 2000, at the Notre-Dame D'Auvers-Sur-Oise church, during the famous Auvers-Sur-Oise classical festival. »
+
+Eddy Louiss — Récit Proche (édition 31706591)
+    2000   « Recorded on April 2000 »
 
 Eliso Bolkvadze, Wolfgang Amadeus Mozart, Michel Sogny, Ludwig van Beethoven, Maurice Ravel, Frédéric Chopin — Récital Festival Michel Sogny Château De Coppet ● August 18/2007 (édition 8406781)
     2007   « Recorded on August 18, 2007 at Château de Coppet (Suisse). Enregistrement public - Live Recording. »
