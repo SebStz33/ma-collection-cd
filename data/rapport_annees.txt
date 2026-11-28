@@ -1,13 +1,13 @@
-Rapport des années d'enregistrement et des disques live, le 2026-11-23
+Rapport des années d'enregistrement et des disques live, le 2026-11-28
 
-Sources des années d'enregistrement (564 éditions) :
-  saisie manuelle                    115
-  MB sur édition exacte              249
+Sources des années d'enregistrement (568 éditions) :
+  saisie manuelle                    116
+  MB sur édition exacte              251
   MB sur autre édition de l'album    17
-  notes Discogs                      75
+  notes Discogs                      74
   titre                              3
   « à trouver »                      0
-  aucune année                       105
+  aucune année                       107
 
 1. Années tirées des notes Discogs (affichées ; à corriger dans le champ manuel si besoin)
 
@@ -109,9 +109,6 @@ Johann Sebastian Bach, Glenn Gould, András Schiff — Glenn Gould & András Sch
 
 Johann Sebastian Bach, André Isoir — L'Art De La Fugue (édition 8049334)
     1999   « Enregistrement de 1999 »
-
-Johann Sebastian Bach, Jan Kobow, Stephan Macleod, Francis Jacob, Katharine Fuge, Carlos Mena, Ricercar Consort, Philippe Pierlot — Tombeau De Sa Majesté La Reine De Pologne (édition 4658378)
-    2006   « Recorded at the Temple of Loumarin in October 2006 »
 
 John Adams, London Sinfonietta, Kronos Quartet — Gnarly Buttons & John's Book Of Alleged Dances (édition 23866520)
     1995 – 1997   « recorded at Skywalker Sound, Nicasio, CA in August 1996. / recorded at Skywalker Sound in August 1995. / recorded at Air Studios, London, England in July 1997; edited and mixed at Galaxy Classics, Mol, Belgium. »
@@ -249,7 +246,7 @@ Various — You & The Night & The Music - La Soirée Jazz De L'Année 2012 À L'
     2012
 
 
-3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 », « 2003, 2010 » ou « à trouver ») : 3
+3. Saisies manuelles illisibles (écrire « 1958 », « 1958-1961 », « 2003, 2010 » ou « à trouver ») : 4
 
 Ahmad Jamal — Volume 2 The Ahmad Jamal Trio (édition 10863087)
     « 1956 - 1955 »
@@ -259,6 +256,9 @@ Keith Jarrett, Gary Peacock, Paul Motian — At The Deer Head Inn (édition 5037
 
 Various — Cool 2 (édition 7055920)
     « 1940-1960 (est.) »
+
+Wolfgang Amadeus Mozart, The Cleveland Orchestra, George Szell — Symphonies: No.35 "Haffner", No.40 & No.41 "Jupiter" (édition 23686847)
+    « 196, 1964, 1968 »
 
 
 4. « Live » automatique (notes ou titre, champ « Live / Studio » vide) : 20
